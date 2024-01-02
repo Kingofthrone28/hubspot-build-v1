@@ -1,71 +1,82 @@
-<!--
-<script>
-  let ic = document.getElementsByName('mkto71_inferred_country__c');
-
-  console.log(ic, 'ICCC');
-
-  if (ic.length) {
-    jQuery.get('https://ipinfo.io', (response) => {
-      console.log(response.city, response.country);
-    }, 'jsonp');
-  }
-</script>
--->
-
-<!-- SocialLadder -->
+<!-- Tracking with localStorage and URL params -->
 <script>
   (() => {
-    // For SocialLadder pass ambassador ID and discount code to a Shopify store.
     const targetUrl = 'https://store.integrativenutrition.com';
     const windowParams = new URLSearchParams(window.location.search);
-    const ambassadorID = windowParams.get('ambassadorID');
-    const sldiscountcode = windowParams.get('sldiscountcode');
-    const source = windowParams.get('source');
 
-    if (ambassadorID) {
-      localStorage.setItem('ambassadorID', ambassadorID);
-    }
+    const updateLink = (link, params, pathname) => {
+      if (!link || !params) {
+        return;
+      }
 
-    if (sldiscountcode) {
-      localStorage.setItem('sldiscountcode', sldiscountcode);
-    }
+      let newUrl = new URL(targetUrl);
 
-    if (source) {
-      localStorage.setItem('source');
-    }
+      const newParams = new URLSearchParams(link.search);
 
-    const localAmbassadorID = localStorage.getItem('ambassadorID');
-    const localSldiscountcode = localStorage.getItem('sldiscountcode');
-    const localSource = localStorage.getItem('source');
+      Object.entries(params).forEach(([key, value]) => {
+        if (value) {
+          newParams.set(key, value);
+        }
+      });
 
-    if (localAmbassadorID) {
+      if (pathname) {
+        newUrl.pathname = pathname;
+      }
+
+      newUrl.search = newParams;
+      link.href = newUrl;
+    };
+
+    const useValue = (name) => {
+      const paramSource = windowParams.get(name);
+
+      if (paramSource) {
+        localStorage.setItem(name);
+      }
+
+      const localSource = localStorage.getItem(name);
+
+      return localSource;
+    };
+
+    // Pass partner lead source to a Shopify store.
+    const updatePartnerLeadSource = () => {
+      const source = useValue('Source');
+
+      if (!source) {
+        return;
+      }
+
+      const links = document.querySelectorAll(`a[href^="${targetUrl}"]`);
+      const params = { Source: source };
+
+      links.forEach((link) => updateLink(link, params));
+    };
+
+    // Pass ambassador ID and discount code to a Shopify store.
+    const updateSocialLadderTracking = () => {
+      const ambassadorID = useValue('ambassadorID');
+
+      if (!ambassadorID) {
+        return;
+      }
+
+      const sldiscountcode = useValue('sldiscountcode');
+      const pathname = sldiscountcode ? `/discount/${sldiscountcode}` : '';
       const links = document.querySelectorAll(`a[href^="${targetUrl}"]`);
 
       links.forEach((link) => {
-        let newUrl = new URL(targetUrl);
+        const params = { ambassadorID, redirect: link.pathname };
 
-        if (localSldiscountcode) {
-          newUrl.pathname = `/discount/${localSldiscountcode}`;
-        }
-
-        const newParams = new URLSearchParams(link.search);
-
-        if (localAmbassadorID) {
-          newParams.set('ambassadorID', localAmbassadorID);
-        }
-
-        if (localSource) {
-          newParams.set('source', localSource);
-        }
-
-        newParams.set('redirect', link.pathname);
-        newUrl.search = newParams;
-        link.href = newUrl;
+        updateLink(link, params, pathname);
       });
-    }
+    };
+
+    updatePartnerLeadSource();
+    updateSocialLadderTracking();
   })();
 </script>
-<!-- End SocialLadder -->
+<!-- End tracking with localStorage and URL params -->
 
 <!-- UTM Params -->
 <script>
