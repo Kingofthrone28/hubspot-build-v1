@@ -1,0 +1,19 @@
+{
+  "name": "hubspot",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^7.1.0",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "format": "npx prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.html --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js,.jsx,.html --fix --ignore-path .gitignore"
+  }
+}

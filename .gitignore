@@ -1,0 +1,9 @@
+node_modules
+.build
+.env
+.DS_Store
+.history/
+
+# for github actions deploy
+task_definition.json
+private.key

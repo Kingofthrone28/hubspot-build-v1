@@ -1,123 +1,47 @@
-<!-- Tracking with localStorage and URL params -->
-<script>
-  (() => {
-    const targetUrl = 'https://store.integrativenutrition.com';
-    const windowParams = new URLSearchParams(window.location.search);
-
-    const updateLink = (link, params, pathname) => {
-      if (!link || !params) {
-        return;
-      }
-
-      let newUrl = new URL(targetUrl);
-
-      const newParams = new URLSearchParams(link.search);
-
-      Object.entries(params).forEach(([key, value]) => {
-        if (value) {
-          newParams.set(key, value);
-        }
-      });
-
-      if (pathname) {
-        newUrl.pathname = pathname;
-      }
-
-      newUrl.search = newParams;
-      link.href = newUrl;
-    };
-
-    const useValue = (name) => {
-      const paramSource = windowParams.get(name);
-
-      if (paramSource) {
-        localStorage.setItem(name);
-      }
-
-      const localSource = localStorage.getItem(name);
-
-      return localSource;
-    };
-
-    // Pass partner lead source to a Shopify store.
-    const updatePartnerLeadSource = () => {
-      const source = useValue('Source');
-
-      if (!source) {
-        return;
-      }
-
-      const links = document.querySelectorAll(`a[href^="${targetUrl}"]`);
-      const params = { Source: source };
-
-      links.forEach((link) => updateLink(link, params));
-    };
-
-    // Pass ambassador ID and discount code to a Shopify store.
-    const updateSocialLadderTracking = () => {
-      const ambassadorID = useValue('ambassadorID');
-
-      if (!ambassadorID) {
-        return;
-      }
-
-      const sldiscountcode = useValue('sldiscountcode');
-      const pathname = sldiscountcode ? `/discount/${sldiscountcode}` : '';
-      const links = document.querySelectorAll(`a[href^="${targetUrl}"]`);
-
-      links.forEach((link) => {
-        const params = { ambassadorID, redirect: link.pathname };
-
-        updateLink(link, params, pathname);
-      });
-    };
-
-    updatePartnerLeadSource();
-    updateSocialLadderTracking();
-  })();
-</script>
-<!-- End tracking with localStorage and URL params -->
-
 <!-- UTM Params -->
 <script>
   /** Cookie session for params in URL */
   (() => {
     /** Values are replicated from Drupal settings. */
     const settings = {
-      // "machine_field_name" is not currently used but exists in Drupal
+      // 'machine_field_name' is not currently used but exists in Drupal
       cookie_tracking_mapping: [
         {
           url_param_name: 'adagencytoken',
-          machine_field_name: 'AdAgencyToken'
+          machine_field_name: 'AdAgencyToken',
         },
         {
           url_param_name: 'affid',
-          machine_field_name: 'Affiliate_Referrer__c'
+          machine_field_name: 'Affiliate_Referrer__c',
         },
         {
-          url_param_name: 'ambassadorID'
+          url_param_name: 'ambassadorID',
         },
         {
           url_param_name: 'erefer',
-          machine_field_name: 'eReferrer__c'
+          machine_field_name: 'eReferrer__c',
         },
         {
           url_param_name: 'gclid',
-          machine_field_name: 'GCLID__c'
+          machine_field_name: 'GCLID__c',
         },
         {
           url_param_name: 'url',
-          machine_field_name: 'Adwords_Initial_URL__c'
+          machine_field_name: 'Adwords_Initial_URL__c',
         },
         {
           url_param_name: 'url',
-          machine_field_name: 'Adwords_Initial_URL_new__c'
-        }
+          machine_field_name: 'Adwords_Initial_URL_new__c',
+        },
       ],
       custom_cookie_settings: {
         cookie_type: 'persistent',
         cookie_duration: '365',
-      }
+      },
+    };
+
+    const sourceMappings = {
+      chopraeducation: 'HealCo',
     };
 
     const { hostname, pathname, protocol, search } = window.location;
@@ -125,12 +49,7 @@
     const isPersistent = cookieSettings?.cookie_type === 'persistent';
     const trackingMappings = settings.cookie_tracking_mapping;
     const urlParams = new URLSearchParams(search);
-
-    const hasTrackingParam = trackingMappings.some((mapping) => {
-      const param = urlParams.get(mapping.url_param_name);
-
-      return param !== null;
-    });
+    const TARGET_URL = 'https://store.integrativenutrition.com';
 
     /** Get the second and top-level domains */
     const cookieDomain = `.${hostname.split('.').slice(-2).join('.')}`;
@@ -151,7 +70,7 @@
       const dayCount = parseInt(cookieSettings.cookie_duration);
       const date = new Date();
       const currentTime = date.getTime();
-      const expirationTime = currentTime + (day * dayCount);
+      const expirationTime = currentTime + day * dayCount;
 
       date.setTime(expirationTime);
 
@@ -166,14 +85,14 @@
       const data = {};
       const url = `${protocol}//${cookieDomain}${pathname}${search}`;
 
-      for (const [key, value] of urlParams.entries()) {
-        data[key] = value
-      }
+      urlParams.forEach((value, key) => {
+        data[key] = value;
+      });
 
       data.url = url;
 
       return data;
-    }
+    };
 
     /** Deletes the cookie by setting an empty value and a past expiration date. */
     const deleteCookie = () => {
@@ -181,7 +100,7 @@
         `${cookieName}=`,
         `domain=${cookieDomain}`,
         `expires=${new Date(null).toUTCString()}`,
-        `path=${cookiePath}`
+        `path=${cookiePath}`,
       ];
 
       document.cookie = parts.join('; ');
@@ -244,20 +163,23 @@
      * Sets UTM fields automatically.
      * @param {string} name
      * @param {number|string} value
+     * @param {boolean} condition
      */
-    const setUTMField = (name, value) => {
-      if (!name.startsWith('utm_')) {
+    const setHiddenField = (name, value) => {
+      if (!value) {
         return;
       }
 
       const selector = `input[type='hidden'][name='${name}']`;
       const nodes = document.querySelectorAll(selector);
 
-      nodes.forEach((node) => node.value = value);
+      nodes.forEach((node) => {
+        node.value = value;
+      });
     };
 
     /** Sets UTM fields automatically. */
-    const setUTMFields = () => {
+    const setHiddenFields = () => {
       const data = getCookieData();
 
       if (!data) {
@@ -265,16 +187,121 @@
       }
 
       Object.entries(data).forEach(([key, value]) => {
-        setUTMField(key, value)
+        if (key.startsWith('utm_')) {
+          setHiddenField(key, value);
+        }
       });
     };
 
-    /** After the page loads set the cookie and registers event listeners. */
-    window.addEventListener('load', (event) => {
+    /**
+     * Updates a link.
+     * @param {Object} link
+     * @param {Object} params
+     * @param {string} newPathname
+     * @return {Object} some value
+     */
+    const updateLink = (link, params, newPathname) => {
+      if (!link || !params) {
+        return;
+      }
+
+      const newUrl = new URL(TARGET_URL);
+      const newParams = new URLSearchParams(link.search);
+
+      Object.entries(params).forEach(([key, value]) => {
+        if (value) {
+          newParams.set(key, value);
+        }
+      });
+
+      if (newPathname) {
+        newUrl.pathname = newPathname;
+      }
+
+      newUrl.search = newParams;
+      link.href = newUrl;
+    };
+
+    /**
+     * Uses a cookie value.
+     * @param {string} name
+     * @return {string|null}
+     */
+    const useValue = (name) => {
       const data = getCookieData();
+      return data.get(name);
+    };
+
+    /** Pass partner lead source to a Shopify store. */
+    const updatePartnerLeadSource = () => {
+      const source = useValue('Source');
+
+      if (!source) {
+        return;
+      }
+
+      const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
+      const params = { Source: source };
+
+      links.forEach((link) => updateLink(link, params));
+    };
+
+    /** Pass ambassador ID and discount code to a Shopify store. */
+    const updateSocialLadderTracking = () => {
+      const ambassadorID = useValue('ambassadorID');
+
+      if (!ambassadorID) {
+        return;
+      }
+
+      const sldiscountcode = useValue('sldiscountcode');
+      const newPathname = sldiscountcode ? `/discount/${sldiscountcode}` : '';
+      const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
+
+      links.forEach((link) => {
+        const params = { ambassadorID, redirect: link.pathname };
+
+        updateLink(link, params, newPathname);
+      });
+    };
+
+    // TODO: does this logic hold for source?
+    const hasTrackingParam = trackingMappings.some((mapping) => {
+      const param = urlParams.get(mapping.url_param_name);
+
+      return param !== null;
+    });
+
+    /** Update cookie with source value. */
+    const updateCookieSource = () => {
+      const data = getCookieData();
+      const localSource = data?.Source;
+      const paramSource = urlParams.get('Source');
+      const parts = hostname.split('.');
+      const subdomain = parts.length > 2 ? parts[parts.length - 3] : '';
+
+      const isValidSubdomain = Object.entries(sourceMappings).some(
+        ([key]) => key === subdomain
+      );
+
+      if (!isValidSubdomain || localSource || !paramSource) {
+        return;
+      }
+
+      const newData = { ...data, Source: sourceMappings[subdomain] };
+
+      deleteCookie();
+      setCookie(newData);
+    };
+
+    /** After the page loads set the cookie and registers event listeners. */
+    window.addEventListener('load', () => {
+      const data = getCookieData();
+      const paramSource = urlParams.get('Source');
       const extensionEvents = ['beforeunload', 'mousedown', 'scroll'];
 
       if (data && hasTrackingParam) {
+        /** The cookie will be reset after it's been deleted. */
         deleteCookie();
       } else if (data) {
         extendCookie();
@@ -284,9 +311,13 @@
         const newData = buildData();
 
         setCookie(newData);
+      } else if (paramSource) {
+        updateCookieSource();
       }
 
-      setUTMFields();
+      setHiddenFields();
+      updatePartnerLeadSource();
+      updateSocialLadderTracking();
 
       extensionEvents.forEach((extensionEvent) => {
         window.addEventListener(extensionEvent, extendCookie);
@@ -297,8 +328,9 @@
 <!-- End UTM Params -->
 
 <!-- Touch History -->
+<!-- prettier-ignore -->
 <script>
-  /*
+  /**
 
   Marketo Attribution History Plugin v0.3.4
   Copyright (c) 2016, RC Solutions
@@ -326,6 +358,7 @@
   Licensed under [LICENSE](https://github.com/hughsk/flat/blob/master/LICENSE)
 
   */
+  /* eslint-disable */
   require=function e$$0(l,c,g){function a(d,x){if(!c[d]){if(!l[d]){var k="function"==typeof require&&require;if(!x&&k)return k(d,!0);if(y)return y(d,!0);k=Error("Cannot find module '"+d+"'");throw k.code="MODULE_NOT_FOUND",k;}k=c[d]={exports:{}};l[d][0].call(k.exports,function(k){var c=l[d][1][k];return a(c?c:k)},k,k.exports,e$$0,l,c,g)}return c[d].exports}for(var y="function"==typeof require&&require,v=0;v<g.length;v++)a(g[v]);return a}({1:[function(d,l,c){l.exports=function(c){return!(null==c||!(c._isBuffer||
   c.constructor&&"function"===typeof c.constructor.isBuffer&&c.constructor.isBuffer(c)))}},{}],flat:[function(d,l,c){function g(a,c){function g(a,q){Object.keys(a).forEach(function(l){var r=a[l],h=c.safe&&Array.isArray(r),p=Object.prototype.toString.call(r),v=y(r);l=q?q+k+l:l;c.maxDepth||(m=d+1);if(!(h||v||"[object Object]"!==p&&"[object Array]"!==p)&&Object.keys(r).length&&d<m)return++d,g(r,l);u[l]=r})}c=c||{};var k=c.delimiter||".",m=c.maxDepth,d=1,u={};g(a);return u}function a(c,g){function d(a){var c=
   Number(a);return isNaN(c)||-1!==a.indexOf(".")?a:c}g=g||{};var k=g.delimiter||".",m=g.overwrite||!1,B={};if(y(c)||"[object Object]"!==Object.prototype.toString.call(c))return c;Object.keys(c).forEach(function(u){for(var t=u.split(k),l=d(t.shift()),y=d(t[0]),r=B;void 0!==y;){var h=Object.prototype.toString.call(r[l]),h="[object Object]"===h||"[object Array]"===h;if(!m&&!h&&"undefined"!==typeof r[l])return;if(m&&!h||!m&&null==r[l])r[l]="number"!==typeof y||g.object?{}:[];r=r[l];0<t.length&&(l=d(t.shift()),

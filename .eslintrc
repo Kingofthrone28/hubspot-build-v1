@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "eslint:recommended", "prettier"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["eslint-plugin-html"],
+  "root": true,
+  "rules": {
+    "class-methods-use-this": 0,
+    "import/no-namespace": 1,
+    "import/order": 1,
+    "lines-between-class-members": [
+      1,
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "no-console": 1,
+    "no-empty": 1,
+    "no-restricted-syntax": 1,
+    "no-unused-vars": 1,
+    "no-useless-catch": 1,
+    "prefer-destructuring": 1,
+    "radix": [1, "as-needed"]
+  }
+}
