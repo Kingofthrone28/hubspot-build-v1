@@ -250,7 +250,8 @@
 
     /** Pass partner lead source to a Shopify store. */
     const updatePartnerLeadSource = () => {
-      const source = useValue('Source');
+      const data = getCookieData();
+      const source = data?.Source;
 
       if (!source) {
         return;
