@@ -205,8 +205,19 @@
         return;
       }
 
-      const newUrl = new URL(TARGET_URL);
-      const newParams = new URLSearchParams(link.search);
+      let newParams;
+      let newUrl;
+      let oldPathname;
+
+      try {
+        const oldUrl = link.href;
+
+        oldPathname = new URL(oldUrl).pathname;
+        newUrl = new URL(newPathname ? TARGET_URL : oldUrl);
+        newParams = new URLSearchParams(link.search);
+      } catch {
+        return;
+      }
 
       Object.entries(params).forEach(([key, value]) => {
         if (value) {
@@ -216,6 +227,8 @@
 
       if (newPathname) {
         newUrl.pathname = newPathname;
+      } else if (oldPathname) {
+        newUrl.pathname = oldPathname;
       }
 
       newUrl.search = newParams;
