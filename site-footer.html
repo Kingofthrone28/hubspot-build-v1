@@ -226,10 +226,26 @@
      * Uses a cookie value.
      * @param {string} name
      * @return {string|null}
+     * @todo Refactor to move cookie side effects into new function.
      */
     const useValue = (name) => {
-      const data = getCookieData();
-      return data.get(name);
+      let data = getCookieData() || {};
+      // Check localStorage value for backwards compatibility for
+      // "ambassadorID" and "sldiscountcode".
+      const localValue = localStorage.getItem(name);
+      const cookieValue = data?.[name];
+
+      if (!cookieValue && localValue) {
+        data = {
+          ...data,
+          [name]: localValue,
+        };
+        localStorage.removeItem(name);
+        deleteCookie();
+        setCookie(data);
+      }
+
+      return data?.[name] || null;
     };
 
     /** Pass partner lead source to a Shopify store. */
