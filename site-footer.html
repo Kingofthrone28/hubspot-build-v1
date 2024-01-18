@@ -264,16 +264,15 @@
     /** Pass partner lead source to a Shopify store. */
     const updatePartnerLeadSource = () => {
       const data = getCookieData();
-      const source = data?.Source;
+      const source = data?.source;
 
       if (!source) {
         return;
       }
 
       const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
-      const params = { Source: source };
 
-      links.forEach((link) => updateLink(link, params));
+      links.forEach((link) => updateLink(link, { source }));
     };
 
     /** Pass ambassador ID and discount code to a Shopify store. */
@@ -305,8 +304,8 @@
     /** Update cookie with source value. */
     const updateCookieSource = () => {
       const data = getCookieData();
-      const localSource = data?.Source;
-      const paramSource = urlParams.get('Source');
+      const localSource = data?.source;
+      const paramSource = urlParams.get('source');
       const parts = hostname.split('.');
       const subdomain = parts.length > 2 ? parts[parts.length - 3] : '';
 
@@ -318,7 +317,7 @@
         return;
       }
 
-      const newData = { ...data, Source: sourceMappings[subdomain] };
+      const newData = { ...data, source: sourceMappings[subdomain] };
 
       deleteCookie();
       setCookie(newData);
@@ -327,7 +326,7 @@
     /** After the page loads set the cookie and registers event listeners. */
     window.addEventListener('load', () => {
       const data = getCookieData();
-      const paramSource = urlParams.get('Source');
+      const paramSource = urlParams.get('source');
       const extensionEvents = ['beforeunload', 'mousedown', 'scroll'];
 
       if (data && hasTrackingParam) {
