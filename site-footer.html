@@ -45,37 +45,24 @@
     };
 
     const { hostname, pathname, protocol, search } = window.location;
+    const hostnameParts = hostname.split('.');
+    const subdomain =
+      hostnameParts.length > 2 ? hostnameParts[hostnameParts.length - 3] : '';
+    const isSourceSubdomain = Object.entries(sourceMappings).some(
+      ([key]) => key === subdomain
+    );
     const cookieSettings = settings.custom_cookie_settings;
     const isPersistent = cookieSettings?.cookie_type === 'persistent';
+
     const trackingMappings = settings.cookie_tracking_mapping;
     const urlParams = new URLSearchParams(search);
+    const excludedParams = ['hs_preview'];
     const TARGET_URL = 'https://store.integrativenutrition.com';
 
     /** Get the second and top-level domains */
     const cookieDomain = `.${hostname.split('.').slice(-2).join('.')}`;
     const cookieName = 'params';
     const cookiePath = '/';
-
-    /**
-     * Calculates and returns an expiration date.
-     * @returns {string}
-     */
-    const getExpirationDate = () => {
-      const millisecondsInSecond = 1000;
-      const secondsInMinute = 60;
-      const minutesInHour = 60;
-      const hoursInDay = 24;
-      const day =
-        hoursInDay * minutesInHour * secondsInMinute * millisecondsInSecond;
-      const dayCount = parseInt(cookieSettings.cookie_duration);
-      const date = new Date();
-      const currentTime = date.getTime();
-      const expirationTime = currentTime + day * dayCount;
-
-      date.setTime(expirationTime);
-
-      return date.toUTCString();
-    };
 
     /**
      * Constructs cookie data from URL params.
@@ -86,8 +73,18 @@
       const url = `${protocol}//${cookieDomain}${pathname}${search}`;
 
       urlParams.forEach((value, key) => {
-        data[key] = value;
+        const isExcluded = excludedParams.some((param) => param === key);
+
+        if (!isExcluded) {
+          data[key] = value;
+        }
       });
+
+      const paramSource = urlParams.get('source');
+
+      if (isSourceSubdomain && !paramSource) {
+        data.source = sourceMappings[subdomain];
+      }
 
       data.url = url;
 
@@ -131,6 +128,27 @@
       }
 
       return data;
+    };
+
+    /**
+     * Calculates and returns an expiration date.
+     * @returns {string}
+     */
+    const getExpirationDate = () => {
+      const millisecondsInSecond = 1000;
+      const secondsInMinute = 60;
+      const minutesInHour = 60;
+      const hoursInDay = 24;
+      const day =
+        hoursInDay * minutesInHour * secondsInMinute * millisecondsInSecond;
+      const dayCount = parseInt(cookieSettings.cookie_duration);
+      const date = new Date();
+      const currentTime = date.getTime();
+      const expirationTime = currentTime + day * dayCount;
+
+      date.setTime(expirationTime);
+
+      return date.toUTCString();
     };
 
     /**
@@ -234,6 +252,17 @@
       newUrl.search = newParams;
       link.href = newUrl;
     };
+    
+    /** Pass params to a Shopify store. */
+    const updateLinks = (data) => {
+      if (!data) {
+        return;
+      }
+
+      const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
+
+      links.forEach((link) => updateLink(link, data));
+    };
 
     /**
      * Uses a cookie value.
@@ -261,20 +290,6 @@
       return data?.[name] || null;
     };
 
-    /** Pass partner lead source to a Shopify store. */
-    const updatePartnerLeadSource = () => {
-      const data = getCookieData();
-      const source = data?.source;
-
-      if (!source) {
-        return;
-      }
-
-      const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
-
-      links.forEach((link) => updateLink(link, { source }));
-    };
-
     /** Pass ambassador ID and discount code to a Shopify store. */
     const updateSocialLadderTracking = () => {
       const ambassadorID = useValue('ambassadorID');
@@ -294,26 +309,13 @@
       });
     };
 
-    // TODO: does this logic hold for source?
-    const hasTrackingParam = trackingMappings.some((mapping) => {
-      const param = urlParams.get(mapping.url_param_name);
-
-      return param !== null;
-    });
-
     /** Update cookie with source value. */
     const updateCookieSource = () => {
       const data = getCookieData();
       const localSource = data?.source;
       const paramSource = urlParams.get('source');
-      const parts = hostname.split('.');
-      const subdomain = parts.length > 2 ? parts[parts.length - 3] : '';
 
-      const isValidSubdomain = Object.entries(sourceMappings).some(
-        ([key]) => key === subdomain
-      );
-
-      if (!isValidSubdomain || localSource || !paramSource) {
+      if (!isSourceSubdomain || localSource || !paramSource) {
         return;
       }
 
@@ -323,9 +325,15 @@
       setCookie(newData);
     };
 
+    const hasTrackingParam = trackingMappings.some((mapping) => {
+      const param = urlParams.get(mapping.url_param_name);
+
+      return param !== null;
+    });
+
     /** After the page loads set the cookie and registers event listeners. */
     window.addEventListener('load', () => {
-      const data = getCookieData();
+      let data = getCookieData();
       const paramSource = urlParams.get('source');
       const extensionEvents = ['beforeunload', 'mousedown', 'scroll'];
 
@@ -337,15 +345,15 @@
       }
 
       if (!data || hasTrackingParam) {
-        const newData = buildData();
+        data = buildData();
 
-        setCookie(newData);
+        setCookie(data);
       } else if (paramSource) {
         updateCookieSource();
       }
 
       setHiddenFields();
-      updatePartnerLeadSource();
+      updateLinks(data);
       updateSocialLadderTracking();
 
       extensionEvents.forEach((extensionEvent) => {
