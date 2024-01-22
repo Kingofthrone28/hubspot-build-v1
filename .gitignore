@@ -2,7 +2,8 @@ node_modules
 .build
 .env
 .DS_Store
-.history/
+.history
+.vscode
 
 # for github actions deploy
 task_definition.json

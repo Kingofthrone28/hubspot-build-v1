@@ -1,0 +1,159 @@
+{% set course = request.query_dict.Course|urldecode|replace('_', '
+')|replace('™','')|trim %} {% set course_tm =
+request.query_dict.Course|urldecode|replace('_', ' ') %} {% set query = 'name='
+~ course %} {% set product = crm_objects('product', query,
+'ip__shopify__handle,name,ip__shopify__body_html,enrollment_agreement___english,enrollment_agreement___spanish',
+false) %} {% set remove_url = request.query|replace('~', ' ') %} {% set
+search_url = remove_url|split('&') %} {% if request.query is containing
+'Spanish' %}
+<h1>{{ course }} Enrollment Agreement Spanish</h1>
+<div class="variant-wrapper">
+  {% for variant in search_url %}{% set type = variant|split('=') %} {% if
+  type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0]
+  != '__hsfp' && type[0] != 'Price' && type[0] != 'hours' && type[0] != 'weeks'
+  && type[0] != 'ProductId' && type[0] != 'Date' && type[0] != 'Registration' &&
+  type[0] != 'Tuition' && type[0] != 'Books' %}
+  <div>
+    <strong>{{ type[0]|urldecode|trim }}:</strong> {{ type[1]|urldecode|trim }}
+  </div>
+  {% endif %} {% endfor %}
+</div>
+<div class="terms">
+  <p>
+    El “Total restante”, según se establece en la tabla anterior, es su
+    obligación financiera y puede variar del "Costo total del programa" que
+    figura en el Acuerdo de inscripción a continuación. No hay sanciones por
+    hacer los pagos antes de tiempo.
+  </p>
+  <p>
+    El Institute for Integrative Nutrition ("IIN") y el estudiante mencionado
+    anteriormente (“estudiante” o “usted”) (colectivamente denominados las
+    “Partes”) celebran este acuerdo de inscripción (“Acuerdo de Inscripción”)
+    que establece los términos y condiciones de su acceso y uso del curso {{
+    course }} (el “Programa”) ofrecido por IIN, incluidos, entre otros, los
+    sitios web y las aplicaciones de IIN. Al firmar este Acuerdo de Inscripción,
+    usted acepta los términos establecidos en este documento, incluido el
+    arbitraje, la renuncia a demanda colectiva y las disposiciones de limitación
+    de responsabilidad, y todos los demás términos, reglas, políticas,
+    regulaciones o lineamientos aquí establecidos. Usted también acepta los
+    términos establecidos en el Catálogo para Estudiantes de IIN y cualquier
+    otro acuerdo entre IIN y el estudiante (colectivamente denominados los
+    “Acuerdos”).
+  </p>
+  <p>
+    <strong>Programa, Matrícula y Tarifas</strong>
+  </p>
+  <table>
+    <tr>
+      <td colspan="2">
+        <strong>{{ course }}</strong><br />Duración del programa: {{
+        request.query_dict.hours|urldecode|replace('~', ' ')|trim }} horas
+        <br />Este curso puede completarse en {{
+        request.query_dict.weeks|urldecode|replace('~', ' ')|trim }} semanas
+        (incluyendo recesos programados).
+      </td>
+    </tr>
+    <tr>
+      <td>Costo total</td>
+      <td>{{request.query_dict.Price|urldecode|replace('~', ' ')|trim}}</td>
+    </tr>
+  </table>
+  {{ module.fallback_agreement_es_ }}
+  <p>
+    <strong>Fecha:</strong> {{ request.query_dict.Date|urldecode|replace('~', '
+    ')|trim }}
+  </p>
+  <p>A ser completado por el funcionario escolar al recibirlo:</p>
+  <p>
+    <strong>Recibido por:</strong> {{
+    request.query_dict.Name|urldecode|replace('~', ' ')|trim }}
+  </p>
+  <p>
+    <strong>Firma del Funcionario Escolar:</strong>
+  </p>
+</div>
+{% else %}
+<h1>{{ course }} Enrollment Agreement</h1>
+<div class="variant-wrapper">
+  {% for variant in search_url %}{% set type = variant|split('=') %}
+  <div style="display: none">{{ type }}</div>
+  {% if type[0] != 'Course' && type[0] != 'Variant' && type[0] != '__hstc' &&
+  type[0] != '__hssc' && type[0] != '__hsfp' && type[0] != 'Price' && type[0] !=
+  'hours' && type[0] != 'weeks' && type[0] != 'ProductId' && type[0] != 'Date'
+  && type[0] != 'Registration' && type[0] != 'Tuition' && type[0] != 'Books' %}
+  <div>
+    <strong>{{ type[0]|urldecode|trim }}:</strong> {{ type[1]|urldecode|trim }}
+  </div>
+  {% endif %} {% endfor %}
+</div>
+{% set count = [] %}
+<div class="terms">
+  <p>
+    The Institute for Integrative Nutrition (“IIN”) and the above named student
+    (“student” or “you”) (collectively, the “Parties”) hereby enter into this
+    enrollment agreement (“Enrollment Agreement”) which sets forth the terms and
+    conditions of your access to and use of {{ course }} (the “Program”) offered
+    by IIN, including but not limited to, IIN’s websites and apps. By accepting
+    this Enrollment Agreement, you agree to the terms set forth herein including
+    the arbitration, class-action waiver, and limitation of liability
+    provisions, and all other terms, rules, policies, regulations, and/or
+    guidelines set forth therein. You also agree to the terms set forth in IIN’s
+    Student Catalog and any other agreements between IIN and the student
+    (together with the Enrollment Agreement, the “Agreements”).
+  </p>
+  <p>
+    <strong>The Course, Tuition, and Fees</strong>
+  </p>
+  <table>
+    <tr>
+      <td colspan="2">
+        <strong>{{ course }}</strong><br />Program length: {{
+        request.query_dict.hours|urldecode|replace('~', ' ')|trim }} clock hours
+        <br />This program is normally completed in {{
+        request.query_dict.weeks|urldecode|replace('~', ' ')|trim }} weeks
+        (includes scheduled breaks).
+      </td>
+    </tr>
+    {% if request.query_dict.Registration %}
+    <tr>
+      <td>Registration <i>(non-refundable)</i></td>
+      <td>
+        {{ request.query_dict.Registration|urldecode|replace('~', ' ')|trim }}
+      </td>
+    </tr>
+    {% endif %} {% if request.query_dict.Registration ||
+    request.query_dict.Books %}
+    <tr>
+      {% set total = request.query_dict.Price|urldecode|replace('$', '') %}{%
+      set Registration = request.query_dict.Registration|urldecode|replace('$',
+      '') %}{% set Books = request.query_dict.Books|urldecode|replace('$', '')
+      %}{% set dealerval = dealer|render %}
+      <td>Tuition</td>
+      <td>${{ total|int - Registration|int - Books|int }}</td>
+    </tr>
+    {% endif %} {% if request.query_dict.Books %}
+    <tr>
+      <td>Books and Materials <i>(non-refundable once received)</i></td>
+      <td>{{ request.query_dict.Books|urldecode|replace('~', ' ')|trim }}</td>
+    </tr>
+    {% endif %}
+    <tr>
+      <td>Total Cost</td>
+      <td>{{ request.query_dict.Price|urldecode|replace('~', ' ')|trim }}</td>
+    </tr>
+  </table>
+  {{ module.fallback_agreement }}
+  <p>
+    <strong>Date:</strong> {{ request.query_dict.Date|urldecode|replace('~', '
+    ')|trim }}
+  </p>
+  <p>To be completed by school official upon receipt:</p>
+  <p>
+    <strong>Received by:</strong> {{
+    request.query_dict.Name|urldecode|replace('~', ' ')|trim }}
+  </p>
+  <p>
+    <strong>Signature of School Official:</strong>
+  </p>
+</div>
+{% endif %}

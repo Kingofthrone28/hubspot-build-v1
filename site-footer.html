@@ -252,7 +252,7 @@
       newUrl.search = newParams;
       link.href = newUrl;
     };
-    
+
     /** Pass params to a Shopify store. */
     const updateLinks = (data) => {
       if (!data) {
@@ -325,10 +325,16 @@
       setCookie(newData);
     };
 
-    const hasTrackingParam = trackingMappings.some((mapping) => {
-      const param = urlParams.get(mapping.url_param_name);
+    const hasTrackingParam = () => {
+      const hasCustomParam = trackingMappings.some((mapping) => {
+        const param = urlParams.get(mapping.url_param_name);
 
-      return param !== null;
+        return param !== null;
+      });
+
+      const hasUtmParam = urlParams.some((param) => param.startsWith('utm_'));
+
+      return hasUtmParam || hasUtmParam;
     });
 
     /** After the page loads set the cookie and registers event listeners. */
