@@ -325,16 +325,10 @@
       setCookie(newData);
     };
 
-    const hasTrackingParam = () => {
-      const hasCustomParam = trackingMappings.some((mapping) => {
-        const param = urlParams.get(mapping.url_param_name);
+    const hasTrackingParam = trackingMappings.some((mapping) => {
+      const param = urlParams.get(mapping.url_param_name);
 
-        return param !== null;
-      });
-
-      const hasUtmParam = urlParams.some((param) => param.startsWith('utm_'));
-
-      return hasUtmParam || hasUtmParam;
+      return param !== null;
     });
 
     /** After the page loads set the cookie and registers event listeners. */
