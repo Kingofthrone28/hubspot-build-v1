@@ -36,7 +36,7 @@
       ],
       custom_cookie_settings: {
         cookie_type: 'persistent',
-        cookie_duration: '365',
+        cookie_duration: '1',
       },
     };
 
@@ -183,18 +183,23 @@
      * @param {number|string} value
      * @param {boolean} condition
      */
-    const setHiddenField = (name, value) => {
+    const setHiddenField = (name, value) => {       
+      // Check if 'value' is falsy and return early if true.
       if (!value) {
         return;
       }
 
       const selector = `input[type='hidden'][name='${name}']`;
-      const nodes = document.querySelectorAll(selector);
 
-      nodes.forEach((node) => {
-        node.value = value;
+      // Get nodes using the constructed selector.
+      const fields = document.querySelectorAll(selector);
+
+      // Set the 'value' for each selected field.
+      fields.forEach((field) => {
+        field.value = value;
       });
     };
+
 
     /** Sets UTM fields automatically. */
     const setHiddenFields = () => {
