@@ -196,10 +196,11 @@
 
       // Set the 'value' for each selected field.
       fields.forEach((field) => {
-        field.value = value;
+        if (!field.value) {
+          field.value = value;
+        }
       });
     };
-
 
     /** Sets UTM fields automatically. */
     const setHiddenFields = () => {
@@ -212,6 +213,8 @@
       Object.entries(data).forEach(([key, value]) => {
         if (key.startsWith('utm_')) {
           setHiddenField(key, value);
+        } else if (key === 'source') {
+          setHiddenField('partner_lead_source', value);
         }
       });
     };
