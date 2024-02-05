@@ -4,41 +4,41 @@
   (() => {
     /** Values are replicated from Drupal settings. */
     const settings = {
-      // 'machine_field_name' is not currently used but exists in Drupal
-      cookie_tracking_mapping: [
-        {
-          url_param_name: 'adagencytoken',
-          machine_field_name: 'AdAgencyToken',
-        },
-        {
+      // machine_field_name is not currently used but exists in Drupal
+      cookie_tracking_mapping: {
+        0: {
           url_param_name: 'affid',
           machine_field_name: 'Affiliate_Referrer__c',
         },
-        {
-          url_param_name: 'ambassadorID',
-          machine_field_name: 'Affiliate_Referrer__c',
-        },
-        {
+        1: {
           url_param_name: 'erefer',
           machine_field_name: 'eReferrer__c',
         },
-        {
+        2: {
           url_param_name: 'gclid',
           machine_field_name: 'GCLID__c',
         },
-        {
-          url_param_name: 'url',
-          machine_field_name: 'Adwords_Initial_URL__c',
-        },
-        {
+        // 3: {
+        //  url_param_name: 'url',
+        //  machine_field_name: 'Adwords_Initial_URL__c'
+        // },
+        4: {
           url_param_name: 'url',
           machine_field_name: 'Adwords_Initial_URL_new__c',
         },
-        {
+        5: {
+          url_param_name: 'adagencytoken',
+          machine_field_name: 'AdAgencyToken',
+        },
+        6: {
+          url_param_name: 'ambassadorID',
+          machine_field_name: 'Affiliate_Referrer__c',
+        },
+        7: {
           url_param_name: 'utm_channel',
           machine_field_name: 'Top_level__c',
         },
-      ],
+      },
       custom_cookie_settings: {
         cookie_type: 'persistent',
         cookie_duration: '30',
@@ -58,16 +58,14 @@
     );
     const cookieSettings = settings.custom_cookie_settings;
     const isPersistent = cookieSettings?.cookie_type === 'persistent';
-
-    const trackingMappings = settings.cookie_tracking_mapping;
     const urlParams = new URLSearchParams(search);
     const paramSource = urlParams.get('source');
     const excludedParams = ['hs_preview', 'hsLang'];
     const TARGET_URL = 'https://store.integrativenutrition.com';
-
-    /** Get the second and top-level domains */
-    const cookieDomain = `.${hostname.split('.').slice(-2).join('.')}`;
+    const globalDomain = '.integrativenutrition.com';
+    const hostnameIsGlobal = hostname.endsWith(globalDomain);
     const cookiePath = '/';
+    const cookieDomain = hostnameIsGlobal ? globalDomain : hostname;
     const cookieUrl = `${protocol}//${cookieDomain}${pathname}${search}`;
 
     /**
@@ -162,6 +160,27 @@
       date.setTime(expirationTime);
 
       return date.toUTCString();
+    };
+
+    /**
+     * Check for the existence of tracking param from settings.
+     * @returns {boolean}
+     */
+    const hasTrackingParam = () => {
+      const mappingData = settings.cookie_tracking_mapping;
+      const mappingArray = [];
+
+      Object.entries(mappingData).forEach(([key, value]) => {
+        if (Number(key) > -1) {
+          mappingArray.push(value);
+        }
+      });
+
+      return mappingArray.some((mapping) => {
+        const param = urlParams.get(mapping.url_param_name);
+
+        return param !== null;
+      });
     };
 
     /**
@@ -287,7 +306,10 @@
       link.href = newUrl;
     };
 
-    /** Pass params to a Shopify store. */
+    /**
+     * Pass params to a Shopify store.
+     * @param {Object} data
+     */
     const updateLinks = (data) => {
       if (!data) {
         return;
@@ -368,26 +390,21 @@
       setCookie(name, newData, dayCount);
     };
 
-    const hasTrackingParam = trackingMappings.some((mapping) => {
-      const param = urlParams.get(mapping.url_param_name);
-
-      return param !== null;
-    });
-
     /** After the page loads set the cookie and registers event listeners. */
     window.addEventListener('load', () => {
       const cookieName = 'params';
       const dayCount = parseInt(cookieSettings.cookie_duration);
       let data = getCookieData(cookieName);
+      const shouldReset = hasTrackingParam();
 
-      if (data && hasTrackingParam) {
+      if (data && shouldReset) {
         /** The cookie will be reset after it's been deleted. */
         deleteCookie(cookieName);
       } else if (data) {
         extendCookie(cookieName, dayCount);
       }
 
-      if (!data || hasTrackingParam) {
+      if (!data || shouldReset) {
         data = buildData();
 
         setCookie(cookieName, data, dayCount);
