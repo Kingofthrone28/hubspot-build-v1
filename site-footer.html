@@ -16,6 +16,7 @@
         },
         {
           url_param_name: 'ambassadorID',
+          machine_field_name: 'Affiliate_Referrer__c',
         },
         {
           url_param_name: 'erefer',
@@ -33,10 +34,14 @@
           url_param_name: 'url',
           machine_field_name: 'Adwords_Initial_URL_new__c',
         },
+        {
+          url_param_name: 'utm_channel',
+          machine_field_name: 'Top_level__c',
+        },
       ],
       custom_cookie_settings: {
         cookie_type: 'persistent',
-        cookie_duration: '1',
+        cookie_duration: '30',
       },
     };
 
@@ -56,13 +61,14 @@
 
     const trackingMappings = settings.cookie_tracking_mapping;
     const urlParams = new URLSearchParams(search);
-    const excludedParams = ['hs_preview'];
+    const paramSource = urlParams.get('source');
+    const excludedParams = ['hs_preview', 'hsLang'];
     const TARGET_URL = 'https://store.integrativenutrition.com';
 
     /** Get the second and top-level domains */
     const cookieDomain = `.${hostname.split('.').slice(-2).join('.')}`;
-    const cookieName = 'params';
     const cookiePath = '/';
+    const cookieUrl = `${protocol}//${cookieDomain}${pathname}${search}`;
 
     /**
      * Constructs cookie data from URL params.
@@ -70,7 +76,6 @@
      */
     const buildData = () => {
       const data = {};
-      const url = `${protocol}//${cookieDomain}${pathname}${search}`;
 
       urlParams.forEach((value, key) => {
         const isExcluded = excludedParams.some((param) => param === key);
@@ -80,21 +85,26 @@
         }
       });
 
-      const paramSource = urlParams.get('source');
-
       if (isSourceSubdomain && !paramSource) {
         data.source = sourceMappings[subdomain];
       }
 
-      data.url = url;
+      data.url = cookieUrl;
 
       return data;
     };
 
-    /** Deletes the cookie by setting an empty value and a past expiration date. */
-    const deleteCookie = () => {
+    /**
+     * Deletes the cookie by setting an empty value and a past expiration date.
+     * @param {string} name
+     */
+    const deleteCookie = (name) => {
+      if (!name) {
+        return;
+      }
+
       const parts = [
-        `${cookieName}=`,
+        `${name}=`,
         `domain=${cookieDomain}`,
         `expires=${new Date(null).toUTCString()}`,
         `path=${cookiePath}`,
@@ -105,21 +115,23 @@
 
     /**
      * Retrieves named cookie.
+     * @param {string} name
      * @returns {string}
      */
-    const getCookie = () => {
+    const getCookie = (name) => {
       const cookies = document.cookie.split(`; `);
 
-      return cookies.find((cookie) => cookie.startsWith(`${cookieName}=`));
+      return cookies.find((cookie) => cookie.startsWith(`${name}=`));
     };
 
     /**
      * Extracts value from a cookie.
+     * @param {string} name
      * @returns {Object}
      */
-    const getCookieData = () => {
+    const getCookieData = (name) => {
       let data = null;
-      const cookie = getCookie();
+      const cookie = getCookie(name);
 
       if (cookie) {
         const [, value] = cookie.split('=');
@@ -132,19 +144,20 @@
 
     /**
      * Calculates and returns an expiration date.
+     * @param {number} [dayCount]
      * @returns {string}
      */
-    const getExpirationDate = () => {
+    const getExpirationDate = (dayCount) => {
       const millisecondsInSecond = 1000;
       const secondsInMinute = 60;
       const minutesInHour = 60;
       const hoursInDay = 24;
       const day =
         hoursInDay * minutesInHour * secondsInMinute * millisecondsInSecond;
-      const dayCount = parseInt(cookieSettings.cookie_duration);
       const date = new Date();
       const currentTime = date.getTime();
-      const expirationTime = currentTime + day * dayCount;
+      const cleanDayCount = Number(dayCount) || 1;
+      const expirationTime = currentTime + day * cleanDayCount;
 
       date.setTime(expirationTime);
 
@@ -153,37 +166,47 @@
 
     /**
      * Sets the named cookie.
+     * @param {string} name
      * @param {Object} data
+     * @param {number} [dayCount]
      */
-    const setCookie = (data) => {
+    const setCookie = (name, data, dayCount) => {
+      if (!name) {
+        return;
+      }
+
       const parts = [
-        `${cookieName}=${encodeURIComponent(JSON.stringify(data))}`,
+        `${name}=${encodeURIComponent(JSON.stringify(data))}`,
         `domain=${cookieDomain}`,
         `path=${cookiePath}`,
       ];
 
       if (isPersistent) {
-        parts.push(`expires=${getExpirationDate()}`);
+        parts.push(`expires=${getExpirationDate(dayCount)}`);
       }
 
       document.cookie = parts.join('; ');
     };
 
-    /** Extends the lifetime of the cookie by resetting the expiration date. */
-    const extendCookie = () => {
-      const data = getCookieData();
+    /**
+     * Extends the lifetime of the cookie by resetting the expiration date.
+     * @param {string} name
+     * @param {number} [dayCount]
+     */
+    const extendCookie = (name, dayCount) => {
+      const data = getCookieData(name);
 
-      deleteCookie();
-      setCookie(data);
+      deleteCookie(name);
+      setCookie(name, data, dayCount);
     };
 
     /**
-     * Sets UTM fields automatically.
+     * Sets a hidden field.
      * @param {string} name
      * @param {number|string} value
      * @param {boolean} condition
      */
-    const setHiddenField = (name, value) => {       
+    const setHiddenField = (name, value) => {
       // Check if 'value' is falsy and return early if true.
       if (!value) {
         return;
@@ -197,24 +220,26 @@
       // Set the 'value' for each selected field.
       fields.forEach((field) => {
         if (!field.value) {
+          // eslint-disable-next-line no-param-reassign
           field.value = value;
         }
       });
     };
 
-    /** Sets UTM fields automatically. */
-    const setHiddenFields = () => {
-      const data = getCookieData();
-
+    /**
+     * Sets hidden fields automatically.
+     * @param {Object} data
+     */
+    const setHiddenFields = (data) => {
       if (!data) {
         return;
       }
 
       Object.entries(data).forEach(([key, value]) => {
-        if (key.startsWith('utm_')) {
-          setHiddenField(key, value);
-        } else if (key === 'source') {
+        if (key === 'source') {
           setHiddenField('partner_lead_source', value);
+        } else {
+          setHiddenField(key, value);
         }
       });
     };
@@ -258,6 +283,7 @@
       }
 
       newUrl.search = newParams;
+      // eslint-disable-next-line no-param-reassign
       link.href = newUrl;
     };
 
@@ -274,39 +300,45 @@
 
     /**
      * Uses a cookie value.
-     * @param {string} name
+     * @param {string} itemName
+     * @param {string} [cookieName]
+     * @param {number} [dayCount]
      * @return {string|null}
      * @todo Refactor to move cookie side effects into new function.
      */
-    const useValue = (name) => {
-      let data = getCookieData() || {};
+    const useValue = (itemName, cookieName, dayCount) => {
+      let data = getCookieData(cookieName) || {};
       // Check localStorage value for backwards compatibility for
       // "ambassadorID" and "sldiscountcode".
-      const localValue = localStorage.getItem(name);
-      const cookieValue = data?.[name];
+      const localValue = localStorage.getItem(itemName);
+      const cookieValue = data?.[itemName];
 
       if (!cookieValue && localValue) {
         data = {
           ...data,
-          [name]: localValue,
+          [itemName]: localValue,
         };
-        localStorage.removeItem(name);
-        deleteCookie();
-        setCookie(data);
+
+        localStorage.removeItem(itemName);
+        deleteCookie(cookieName);
+        setCookie(cookieName, data, dayCount);
       }
 
-      return data?.[name] || null;
+      return data?.[itemName] || null;
     };
 
-    /** Pass ambassador ID and discount code to a Shopify store. */
-    const updateSocialLadderTracking = () => {
-      const ambassadorID = useValue('ambassadorID');
+    /**
+     * Pass ambassador ID and discount code to a Shopify store.
+     * @param {string} cookieName
+     */
+    const updateSocialLadderTracking = (cookieName) => {
+      const ambassadorID = useValue('ambassadorID', cookieName);
 
       if (!ambassadorID) {
         return;
       }
 
-      const sldiscountcode = useValue('sldiscountcode');
+      const sldiscountcode = useValue('sldiscountcode', cookieName);
       const newPathname = sldiscountcode ? `/discount/${sldiscountcode}` : '';
       const links = document.querySelectorAll(`a[href^='${TARGET_URL}']`);
 
@@ -317,11 +349,14 @@
       });
     };
 
-    /** Update cookie with source value. */
-    const updateCookieSource = () => {
-      const data = getCookieData();
+    /**
+     * Update cookie with source value.
+     * @param {string} name
+     * @param {number} [dayCount]
+     */
+    const updateCookieSource = (name, dayCount) => {
+      const data = getCookieData(name);
       const localSource = data?.source;
-      const paramSource = urlParams.get('source');
 
       if (!isSourceSubdomain || localSource || !paramSource) {
         return;
@@ -329,8 +364,8 @@
 
       const newData = { ...data, source: sourceMappings[subdomain] };
 
-      deleteCookie();
-      setCookie(newData);
+      deleteCookie(name);
+      setCookie(name, newData, dayCount);
     };
 
     const hasTrackingParam = trackingMappings.some((mapping) => {
@@ -341,28 +376,30 @@
 
     /** After the page loads set the cookie and registers event listeners. */
     window.addEventListener('load', () => {
-      let data = getCookieData();
-      const paramSource = urlParams.get('source');
-      const extensionEvents = ['beforeunload', 'mousedown', 'scroll'];
+      const cookieName = 'params';
+      const dayCount = parseInt(cookieSettings.cookie_duration);
+      let data = getCookieData(cookieName);
 
       if (data && hasTrackingParam) {
         /** The cookie will be reset after it's been deleted. */
-        deleteCookie();
+        deleteCookie(cookieName);
       } else if (data) {
-        extendCookie();
+        extendCookie(cookieName, dayCount);
       }
 
       if (!data || hasTrackingParam) {
         data = buildData();
 
-        setCookie(data);
+        setCookie(cookieName, data, dayCount);
       } else if (paramSource) {
-        updateCookieSource();
+        updateCookieSource(cookieName, dayCount);
       }
 
-      setHiddenFields();
+      setHiddenFields(data);
       updateLinks(data);
-      updateSocialLadderTracking();
+      updateSocialLadderTracking(cookieName);
+
+      const extensionEvents = ['beforeunload', 'mousedown', 'scroll'];
 
       extensionEvents.forEach((extensionEvent) => {
         window.addEventListener(extensionEvent, extendCookie);
