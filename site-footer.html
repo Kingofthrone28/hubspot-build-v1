@@ -66,7 +66,6 @@
     const hostnameIsGlobal = hostname.endsWith(globalDomain);
     const cookiePath = '/';
     const cookieDomain = hostnameIsGlobal ? globalDomain : hostname;
-    const cookieUrl = `${protocol}//${cookieDomain}${pathname}${search}`;
 
     /**
      * Constructs cookie data from URL params.
@@ -87,7 +86,7 @@
         data.source = sourceMappings[subdomain];
       }
 
-      data.url = cookieUrl;
+      data.url = window.location.href;
 
       return data;
     };
