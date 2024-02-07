@@ -49,7 +49,7 @@
       chopraeducation: 'HealCo',
     };
 
-    const { hostname, pathname, protocol, search } = window.location;
+    const { hostname, search } = window.location;
     const hostnameParts = hostname.split('.');
     const subdomain =
       hostnameParts.length > 2 ? hostnameParts[hostnameParts.length - 3] : '';
