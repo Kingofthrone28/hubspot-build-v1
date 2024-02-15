@@ -8,3 +8,6 @@ node_modules
 # for github actions deploy
 task_definition.json
 private.key
+
+# HubSpot config file
+hubspot.config.yml
