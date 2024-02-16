@@ -38,24 +38,38 @@
     <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
     <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
     <script>
-      var hostname = window.location.hostname;
-      // Object containing all Weglot API keys
-      var weglotApiKeys = {
-        'info': "wg_9a4056032062028e8fdd8b0aa75aae418",
-        'course': "wg_8ba62aec1c27a90846ee8a15c4acf00d8",
-        'www': "wg_22f91c0430456d0d120ff3f524319edf0" // Default key
-      };
-      // Extract the subdomain from the hostname
-      var subdomain = hostname.split('.')[0];
-
-      // Determine the correct Weglot API key based on the subdomain
-      var weglotApiKey = weglotApiKeys[subdomain] || weglotApiKeys['www']; // Use default key if subdomain is not found
-
-      // Initialize Weglot with the determined API key
-      Weglot.initialize({
-        api_key: weglotApiKey
-      });
-    </script>
+        var hostname = window.location.hostname;
+          
+        var courseKey = "wg_8ba62aec1c27a90846ee8a15c4acf00d8";
+        var infoKey = "wg_9a4056032062028e8fdd8b0aa75aae418";
+        var wwwKey = "wg_22f91c0430456d0d120ff3f524319edf0"
+    
+        // Object containing all Weglot API keys, including "es" subdomains
+        var weglotApiKeys = {
+          'info': infoKey,
+          'course': courseKey,
+          'es.info': infoKey, 
+          'es.course': courseKey, 
+          'www': wwwKey 
+        };
+    
+        // Extract the subdomain(s) from the hostname
+        // This accounts for cases like "es.info" or "es.course"
+        // Join with '.' to handle "es.info" and "es.course"
+        var subdomains = hostname.split('.').slice(0, -2).join('.'); 
+    
+        // Determine the correct Weglot API key based on the subdomain(s)
+        var weglotApiKey = weglotApiKeys[subdomains] || weglotApiKeys['www']; // Use default key if subdomain is not found
+    
+        // Initialize Weglot with the determined API key
+        Weglot.initialize({
+          api_key: weglotApiKey
+        });
+    
+        console.log("SUBDOMAIN KEYS");
+        console.log(subdomains);
+        console.log(weglotApiKey);
+</script>
   </head>
   <body class="page-{{ content.slug }}">
     <div class="body-wrapper {{ builtin_body_classes }}">
