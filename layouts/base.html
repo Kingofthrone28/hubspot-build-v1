@@ -36,12 +36,13 @@
     <link rel="alternate" hreflang="es" href="https://es.course.integrativenutrition.com">
     <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
     <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+    <link rel="alternate" hreflang="en" href="https://www.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
     <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
     <script>
-      // Destructure hostname from the window.location object
       const { hostname } = window.location;
             
-      // API keys defined as constants
+      // API keys 
       const courseKey = "wg_8ba62aec1c27a90846ee8a15c4acf00d8";
       const infoKey = "wg_9a4056032062028e8fdd8b0aa75aae418";
       const wwwKey = "wg_22f91c0430456d0d120ff3f524319edf0";
@@ -58,17 +59,14 @@
       // Use array destructuring and join to handle subdomains like "es.info" or "es.course"
       const subdomains = hostname.split('.').slice(0, -2).join('.'); 
     
-      // Use ternary operator to determine the correct Weglot API key based on the subdomain(s)
-      const weglotApiKey = weglotApiKeys[subdomains] || weglotApiKeys['www']; // Use default key if subdomain is not found
+      // Determine the correct Weglot API key based on the subdomain(s)
+      // Use default key if subdomain is not found
+      const weglotApiKey = weglotApiKeys[subdomains] || weglotApiKeys['www']; 
     
       // Initialize Weglot with the determined API key
       Weglot.initialize({
         api_key: weglotApiKey
       });
-    
-      console.log("SUBDOMAIN KEYS");
-      console.log(subdomains);
-      console.log(weglotApiKey);
     </script>
   </head>
   <body class="page-{{ content.slug }}">
