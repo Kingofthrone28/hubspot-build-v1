@@ -1,0 +1,185 @@
+<div>
+  {% if module.show_content_on_side %}
+<div class="roadmap" id="rm-{{name}}">
+{% endif %}
+
+{% if module.show_content_on_side and module.content_side == 'left' %}
+<div class="rm-left">
+  <div>
+    <div>
+      {{module.side_content}}
+    </div>
+    <div id="{{name}}-dots"></div>
+  </div>
+</div>
+{% endif %}
+
+<div id="{{name}}" {% if module.show_content_on_side %}class="rm-slider"{% endif %}>
+  <div class="video-slider{% if !module.style.slider %} non-slider{% endif %}">
+    {% for item in module.videos %}{% set teblet_width = module.style.columns/2|round(0, "ceil") %}
+      <div class="video-card-wrap{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %}{% if !module.style.slider %} style="--tooltip-width: {{ 100 / module.style.columns }}%;--tooltip-tablet: {{ 100 / teblet_width }}%"{% endif %}>
+        {% if item.type == 'link' %}
+          {% set href = item.link_field.url.href %}
+          {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+          {% endif %}
+          <a href="{{ href }}" class="video-card type-{{item.type}}" style="background: url({{item.image_field.src}});"
+            {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}>
+        {% else %}
+          <div class="video-card type-{{item.type}}" style="background: url({{item.image_field.src}});" data-id="{{name}}-{{loop.index}}">
+        {% endif %}
+          <div class="card-gradient" style="--tooltip-color: {{module.style.overlay.color|convert_rgb}}, {{module.style.overlay.opacity / 150}};">
+            <div class="stagger-img-overlay" style="background: rgba({{module.style.hover.color|convert_rgb}}, {{module.style.hover.opacity / 100}});">
+              <div class="video-play-wrap video-play-hover">
+                {% if item.videoplayer_field.player_id && item.videoplayer_field.player_id != '51658331969' and item.type == 'pop_up' %}
+                <div class="video-play"><i class="fal fa-play"></i></div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="video-play-wrap{% if item.type != 'pop_up' %} card{% endif %}">
+              {% if item.videoplayer_field.player_id && item.videoplayer_field.player_id != '51658331969' and item.type == 'pop_up' %}
+              <div class="video-play"><i class="fas fa-play"></i></div>
+              {% endif %}
+            </div>
+            <div class="video-label" style="--tooltip-color: {{module.style.overlay.color|convert_rgb}}, {{module.style.overlay.opacity / 120}};">
+              <h4{% if item.name_field|length <= 4 %} class="large-title"{% endif %} style="color: {{ module.style.title_color.color }};">{{item.name_field}}</h4>
+              {% if item.description %}
+                <div class="video-description" style="{% if module.style.border_field.top.style == 'none' %}padding-top: 0;{% endif %}{{ module.style.border_field.css }}">{{ item.description }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% if item.type == 'link' %}</a>{% else %}</div>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  
+{% if module.show_content_on_side and module.content_side == 'right' %}
+<div class="rm-right">
+  <div>
+    <div>
+      {{module.side_content}}
+    </div>
+    <div id="{{name}}-dots"></div>
+  </div>
+</div>
+{% endif %}
+
+{% if module.show_content_on_side %}
+</div>
+{% endif %}
+
+{% for item in module.videos %}
+{% if item.type == 'pop_up' %}
+<div class="team-bio-pop-wrap" id="video-pop-{{name}}-{{loop.index}}">
+  <div class="team-bio-pop" style="width: 700px">
+    <span class="close video-close"><i class="fas fa-times"></i></span>
+    <div class="team-bio-pop-of">
+      {% if item.videoplayer_field.player_id && item.videoplayer_field.player_id != '51658331969' %}
+      <div class="video-pop-player">
+         {% raw %}<!--{% endraw %}
+        {% set max_width = item.videoplayer_field.size_type == 'auto_custom_max' ? item.videoplayer_field.max_width : item.videoplayer_field.width %}
+        {% set max_height = item.videoplayer_field.size_type == 'auto_custom_max' ? item.videoplayer_field.max_height : item.videoplayer_field.height %}
+        {% set video_sharing = False %}
+        {% if item.allow_video_sharing %}{% set video_sharing = True %}{% endif %}
+        {% widget_block video_player "embed_player"
+          overrideable=False,
+          type='scriptV4',
+          hide_playlist=True,
+          viral_sharing={{ video_sharing }},
+          embed_button=False,
+          full_width={{ item.videoplayer_field.size_type == 'auto_full_width' }},
+          width="{{ max_width }}",
+          height="{{ max_height }}",
+          player_id="{{ item.videoplayer_field.player_id }}"
+        %}
+          {% widget_attribute "conversion_asset" %}
+            {{ item.videoplayer_field.conversion_asset|tojson|safe }}
+          {% end_widget_attribute %}
+        {% end_widget_block %}
+        {% raw %}-->{% endraw %}
+      </div>
+      {% else %}
+        {% if item.pop_up_image.src %}<img src="{{item.pop_up_image.src}}" />{% endif %}
+      {% endif %}
+      <div class="team-bio-content">
+        <h2>{{ item.name_field }}</h2>
+        <div>{{ item.pop_up_description }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+<style>
+  {% if module.show_content_on_side %}
+  {% if module.content_side == 'right' %}
+  #rm-{{name}} .rm-slider .slick-list{padding:0 0 0 20% !important;}
+  {% else %}
+  #rm-{{name}} .rm-slider .slick-list{padding:0 20% 0 0 !important;}
+  {% endif %}
+  {% endif %}
+  @media(max-width: 1000px) {
+    #rm-{{name}} .rm-slider .slick-list{padding:0 10% !important;}
+  }
+</style>
+{% if module.style.slider %}
+<script>
+$(document).ready(function() {
+  {% if module.show_content_on_side %}
+  $('#{{name}} .video-slider').slick({
+      infinite: true,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      centerPadding: '10%',
+      centerMode: false,
+      arrows: false,
+    dots: true,
+    appendDots: $('#{{name}}-dots'),
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+    });
+  {% else %}
+  $('#{{name}} .video-slider').slick({
+      infinite: true,
+      slidesToShow: {{ module.style.slider_options.slides_to_show }},
+      slidesToScroll: 1,
+      {% if module.style.slider_options.center_focus_slide %}centerPadding: '10%',
+      centerMode: true,{% endif %}
+      arrows: false,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: {{ module.style.slider_options.slides_to_show - 1 }}
+        }
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1
+        }
+      },
+    ]
+    });
+  {% endif %}
+});
+</script>
+{% endif %}
+

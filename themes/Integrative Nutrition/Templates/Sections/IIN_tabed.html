@@ -1,0 +1,138 @@
+<!--
+ templateType: section
+ label: Content - Tabed Section
+ description: "A 2 column section with tabs"
+ isAvailableForNewContent: true
+ screenshotPath: ../../images/IIN_tabed.png
+-->
+{# Hero section #}
+{% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      background_color="rgba(248, 245, 240, 1)"
+    %}
+  {% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "default" : {
+        "top" : "100px"
+      },
+      "mobile" : {
+        "top" : "20px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2>The Health Coach Training Program Experience</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "30px",
+          "top" : "30px"
+        },
+        "mobile" : {
+          "bottom" : "10px",
+          "top" : "10px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Tabbed Content",
+            offset=0,
+            width=12,
+            style={
+              "font_color" : {
+                "color" : "#2d3841",
+                "opacity" : 100
+              }
+            },
+            tabs=[ {
+              "content" : "<p><strong>Discover what feeds your body, mind, and soul to live a life you love.</strong></p>\n<ul>\n<li><span>Learn from 95+ visiting faculty, coaches, and guides.</span></li>\n<li><span>Be empowered to find the diet and lifestyle practices that work&nbsp;for you.</span></li>\n<li><span>Understand how to coach others to experience personal transformation.</span></li>\n<li><span>Find balance in all areas of your life.</span></li>\n</ul>",
+              "image_field" : {
+                "src" : ""
+              },
+              "name_field" : "Inspirational"
+            }, {
+              "content" : "<p><strong>A supportive, online health coaching education unlike any other.</strong></p>\n<ul>\n<li><span>Access audio and video lectures, handouts, discussions, and much&nbsp;more in the state-of-the-art IIN Learning Center.</span></li>\n<li><span>Interact with a variety of learning and assessment tools to support you in the way you learn best.</span></li>\n<li><span>Get real-time guidance in live, virtual coaching sessions with a professional Integrative Nutrition Health Coach.</span></li>\n<li><span>Immerse yourself in the global IIN community while learning from&nbsp;the comfort of your home, the beach, or wherever you are in the world!</span></li>\n</ul>",
+              "image_field" : {
+                "src" : ""
+              },
+              "name_field" : "Immersive"
+            }, {
+              "content" : "<p><strong>IIN has been leading the health coaching industry for 30 years.</strong></p>\n<ul>\n<li>We are the longest-standing health coaching and nutrition school,&nbsp;pioneering the Health Coach profession.</li>\n<li><span>Our curriculum has evolved to stay ahead of the ever-changing wellness field, preparing you for both personal and career success.</span></li>\n<li><span>Earn your Integrative Nutrition Health Coach Certificate in six or 12 months, in English&nbsp;or Spanish.</span></li>\n<li><span>Set yourself apart from other Health Coaches with our signature IINtegrative Coaching Method<sup>TM</sup>.</span></li>\n</ul>",
+              "image_field" : {
+                "src" : ""
+              },
+              "name_field" : "Innovative"
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Button",
+        offset=0,
+        width=12,
+        location_id="free-sample",
+        style={
+          "background" : {
+            "color" : "#d72a25",
+            "opacity" : 100
+          }
+        }
+      %}
+        {% module_attribute "text" %}
+          <p><span>Get Free Sample Class</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6,
+    padding={
+      "default" : {
+        "left" : "5%"
+      },
+      "mobile" : {
+        "left" : "20px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Image",
+        offset=0,
+        width=12,
+        image_field_1={
+          "alt" : "desktop_des-583_homepage_gabi_dimitrova2",
+          "height" : 813,
+          "loading" : "lazy",
+          "max_height" : 813,
+          "max_width" : 650,
+          "size_type" : "auto",
+          "src" : "https://cdn2.hubspot.net/hubfs/23273748/desktop_des-583_homepage_gabi_dimitrova2.jpg",
+          "width" : 650
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# End Hero section #}

@@ -1,0 +1,22 @@
+{
+  "label" : "Integrative Nutrition child",
+  "preview_path" : "./templates/Full/inside-page.html",
+  "screenshot_path" : "/Integrative Nutrition/images/IIN-Theme-Cover-Image.jpg",
+  "enable_domain_stylesheets" : false,
+  "is_available_for_new_content" : true,
+  "extends" : "Integrative Nutrition",
+  "responsive_breakpoints" : [ {
+    "mediaQuery" : "@media (max-width: 1000px)",
+    "messages" : { },
+    "name" : "mobile",
+    "previewWidth" : {
+      "units" : "px",
+      "value" : 520
+    }
+  } ],
+  "author" : {
+    "name" : "",
+    "email" : ""
+  },
+  "hide_all_default_modules" : false
+}

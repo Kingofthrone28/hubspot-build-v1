@@ -1,0 +1,6 @@
+.blog-cta-wrap { padding: 0 0 80px; }
+.blog-cta { width: 1000px; max-width: 90%; margin: 0 auto; padding: 0 50px; display: flex; justify-content: center; }
+
+@media(max-width: 767px) {
+  .blog-cta { padding: 0 20px; }
+}

@@ -1,0 +1,444 @@
+[ {
+  "id" : "b86e51e3-6154-830c-93b1-1a929bb649fe",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "95e1ae24-e6ca-d19e-4fb4-c7405aef3061",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "8449d82c-3f70-75ef-71cb-23955dcc1fc6",
+      "name" : "image_width",
+      "display_width" : null,
+      "label" : "Image Width",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 1,
+      "max" : 11,
+      "step" : 1,
+      "suffix" : "",
+      "type" : "number",
+      "default" : 4
+    }, {
+      "id" : "0355d8ad-abd1-86e0-ff76-64983715d2f7",
+      "name" : "image_alignment",
+      "display_width" : null,
+      "label" : "Image Size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "content", "Page Content" ], [ "enge", "Page Edge" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "content"
+    }, {
+      "id" : "970d646a-bb14-2fc1-ac02-80e6795178dd",
+      "name" : "image_scale",
+      "display_width" : null,
+      "label" : "Image Scale",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "100", "Square" ], [ "60", "Landscape" ], [ "150", "Portrait" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100"
+    }, {
+      "id" : "8ee6b28c-0cb4-5772-57b6-f664027ef614",
+      "name" : "image_coverage",
+      "display_width" : null,
+      "label" : "Image Coverage",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cover"
+    }, {
+      "id" : "9ca6ac00-7189-a93f-290c-9588021b12da",
+      "name" : "alignment_field",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "alignment_direction" : "BOTH",
+      "type" : "alignment",
+      "default" : {
+        "horizontal_align" : "CENTER",
+        "vertical_align" : "MIDDLE"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : true,
+    "type" : "group",
+    "default" : {
+      "image_width" : 4,
+      "image_alignment" : "content",
+      "image_scale" : "100",
+      "image_coverage" : "cover",
+      "alignment_field" : {
+        "horizontal_align" : "CENTER",
+        "vertical_align" : "MIDDLE"
+      }
+    }
+  }, {
+    "id" : "cbf2f4b6-c197-352a-001a-c2b63e627651",
+    "name" : "quote",
+    "display_width" : null,
+    "label" : "Quote",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "32e2da58-9ac0-eb28-7cae-f98cdf6d8840",
+      "name" : "quote",
+      "display_width" : null,
+      "label" : "Quote Text",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "default" : {
+        "color" : "#666666",
+        "size" : 20,
+        "size_unit" : "px"
+      }
+    }, {
+      "id" : "2505172f-feee-6206-eee0-d72b0910fed1",
+      "name" : "quotation_location",
+      "display_width" : null,
+      "label" : "Quotation Location",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "left", "Left" ], [ "top", "Top" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "top"
+    }, {
+      "id" : "30be1421-018c-b08c-c474-32707dcdd655",
+      "name" : "quotation_mark",
+      "display_width" : null,
+      "label" : "Quotation Mark",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "default" : {
+        "color" : "#FF0201",
+        "size" : 24,
+        "size_unit" : "px"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "quote" : {
+        "color" : "#666666",
+        "size" : 20,
+        "size_unit" : "px"
+      },
+      "quotation_location" : "top",
+      "quotation_mark" : {
+        "color" : "#FF0201",
+        "size" : 24,
+        "size_unit" : "px"
+      }
+    }
+  }, {
+    "id" : "d979f0d7-a44e-105e-f478-ddf8862fc053",
+    "name" : "navigation",
+    "display_width" : null,
+    "label" : "Navigation",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "dots", "Dots" ], [ "arrows", "Arrows" ], [ "tabs", "Tabs" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "arrows"
+  }, {
+    "id" : "776b6a90-3992-e23c-6d2e-b103d031cdd1",
+    "name" : "font_field",
+    "display_width" : null,
+    "label" : "Font",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d979f0d7-a44e-105e-f478-ddf8862fc053",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "tabs",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "load_external_fonts" : true,
+    "type" : "font",
+    "default" : {
+      "color" : "#666666",
+      "size" : 18,
+      "size_unit" : "px"
+    }
+  }, {
+    "id" : "15ee84bc-b174-dfc2-aee3-15a08def4be0",
+    "name" : "active_tab",
+    "display_width" : null,
+    "label" : "Active Tab",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d979f0d7-a44e-105e-f478-ddf8862fc053",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "tabs",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "6fc2d534-4c93-2961-fb9f-e8546ded1e89",
+    "name" : "align_text",
+    "display_width" : null,
+    "label" : "Align Text",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "top", "Top" ], [ "bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "top"
+  }, {
+    "id" : "4b13a5d3-f85d-e6d5-69ff-f1500011ad67",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeDown"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "image" : {
+      "image_width" : 4,
+      "image_alignment" : "content",
+      "image_scale" : "100",
+      "image_coverage" : "cover",
+      "alignment_field" : {
+        "horizontal_align" : "CENTER",
+        "vertical_align" : "MIDDLE"
+      }
+    },
+    "quote" : {
+      "quote" : {
+        "color" : "#666666",
+        "size" : 20,
+        "size_unit" : "px"
+      },
+      "quotation_location" : "top",
+      "quotation_mark" : {
+        "color" : "#FF0201",
+        "size" : 24,
+        "size_unit" : "px"
+      }
+    },
+    "navigation" : "arrows",
+    "font_field" : {
+      "color" : "#666666",
+      "size" : 18,
+      "size_unit" : "px"
+    },
+    "active_tab" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "align_text" : "top",
+    "animation" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  }
+}, {
+  "id" : "ff955c37-fb4e-cbdb-2e6d-966ba855cfd0",
+  "name" : "testimonials",
+  "display_width" : null,
+  "label" : "Testimonials",
+  "help_text" : "Each item will create additional carousel pages.",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 5
+  },
+  "children" : [ {
+    "id" : "b61dfae4-72c6-b547-8a22-89ea9ba7be0d",
+    "name" : "person",
+    "display_width" : null,
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><em>First and Last Name, Profession / Company</em></p>"
+  }, {
+    "id" : "e443dfa8-ddb8-2ee4-1430-0be2c8b967aa",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    }
+  }, {
+    "id" : "90475a0c-8610-9e9c-c966-ad0958b9c69d",
+    "name" : "testimonial",
+    "display_width" : null,
+    "label" : "Testimonial",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    },
+    "testimonial" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  }, {
+    "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    },
+    "testimonial" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  }, {
+    "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    },
+    "testimonial" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  }, {
+    "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    },
+    "testimonial" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  }, {
+    "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/testimonial-head.png",
+      "alt" : "testimonial-head",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 442,
+      "max_width" : 480,
+      "max_height" : 442
+    },
+    "testimonial" : "<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</p>"
+  } ]
+} ]

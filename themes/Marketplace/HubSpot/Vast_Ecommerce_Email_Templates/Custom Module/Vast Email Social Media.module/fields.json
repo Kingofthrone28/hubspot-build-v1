@@ -1,0 +1,11 @@
+[ {
+  "id" : "2118fcd6-fbd6-404d-5fd1-408b1e3e284d",
+  "name" : "links",
+  "display_width" : null,
+  "label" : "Open links in new window",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+} ]

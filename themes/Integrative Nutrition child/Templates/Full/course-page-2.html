@@ -1,0 +1,4227 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Course Page New Child
+  screenshotPath: /Integrative Nutrition/images/Course Page New.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+
+{# HERO SECTION #}
+{% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "220px"
+    }
+  },
+  full_width=false,
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=7
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <div>
+                  <div class="entity-paragraphs-item paragraphs-item-headline">
+                  <p style="font-size: 18px; font-weight: bold; line-height: 1;"><span style="color: #d72a25;">IIN Flagship Program</span></p>
+                  <h1 style="font-size: 64px;">The Health Coach Training Program™</h1>
+                  </div>
+                  </div>
+                  <div id="pane-class-185703">
+                  <div>
+                  <p><span><br><span style="color: #4f4f4f;">Reframe what you know about health and wellness to live a fulfilling life in this comprehensive, integrated and dynamic program that includes content and activities related to holistic nutrition and lifestyle.</span><br><br></span><span style="color: #4f4f4f;"><span style="background-color: transparent;"><i class="fa-light fa-calendar"></i><span style="background-color: transparent;">&nbsp; </span></span><span style="background-color: transparent;">&nbsp;<span style="font-weight: normal;">Start Date: June 21, 2023&nbsp; &nbsp; &nbsp; &nbsp;<span style="font-weight: bold;">Duration:</span> 8 Weeks &nbsp; &nbsp; &nbsp; <span style="font-weight: bold;">Time investment/week:</span> 8-10 hours</span><br></span></span></p>
+                  <p><span style="background-color: transparent; color: #4f4f4f;"><i class="fa-light fa-globe">&nbsp;</i><span style="background-color: transparent;">&nbsp; English</span></span></p>
+                  </div>
+                  </div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=7,
+            width=5
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/Integrative Nutrition/modules/Course Shopify Price",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Arrow Buttons",
+            offset=0,
+            width=12,
+            buttons=[ {
+              "boolean_field" : false,
+              "link_field" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "rel" : "",
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://store.integrativenutrition.com/products/the-health-coach-training-program",
+                  "type" : "EXTERNAL"
+                },
+                "user_generated_content" : false
+              },
+              "text_field" : "Enroll Now"
+            } ],
+            style={
+              "spacing_field" : {
+                "css" : "padding-top: 15px;padding-right: 3.5em;padding-bottom: 15px;padding-left: 3.5em;margin-bottom: 5px;",
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 5
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 30
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 15
+                  },
+                  "left" : {
+                    "units" : "em",
+                    "value" : 3.5
+                  },
+                  "right" : {
+                    "units" : "em",
+                    "value" : 3.5
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 15
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#EAE2D3",
+              "opacity" : 100
+            }
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 30
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 30
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Rich Text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "content" %}
+          <h3>Need more info?</h3>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Arrow Buttons",
+        offset=0,
+        width=12,
+        buttons=[ {
+          "boolean_field" : false,
+          "inverse_button_style" : true,
+          "jump_link" : "request-info",
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "show_arrow" : true,
+          "text_field" : "Request Information"
+        }, {
+          "boolean_field" : false,
+          "inverse_button_style" : true,
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://iin.secure.force.com/AS",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "text_field" : "Schedule an Appointment"
+        }, {
+          "gray_button_style" : false,
+          "inverse_button_style" : true,
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "https://www.google.com",
+              "type" : "EXTERNAL"
+            }
+          },
+          "show_arrow" : true,
+          "text_field" : "Download Curriculum"
+        } ],
+        style={
+          "spacing_field" : {
+            "css" : "padding-top: 15px;padding-right: 3.5em;padding-bottom: 15px;padding-left: 3.5em;margin-bottom: 5px;",
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 5
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 30
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 15
+              },
+              "left" : {
+                "units" : "em",
+                "value" : 3.5
+              },
+              "right" : {
+                "units" : "em",
+                "value" : 3.5
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 15
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END HERO SECTION #}
+  
+{# JUMP BUTTON SECTION #}
+{% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Arrow Buttons",
+        offset=0,
+        width=12,
+        buttons=[ {
+          "boolean_field" : false,
+          "gray_button_style" : true,
+          "inverse_button_style" : false,
+          "jump_link" : "about",
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "show_arrow" : false,
+          "text_field" : "About"
+        }, {
+          "boolean_field" : false,
+          "gray_button_style" : true,
+          "inverse_button_style" : false,
+          "jump_link" : "course-overview",
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "show_arrow" : false,
+          "text_field" : "Course Overview"
+        }, {
+          "boolean_field" : false,
+          "gray_button_style" : true,
+          "inverse_button_style" : false,
+          "jump_link" : "certificate",
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "show_arrow" : false,
+          "text_field" : "Certificate"
+        }, {
+          "gray_button_style" : true,
+          "inverse_button_style" : false,
+          "jump_link" : "faqs",
+          "link_field" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "rel" : "",
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "show_arrow" : false,
+          "text_field" : "FAQs"
+        } ],
+        style={
+          "spacing_field" : {
+            "css" : "padding-top: 15px;padding-right: 3.5em;padding-bottom: 15px;padding-left: 3.5em;margin-bottom: 5px;",
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 5
+              },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 15
+              },
+              "left" : {
+                "units" : "em",
+                "value" : 3.5
+              },
+              "right" : {
+                "units" : "em",
+                "value" : 3.5
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 15
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END JUMP BUTTON SECTION #}
+  
+{# LEARN SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Location",
+        offset=0,
+        width=12,
+        location_id="about"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;">What you’ll learn</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/Checklist Icon",
+                offset=0,
+                width=12,
+                icon_type="svg",
+                style={
+                  "colors" : {
+                    "color_field" : {
+                      "color" : "#d72a25",
+                      "css" : "rgba(215, 42, 37, 0%)",
+                      "hex" : "#d72a25",
+                      "opacity" : 0,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 0)"
+                    },
+                    "icon_color" : {
+                      "color" : "#d72a25",
+                      "css" : "#d72a25",
+                      "hex" : "#d72a25",
+                      "opacity" : 100,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 1)"
+                    }
+                  },
+                  "icon" : {
+                    "icon_width" : 30
+                  }
+                },
+                svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+              %}
+                {% module_attribute "text" %}
+                  <div><span style="color: #2d3841;"><strong>Integrative Nutrition</strong></span></div>
+                  <div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <div><span style="color: #2d3841;"><strong>Bio-individuality</strong></span></div>
+                      <div><span style="color: #2d3841;">Simple yet powerful, this IIN core concept emphasizes finding the foods and lifestyle practices that align with your unique needs to create sustainable healthy habits.</span></div>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#FFFFFF",
+                          "css" : "rgba(255, 255, 255, 0%)",
+                          "hex" : "#FFFFFF",
+                          "opacity" : 0,
+                          "rgb" : "rgb(255, 255, 255)",
+                          "rgba" : "rgba(255, 255, 255, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <div><span style="color: #2d3841;"><strong>The IINtegrative Coaching Method<sup>TM</sup></strong></span></div>
+                      <div><span style="color: #2d3841;">Learn the tools and techniques that allow you to embrace coaching as a lifestyle—you are your first client—and creates the foundation for personal and professional transformation.</span></div>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Checklist Icon",
+            offset=0,
+            width=12,
+            icon_type="svg",
+            style={
+              "colors" : {
+                "color_field" : {
+                  "color" : "#d72a25",
+                  "css" : "rgba(215, 42, 37, 0%)",
+                  "hex" : "#d72a25",
+                  "opacity" : 0,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 0)"
+                },
+                "icon_color" : {
+                  "color" : "#d72a25",
+                  "css" : "#d72a25",
+                  "hex" : "#d72a25",
+                  "opacity" : 100,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 1)"
+                }
+              },
+              "icon" : {
+                "icon_width" : 30
+              }
+            },
+            svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+          %}
+            {% module_attribute "text" %}
+              <div><span style="color: #2d3841;"><strong>Multi-dimensional health</strong></span></div>
+              <div><span style="color: #2d3841;">An IIN core concept, this holistic approach considers all aspects of an individual from your physical health, nutrition and environment, to your mental, emotional, and spiritual well-being.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Checklist Icon",
+            offset=0,
+            width=12,
+            icon_type="svg",
+            style={
+              "colors" : {
+                "color_field" : {
+                  "color" : "#d72a25",
+                  "css" : "rgba(215, 42, 37, 0%)",
+                  "hex" : "#d72a25",
+                  "opacity" : 0,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 0)"
+                },
+                "icon_color" : {
+                  "color" : "#d72a25",
+                  "css" : "#d72a25",
+                  "hex" : "#d72a25",
+                  "opacity" : 100,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 1)"
+                }
+              },
+              "icon" : {
+                "icon_width" : 30
+              }
+            },
+            svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+          %}
+            {% module_attribute "text" %}
+              <div><span style="color: #2d3841;"><strong>Primary foods</strong></span></div>
+              <div><span style="color: #2d3841;">Find what feeds and nourishes you beyond the plate, such as your relationships, career, social life, finances, environment, and much more.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div class="entity-paragraphs-item paragraphs-item-copy">
+              <div><span style="background-color: transparent;"></span><a href="https://www.integrativenutrition.com/curriculum"><span style="color: #2d3841;"><span style="font-weight: bold;">Download Curriculum Guide</span></span> &nbsp; </a><span data-hs-icon-hubl="true" style="display: inline-block; vertical-align: middle; fill: #D72A25;">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span></div>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          "default" : {
+            "bottom" : "30px",
+            "left" : "70px",
+            "right" : "70px",
+            "top" : "30px"
+          },
+          "mobile" : {
+            "bottom" : "0px",
+            "left" : "0px",
+            "right" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Circle Image",
+            offset=0,
+            width=12,
+            image_field={
+              "alt" : "1679581988image-20230308-193545_0",
+              "height" : 768,
+              "loading" : "lazy",
+              "max_height" : 768,
+              "max_width" : 768,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679581988image-20230308-193545_0.png",
+              "width" : 768
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END LEARN SECTION #}
+
+  {# SPACE SECTION #}
+{% dnd_section
+  background_color="rgba(250, 233, 189, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END SPACE SECTION #}
+  
+{# WORK SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;"><span>Put your certificate to work</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      margin={
+        "default" : {
+          "top" : "30px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=3
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h3 style="font-size: 30px;"><strong>Become an entrepreneur</strong></h3>
+          <p><span style="font-size: 1rem; background-color: transparent; color: #2d3841;">Build a business that fits your lifestyle and career goals. From coaching to creating self-care, fitness, or food products, get started with comprehensive resources.</span></p>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=3,
+        width=3
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h3 style="font-weight: bold; font-size: 30px;">Join a healthcare team</h3>
+          <p><span style="font-size: 1rem; background-color: transparent; color: #2d3841;">Support patients while working alongside doctors, registered dietitians, and other healthcare professionals to help bridge the gap in care.</span></p>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=6,
+        width=3
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h3 style="font-size: 30px;"><strong>Curate content for a global audience</strong></h3>
+          <p><span style="font-size: 1rem; background-color: transparent; color: #2d3841;">Share your expertise widely, whether writing bestsellers, building six-figure businesses as bloggers and influencers, creating digital content, or public speaking.</span></p>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=9,
+        width=3
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h3 style="font-size: 30px;"><strong>Experience personal transformation</strong></h3>
+          <p><span style="font-size: 1rem; background-color: transparent; color: #2d3841;">Leave the program feeling empowered to take control of your life with improved physical health, less stress, and more passion to live a life you love.</span></p>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END WORK SECTION #}
+  
+{# QUOTES SECTION #}
+  {% dnd_section
+  background_color="rgba(249, 242, 224, 1)",
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Slider",
+        offset=0,
+        width=12,
+        item=[ {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>IIN’s Health Coach Training Program gave me the tools and confidence to support millions of people with eating more superfoods and powerful plants with my company Your Super and with my published book, Your Super Life. If you are looking to help others along their health journey, this program is for you!</p>\n<div><strong>Kristel de Groot</strong><br><small>Plant-Based IIN Health Coach &amp; Founder of Your Super</small></div>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>IIN’s training program launched my dream career as a Health Coach! Today, I work in a functional medicine practice that specializes in helping women heal the root causes of their gut, hormone, and mood symptoms. I am so grateful to wake up every day excited to work.</p>\n<div><strong>Rachel Sunley</strong><br><small>IIN Health Coach at Functional Medicine Practice</small></div>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>I now work as a holistic career coach, where I help women discover their gifts, fulfill their purpose, and create a joyful life.</p>\n<div><strong>Joy Randolph</strong><br><small>IIN Health Coach &amp; Speaker</small></div>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        } ],
+        option={
+          "outer_spacing" : {
+            "css" : "padding-right: 0px;padding-left: 0px;",
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          },
+          "spacing_field" : {
+            "css" : "padding: 0px;",
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END QUOTES SECTION #}
+  
+  {# TEACHERS SECTION #}
+  {% dnd_section
+  background_color="rgba(249, 242, 224, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;">Meet some of your teachers</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Slider",
+            offset=0,
+            width=12,
+            item=[ {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<h4 style=\"text-align: center;\"><strong>Gabby Bernstein</strong></h4>\n<div style=\"text-align: center;\"><span>Motivational Speaker, Life Coach, Bestselling Author</span></div>\n</div>\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<p style=\"text-align: center;\"><strong>Curriculum topics</strong></p>\n<p style=\"text-align: center;\"><span>Teaches Manifest Your Dream Career</span></p>\n</div>',
+              "image_field" : {
+                "alt" : "1679581988image-20230313-135033_0",
+                "height" : 480,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/1679581988image-20230313-135033_0.jpg",
+                "width" : 480
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            }, {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<h4 style=\"text-align: center;\"><strong>Zach Bush, MD</strong></h4>\n<p style=\"text-align: center;\">Board-Certified Physician, Microbiome Educator and Thought Leader</p>\n</div>\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<p style=\"text-align: center;\"><strong>Curriculum topics</strong></p>\n<p style=\"text-align: center;\"><span>Teaches The Global Microbiome</span></p>\n</div>\n</div>',
+              "image_field" : {
+                "alt" : "1679581988zach_bush_md_0",
+                "height" : 480,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/1679581988zach_bush_md_0.jpg",
+                "width" : 480
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            }, {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<h4 style=\"text-align: center;\"><strong>Maya Feller, MS, RD, CDN</strong></h4>\n<p style=\"text-align: center;\"><span>Registered Dietitian Nutritionist, Author</span></p>\n</div>\n<div class=\"entity-paragraphs-item paragraphs-item-copy\">\n<p style=\"text-align: center;\"><strong>Curriculum topics</strong></p>\n<p style=\"text-align: center;\"><span>Teaches Food Access and Food Bias</span></p>\n</div>\n</div>\n</div>',
+              "image_field" : {
+                "alt" : "1679581988image-20230313-135326_0",
+                "height" : 480,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/1679581988image-20230313-135326_0.jpg",
+                "width" : 480
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style=\"font-size: 20px;\"><span style=\"color: #0d638a;\"><strong>FIRST LAST NAME</strong></span></p>\n<p style=\"font-size: 16px;\"><span style=\"color: #5b9044;\"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            } ],
+            option={
+              "image" : {
+                "image_shape" : "circle",
+                "image_width" : 220
+              },
+              "outer_spacing" : {
+                "css" : "padding-right: 0px;padding-left: 0px;",
+                "padding" : {
+                  "bottom" : { },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END TEACHERS SECTION #}
+  
+  {# STARTED SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div id="pane-class-186625">
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h2 style="text-align: center;">What do I need to get started?</h2>
+          <p style="text-align: center;"><span style="font-size: 1rem; background-color: transparent; color: #2d3841;">IIN's Health Coach Training Program doesn't require any prerequisite courses or higher learning transcripts to enroll. You must have a high school diploma, GED, or equivalent.</span></p>
+          </div>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END STARTED SECTION #}
+  
+  
+  
+  {# COURSE OVERVIEW SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Location",
+        offset=0,
+        width=12,
+        location_id="course-overview"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Rich Text",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "css" : "padding-right: 0px;padding-left: 0px;",
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "content" %}
+          <h2 style="text-align: center;">Course overview</h2>
+          <p style="text-align: center;"><span style="color: #2d3841;">The program consists of 40 modules plus Orientation. Each week a new module will open in the 12-month track and two modules open per week in the 6-month track.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "left" : "50px",
+            "right" : "50px",
+            "top" : "30px"
+          },
+          "mobile" : {
+            "left" : "0px",
+            "right" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Modules 1-10",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : false,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <p><span>Explore IIN’s unique approach to integrative health, nutrition, and lifestyle and introduce our core concepts: bio-individuality, multidimensional health, primary food, and secondary food.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed"
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Modules 11-20",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : false,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <p><span>Examines the root causes of multidimensional disease and dysfunction from a functional medicine perspective. You’ll explore the interconnectedness of the&nbsp;body’s systems as you revisit your own health story and learn to listen to and honor your needs.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed"
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Modules 21-30",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : false,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <p><span>Review various approaches for personalizing and supporting your bio-individual, multidimensional nourishment through primary and secondary food. You’ll explore therapeutic supports – both dietary and supplemental – and their roles in addressing health issues and come to understand how multiple truths can coexist within the field of nutrition.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed"
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Modules 31-40",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : false,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <p><span>You will explore health and nutrition on a universally conscious and connected level, consider pathways toward spiritual nourishment, and learn how to create a ripple effect in your community. IINtegration Lab is the last four modules where you’ll finalize your Transformation or Business Plan.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed"
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END COURSE OVERVIEW SECTION #}
+  
+  {# LEARNING CHECKS SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;"><span>Your learning experience</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/Checklist Icon",
+                offset=0,
+                width=12,
+                icon_type="svg",
+                style={
+                  "colors" : {
+                    "color_field" : {
+                      "color" : "#d72a25",
+                      "css" : "rgba(215, 42, 37, 0%)",
+                      "hex" : "#d72a25",
+                      "opacity" : 0,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 0)"
+                    },
+                    "icon_color" : {
+                      "color" : "#d72a25",
+                      "css" : "#d72a25",
+                      "hex" : "#d72a25",
+                      "opacity" : 100,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 1)"
+                    }
+                  },
+                  "icon" : {
+                    "icon_width" : 30
+                  }
+                },
+                svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+              %}
+                {% module_attribute "text" %}
+                  <span style="color: #2d3841;"><strong>100% online<br></strong>The Health Coach Training Program was designed to fit into a busy lifestyle. Access your course materials from anywhere in the world, on any device</span>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <span style="color: #2d3841;"><strong>IINtegration Weeks and IINtegration Lab</strong></span><br><span style="color: #2d3841;">Apply what you learned with immersive IINtegration Weeks and complete a final project that brings your intentions and goals to life.</span>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <span style="color: #2d3841;"><strong>Coaching Circles</strong></span><br><span style="color: #2d3841;">Get real-time feedback, inspiration, and support in a small group setting, as well as gain insights from your group leader, a successful graduate and Health Coach.</span>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Checklist Icon",
+            offset=0,
+            width=12,
+            icon_type="svg",
+            style={
+              "colors" : {
+                "color_field" : {
+                  "color" : "#d72a25",
+                  "css" : "rgba(215, 42, 37, 0%)",
+                  "hex" : "#d72a25",
+                  "opacity" : 0,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 0)"
+                },
+                "icon_color" : {
+                  "color" : "#d72a25",
+                  "css" : "#d72a25",
+                  "hex" : "#d72a25",
+                  "opacity" : 100,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 1)"
+                }
+              },
+              "icon" : {
+                "icon_width" : 30
+              }
+            },
+            svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+          %}
+            {% module_attribute "text" %}
+              <div><span style="color: #2d3841;"><strong>Community forums</strong></span></div>
+              <div><span style="color: #2d3841;">Connect with your classmates and IIN staff and coaches in private forums, including your class Facebook group and discussion boards in your learning platform.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Checklist Icon",
+            offset=0,
+            width=12,
+            icon_type="svg",
+            style={
+              "colors" : {
+                "color_field" : {
+                  "color" : "#d72a25",
+                  "css" : "rgba(215, 42, 37, 0%)",
+                  "hex" : "#d72a25",
+                  "opacity" : 0,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 0)"
+                },
+                "icon_color" : {
+                  "color" : "#d72a25",
+                  "css" : "#d72a25",
+                  "hex" : "#d72a25",
+                  "opacity" : 100,
+                  "rgb" : "rgb(215, 42, 37)",
+                  "rgba" : "rgba(215, 42, 37, 1)"
+                }
+              },
+              "icon" : {
+                "icon_width" : 30
+              }
+            },
+            svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+          %}
+            {% module_attribute "text" %}
+              <span style="color: #2d3841;"><strong>Quarterly Office hours</strong></span><br><span style="color: #2d3841;">Take advantage of opportunities to get your questions answered and seek support from dedicated staff members during webinar-style office hours.</span>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          "default" : {
+            "bottom" : "30px",
+            "left" : "90px",
+            "right" : "90px",
+            "top" : "30px"
+          },
+          "mobile" : {
+            "left" : "0px",
+            "right" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Circle Image",
+            offset=0,
+            width=12,
+            image_field={
+              "alt" : "1679581988svitlana-exw6cpgwwcg-unsplash_1_1_4",
+              "height" : 389,
+              "loading" : "lazy",
+              "max_height" : 389,
+              "max_width" : 389,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Imported%20sitepage%20images/1679581988svitlana-exw6cpgwwcg-unsplash_1_1_4.jpg",
+              "width" : 389
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END LEARNING CHECKS SECTION #}
+  
+  {# EXPERIENCE SECTION #}
+  {% dnd_section
+  background_color="rgba(250, 233, 189, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div id="pane-class-186625">
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h2 style="text-align: center;"><span>Experience learning at IIN</span></h2>
+          <p style="text-align: center;"><span><span style="color: #2d3841;">Find out first hand what it's like to be an IIN student.</span><br><br></span></p>
+          </div>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div id="pane-class-186625">
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <p style="text-align: center;"><span style="color: #2d3841;"><a style="font-weight: 600; color: #2d3841;" href="https://www.integrativenutrition.com/curriculum"><span style="background-color: transparent;">Try a sample class&nbsp;&nbsp;</span><span data-hs-icon-hubl="true" style="display: inline-block; vertical-align: middle; fill: #D72A25;">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span></a></span></p>
+          </div>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END EXPERIENCE SECTION #}
+  
+  {# CERTIFICATE SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "0px",
+      "right" : "0px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Location",
+        offset=0,
+        width=12,
+        location_id="certificate"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;"><span>Certificate</span></h2>
+          <p style="text-align: center;"><span style="color: #2d3841;">Earn your certificate as an Integrative Nutrition Health Coach at the end of the course after satisfying your graduation requirements.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12,
+            padding={
+              "default" : {
+                "top" : "20px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <h3 style="font-weight: bold;">Earn credits while you earn your certificate</h3>
+                  <div><span style="color: #2d3841;">The Health Coach Training Program is recognized by the below organizations, colleges, and universities:</span></div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row
+              padding={
+                "default" : {
+                  "left" : "30px"
+                }
+              }
+            %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <span style="color: #2d3841;">National College Credit Recognition Service (NCCRS)</span>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row
+                  padding={
+                    "default" : {
+                      "left" : "30px"
+                    }
+                  }
+                %}
+                  {% dnd_column
+                    offset=0,
+                    width=12
+                  %}
+                    {% dnd_row %}
+                      {% dnd_module
+                        path="/Checklist Icon",
+                        offset=0,
+                        width=12,
+                        icon_type="svg",
+                        style={
+                          "colors" : {
+                            "color_field" : {
+                              "color" : "#d72a25",
+                              "css" : "rgba(215, 42, 37, 0%)",
+                              "hex" : "#d72a25",
+                              "opacity" : 0,
+                              "rgb" : "rgb(215, 42, 37)",
+                              "rgba" : "rgba(215, 42, 37, 0)"
+                            },
+                            "icon_color" : {
+                              "color" : "#d72a25",
+                              "css" : "#d72a25",
+                              "hex" : "#d72a25",
+                              "opacity" : 100,
+                              "rgb" : "rgb(215, 42, 37)",
+                              "rgba" : "rgba(215, 42, 37, 1)"
+                            }
+                          },
+                          "icon" : {
+                            "icon_width" : 30
+                          }
+                        },
+                        svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                      %}
+                        {% module_attribute "text" %}
+                          <span style="color: #2d3841;">Maryland University for Integrative Health (MUIH)</span>
+                        {% end_module_attribute %}
+                      {% end_dnd_module %}
+                    {% end_dnd_row %}
+                  {% end_dnd_column %}
+                {% end_dnd_row %}
+                {% dnd_row
+                  padding={
+                    "default" : {
+                      "left" : "30px"
+                    }
+                  }
+                %}
+                  {% dnd_column
+                    offset=0,
+                    width=12
+                  %}
+                    {% dnd_row %}
+                      {% dnd_module
+                        path="/Checklist Icon",
+                        offset=0,
+                        width=12,
+                        icon_type="svg",
+                        style={
+                          "colors" : {
+                            "color_field" : {
+                              "color" : "#d72a25",
+                              "css" : "rgba(215, 42, 37, 0%)",
+                              "hex" : "#d72a25",
+                              "opacity" : 0,
+                              "rgb" : "rgb(215, 42, 37)",
+                              "rgba" : "rgba(215, 42, 37, 0)"
+                            },
+                            "icon_color" : {
+                              "color" : "#d72a25",
+                              "css" : "#d72a25",
+                              "hex" : "#d72a25",
+                              "opacity" : 100,
+                              "rgb" : "rgb(215, 42, 37)",
+                              "rgba" : "rgba(215, 42, 37, 1)"
+                            }
+                          },
+                          "icon" : {
+                            "icon_width" : 30
+                          }
+                        },
+                        svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                      %}
+                        {% module_attribute "text" %}
+                          <span style="color: #2d3841;">California Institute for Integrative Studies (CIIS)</span>
+                        {% end_module_attribute %}
+                      {% end_dnd_module %}
+                    {% end_dnd_row %}
+                  {% end_dnd_column %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "30px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/Checklist Icon",
+                offset=0,
+                width=12,
+                icon_type="svg",
+                style={
+                  "colors" : {
+                    "color_field" : {
+                      "color" : "#d72a25",
+                      "css" : "rgba(215, 42, 37, 0%)",
+                      "hex" : "#d72a25",
+                      "opacity" : 0,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 0)"
+                    },
+                    "icon_color" : {
+                      "color" : "#d72a25",
+                      "css" : "#d72a25",
+                      "hex" : "#d72a25",
+                      "opacity" : 100,
+                      "rgb" : "rgb(215, 42, 37)",
+                      "rgba" : "rgba(215, 42, 37, 1)"
+                    }
+                  },
+                  "icon" : {
+                    "icon_width" : 30
+                  }
+                },
+                svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+              %}
+                {% module_attribute "text" %}
+                  <span style="color: #2d3841;">Excelsior University</span>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row
+              padding={
+                "default" : {
+                  "left" : "30px"
+                }
+              }
+            %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <span style="color: #2d3841;">Goddard College</span>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+            {% dnd_row
+              padding={
+                "default" : {
+                  "left" : "30px"
+                }
+              }
+            %}
+              {% dnd_column
+                offset=0,
+                width=12
+              %}
+                {% dnd_row %}
+                  {% dnd_module
+                    path="/Checklist Icon",
+                    offset=0,
+                    width=12,
+                    icon_type="svg",
+                    style={
+                      "colors" : {
+                        "color_field" : {
+                          "color" : "#d72a25",
+                          "css" : "rgba(215, 42, 37, 0%)",
+                          "hex" : "#d72a25",
+                          "opacity" : 0,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 0)"
+                        },
+                        "icon_color" : {
+                          "color" : "#d72a25",
+                          "css" : "#d72a25",
+                          "hex" : "#d72a25",
+                          "opacity" : 100,
+                          "rgb" : "rgb(215, 42, 37)",
+                          "rgba" : "rgba(215, 42, 37, 1)"
+                        }
+                      },
+                      "icon" : {
+                        "icon_width" : 30
+                      }
+                    },
+                    svg="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z\" fill=\"#D72A25\"/></svg>"
+                  %}
+                    {% module_attribute "text" %}
+                      <span style="color: #2d3841;">UK Level 4 Recognition</span>
+                    {% end_module_attribute %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div class="entity-paragraphs-item paragraphs-item-copy"><span style="background-color: transparent;"></span>
+              <h3 style="font-weight: bold;">Our Educational Partnerships &amp; Affiliates</h3>
+              <p><span style="color: #2d3841;">We are affiliated with one of the largest university systems in the United States – The State University of New York (SUNY) – as well as other institutions that accept IIN’s Health Coach Training Program to be applied towards relevant degree programs. We have earned recognition by many organizations that allow graduates of IIN to apply for membership.</span></p>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          "default" : {
+            "bottom" : "30px",
+            "left" : "30px",
+            "right" : "30px",
+            "top" : "60px"
+          },
+          "mobile" : {
+            "bottom" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Image",
+            offset=0,
+            width=12,
+            image_field_1={
+              "alt" : "1679581988aude_ig_1_0_4",
+              "height" : 400,
+              "loading" : "lazy",
+              "max_height" : 400,
+              "max_width" : 300,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Imported%20sitepage%20images/1679581988aude_ig_1_0_4.jpg",
+              "width" : 300
+            },
+            style={
+              "alignment" : {
+                "text_align" : "CENTER"
+              },
+              "border_radius" : 0,
+              "spacing_field" : {
+                "css" : "padding-left: 35px;",
+                "padding" : {
+                  "bottom" : { },
+                  "left" : {
+                    "units" : "px"
+                  },
+                  "right" : { },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END CERTIFICATE SECTION #}
+  
+  {# RELATED SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=3,
+        padding={
+          "default" : {
+            "bottom" : "20px",
+            "right" : "5px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2>Related courses</h2>
+              <p><span>Whether you're new to wellness or <span style="color: #495057;">well-versed</span> in all things health and nutrition, IIN has what you need to curate your journey.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div style="text-align: left;">
+              <div id="pane-class-186625">
+              <div class="entity-paragraphs-item paragraphs-item-headline">
+              <p style="text-align: left;"><span style="color: #2d3841;"><a style="font-weight: 600; color: #2d3841;" href="https://www.integrativenutrition.com/curriculum"><span style="background-color: transparent;">Explore all courses&nbsp; </span><span data-hs-icon-hubl="true" style="display: inline-block; vertical-align: middle; fill: #D72A25;">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span></a></span></p>
+              </div>
+              </div>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=3,
+        width=9
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Course Catalog",
+            offset=0,
+            width=12,
+            category_filter="IIN's Flagship Program"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END RELATED SECTION #}
+ 
+  
+  
+  
+  {# FORM SECTION #}
+  {% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Imported%20sitepage%20images/content_8region_bg_desktop23065image-20230308-200618.png"
+  },
+  padding={
+    "default" : {
+      "bottom" : "60px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Location",
+        offset=0,
+        width=12,
+        location_id="request-info"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2><span>Find out if this course is right for you</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=5
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Form",
+            offset=0,
+            width=12,
+            form_field={
+              "form_id" : "c2540509-686a-4c66-8595-c845f4cf8bc2",
+              "form_type" : "HUBSPOT",
+              "message" : "Thanks for submitting the form.",
+              "response_type" : "inline"
+            },
+            style={
+              "button" : {
+                "alignment" : {
+                  "css" : "text-align: LEFT",
+                  "text_align" : "LEFT"
+                },
+                "button_style" : "light"
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Rich Text",
+            offset=0,
+            width=12,
+            style={
+              "spacing_field" : {
+                "css" : "margin-top: 40px;",
+                "margin" : {
+                  "bottom" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 40
+                  }
+                }
+              }
+            }
+          %}
+            {% module_attribute "content" %}
+              <p style="font-size: 10px; line-height: 1.25;"><span>By submitting, I consent to Integrative Nutrition and its affiliates contacting me by email at the address provided and/or by telephone at the number provided (by live, automated, or prerecorded phone calls or text messages) about the products and services offered by Integrative Nutrition and its affiliates. I understand that my consent is not required for enrollment and may be withdrawn.&nbsp;</span><span>This page is protected by Google reCAPTCHA.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=5,
+        width=7
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END FORM SECTION #}
+  
+  
+  
+  
+  {# FAQ SECTION #}
+  {% dnd_section
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  max_width=1440
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Jump Location",
+        offset=0,
+        width=12,
+        location_id="faqs"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Rich Text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "content" %}
+          <h2 style="text-align: left;">Frequently asked questions</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "top" : "30px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="What will I learn from IIN's Health Coach Training Program?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <div><span>The Institute for Integrative Nutrition (IIN) is the longest standing nutrition and health coaching school in the world, and we’ve been leading the health coaching industry for 30 years. Our comprehensive Health Coach Training Program - available in both English and Spanish (the first coaching program of its kind to be offered fully in Spanish!) - will teach you everything you need to know to become a successful Health Coach.</span></div>
+              <div>&nbsp;</div>
+              <div>&nbsp;</div>
+              <div><span>You will learn from the world’s leading experts in topics such as integrative nutrition and nutrition science, functional medicine, wellness concepts, personal development, coaching methods and theories, and business-building and marketing skills. These content categories will be taught by over 95 teachers and visiting faculty, plus explained in interactive tools throughout the curriculum that are unique to IIN, such as breaking down complicated science concepts in Science Spotlights and integrating holistic health concepts during Somatic Moments that ground you in the present and support you on your learning journey.</span></div>
+              <div>&nbsp;</div>
+              <div>&nbsp;</div>
+              <div><span>This program has evolved over the last 30 years to be the most comprehensive holistic health education available, setting graduates up for success as a Health Coach, as well as any kind of wellness entrepreneur. Plus, the information you will learn can be applied throughout all areas of your life, improving your overall well-being and quality of life.</span></div>
+              <div>&nbsp;</div>
+              <div>&nbsp;</div>
+              <div>Get more information about the Health Coach Training Program curriculum<span>&nbsp;</span><a href="https://www.integrativenutrition.com/curriculum" target="_blank" rel="noopener">[here]</a>.</div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="What makes the Health Coach Training Program and curriculum unique?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="What is the format of The Health Coach Training Program?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <div><span>Our program was designed specifically for adult learners - we give you flexibility to learn in a six-month accelerated track or a 12-month track. The program consists of one Orientation module and 40 core curriculum modules, split into four sections which include a test at the end of each section and an Integration Week to apply what you’ve learned. You'll have opportunities to follow a learning pathway: Personal Transformation or Professional Development, culminating in a Transformation Plan or Business Plan that will be the blueprint for your success (you can also choose to do both!).</span></div>
+              <div>&nbsp;</div>
+              <div><span>Modules are released on a weekly basis in the 12-month track, or 2 modules per week in the six-month accelerated track. Although modules open at a regular cadence, you will be able to go through the content on your own schedule - you don’t need to be online at certain times to be able to complete your program. As long as you complete the program within the allotted time - six months or 12 months - and satisfy your graduation requirements, you can take the program at any pace that works for you.</span></div>
+              <div>&nbsp;</div>
+              <div><span>All learning content is hosted in the online IIN Learning Center, where you’ll access audio and visual lectures, handouts, quizzes, assignments, and tests. The curriculum also contains interactive tools to accommodate all types of learners! You’ll have a private Facebook group where you can interact with classmates and IIN staff about the curriculum and program updates.</span></div>
+              <div>&nbsp;</div>
+              <div><span>You can expect to spend about 5-8 hours per week on your coursework (or 10-16 hours in the accelerated program); how much time you spend really depends on what you want to get out of the program. Just like with anything you're working on: you get out what you put in.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Who is my teacher?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <div>During the program, you will hear from more than 95 visiting faculty and speakers who are experts and thought leaders in the fields of health and wellness. They will provide high-quality and timeless instruction on a variety of topics. You can check some of them out<span>&nbsp;</span><a href="https://www.integrativenutrition.com/visiting-teachers" target="_blank" rel="noopener">[here]</a>.</div>
+              <div><span>Our faculty hold a number of credentials and qualifications, including advanced degrees and certificates in: Business, Culinary Arts, Education, Feng Shui, Law, Massage Therapy, Acupuncture, Nutrition Science, Dietetics, Personal Training, Photography, Videography, Psychology, Public Health, Website Design, Yoga and Pilates.</span></div>
+              <div>&nbsp;</div>
+              <div><span>In addition to our visiting faculty and speakers, you will hear from resident coaching guides and members of the IIN staff who are also Integrative Nutrition Health Coaches and run coaching practices and other businesses in their spare time.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Is The Health Coach Training Program really scientific? How in-depth into nutrition do you go?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <div><span>Our program is designed to give you the knowledge you need to create sustainable lifestyle changes, in yourself as well as in others, such as friends, family, and future clients. Our visiting faculty and teachers, many of whom are functional medicine physicians, PhDs, and researchers, will cover functional nutrition, nutrition science, and anatomy concepts so you’ll have a general sense of how the body functions, how the body utilizes the food you eat, and how our microbiome affects your health.</span></div>
+              <div>&nbsp;</div>
+              <div><span>Utilizing curriculum features such as Science Spotlights, we’ll dive deeper into the science behind important nutrition and wellness concepts so that you are well-equipped to explain these concepts to others, as well as apply the information to your own life. We aim to provide the latest nutrition science information, while staying aware of the ever-changing landscape of nutrition research.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Accordion",
+            offset=0,
+            width=12,
+            main_label="Is the Health Coach Training Program online or in person?",
+            options={
+              "arrow_location" : "after",
+              "bar_color" : {
+                "color" : "#BDBDBD",
+                "css" : "rgba(189, 189, 189, 0%)",
+                "hex" : "#BDBDBD",
+                "opacity" : 0,
+                "rgb" : "rgb(189, 189, 189)",
+                "rgba" : "rgba(189, 189, 189, 0)"
+              },
+              "bold_title" : true,
+              "border_field" : {
+                "bottom" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "css" : "border: 1px none #BDBDBD;",
+                "left" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "right" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                },
+                "top" : {
+                  "color" : "#BDBDBD",
+                  "opacity" : 100,
+                  "style" : "none",
+                  "width" : {
+                    "units" : "px",
+                    "value" : 1
+                  }
+                }
+              },
+              "icon_background" : {
+                "color" : "#FFFFFF",
+                "css" : "rgba(255, 255, 255, 0%)",
+                "hex" : "#FFFFFF",
+                "opacity" : 0,
+                "rgb" : "rgb(255, 255, 255)",
+                "rgba" : "rgba(255, 255, 255, 0)"
+              },
+              "icon_color" : {
+                "color" : "#d72a25",
+                "css" : "#d72a25",
+                "hex" : "#d72a25",
+                "opacity" : 100,
+                "rgb" : "rgb(215, 42, 37)",
+                "rgba" : "rgba(215, 42, 37, 1)"
+              },
+              "icon_style" : "arrow"
+            }
+          %}
+            {% module_attribute "content" %}
+              <div><span>Your work is done completely online in the IIN Learning Center, but that doesn't stop our program from being an interactive experience. The program can be accessed from a smartphone, tablet, or desktop, and in our new mobile app, so whether you're a parent, a working professional, or just super busy, you'll be able to fit this education into your life.</span></div>
+              <div>&nbsp;</div>
+              <div><span>Students have the opportunity to connect with classmates during the program, as well as successful Health Coaches and IIN graduates during live coaching calls to facilitate your coaching skills. The IIN Student Advisor team is also available to help students achieve their best throughout their time with IIN.</span></div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "color" : {
+                  "color" : "#bdbdbd",
+                  "opacity" : 100
+                },
+                "style" : "dashed",
+                "thickness" : 1
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "css" : "margin-top: 10px;margin-bottom: 10px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 10
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 10
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Accordion",
+        offset=0,
+        width=12,
+        main_label="Do you offer The Health Coach Training Program in another language besides English? If so, how is it different?",
+        options={
+          "arrow_location" : "after",
+          "bar_color" : {
+            "color" : "#BDBDBD",
+            "css" : "rgba(189, 189, 189, 0%)",
+            "hex" : "#BDBDBD",
+            "opacity" : 0,
+            "rgb" : "rgb(189, 189, 189)",
+            "rgba" : "rgba(189, 189, 189, 0)"
+          },
+          "bold_title" : true,
+          "border_field" : {
+            "bottom" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "css" : "border: 1px none #BDBDBD;",
+            "left" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "right" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "top" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            }
+          },
+          "icon_background" : {
+            "color" : "#FFFFFF",
+            "css" : "rgba(255, 255, 255, 0%)",
+            "hex" : "#FFFFFF",
+            "opacity" : 0,
+            "rgb" : "rgb(255, 255, 255)",
+            "rgba" : "rgba(255, 255, 255, 0)"
+          },
+          "icon_color" : {
+            "color" : "#d72a25",
+            "css" : "#d72a25",
+            "hex" : "#d72a25",
+            "opacity" : 100,
+            "rgb" : "rgb(215, 42, 37)",
+            "rgba" : "rgba(215, 42, 37, 1)"
+          },
+          "icon_style" : "arrow"
+        }
+      %}
+        {% module_attribute "content" %}
+          <p><span>Yes, it is offered in Spanish, too. The Spanish version of The Health Coach Training Program contains the same curriculum content as the English version. All content within the curriculum will be translated, with Spanish closed captioning or transcripts provided for all lectures. Coaching Circle sessions, the interactive live calls with professional Integrative Nutrition Health Coaches, will be conducted in Spanish with a Spanish-speaking host. The class Facebook group discussion will also be conducted in Spanish. Students in the Spanish program will also have the opportunity to receive support from the IIN Student Advisor team in Spanish.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#bdbdbd",
+              "opacity" : 100
+            },
+            "style" : "dashed",
+            "thickness" : 1
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "css" : "margin-top: 10px;margin-bottom: 10px;",
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Accordion",
+        offset=0,
+        width=12,
+        main_label="Am I certified after graduating from The Health Coach Training Program?",
+        options={
+          "arrow_location" : "after",
+          "bar_color" : {
+            "color" : "#BDBDBD",
+            "css" : "rgba(189, 189, 189, 0%)",
+            "hex" : "#BDBDBD",
+            "opacity" : 0,
+            "rgb" : "rgb(189, 189, 189)",
+            "rgba" : "rgba(189, 189, 189, 0)"
+          },
+          "bold_title" : true,
+          "border_field" : {
+            "bottom" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "css" : "border: 1px none #BDBDBD;",
+            "left" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "right" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "top" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            }
+          },
+          "icon_background" : {
+            "color" : "#FFFFFF",
+            "css" : "rgba(255, 255, 255, 0%)",
+            "hex" : "#FFFFFF",
+            "opacity" : 0,
+            "rgb" : "rgb(255, 255, 255)",
+            "rgba" : "rgba(255, 255, 255, 0)"
+          },
+          "icon_color" : {
+            "color" : "#d72a25",
+            "css" : "#d72a25",
+            "hex" : "#d72a25",
+            "opacity" : 100,
+            "rgb" : "rgb(215, 42, 37)",
+            "rgba" : "rgba(215, 42, 37, 1)"
+          },
+          "icon_style" : "arrow"
+        }
+      %}
+        {% module_attribute "content" %}
+          <div><span>Upon graduating, you will earn the title of Integrative Nutrition Health Coach, and you will receive both a paper certificate and a digital badge to display your accomplishment across your online channels. We offer a certificate of completion, not a certification.</span></div>
+          <div>&nbsp;</div>
+          <div><span>Currently, no governmental agency requires any health coach certification. However, IIN offers graduates the pathway to certification and further credentialing so that Integrative Nutrition Health Coaches can continue to set themselves apart from other Health Coaches. Not all health coaching schools provide such certification opportunities, and may make false claims about what you are able to do after graduating from their program.</span></div>
+          <div>&nbsp;</div>
+          <div><span>Learn more about IIN’s pathway to certification:</span></div>
+          <div>&nbsp;</div>
+          <div>Coaching Intensive Practicum: This course is approved by the National Board for Health and Wellness Coaching (NBHWC), which means that graduates of this program will be prepared to apply and sit for the NBHWC board certification exam to become a National Board-Certified Health and Wellness Coach (NBC-HWC). The NBHWC was founded by leaders from academic and vocational coaching programs, and aspires to standardize the education and certification process for Health Coaches around the world. All Health Coach Training Program (HCTP) graduates are eligible to take the Coaching Intensive Practicum, and non-HCTP graduates are also eligible to take the Coaching Intensive Practicum. Learn more about Coaching Intensive Practicum<span>&nbsp;</span><a href="https://www.integrativenutrition.com/advanced/coaching-intensive-practicum">here</a>.&nbsp;</div>
+          <div>&nbsp;</div>
+          <div><span>International Association for Health Coaches (IAHC): All IIN Health Coach Training Program graduates are eligible to take the IAHC certification exam, no further courses or education required. This exam tests knowledge on the scope of practice and ethical responsibilities of a Health Coach. Graduates who pass the exam earn the title Certified International Health Coach. The mission of the IAHC is to advocate on behalf of Health Coaches and continue to develop the profession in concert with other healthcare professionals.</span></div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#bdbdbd",
+              "opacity" : 100
+            },
+            "style" : "dashed",
+            "thickness" : 1
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "css" : "margin-top: 10px;margin-bottom: 10px",
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Accordion",
+        offset=0,
+        width=12,
+        main_label="What can I do with my Integrative Nutrition Health Coach Certificate?",
+        options={
+          "arrow_location" : "after",
+          "bar_color" : {
+            "color" : "#BDBDBD",
+            "css" : "rgba(189, 189, 189, 0%)",
+            "hex" : "#BDBDBD",
+            "opacity" : 0,
+            "rgb" : "rgb(189, 189, 189)",
+            "rgba" : "rgba(189, 189, 189, 0)"
+          },
+          "bold_title" : true,
+          "border_field" : {
+            "bottom" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "css" : "border: 1px none #BDBDBD;",
+            "left" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "right" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "top" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            }
+          },
+          "icon_background" : {
+            "color" : "#FFFFFF",
+            "css" : "rgba(255, 255, 255, 0%)",
+            "hex" : "#FFFFFF",
+            "opacity" : 0,
+            "rgb" : "rgb(255, 255, 255)",
+            "rgba" : "rgba(255, 255, 255, 0)"
+          },
+          "icon_color" : {
+            "color" : "#d72a25",
+            "css" : "#d72a25",
+            "hex" : "#d72a25",
+            "opacity" : 100,
+            "rgb" : "rgb(215, 42, 37)",
+            "rgba" : "rgba(215, 42, 37, 1)"
+          },
+          "icon_style" : "arrow"
+        }
+      %}
+        {% module_attribute "content" %}
+          <p><span>The short answer—the possibilities are endless. Our graduates not only create part-time and full-time health coaching businesses, but they spread the ripple effect of health and happiness in a variety of ways and in a variety of fields. Learn more about what some IIN graduates are up to and how IIN transformed their life&nbsp;</span><a href="https://www.integrativenutrition.com/blog/search?search=transformed">here</a><span>.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#bdbdbd",
+              "opacity" : 100
+            },
+            "style" : "dashed",
+            "thickness" : 1
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "css" : "margin-top: 10px;margin-bottom: 10px;",
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Accordion",
+        offset=0,
+        width=12,
+        main_label="Are there any prerequisites or requirements to enroll in The Health Coach Training Program?",
+        options={
+          "arrow_location" : "after",
+          "bar_color" : {
+            "color" : "#BDBDBD",
+            "css" : "rgba(189, 189, 189, 0%)",
+            "hex" : "#BDBDBD",
+            "opacity" : 0,
+            "rgb" : "rgb(189, 189, 189)",
+            "rgba" : "rgba(189, 189, 189, 0)"
+          },
+          "bold_title" : true,
+          "border_field" : {
+            "bottom" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "css" : "border: 1px none #BDBDBD",
+            "left" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "right" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "top" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            }
+          },
+          "icon_background" : {
+            "color" : "#FFFFFF",
+            "css" : "rgba(255, 255, 255, 0%)",
+            "hex" : "#FFFFFF",
+            "opacity" : 0,
+            "rgb" : "rgb(255, 255, 255)",
+            "rgba" : "rgba(255, 255, 255, 0)"
+          },
+          "icon_color" : {
+            "color" : "#d72a25",
+            "css" : "#d72a25",
+            "hex" : "#d72a25",
+            "opacity" : 100,
+            "rgb" : "rgb(215, 42, 37)",
+            "rgba" : "rgba(215, 42, 37, 1)"
+          },
+          "icon_style" : "arrow"
+        }
+      %}
+        {% module_attribute "content" %}
+          <p><span>Our only academic requirements are a high school diploma, GED, or equivalent. However, if you have a passion for health and wellness, a desire for a transformative personal experience and/or career change, and the determination to make a difference in the world, you’ll find success within our program.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#bdbdbd",
+              "opacity" : 100
+            },
+            "style" : "dashed",
+            "thickness" : 1
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "css" : "margin-top: 10px;margin-bottom: 10px;",
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Accordion",
+        offset=0,
+        width=12,
+        main_label="What is the cost of The Health Coach Training Program?",
+        options={
+          "arrow_location" : "after",
+          "bar_color" : {
+            "color" : "#BDBDBD",
+            "css" : "rgba(189, 189, 189, 0%)",
+            "hex" : "#BDBDBD",
+            "opacity" : 0,
+            "rgb" : "rgb(189, 189, 189)",
+            "rgba" : "rgba(189, 189, 189, 0)"
+          },
+          "bold_title" : true,
+          "border_field" : {
+            "bottom" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "css" : "border: 1px none #BDBDBD;",
+            "left" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "right" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            },
+            "top" : {
+              "color" : "#BDBDBD",
+              "opacity" : 100,
+              "style" : "none",
+              "width" : {
+                "units" : "px",
+                "value" : 1
+              }
+            }
+          },
+          "icon_background" : {
+            "color" : "#FFFFFF",
+            "css" : "rgba(255, 255, 255, 0%)",
+            "hex" : "#FFFFFF",
+            "opacity" : 0,
+            "rgb" : "rgb(255, 255, 255)",
+            "rgba" : "rgba(255, 255, 255, 0)"
+          },
+          "icon_color" : {
+            "color" : "#d72a25",
+            "css" : "#d72a25",
+            "hex" : "#d72a25",
+            "opacity" : 100,
+            "rgb" : "rgb(215, 42, 37)",
+            "rgba" : "rgba(215, 42, 37, 1)"
+          },
+          "icon_style" : "arrow"
+        }
+      %}
+        {% module_attribute "content" %}
+          <div><span>IIN is competitively priced and although you may find a lower priced option, no program delivers more value than ours. We offer options to pay in full, as well as flexible payment plans.</span></div>
+          <div>&nbsp;</div>
+          <div><span>With your tuition, you’ll receive:</span></div>
+          <div><span>--Access to the state-of-the-art IIN Learning Center including the IIN mobile app, IIN Learn, where all your program materials and student experience will be hosted.</span></div>
+          <div><span>--Access to over 95 visiting faculty, guides, and coaches who will be your teachers throughout the program, teaching everything from functional medicine and nutrition to spirituality.</span></div>
+          <div><span>--Access to exclusive IIN events, including virtual networking, business-building, and inspirational programming.</span></div>
+          <div><span>--Complementary libraries and resources in addition to the curriculum content to further build your holistic health knowledge.</span></div>
+          <div><span>--Comprehensive career-building resources, like done-for-you clients handouts, business cards, coaching program templates, and much more.</span></div>
+          <div><span>--Introductory access to build your own website.</span></div>
+          <div><span>--Eligibility to join a variety of coaching organizations in the U.S. and internationally to support your personal and professional goals.</span></div>
+          <div><span>--Eligibility to apply your Health Coach Training Program education towards continuing education units (CEUs) and higher education degrees through our educational partners around the world.</span></div>
+          <div><span>--Unlimited opportunities to connect with classmates, Health Coaches, and the IIN Student Advisor team.</span></div>
+          <div><span>--And so much more!</span></div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#bdbdbd",
+              "opacity" : 100
+            },
+            "style" : "dashed",
+            "thickness" : 1
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "css" : "margin-top: 10px;margin-bottom: 10px;",
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 10
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 10
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  {# END FAQ SECTION #}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

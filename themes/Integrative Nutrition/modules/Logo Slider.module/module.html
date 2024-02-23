@@ -1,0 +1,14 @@
+<div class="logo-slider{% if module.semi_transparent %} semi-t{% endif %}{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %}>
+  <div class="slider-inside" data-speed="{{ module.speed }}">
+    {% for item in module.image_field %}
+    <div class="logo-item item-{{loop.index}}" style="max-width:{{ module.max_width }}px;">
+      <img src="{{ item.src }}" alt="{{ item.alt }}" style="max-height:{{ module.max_height }}px;">
+    </div>
+    {% endfor %}
+    {% for item in module.image_field %}
+    <div class="logo-item dupe" style="max-width:{{ module.max_width }}px;">
+      <img src="{{ item.src }}" alt="{{ item.alt }}" style="max-height:{{ module.max_height }}px;">
+    </div>
+    {% endfor %}
+  </div>
+</div>

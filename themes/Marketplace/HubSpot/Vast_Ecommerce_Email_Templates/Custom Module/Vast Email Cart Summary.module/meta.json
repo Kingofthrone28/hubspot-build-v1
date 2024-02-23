@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "content_types" : [ "ANY" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 113117525911,
+  "is_available_for_new_content" : true
+}

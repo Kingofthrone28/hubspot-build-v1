@@ -1,0 +1,36 @@
+<div class="align-section {{ module.style.alignment }}{% endif %}">
+  <{% if module.url_field.href %}a{% else %}div{% endif %} id="icon_{{ parent_custom_widget_name }}" class="custom-icon position-{{ module.style.icon.icon_position }}{% if module.style.full_height %} full{% endif %}"{% if module.url_field.href %} href="{{ module.url_field.href }}"{% endif %}{% if module.style.colors.background_color.opacity > 0 || module.style.colors.drop_shadow.opacity > 0 %} style="padding: 20px;background: rgba({{ module.style.colors.background_color.color|convert_rgb }}, {{ module.style.colors.background_color.opacity / 100 }});box-shadow: 0 0 10px rgba({{ module.style.colors.drop_shadow.color|convert_rgb }}, {{ module.style.colors.drop_shadow.opacity / 100 }});"{% endif %}>
+    {% if module.icon_type != 'none' %}
+    <div class="icon{% if module.style.icon.image_full_width %} full-width{% endif %}" style="width: {{ module.style.icon.icon_width }}px;font-size: {{ module.style.icon.icon_width - 12 }}px;line-height: 1em;">
+      {% if module.icon_type == 'svg' %}
+      {{ module.svg }}
+      {% elif module.icon_type == 'image' %}
+      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}">
+      {% elif module.icon_type == 'font' %}
+      {% icon name="{{ module.icon_field.name }}" style="{{ module.icon_field.type }}" unicode="{{ module.icon_field.unicode }}" %}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if module.text %}
+    <div class="text">
+      {{ module.text }}
+    </div>
+    {% endif %}
+  </{% if module.url_field.href %}a{% else %}div{% endif %}>
+</div>
+<style>
+  #icon_{{ parent_custom_widget_name }} .icon { align-self: flex-start;border-radius: 50%;padding: {% if module.style.colors.color_field.opacity == 0 %}0{% else %}6px{% endif %};background: rgba({{ module.style.colors.color_field.color|convert_rgb }}, {{ module.style.colors.color_field.opacity / 100 }});color: {{ module.style.colors.icon_color.color }}; }
+  #icon_{{ parent_custom_widget_name }} svg { display: block;{% if !module.style.icon.image_full_width %}width:{% if module.style.colors.color_field.opacity == 0 %}{{ module.style.icon.icon_width }}{% else %}{{ module.style.icon.icon_width - 12 }}{% endif %}px;height:{{ module.style.icon.icon_width - 12 }}px;{% endif %} }
+  #icon_{{ parent_custom_widget_name }} path { fill: {{ module.style.colors.icon_color.color }}; }
+  {% if module.hover_style.add_hover_styles %}
+  #icon_{{ parent_custom_widget_name }}:hover { {% if module.hover_style.slide %}top: -10px;{% endif %}{% if module.hover_style.expand %}transform: scale(1.03);{% endif %}background: rgba({{ module.hover_style.colors.background_color.color|convert_rgb }}, {{ module.hover_style.colors.background_color.opacity / 100 }}) !important;box-shadow: 0 0 10px rgba({{ module.hover_style.colors.drop_shadow.color|convert_rgb }}, {{ module.hover_style.colors.drop_shadow.opacity / 100 }}) !important; }
+	#icon_{{ parent_custom_widget_name }}:hover, #icon_{{ parent_custom_widget_name }}:hover h1, #icon_{{ parent_custom_widget_name }}:hover h2, #icon_{{ parent_custom_widget_name }}:hover h3, #icon_{{ parent_custom_widget_name }}:hover h4 { color: rgba({{ module.hover_style.colors.color_field.color|convert_rgb }}, {{ module.hover_style.colors.color_field.opacity / 100 }}); }
+  #icon_{{ parent_custom_widget_name }}:hover path { fill: rgba({{ module.hover_style.colors.color_field.color|convert_rgb }}, {{ module.hover_style.colors.color_field.opacity / 100 }}); }
+  {% endif %}
+  {% if module.border_right_of_text %}
+  #icon_{{ parent_custom_widget_name }} .text { border-right: solid 2px #f8f5f0; padding-right: 10px; }
+  @media(max-width: 767px) {
+    #icon_{{ parent_custom_widget_name }} .text { border-right: 0; padding-right: 0; border-bottom: solid 2px #f8f5f0; padding-bottom: 10px; }
+  }
+	{% endif %}
+</style>

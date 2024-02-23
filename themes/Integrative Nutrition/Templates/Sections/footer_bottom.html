@@ -1,0 +1,28 @@
+<!--
+ templateType: section
+ label: Footer Bottom
+ description: "footer"
+ isAvailableForNewContent: false
+ screenshotPath: ../../images/2column.png
+-->
+{# box section #}
+    {% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      vertical_alignment='MIDDLE',
+      background_color={ r: global_color2[0] || 200, g: global_color2[1] || 200, b: global_color2[2] || 200, a: 1 },
+      class='color-section footer-bottom',
+      padding={ 'top': 10, 'bottom': 10 }
+    %}
+    {% dnd_column padding={ 'top': 5, 'bottom': 5 } %}
+    {% dnd_row %}
+    {% dnd_module path='@hubspot/rich_text' %}
+    {% module_attribute 'html' %}
+    <p>
+      © {{site_settings.company_name}} {{year}}, &nbsp;All rights reserved.
+    </p>
+    {% end_module_attribute %}
+    {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+    {# End box section #}

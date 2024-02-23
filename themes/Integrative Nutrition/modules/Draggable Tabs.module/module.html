@@ -1,0 +1,41 @@
+<div id="wrapper-{{name}}" class="nav-containment-wrapper">
+  {% for item in module.tab_label %}
+  <div class="ui-widget-header{% if loop.first %} ui-state-highlight{% endif %}" data-pos="{{ (100 / module.tab_label|length) * (loop.index - 1) }}" style="border-bottom: 4px solid {{ module.bar_color.color }};"><h5>{{ item }}</h5></div>
+  {% endfor %}
+  <div id="draggable-{{name}}" class="draggable ui-widget-content" style="width: {{ 100 / module.tab_label|length }}%;">
+    <span class="ball"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         viewBox="0 0 227.5 227.5" style="enable-background:new 0 0 227.5 227.5;" xml:space="preserve">
+      <g id="Group_3435" transform="translate(-1424 11)">
+        <g id="Group_3434" transform="translate(1424 -11)">
+          <ellipse id="Ellipse_10" class="st0" cx="114" cy="114.1" rx="95.2" ry="95.2" fill="{{ module.circle_color.color }}"/>
+          <g id="Ellipse_11" transform="matrix(0.914, 0.407, -0.407, 0.914, 70.078, 0)" fill="none" stroke="{{ module.circle_color.color }}" stroke-width="10">
+            <ellipse class="st1" cx="86.1" cy="86.1" rx="113.7" ry="113.8" stroke="none"/>
+            <ellipse class="st2" cx="86.1" cy="86.1" rx="109.1" ry="109.1" fill="none"/>
+          </g>
+        </g>
+      </g>
+    </svg></span>
+  </div>
+</div>
+{{ require_css(get_asset_url('../../css/ui.css')) }}
+{{ require_js(get_asset_url('../../js/ui.js')) }}
+<script>
+$( function() {
+  $( "#draggable-{{name}}" ).draggable({ axis: "x", containment: "#wrapper-{{name}}", scroll: false, snap: ".ui-widget-header" });
+  $( ".ui-widget-header" ).droppable({
+    accept: "#draggable-{{name}}",
+    classes: {
+      "ui-droppable-active": "ui-state-active",
+      "ui-droppable-hover": "ui-state-hover"
+    },
+    drop: function( event, ui ) {
+      $('.ui-state-highlight').removeClass( "ui-state-highlight" );
+      $( this ).addClass( "ui-state-highlight" );
+      var index = $(this).index() + 1,
+          parent = $(this).parents('.dnd-section.hrz-tabs').find('.row-fluid > .dnd-column > .dnd-row > .row-fluid > .dnd-column[class*="background-color"]');
+    parent.find('.selected').removeClass('selected');  
+    parent.find('.dnd-row:nth-child('+ index +')').addClass('selected');
+    }
+  });
+} );
+</script>

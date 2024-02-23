@@ -1,0 +1,258 @@
+[ {
+  "id" : "6a8d9d28-1855-1b3d-6b3a-30d034fafeab",
+  "name" : "categories",
+  "display_width" : null,
+  "label" : "Categories",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 8
+  },
+  "children" : [ {
+    "id" : "b944e7c7-7802-399b-79ee-eeb1673ce641",
+    "name" : "category",
+    "display_width" : null,
+    "label" : "Category",
+    "inline_help_text" : "Use all for view all",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Health"
+  }, {
+    "id" : "fd4514b5-0d1b-0c0a-5c25-88bf4ad31286",
+    "name" : "item_label",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "HEALTH"
+  }, {
+    "id" : "a69fe7bb-411d-1660-766c-1ff7eb214be0",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "BG Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    }
+  }, {
+    "id" : "a61a4ad4-787a-8a62-dacc-f4b4b8dd0a3f",
+    "name" : "hover_color",
+    "display_width" : null,
+    "label" : "Hover Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "15d80acb-c9af-8e70-7ca5-c49add7ea265",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "BG Color",
+    "inline_help_text" : "Used if no image",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  }, {
+    "category" : "Health",
+    "item_label" : "HEALTH",
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/bc_health.jpg",
+      "alt" : "bc_health",
+      "loading" : "lazy",
+      "width" : 640,
+      "height" : 639,
+      "max_width" : 640,
+      "max_height" : 639
+    },
+    "hover_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 80
+    },
+    "bg_color" : {
+      "color" : "#4e87a0",
+      "opacity" : 100
+    }
+  } ]
+} ]

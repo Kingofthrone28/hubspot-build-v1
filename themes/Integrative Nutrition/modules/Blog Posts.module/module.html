@@ -1,0 +1,27 @@
+{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
+<div class="blog-posts {% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{background}}{{ module.style.spacing_field.css }};{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};{% if module.style.min_height %}min-height: {{ module.style.min_height }}px;{% endif %}">
+  {% set posts = blog_recent_posts(module.blog, module.number_of_posts) %}
+  <div class="blog-listing-wrapper cell-wrapper">
+    <div class="mp-posts post-listing">
+      {% for content in posts %}
+      <div class="mb-resource-wrapper column-{{ module.posts_per_row }}">
+        <div class="mb-resource">
+          <a href="{{content.absolute_url}}" class="mb-resource-img" style="background: url({{ content.post_list_summary_featured_image }}) center no-repeat;background-size: cover;"></a>
+          <div class="content">
+            <div class="">
+              <span>{{ content.publish_date_localized }} | </span>
+              <span class="topic-link">{% for topic in content.topic_list %}{% if loop.index <= 2 %}{% if not loop.first %} | {% endif %}<a class="topic-link" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>{% endif %}{% endfor %}</span>
+            </div>
+            {% set title_size = content.name|wordcount %}
+            <a href="{{content.absolute_url}}"><h4 class="size-med}">{{ content.name }}</h4></a>
+            <p>
+              {{ content.post_list_content|cut('&nbsp;')|striptags|truncate(100, True, '...') }}
+            </p>
+          </div>
+          <a class="more-link" href="{{content.absolute_url}}"><strong>Read More</strong> <i class="far fa-chevron-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

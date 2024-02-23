@@ -1,0 +1,81 @@
+[ {
+  "id" : "02fe4e5e-a7ca-f65a-6476-23c00e1e7fff",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://app.unleashed.ceo/hubfs/Unleashed%20Photoshoot%20-85.jpg",
+    "alt" : "Unleashed Photoshoot -85",
+    "width" : 5395,
+    "height" : 3597,
+    "max_width" : 5395,
+    "max_height" : 3597
+  }
+}, {
+  "id" : "e8009aad-4f98-1d02-5437-1afda10e7f61",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "4f703283-8b93-4496-c9ec-10ff91049c99",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "zoomIn"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation" : "zoomIn",
+      "apply_animation_to" : "column"
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : {
+      "animation" : "zoomIn",
+      "apply_animation_to" : "column"
+    }
+  }
+} ]

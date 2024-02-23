@@ -1,0 +1,85 @@
+<div id="scroll_{{ parent_custom_widget_name }}" class="bg-gallery dnd-section-custom-bg" style="background-color: {{ module.desktop[1].background_color.color }};">
+  {% for item in module.desktop %}
+  <div class="bg_{{ parent_custom_widget_name }}-{{ loop.index }}" style="background: {% if item.background_color.opacity > 0 %}{{ item.background_color.color }} {% endif %}url({{ item.image_field.src }}) {{ item.vertical_alignment }} {{ item.horizontal_alignment }};background-size: cover;background-blend-mode: {{ item.background_blend_mode }};">
+    <div class="overlay"{% if item.overlay == 'solid' %}style="background: rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }});"{% endif %}>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="bg-nav bg-nav_{{ parent_custom_widget_name }}"></div>
+{% set this_request = request|string %}
+{% if request.domain == "preview.hs-sites.com" && this_request is not string_containing 'template' %}
+<div class="edit-icon"><i class="fas fa-image"></i> Edit</div>
+{% endif %}
+<style>
+  #hs_cos_wrapper_{{ parent_custom_widget_name }}.inpage-editor-active-field, #hs_cos_wrapper_{{ parent_custom_widget_name }}.inpage-editor-highlight-field { position: static !important; }
+{% for item in module.desktop %}
+  .bg_{{ parent_custom_widget_name }}-{{ loop.index }} .overlay {
+   
+   {% if item.overlay == 'hg' %}
+   background: -moz-linear-gradient(left,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(left,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to right,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 20%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 */
+
+   {% elif item.overlay == 'vg' %}
+
+   background: -moz-linear-gradient(top,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(top,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to bottom,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.secondary_overlay_color.color }}',GradientType=0 ); /* IE6-9 */
+
+   {% elif item.overlay == 'tg' %}
+
+   background: -moz-linear-gradient(135deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(135deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(135deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+   {% elif item.overlay == 'bg' %}
+   
+   background: -moz-linear-gradient(45deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(45deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(45deg,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 10%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+   
+   {% elif item.overlay == 'rg' %}
+   
+   background: -moz-radial-gradient(center, ellipse cover,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+   background: -webkit-radial-gradient(center, ellipse cover,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+   background: radial-gradient(ellipse at center,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+   
+   {% elif item.overlay == 'pg' %}
+   
+   background: -moz-linear-gradient(left,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%, rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 50%, rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(left,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to right,  rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 0%,rgba({{ item.secondary_overlay_color.color|convert_rgb }}, {{ item.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ item.overlay_color.color|convert_rgb }}, {{ item.overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ item.overlay_color.color }}', endColorstr='{{ item.overlay_color.color }}',GradientType=1 ); /* IE6-9 */
+
+   {% endif %}
+   
+  }
+  {% endfor %}
+</style>
+<script>
+$( document ).ready(function() {
+  console.log('dink2');
+  $('#scroll_{{ parent_custom_widget_name }}').slick({
+      dots: {{module.slider.navigation_dots}},
+      infinite: true,
+      autoplaySpeed: {{ module.slider.scroll_speed }},
+      speed: 1000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      fade: {{ module.slider.transition_fade }},
+      autoplay: {{module.slider.auto_scroll}},
+      arrows: {{module.slider.navigation_arrows}},
+      appendArrows: $('.bg-nav_{{ parent_custom_widget_name }}'),
+      appendDots: $('.bg-nav_{{ parent_custom_widget_name }}'),
+      prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+      nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+      pauseOnHover: false
+    });
+});
+</script>

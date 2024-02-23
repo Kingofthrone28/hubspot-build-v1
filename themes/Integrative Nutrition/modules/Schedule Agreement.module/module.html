@@ -1,0 +1,36 @@
+{% set course = request.query_dict.Course|replace('_', ' ') %}
+{% set query = 'name=' ~ course %}
+{% set product = crm_objects("product", query, "ip__shopify__handle,name,ip__shopify__body_html,enrollment_agreement___english,enrollment_agreement___spanish", false) %}
+{% set search_url = request.query|split('&') %}
+{% if request.query is containing 'Spanish' %}
+  <h1>{{ course }} Schedule Agreement Spanish</h1>
+  <div class="varient-wrapper">
+    {% for varient in search_url %}{% set type = varient|split('=') %}
+    {% if type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' %}
+    <div>
+      <strong>{{ type[0]|replace('%20',' ')|replace('%26','&') }}:</strong> {{ type[1]|replace('%20',' ')|replace('%26','&') }}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="terms">
+    {{ module.spanish_terms }}
+  </div>
+{% else %}
+  <h1>{{ course }} Schedule Agreement</h1>
+  <div class="varient-wrapper">
+    {% for varient in search_url %}{% set type = varient|split('=') %}
+    {% if type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' %}
+    <div>
+      <strong>{{ type[0]|replace('%20',' ')|replace('%26','&') }}:</strong> {{ type[1]|replace('%20',' ')|replace('%26','&') }}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="terms">
+    <p>
+      The Institute for Integrative Nutrition (“IIN”) and the above named student (“student” or “you”) (collectively, the “Parties”) hereby enter into this enrollment agreement (“Enrollment Agreement”) which sets forth the terms and conditions of your access to and use of {{ course }} (the “Program”) offered by IIN, including but not limited to, IIN’s websites and apps. By accepting this Enrollment Agreement, you agree to the terms set forth herein including the arbitration, class-action waiver, and limitation of liability provisions, and all other terms, rules, policies, regulations, and/or guidelines set forth therein. You also agree to the terms set forth in IIN’s Student Catalog and any other agreements between IIN and the student (together with the Enrollment Agreement, the “Agreements”).
+    </p>
+    {{ module.english_terms }}
+  </div>
+{% endif %}

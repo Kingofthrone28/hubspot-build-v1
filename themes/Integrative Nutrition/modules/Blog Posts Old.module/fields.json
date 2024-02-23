@@ -1,0 +1,32 @@
+[ {
+  "id" : "ea5e3753-c8ca-f239-5fb1-8408d876d143",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c94558b3-00f3-3200-eadf-ccffa51dfa78",
+    "name" : "number_field",
+    "display_width" : null,
+    "label" : "Number",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+}, {
+  "id" : "72bd639b-b1b6-26a8-e83e-62f57dcc7a8d",
+  "name" : "blog",
+  "display_width" : null,
+  "label" : "Blog",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "default" : 35099008523
+} ]

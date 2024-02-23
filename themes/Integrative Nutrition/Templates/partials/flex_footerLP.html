@@ -1,0 +1,19 @@
+<!--
+    templateType: global_partial
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+<!--
+  templateType: global_partial
+  label: Page Footer
+-->
+
+<div class="footer-container-wrapper">
+  <div class="footer-container responsive">
+    {% dnd_area 'dnd_footerLP' class='dnd_header', label='Footer section' %}
+    {% include_dnd_partial path='../Sections/footer_bottom.html' context={} %}
+    {% end_dnd_area %}
+  </div>
+</div><!--end footer wrapper -->
+
+<!-- End partial -->

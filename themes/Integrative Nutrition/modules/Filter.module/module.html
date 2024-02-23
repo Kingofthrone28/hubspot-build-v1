@@ -1,0 +1,14 @@
+<div id="filters-{{name}}" class="stagger-filters-inner">
+  {% for f in module.filters %}
+  <div class="stagger-filter">
+    <h5>{{f.filter_name}}</h5>
+    {% set f_index = loop.index %}
+    {% for fv in f.filter_values %}
+    <div>
+      <input type="checkbox" value="{{fv|urlencode}}" name="filter-{{f_index}}" id="{{fv|replace(' ','')}}-{{f_index}}" />
+      <label for="{{fv|replace(' ','')}}-{{f_index}}">{{fv}}</label>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>

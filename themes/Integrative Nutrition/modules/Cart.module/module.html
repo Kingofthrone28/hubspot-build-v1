@@ -1,0 +1,281 @@
+<div class="jd-cart-outer"> 
+  <div class="jd-cart">
+    <div style="margin-bottom: 20px"><b>Your Cart</b> > Checkout</div>
+    <div class="jd-your-cart">
+      <h2>Your Cart</h2>
+      {% set href = module.link_field.url.href %}
+      {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+        >
+        Continue Shopping
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125ZM1.875 10C1.875 5.51269 5.51269 1.875 10 1.875C14.4873 1.875 18.125 5.51269 18.125 10C18.125 14.4873 14.4873 18.125 10 18.125C5.51269 18.125 1.875 14.4873 1.875 10Z" fill="#FFF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.0314 6.90669C10.2755 6.66261 10.6712 6.66261 10.9153 6.90669L13.5669 9.55833C13.811 9.80241 13.811 10.1981 13.5669 10.4422L10.9153 13.0939C10.6712 13.3379 10.2755 13.3379 10.0314 13.0939C9.78731 12.8498 9.78731 12.454 10.0314 12.21L12.2411 10.0003L10.0314 7.79057C9.78731 7.5465 9.78731 7.15077 10.0314 6.90669Z" fill="#FFF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6.25 10C6.25 9.65482 6.52982 9.375 6.875 9.375H13.125C13.4702 9.375 13.75 9.65482 13.75 10C13.75 10.3452 13.4702 10.625 13.125 10.625H6.875C6.52982 10.625 6.25 10.3452 6.25 10Z" fill="#FFF"/></svg>
+      </a>
+    </div>
+    <div class="jd-course-total-head">
+      <div>Course</div>
+      <div>Total</div>
+    </div>
+    <div class="jd-cart-items"></div>
+  </div>
+  
+  <div class="jd-cart-summary-outer">
+    <div class="jd-cart-summary">
+      <div>Order Summary</div>
+      <div class="jd-cart-summary-items"></div>
+    </div>
+    <div>
+      <div style="display:none" id="jd-checkout-btn" class="jd-request-btn hs-button light-button">Proceed to Checkout</div>
+    </div>
+  </div>
+</div>
+
+<div class="dnd-section jd-cart-enrollment">
+  <div class="jd-cart-enrollment-form">
+    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
+    <h3>Enrollment Agreement</h3>
+    <div class="jd-cart-enrollment-form-target">
+  
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  let cohortProducts = [];
+  let checkoutURL = '';
+  
+  $('.jd-cart-enrollment svg').click(function() {
+    $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
+  });
+  
+  hbspt.forms.create({
+    region: "na1",
+    portalId: "23273748",
+    formId: "{{ module.enrollment_form.form_id }}",
+    target: '.jd-cart-enrollment-form-target',
+    onBeforeFormSubmit: function($form, submissionValues) {
+      console.log("HERE");
+      console.log(submissionValues);
+      const cartAttributes = {
+        customAttributes: []
+      }
+      for(const product of cohortProducts) {
+        const course = encodeURIComponent(product.title);
+        const productID = product.id.replace('gid://shopify/Product/', '');
+        const price = encodeURIComponent('$' + product.price.toLocaleString());
+        const date = new Date().toISOString().split('T')[0];
+        let books = '', tuition = '', registration = '', hours = '', weeks = '', name = '', email = '', address = '', phone = '';
+        for(const metaField of product.metafields) {
+          if(!metaField) continue;
+          if(metaField.key == 'registration_cost') {
+            registration = encodeURIComponent(metaField.value);
+          } else if(metaField.key == 'books_and_materials') {
+            books = encodeURIComponent(metaField.value);
+          } else if(metaField.key == 'number_of_clock_hours') {
+            hours = encodeURIComponent(metaField.value);
+          } else if(metaField.key == 'number_of_weeks') {
+            weeks = encodeURIComponent(metaField.value);
+          } else if(metaField.key == 'tuition') {
+            tuition = encodeURIComponent(metaField.value);
+          }
+        }
+        for(const field of submissionValues) {
+          if(field.name == 'email') {
+            email = encodeURIComponent(field.value);
+          } else if(field.name == 'firstname') {
+            name += encodeURIComponent(field.value);
+          } else if(field.name == 'lastname') {
+            name += encodeURIComponent(' ' + field.value);
+          } else if(field.name == 'phone') {
+            phone = encodeURIComponent(field.value);
+          } else if(field.name == 'country_region_dropdown') {
+            address += encodeURIComponent(field.value + ', ');
+          } else if(field.name == 'city') {
+            address += encodeURIComponent(field.value + ', ');
+          } else if(field.name == 'state') {
+            address += encodeURIComponent(field.value + ', ');
+          } else if(field.name == 'zip') {
+            address += encodeURIComponent(field.value + ', ');
+          } else if(field.name == 'address') {
+            address += encodeURIComponent(field.value + ', ');
+          }
+        }
+        if(address.length > 6) {
+          address = address.substring(0, address.length - 6);
+        }
+        cartAttributes.customAttributes.push({
+          key: product.title,
+          value: `https://course.integrativenutrition.com/enrollment-agreement?Course=${course}&ProductId=${productID}&Books=${books}&Tuition=${tuition}&Registration=${registration}&Date=${date}&Price=${price}&hours=${hours}&weeks=${weeks}&Name=${name}&Email=${email}&Address=${address}&Phone=${phone}`
+        });
+        IINShopifyClient.checkout.updateAttributes(getCookie('shopifyCart'), cartAttributes).then((checkout) => {
+          console.log(checkout);
+        });
+      }
+    },
+    onFormSubmit: function(form) {
+      setTimeout(function() {
+        window.open(checkoutUrl, '_self');
+      }, 1000);
+    }
+  });
+  
+  $('.jd-cart-enrollment').appendTo('body');
+  $('#jd-checkout-btn').click(function(e) {
+    if(cohortProducts.length > 0) {
+      $('.jd-cart-enrollment').addClass('jd-cart-enrollment-show');
+    } else {
+      window.open(checkoutUrl, '_self');
+    }
+  });
+  
+  function initCohortProducts(checkout) {
+    cohortProducts = [];
+    $('#jd-checkout-btn').hide();
+    
+    let productQuery = '';
+    for(let i = 0; i < checkout.lineItems.length; i++) {
+      productQuery += `id:${checkout.lineItems[i].variant.product.id.replace('gid://shopify/Product/', '')}`;
+      if(i < checkout.lineItems.length - 1) {
+        productQuery += ' OR ';
+      }
+    }
+      
+    const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
+      root.addConnection('products', { args: { first: 100, query: productQuery } }, (product) => {
+        product.add('handle');
+        product.add('tags');
+        product.add('title');
+        product.add(
+          'metafields',
+          {
+            args: {
+              identifiers: [
+                { key: 'registration_cost', namespace: 'custom' },
+                { key: 'tuition', namespace: 'custom' },
+                { key: 'books_and_materials', namespace: 'custom' },
+                { key: 'number_of_clock_hours', namespace: 'custom' },
+                { key: 'number_of_weeks', namespace: 'custom' },
+              ],
+            },
+          },
+          (metafield) => {
+            metafield.add('key')
+            metafield.add('value')
+          }
+        )    
+      })
+    });
+
+    IINShopifyClient.graphQLClient.send(productsQuery).then(({model, data}) => {
+      for(const product of model.products) {
+        for(const tag of product.tags) {
+          if(tag.value == 'Cohort') {
+            let lineItem;
+            for(const item of checkout.lineItems) {
+              if(item.variant.product.id == product.id) {
+                let total = parseFloat(item.variant.price.amount) * item.quantity;
+                if(item.discountAllocations.length) {
+                  for(const discount of item.discountAllocations) {
+                    total -= parseFloat(discount.allocatedAmount.amount) * item.quantity;
+                  }
+                }
+                product.price = total;
+              }
+            }
+            cohortProducts.push(product);
+            break;
+          }
+        }
+      }
+      console.log("COHORT PRODUCTS");
+      console.log(cohortProducts);
+      $('#jd-checkout-btn').show();
+    })
+      .catch(e => {
+      console.log(e);
+    })
+  }
+  
+  loadCart();
+  function loadCart() {
+    IINShopifyClient.checkout.fetch(getCookie('shopifyCart'))
+    .then(checkout => {
+      initCohortProducts(checkout);
+      checkoutURL = checkout.webUrl;
+      
+      let itemsHTML = '';
+      let itemSummaryHTML = '';
+      for(const item of checkout.lineItems){
+        let optionsHTML = '';
+        for(const o of item.variant.selectedOptions) {
+          optionsHTML += `<div><b>${o.name}:</b> ${o.value}</div>`;
+        }
+        if(item.quantity > 1) {
+          optionsHTML += `<div><b>Quantity:</b> ${item.quantity}</div>`;
+        }
+        let totalPreDiscount = parseFloat(item.variant.price.amount) * item.quantity;
+        let total = totalPreDiscount;
+        if(item.discountAllocations.length) {
+          for(const discount of item.discountAllocations) {
+            total -= parseFloat(discount.allocatedAmount.amount) * item.quantity;
+          }
+        }
+        let itemAmountHTML = '';
+        if(total != totalPreDiscount) {
+          itemAmountHTML = `
+          <div style="margin-top:15px;text-align:right;text-decoration:line-through;font-size:18px" class="jd-add-pop-price">$${totalPreDiscount.toLocaleString()}</div>
+          <div style="text-align:right" class="jd-add-pop-price">$${total.toLocaleString()}</div>
+          `;
+        } else {
+          itemAmountHTML = `
+          <div style="margin-top:15px" class="jd-add-pop-price">$${total.toLocaleString()}</div>
+          `;
+        }
+        itemsHTML += `
+        <div class="jd-cart-item">
+          <div class="jd-add-pop-content">
+            <div class="jd-add-pop-img"><div style="background: url(${item.variant.image.src})"></div></div>
+            <div class="jd-add-pop-content-main">
+              <div class="jd-add-pop-name">${item.title}</div>
+              <div class="jd-add-pop-options">${optionsHTML}</div>
+              <div class="jd-cart-item-btns">
+                <a data-line="${item.id}" class="jd-cart-item-delete" href="">
+                  <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"/></svg>
+                  Delete
+                </a>
+              </div>
+            </div>
+          </div>
+          <div>
+            ${itemAmountHTML}
+          </div>
+        </div>
+        `;
+        
+        itemSummaryHTML += `<div style="font-size: 20px;">$${total.toLocaleString()}</div>`;
+      }
+      if(checkout.lineItems.length > 1) {
+        itemSummaryHTML += `<div style="font-size: 20px;border-top: 1px solid #ccc; padding-top: 5px">$${parseFloat(checkout.totalPrice.amount).toLocaleString()}</div>`;
+      }
+      $('.jd-cart-items').html(itemsHTML);
+      if(checkout.lineItems.length) {
+        $('.jd-cart-summary > div:first-child').html(`Order Summary <i>(${checkout.lineItems.length} items)</i>`);
+        $('.jd-cart-summary-items').html(itemSummaryHTML);
+      }
+      $('.jd-cart-item-delete').click(function(e) {
+        e.preventDefault();
+        IINShopifyClient.checkout.removeLineItems(getCookie('shopifyCart'), [ $(this).data('line') ]).then((checkout) => {
+          loadCart();
+          updateCartTotal(checkout);
+        });
+      });
+    })
+  }
+});
+</script>
+
+

@@ -1,0 +1,83 @@
+<div class="course-catalog bundle-cards">
+{% for item in module.items %}
+<div class="course-card-wrap">
+  <div class="course-card">
+    <div class="course-card-img" style="background: url('{{item.image_field.src}}')"></div>
+    <div class="course-card-body">
+      <div class="bundle-sub">{{item.sub_header}}</div>
+      <div class="bundle-head">{{item.header}}</div>
+      <div>
+        {% for course in item.courses %}
+        <div class="bundle-course">
+          <span class="num-label">{{loop.index}}</span>
+          {% set href = course.course_link.url.href %}
+          {% if href %}
+            {% if course.course_link.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+              {% if course.course_link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if course.course_link.rel %}rel="{{ course.course_link.rel }}"{% endif %}
+              >
+              {{ course.course_text }}
+            </a>
+          {% else %}
+            <span style="text-decoration:underline">{{ course.course_text }}</span>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div class="course-card-body bundle-card-price"><span class="bundle-{{item.product_id}}-price"></span><span class="bundle-{{item.product_id}}-compare"></span></div>
+    <div class="course-card-bottom">
+      <div class="course-card-bottom-inner">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"/></svg>
+          {{item.clock_text}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<script>
+{% for item in module.items %}
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js';
+  if (window.ShopifyBuy) {
+    ShopifyBuyInit();
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'the-institute-for-integrative-nutrition.myshopify.com',
+      storefrontAccessToken: '{{ module.storefront_access_token }}',
+    });
+    client.product.fetch('gid://shopify/Product/{{ item.product_id }}').then(function(product) {
+      console.log(product);
+      $('.bundle-{{item.product_id}}-price').text('$' + parseInt(product.variants[0].price.amount).toLocaleString());
+      if(product.variants[0].compareAtPrice && product.variants[0].compareAtPrice.amount && product.variants[0].compareAtPrice.amount != product.variants[0].price.amount) {
+        $('.bundle-{{item.product_id}}-compare').text('$' + parseInt(product.variants[0].compareAtPrice.amount).toLocaleString());
+      }
+    })
+    .catch(e => { console.log(e); });
+  }
+})();
+/*]]>*/
+  {% endfor %}
+</script>
+
+
+

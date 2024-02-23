@@ -1,0 +1,21 @@
+{% if module.show_blog_cta %}
+<div class="blog-cta-wrap">
+  <div class="blog-cta" style="background: rgba({{ module.style.bg_color.color|convert_rgb }}, {{ module.style.bg_color.opacity/100 }})">    
+    <div class="dnd-section">
+      {{ module.content }}
+      {% set href = module.link_field.url.href %}
+      {% if module.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <div style="text-align:center">
+        <a href="{{ href }}" class="arrow-link hs-button light-button"
+          {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}
+          {% if module.link_field.rel %}rel="{{ module.link_field.rel }}"{% endif %}
+          >
+          {{ module.link_text }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

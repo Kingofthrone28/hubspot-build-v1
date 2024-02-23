@@ -1,0 +1,242 @@
+[ {
+  "id" : "social_links",
+  "name" : "social_links",
+  "display_width" : null,
+  "label" : "Social links",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "social_account",
+    "name" : "social_account",
+    "display_width" : null,
+    "label" : "Social account",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "facebook-f", "Facebook" ], [ "twitter", "Twitter" ], [ "instagram", "Instagram" ], [ "linkedin-in", "LinkedIn" ], [ "youtube", "YouTube" ], [ "pinterest-p", "Pinterest" ], [ "envelope", "Email" ], [ "link", "Website" ], [ "whatsapp", "Whatsapp" ], [ "custom_icon", "Custom icon" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "facebook-f"
+  }, {
+    "id" : "social_links.custom_icon",
+    "name" : "custom_icon",
+    "display_width" : null,
+    "label" : "Custom icon",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "social_account",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom_icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "icon_set" : "fontawesome-5.0.10",
+    "type" : "icon",
+    "default" : {
+      "name" : "hubspot"
+    }
+  }, {
+    "id" : "a653ae4c-ed79-99a6-f7e0-6d5b2aef6387",
+    "name" : "custom_icon_svg",
+    "display_width" : null,
+    "label" : "Custom Icon SVG",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "social_links.social_account",
+      "controlling_value_regex" : "custom_icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "social_links.social_link",
+    "name" : "social_link",
+    "display_width" : null,
+    "label" : "Social link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "EMAIL_ADDRESS" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  }, {
+    "id" : "social_links.accessibility",
+    "name" : "accessibility",
+    "display_width" : null,
+    "label" : "Accessibility options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "social_links.accessibility.title",
+      "name" : "title",
+      "display_width" : null,
+      "label" : "Title",
+      "required" : true,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Follow us on Facebook"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "title" : "Follow us on Facebook"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "social_account" : "facebook-f",
+    "custom_icon" : {
+      "name" : "hubspot"
+    },
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on Facebook"
+    }
+  }, {
+    "social_account" : "linkedin-in",
+    "custom_icon" : {
+      "name" : "hubspot"
+    },
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.linkedin.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on LinkedIn"
+    }
+  }, {
+    "social_account" : "twitter",
+    "custom_icon" : {
+      "name" : "hubspot"
+    },
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.twitter.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on Twitter"
+    }
+  }, {
+    "social_account" : "instagram",
+    "custom_icon" : {
+      "name" : "hubspot"
+    },
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.instagram.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on Instagram"
+    }
+  } ]
+}, {
+  "id" : "1df1bef8-830c-b475-bd4f-977c25f4c098",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cd5068c0-b18a-5fa8-c1d0-eca5e892e44d",
+    "name" : "textalignment_field",
+    "display_width" : null,
+    "label" : "Text alignment",
+    "required" : false,
+    "locked" : false,
+    "type" : "textalignment",
+    "default" : {
+      "text_align" : "CENTER"
+    }
+  }, {
+    "id" : "877c00b2-5dc4-9b3e-b5a1-fdf50b548bfd",
+    "name" : "icon_color",
+    "display_width" : null,
+    "label" : "Icon Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "c4f8f5d0-4141-667e-6ada-e1feb7c3c1b5",
+    "name" : "icon_size",
+    "display_width" : null,
+    "label" : "Icon Size (px)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "textalignment_field" : {
+      "text_align" : "CENTER"
+    },
+    "icon_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "icon_size" : 20
+  }
+} ]

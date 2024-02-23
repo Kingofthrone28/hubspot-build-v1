@@ -1,0 +1,803 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: About Us
+  screenshotPath: ../../images/con_about.png
+-->
+{% extends '../layouts/base.html' %}
+
+
+{% block body %}
+<main class="body-container-wrapper">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+  
+  {% dnd_section max_width='{{theme.spacing.max_width}}',
+  padding={
+    "default" : {
+      "bottom" : "2px"
+    }
+  }%}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/rich_text",
+          offset=0,
+          width=12
+        %}
+          {% module_attribute "html" %}
+            <div>
+            <div class="entity-paragraphs-item paragraphs-item-copy">
+            <h1 style="font-size: 24px;">The Institute for Integrative Nutrition's Mission</h1>
+            </div>
+            </div>
+            <div>
+            <div class="entity-paragraphs-item paragraphs-item-headline">
+            <h1>Our mission is to play a crucial role in improving health and happiness, and through that process, create a ripple effect that transforms the world.</h1>
+            </div>
+            </div>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+  
+  {% dnd_section max_width='{{theme.spacing.max_width}}' %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row
+      background_color="rgba(248, 245, 240, 1)",
+      vertical_alignment='MIDDLE',
+      padding={
+        "default" : {
+          "bottom" : "0px",
+          "left" : "0px",
+          "right" : "30px",
+          "top" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            offset=0,
+            width=12,
+            horizontal_alignment="LEFT",
+            img={
+              "alt" : "desktop_des-583_homepage_gabi_dimitrova2",
+              "height" : 813,
+              "loading" : "lazy",
+              "max_height" : 813,
+              "max_width" : 650,
+              "size_type" : "auto",
+              "src" : "https://cdn2.hubspot.net/hubfs/23273748/desktop_des-583_homepage_gabi_dimitrova2.jpg",
+              "width" : 650
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          "default" : {
+            "bottom" : "30px",
+            "left" : "9%",
+            "right" : "9%",
+            "top" : "30px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p><span>It all starts with you, as you are your first client. Understand what it looks and feels like to be coached and find balance in all areas of your life. Your certificate represents a highly credible education that not only enables you to build a successful wellness career but also betters the lives of those around you.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  {% include_dnd_partial path='../Sections/IIN_timeline.html' %}
+  
+  {% dnd_section max_width='{{theme.spacing.max_width}}',
+  padding={
+    "default" : {
+      "bottom" : "0px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "20px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2>About IIN’s Founder</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Image",
+        offset=0,
+        width=12,
+        image_field_1={
+          "alt" : "desktop-des-584-homepagestocksy_4379282",
+          "height" : 655,
+          "loading" : "lazy",
+          "max_height" : 655,
+          "max_width" : 1440,
+          "size_type" : "auto",
+          "src" : "https://cdn2.hubspot.net/hubfs/23273748/desktop-des-584-homepagestocksy_4379282.jpg",
+          "width" : 1440
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "top" : "20px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p><span>Joshua Rosenthal is a pioneer and visionary in the holistic health and wellness field, creating the concept of health coaching. Long before the benefits of proper nutrition and lifestyle were mainstream, Joshua’s fascination with personal growth and development led him to make simple changes to his own life, and realized that food changes everything. He harnessed this passion for health and wellness, masters of science in education, and specialization in counseling to create what we know as IIN today.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  {% include_dnd_partial path='../Sections/IIN_team_bio.html' %}
+  
+  {% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      background_color="rgba(45, 56, 65, 1)"
+    %}
+  {% dnd_column
+    offset=0,
+    width=12,
+    background_color="rgba(45, 56, 65, 1)",
+    padding={
+      "default" : {
+        "bottom" : "50px",
+        "left" : "50px",
+        "right" : "0px",
+        "top" : "50px"
+      },
+      "mobile" : {
+        "bottom" : "30px",
+        "left" : "30px",
+        "top" : "30px"
+      }
+    }
+  %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "20px",
+          "right" : "50px"
+        },
+        "mobile" : {
+          "right" : "30px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div class="entity-paragraphs-item paragraphs-item-headline">
+              <h2><span style="color: #ffffff;">What You'll Learn</span></h2>
+              </div>
+              <div class="entity-paragraphs-item paragraphs-item-copy">
+              <div><span style="color: #ffffff;">In 41 modules – including Orientation, Integration Weeks and an Integration Lab – you'll access lectures, handouts, assignments, and more that cover the following pillars of holistic health:</span></div>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=8,
+        width=4
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Slider",
+        offset=0,
+        width=12,
+        item=[ {
+          "boolean_field" : false,
+          "content" : "<h5>Nutrition</h5>\n<ul>\n<li><span>Healing the Gut</span></li>\n<li><span>Plant-Based Eating</span></li>\n<li><span>Chrononutrition</span></li>\n<li><span>Food Access &amp; Food Bias</span></li>\n<li><span>Nutritional Psychiatry</span></li>\n<li><span>Therapeutic Diets (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "boolean_field" : false,
+          "content" : "<h5>Physical Health</h5>\n<ul>\n<li><span>Stress And Your Body</span></li>\n<li><span>Bio-Individuality of Exercise</span></li>\n<li><span>Adrenal Health</span></li>\n<li><span>Biology of Food Addiction</span></li>\n<li><span>Intestinal Hyperpermeability</span></li>\n<li><span>Environmental Toxins (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "boolean_field" : false,
+          "content" : "<h5>Mental Health</h5>\n<ul>\n<li><span>Mind-Body Medicine</span></li>\n<li><span>Body Image &amp; Disordered Eating</span></li>\n<li><span>Generational Trauma</span></li>\n<li><span>Rewriting Your Beliefs</span></li>\n<li><span>Food for Mood</span></li>\n<li><span>Shadow Work (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "boolean_field" : false,
+          "content" : "<h5>Primary Food</h5>\n<ul>\n<li><span>Net Worth &amp; Self Worth</span></li>\n<li><span>Deconstructing Cravings</span></li>\n<li><span>Nourishing Your Social Life</span></li>\n<li><span>Financial Wellness</span></li>\n<li><span>Self Care &amp; Self Love</span></li>\n<li><span>Feng Shui (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "boolean_field" : false,
+          "content" : "<h5>Spirituality</h5>\n<ul>\n<li><span>The Science of Spirituality</span></li>\n<li><span>Synchronicity</span></li>\n<li><span>Psychospiritual Well-Being</span></li>\n<li><span>Masculine &amp; Feminine Energy</span></li>\n<li><span>Nourishing Mind, Body &amp; Soul</span></li>\n<li><span>Chakras (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "content" : "<h5>Coaching</h5>\n<ul>\n<li><span>IINtegrative Coaching Method<sup>TM</sup></span></li>\n<li><span>Positive Psychology</span></li>\n<li><span>Presence &amp; Awareness</span></li>\n<li><span>Group Coaching</span></li>\n<li><span>Active Listening</span></li>\n<li><span>Motivational Interviewing (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "content" : "<h5>Business</h5>\n<ul>\n<li><span>Defining Your Niche</span></li>\n<li><span>Leverage Your Value &amp; Set Rates</span></li>\n<li><span>Creating Content That Converts</span></li>\n<li><span>Leveraging Social Media</span></li>\n<li><span>Understanding Sales Funnels</span></li>\n<li><span>Building Your Brand (and more!)</span></li>\n</ul>",
+          "image_field" : {
+            "src" : ""
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "content_id" : 19632105600,
+              "type" : "CONTENT"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        } ],
+        option={
+          "background_color" : {
+            "color" : "#F8F5F0",
+            "opacity" : 100
+          },
+          "border" : {
+            "border_radius_all" : 8
+          },
+          "display" : {
+            "desktop" : 3.2,
+            "tablet" : 2.5
+          },
+          "image" : {
+            "alignment" : {
+              "text_align" : "LEFT"
+            }
+          },
+          "navigation" : {
+            "arrow_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            },
+            "arrow_field" : {
+              "text_align" : "RIGHT"
+            },
+            "dot_arrow_hover_active_color" : {
+              "color" : "#FFFFFF",
+              "opacity" : 100
+            }
+          },
+          "outer_spacing" : {
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          },
+          "scrolling" : {
+            "center_focused_slide" : false,
+            "scrolling_infinite" : false
+          },
+          "spacing_field" : {
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 20
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 20
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 20
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 20
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  {% include_dnd_partial path='../Sections/IIN_team_bio.html' %}  
+  {% include_dnd_partial path='../Sections/IIN_Form_box.html' %}
+  {% dnd_section max_width='{{theme.spacing.max_width}}' %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        background_color="rgba(196, 225, 229, 1)",
+        padding={
+          "default" : {
+            "bottom" : "60px",
+            "left" : "60px",
+            "right" : "60px",
+            "top" : "60px"
+          },
+          "mobile" : {
+            "bottom" : "30px",
+            "left" : "30px",
+            "right" : "30px",
+            "top" : "30px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;"><span>IIN is Recognized and Approved by Global Organizations:&nbsp;</span></h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "5%",
+              "right" : "5%",
+              "top" : "20px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=4,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=8,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "5%",
+              "right" : "5%"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=4,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=8,
+            width=4,
+            padding={
+              "default" : {
+                "bottom" : "10px",
+                "top" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/linked_image",
+                offset=0,
+                width=12,
+                horizontal_alignment="CENTER",
+                img={
+                  "alt" : "nbhwc_0",
+                  "height" : 64,
+                  "loading" : "lazy",
+                  "max_height" : 64,
+                  "max_width" : 161,
+                  "size_type" : "auto",
+                  "src" : "https://cdn2.hubspot.net/hubfs/23273748/nbhwc_0.png",
+                  "width" : 161
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

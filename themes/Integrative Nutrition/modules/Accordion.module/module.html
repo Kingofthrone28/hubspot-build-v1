@@ -1,0 +1,10 @@
+
+<div class="ex-item acc-{% if module.options.arrow_location == 'after' %}after{% else %}before{% endif %}{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="background: rgba({{ module.options.bar_color.color|convert_rgb }}, {{ module.options.bar_color.opacity * 0.01 }});">
+  <div class="ex-label {% if module.options.bold_title %} ex-bold{% endif %}" style="background: rgba({{ module.options.bar_color.color|convert_rgb }}, {{ module.options.bar_color.opacity * 0.01 }});color: rgba({{ module.options.heading_color.color|convert_rgb }}, {{ module.options.heading_color.opacity * 0.01 }});{{ module.options.border_field.css }}"><h5>{{ module.main_label }}</h5>
+    
+  </div>
+  <div class="ex-text" style="display: none;">
+      {{ module.content }}
+    </div>
+</div>
+

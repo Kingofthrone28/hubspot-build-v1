@@ -1,0 +1,180 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Catalog Page New
+  screenshotPath: /Integrative Nutrition/images/Catalog Page New.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+
+{# HERO SECTION #}
+
+  {% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/course_catalog_hero.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "50px",
+      "left" : "100px",
+      "right" : "100px",
+      "top" : "170px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Rich Text",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 30
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "content" %}
+          <h1>Find the <span style="color: #d72a25;">right</span> course for you</h1>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Rich Text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "content" %}
+              <p><span>Start pursuing your purpose and passion. Browse our most sought-after, life-changing health and wellness programs.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END HERO SECTION #}
+  
+  
+  
+{# CATALOG SECTION #}
+  
+{% dnd_section
+  padding={
+    "default" : {
+      "left" : "100px",
+      "right" : "100px"
+    }
+  }
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Course Catalog",
+        offset=0,
+        width=12,
+        category_filter="",
+        limit=18
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END CATALOG SECTION #}
+  
+  
+  
+{# CTA SECTION #}
+  
+{% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "100px",
+      "right" : "100px",
+      "top" : "60px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div id="pane-class-186625">
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h2 style="text-align: center;">Need<span>&nbsp;</span><span style="color: #d72a25;">guidance</span>?</h2>
+          </div>
+          <div class="entity-paragraphs-item paragraphs-item-copy" style="text-align: center;"><span style="color: #2d3841;">Schedule an informational session with one of our advisors who can help answer any questions you may have.</span><br><br><span style="color: #2d3841;"><a href="https://iin.secure.force.com/AS" target="_blank" rel="noopener" style="color: #2d3841;"><span style="font-weight: bold;">&nbsp;<svg style="vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none" id="schedule"><path fill-rule="evenodd" clip-rule="evenodd" d="M23 3a1 1 0 1 0-2 0v1H11V3a1 1 0 1 0-2 0v1H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3V3zm3 3h-3v1a1 1 0 1 1-2 0V6H11v1a1 1 0 1 1-2 0V6H6v4h20V6zM6 12h20v14H6V12zm5.5 7a1 1 0 0 1 1-1H15v-2.5a1 1 0 1 1 2 0V18h2.5a1 1 0 1 1 0 2H17v2.5a1 1 0 1 1-2 0V20h-2.5a1 1 0 0 1-1-1z" fill="#D72A25"></path></svg> Schedule an appointment</span></a><span style="font-weight: bold;">&nbsp;</span>or call us at&nbsp;<svg style="vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none" id="phone" y="288"><path d="M23.18 30.04c-3.27 0-8.51-1.15-14.27-6.91C.8 15.03 1.83 7.94 2.34 5.95c.44-1.73 1.88-3.04 4.14-3.8 1.46-.49 3.08.26 3.68 1.71l2.07 4.96c.48 1.15.19 2.49-.71 3.34l-.91.86c-.33.31-.42.78-.22 1.17.47.91 1.41 2.38 3.24 4.2 1.83 1.83 3.3 2.77 4.2 3.24.39.2.86.12 1.17-.22l.86-.91c.85-.9 2.2-1.19 3.34-.71l4.96 2.07c1.45.6 2.2 2.22 1.71 3.69-.76 2.27-2.07 3.7-3.81 4.14-.57.15-1.58.34-2.91.34l.03.01zM7.4 4c-.1 0-.19.02-.29.05-1.11.37-2.5 1.09-2.84 2.4-.91 3.55.2 9.42 6.04 15.27 5.85 5.85 11.72 6.96 15.27 6.04 1.32-.34 2.04-1.73 2.41-2.84.16-.47-.1-1-.58-1.21l-4.96-2.07a1 1 0 0 0-1.12.24l-.86.91c-.92.97-2.38 1.23-3.55.62-1.03-.53-2.69-1.59-4.7-3.6-2.01-2.01-3.07-3.67-3.6-4.7-.61-1.17-.35-2.63.62-3.55l.91-.86c.3-.29.4-.73.24-1.12L8.32 4.62c-.16-.39-.53-.63-.92-.63V4z" fill="#D72A25"></path><path d="M24.107 2H21.14C17.908 2 15.095 4.49 15 7.716a5.898 5.898 0 0 0 5.893 6.078h3.214V17l3.623-3.626A7.76 7.76 0 0 0 30 7.897 5.899 5.899 0 0 0 24.107 2zm-5.684 7.128c-.6 0-1.077-.487-1.077-1.078 0-.592.486-1.079 1.077-1.079s1.078.487 1.078 1.079c0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.078.487 1.078 1.079 0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.077.487 1.077 1.079 0 .591-.486 1.078-1.077 1.078z" fill="#D72A25"></path></svg>&nbsp;<span style="font-weight: bold;">U.S.:&nbsp;</span><a href="tel:877-730-5444" style="font-weight: bold; color: #2d3841;">(877) 730-5444</a><span style="font-weight: bold;">&nbsp;•&nbsp;International:&nbsp;</span><a href="tel:+1212-730-5433" style="font-weight: bold; color: #2d3841;">+1 (212) 730-5433</a></span></div>
+          </div>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END CTA SECTION #}
+  
+  
+  
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

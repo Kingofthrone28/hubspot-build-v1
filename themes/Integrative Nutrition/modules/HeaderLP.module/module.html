@@ -1,0 +1,356 @@
+{%- macro render_link_item(link,depth)-%}
+  {%- if link != [] && link.label -%}
+{%- if depth <= 1 -%}
+    <li class="hs-menu-item hs-menu-depth-{{depth}} {{'dropdown' if link.children}}" aria-role="none" {{'aria-haspopup="true"' if link.children}}>
+      <a href="{{ link.url }}" class="{{'dropdown-toggle' if link.children}} {{ 'menu__link--active-branch' if item.activeBranch }}  {{ "menu__link--active-link" if link.activeNode }}" aria-role="menuitem"{{' data-toggle="dropdown"' if link.children}}>{{link.label}}{% if module.style.nav.child_menu_indicator %} {{'<i class="far fa-chevron-down"></i>' if link.children}}{% endif %}</a>
+      {%- if link.children -%}
+      <div class="dropdown-menu">
+        <ul class="sub-menu" aria-role="menu">
+          {% set depth = depth + 1%}
+          {%- for sublink in link.children -%}
+          {{render_link_item(sublink,depth)}}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endif -%}
+    </li>
+{%- else -%}
+{%- if link.children -%}
+    {% if link.url %}<li class="nav-header"><a href="{{ link.url }}" aria-role="menuitem">{{link.label}}</a></li>{% else %}<li class="nav-header">{{link.label}}</li>{% endif %}
+    {% set depth = depth + 1%}
+    {%- for sublink in link.children -%}
+    {{render_link_item(sublink,depth)}}
+    {%- endfor -%}
+    {{ '<li class="divider"></li>' if !loop.last }}
+{%- else -%}
+    <li><a href="{{ link.url }}" aria-role="menuitem">{{link.label}}</a></li>
+{%- endif -%}
+
+{%- endif -%}
+  {%- endif -%}
+{%- endmacro -%}
+
+{%- macro render_link_mobile(link,depth)-%}
+  {%- if link != [] && link.label -%}
+{%- if depth <= 1 -%}
+    <li class="hs-menu-item hs-menu-depth-{{depth}} {{'dropdown' if link.children}}" aria-role="none" {{'aria-haspopup="true"' if link.children}}>
+      <a href="{{'#' if link.children else link.url}}" class="{{'dropdown-toggle' if link.children}}" aria-role="menuitem"{{' data-toggle="dropdown"' if link.children}}>{{link.label}} {{'<span class="plus"><span class="bar hz"></span><span class="bar vt"></span></span>' if link.children}}</a>
+      {%- if link.children -%}
+      <div class="dropdown-menu">
+        <ul class="sub-menu" aria-role="menu">
+          {%- if link.url -%}<li><a href="{{ link.url }}" aria-role="menuitem">{{link.label}}</a></li>{%- endif -%}
+          {% set depth = depth + 1%}
+          {%- for sublink in link.children -%}
+          {{render_link_mobile(sublink,depth)}}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endif -%}
+    </li>
+{%- else -%}
+{%- if link.children -%}
+    <li class="nav-header">{{link.label}}</li>
+    {% if link.url %}<li><a href="{{ link.url }}" aria-role="menuitem">{{link.label}}</a></li>{% endif %}
+    {% set depth = depth + 1%}
+    {%- for sublink in link.children -%}
+    {{render_link_mobile(sublink,depth)}}
+    {%- endfor -%}
+    {{ '<li class="divider"></li>' if !loop.last }}
+{%- else -%}
+    <li><a href="{{ link.url }}" aria-role="menuitem">{{link.label}}</a></li>
+{%- endif -%}
+
+{%- endif -%}
+  {%- endif -%}
+{%- endmacro -%}
+
+{% macro menu_macro() %}
+{% if module.menu.menu_type == 'normal' %}
+{% set menu = menu(module.menu.menu_field).children %}
+<ul class="mb-main-nav">
+  {% for link in menu %}
+  {{render_link_item(link,1)}}
+  {% endfor %}
+</ul>
+{% else %}
+<ul class="mb-main-nav">
+  {% for item in module.menu.main_nav_item %}
+  {% set nav_children = item.sub_menu_item|length %}
+  <li class="hs-menu-item mega hs-menu-depth-1{% if nav_children >= 1 %} dropdown{% endif %}">
+    <a{% if item.url_field.href %} href="{{ item.url_field.href }}"{% endif %} class="{{ 'menu__link--active-branch' if item.activeBranch }}">{{ item.main_label }}{% if module.style.nav.child_menu_indicator %} {{' <i class="far fa-chevron-down"></i>' if nav_children >= 1 }}{% endif %}</a>
+    {% if nav_children >= 1 %}
+    <div class="dropdown-menu{% if item.additional_content %} mega-wrapper{% endif %}">
+      <ul class="sub-menu" aria-role="menu">
+        {% for item2 in item.sub_menu_item %}
+        {% if item2.section_title %}{% if !loop.first %}<li class="divider"></li>{% endif %}{% endif %}
+        <li{% if item2.section_title %} class="nav-header"{% endif %}><a{% if item2.url_field_1.href %} href="{{ item2.url_field_1.href }}"{% endif %} aria-role="menuitem">{{ item2.sub_label }}</a></li>
+        {% endfor %}
+      </ul>
+      {% if item.additional_content %}
+      <div class="mega-content" style="background: {{ item.background_color.color || '#FFFFFF' }};">
+        {% if item.image_field.src %}
+        {% set sizeAttrs = 'width="{{ item.image_field.width }}" height="{{ item.image_field.height }}"' %}
+        {% if item.image_field.size_type == 'auto' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif item.image_field.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ item.image_field.max_width }}" height="{{ item.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = item.image_field.loading != 'disabled' ? 'loading="{{ item.image_field.loading }}"' : '' %}
+        <img src="{{ item.image_field.src }}" alt="{{ item.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        {% if item.content %}
+        <div class="mega-text">
+          {{item.content}}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}
+<div class="mb-custom-header-wrapper">
+  <div class="sticky-header{% if module.style.background_color.opacity < 100 %} opacity{% endif %}">
+    {% if module.emergency_message %}
+    <div class="emergency-header">
+      <div class="container">
+        {{ module.message }}
+      </div>
+    </div>
+    {% endif %}
+    <div class="bottom-bar" style="{{ module.style.spacing_field.css }};{% if module.style.background_color.color %}background: rgba({{ module.style.background_color.color|convert_rgb }}, {{ module.style.background_color.opacity / 100 }});{% endif %}{% if module.style.background_color.opacity < 100 %}background: linear-gradient(180deg,rgba({{ module.style.background_color.color|convert_rgb }},{{ module.style.background_color.opacity / 100 }}) 10%,rgba({{ module.style.background_color.color|convert_rgb }},0) 100%);{% endif %}">
+      <div class="container{% if module.style.layout == 'top' %} layout-top{% else %} layout-side{% endif %}" style="{{ module.style.border_field.css }}">
+        {% if module.style.layout == 'top' %}
+        <div class="header-body">
+          <div class="search-wrapper hide-mobile">
+            {% if module.style.site_search.show_site_search %}
+            <div class="nav-search{% if module.style.site_search.always_open %} always-open{% endif %}">
+              <div class="hs-search-field"> 
+                <div class="hs-search-field__bar"> 
+                  <form action="/{{ site_settings.content_search_results_page_path }}" _lpchecked="1">
+
+                    <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search" {% if module.border_style == 'under' %}style="border-bottom: 1px solid {{ module.border_color.color }};"{% endif %}>
+                    <input type="hidden" name="type" value="SITE_PAGE">
+                    <input type="hidden" name="type" value="BLOG_POST">
+                    <input type="hidden" name="type" value="LISTING_PAGE">
+
+                    <button aria-label="Search" style="{% if module.style.site_search.button_background.color %}background: rgba({{ module.style.site_search.button_background.color|convert_rgb }}, {{ module.style.site_search.button_background.opacity / 100 }});{% endif %}"><span id="hs_cos_wrapper_module_1563822073910142_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" style="fill: {{ module.style.site_search.button_color.color }};"><g id="layer1"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></g></svg></span></button>
+
+                  </form>
+                </div>
+                <ul class="hs-search-field__suggestions"></ul>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          <div class="logo-wrapper">
+            {% if module.logo.src %}
+            {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+            {% set href = module.logo_link.url.href %}
+            {% if module.logo_link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a {% if href %}href="{{ href }}"{% endif %}
+               {% if module.logo_link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if module.logo_link.rel %}rel="{{ module.logo_link.rel }}"{% endif %}
+               >{% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}{% if module.logo.size_type == 'auto' %}{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}{% elif module.logo.size_type == 'auto_custom_max' %}{% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}{% endif %}
+              <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}><span class="hidden">{{ module.logo.alt }}</span>
+            </a>
+            {% endif %}
+            <div class="mobile-only">
+              <span class="mobile-click"><div class="ham-wrap"><span class="ham1"></span><span class="ham2"></span><span class="ham3"></span></div><span class="ham-text">Menu</span></span>
+            </div>
+          </div>
+          <div class="hide-mobile nav-social">
+            {% for item in module.social %}
+            {% set href = item.link_field.url.href %}
+            {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a id="{{name}}-{{loop.index}}" href="{{ href }}"
+               {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+               {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+               ><span class="hidden">{{ item.accessibility_text }}</span>
+              {% icon
+                name="{{ item.icon_field.name }}",
+                style="{{ item.icon_field.type }}",
+                unicode="{{ item.icon_field.unicode }}",
+                icon_set="{{ item.icon_field.icon_set }}",
+                title='{{ item.accessibility_text }}'
+              %}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="menu-wrapper hide-mobile">
+          {{ menu_macro() }}
+        </div>
+        {% else %}
+        <div class="logo-wrapper">
+          {% if module.logo.src %}
+            {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+            {% set href = module.logo_link.url.href %}
+            {% if module.logo_link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a {% if href %}href="{{ href }}"{% endif %}
+               {% if module.logo_link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if module.logo_link.rel %}rel="{{ module.logo_link.rel }}"{% endif %}
+               >{% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}{% if module.logo.size_type == 'auto' %}{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}{% elif module.logo.size_type == 'auto_custom_max' %}{% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}{% endif %}
+              <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}><span class="hidden">{{ module.logo.alt }}</span>
+            </a>
+            {% endif %}
+          <div class="mobile-only">
+            <span class="mobile-click"><div class="ham-wrap"><span class="ham1"></span><span class="ham2"></span><span class="ham3"></span></div><span class="ham-text">Menu</span></span>
+          </div>
+        </div>
+        <div class="header-body hide-mobile">
+          <div class="social-search">
+            <div class="search-wrapper">
+              {% if module.style.site_search.show_site_search %}
+              <div class="nav-search{% if module.style.site_search.always_open %} always-open{% endif %}">
+                <div class="hs-search-field"> 
+                  <div class="hs-search-field__bar"> 
+                    <form action="/{{ site_settings.content_search_results_page_path }}" _lpchecked="1">
+
+                      <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="Search" placeholder="Search" {% if module.border_style == 'under' %}style="border-bottom: 1px solid {{ module.border_color.color }};"{% endif %}>
+                      <input type="hidden" name="type" value="SITE_PAGE">
+                      <input type="hidden" name="type" value="BLOG_POST">
+                      <input type="hidden" name="type" value="LISTING_PAGE">
+
+                      <button aria-label="Search" style="{% if module.style.site_search.button_background.color %}background: rgba({{ module.style.site_search.button_background.color|convert_rgb }}, {{ module.style.site_search.button_background.opacity / 100 }});{% endif %}"><span id="hs_cos_wrapper_module_1563822073910142_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon" style="" data-hs-cos-general-type="widget" data-hs-cos-type="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" style="fill: {{ module.style.site_search.button_color.color }};"><g id="layer1"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></g></svg></span></button>
+
+                    </form>
+                  </div>
+                  <ul class="hs-search-field__suggestions"></ul>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="nav-social">
+              {% for item in module.social %}
+              {% set href = item.link_field.url.href %}
+              {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+              {% endif %}
+              <a id="{{name}}-{{loop.index}}" href="{{ href }}"
+                 {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                 {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+                 ><span class="hidden">{{ item.accessibility_text }}</span>
+                {% icon
+                name="{{ item.icon_field.name }}",
+                style="{{ item.icon_field.type }}",
+                unicode="{{ item.icon_field.unicode }}",
+                icon_set="{{ item.icon_field.icon_set }}",
+                title='{{ item.accessibility_text }}'
+              %}
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="menu-wrapper">
+            {{ menu_macro() }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div id="mobile-menu">
+      <div>
+        <div class="logo-wrapper">
+          {% if module.logo.src %}
+          {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+          {% set href = module.logo_link.url.href %}
+          {% if module.logo_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a {% if href %}href="{{ href }}"{% endif %}
+             {% if module.logo_link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if module.logo_link.rel %}rel="{{ module.logo_link.rel }}"{% endif %}
+             >{% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}{% if module.logo.size_type == 'auto' %}{% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}{% elif module.logo.size_type == 'auto_custom_max' %}{% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}{% endif %}
+            <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          </a>
+          {% endif %}
+        <div class="mobile-only">
+          <span class="mobile-click"><div class="ham-wrap"><span class="ham1"></span><span class="ham2"></span><span class="ham3"></span></div><span class="ham-text">Menu</span></span>
+        </div>
+      </div>
+        {% if module.menu.menu_type == 'normal' %}
+        {% set menu = menu(module.menu.menu_field).children %}
+        <ul class="mb-mobile-nav">
+          {% for link in menu %}
+          {{render_link_mobile(link,1)}}
+          {% endfor %}
+        </ul>
+        {% else %}
+        <ul class="mb-mobile-nav">
+          {% for item in module.menu.main_nav_item %}
+          {% set nav_children = item.sub_menu_item|length %}
+          <li class="hs-menu-item hs-menu-depth-1{{' dropdown' if nav_children >= 1 }}" aria-role="none" aria-haspopup="true">
+            <a href="{{'#' if nav_children >= 1 else item.url_field.href }}" class="dropdown-toggle" aria-role="menuitem" data-toggle="dropdown">{{ item.main_label }}{{' <span class="plus"><span class="bar hz"></span><span class="bar vt"></span></span>' if nav_children >= 1 }}</a>
+            {% if nav_children >= 1 %}
+            <div class="dropdown-menu" style="display: none;">
+            <ul class="sub-menu" aria-role="menu">
+              {% if item.url_field.href %}<li><a href="{{item.url_field.href}}" aria-role="menuitem">{{ item.main_label }}</a></li>{% endif %}
+              {% for item2 in item.sub_menu_item %}
+              {% if item2.section_title %}{% if !loop.first %}<li class="divider"></li>{% endif %}{% endif %}
+              <li{% if item2.section_title %} class="nav-header"{% endif %}><a{% if item2.url_field.href %} href="{{ item2.url_field.href }}"{% endif %} aria-role="menuitem">{{ item2.sub_label }}</a></li>
+              {% endfor %}
+            </ul>
+            </div>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="nav-social">
+          {% for item in module.social %}
+          {% set href = item.link_field.url.href %}
+          {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          <a id="{{name}}-{{loop.index}}" href="{{ href }}"
+             {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+             {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+             ><span class="hidden">{{ item.accessibility_text }}</span>
+            {% icon
+                name="{{ item.icon_field.name }}",
+                style="{{ item.icon_field.type }}",
+                unicode="{{ item.icon_field.unicode }}",
+                icon_set="{{ item.icon_field.icon_set }}",
+                title='{{ item.accessibility_text }}'
+              %}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .mb-main-nav .hs-menu-depth-1 > a { color:{{ module.style.nav.main_link.color }};opacity: {{ module.style.nav.main_link.opacity / 100 }}; }
+  .menu__link--active-link { border-bottom: 2px solid rgba({{ module.style.nav.active_link_highlight.color|convert_rgb }}, {{ module.style.nav.active_link_highlight.opacity / 100 }}); }
+  .mb-main-nav .hs-menu-depth-1:hover > a { color:{{ module.style.nav.main_link_hover.color }};opacity: {{ module.style.nav.main_link_hover.opacity / 100 }}; }
+  .mb-main-nav .dropdown-menu ul { {% if module.style.nav.dropdown_background.color %}background: rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});{% endif %} }
+  .mb-main-nav .dropdown-menu ul:before { {% if module.style.nav.dropdown_background.color %}border-bottom: 8px solid rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});{% endif %} }
+  .mb-main-nav .dropdown-menu a { color:{{ module.style.nav.dropdown_link_color.color }};opacity: {{ module.style.nav.dropdown_link_color.opacity / 100 }}; }
+  .mb-main-nav .dropdown-menu a:hover { color:{{ module.style.nav.dropdown_link_hover.color }};opacity: {{ module.style.nav.dropdown_link_hover.opacity / 100 }}; }
+  .ham-text { color:{{ module.style.nav.main_link.color }}; }
+  .ham-wrap > span { background:{{ module.style.nav.main_link.color }};opacity: {{ module.style.nav.main_link.opacity / 100 }}; }
+  .open .ham-wrap > span { background:{{ module.style.nav.main_link_hover.color }};opacity: {{ module.style.nav.main_link_hover.opacity / 100 }}; }
+  .hs-search-field { {{ module.style.site_search.border_field_1.css }} }
+  .hs-search-field__input { {% if module.style.site_search.input_background.color %}background: rgba({{ module.style.site_search.input_background.color|convert_rgb }}, {{ module.style.site_search.input_background.opacity / 100 }});{% endif %} }
+  {% for item in module.social %}
+  #{{name}}-{{loop.index}} { color: {{ item.icon_color.color }};opacity: {{ item.icon_color.opacity / 100 }}; }
+  #{{name}}-{{loop.index}} svg { fill: {{ item.icon_color.color }}; }
+  #{{name}}-{{loop.index}}:hover { color: {{ item.hover_color.color }};opacity: {{ item.hover_color.opacity / 100 }}; }
+  #{{name}}-{{loop.index}}:hover svg { fill: {{ item.hover_color.color }}; }
+  {% endfor %}
+  .mb-custom-header-wrapper #mobile-menu { {% if theme.global_colors.secondary_color.color || module.style.mobile_menu.mobile_background.color %}background: rgba({{ module.style.mobile_menu.mobile_background.color|convert_rgb if module.style.mobile_menu.mobile_background.color else theme.global_colors.secondary_color.color|convert_rgb }}, {{ module.style.mobile_menu.mobile_background.opacity / 100 || 1 }});{% endif %} }
+  .mb-custom-header-wrapper #mobile-menu a { color: {{ module.style.mobile_menu.link_color.color }}; }
+  #mobile-menu .plus .bar { background: {{ module.style.mobile_menu.link_color.color }}; }
+  .mb-mobile-nav .sub-menu { {% if module.style.mobile_menu.sub_menu_background.color %}background: rgba({{ module.style.mobile_menu.sub_menu_background.color|convert_rgb }}, {{ module.style.mobile_menu.sub_menu_background.opacity / 100 }});{% endif %} }
+</style>

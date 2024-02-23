@@ -1,0 +1,3 @@
+.arrow-link i { margin-left: 5px;position: relative;left:0;-webkit-transition:left .2s ease-in-out;-moz-transition:left .2s ease-in-out;-o-transition:left .2s ease-in-out;transition:left .2s ease-in-out; }
+.arrow-link:hover { text-decoration: none; }
+.arrow-link:hover i { left: 5px; }

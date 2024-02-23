@@ -1,0 +1,21 @@
+<div id="bg_{{ name }}" class="dnd-section-custom-bg svg-bg svg-{{ module.shape }}{% if module.shape == 'bend' %} bg-bend{% if module.bevel_top %} bend-top{% endif %}{% if module.bevel_bottom %} bend-bottom{% endif %}{% endif %}" style="top: {% if module.shape == 'swoop' %}-35vw;padding-top: 5vw;{% else %}{{ module.desktop.distance_from_top * -1 }}px;{% endif %}bottom: {{ module.desktop.distance_from_bottom * -1 }}px;{% if module.shape == 'bend' %}--tooltip-start: {{ module.desktop.overlay_color.color }};--tooltip-end: {{ module.desktop.secondary_overlay_color.color }};{% endif %}">
+  {% if module.shape == 'swoop' %}
+<div class="swoop-cover" style="background: {{ module.desktop.secondary_overlay_color.color }};"></div>
+<svg class="golden-swoop" viewBox="0 0 1920 1768" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1145.33 1074.48c379.78-165.002 594.18-465.116 637.07-507.986 42.89-42.869 154.23 33.621 120.03 59.708-34.2 26.087-390.4 407.578-728.01 528.988-339.41 122.06-764.616 96.98-1215.1529-129.92-21.4542-12.33 21.4253-75.104 42.87565-74.262C409.804 1252.17 933.353 1166.58 1145.33 1074.48z" fill="url(#paint0_linear_40_11996)"/><defs><linearGradient id="paint0_linear_40_11996" x1="811.798" y1="940.587" x2=".101621" y2="983.397" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF1D2"/><stop offset="1" stop-color="#F9CA67"/></linearGradient></defs></svg> 
+<svg viewBox="0 0 1920 7277" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-.127155 44.8239S-400 603.026 887.931 603.026C1372 603.026 1920 0 1920 0v7277H-.127155V44.8239z" fill="url(#paint0_linear_40_11976)"/><defs><linearGradient id="paint0_linear_40_11976" x1="354.895" y1="-6512.34" x2="3056.78" y2="-6088.46" gradientTransform="rotate(7)" gradientUnits="userSpaceOnUse"><stop stop-color="{{ module.desktop.overlay_color.color }}"/><stop offset="1" stop-color="{{ module.desktop.secondary_overlay_color.color }}"/></linearGradient></defs></svg>
+  {% elif module.shape == 'diagonal' %}
+  <div class="diagonal-img" style="background: url({{ module.desktop.image_field.src }}) center;background-size: cover;"><div class="overlay" style="background: linear-gradient(135deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%);"></div></div>
+  {% elif module.shape == 'chevron' %}
+  <div class="chev-wrapper">
+    <div class="chev-img" style="background: url({{ module.desktop.image_field.src }}) center;background-size: cover;"><div class="overlay" style="background: linear-gradient(135deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%);"></div></div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="edit-icon"><i class="fas fa-image"></i> Edit</div>
+
+<style>
+  .hs_cos_wrapper { z-index: 2; }
+  #hs_cos_wrapper_{{ name }} { z-index: 1; }
+  #hs_cos_wrapper_{{ name }}.inpage-editor-active-field, #hs_cos_wrapper_{{ name }}.inpage-editor-highlight-field { position: static !important; }
+</style>

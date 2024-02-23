@@ -1,0 +1,10 @@
+.full-step-start.hs-button.jd-request-btn.jd-request-btn-inverse {
+  cursor: pointer;
+}
+.hs-form-radio small, .hs-form-checkbox small {
+  display: block;
+  color: #6c757d;
+  font-size: .875rem;
+  padding-top: 0.5em;
+  padding-left: 3.5em;
+}

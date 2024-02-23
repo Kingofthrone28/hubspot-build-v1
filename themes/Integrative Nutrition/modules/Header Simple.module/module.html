@@ -1,0 +1,351 @@
+<div class="jd-contact-pop-wrap">
+  <div class="jd-contact-pop">
+    <div class="jd-contact-close">
+      <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
+    </div>
+    <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
+    <a href="tel:{{ module.us_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
+       >
+      US: {{ module.us_number }}
+    </a>
+    <a href="tel:{{ module.international_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
+       >
+      International: {{ module.international_number }}
+    </a>
+    <a href="{{module.whatsapp_link.url.href}}" class="jd-request-btn hs-button light-button jd-whatsapp-link" {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
+       >
+      Whatsapp
+    </a>
+    <a href="#" class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
+       >
+      LIVE Chat Now
+    </a>
+    <div style="margin-top: 35px; text-align:center;">
+      <a href="#" class="jd-arrow-link needle-invite-spanish" style="color:white;text-decoration:none">
+        Chatear en Español
+      </a>
+    </div>
+  </div>
+</div>
+
+{#
+<div id="jd-mobile-menu">
+  <div class="container">
+    <div class="jd-header-main">
+      <div class="jd-ham">
+        <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
+      </div>
+      {% if module.image_field.src %}
+      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+      {% if module.image_field.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.image_field.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    </div>
+    {% set href = module.primary_cta.url.href %}
+    {% if module.primary_cta.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% endif %}
+    <a href="{{ href }}" class="jd-request-btn hs-button dark-button jd-arrow-link" 
+       {% if module.primary_cta.open_in_new_tab %}target="_blank"{% endif %}
+       {% if module.primary_cta.rel %}rel="{{ module.primary_cta.rel }}"{% endif %}
+       >
+      Log In
+    </a>
+    <nav class="jd-header-dds">
+      <ul>
+        {% for item in module.main_items %}
+        <li class="jd-nav-item">
+          <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
+          <ul class="jd-dd">
+            {% for item2 in item.links %}
+            <li>
+              {% set href = item2.link_field.url.href %}
+              {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+              {% endif %}
+              <a href="{{ href }}"
+                 {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                 {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+                 >
+                {{ item2.link_text }}
+              </a>
+              {% endfor %}
+            </li>
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="jd-header-top jd-mobile-foot">
+    <ul>
+      <li><a class="jd-language" href="#">Español</a></li>
+      <li><a id="jd-student" href="{{module.student_login_link.url.href}}" {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}>Student Login</a></li>
+    </ul>
+  </div>
+</div>
+#}
+
+<div class="jd-header-wrap">
+  
+  {% if module.show_deal_bar %}
+  <div class="deal-bar">
+    <svg class="deal-bar-close" clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
+    <div class="deal-bar-inner">
+      <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none"><path d="M27.5 10H5.5C4.94771 10 4.5 10.4477 4.5 11V15C4.5 15.5523 4.94771 16 5.5 16H27.5C28.0523 16 28.5 15.5523 28.5 15V11C28.5 10.4477 28.0523 10 25.5 10Z" stroke="#F0F5F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.5 16V25C26.5 25.2652 26.3946 25.5196 26.2071 25.7071C26.0196 25.8946 25.7652 26 25.5 26H7.5C7.23478 26 6.98043 25.8946 6.79289 25.7071C6.60536 25.5196 6.5 25.2652 6.5 25V16" stroke="#F0F5F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 10V26" stroke="#F0F5F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.1569 8.58569C20.7426 9.9999 16.5 9.9999 16.5 9.9999C16.5 9.9999 16.5 5.75726 17.9142 4.34305C18.4769 3.78097 19.2398 3.46535 20.0352 3.46558C20.8305 3.4658 21.5932 3.78186 22.1556 4.34426C22.718 4.90666 23.0341 5.66937 23.0343 6.46472C23.0346 7.26008 22.7189 8.02297 22.1569 8.58569V8.58569Z" stroke="#F0F5F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.8432 8.58569C12.2574 9.9999 16.5 9.9999 16.5 9.9999C16.5 9.9999 16.5 5.75726 15.0858 4.34305C14.5231 3.78097 13.7602 3.46535 12.9648 3.46558C12.1695 3.4658 11.4068 3.78186 10.8444 4.34426C10.282 4.90666 9.96592 5.66937 9.9657 6.46472C9.96547 7.26008 10.2811 8.02297 10.8432 8.58569V8.58569Z" stroke="#F0F5F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>{{ module.deal_bar_text }}</span>
+      <span class="deal-bar-time-text"></span>
+      {% set href = module.claim_deals_link.url.href %}
+      {% if module.claim_deals_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}" class="deal-bar-btn"
+        {% if module.claim_deals_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.claim_deals_link.rel %}rel="{{ module.claim_deals_link.rel }}"{% endif %}
+        >
+        {{ module.claim_deals_text }}
+      </a>
+    </div>
+  </div>
+  <script>
+    const endTime = new Date('{{ module.deal_ends_time }}').getTime();
+    function dealTimeDif() {
+      const timeDifference = endTime - new Date().getTime();
+      let h,m,s;
+      h = Math.floor(timeDifference/1000/60/60);
+      m = Math.floor((timeDifference/1000/60/60 - h)*60);
+      s = Math.floor(((timeDifference/1000/60/60 - h)*60 - m)*60);
+      let timeString = 'Sale ends in ' + h + 'hrs:' + m + 'mins:' + s + 'sec';
+      $('.deal-bar-time-text').text(timeString);
+    }
+    dealTimeDif();
+    setInterval(dealTimeDif, 1000);
+    $(document).ready(function() {
+      $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
+      $(window).on('resize', function() {
+        $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
+      });
+    });
+  </script>
+  {% endif %}
+  
+  <div class="container" style="padding-top: 20px">
+    <div class="jd-header-top jd-mobile-hide">
+      <ul>
+        <li><a id="jd-contact" class="jd-contact-link" href="#">Contact</a></li>
+        <li><a class="jd-language" href="#">Español</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Desktop -->
+    <div class="jd-header-main jd-mobile-hide">
+      {% if module.image_field.src %}
+        {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+        {% if module.image_field.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.image_field.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+        <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+      <nav class="jd-header-dds">
+        <ul>
+        {% for item in module.main_items %}
+          <li class="jd-nav-item">
+            <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
+            <ul class="jd-dd">
+              {% for item2 in item.links %}
+              <li>
+                {% set href = item2.link_field.url.href %}
+                {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                  {% set href = "mailto:" + href %}
+                {% endif %}
+                <a href="{{ href }}"
+                  {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                  {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+                  >
+                  {{ item2.link_text }}
+                </a>
+              {% endfor %}
+              </li>
+            </ul>
+          </li>
+        {% endfor %}
+        </ul>
+      </nav>
+      {% set href = module.primary_cta.url.href %}
+      {% if module.primary_cta.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {#
+      <a href="{{ href }}" class="jd-request-btn hs-button dark-button jd-arrow-link" 
+        {% if module.primary_cta.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.primary_cta.rel %}rel="{{ module.primary_cta.rel }}"{% endif %}
+        >
+        Log In
+      </a>
+      #}
+    </div>
+    
+    <!-- Mobile -->
+    <div class="jd-mobile-show">
+      <div class="jd-header-main">
+        {#
+        <div class="jd-ham">
+          <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
+        </div>
+        #}
+        {% if module.image_field.src %}
+          {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
+          {% if module.image_field.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.image_field.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+          <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        <div style="flex:1"></div>
+        <div class="jd-header-top">
+          <ul>
+            <li>
+              <a href="#" class="jd-contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="phone" y="288"><path d="M23.18 30.04c-3.27 0-8.51-1.15-14.27-6.91C.8 15.03 1.83 7.94 2.34 5.95c.44-1.73 1.88-3.04 4.14-3.8 1.46-.49 3.08.26 3.68 1.71l2.07 4.96c.48 1.15.19 2.49-.71 3.34l-.91.86c-.33.31-.42.78-.22 1.17.47.91 1.41 2.38 3.24 4.2 1.83 1.83 3.3 2.77 4.2 3.24.39.2.86.12 1.17-.22l.86-.91c.85-.9 2.2-1.19 3.34-.71l4.96 2.07c1.45.6 2.2 2.22 1.71 3.69-.76 2.27-2.07 3.7-3.81 4.14-.57.15-1.58.34-2.91.34l.03.01zM7.4 4c-.1 0-.19.02-.29.05-1.11.37-2.5 1.09-2.84 2.4-.91 3.55.2 9.42 6.04 15.27 5.85 5.85 11.72 6.96 15.27 6.04 1.32-.34 2.04-1.73 2.41-2.84.16-.47-.1-1-.58-1.21l-4.96-2.07a1 1 0 0 0-1.12.24l-.86.91c-.92.97-2.38 1.23-3.55.62-1.03-.53-2.69-1.59-4.7-3.6-2.01-2.01-3.07-3.67-3.6-4.7-.61-1.17-.35-2.63.62-3.55l.91-.86c.3-.29.4-.73.24-1.12L8.32 4.62c-.16-.39-.53-.63-.92-.63V4z" fill="#FFFFFF"/><path d="M24.107 2H21.14C17.908 2 15.095 4.49 15 7.716a5.898 5.898 0 0 0 5.893 6.078h3.214V17l3.623-3.626A7.76 7.76 0 0 0 30 7.897 5.899 5.899 0 0 0 24.107 2zm-5.684 7.128c-.6 0-1.077-.487-1.077-1.078 0-.592.486-1.079 1.077-1.079s1.078.487 1.078 1.079c0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.078.487 1.078 1.079 0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.077.487 1.077 1.079 0 .591-.486 1.078-1.077 1.078z" fill="#FFFFFF"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if module.show_admissions_bar %}
+<div class="bottom-float-bar">
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3.77977 6.80095C4.29842 7.86129 5.15792 8.71689 6.2206 9.2307C6.29835 9.26754 6.38436 9.2835 6.47015 9.27701C6.55595 9.27052 6.63857 9.2418 6.7099 9.19368L8.27462 8.15028C8.34383 8.10414 8.42345 8.07598 8.50628 8.06838C8.58911 8.06077 8.67253 8.07394 8.74898 8.10671L11.6763 9.36127C11.7757 9.40351 11.8588 9.47692 11.9128 9.57045C11.9669 9.66398 11.9892 9.77255 11.9762 9.87981C11.8837 10.6038 11.5304 11.2693 10.9826 11.7516C10.4347 12.2339 9.72989 12.5 9 12.5C6.74566 12.5 4.58365 11.6045 2.98959 10.0104C1.39553 8.41635 0.5 6.25434 0.5 4C0.500038 3.27011 0.766121 2.56526 1.24843 2.01742C1.73073 1.46959 2.39618 1.11634 3.12019 1.02381C3.22745 1.01083 3.33602 1.03306 3.42955 1.08715C3.52307 1.14124 3.59649 1.22426 3.63873 1.3237L4.89439 4.25357C4.92687 4.32935 4.9401 4.41199 4.93291 4.49413C4.92572 4.57626 4.89833 4.65535 4.85318 4.72434L3.81341 6.31307C3.76608 6.38454 3.7381 6.46706 3.73221 6.55257C3.72631 6.63809 3.7427 6.72367 3.77977 6.80095V6.80095Z" stroke="#EAE2D3" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
+  Talk with Admissions, Call <a href="tel:{{module.admissions_number|regex_replace("[^0-9]", "")}}">{{ module.admissions_number }}</a>
+</div>
+{% endif %}
+
+{% require_js %}
+<script>
+$(document).ready(function() {
+  $(document).click(function(e) {
+    if(e.target.className != 'jd-nav-item-title') {
+      $('.jd-nav-item').removeClass('jd-nav-show');
+    }
+  });
+  $('.jd-nav-item-title').click(function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    setTimeout(function() {
+      if($this.parent().hasClass('jd-nav-show')) {
+        $this.parent().removeClass('jd-nav-show');
+      } else {
+        $('.jd-nav-item').removeClass('jd-nav-show');
+        $this.parent().addClass('jd-nav-show');
+      }
+    }, 50);
+  });
+  $('.jd-contact-link').click(function(e) {
+    e.preventDefault();
+    $('.jd-contact-pop-wrap').css('display', 'flex');
+  });
+  $('.jd-contact-close').click(function(e) {
+    $('.jd-contact-pop-wrap').hide();
+  });
+  {#
+  $('.jd-ham').click(function(e) {
+    $('#jd-mobile-menu').slideToggle();
+  });
+  #}
+  $('.jd-language').click(function(e) {
+    e.preventDefault();
+    if(Weglot) {
+      if(Weglot.getCurrentLang() == 'es') {
+        $('.jd-language').text('Español');
+        Weglot.switchTo('en');
+      } else {
+        $('.jd-language').text('English');
+        Weglot.switchTo('es');
+      }
+    }
+  });
+  
+  var $needleEn = $('.needle-invite-english');
+  var $needleSp = $('.needle-invite-spanish');
+  
+  if(!$needleEn || !$needleSp){
+    return
+  }
+  
+  $needleEn.click(function(e) {
+      e.preventDefault();
+      needleInviteEnglish();
+  });
+
+  $needleSp.click(function(e) {
+      e.preventDefault();
+      needleInviteSpanish();
+  });
+  
+ 
+ function needleInviteSpanish() {
+    Needle.PageUpdate('R','&vdata=skill%3dspanish');
+    Needle.cm = "chatreq";
+    Needle.iid = "spanishLink";
+    Needle.campaign = "nt|spanishLInk";
+    Needle.wid = "{{WIN_ID}}";
+    Needle.partner = "Integrative Nutrition";
+    Needle.cucoPosition = "Left";
+    Needle.style = "Theme1";
+    Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
+   return false; //prevents event bubbling
+ }
+
+function needleInviteEnglish() {
+    Needle.PageUpdate('R','&vdata=skill%3d');
+    Needle.cm = "chatreq";
+    Needle.iid = "englishLink";
+    Needle.campaign = "nt|englishLInk";
+    Needle.wid = "{{WIN_ID}}";
+    Needle.partner = "Integrative Nutrition";
+    Needle.cucoPosition = "Left";
+    Needle.style = "Theme1";
+    Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
+   return false; //prevents event bubbling
+}  
+                          
+                        
+  function headerScrollCheck() {
+    if($(document).scrollTop() > 150) {
+      $('.jd-header-wrap').addClass('jd-scrolled');
+    } else {
+      $('.jd-header-wrap').removeClass('jd-scrolled');
+    }
+  }
+  headerScrollCheck();
+  $(document).on('scroll', function() {
+    headerScrollCheck();
+  });
+  
+  $('.deal-bar-close').click(function() {
+    $('.deal-bar').hide();
+  });
+});
+</script>
+{% end_require_js %}
+
+
+
+
+
+
+

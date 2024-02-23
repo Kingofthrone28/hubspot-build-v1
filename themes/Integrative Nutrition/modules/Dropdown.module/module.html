@@ -1,0 +1,32 @@
+{% set dd_padding =  module.style.spacing_field.padding %}
+{% set dd_margin =  module.style.spacing_field.margin %}
+<div tabindex="1" class="dropdown-wrapper{% if module.style.corner_radius %} rounded{% endif %}{% if module.style.drop_shadow %} drop-shadow{% endif %}{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="margin: {{ dd_margin.top.value }}{{ dd_margin.top.units }} 0 {{ dd_margin.bottom.value }}{{ dd_margin.bottom.units }};">
+  <div class="custom-dropdown">
+    <div class="dd-placeholder" style="padding: {{ dd_padding.top.value }}{{ dd_padding.top.units }} {{ dd_padding.left.value }}{{ dd_padding.left.units }};background: rgba({{ module.style.dropdown_style.dropdown_color.color|convert_rgb }}, {{ module.style.dropdown_style.dropdown_color.opacity / 100 }});">
+      {{ module.dropdown_placeholder }}
+    </div>
+    <div class="dd-wrapper" style="background: rgba({{ module.style.dropdown_style.dropdown_color.color|convert_rgb }}, {{ module.style.dropdown_style.dropdown_color.opacity / 100 }});">
+      {% for item in module.item %}
+      {% set href = item.link_field.url.href %}
+      {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set rel = [] %}
+      {% if item.link_field.no_follow %}
+      {% do rel.append("nofollow") %}
+      {% endif %}
+      {% if item.link_field.open_in_new_tab %}
+      {% do rel.append("noopener") %}
+      {% endif %}
+      <a class="dd-item" href="{{ href }}" {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %} {% if rel %}rel="{{ rel|join(" ") }}"{% endif %} style="padding: 5px {{ dd_padding.left.value }}{{ dd_padding.left.units }};{{ module.style.dropdown_style.item_border.css }}">
+        {{ item.text_field }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% if module.button_text %}
+  <div class="dropdown-button hs-button" style="background: rgba({{ module.style.button_style.button_color.color|convert_rgb }}, {{ module.style.button_style.button_color.opacity / 100 }});padding: {{ dd_padding.top.value }}{{ dd_padding.top.units }} {{ dd_padding.left.value }}{{ dd_padding.left.units }};">
+    <span style="font-family: {{ module.style.button_style.font_field.font }}; {{ module.style.button_style.font_field.style }}; color: {{ module.style.button_style.font_field.color }}; font-size: {{ module.style.button_style.font_field.size }}{{module.style.button_style.font_field.size_unit }};">{{ module.button_text }}</span>
+  </div>
+  {% endif %}
+</div>

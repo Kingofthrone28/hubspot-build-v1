@@ -1,0 +1,54 @@
+{% set table_id = '6975747' %}
+{% if module.category_vertical %}
+    {% set rows = hubdb_table_rows(table_id, 'orderBy=-createdAt&limit=' + module.limit + '&category_vertical__in=' + module.category_vertical) %}
+  {% else %}
+    {% set rows = hubdb_table_rows(table_id, 'orderBy=-createdAt') %}
+{% endif %}
+<div class="course-catalog">
+{% for row in rows %}
+  <div  data-Topics="{% for topic in row.category_vertical %}{{topic.label}}{% if not loop.last %},{% endif %}{% endfor %}">   
+  <a class="course-card course-card-slim" href="{{row.cart_link}}">
+    <div class="course-card-img" style="background: url('{{row.image.url}}')"></div>
+    <div class="course-card-body">
+      
+      <div style="display:flex;justify-content:space-between;">
+        <div class="course-card-category">
+          <div>{{row.category_vertical[0].label}}</div>
+        </div>
+        
+      </div>
+      <div class="course-card-title">
+        <div>{{row.name}}</div>
+      </div>
+      <div class="course-card-description">
+        <div>{{row.description}}</div>
+      </div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div class="course-card-price">
+      <div class="price-container">
+        {% if row.offer_price %}
+          <span class="cc-price-{{row.id}} offer-price">{{row.offer_price}}</span>
+          <span class="cc-price-{{row.id}} actual-price-strike">{{row.actual_price}}</span>
+        {% else %}
+          <span class="cc-price-{{row.id}} actual-price">{{row.actual_price}}</span>
+        {% endif %} 
+      </div>
+      <div><span class="add-to-cart-text">Explore Bundle</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="arr-right" y="32"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#D72A25"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M16.05 11.05a1 1 0 0 1 1.414 0l4.243 4.243a1 1 0 0 1 0 1.415l-4.243 4.242a1 1 0 0 1-1.414-1.414L19.586 16l-3.536-3.535a1 1 0 0 1 0-1.414z" fill="#D72A25"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10 16a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1z" fill="#D72A25"></path></svg>
+      </div>
+    </div>
+    <div class="course-card-bottom">
+      <div class="course-card-bottom-inner">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"></path></svg>
+          <span class="course-offer-text">{{row.offer}}</span>
+        </div>
+      </div>
+      
+    </div>
+  </a>
+  </div>
+{% endfor %}
+</div>
+

@@ -1,0 +1,83 @@
+[ {
+  "id" : "style",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.size",
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Size",
+    "help_text" : "Value is in pixels",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 18
+  }, {
+    "id" : "style.color",
+    "name" : "color",
+    "display_width" : null,
+    "label" : "Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : null,
+      "controlling_value_regex" : null,
+      "property" : null,
+      "operator" : "NOT_EMPTY",
+      "access" : null,
+      "hidden_subfields" : {
+        "opacity" : true
+      }
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.hover.color",
+    "name" : "hover_color",
+    "display_width" : null,
+    "label" : "Hover Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : null,
+      "controlling_value_regex" : null,
+      "property" : null,
+      "operator" : "NOT_EMPTY",
+      "access" : null,
+      "hidden_subfields" : {
+        "opacity" : true
+      }
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#feb406",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "size" : 18,
+    "color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "hover_color" : {
+      "color" : "#feb406",
+      "opacity" : 100
+    }
+  }
+} ]

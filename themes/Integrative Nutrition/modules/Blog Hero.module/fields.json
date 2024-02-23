@@ -1,0 +1,61 @@
+[ {
+  "id" : "6ff2f45f-80a9-1f1a-65ee-f9f0913ce67e",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://www.manobyte.com/hubfs/chub_backup/End-user-buyer-personas.jpg",
+    "alt" : "End-user-buyer-personas",
+    "loading" : "lazy",
+    "width" : 1500,
+    "height" : 750,
+    "max_width" : 1500,
+    "max_height" : 750
+  }
+}, {
+  "id" : "605b4c95-e6be-4021-1e5f-5efab6fe7799",
+  "name" : "position",
+  "display_width" : null,
+  "label" : "Position",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "center", "Center" ], [ "top", "Top" ], [ "bottom", "Bottom" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "center"
+}, {
+  "id" : "6a785f63-bf57-bd10-f942-1e0dffd82d72",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "b4473315-5baa-4eea-eeb6-16ecafc308d4",
+    "name" : "hero_height",
+    "display_width" : null,
+    "label" : "Hero Height",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 500
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "hero_height" : 500
+  }
+} ]

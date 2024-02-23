@@ -1,0 +1,5 @@
+<div class="colored-number{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{ module.style.textalignment_field.css }};border-bottom: 2px solid {{ module.style.font_field.color }};{{ module.style.spacing_field.css }}">
+  <h3 style="font-family: {{ module.style.font_field.font }}; {{ module.style.font_field.style }}; color: {{ module.style.font_field.color }}; font-size: {{ module.style.font_field.size }}{{module.style.font_field.size_unit }};">
+    {{ module.text_field }}
+  </h3>
+</div>

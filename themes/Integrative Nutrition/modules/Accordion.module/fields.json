@@ -1,0 +1,123 @@
+[ {
+  "id" : "e84f6540-4df4-7a63-b8b5-96f8099dc3d4",
+  "name" : "main_label",
+  "display_width" : null,
+  "label" : "Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Step One: Collect Data"
+}, {
+  "id" : "ae287576-647f-b182-555a-ec524ad4babd",
+  "name" : "options",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "19856e31-cef5-4715-de70-073a2a02a921",
+    "name" : "heading_color",
+    "display_width" : null,
+    "label" : "Heading Color",
+    "help_text" : "Set the text color of the heading",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#2d3841",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "70178ae7-f684-45cd-b67f-6fe74a44cf14",
+    "name" : "border_field",
+    "display_width" : null,
+    "label" : "Border",
+    "help_text" : "Border of the heading",
+    "required" : false,
+    "locked" : false,
+    "allow_custom_border_sides" : false,
+    "type" : "border",
+    "default" : { }
+  }, {
+    "id" : "22a22c8b-3ee8-ed59-d359-56b6b024f17d",
+    "name" : "bold_title",
+    "display_width" : null,
+    "label" : "Bold Title",
+    "help_text" : "Bold the heading",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "6aa110d2-3c41-6095-08fe-d413106f920e",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeDown"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "heading_color" : {
+      "color" : "#2d3841",
+      "opacity" : 100
+    },
+    "border_field" : { },
+    "bold_title" : false,
+    "animation" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  }
+}, {
+  "id" : "a52985cf-0421-108c-a6ad-3973042e3832",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<p>Your tech stack is already collecting data for you, from site traffic and form submissions on your own website to leads registered, deals closed, and deal size from your partners. Whatever data pieces your applications are collecting, take the time to find them to have a big picture of what you can look at to inform performance.<span></span></p>\n<p>Once you start collecting data, continue tracking it to identify change. Custom reports dashboards are available in most platforms to help keep track of what matter to your business.</p>"
+} ]

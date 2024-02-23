@@ -1,0 +1,13 @@
+<div id="slWebFrame" style="
+  {% if module.align == "right" %} justify-content: flex-end
+  {% elif module.align == "center" %} justify-content: center
+  {% endif %}
+"></div>
+<script src="https://socialladder.rkiapps.com/SLWeb/slweb-frame.js"></script>
+<script>
+  var areaGuid = "{{ module.area_guid }}";
+  var campGuid = getParameterFromURLByName("campGuid");
+  var resGuid = getParameterFromURLByName("resGuid");
+  var resetToken = getParameterFromURLByName("resetToken");
+  loadSLWebFrame(areaGuid, "", campGuid, resGuid, resetToken);
+</script>

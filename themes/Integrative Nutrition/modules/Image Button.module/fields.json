@@ -1,0 +1,231 @@
+[ {
+  "id" : "910aef27-2ea5-7e57-8805-970cfd5d453f",
+  "name" : "link",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "type" : "url",
+  "default" : {
+    "content_id" : null,
+    "href" : "https://www.integrativenutrition.com/curriculum",
+    "type" : "EXTERNAL"
+  }
+}, {
+  "id" : "866fcdda-46f3-c909-c74a-d38dd1ed9d13",
+  "name" : "text_location",
+  "display_width" : null,
+  "label" : "Text Location",
+  "help_text" : "Choose where the text should display",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "above", "Above Image" ], [ "center", "Center Image" ], [ "bottom", "Bottom Image" ], [ "below", "Below Image" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "center"
+}, {
+  "id" : "a6304996-4a3d-cf4e-346a-32282bdf50d5",
+  "name" : "image_style",
+  "display_width" : null,
+  "label" : "Image Style",
+  "help_text" : "Size/shape of button.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "square", "Square" ], [ "circle", "Circle" ], [ "landscape", "Landscape" ], [ "default", "Default Size" ], [ "fill", "Fill Text" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "default"
+}, {
+  "id" : "c8a888d8-2280-bd70-f32f-6991f13279aa",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Background Image",
+  "help_text" : "Background for the button",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "src" : "https://course.integrativenutrition.com/hubfs/Imported_Blog_Media/des-620-blog-inline-cta-b-Aug-30-2023-08-58-57-7866-PM.jpg",
+    "alt" : "des-620-blog-inline-cta-b-Aug-30-2023-08-58-57-7866-PM",
+    "width" : 1940,
+    "height" : 418,
+    "max_width" : 1940,
+    "max_height" : 418
+  }
+}, {
+  "id" : "aa6ac019-2132-10a9-5848-d90a4c46f902",
+  "name" : "text",
+  "display_width" : null,
+  "label" : "Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : ""
+}, {
+  "id" : "e996cfd7-8175-1422-227d-e574a4984937",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c927afb2-f1c1-a11b-f5f1-ac5fc5650c42",
+    "name" : "round_corners",
+    "display_width" : null,
+    "label" : "Round Corners",
+    "help_text" : "Matches theme default for section corner radius.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a6304996-4a3d-cf4e-346a-32282bdf50d5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "circle",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "87e90e96-363e-96fb-ee37-7fdddf05784d",
+    "name" : "drop_shadow",
+    "display_width" : null,
+    "label" : "Drop Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "9349a409-ee22-652f-ba2c-bf5c97b58707",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "01974e2a-2217-48d9-a4c4-c32b68dfe990",
+    "name" : "hover_overlay_color",
+    "display_width" : null,
+    "label" : "Hover Overlay Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "fc796640-3a78-4379-8a69-ed0992efffa9",
+    "name" : "show_text_on_hover",
+    "display_width" : null,
+    "label" : "Show text on hover",
+    "help_text" : "Hides the text until hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "e0bc77ea-fa75-0cc2-448c-efd4c7e96728",
+    "name" : "slide_on_hover",
+    "display_width" : null,
+    "label" : "Slide on hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "73def9b9-bbf7-deae-6bc9-2511ba396757",
+    "name" : "expand_on_hover",
+    "display_width" : null,
+    "label" : "Expand on hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "0187171b-9107-df5f-4ff9-4d518fb4c6b2",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeDown"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "round_corners" : false,
+    "drop_shadow" : false,
+    "overlay_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    },
+    "hover_overlay_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 0
+    },
+    "show_text_on_hover" : true,
+    "slide_on_hover" : false,
+    "expand_on_hover" : false,
+    "animation" : {
+      "animation" : "fadeDown",
+      "apply_animation_to" : "column"
+    }
+  }
+} ]

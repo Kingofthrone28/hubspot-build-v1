@@ -1,0 +1,489 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Thank You- IIN
+  screenshotPath: ../../images/con_ty.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+  
+  {#Hero Section #}
+
+  {% dnd_section
+     max_width='{{theme.spacing.max_width}}',
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/headregion_bg_desktop23103frame_1878.png"
+  },
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "200px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=5,
+    padding={
+      "default" : {
+        "bottom" : "100px",
+        "top" : "100px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <h1><span style="color: #ffffff;"><span>Thank You</span></span></h1>
+          </div>
+          <div class="entity-paragraphs-item paragraphs-item-headline">
+          <p style="font-size: 8px; line-height: 1;">&nbsp;</p>
+          <p style="font-size: 16px; line-height: 1.75;"><span style="color: #ffffff;">Thank you for requesting more information about IIN courses. An Admissions Coach will be in touch with you soon!</span></p>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=5,
+    width=7
+  %}
+
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  
+  {# 3 coloumn #}
+  
+  {% dnd_section
+  background_color="rgba(249, 242, 224, 1)",
+  max_width='{{theme.spacing.max_width}}',
+  padding={
+    "default" : {
+      "bottom" : "20px"
+    }
+  },
+  full_width=false
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "default" : {
+        "bottom" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;"><span>Explore the&nbsp;</span><span style="color: #d72a25;">latest</span><span>&nbsp;in health, wellness, and nutrition</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=4,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            offset=0,
+            width=12,
+            horizontal_alignment="CENTER",
+            img={
+              "alt" : "1679582123beach-joy_0",
+              "height" : 293,
+              "loading" : "lazy",
+              "max_height" : 293,
+              "max_width" : 480,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679582123beach-joy_0.jpg",
+              "width" : 480
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "30px"
+            }
+          },
+          margin={
+            "default" : {
+              "top" : "0px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <div class="entity-paragraphs-item paragraphs-item-headline">
+                  <h3 style="font-size: 22px; font-weight: bold;">Seven Tips for Starting a New Job or Career</h3>
+                  </div>
+                  <div class="entity-paragraphs-item paragraphs-item-copy">
+                  <p style="font-size: 8px;">&nbsp;</p>
+                  <p style="line-height: 1.75;"><span>Whether you’re moving to a new company or starting to work for yourself, new situations can be overwhelming.</span></p>
+                  </div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "bottom" : "10px",
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "10px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p style="line-height: 1.5; display: flex; align-items: center; text-align: center;"><span style="color: #2d3841;"><span style="font-size: 15px;"><a href="https://www.integrativenutrition.com/blog/starting-a-new-job" rel="noopener" style="font-weight: bold; color: #2d3841;">Learn More</a>&nbsp;</span> &nbsp;</span> <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Red-arrow.png" alt="Red-arrow" width="18" height="18" loading="lazy" style="height: auto; max-width: 100%; width: 18px;"></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=4,
+        width=4,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            offset=0,
+            width=12,
+            horizontal_alignment="CENTER",
+            img={
+              "alt" : "1679582123family-kitchen_0",
+              "height" : 293,
+              "loading" : "lazy",
+              "max_height" : 293,
+              "max_width" : 480,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679582123family-kitchen_0.jpg",
+              "width" : 480
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "30px"
+            }
+          },
+          margin={
+            "default" : {
+              "top" : "0px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <div class="entity-paragraphs-item paragraphs-item-headline">
+                  <h3 style="font-size: 22px; font-weight: bold;"><span>Tips for Embracing Bio-Individual Nutrition</span></h3>
+                  </div>
+                  <div class="entity-paragraphs-item paragraphs-item-copy">
+                  <p style="font-size: 8px;">&nbsp;</p>
+                  <p style="line-height: 1.75;"><span>Do any of these sound familiar? When it comes to making decisions about your health, there’s often a lot of conflicting and confusing information.</span></p>
+                  </div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "bottom" : "10px",
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "10px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p style="line-height: 1.5; display: flex; align-items: center; text-align: center;"><span style="color: #2d3841;"><span style="font-size: 15px;"><a href="https://www.integrativenutrition.com/blog/tips-for-embracing-bio-individual-nutrition" rel="noopener" style="font-weight: bold; color: #2d3841;">Learn More</a>&nbsp;</span> &nbsp;</span> <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Red-arrow.png" alt="Red-arrow" width="18" height="18" loading="lazy" style="height: auto; max-width: 100%; width: 18px;"></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=8,
+        width=4,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            offset=0,
+            width=12,
+            horizontal_alignment="CENTER",
+            img={
+              "alt" : "1679582123WEB-910_Stocksy_comp_4297606 1_0",
+              "height" : 294,
+              "loading" : "lazy",
+              "max_height" : 294,
+              "max_width" : 480,
+              "size_type" : "auto",
+              "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679582123WEB-910_Stocksy_comp_4297606%201_0.jpg",
+              "width" : 480
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "30px"
+            }
+          },
+          margin={
+            "default" : {
+              "top" : "0px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <div class="entity-paragraphs-item paragraphs-item-headline">
+                  <h3 style="font-size: 22px; font-weight: bold;"><span>Fourteen Grounding Exercises for Better Well-Being</span></h3>
+                  </div>
+                  <div class="entity-paragraphs-item paragraphs-item-copy">
+                  <p style="font-size: 8px;">&nbsp;</p>
+                  <p style="line-height: 1.75;"><span>Anxiety, panic, and negative or unwelcome emotions can come on at any time, and they’re normal. What matters most is how we respond to these feelings.</span></p>
+                  </div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "bottom" : "10px",
+              "left" : "30px",
+              "right" : "30px",
+              "top" : "10px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=12
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p style="line-height: 1.5; display: flex; align-items: center; text-align: center;"><span style="color: #2d3841;"><span style="font-size: 15px;"><a href="https://www.integrativenutrition.com/blog/grounding-exercises" rel="noopener" style="font-weight: bold; color: #2d3841;">Learn More</a>&nbsp;</span> &nbsp;</span> <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Red-arrow.png" alt="Red-arrow" width="18" height="18" loading="lazy" style="height: auto; max-width: 100%; width: 18px;"></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Rich Text",
+            offset=0,
+            width=12,
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 30
+                  }
+                }
+              }
+            }
+          %}
+            {% module_attribute "content" %}
+              <p style="text-align: center;"><span style="display: inline-flex; align-items: center;"> <span style="color: #2d3841;"> <a href="https://www.integrativenutrition.com/blog" rel="noopener" style="color: #2d3841;"> <span style="color: #2d3841;"><strong>View all articles</strong> </span></a> </span>&nbsp; &nbsp; <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Red-arrow.png" alt="Red-arrow" width="18" height="18" loading="lazy" style="height: auto; max-width: 100%; width: 18px;"> </span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+
+{#  {% include_dnd_partial path='../Sections/IIN_inside_hero.html' context={'title':'Thank You!'} %}
+  {% include_dnd_partial path='../Sections/IIN_3_column_boxs.html' context={} %} #}
+  
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

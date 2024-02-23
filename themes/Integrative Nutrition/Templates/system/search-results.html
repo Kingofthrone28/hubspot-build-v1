@@ -1,0 +1,52 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: search results
+  screenshotPath: ../../images/template-previews/system-pv.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block header %}
+<div class="static-header">
+  {% module "theme_header" path="../../modules/Header", label="Header" %}
+</div>
+{% endblock header %}
+{% block body %}
+<main class="body-container-wrapper system-body">
+  <div class="main-banner">
+    <div class="container">
+      <h1 style="color:#ffffff;">
+        Search Results
+      </h1>
+      {% module "module_16153372379589" path="@hubspot/search_input", label="search_input.module" %}
+    </div>
+  </div>
+  <section class="content-wrapper dnd-section">
+    <div class="systems-page">
+      <h2>Search results for "{{ request.query_dict.term|escape }}"</h2>
+      {% module 'search_results'
+        path='@hubspot/search_results'
+      %}
+    </div>
+  </section>
+</main>
+<style>
+  .main-banner input{
+    background-color: #FFF;
+    border: 1px solid #d1d6dc;
+    color: #33475b;
+    display: inline-block;
+    padding: 16px 20px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 3px;
+  }
+  .main-banner .hs-search-field { border: none; }
+  .main-banner .hs-search-field.hs-search-field--open .hs-search-field__suggestions{
+    left: 0;
+    max-width: 600px;
+    padding: 15px;
+    z-index: 9;
+  }
+</style>
+{% endblock body %}

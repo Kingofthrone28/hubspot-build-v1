@@ -1,0 +1,281 @@
+<div class="hub-view-courses">
+   <div class="hub-view-header">
+      <div class="tab-items">
+         <div class="tab-item">
+            <a id="defaultOpen" class="tab-item-link" onclick="openTab(event, 'most-popular')" href="javascript:void(0);">Most Popular</a>
+         </div>
+         <div class="tab-item">
+            <a class="tab-item-link" onclick="openTab(event, 'transformational-coaching')" href="javascript:void(0);">Transformational Coaching</a>
+         </div>
+         <div class="tab-item">
+            <a class="tab-item-link" onclick="openTab(event, 'yoga-meditation')" href="javascript:void(0);">Yoga &amp; Meditation</a>
+         </div>
+         <div class="tab-item">
+            <a class="tab-item-link" onclick="openTab(event, 'nutrition-wellness')" href="javascript:void(0);">Nutrition &amp; Wellness</a>
+         </div>
+      </div>
+   </div>
+   <div id="most-popular" class="hub-view-content">
+      <!-- card start here -->
+      {% if module.hubdb_rows_most_popular|length > 0 %}
+      {% for row in module.hubdb_rows_most_popular %}
+      {% set course_row = hubdb_table_row(row.table_id, row.id) %}
+      <div onclick="window.location.href= '{{course_row.inside_page_link}}'" class="hub-views-row">
+         <div class="hub-card course-teaser-card">
+            <div class="hub-card-img-group">
+               <div class="entity entity-paragraphs-item image-square">
+                 <div class="course-card-img" style="background: url('{{ course_row.featured_image.url }}')"></div>
+               </div>
+            </div>
+            <div class="hub-card-body">
+               <div class="course-badge-logo">
+                  <span>
+                  {% if course_row.category.label is string_containing 'Chopra' %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                  {% else %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                  {% endif %}
+                  </span>
+                  <span style="color: #2D3841;"><strong class="card-subtitle"> 
+                  {{ course_row.category.label }}
+                  </strong></span>
+                  <!--               <div class="card-badge nowrap" style="max-height: 2rem;">Special Savings</div> -->
+               </div>
+               <h5 class="card-title mt-1">
+                  <span style="color: #2D3841;">{{ course_row.name }}</span>
+                  <a class="float-icon" href="{{course_row.inside_page_link}}">
+                  <span class="icon icon-lg icon-arr-right icon-color-red"></span></a>
+               </h5>
+            </div>
+            <div class="hub-card-bottom-section">
+               <div class="course-teaser-price"> $0.00</div>
+               <div class="course-teaser-footer">
+                  <ul>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-clock"></span>
+                        {{ course_row.duration }}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-laptop"></span>
+                        {{ course_row.location_description}}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-globe"></span>
+                        {% for language in course_row.languages %}
+                        {{language.label}}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- card end here -->
+      {% endfor %}
+      {% endif %}
+   </div>
+   <div id="transformational-coaching" class="hub-view-content">
+      {% if module.hubdb_rows_transformational_coaching|length > 0 %}
+      {% for row in module.hubdb_rows_transformational_coaching %}
+      {% set course_row = row.columns %}
+      <div onclick="window.location.href= '{{course_row.inside_page_link}}'" class="hub-views-row">
+         <div class="hub-card course-teaser-card">
+            <div class="hub-card-img-group">
+               <div class="entity entity-paragraphs-item image-square">
+                  <img
+                     src="{{ course_row.featured_image.url }}"
+                     data-aspectratio="0.29" media="(min-width: 1200px)"
+                     srcset="{{ course_row.featured_image.url }}"
+                     alt="" />
+               </div>
+            </div>
+            <div class="hub-card-body">
+               <div class="course-badge-logo">
+                  <span>
+                  {% if course_row.category.label is string_containing 'Chopra' %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                  {% else %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                  {% endif %}
+                  </span>
+                  <span style="color: #2D3841;"><strong class="card-subtitle"> 
+                  {{ course_row.category.label }}
+                  </strong></span>
+                  <!--               <div class="card-badge nowrap" style="max-height: 2rem;">Special Savings</div> -->
+               </div>
+               <h5 class="card-title mt-1">
+                  <span style="color: #2D3841;">{{ course_row.name }}</span>
+                  <a class="float-icon" href="{{course_row.inside_page_link}}">
+                  <span class="icon icon-lg icon-arr-right icon-color-red"></span></a>
+               </h5>
+            </div>
+            <div class="hub-card-bottom-section">
+               <div class="course-teaser-price"> $0.00</div>
+               <div class="course-teaser-footer">
+                  <ul>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-clock"></span>
+                        {{ course_row.duration }}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-laptop"></span>
+                        {{ course_row.location_description}}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-globe"></span>
+                        {% for language in course_row.languages %}
+                        {{language.label}}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- card end here -->
+      {% endfor %}
+      {% endif %}
+   </div>
+   <div id="yoga-meditation" class="hub-view-content">
+      {% if module.hubdb_rows_yoga_meditation|length > 0 %}
+      {% for row in module.hubdb_rows_yoga_meditation %}
+      {% set course_row = row.columns %}
+      <div onclick="window.location.href= '{{course_row.inside_page_link}}'" class="hub-views-row">
+         <div class="hub-card course-teaser-card">
+            <div class="hub-card-img-group">
+               <div class="entity entity-paragraphs-item image-square">
+                  <img
+                     src="{{ course_row.featured_image.url }}"
+                     data-aspectratio="0.29" media="(min-width: 1200px)"
+                     srcset="{{ course_row.featured_image.url }}"
+                     alt="" />
+               </div>
+            </div>
+            <div class="hub-card-body">
+               <div class="course-badge-logo">
+                  <span>
+                  {% if course_row.category.label is string_containing 'Chopra' %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                  {% else %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                  {% endif %}
+                  </span>
+                  <span style="color: #2D3841;"><strong class="card-subtitle"> 
+                  {{ course_row.category.label }}
+                  </strong></span>
+                  <!--               <div class="card-badge nowrap" style="max-height: 2rem;">Special Savings</div> -->
+               </div>
+               <h5 class="card-title mt-1">
+                  <span style="color: #2D3841;">{{ course_row.name }}</span>
+                  <a class="float-icon" href="{{course_row.inside_page_link}}">
+                  <span class="icon icon-lg icon-arr-right icon-color-red"></span></a>
+               </h5>
+            </div>
+            <div class="hub-card-bottom-section">
+               <div class="course-teaser-price"> $0.00</div>
+               <div class="course-teaser-footer">
+                  <ul>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-clock"></span>
+                        {{ course_row.duration }}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-laptop"></span>
+                        {{ course_row.location_description}}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-globe"></span>
+                        {% for language in course_row.languages %}
+                        {{language.label}}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- card end here -->
+      {% endfor %}
+      {% endif %}
+   </div>
+   <div id="nutrition-wellness" class="hub-view-content">
+      {% if module.hubdb_rows_nutrition_wellness|length > 0 %}
+      {% for row in module.hubdb_rows_nutrition_wellness %}
+      {% set course_row = row.columns %}
+      <div onclick="window.location.href= '{{course_row.inside_page_link}}'" class="hub-views-row">
+         <div class="hub-card course-teaser-card">
+            <div class="hub-card-img-group">
+               <div class="entity entity-paragraphs-item image-square">
+                  <img
+                     src="{{ course_row.featured_image.url }}"
+                     data-aspectratio="0.29" media="(min-width: 1200px)"
+                     srcset="{{ course_row.featured_image.url }}"
+                     alt="" />
+               </div>
+            </div>
+            <div class="hub-card-body">
+               <div class="course-badge-logo">
+                  <span>
+                  {% if course_row.category.label is string_containing 'Chopra' %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                  {% else %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                  {% endif %}
+                  </span>
+                  <span style="color: #2D3841;"><strong class="card-subtitle"> 
+                  {{ course_row.category.label }}
+                  </strong></span>
+                  <!--               <div class="card-badge nowrap" style="max-height: 2rem;">Special Savings</div> -->
+               </div>
+               <h5 class="card-title mt-1">
+                  <span style="color: #2D3841;">{{ course_row.name }}</span>
+                  <a class="float-icon" href="{{course_row.inside_page_link}}">
+                  <span class="icon icon-lg icon-arr-right icon-color-red"></span></a>
+               </h5>
+            </div>
+            <div class="hub-card-bottom-section">
+               <div class="course-teaser-price"> $0.00</div>
+               <div class="course-teaser-footer">
+                  <ul>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-clock"></span>
+                        {{ course_row.duration }}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-laptop"></span>
+                        {{ course_row.location_description}}
+                     </li>
+                     <li>
+                        <span class="icon icon-sm icon-color-gray icon-globe"></span>
+                        {% for language in course_row.languages %}
+                        {{language.label}}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- card end here -->
+      {% endfor %}
+      {% endif %}
+   </div>
+</div>
+<script>
+   function openTab(evt, categoryName) {
+     var i, tabcontent, tablinks;
+     tabcontent = document.getElementsByClassName("hub-view-content");
+     for (i = 0; i < tabcontent.length; i++) {
+       tabcontent[i].style.display = "none";
+     }
+     tablinks = document.getElementsByClassName("tab-item-link");
+     for (i = 0; i < tablinks.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(" active", "");
+     }
+     document.getElementById(categoryName).style.display = "flex";
+     evt.currentTarget.className += " active";
+   }
+   
+   // Get the element with id="defaultOpen" and click on it
+   document.getElementById("defaultOpen").click();
+</script>

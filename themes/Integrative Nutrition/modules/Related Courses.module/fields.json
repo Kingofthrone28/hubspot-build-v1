@@ -1,0 +1,33 @@
+[ {
+  "id" : "c9157765-589d-9914-3b36-3c03c1cc9292",
+  "name" : "courses",
+  "display_width" : null,
+  "label" : "Courses",
+  "required" : true,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "table_name_or_id" : "6844700",
+  "columns_to_fetch" : [ "duration", "inside_page_link", "languages", "product_id", "name", "description", "course_topics", "tag", "category", "location_description", "featured_image", "levels" ],
+  "display_columns" : [ "name" ],
+  "type" : "hubdbrow",
+  "default" : [ {
+    "id" : null
+  } ]
+}, {
+  "id" : "2ac22177-ff25-79ed-3e90-dfc3dbead9c7",
+  "name" : "storefront_access_token",
+  "display_width" : null,
+  "label" : "Storefront access token",
+  "inline_help_text" : "This is needed to dynamically load course prices from Shopify API.",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+} ]

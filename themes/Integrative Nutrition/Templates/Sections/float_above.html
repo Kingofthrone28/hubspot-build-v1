@@ -1,0 +1,43 @@
+<!--
+ templateType: section
+ label: Content - Float Above
+ description: "Content that needs to be displayed above other sections"
+ isAvailableForNewContent: true
+ screenshotPath: ../../images/2column-2.png
+-->
+{# box section #}
+    {% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      vertical_alignment='MIDDLE',
+      class= 'section-above',
+      padding={ "default" : { "bottom" : "30px" } }
+    %}
+    {% dnd_column %}
+    {% dnd_row vertical_alignment='MIDDLE' %}
+    {% dnd_module path='@hubspot/image', horizontal_alignment="CENTER", offset=0, width=7,
+        img={
+          'alt': 'Stock placeholder image with grayscale geometrical mountain landscape',
+          'size_type': 'auto',
+          'src': get_asset_url('../../images/AdobeStock_-4.png')
+        } %}
+      {% end_dnd_module %}
+{% dnd_column offset=7, width=5, padding={ 'default': { 'left': 30 }, 'mobile': { 'top': 20, 'left': 0 } } %}
+{% dnd_row %}
+    {% dnd_module path='@hubspot/rich_text', padding={ 'bottom': 20 } %}
+        {% module_attribute 'html' %}
+        <h2>Section Header</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+{% end_dnd_row %}
+{% dnd_row %}
+      {% dnd_module path='../../modules/Button', link_text='Call-To-Action' %}{% end_dnd_module %}
+    {% end_dnd_row %}
+{% end_dnd_column %}
+  
+    {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+    {# End box section #}

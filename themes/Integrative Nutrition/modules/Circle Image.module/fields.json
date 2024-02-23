@@ -1,0 +1,22 @@
+[ {
+  "id" : "bdd05563-7a9b-1be7-e35b-876d41e7617e",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/vt-deepak-chopra.jpg",
+    "alt" : "vt-deepak-chopra",
+    "loading" : "lazy",
+    "width" : 480,
+    "height" : 370,
+    "max_width" : 480,
+    "max_height" : 370
+  }
+} ]

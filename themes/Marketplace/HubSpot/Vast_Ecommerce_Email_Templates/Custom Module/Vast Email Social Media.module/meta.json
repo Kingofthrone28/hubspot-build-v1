@@ -1,0 +1,48 @@
+{
+  "global" : false,
+  "content_types" : [ "ANY" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 113117566778,
+  "other_assets" : [ {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/facebook_legacy_color.png",
+    "autoload" : false,
+    "name" : "facebook_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/youtube_legacy_color.png",
+    "autoload" : false,
+    "name" : "youtube_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/instagram_legacy_color.png",
+    "autoload" : false,
+    "name" : "instagram_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/linkedin_legacy_color.png",
+    "autoload" : false,
+    "name" : "linkedin_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/rss_legacy_color.png",
+    "autoload" : false,
+    "name" : "rss_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/twitter_legacy_color.png",
+    "autoload" : false,
+    "name" : "twitter_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/xing_legacy_color.png",
+    "autoload" : false,
+    "name" : "xing_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/default_legacy_color.png",
+    "autoload" : false,
+    "name" : "default_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/googleplustpages_legacy_color.png",
+    "autoload" : false,
+    "name" : "googleplustpages_legacy_color.png"
+  }, {
+    "url" : "https://cdn2.hubspot.net/hubfs/298884/Vast/Ecommerce%20Follow%20Me%20Icons/pinterest_legacy_color.png",
+    "autoload" : false,
+    "name" : "pinterest_legacy_color.png"
+  } ],
+  "is_available_for_new_content" : true
+}

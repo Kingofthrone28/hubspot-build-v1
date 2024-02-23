@@ -1,0 +1,145 @@
+<div class="team-grid">
+  
+{% for card in module.cards %}
+  <div class="de-{{ (loop.index - 1) % 3}} fade has-animation team-card-outer{% if card.bio_option == 'card_flip' %} team-card-flip-outer{% endif %} column-{{ module.style_1.columns }}">
+    <div class="team-card-wrap team-square" id="{{name}}-{{loop.index}}">
+      <div class="team-card {% if module.style_1.drop_shadow %} drop-shadow{% endif %}" style="background: rgba({{ module.style_1.background_color.color|convert_rgb }}, {{ module.style_1.background_color.opacity / 100 }});">
+        <div class="team-img-wrap">
+          <div class="team-img {% if card.bio_option == 'pop_up' %}team-bio-link{% elif card.bio_option == 'card_flip' %}team-bio-card-link{% endif %}" data-id="{{name}}-{{loop.index}}" style="background: url({{card.headshot.src}})">
+          </div>
+        </div>
+        <div class="team-content-wrap">
+          <h4 class="team-name">{{ card.team_name }}</h4>
+          {% if card.content %}<div class="team-content">{{ card.content }}</div>{% endif %}
+          <div style="flex: 1;"></div>
+          {% if card.connect_links && card.bio_option == 'none' %}
+            <div class="team-connect">
+              <span style="margin-right:8px">Connect on</span> 
+              {% for item in card.connect_links %}
+              {% set href = item.link_field.url.href %}
+              {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              {% set rel = [] %}
+              {% if item.link_field.no_follow %}
+                {% do rel.append("nofollow") %}
+              {% endif %}
+              {% if item.link_field.open_in_new_tab %}
+                {% do rel.append("noopener") %}
+              {% endif %}
+              <span class="team-connect-icon">
+                <a href="{{ href }}" 
+                  {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                  {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                  >
+                  {% icon
+                    name="{{ item.icon_field.name }}"
+                    style="{{ item.icon_field.type }}"
+                    unicode="{{ item.icon_field.unicode }}"
+                    icon_set="{{ item.icon_field.icon_set }}"
+                  %}
+                </a>
+              </span>
+              {% endfor %}
+            </div>
+          {% elif card.bio_option != 'none' %}
+            <div class="team-connect">
+              <a class="{% if card.bio_option == 'pop_up' %}team-bio-link{% elif card.bio_option == 'card_flip' %}team-bio-card-link{% endif %}" data-id="{{name}}-{{loop.index}}" >Bio</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {% if card.bio_option == 'card_flip' %}
+      <div class="team-card-back {% if module.style_1.drop_shadow %} drop-shadow{% endif %}"  style="background: rgba({{ module.style_1.card_back_color.color|convert_rgb }}, {{ module.style_1.card_back_color.opacity / 100 }});">
+        <span class="close"><i class="fas fa-times" aria-hidden="true"></i></span>
+        <h4 class="team-name">{{ card.team_name }}</h4>
+        <div style="overflow:auto">{{ card.bio }}</div>
+        <div style="flex: 1"></div>
+        <div class="team-connect">
+          <div>
+            {% if card.connect_links %}
+            <span style="margin-right:8px">Connect on</span>
+              {% for item in card.connect_links %}
+              {% set href = item.link_field.url.href %}
+              {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+              {% endif %}
+              {% set rel = [] %}
+              {% if item.link_field.no_follow %}
+              {% do rel.append("nofollow") %}
+              {% endif %}
+              {% if item.link_field.open_in_new_tab %}
+              {% do rel.append("noopener") %}
+              {% endif %}
+              <span class="team-connect-icon">
+                <a href="{{ href }}" 
+                   {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                   >
+                  {% icon
+                          name="{{ item.icon_field.name }}"
+                          style="{{ item.icon_field.type }}"
+                          unicode="{{ item.icon_field.unicode }}"
+                          icon_set="{{ item.icon_field.icon_set }}"
+                        %}
+                </a>
+              </span>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if card.bio_option == 'pop_up' %}
+  <div class="team-bio-pop-wrap" id="team-bio-{{name}}-{{loop.index}}">
+    <div class="team-bio-pop">
+      <span class="close"><i class="fas fa-times"></i></span>
+      <div class="team-bio-pop-of">
+        <div class="team-img" style="background: url({{card.headshot.src}})"></div>
+        <div class="team-bio-content">
+          <h2>{{ card.team_name }}</h2>
+          <div>{{ card.bio }}</div>
+          {% if card.connect_links %}
+          <div class="team-connect">
+            <div style="flex: 1">
+              <span style="margin-right:8px">Connect on</span>
+                {% for item in card.connect_links %}
+                {% set href = item.link_field.url.href %}
+                {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+                {% endif %}
+                {% set rel = [] %}
+                {% if item.link_field.no_follow %}
+                {% do rel.append("nofollow") %}
+                {% endif %}
+                {% if item.link_field.open_in_new_tab %}
+                {% do rel.append("noopener") %}
+                {% endif %}
+                <span class="team-connect-icon">
+                  <a href="{{ href }}" 
+                     {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                     {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                     >
+                    {% icon
+                            name="{{ item.icon_field.name }}"
+                            style="{{ item.icon_field.type }}"
+                            unicode="{{ item.icon_field.unicode }}"
+                            icon_set="{{ item.icon_field.icon_set }}"
+                          %}
+                  </a>
+                </span>
+                {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  </div>
+{% endfor %}
+  
+</div>

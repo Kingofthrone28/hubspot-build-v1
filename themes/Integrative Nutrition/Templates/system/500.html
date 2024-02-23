@@ -1,0 +1,23 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: 500 error
+  screenshotPath: ../../images/template-previews/500-pv.png
+-->
+{% extends '../layouts/base.html' %}
+{% block header %}
+<div class="static-header">
+  {% module "theme_header" path="../../modules/Header", label="Header" %}
+</div>
+{% endblock header %}
+{% block body %}
+<div class="system-header"></div>
+<main class="body-container-wrapper">
+  <section class="content-wrapper dnd-section">
+    <div class="error-page" data-error="500">
+      <h1 class="error-page__heading"><span style="font-size: 1.5em;">Error 500</span><br>Something isn't quite right</h1>
+      <p>Sorry, an internal server error occurred. But have no fear, we're on the case!</p>
+    </div>
+  </section>
+</main>
+{% endblock body %}

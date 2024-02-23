@@ -1,0 +1,10 @@
+[ {
+  "id" : "cf3bef8a-3865-5a3a-daaa-7e0f3ebd4862",
+  "name" : "order_summary",
+  "display_width" : null,
+  "label" : "Order Summary",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<div><strong>{{line_item.name}}</strong></div>\n<div>{{line_item.description}}</div>\n<div>{{line_item.quantity}}&nbsp;@&nbsp;{{line_item.amount}}</div>"
+} ]

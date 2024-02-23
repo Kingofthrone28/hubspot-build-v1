@@ -1,0 +1,32 @@
+{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
+<div class="custom-text{% if module.special_list_character %} spc-list{% endif %} {% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="display: {{ module.style.display }};{% if module.style.min_height %}min-height: {{ module.style.min_height }}px;{% endif %}">
+  <div class="border-overlap {% if module.image_location == 'left' %}left{% else %}right{% endif %}" style="{{background}}margin: {{ module.style.spacing_field.margin.top.value }}{{ module.style.spacing_field.margin.top.units }} 0 {{ module.style.spacing_field.margin.bottom.value }}{{ module.style.spacing_field.margin.bottom.units }};{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};{% if module.style.min_height %}min-height: {{ module.style.min_height }}px;{% endif %}">
+    {% if module.image_location == 'left' %}
+    {% if module.image_field_1.src %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.width }}" height="{{ module.image_field_1.height }}" style="border-radius: {{ module.style.border_radius }}px;"' %}
+    {% if module.image_field_1.size_type == 'auto' %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.width }}" height="{{ module.image_field_1.height }}" style="border-radius: {{ module.style.border_radius }}px;max-width: 50%; height: auto;"' %}
+    {% elif module.image_field_1.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.max_width }}" height="{{ module.image_field_1.max_height }}" style="border-radius: {{ module.style.border_radius }}px;max-width: 50%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = module.image_field_1.loading != 'disabled' ? 'loading="{{ module.image_field_1.loading }}"' : '' %}
+    <img src="{{ module.image_field_1.src }}" alt="{{ module.image_field_1.alt }}" class="overlap-img" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+    {% endif %}
+    <div class="border-text" style="padding: {{ module.style.spacing_field.padding.top.value }}{{ module.style.spacing_field.padding.top.units }} {{ module.style.spacing_field.padding.left.value }}{{ module.style.spacing_field.padding.left.units }};">
+      {{ module.content }}
+    </div>
+    {% if module.image_location == 'right' %}
+    {% if module.image_field_1.src %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.width }}" height="{{ module.image_field_1.height }}" style="border-radius: {{ module.style.border_radius }}px;"' %}
+    {% if module.image_field_1.size_type == 'auto' %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.width }}" height="{{ module.image_field_1.height }}" style="border-radius: {{ module.style.border_radius }}px;max-width: 50%; height: auto;"' %}
+    {% elif module.image_field_1.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ module.image_field_1.max_width }}" height="{{ module.image_field_1.max_height }}" style="border-radius: {{ module.style.border_radius }}px;max-width: 50%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = module.image_field_1.loading != 'disabled' ? 'loading="{{ module.image_field_1.loading }}"' : '' %}
+    <img src="{{ module.image_field_1.src }}" alt="{{ module.image_field_1.alt }}" class="overlap-img" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+    {% endif %}
+  </div>
+</div>

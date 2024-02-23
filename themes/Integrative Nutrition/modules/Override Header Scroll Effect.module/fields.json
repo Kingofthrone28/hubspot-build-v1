@@ -1,0 +1,11 @@
+[ {
+  "id" : "7693d41e-b9d4-14e1-9198-35f802f64acd",
+  "name" : "no_scroll_effect",
+  "display_width" : null,
+  "label" : "No Scroll Effect",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+} ]

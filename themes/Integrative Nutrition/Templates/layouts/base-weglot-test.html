@@ -1,0 +1,74 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page_meta.html_title }}</title>
+    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+    {{ require_css(get_asset_url('../../css/main.css')) }}
+    {{ require_css(get_asset_url('../../css/slick.css')) }}
+    {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
+    {# Where possible, improve page performance and speed by combining external http requests to reduce your
+      overall number of calls -- here, you can use a single call to the gFonts api to get all the fonts you need
+      https://developers.google.com/fonts/docs/getting_started
+    #}
+    {# Include theme overrides #}
+    {{ require_css(get_asset_url('../../css/theme-overrides.css')) }}
+    {{ require_css(get_asset_url('../../css/ui.css')) }}
+    <script src="{{ get_asset_url('../../js/jquery-3.5.1.js') }}"></script>
+    {{ require_js(get_asset_url('../../js/ui.js')) }}
+    {{ require_js(get_asset_url('../../js/lazyload.js')) }}
+    {{ require_js(get_asset_url('../../js/slick.js')) }}
+    {{ require_js(get_asset_url('../../js/main.js')) }}
+    {{ standard_header_includes }}
+    <!-- Needle Embed Code -->
+    <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
+    <!-- Weglot Init -->
+    <link rel="alternate" hreflang="en" href="https://course.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.course.integrativenutrition.com">
+    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+      var weglotApiKey = "wg_8ba62aec1c27a90846ee8a15c4acf00d8";
+      var hostname = window.location.hostname;
+      var infoIIN = 'info.integrativenutrition.com';
+      if (hostname === infoIIN) {
+        weglotApiKey = "wg_9a4056032062028e8fdd8b0aa75aae418";
+      } 
+      Weglot.initialize({
+        api_key: weglotApiKey
+      });
+    </script>
+  </head>
+  <body class="page-{{ content.slug }}">
+    <div class="body-wrapper {{ builtin_body_classes }}">
+      {% set global_color = theme.global_colors.primary_color.color|convert_rgb|split(',') %}
+      {% set global_color2 = theme.global_colors.secondary_color.color|convert_rgb|split(',') %}
+      {% block header %}
+      {% module "language_switcher" path="@hubspot/language_switcher" %}
+      {#
+      {% module "theme_header" path="../../modules/Header", label="Header" %}
+      #}
+      {% module "theme_header" path="../../modules/header_new", label="Header" %}
+      {% endblock header %}
+      <div class="static-body responsive">
+        {% block body %}
+        {% endblock body %}
+      </div>
+      {% global_partial path='../partials/pop_ups.html' %}
+      {% block footer %}
+        {% global_partial path='../partials/flex_footer.html' %}
+      {% endblock footer %}
+    </div>
+    {{ standard_footer_includes }}
+  </body>
+</html>

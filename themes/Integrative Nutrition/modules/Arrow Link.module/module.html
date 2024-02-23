@@ -1,0 +1,13 @@
+{% set rel = [] %}
+{% if module.link_field.no_follow %}
+	{% do rel.append("nofollow") %}
+{% endif %}
+{% if module.link_field.open_in_new_tab %}
+	{% do rel.append("noopener") %}
+{% endif %}
+<div class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="text-align: {{ module.style.alignment }};">
+  <p style="display:inline-block;" id="{{ name }}">
+    <a href="{{module.link_field.url.href}}" {% if module.link_field.open_in_new_tab %}target="_blank"{% endif %}{% if rel %}rel="{{ rel|join(" ") }}"{% endif %} title="{{ module.descriptive_text }}" class="arrow-link color-{{ module.style.color }}">{% if module.style.bold %}<strong>{{ module.link_text }}</strong>{% else %}{{ module.link_text }}{% endif %} {% if theme.spacing.arrow_type == 'chevron' %}<i class="fal fa-chevron-right"></i>{% elif theme.spacing.arrow_type == 'caret' %}<i class="fas fa-caret-right"></i>{% else %}<i class="fa{% if !module.style.bold %}l{% endif %} fa-arrow-right"></i>{% endif %}</a>
+  
+  </p>
+</div>

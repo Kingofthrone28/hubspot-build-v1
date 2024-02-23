@@ -1,0 +1,18 @@
+<div class="blog-page-search">
+  <div class="jd-blog-listing-filter">
+    <form id="jd-blog-search-form">
+      <input id="jd-blog-search-input" type="text" placeholder="Search" />
+    </form>
+  </div>
+</div>
+
+<script>
+  $('#jd-blog-search-form').submit(function(e) {
+    e.preventDefault();
+    var search = $('#jd-blog-search-input').val()
+    if(!search) {
+      return; 
+    }
+    location.href = '{{ blog_all_posts_url("default")|replace('/all', '') }}?search=' + encodeURIComponent(search);
+  });
+</script>

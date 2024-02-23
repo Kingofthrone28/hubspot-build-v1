@@ -1,0 +1,188 @@
+[ {
+  "id" : "e075ecab-4ec4-4d08-fdf4-af51c3c8210d",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "49fa2698-8f6f-5956-ea9b-b7bd52e017ff",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeDown"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "animation" : { }
+  }
+}, {
+  "id" : "447964ba-5cef-a2e0-f9ae-ee84978f72cc",
+  "name" : "options",
+  "display_width" : null,
+  "label" : "Options",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "0ceffc2b-8bc4-8236-dd1c-9b80780809d0",
+    "name" : "name_field",
+    "display_width" : null,
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4 style=\"font-size: 36px;\"><span style=\"color: #ffffff;\">$10K</span></h4>"
+  }, {
+    "id" : "79f1dc00-263b-7874-8fab-a0ab7add3aea",
+    "name" : "card_description",
+    "display_width" : null,
+    "label" : "Card Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p style=\"font-size: 24px;\"><strong><span style=\"color: #ffffff;\">Basic-Level</span></strong></p>"
+  }, {
+    "id" : "718fe8d3-d11d-13dd-586a-ac82a9026408",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/Door-Demo-Hero.jpg",
+      "alt" : "Door-Demo-Hero",
+      "loading" : "lazy",
+      "width" : 1440,
+      "height" : 650,
+      "max_width" : 1440,
+      "max_height" : 650
+    }
+  }, {
+    "id" : "bfa347c8-b9fc-98b8-6d39-5ac617e6fa6c",
+    "name" : "inside_description",
+    "display_width" : null,
+    "label" : "Inside Description",
+    "help_text" : "Displayed on hover",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>"
+  }, {
+    "id" : "c1b1112c-86dc-c6ec-cb44-ca5115ee3936",
+    "name" : "hover_overlay",
+    "display_width" : null,
+    "label" : "Hover Overlay",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ee6124",
+      "opacity" : 70
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "name_field" : "<h4 style=\"font-size: 36px;\"><span style=\"color: #ffffff;\">$10K</span></h4>",
+    "card_description" : "<p style=\"font-size: 24px;\"><strong><span style=\"color: #ffffff;\">Basic-Level</span></strong></p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/Door-Demo-Hero.jpg",
+      "alt" : "Door-Demo-Hero",
+      "loading" : "lazy",
+      "width" : 1440,
+      "height" : 650,
+      "max_width" : 1440,
+      "max_height" : 650
+    },
+    "inside_description" : "<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>",
+    "hover_overlay" : {
+      "color" : "#ee6124",
+      "opacity" : 70
+    }
+  }, {
+    "name_field" : "<h4 style=\"font-size: 36px;\"><span style=\"color: #ffffff;\">$10K</span></h4>",
+    "card_description" : "<p style=\"font-size: 24px;\"><strong><span style=\"color: #ffffff;\">Basic-Level</span></strong></p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/Door-Demo-Hero.jpg",
+      "alt" : "Door-Demo-Hero",
+      "loading" : "lazy",
+      "width" : 1440,
+      "height" : 650,
+      "max_width" : 1440,
+      "max_height" : 650
+    },
+    "inside_description" : "<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>",
+    "hover_overlay" : {
+      "color" : "#ee6124",
+      "opacity" : 70
+    }
+  }, {
+    "name_field" : "<h4 style=\"font-size: 36px;\"><span style=\"color: #ffffff;\">$10K</span></h4>",
+    "card_description" : "<p style=\"font-size: 24px;\"><strong><span style=\"color: #ffffff;\">Basic-Level</span></strong></p>",
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/Door-Demo-Hero.jpg",
+      "alt" : "Door-Demo-Hero",
+      "loading" : "lazy",
+      "width" : 1440,
+      "height" : 650,
+      "max_width" : 1440,
+      "max_height" : 650
+    },
+    "inside_description" : "<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>\n<p><span style=\"color: #ffffff;\"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></span></p>",
+    "hover_overlay" : {
+      "color" : "#ee6124",
+      "opacity" : 70
+    }
+  } ]
+} ]

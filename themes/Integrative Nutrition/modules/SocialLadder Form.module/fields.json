@@ -1,0 +1,51 @@
+[ {
+  "id" : "03edc80b-518a-3a76-2108-70082f648316",
+  "name" : "align",
+  "display_width" : null,
+  "label" : "Align",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "center"
+}, {
+  "id" : "c587a7ef-00c0-fba5-8e2e-b9bb3624ff56",
+  "name" : "area_guid",
+  "display_width" : null,
+  "label" : "Area GUID",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "D6B59468-BFA4-4A4A-8932-B932AA0BD900"
+}, {
+  "id" : "cdcf80b2-982f-42c1-0604-43c0d8608465",
+  "name" : "application_guid",
+  "display_width" : null,
+  "label" : "Application GUID",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "515BA370-D435-4DB7-BF9B-30289F648440"
+}, {
+  "id" : "7a01b6fe-be96-3860-4e7c-7cf6e7b25740",
+  "name" : "crm_shop_name",
+  "display_width" : null,
+  "label" : "CRM Shop Name",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "IIN"
+} ]

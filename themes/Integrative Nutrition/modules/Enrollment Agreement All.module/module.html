@@ -1,0 +1,379 @@
+{% set clean_dict = {} %}
+
+{% for key, value in request.query_dict.items() %}
+  {% set cleanKey = key|urldecode|trim %}
+  {% set cleanValue = value|urldecode|replace('™','')|replace('$', '')|replace('_', '')|replace('~', ' ')|trim %}
+  {% if cleanKey not in handled_params and cleanValue %}
+    {% do clean_dict.put(cleanKey, cleanValue) %}
+  {% endif %}
+{% endfor %}
+
+{% set address = clean_dict.Address %}
+{% set books = clean_dict.Books %}
+{% set course = clean_dict.Course %}
+{% set date = clean_dict.Date %}
+{% set hours = clean_dict.hours %}
+{% set phone = clean_dict.Phone %}
+{% set price = clean_dict.Price %}
+{% set registration = clean_dict.Registration %}
+{% set student_name = clean_dict.Name %}
+{% set variant = clean_dict.Variant %}
+{% set weeks = clean_dict.weeks %}
+
+{# TODO: missing:
+  first section:
+    Start Date: {Month/Day/Year}
+  last section:
+    Date of Birth: {M/D/Y}
+#}
+
+{# TODO: is functionality for adding unknown params to variant section needed? #}
+{% set handled_params = [
+  'Address',
+  'Books',
+  'Course',
+  'Date',
+  'Email',
+  'hours',
+  'hs_preview',
+  'Name',
+  'Phone',
+  'Price',
+  'ProductId',
+  'Registration',
+  'Tuition',
+  'Variant',
+  'weeks',
+  '__hsfp',
+  '__hssc',
+  '__hstc'
+] %}
+
+{% for key, value in clean_dict.items() %}
+  {% if key not in handled_params and value %}
+    {% do variant_dict.put(key, value) %}
+  {% endif %}
+{% endfor %}
+  
+{# TODO: why is product being set here? #}
+{% set query = 'name='~ course %}
+{% set crm_options = [
+  'ip__shopify__body_html',
+  'ip__shopify__handle',
+  'name',
+  'enrollment_agreement___english',
+  'enrollment_agreement___spanish'
+] %}
+{% set product = crm_objects('product', query, crm_options|join(','), false) %}
+
+{% set remove_url = request.query|replace('~', ' ') %}
+{% set search_url = remove_url|split('&') %}
+
+{% set language_code = 'es' if request.query is containing 'Spanish' else 'en' %}
+
+{# TODO: why is count being set here? #}
+{% set count = [] %}
+
+{% set language_settings = {
+  address: {
+    label: {
+      en: 'Student Address',
+      es: 'Dirección del estudiante'
+    }
+  },
+  books: {
+    label: {
+      en: 'Books and Materials',
+      es: 'Libros y Materiales'
+    },
+    label_suffix: {
+      en: 'non-refundable once received',
+      es: 'no reembolsables una vez recibidos'
+    }
+  },
+  course: {
+    label: {
+      en: 'The Course, Tuition, and Fees',
+      es: 'Programa, matrícula y tarifas'
+    },
+  },
+  date: {
+    label: {
+      en: 'Date',
+      es: 'Fecha'
+    }
+  },
+  email: {
+    label: {
+      en: 'Student Email',
+      es: 'Correo electrónico del estudiante'
+    }
+  },
+  page_heading: {
+    label: {
+      en: 'Enrollment Agreement',
+      es: 'Acuerdo de inscripción español'
+    }
+  },
+  phone: {
+    label: {
+      en: 'Student Phone',
+      es: 'Teléfono del estudiante'
+    }
+  },
+  price: {
+    label: {
+      en: 'Total cost',
+      es: 'Costo total'
+    }
+  },
+  receiver: {
+    instructions: {
+      en: 'To be completed by school official upon receipt',
+      es: 'A ser completado por el funcionario escolar al recibirlo'
+    },
+    label: {
+      en: 'Received by',
+      es: 'Recibido por'
+    }
+  },
+  registration: {
+    label: {
+      en: 'Registration',
+      es: 'La matrícula'
+    },
+    label_suffix: {
+      en: 'non-refundable',
+      es: 'no reembolsables'
+    }
+  },
+  signature: {
+    label: {
+      en: 'Signature of Licensed School Director',
+      es: 'Firma del Funcionario Escolar Autorizado'
+    }
+  },
+  student_name: {
+    label: {
+      en: 'Student Name',
+      es: 'Nombre del estudiante'
+    }
+  },
+  tuition: {
+    label: {
+      en: 'Tuition',
+      es: 'Matrícula'
+    }
+  },
+  variant: {
+    label: {
+      en: 'Session',
+      es: 'Session'
+    },
+  }
+}
+%}
+<!--
+  terms: {
+    body: {
+      en: (
+        <p>
+          The Institute for Integrative Nutrition (“IIN”) and the above named student
+          (“student” or “you”) (collectively, the “Parties”) hereby enter into this
+          enrollment agreement (“Enrollment Agreement”) which sets forth the terms and
+          conditions of your access to and use of {{ course }} (the “Program”) offered
+          by IIN, including but not limited to, IIN’s websites and apps. By accepting
+          this Enrollment Agreement, you agree to the terms set forth herein including
+          the arbitration, class-action waiver, and limitation of liability
+          provisions, and all other terms, rules, policies, regulations, and/or
+          guidelines set forth therein. You also agree to the terms set forth in IIN’s
+          Student Catalog and any other agreements between IIN and the student
+          (together with the Enrollment Agreement, the “Agreements”).
+        </p>
+      `,
+      es: `
+        <p>
+          El “Total restante”, según se establece en la tabla anterior, es su
+          obligación financiera y puede variar del "Costo total del programa" que
+          figura en el Acuerdo de inscripción a continuación. No hay sanciones por
+          hacer los pagos antes de tiempo.
+        </p>
+        <p>
+          El Institute for Integrative Nutrition ("IIN") y el estudiante mencionado
+          anteriormente (“estudiante” o “usted”) (colectivamente denominados las
+          “Partes”) celebran este acuerdo de inscripción (“Acuerdo de Inscripción”)
+          que establece los términos y condiciones de su acceso y uso del curso {{
+          course }} (el “Programa”) ofrecido por IIN, incluidos, entre otros, los
+          sitios web y las aplicaciones de IIN. Al firmar este Acuerdo de Inscripción,
+          usted acepta los términos establecidos en este documento, incluido el
+          arbitraje, la renuncia a demanda colectiva y las disposiciones de limitación
+          de responsabilidad, y todos los demás términos, reglas, políticas,
+          regulaciones o lineamientos aquí establecidos. Usted también acepta los
+          términos establecidos en el Catálogo para Estudiantes de IIN y cualquier
+          otro acuerdo entre IIN y el estudiante (colectivamente denominados los
+          “Acuerdos”).
+        </p>
+      `,
+    }
+  },
+-->
+
+{% set variant_dict = {} %}
+
+{% if variant %}
+  {% do variant_dict.put(language_settings.variant.label[language_code], variant) %}
+{% endif %}
+{% if student_name %}
+  {% do variant_dict.put(language_settings.student_name.label[language_code], student_name) %}
+{% endif %}
+{% if email %}
+  {% do variant_dict.put(language_settings.email.label[language_code], email) %}
+{% endif %}
+{% if address %}
+  {% do variant_dict.put(language_settings.address.label[language_code], address) %}
+{% endif %}
+{% if phone %}
+  {% do variant_dict.put(language_settings.phone.label[language_code], phone) %}
+{% endif %}
+
+  
+<section class="module-wrapper">
+  <h1>{{ course }} {{ language_settings.page_heading.label[language_code] }}</h1>
+
+  {% if variant_dict|length %}
+  <div class="variant-wrapper">
+  {% for key, value in variant_dict.items() %}
+    <div>
+      <strong>{{ key }}:</strong> {{ value }}
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+  <div class="terms">
+    {% if language_code == 'es' %}
+    <p>
+      El “Total restante”, según se establece en la tabla anterior, es su
+      obligación financiera y puede variar del "Costo total del programa" que
+      figura en el Acuerdo de inscripción a continuación. No hay sanciones por
+      hacer los pagos antes de tiempo.
+    </p>
+    <p>
+      El Institute for Integrative Nutrition ("IIN") y el estudiante mencionado
+      anteriormente (“estudiante” o “usted”) (colectivamente denominados las
+      “Partes”) celebran este acuerdo de inscripción (“Acuerdo de Inscripción”)
+      que establece los términos y condiciones de su acceso y uso del curso
+      {{ course }} (el “Programa”) ofrecido por IIN, incluidos, entre otros, los
+      sitios web y las aplicaciones de IIN. Al firmar este Acuerdo de Inscripción,
+      usted acepta los términos establecidos en este documento, incluido el
+      arbitraje, la renuncia a demanda colectiva y las disposiciones de limitación
+      de responsabilidad, y todos los demás términos, reglas, políticas,
+      regulaciones o lineamientos aquí establecidos. Usted también acepta los
+      términos establecidos en el Catálogo para Estudiantes de IIN y cualquier
+      otro acuerdo entre IIN y el estudiante (colectivamente denominados los
+      “Acuerdos”).
+    </p>
+    {% else %}
+    <p>
+      The Institute for Integrative Nutrition (“IIN”) and the above named student
+      (“student” or “you”) (collectively, the “Parties”) hereby enter into this
+      enrollment agreement (“Enrollment Agreement”) which sets forth the terms and
+      conditions of your access to and use of {{ course }} (the “Program”) offered
+      by IIN, including but not limited to, IIN’s websites and apps. By accepting
+      this Enrollment Agreement, you agree to the terms set forth herein including
+      the arbitration, class-action waiver, and limitation of liability
+      provisions, and all other terms, rules, policies, regulations, and/or
+      guidelines set forth therein. You also agree to the terms set forth in IIN’s
+      Student Catalog and any other agreements between IIN and the student
+      (together with the Enrollment Agreement, the “Agreements”).
+    </p>
+    {% endif %}
+    <h2>{{ language_settings.course.label[language_code] }}</h2>
+    {% if books or course or hours or price or registration or weeks  %}
+    <table>
+      {% if course or hours or weeks %}
+      <tr>
+        <td colspan="2">
+          {% if course %}
+          <h3>{{ course }}</h3>
+          {% endif %}
+          {% if hours and language_code == 'es' %}
+          <p>Duración del programa: {{ hours }} horas</p>
+          {% elif hours %}
+          <p>Program length: {{ hours }} clock hours</p>
+          {% endif %}
+          {% if weeks and language_code == 'es' %}
+          <p>Este curso puede completarse en {{ weeks }} semanas
+          (incluyendo recesos programados).</p>
+          {% elif weeks %}
+          <p>This program is normally completed in {{ weeks }} weeks
+          (includes scheduled breaks).</p>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+      {% if registration %}
+      <tr>
+        <th scope="row">
+          {{ language_settings.registration.label[language_code] }}
+          <em>({{ language_settings.registration.label_suffix[language_code] }})</em>
+        </th>
+        <td>
+          ${{ registration }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if registration or books %}
+      <tr>
+        {% set dealerval = dealer|render %}
+        <th scope="row">
+          {{ language_settings.tuition.label[language_code] }}
+        </th>
+        <td>
+          ${{ price|int - registration|int - books|int }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if books %}
+      <tr>
+        <th scope="row">
+          {{ language_settings.books.label[language_code] }}
+          <em>({{ language_settings.books.label_suffix[language_code] }})</em>
+        </th>
+        <td>
+          ${{ books }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if price %}
+      <tr>
+        <th scope="row">
+          {{ language_settings.price.label[language_code] }}
+        </th>
+        <td>
+          ${{ price }}
+        </td>
+      </tr>
+      {% endif %}
+    </table>
+    {% endif %}
+    {% if language_code == 'es' %}
+    {{ module.fallback_agreement_es_ }}
+    {% else %}
+    {{ module.fallback_agreement }}
+    {% endif %}
+    {% if date %}
+    <p>
+      <strong>{{ language_settings.date.label[language_code] }}:</strong> {{ date }}
+    </p>
+    {% endif %}
+    <p>{{ language_settings.receiver.instructions[language_code] }}</p>
+    {% if student_name %}
+    <p>
+      <strong>{{ language_settings.receiver.label[language_code] }}:</strong> {{ student_name }}
+    </p>
+    {% endif %}
+    <p>
+      <strong>{{ language_settings.signature.label[language_code] }}:</strong>
+    </p>
+  </div>
+</section>

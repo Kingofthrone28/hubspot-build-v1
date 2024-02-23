@@ -1,0 +1,101 @@
+<!--
+ templateType: section
+ label: Content - Timeline
+ description: "A timeline section"
+ isAvailableForNewContent: true
+ screenshotPath: ../../images/IIN_timeline.png
+-->
+{# Hero section #}
+{% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      background_color="rgba(248, 245, 240, 1)"
+    %}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "default" : {
+        "bottom" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;">History of IIN</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Timeline",
+        offset=0,
+        width=12,
+        item=[ {
+          "content" : "<p>Founder Joshua Rosenthal brought together 20 like-minded individuals in a rented kitchen in the heart of New York City to discuss health and wellbeing, sparking the fire that would soon turn into the largest nutrition and health coaching school in the world.</p>",
+          "year" : "1992"
+        }, {
+          "content" : "<p>The Health Coach Training Program curriculum begins to take shape, as the coaching component of the curriculum is developed and the term “Health Coach” starts to gain traction.</p>",
+          "year" : "1993"
+        }, {
+          "content" : "<p>The first class of IIN graduates, and thus creates the first ripple in improving health and happiness around the world.</p>",
+          "year" : "1994"
+        }, {
+          "content" : "<p>The first international student - from the Netherlands - enrolls in the Health Coach Training Program.</p>",
+          "year" : "1997"
+        }, {
+          "content" : "<p>IIN has rapidly expanded and Joshua Rosenthal hosts his first live class at Lincoln Center in New York City with 1,000 students and leading experts in health and wellness.</p>",
+          "year" : "2005"
+        }, {
+          "content" : "<p>Forbes magazine recognizes the “professional coach” as one of the fastest-growing careers to make a six figure income.</p>",
+          "year" : "2006"
+        }, {
+          "content" : "<p>Joshua Rosenthal’s first book, Integrative Nutrition: Feed Your Hunger for Health &amp; Happiness is published.</p>",
+          "year" : "2007"
+        }, {
+          "content" : "<p>IIN becomes licensed by the New York State Department of Education, setting the wheels in motion for more important credentialing as an institution.</p>",
+          "year" : "2009"
+        }, {
+          "content" : "<p>After 5 amazing years hosting IIN’s Health Coach Training Program live and in-person, the curriculum is moved to be hosted entirely online.</p>",
+          "year" : "2010"
+        }, {
+          "content" : "<p>IIN forges its first educational partnership with Goddard College, and is officially recognized by The National College Credit Recommendation Service (NCCRS), an organization that evaluates non-traditional educational programs for college credit equivalencies.</p>",
+          "year" : "2012"
+        }, {
+          "content" : "<p>IIN creates its first “Advanced Course” offering called Launch Your Dream Book, geared towards graduates of the Health Coach Training Program to publish their own book(s).</p>",
+          "year" : "2014"
+        }, {
+          "content" : "<p>IIN partners with advocates and policy makers in Washington, D.C. to pursue further recognition of the health coaching profession.</p>",
+          "year" : "2015"
+        }, {
+          "content" : "<p>IIN recognizes two huge milestones: 1) 100,000 students and graduates in 175 countries around the world! And 2) approval by the National Board for Health and Wellness Coaches (NBHWC) for graduates to pursue certification.</p>",
+          "year" : "2016"
+        }, {
+          "content" : "<p>IIN gets its first resolution passed in the Senate, The National Health and Wellness Coach Recognition Resolution <a href='https://www.congress.gov/115/bills/sres67/BILLS-115sres67ats.pdf' target='_blank' rel='noopener'>(S.Res.67)</a>. The resolution signified the official recognition of the important work of Health Coaches to improve the health and happiness of the nation, in addition to recognizing the first-ever Health and Wellness Coach Recognition Week.</p>",
+          "year" : "2018"
+        }, {
+          "content" : "<p>Founder Joshua Rosenthal, after 25 years of leadership, passes the torch to Lynda Cloud to further the global growth of IIN, bringing in new leaders with fresh perspective and an eagerness to continue spreading the ripple effect.</p>",
+          "year" : "2018"
+        }, {
+          "content" : "<p>Health Coaching Category III CPT codes are approved by the American Medical Association, paving the way for eventual insurance coverage of health coaching services. This is a tremendous step forward for the health coaching profession! You can read more about this health coach advancement <a href='https://www.integrativenutrition.com/blog/2019/10/health-coaching-cpt-codes-set-up-integrative-nutrition-health-coaches-for-success' target='_blank' rel='noopener'>here</a>.</p>",
+          "year" : "2019"
+        }, {
+          "content" : "<p>In a difficult year across the globe with the COVID-19 pandemic, the IIN community banded together to take care of one another. We helped our community in creating <a href='https://www.integrativenutrition.com/blog/ten-ways-to-start-an-at-home-workout-routine-today' target='_blank' rel='noopener'>at-home workout routines</a>, finding ways to support others with <a href='https://www.integrativenutrition.com/blog/supporting-others-with-emotional-eating-during-difficult-times' target='_blank' rel='noopener'>emotional eating</a>, setting up the healthiest <a href='https://www.integrativenutrition.com/blog/how-to-create-the-ideal-combined-home-and-office-space' target='_blank' rel='noopener'>at-home office space</a>, sharing information around <a href='https://www.integrativenutrition.com/blog/preventing-chronic-disease-to-protect-your-health-during-a-pandemic' target='_blank' rel='noopener'>preventing chronic disease</a> in light of COVID-19 research, and much more.</p>",
+          "year" : "2020"
+        }, {
+          "content" : "<p>IIN received a variety of recognition for excellence in Health Coach education, including being named to TheBalanceCareers’ list of <a href='https://www.thebalancecareers.com/best-health-coach-certification-programs-5113267' target='_blank' rel='noopener'>#1 Best Health Coach Certification Programs</a>. Our Coaching Intensive Practicum (CIP) received <a href='https://www.integrativenutrition.com/blog/iin-nbhwc-approved-program-provider' target='_blank' rel='noopener'>full approval </a>from the National Board for Health and Wellness Coaching (NBHWC) and accreditation by the <a href='https://coachingfederation.org/' target='_blank' rel='noopener'>International Coaching Federation (ICF)</a> as a Continuing Coach Education (CCE) approved program.</p>",
+          "year" : "2021"
+        }, {
+          "content" : "<p>We are celebrating our 30th anniversary with the reimagining of our Health Coach Training ProgramTM, training the next generation of Health Coaches and Well BeIINgs to nourish, heal, and thrive and live a life they love! 30 years, 155,000 students and graduates, 175 countries—and still growing! We’re so proud of our global community of changemakers who are leading the health coaching revolution.</p>",
+          "year" : "2022"
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# End Hero section #}

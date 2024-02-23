@@ -1,0 +1,46 @@
+[ {
+  "id" : "15fec5f4-5db2-f54f-8b3c-366c677ee024",
+  "name" : "form_title",
+  "display_width" : null,
+  "label" : "Form Title",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h2>Form Title</h2>"
+}, {
+  "id" : "5d242407-c372-72b1-90de-6e0299fc8f0c",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://www.manobyte.com/hubfs/chub_backup/White%20Logo%20Blue%20Background.png",
+    "alt" : "White Logo Blue Background",
+    "loading" : "lazy",
+    "width" : 300,
+    "height" : 300,
+    "max_width" : 300,
+    "max_height" : 300
+  }
+}, {
+  "id" : "257f7560-5ea3-22e4-eb2d-52db7e645886",
+  "name" : "form_field",
+  "display_width" : null,
+  "label" : "Form",
+  "required" : false,
+  "locked" : false,
+  "type" : "form",
+  "default" : {
+    "form_id" : "",
+    "response_type" : "inline",
+    "message" : "<p>Success! Your message is sailing our way. We'll reach out by phone or email within 1 business day to hear more about your unique situation.&nbsp;</p>",
+    "gotowebinar_webinar_key" : null,
+    "form_type" : "HUBSPOT"
+  }
+} ]

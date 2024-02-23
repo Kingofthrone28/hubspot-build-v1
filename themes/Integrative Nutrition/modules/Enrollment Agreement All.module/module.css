@@ -1,0 +1,5 @@
+.dnd-section .terms table { border-radius: 0; background: none; width: 100%; }
+.dnd-section .terms td, .dnd-section .terms th { border: 1px solid; }
+.dnd-section .terms th[scope="row"] { text-align: left; }
+.logo-wrapper .mobile-click { display: none; }
+.variant-wrapper { border: 1px solid #2d3841; padding: 10px; margin-bottom: 20px; }

@@ -1,0 +1,48 @@
+<div class="custom-svg-wrapper align-{{ module.alignment }} {% if module.hide_on_mobile %}custom-svg-hide-mobile{% endif %}" style="width: {{ module.content_width }}px;height: {{ module.content_width }}px;">
+  {% for item in module.svg %}
+  {% if item.size %}{% set size = item.size %}{% else %}{% set size = 75 %}{% endif %}
+  {% if item.vertical_positioning %}{% set vert = item.vertical_positioning %}{% else %}{% set vert = 50 %}{% endif %}
+  {% if item.horizontal_positioning %}{% set hrz = item.horizontal_positioning %}{% else %}{% set hrz = 50 %}{% endif %}
+  <div class="custom-svg" style="top: {{vert}}%;left: {{hrz}}%;margin-top: -{{module.content_width * size / 200}}px;margin-left: -{{module.content_width * size / 200}}px;">
+    {% if item.svg_type == 'circle' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="{{ module.content_width * size / 100 }}" height="{{ module.content_width * size / 100 }}" viewBox="0 0 197 197">
+      <circle id="Ellipse_7" data-name="Ellipse 7" cx="98.5" cy="98.5" r="98.5" fill="{{ item.color_field.color }}"/>
+    </svg>
+    {% elif item.svg_type == 'eye' %}
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{ module.content_width * size / 100 }}" height="{{ module.content_width * size / 100 }}"
+         viewBox="0 0 227.5 227.5" style="enable-background:new 0 0 227.5 227.5;" xml:space="preserve">
+      <g id="Group_3435" transform="translate(-1424 11)">
+        <g id="Group_3434" transform="translate(1424 -11)">
+          <ellipse id="Ellipse_10" class="st0" cx="114" cy="114.1" rx="95.2" ry="95.2" fill="{{ item.color_field.color }}"/>
+          <g id="Ellipse_11" transform="matrix(0.914, 0.407, -0.407, 0.914, 70.078, 0)" fill="none" stroke="{{ item.color_field.color }}" stroke-width="7">
+            <ellipse class="st1" cx="86.1" cy="86.1" rx="113.7" ry="113.8" stroke="none"/>
+            <ellipse class="st2" cx="86.1" cy="86.1" rx="109.1" ry="109.1" fill="none"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    {% elif item.svg_type == 'striped' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="{{ module.content_width * size / 100 }}" height="{{ module.content_width * size / 100 }}" viewBox="0 0 142.522 142.522">
+      <g id="Group_3430" data-name="Group 3430" transform="translate(-575.02 -35)">
+        <path id="Path_4880" data-name="Path 4880" d="M600.218,126.031l97.126,97.126q2.341-1.325,4.6-2.842L603.06,121.431Q601.544,123.688,600.218,126.031Z" transform="translate(-15.989 -54.844)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4881" data-name="Path 4881" d="M586.824,153.891l91.41,91.41q2.671-.974,5.276-2.166l-94.52-94.52Q587.8,151.217,586.824,153.891Z" transform="translate(-7.49 -72.093)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4882" data-name="Path 4882" d="M577.891,185.943l82.435,82.434q3.075-.533,6.106-1.336l-87.205-87.205Q578.424,182.864,577.891,185.943Z" transform="translate(-1.822 -91.904)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4883" data-name="Path 4883" d="M617.321,101.744,717.45,201.873q2.05-1.633,4-3.438l-100.7-100.7Q618.954,99.692,617.321,101.744Z" transform="translate(-26.841 -39.81)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4884" data-name="Path 4884" d="M579.646,270.231l47.319,47.319a71.289,71.289,0,0,0,9.666,2.224l-59.209-59.209A71.3,71.3,0,0,0,579.646,270.231Z" transform="translate(-1.524 -143.13)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4885" data-name="Path 4885" d="M741.893,177.43,641.764,77.3q-2.05,1.633-4,3.438l100.7,100.7Q740.26,179.482,741.893,177.43Z" transform="translate(-39.81 -26.841)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4886" data-name="Path 4886" d="M575.057,223.518l68.954,68.954a71.742,71.742,0,0,0,7.305-.137l-76.122-76.122A71.742,71.742,0,0,0,575.057,223.518Z" transform="translate(0 -114.987)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4887" data-name="Path 4887" d="M611.73,341.02A71.312,71.312,0,0,0,627.2,352.766l-27.213-27.213A71.313,71.313,0,0,0,611.73,341.02Z" transform="translate(-15.84 -184.367)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4888" data-name="Path 4888" d="M881.04,71.709a71.317,71.317,0,0,0-15.468-11.746l27.214,27.214A71.317,71.317,0,0,0,881.04,71.709Z" transform="translate(-184.367 -15.84)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4889" data-name="Path 4889" d="M763.177,157.324,666.051,60.2q-2.341,1.325-4.6,2.842l98.884,98.884Q761.851,159.667,763.177,157.324Z" transform="translate(-54.844 -15.989)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4890" data-name="Path 4890" d="M857.57,86.945,810.251,39.626a71.284,71.284,0,0,0-9.666-2.224l59.209,59.209A71.286,71.286,0,0,0,857.57,86.945Z" transform="translate(-143.13 -1.524)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4891" data-name="Path 4891" d="M832.493,103.991,763.539,35.037a71.738,71.738,0,0,0-7.3.137L832.355,111.3A71.715,71.715,0,0,0,832.493,103.991Z" transform="translate(-114.987)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4892" data-name="Path 4892" d="M785.321,138.214,693.911,46.8q-2.671.974-5.276,2.166l94.52,94.52Q784.349,140.888,785.321,138.214Z" transform="translate(-72.093 -7.49)" fill="{{ item.color_field.color }}"/>
+        <path id="Path_4893" data-name="Path 4893" d="M808.4,120.305,725.963,37.871q-3.075.533-6.107,1.336l87.205,87.205Q807.864,123.384,808.4,120.305Z" transform="translate(-91.904 -1.821)" fill="{{ item.color_field.color }}"/>
+      </g>
+    </svg>
+    {% elif item.svg_type == 'custom' %}
+    {{ item.svg_code }}
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

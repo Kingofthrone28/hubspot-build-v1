@@ -1,0 +1,19 @@
+<div class="jd-cat-blocks">
+  {% for item in module.categories %}
+  <div class="jd-cat-block-wrap">
+    <a class="jd-cat-block" 
+       {% if item.category|lower != 'all' %}href="{{ blog_all_posts_url("default")|replace('/all', '') }}/tag/{{item.category|replace(' ', '-')|replace(',', '')|lower}}" 
+       {% else %}href="{{ blog_all_posts_url("default")|replace('/all', '') }}" 
+       {% endif %}
+       {% if item.bg_image.src %}style="background:url('{{item.bg_image.src}}'), rgba(0,0,0,.2)"
+       {% else %}style="background: rgba({{ item.bg_color.color|convert_rgb }}, {{ item.bg_color.opacity / 100 }}"
+       {% endif %}>
+      <div class="jd-cat-block-hover" style="background: rgba({{ item.hover_color.color|convert_rgb }}, {{ item.hover_color.opacity / 100 }});"></div>
+      <div class="jd-cat-block-content">
+        <div>{{ item.item_label }}</div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+

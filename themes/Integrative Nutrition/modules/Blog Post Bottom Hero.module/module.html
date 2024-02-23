@@ -1,0 +1,18 @@
+<div class="jd-post-hero" style="background:url('{{module.background.src}}')">
+  <div class="jd-post-hero-inner">
+    <div class="jd-post-hero-left">{{ module.left_content }}</div>
+    <div class="jd-post-hero-right">
+      <div class="jd-post-hero-form">
+        {% if module.form_title %}<h3 style="text-align:center;margin:10px 0 20px">{{module.form_title}}</h3>{% endif %}
+        {% form
+          form_to_use="{{ module.form_field.form_id }}"
+          response_response_type="{{ module.form_field.response_type }}"
+          response_message="{{ module.form_field.message }}"
+          response_redirect_id="{{ module.form_field.redirect_id }}"
+          response_redirect_url="{{module.form_field.redirect_url}}"
+          gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
+        %}
+      </div>
+    </div>
+  </div>
+</div>

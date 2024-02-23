@@ -1,0 +1,18 @@
+<div id="slWebAppWidget" style="
+  {% if module.align == "right" %} justify-content: flex-end
+  {% elif module.align == "center" %} justify-content: center
+  {% endif %}
+"></div>
+<script src="https://socialladder.rkiapps.com/SLWeb/slweb-frame.js"></script>
+<script>
+  // var areaGuid = "D6B59468-BFA4-4A4A-8932-B932AA0BD900";
+  var areaGuid = "{{ module.area_guid }}";
+  var appGuid = getParameterFromURLByName("appGuid");
+  if (!appGuid) {
+    appGuid = "{{ module.application_guid }}";
+  }
+  var campGuid = getParameterFromURLByName("campGuid");
+  var resGuid = getParameterFromURLByName("resGuid");
+  var crmShopName = "{{ module.crm_shop_name }}";
+  loadSLApplicationWidget(areaGuid, appGuid, "", "", campGuid, crmShopName, resGuid);
+</script>

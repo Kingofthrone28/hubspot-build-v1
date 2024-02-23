@@ -1,0 +1,8 @@
+<a href="{{ module.url_field.href }}" class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %}>
+  {% if module.image_field.src %}
+	<img class="top-img" src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}">
+  {% endif %}
+  {% if module.scrolling_image.src %}
+	<img class="scroll-img" src="{{ module.scrolling_image.src }}" alt="{{ module.scrolling_image.alt }}">
+  {% endif %}
+</a>

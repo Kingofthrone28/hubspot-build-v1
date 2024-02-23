@@ -1,0 +1,4 @@
+.course-catalog-no-results {
+  display: flex;
+  flex-wrap: wrap;
+}

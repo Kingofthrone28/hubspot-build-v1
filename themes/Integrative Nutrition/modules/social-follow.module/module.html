@@ -1,0 +1,52 @@
+{% macro setLinkAttributes(field) %}
+  {% set href = (field.url.type is equalto 'EMAIL_ADDRESS') ? 'mailto:' ~ field.url.href : field.url.href %}
+  {% if href %}
+    {{ {'href': '{{ href }}'}|xmlattr }}
+  {% endif %}
+
+  {% if field.open_in_new_tab and field.no_follow %}
+    {{ {'rel': 'noopener nofollow'}|xmlattr }}
+    {{ {'target': '_blank'}|xmlattr }}
+  {% elif field.open_in_new_tab %}
+    {{ {'rel': 'noopener'}|xmlattr }}
+    {{ {'target': '_blank'}|xmlattr }}
+  {% elif field.no_follow %}
+    {{ {'rel': 'nofollow'}|xmlattr }}
+  {% endif %}
+{% endmacro %}
+<div class="social-links align-{{ module.style.textalignment_field.text_align }}" id="{{ name }}" style="{{ module.style.textalignment_field.css }}">
+  {% for item in module.social_links %}
+    {% if item.social_account != 'custom_icon' %}
+      {% set social_icon = item.social_account %}
+    {% else %}
+      {% set social_icon = item.custom_icon.name %}
+    {% endif %}
+    <a class="social-link" {{ setLinkAttributes(item.social_link) }}><span class="hidden">{{ social_icon }}</span>
+      {% if item.custom_icon_svg %}
+        {{ item.custom_icon_svg }}
+      {% else %}
+      {% icon
+        extra_classes='social-icon',
+        name='{{ social_icon }}',
+        purpose='semantic',
+        style='SOLID',
+        title='{{ item.accessibility.title }}',
+        unique_in_loop=True
+      %}
+      {% endif %}
+    </a>
+  {% endfor %}
+</div>
+
+{% require_css %}
+<style>
+  #{{ name }} svg {
+    width: {{ module.style.icon_size }}px;
+    height: {{ module.style.icon_size }}px;
+  }
+  #{{ name }} path {
+    fill: {{ module.style.icon_color.color || theme.global_colors.secondary_color.color }};
+  }
+</style>
+{% end_require_css %}
+

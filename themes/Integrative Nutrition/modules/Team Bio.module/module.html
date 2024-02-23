@@ -1,0 +1,37 @@
+{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
+<div class="custom-text {% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{background}}{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};">
+  {% if module.image_field_1.src %}
+  {% if !module.image_set_as_background %}
+    {% if module.hero_team_bio %}
+    <div class="team-bio-img-as-bg">
+      <img src="{{ module.image_field_1.src }}" alt="" />
+      <div class="bio-text-on-img"> {{ module.text_on_image }}</div>
+    </div>
+    {% else %}
+      <img src="{{ module.image_field_1.src }}" alt="" />
+    {% endif %}
+  {% else %}
+    <div class="bio-img" style="background: url({{ module.image_field_1.src }}) center no-repeat;background-size: auto 100%;border-radius: {{ module.style.border_radius }}px;{% if module.style.min_height %}min-height: {{ module.style.min_height }}px;width: {{ (module.image_field_1.width * module.style.min_height) / module.image_field_1.height }}px;max-width: 100%;{% endif %}">
+    {% if module.text_on_image %}
+    <div class="bio-img-text" style="min-height: {{ module.style.min_height }}px;">
+      {{ module.text_on_image }}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endif %}
+  <div style="{{ module.style.spacing_field.css }};">
+    {{ module.content }}
+    {% if module.bio_text %}
+    <div class="dropdown-bio">
+      <div class="bio-content">
+        {{ module.bio_text }}
+      </div>
+      <div class="bio-label">
+        <span class="bio-closed"><i class="fa-solid fa-chevron-down"></i><strong>View Bio</strong></span>
+        <span class="bio-open"><i class="fa-solid fa-chevron-up"></i><strong>Close Bio</strong></span>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

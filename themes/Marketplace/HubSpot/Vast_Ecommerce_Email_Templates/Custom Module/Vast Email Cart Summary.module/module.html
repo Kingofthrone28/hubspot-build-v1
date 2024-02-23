@@ -1,0 +1,17 @@
+<h2 style="margin-top: 20px;">Abandoned cart summary</h2>
+<div class="order-summary">
+    {% email_each list="deal.line_items" item="line_item" %}
+        <table class="templateColumnWrapper" cellpadding="10" style="margin-top: 20px;">
+            <tbody>
+                <tr>
+                    <td class="column" style="vertical-align: middle;">
+                        <img src="{{line_item.ip__ecomm_bridge__product_image}}" width="130" style="max-width: 130px;">
+                    </td>
+                    <td class="column summary" style="vertical-align: top;">
+                        {{ module.order_summary }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% endemail_each %}
+</div>

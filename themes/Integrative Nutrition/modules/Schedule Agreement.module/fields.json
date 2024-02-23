@@ -1,0 +1,17 @@
+[ {
+  "id" : "4138c9b5-9244-763e-67ca-ecdcda0c7074",
+  "name" : "english_terms",
+  "display_width" : null,
+  "label" : "English Terms",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
+}, {
+  "id" : "02fb9ecb-fe3f-3e68-21bc-9d1d04d3a43a",
+  "name" : "spanish_terms",
+  "display_width" : null,
+  "label" : "Spanish Terms",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
+} ]

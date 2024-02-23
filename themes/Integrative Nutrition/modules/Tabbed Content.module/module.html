@@ -1,0 +1,23 @@
+<div class="tabbed-content{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} id="{{name}}">
+  <div class="tabs">
+    {% for tab in module.tabs %}
+    <div class="tab-wrap">
+      <div class="tab {% if loop.first %}tab-selected{% endif %}" data-id="tab-{{name}}-{{loop.index}}" data-parent="{{name}}">
+        {{tab.name_field}}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="tabs-content">
+    {% for tab in module.tabs %}
+    <div class="tab-content {% if loop.first %}tab-content-selected{% endif %}" id="tab-{{name}}-{{loop.index}}" {% if not loop.first %}style="display: none"{% endif %}>
+      {% if tab.image_field.src %}<div class="tab-img">
+        <img src="{{ tab.image_field.src }}" alt="{{ tab.image_field.alt }}">
+      </div>{% endif %}
+      <div class="tab-body{% if item.special_list_character %} spc-list{% endif %}">
+        {{tab.content}}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

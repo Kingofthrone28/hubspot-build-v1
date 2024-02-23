@@ -1,0 +1,22 @@
+<div id="img-{{name}}" class="b-a-img-wrapper{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="background: url({{ module.after_image.src }}) center no-repeat;background-size: cover;">
+  {% if module.before_image.src %}
+  {% set sizeAttrs = 'width="{{ module.before_image.width }}"' %}
+  {% if module.before_image.size_type == 'auto' %}
+  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+  {% elif module.before_image.size_type == 'auto_custom_max' %}
+  {% set sizeAttrs = 'width="{{ module.before_image.max_width }}" max-height="{{ module.before_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+  {% endif %}
+  {% set loadingAttr = module.before_image.loading != 'disabled' ? 'loading="{{ module.before_image.loading }}"' : '' %}
+  <img src="{{ module.before_image.src }}" alt="{{ module.before_image.alt }}" class="hidden-img" {{ loadingAttr }} {{ sizeAttrs }}>
+  {% endif %}
+  <div id="resizable-{{name}}" class="before-wrapper">
+    <div class="before-img" style="background: url({{ module.before_image.src }}) center left no-repeat;background-size: auto 100%;"></div>
+  </div>
+</div>
+<script>
+  $( function() {
+    $( "#resizable-{{name}}" ).resizable({
+      containment: "#img-{{name}}"
+    });
+  } );
+</script>

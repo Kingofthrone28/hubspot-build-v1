@@ -1,0 +1,520 @@
+[ {
+  "id" : "88955023-ed07-62cf-bd50-0e0557c67326",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2da35caa-3a71-592e-5e69-54cd723a0528",
+    "name" : "include_search_bar",
+    "display_width" : null,
+    "label" : "Include Search Bar",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "48a562c2-a345-160f-cfc6-7af8fa16a60e",
+    "name" : "image_size",
+    "display_width" : null,
+    "label" : "Image Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "stagger", "Staggered" ], [ "portrait", "Portrait" ], [ "landscape", "Landscape" ], [ "square", "Square" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "stagger"
+  }, {
+    "id" : "1864425f-7a60-5887-4563-ec05e73da943",
+    "name" : "height_of_2_items_in_px",
+    "display_width" : null,
+    "label" : "Height of 2 items in px",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "48a562c2-a345-160f-cfc6-7af8fa16a60e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "stagger",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 1000
+  }, {
+    "id" : "84184069-fa6c-ee09-3f6a-e5024f2523f6",
+    "name" : "items_per_page",
+    "display_width" : null,
+    "label" : "Items Per Page",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d8b5bfb-3854-0e69-726d-0f3fb19927c7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "step" : 1,
+    "type" : "number",
+    "default" : 6
+  }, {
+    "id" : "7d8b5bfb-3854-0e69-726d-0f3fb19927c7",
+    "name" : "show_all_items",
+    "display_width" : null,
+    "label" : "Show All Items",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "336ab9aa-5f56-8cb6-6eaf-3b1ebe157f92",
+    "name" : "number_of_columns_for_desktop",
+    "display_width" : null,
+    "label" : "Number of columns for desktop",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "max" : 4,
+    "step" : 1,
+    "type" : "number",
+    "default" : 2
+  }, {
+    "id" : "721d6c51-0c93-db5d-7a36-7425c6810bbf",
+    "name" : "image_background_color",
+    "display_width" : null,
+    "label" : "Image Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#999999",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "c7c4de3d-2006-dd8b-afc9-cbc95805eea7",
+    "name" : "image_border",
+    "display_width" : null,
+    "label" : "Image Border",
+    "required" : false,
+    "locked" : false,
+    "allow_custom_border_sides" : false,
+    "type" : "border",
+    "default" : { }
+  }, {
+    "id" : "d2876f2e-ebc7-7c1f-2eca-f47538db3f1b",
+    "name" : "animation",
+    "display_width" : null,
+    "label" : "Animation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+      "name" : "animation",
+      "display_width" : null,
+      "label" : "Animation",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeDown"
+    }, {
+      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+      "name" : "apply_animation_to",
+      "display_width" : null,
+      "label" : "Apply Animation to",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "column"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "include_search_bar" : true,
+    "image_size" : "stagger",
+    "height_of_2_items_in_px" : 1000,
+    "items_per_page" : 6,
+    "show_all_items" : false,
+    "number_of_columns_for_desktop" : 2,
+    "image_background_color" : {
+      "color" : "#999999",
+      "opacity" : 80
+    },
+    "image_border" : { },
+    "animation" : { }
+  }
+}, {
+  "id" : "4c4ce590-5bd7-0a77-c6b8-b04ed911d85b",
+  "name" : "items",
+  "display_width" : null,
+  "label" : "Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 6
+  },
+  "children" : [ {
+    "id" : "e7921778-a705-7c64-c045-99cff07e5f26",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    }
+  }, {
+    "id" : "11b519c9-4380-4377-e98a-d4b5c9c82771",
+    "name" : "image_size",
+    "display_width" : null,
+    "label" : "Image Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "natural", "Natural" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
+    "id" : "b08b91c9-8fa0-964a-ff9c-87448303c30d",
+    "name" : "image_position",
+    "display_width" : null,
+    "label" : "Image Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "top", "Top" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "8c6a9d28-aa77-fd30-c3c9-8e88219b4925",
+    "name" : "name_field",
+    "display_width" : null,
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>"
+  }, {
+    "id" : "9736e105-50a5-8fe1-e3c3-2e99401d30d5",
+    "name" : "link_field",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "b34440b7-7130-78f2-5bb4-09afbb214fe1",
+    "name" : "body_text",
+    "display_width" : null,
+    "label" : "Body Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>"
+  }, {
+    "id" : "337dd08b-b147-6f82-8cf7-f80ae1f9d743",
+    "name" : "inner_padding",
+    "display_width" : null,
+    "label" : "Inner Padding",
+    "inline_help_text" : "Can use px or %",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "0"
+  }, {
+    "id" : "8174acfd-a1d4-c7b5-ff33-432c455d6b69",
+    "name" : "use_overlay",
+    "display_width" : null,
+    "label" : "Use Overlay",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "fedd5364-690c-7dcf-40aa-6b1244285c14",
+    "name" : "overlay_content",
+    "display_width" : null,
+    "label" : "Overlay Content",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8174acfd-a1d4-c7b5-ff33-432c455d6b69",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : ""
+  }, {
+    "id" : "7bdd272f-2766-f16b-8e04-54c62da6ccb3",
+    "name" : "filter_values",
+    "display_width" : null,
+    "label" : "Filter Values",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "329bdd16-7b09-0b50-072e-f31b225223c1",
+      "name" : "values",
+      "display_width" : null,
+      "label" : "Values",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : null,
+        "default" : null
+      },
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  }, {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://www.manobyte.com/hubfs/2022%20Website%20Redesign/Images/ManoByte-Building-Material-Website-Grader.jpg",
+      "alt" : "ManoByte-Building-Material-Website-Grader",
+      "loading" : "lazy",
+      "width" : 1500,
+      "height" : 750,
+      "max_width" : 1500,
+      "max_height" : 750
+    },
+    "image_size" : "cover",
+    "image_position" : "center",
+    "name_field" : "<p><span style=\"color: #173753;\"><strong>Project Name</strong></span></p>",
+    "link_field" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "body_text" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>",
+    "inner_padding" : "0",
+    "use_overlay" : false,
+    "overlay_content" : "",
+    "filter_values" : { }
+  } ]
+} ]

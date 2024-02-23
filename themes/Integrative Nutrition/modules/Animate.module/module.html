@@ -1,0 +1,3 @@
+<div class="{% if module.apply_animation_to == 'this' %} {{ module.animation }}{% else %} load-parent{% endif %}"{% if module.apply_animation_to != 'this' %} data-load="{{ module.animation }}" data-target="{{ module.apply_animation_to }}"{% endif %} id="{{name}}">
+  <div class="edit-icon animate-icon"><i class="fas fa-reply"></i> Animation<br>Options</div>
+</div>

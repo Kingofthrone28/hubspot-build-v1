@@ -1,0 +1,156 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Help Me Choose
+  screenshotPath: /Integrative Nutrition/images/Help Me Choose.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<main class="body-container-wrapper help-me-choose-section">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+
+{# STEP FORM SECTION #}
+
+  {% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "default" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Full Step Form",
+        offset=0,
+        width=12,
+        background_image=[ {
+          "0" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "1" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "2" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "3" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "4" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "5" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "6" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "7" : {
+            "alt" : "iStock-871315860 1-1",
+            "height" : 800,
+            "loading" : "lazy",
+            "max_height" : 800,
+            "max_width" : 1068,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+            "width" : 1068
+          },
+          "alt" : "iStock-871315860 1-1",
+          "height" : 800,
+          "max_height" : 800,
+          "max_width" : 1068,
+          "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+          "width" : 1068
+        }, {
+          "alt" : "iStock-1313643282 1",
+          "height" : 800,
+          "loading" : "lazy",
+          "max_height" : 800,
+          "max_width" : 1440,
+          "size_type" : "auto",
+          "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-1313643282%201.jpg",
+          "width" : 1440
+        } ],
+        form_field={
+          "form_id" : "560a7049-23c2-4464-b831-4d277001c85e",
+          "form_type" : "HUBSPOT",
+          "message" : "Thank you for completing this quiz, your results will load momentarily.",
+          "response_type" : "inline"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+  {# END STEP FORM SECTION #}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

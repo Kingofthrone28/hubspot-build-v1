@@ -1,0 +1,23 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: 404 error
+  screenshotPath: ../../images/template-previews/404-pv.png
+-->
+{% extends '../layouts/base.html' %}
+{% block header %}
+<div class="static-header">
+  {% module "theme_header" path="../../modules/Header", label="Header" %}
+</div>
+{% endblock header %}
+{% block body %}
+<div class="system-header"></div>
+<main class="body-container-wrapper">
+  <section class="content-wrapper dnd-section">
+    <div class="error-page" data-error="404">
+      <h1 class="error-page__heading"><span style="font-size: 1.5em;">404</span><br>Page not found.</h1>
+      <a class="button" href="/">Go Home</a>
+    </div>
+  </section>
+</main>
+{% endblock body %}

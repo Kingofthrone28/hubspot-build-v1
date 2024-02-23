@@ -1,0 +1,27 @@
+{% if !request.postDict.inpageEditorUI %}
+{% for item in module.popup %}
+<div id="pop-{{ item.pop_up_id }}" class="re-pop-wrapper">
+  <div class="re-pop">
+    <div class="hide-labels-{{ item.hide_labels }}">
+      <span class="close" style="background: url({{ get_asset_url('/Integrative Nutrition/images/download.svg') }}) center;image-size: contain;"></span>
+      {{ item.popup_content }}
+      {% if item.add_form %}
+      {% form
+        form_to_use="{{ item.form_field.form_id }}"
+        response_response_type="{{ item.form_field.response_type }}"
+        response_message="{{ item.form_field.message }}"
+        response_redirect_id="{{ item.form_field.redirect_id }}"
+        response_redirect_url="{{ item.form_field.redirect_url}}"
+        gotowebinar_webinar_key="{{ item.form_field.gotowebinar_webinar_key }}"
+      %}
+      {% endif %}
+      {% if item.footer %}
+      <div class="pop-footer">
+        {{ item.footer }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}

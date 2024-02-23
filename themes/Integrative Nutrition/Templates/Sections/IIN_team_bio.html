@@ -1,0 +1,201 @@
+<!--
+ templateType: section
+ label: Content - 3 Column Team
+ description: "3 column team card section"
+ isAvailableForNewContent: true
+ screenshotPath: ../../images/IIN_team.png
+-->
+{# box section #}
+    {% dnd_section
+      max_width='{{theme.spacing.max_width}}',
+      class='three-column-section'
+    %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none"> <g clip-path="url(#clip0_3024_23607)"> <path d="M16.5 25C18.5 25 21.807 24.9775 25.6112 22.7811C29.4154 20.5847 30.6465 17.8333 31.0404 16.4247C31.0758 16.2973 31.0854 16.1642 31.0687 16.0331C31.0521 15.902 31.0095 15.7756 30.9434 15.6611C30.8773 15.5467 30.7891 15.4465 30.6839 15.3665C30.5787 15.2866 30.4586 15.2283 30.3306 15.1953C29.4079 14.9588 27.8145 14.745 25.7645 15.2313" stroke="#ED8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7.23574 15.2312C5.1859 14.745 3.59254 14.9588 2.66986 15.1953C2.54191 15.2283 2.42182 15.2866 2.31661 15.3665C2.21141 15.4465 2.12319 15.5467 2.05711 15.6611C1.99103 15.7755 1.94842 15.902 1.93176 16.0331C1.9151 16.1642 1.92474 16.2973 1.96009 16.4247C2.35401 17.8333 3.58506 20.5847 7.3893 22.7811C11.1935 24.9775 14.5005 25 16.5005 25" stroke="#ED8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16.5 25C16.5 25 21.5 22.2727 21.5 15C21.5 9.3019 18.4308 6.39405 17.1017 5.40197C16.928 5.27197 16.7169 5.20172 16.5 5.20172C16.2831 5.20172 16.072 5.27197 15.8983 5.40197C14.5692 6.39405 11.5 9.3019 11.5 15C11.5 22.2727 16.5 25 16.5 25Z" stroke="#ED8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16.5 25C17.9988 24.6812 22.0413 22.4022 24.4641 18.2057C26.887 14.0092 26.2902 10.6583 25.8169 9.20093C25.7407 8.96577 25.5801 8.7672 25.366 8.64361C25.1519 8.52001 24.8996 8.48017 24.6579 8.53179C23.2247 8.85671 21.8843 9.50369 20.7383 10.4237" stroke="#ED8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12.2615 10.4236C11.1156 9.50366 9.77522 8.8567 8.34205 8.53179C8.10031 8.48017 7.84802 8.52001 7.63395 8.64361C7.41988 8.7672 7.25923 8.96577 7.18307 9.20093C6.70975 10.6583 6.11299 14.0092 8.53584 18.2057C10.9587 22.4022 15.0012 24.6812 16.4999 25" stroke="#ED8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> <defs> <rect width="32" height="32" fill="white" transform="translate(0.5)"></rect> </defs> </svg>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="font-size: 30px;"><span>IIN Leadership</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=4,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=8,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=4,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=8,
+        width=4,
+        padding={
+          "default" : {
+            "left" : "0px",
+            "right" : "0px",
+            "top" : "0px"
+          }
+        },
+        margin={
+          "default" : {
+            "bottom" : "10px",
+            "top" : "10px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Team Bio",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+    {# End box section #}

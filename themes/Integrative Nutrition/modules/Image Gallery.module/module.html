@@ -1,0 +1,45 @@
+<div class="resi-slider-wrap{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %}>
+  <div class="resi-slider" id="{{ name }}">
+    {% for item in module.images %}
+      <div class="resi-img-wrap">
+        <div class="resi-img" style="background:url({{item.src}})" data-src="{{item.src}}">
+          <div class="resi-img-overlay"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div id="{{name}}-prev" class="resi-slider-prev"><i class="far fa-chevron-left"></i></div>
+  <div id="{{name}}-next" class="resi-slider-next"><i class="far fa-chevron-right"></i></div>
+</div>
+
+<div class="resi-img-pop" id="resi-img-pop-{{name}}">
+  <div class="resi-img-pop-close"><i class="fas fa-times" aria-hidden="true"></i></div>
+  <img src="{{item.src}}" />
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#resi-img-pop-{{name}}').appendTo($('body'));
+    
+    $('#{{name}}').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerPadding: '20%',
+      centerMode: true,
+      prevArrow: '#{{name}}-prev',
+      nextArrow: '#{{name}}-next'
+    });
+    
+    $('#{{name}} .resi-img').click(function() {
+      if($(this).parent().hasClass('slick-current')) {
+        $('#resi-img-pop-{{name}} img').attr('src', $(this).data('src'));
+        $('#resi-img-pop-{{name}}').addClass('resi-img-pop-show');
+      }
+    });
+    
+    $('#resi-img-pop-{{name}} .resi-img-pop-close').click(function() {
+       $(this).parent().removeClass('resi-img-pop-show');
+    })
+  });
+</script>

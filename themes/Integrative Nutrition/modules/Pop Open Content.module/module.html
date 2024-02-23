@@ -1,0 +1,29 @@
+{% if module.content_type == 'button' %}
+<div class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="text-align: {{ module.style.alignment }};">
+  <span class="hs-button open-popup" data-open="pop-{{name}}" style="background: {{ module.style.button_color.color }};color: {{ module.style.text_color.color }};">{{ module.button_text }}</span>
+</div>
+{% else %}
+<div class="open-popup{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} data-open="pop-{{name}}">
+  {{ module.content }}
+</div>
+{% endif %}
+{% if !request.postDict.inpageEditorUI %}
+<div id="pop-{{name}}" class="re-pop-wrapper">
+  <div class="re-pop">
+    <span class="close"><i class="fas fa-times"></i></span>
+    <div class="hide-labels-{{ module.popup.hide_labels }}">
+      {{ module.popup.popup_content }}
+      {% if module.popup.add_form %}
+      {% form
+        form_to_use="{{ module.popup.form_field.form_id }}"
+        response_response_type="{{ module.popup.form_field.response_type }}"
+        response_message="{{ module.popup.form_field.message }}"
+        response_redirect_id="{{ module.popup.form_field.redirect_id }}"
+        response_redirect_url="{{module.popup.form_field.redirect_url}}"
+        gotowebinar_webinar_key="{{ module.popup.form_field.gotowebinar_webinar_key }}"
+      %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

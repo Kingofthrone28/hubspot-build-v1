@@ -1,0 +1,445 @@
+[ {
+  "id" : "a10c050e-6a32-0de2-54e2-47721f7ad2f8",
+  "name" : "hover_style",
+  "display_width" : null,
+  "label" : "Hover Style",
+  "inline_help_text" : "Add some hover affects to make things more interesting. This is recommended If you add a URL to the section so people understand it is a link.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+    "name" : "add_hover_styles",
+    "display_width" : null,
+    "label" : "Add Hover Styles",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "def9e547-1d41-981f-4b9e-20475b08811f",
+    "name" : "expand",
+    "display_width" : null,
+    "label" : "Expand",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "b336e92b-b0fb-2cfa-a44b-d303f303125a",
+    "name" : "slide",
+    "display_width" : null,
+    "label" : "Slide",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "efdf2384-cdb3-0670-4669-38326eafc77d",
+    "name" : "color_field",
+    "display_width" : null,
+    "label" : "Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "ce52aa84-a452-70b2-4857-110a3e6ac8ee",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "c44b57c4-ca73-473b-f22b-666da6951686",
+    "name" : "drop_shadow",
+    "display_width" : null,
+    "label" : "Drop Shadow",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "61b5feb5-3873-e8e3-29d0-f371e26d923e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 0
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "add_hover_styles" : false,
+    "expand" : false,
+    "slide" : false,
+    "color_field" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "background_color" : {
+      "color" : "#ffffff",
+      "opacity" : 0
+    },
+    "drop_shadow" : {
+      "color" : "#000000",
+      "opacity" : 0
+    }
+  }
+}, {
+  "id" : "9ca30651-2512-8b11-96c7-06629483f719",
+  "name" : "icon_type",
+  "display_width" : null,
+  "label" : "Image Type",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "font", "Font Icon" ], [ "svg", "SVG" ], [ "image", "Image" ], [ "none", "None" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "font"
+}, {
+  "id" : "019e14ad-bdbc-2b85-0f0a-614491158d2f",
+  "name" : "svg",
+  "display_width" : null,
+  "label" : "SVG",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "visibility" : {
+    "controlling_field" : "9ca30651-2512-8b11-96c7-06629483f719",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "svg",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 123.53 131.35\"><defs><style>.cls-1{fill:#fff;}.cls-1,.cls-3{fill-rule:evenodd;}.cls-2{mask:url(#mask);}.cls-3{fill:#ff7a59;}</style><mask id=\"mask\" x=\"0\" y=\"0\" width=\"123.53\" height=\"131.35\" maskUnits=\"userSpaceOnUse\"><g id=\"mask-4\"><polygon id=\"path-3\" class=\"cls-1\" points=\"0 0 123.53 0 123.53 131.35 0 131.35 0 0\"/></g></mask></defs><title>HubSpot</title><g id=\"Layer_2\" data-name=\"Layer 2\"><g id=\"Layer_1-2\" data-name=\"Layer 1\"><g id=\"Group-15\"><g class=\"cls-2\"><path id=\"Fill-13\" class=\"cls-3\" d=\"M89.74,94.65a17.58,17.58,0,1,1,17.32-17.57A17.45,17.45,0,0,1,89.74,94.65m5.18-51.42V27.59a12,12,0,0,0,6.84-10.85v-.36a12,12,0,0,0-11.85-12h-.35a12,12,0,0,0-11.85,12v.36a12,12,0,0,0,6.84,10.85V43.23a33.41,33.41,0,0,0-16,7.14L26.26,17a14,14,0,0,0,.48-3.39A13.48,13.48,0,0,0,13.38,0,13.47,13.47,0,0,0,0,13.55,13.47,13.47,0,0,0,13.35,27.13a13.11,13.11,0,0,0,6.59-1.82L61.56,58.17a34.64,34.64,0,0,0,.51,38.56L49.42,109.58a10.54,10.54,0,0,0-3.14-.52,11.15,11.15,0,1,0,11,11.15,11.21,11.21,0,0,0-.51-3.19l12.52-12.7a33.34,33.34,0,0,0,20.47,7c18.66,0,33.79-15.35,33.79-34.28A34.12,34.12,0,0,0,94.92,43.23\"/></g></g></g></g></svg>"
+}, {
+  "id" : "94e6a2c9-b9d9-db1f-867c-45cf5b5bfa4d",
+  "name" : "icon_field",
+  "display_width" : null,
+  "label" : "Icon",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9ca30651-2512-8b11-96c7-06629483f719",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "font",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "icon_set" : "fontawesome-5.0.10",
+  "type" : "icon",
+  "default" : {
+    "name" : "check",
+    "unicode" : "f00c",
+    "type" : "SOLID"
+  }
+}, {
+  "id" : "2825a4d3-20c6-d602-b64a-6463c90a051d",
+  "name" : "image_field",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9ca30651-2512-8b11-96c7-06629483f719",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "image",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://www.manobyte.com/hubfs/ManoByte%202020/Icons/ERP-1.png",
+    "alt" : "ERP-1",
+    "width" : 203,
+    "height" : 194,
+    "max_width" : 203,
+    "max_height" : 194
+  }
+}, {
+  "id" : "7324eb2a-ed89-9cfc-c697-29cebbf3d13a",
+  "name" : "text",
+  "display_width" : null,
+  "label" : "Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h4><span style=\"color: #274c77;\">HubSpot</span></h4>"
+}, {
+  "id" : "936cc6b1-53f3-a59c-68d7-e515dbd2aacf",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e410ee3f-4bb0-7866-7f63-57d72c6a69ee",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Image",
+    "inline_help_text" : "Adjust the Image/Icon placement",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "000c76ba-d37d-fc59-dedb-da3d85de0648",
+      "name" : "icon_position",
+      "display_width" : null,
+      "label" : "Image Position",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "top", "Top" ], [ "left", "Left" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "f1ff8378-1545-cf87-559b-b77fd75ab047",
+      "name" : "image_full_width",
+      "display_width" : null,
+      "label" : "Image Full Width",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "718a396b-57c1-1906-01ed-c43b3182c201",
+      "name" : "icon_width",
+      "display_width" : null,
+      "label" : "Image Width",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_position" : "left",
+      "image_full_width" : false,
+      "icon_width" : 25
+    }
+  }, {
+    "id" : "3dd23004-b6d4-c94b-72be-0720d12d11cc",
+    "name" : "colors",
+    "display_width" : null,
+    "label" : "Colors",
+    "inline_help_text" : "Edit Content default colors.",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "935ce02f-5971-be15-e73e-278be929b6da",
+      "name" : "icon_color",
+      "display_width" : null,
+      "label" : "Icon Color",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "9ca30651-2512-8b11-96c7-06629483f719",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "41426238-a850-226e-b2dc-59207a6b2af4",
+      "name" : "color_field",
+      "display_width" : null,
+      "label" : "Color",
+      "help_text" : "Text colors can be edited in the text editor if you wish them to be different from the icon color.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#feb406",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "f92af586-953d-179d-72f9-55163815781f",
+      "name" : "background_color",
+      "display_width" : null,
+      "label" : "Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 0
+      }
+    }, {
+      "id" : "520b9f7f-0661-8c62-5d72-3843b98ca6cf",
+      "name" : "drop_shadow",
+      "display_width" : null,
+      "label" : "Drop Shadow",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 0
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "color_field" : {
+        "color" : "#feb406",
+        "opacity" : 100
+      },
+      "background_color" : {
+        "color" : "#ffffff",
+        "opacity" : 0
+      },
+      "drop_shadow" : {
+        "color" : "#000000",
+        "opacity" : 0
+      }
+    }
+  }, {
+    "id" : "e3466332-160e-6f97-3c66-c156606e03bb",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "help_text" : "If this module is not full height, adjust how it is aligned with other elements in its row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "top", "Top" ], [ "center", "Center" ], [ "bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon" : {
+      "icon_position" : "left",
+      "image_full_width" : false,
+      "icon_width" : 25
+    },
+    "colors" : {
+      "icon_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "color_field" : {
+        "color" : "#feb406",
+        "opacity" : 100
+      },
+      "background_color" : {
+        "color" : "#ffffff",
+        "opacity" : 0
+      },
+      "drop_shadow" : {
+        "color" : "#000000",
+        "opacity" : 0
+      }
+    },
+    "alignment" : "center"
+  }
+}, {
+  "id" : "e22ac5c8-f370-9bf7-1a63-33b95275ce1e",
+  "name" : "url_field",
+  "display_width" : null,
+  "label" : "URL",
+  "inline_help_text" : "Add a URL and turn this whole module info a clickable link. Add hover animations to make it clear to the user that this section is clickable.",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+  "type" : "url",
+  "default" : {
+    "content_id" : null,
+    "href" : "",
+    "type" : "CONTENT"
+  }
+}, {
+  "id" : "24d81969-b9b9-3cb8-ddaf-431f19363462",
+  "name" : "border_right_of_text",
+  "display_width" : null,
+  "label" : "Border Right Of Text",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+} ]

@@ -1,0 +1,51 @@
+<div class="button-wrapper" style="display:flex;flex-wrap:wrap;position:relative">
+{% for item in module.buttons %}
+  {% if item.jump_link %}
+    <span data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button {% if item.show_arrow %}jd-arrow-link{% endif %} {% if item.inverse_button_style %}jd-request-btn-inverse{% elif item.gray_button_style %}jd-gray-btn{% elif item.transparent_button_style %}jd-trans-btn{% else %}light-button{% endif %}"
+          style="{% if item.add_border %}border:2px solid {{item.border_color.color }}{% endif %}">
+      {{ item.text_field }}
+    </span>
+  {% if item.buttons_sub_row %}
+   <div class="jd-subitems" style="padding-top:10px;">
+    {% for subitem in item.buttons_sub_row %}
+        {% set href = subitem.link_field.url.href %}
+       <div>  
+         {% if subitem.text_field %}
+          <a href="{{ href }}" class="jd-arrow-link {% if subitem.show_arrow_sub %}jd-arrow-link{% endif %}"
+           style="{% if subitem.add_border %}border:2px solid {{subitem.border_color.color }}{% endif %}"
+          {% if subitem.link_field.open_in_new_tab %}target="_blank"{% endif %}
+          {% if subitem.link_field.rel %}rel="{{ subitem.link_field.rel }}"{% endif %}
+           >
+            {{ subitem.text_field }}   
+          </a>
+         {% endif %} 
+       </div>   
+     {% endfor %} 
+    </div> 
+  {% endif %} 
+  {% else %}
+    {% set href = item.link_field.url.href %}
+    {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+    {% endif %}
+    <a {% if item.show_chat %}id="needle-invite-english-page"{% endif %} href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link {% if item.show_arrow %}jd-arrow-link{% endif %} {% if item.inverse_button_style %}jd-request-btn-inverse{% elif item.gray_button_style %}jd-gray-btn{% elif item.transparent_button_style %}jd-trans-btn{% else %}light-button{% endif %}"
+      style="{% if item.add_border %}border:2px solid {{item.border_color.color }}{% endif %}"
+       {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+      {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+      >
+    {{ item.text_field }} 
+    </a>
+  {% endif %}
+{% endfor %}
+</div>
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .jd-request-btn { width: auto; margin-right: 10px; {{ module.style.spacing_field.css }} }
+  .jd-subitems a {color: black}
+  {% end_scope_css %} 
+</style>
+{% end_require_css %}
+

@@ -1,0 +1,10 @@
+.team-card-outer.column-3 { width: 33.33%; }
+.team-card-outer.column-4 { width: 25%; }
+@media(max-width: 1000px) {
+  .team-card-outer.column-3 { width: 50%; }
+  .team-card-outer.column-4 { width: 33.33%; }
+}
+@media(max-width: 767px) {
+  .team-card-outer.column-3 { width: 100%; }
+  .team-card-outer.column-4 { width: 50%; }
+}

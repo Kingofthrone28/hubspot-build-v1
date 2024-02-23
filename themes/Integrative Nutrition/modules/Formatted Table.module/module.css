@@ -1,0 +1,6 @@
+.mobile-table { display: none; }
+.dnd-section tbody tr { border-bottom: none; }
+@media(max-width: 767px) {
+  .desktop-table { display: none; }
+  .mobile-table { display: block; }
+}

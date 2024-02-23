@@ -1,0 +1,28 @@
+.course-catalog > div {
+    padding: 10px;
+    width: 33%;
+}
+.course-card-price {
+  display: block;
+}
+.add-to-cart-text {
+  vertical-align: super;
+}
+.course-card-category, .course-offer-text {
+  color: #d72a25
+}
+.price-container {
+  display: flex;
+  align-items: center;
+}
+.actual-price-strike {
+  text-decoration: line-through;
+  margin-left: 13px;
+  font-size: 14px
+}
+@media (max-width: 767px) {
+  .course-catalog > div {
+      padding: 10px;
+      width: 100%;
+  }
+}

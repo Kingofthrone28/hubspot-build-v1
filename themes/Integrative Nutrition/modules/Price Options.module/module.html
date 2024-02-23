@@ -1,0 +1,26 @@
+<div class="price-options{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} id="{{name}}">
+  {% for item in module.options %}
+  <div class="video-card-wrap">
+    <div class="video-card" style="background: url('{{item.image.src}}');" data-id="{{name}}-{{loop.index}}">
+      <div class="video-play-wrap"></div>
+      <div class="video-label">
+        <h4>{{item.name_field}}</h4>
+        {% if item.card_description %}
+        <div class="video-description">{{ item.card_description }}</div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="option-pop">
+      <div class="stagger-img-overlay" style="background: rgba({{item.hover_overlay.color|convert_rgb}}, {{item.hover_overlay.opacity / 100}})">
+        <div class="option-pop-header">
+          <div>{{item.name_field|striptags}}</div>
+          <div>{{ item.card_description|striptags }}</div>
+        </div>
+        <div class="option-pop-body">
+          {{ item.inside_description}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

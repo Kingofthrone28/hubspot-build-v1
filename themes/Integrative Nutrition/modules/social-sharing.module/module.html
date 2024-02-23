@@ -1,0 +1,50 @@
+<div class="social-sharing">
+    <span class="social-sharing__text">SHARE ON SOCIAL: </span>
+    <a href="javascript:;" class="social-sharing__link" title="facebook" target="popup"
+       onclick="window.open('http://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url }}','Facebook Share','width=600,height=600')"><span class="hidden">facebook</span>
+      {% icon
+        extra_classes='social-sharing__icon',
+        name='facebook-f',
+        purpose='semantic',
+        style='SOLID',
+        title='Facebook'
+      %}
+    </a>
+    <a href="javascript:;" class="social-sharing__link" title="twitter" target="popup"
+       onclick="window.open('https://twitter.com/intent/tweet?original_referer={{ content.absolute_url }}&url={{ content.absolute_url }}&source=tweetbutton&text=Twitter Share','Twitter Share','width=600,height=600')"><span class="hidden">twitter</span>
+      {% icon
+        extra_classes='social-sharing__icon',
+        name='twitter',
+        purpose='semantic',
+        style='SOLID',
+        title='Twitter'
+      %}
+    </a>
+    <a href="javascript:;" class="ssocial-sharing__link" title="email" target="popup"
+      onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}','Linkedin Share','width=600,height=600')"><span class="hidden">email</span>
+      {% icon
+        extra_classes='social-sharing__icon',
+        name='linkedin-in',
+        purpose='semantic',
+        style='SOLID',
+        title='Linkedin'
+      %}
+    </a>
+</div>
+{% require_css %}
+<style>
+  #hs_cos_wrapper_{{ name }} .social-sharing__icon svg {
+    fill: {{ module.style.color.color }};
+    height: {{ module.style.size ~ 'px' }};
+    width: {{ module.style.size ~ 'px' }};
+  }
+  #hs_cos_wrapper_{{ name }} .social-sharing__icon:hover svg,
+  #hs_cos_wrapper_{{ name }} .social-sharing__icon:focus svg,
+  #hs_cos_wrapper_{{ name }} .ssocial-sharing__icon:active svg {
+    fill: {{ module.style.hover_color.color }};
+  }
+  #hs_cos_wrapper_{{ name }} .social-sharing__text {
+    color: {{ module.style.color.color }};
+  }
+</style>
+{% end_require_css %}

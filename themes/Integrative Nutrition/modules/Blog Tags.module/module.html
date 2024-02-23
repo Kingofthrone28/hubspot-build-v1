@@ -1,0 +1,9 @@
+<div class="blog-topics-wrapper">
+  {% set my_tags = blog_tags('default', 100) %}
+  <div>
+    <a href="{{ group.absolute_url }}" class="{% if !topic %}selected{% endif %}">All Blogs</a>
+    {% for item in my_tags %}
+    <span class="spacer">|</span><a {% if topic == item.slug %}href="{{ group.absolute_url }}" class="selected"{% else %}href="{{ blog_tag_url(group.id, item.slug) }}"{% endif %}>{{ item }}</a>
+    {% endfor %}
+  </div>
+</div>

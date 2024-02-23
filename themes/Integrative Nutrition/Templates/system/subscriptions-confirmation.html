@@ -1,0 +1,25 @@
+<!--
+  templateType: email_subscriptions_confirmation_page
+  isAvailableForNewContent: true
+  label: email subscriptions confirmation
+  screenshotPath: ../../images/template-previews/system-pv.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block header %}
+<div class="static-header">
+  {% module "theme_header" path="../../modules/Header", label="Header" %}
+</div>
+{% endblock header %}
+{% block body %}
+<div class="system-header"></div>
+<main class="body-container-wrapper">
+  <section class="content-wrapper dnd-section">
+    <div class="systems-page">
+      {% module 'subscriptions_confirmation'
+        path='@hubspot/email_subscriptions_confirmation'
+      %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

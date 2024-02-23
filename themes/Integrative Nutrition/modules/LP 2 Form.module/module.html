@@ -1,0 +1,19 @@
+<div class="lp-2-form" id="{{name}}">
+  {{ module.form_title }}
+  <div class="lp-2-form-wrap">
+    {% if module.image_field.src %}
+      <div class="lp-2-form-img"><img src="{{module.image_field.src}}" alt="{{module.image_field.alt}}" /></div>
+    {% endif %}
+    <div class="lp-2-form-form">
+      {% form
+        form_to_use="{{ module.form_field.form_id }}"
+        response_response_type="{{ module.form_field.response_type }}"
+        response_message="{{ module.form_field.message }}"
+        response_redirect_id="{{ module.form_field.redirect_id }}"
+        response_redirect_url="{{module.form_field.redirect_url}}"
+        gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
+      %}
+    </div>
+  </div>
+</div>
+

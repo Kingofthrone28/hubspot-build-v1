@@ -1,0 +1,323 @@
+{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
+<div class="custom-text {% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{background}}{{ module.style.spacing_field.css }};{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};{% if module.style.min_height %}min-height: {{ module.style.min_height }}px;{% endif %}">
+  <div class="tl-wrapper">
+    <div class="tl-line"></div>
+    <ul class="timeline">
+      {% for item in module.item %}
+      <li class="tl-item" data-year="{{ item.year }}" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            {{ item.content }}
+          </div>
+          </div></div>
+      </li>
+      {% endfor %}
+      <li class="tl-item" data-year="1992" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>Founder Joshua Rosenthal brought together 20 like-minded individuals in a rented kitchen in the heart of New York City to discuss health and wellbeing, sparking the fire that would soon turn into the largest nutrition and health coaching school in the world.
+            </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="1993" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>The Health Coach Training Program curriculum begins to take shape, as the coaching component of the curriculum is developed and the term “Health Coach” starts to gain traction.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="1994" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>The first class of IIN graduates, and thus creates the first ripple in improving health and happiness around the world.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="1997" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p> The first international student - from the Netherlands - enrolls in the Health Coach Training Program.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2005" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN has rapidly expanded and Joshua Rosenthal hosts his first live class at Lincoln Center in New York City with 1,000 students and leading experts in health and wellness.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2006" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>Forbes magazine recognizes the “professional coach” as one of the fastest-growing careers to make a six figure income.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2007" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>Joshua Rosenthal’s first book, Integrative Nutrition: Feed Your Hunger for Health & Happiness is published.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2009" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN becomes licensed by the New York State Department of Education, setting the wheels in motion for more important credentialing as an institution. </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2010" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>After 5 amazing years hosting IIN’s Health Coach Training Program live and in-person, the curriculum is moved to be hosted entirely online.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2012" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN forges its first educational partnership with Goddard College, and is officially recognized by The National College Credit Recommendation Service (NCCRS), an organization that evaluates non-traditional educational programs for college credit equivalencies.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2014" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p> IIN creates its first “Advanced Course” offering called Launch Your Dream Book, geared towards graduates of the Health Coach Training Program to publish their own book(s).</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2015" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN partners with advocates and policy makers in Washington, D.C. to pursue further recognition of the health coaching profession.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2016" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN recognizes two huge milestones: 1) 100,000 students and graduates in 175 countries around the world! And 2) approval by the National Board for Health and Wellness Coaches (NBHWC) for graduates to pursue certification. </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2018" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN gets its first resolution passed in the Senate, The National Health and Wellness Coach Recognition Resolution <a href="https://www.congress.gov/115/bills/sres67/BILLS-115sres67ats.pdf" target="_blank">(S.Res.67)</a>. The resolution signified the official recognition of the important work of Health Coaches to improve the health and happiness of the nation, in addition to recognizing the first-ever Health and Wellness Coach Recognition Week.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2018" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>Founder Joshua Rosenthal, after 25 years of leadership, passes the torch to Lynda Cloud to further the global growth of IIN, bringing in new leaders with fresh perspective and an eagerness to continue spreading the ripple effect.</p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2019" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>Health Coaching Category III CPT codes are approved by the American Medical Association, paving the way for eventual insurance coverage of health coaching services. This is a tremendous step forward for the health coaching profession! You can read more about this health coach advancement <a href="https://www.integrativenutrition.com/blog/2019/10/health-coaching-cpt-codes-set-up-integrative-nutrition-health-coaches-for-success" target="_blank">here</a>. </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2020" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>In a difficult year across the globe with the COVID-19 pandemic, the IIN community banded together to take care of one another. We helped our community in creating <a href="https://www.integrativenutrition.com/blog/ten-ways-to-start-an-at-home-workout-routine-today" target="_blank">at-home workout routines</a>, finding ways to support others with <a href="https://www.integrativenutrition.com/blog/supporting-others-with-emotional-eating-during-difficult-times" target="_blank">emotional eating</a>, setting up the healthiest <a href="https://www.integrativenutrition.com/blog/how-to-create-the-ideal-combined-home-and-office-space" target="_blank">at-home office space</a>, sharing information around <a href="https://www.integrativenutrition.com/blog/preventing-chronic-disease-to-protect-your-health-during-a-pandemic" target="_blank">preventing chronic disease</a> in light of COVID-19 research, and much more. </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2021" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>IIN received a variety of recognition for excellence in Health Coach education, including being named to TheBalanceCareers’ list of <a href="https://www.thebalancecareers.com/best-health-coach-certification-programs-5113267" target="_blank">#1 Best Health Coach Certification Programs</a>. Our Coaching Intensive Practicum (CIP) received <a href="https://www.integrativenutrition.com/blog/iin-nbhwc-approved-program-provider" target="_blank">full approval </a>from the National Board for Health and Wellness Coaching (NBHWC) and accreditation by the <a href="https://coachingfederation.org/" target="_blank">International Coaching Federation (ICF)</a> as a Continuing Coach Education (CCE) approved program. </p>
+          </div>
+          </div></div>
+      </li>
+      <li class="tl-item" data-year="2022" style="max-height: 36px; height: 36px;">
+        <div class="tl-copy"><div class="tl-copy-inner">
+          <div class="tl-description">
+            <p>We are celebrating our 30th anniversary with the reimagining of our Health Coach Training ProgramTM, training the next generation of Health Coaches and Well BeIINgs to nourish, heal, and thrive and live a life they love! 30 years, 155,000 students and graduates, 175 countries—and still growing! We’re so proud of our global community of changemakers who are leading the health coaching revolution. </p>
+          </div>
+          </div></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script id="INLINE_PEN_JS_ID">
+    /*** Detect the browser's prefixes ***/
+if (document.addEventListener) {// Only IE9+ support this ;)
+  // http://davidwalsh.name/vendor-prefix
+  // Can't use it in IE8- as it brakes the page...
+  var isPrefixed = function () {
+    var styles = window.getComputedStyle(document.documentElement, ''),
+    pre = (Array.prototype.slice.
+    call(styles).
+    join('').
+    match(/-(moz|webkit|ms)-/) || styles.OLink === '' && ['', 'o'])[
+    1],
+    dom = 'WebKit|Moz|MS|O'.match(new RegExp('(' + pre + ')', 'i'))[1];
+    return {
+      dom: dom,
+      lowercase: pre,
+      css: '-' + pre + '-',
+      js: pre[0].toUpperCase() + pre.substr(1) };
+
+  }();
+
+  // Deals with prefixes
+  var prefix = isPrefixed.css;
+
+} else {
+  var prefix = "";
+}
+
+/*** Slides ***/
+var currentSlide = 0,
+nextSlide = 0,
+prevSlide = 0,
+totalSlides = jQuery(".tl-item").length - 1;
+
+// Creates the navigation
+jQuery(".timeline").after("<div class='tl-nav-wrapper'><ul class='tl-nav'></ul></div><a href='javascript:void(0);' class='tl-items-arrow-left' style='display:none'></a><a href='javascript:void(0);' class='tl-items-arrow-right' style='display:none;'></a>");
+jQuery(".tl-copy").wrapInner("<div class='tl-copy-inner'></div>");
+
+// Cicle through items and creates the nav
+jQuery(".tl-item").each(function (i) {
+  var year = jQuery(".tl-item:eq(" + i + ")").data("year");
+  jQuery(".tl-nav").append("<li><div>" + year + "</div></li>");
+
+  // Click handlers
+  jQuery(".tl-nav li:eq(" + i + ")").click(function () {
+    if (!jQuery(".tl-item:eq(" + i + ")").hasClass("tl-active")) {
+      // Activates the item
+      jQuery(".tl-item").removeClass("tl-active");
+      jQuery(".tl-item").removeClass("tl-prev-next");
+      jQuery(".tl-item:eq(" + i + ")").addClass("tl-active");
+      jQuery(".tl-item:eq(" + i + ")").removeClass("tl-prev-next");
+      currentSlide = i;
+      prevSlide = eval(i+1);
+      nextSlide = eval(i+1);
+      //alert("prevSlide =" + prevSlide +" nextSlide = " + nextSlide);
+      //alert("currentSlide is"  + currentSlide);
+      jQuery(".tl-item:eq(" + prevSlide + ")").addClass("tl-prev-next");
+      jQuery(".tl-item:eq(" + nextSlide + ")").addClass("tl-prev-next");
+
+
+      // Activates the item nav
+      jQuery(".tl-nav li").removeClass("tl-active");
+      jQuery(".tl-nav li").removeClass("tl-prev-next");
+      jQuery(".tl-nav li:eq(" + i + ")").addClass("tl-active");
+      jQuery(".tl-nav li:eq(" + i + ")").removeClass("tl-prev-next");
+      jQuery(".tl-item li:eq(" + prevSlide + ")").addClass("tl-prev-next");
+      jQuery(".tl-item li:eq(" + nextSlide + ")").addClass("tl-prev-next");
+    }
+  });
+});
+
+// Activates the first slide
+jQuery(".tl-item:first, .tl-nav li:first").addClass("tl-active");
+//jQuery(".tl-item:first, .tl-nav li:first").css('marginLeft',31%);
+//second slide gets the "next/prev" styling
+jQuery(".tl-item:eq(1), .tl-nav li:eq(1)").addClass("tl-prev-next");
+
+
+
+/*** Nav ***/
+// The nav's width
+var navWidth = jQuery(".tl-nav li").outerWidth(true) * jQuery(".tl-nav li").length + 36;
+jQuery(".tl-nav").width(navWidth);
+
+
+
+// The nav's arrows
+jQuery(".tl-nav-wrapper").append("<a href='javascript:void(0);' class='tl-nav-arrow-left'></a><a href='javascript:void(0);' class='tl-nav-arrow-right'></a>");
+
+/*** The timeline's height ***/
+var vpWidth = jQuery(window).width();
+
+
+/*** Nav's navigation... ***/
+var navTranslation = 0;
+var navLimit = (navWidth - jQuery(".tl-nav-wrapper").outerWidth(true) + 20) * -1;
+var navOuterWidth = (jQuery(".tl-nav-wrapper").outerWidth(true) * .5) ;
+
+//start at the halfway point
+//alert ("navLimit is :" + navLimit);
+//alert ("navWidth is :" + navWidth);
+//alert ("navouterwidth :" + jQuery(".tl-nav-wrapper").outerWidth(true));
+navTranslation = navOuterWidth - (navOuterWidth *.08) - 46;
+jQuery(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
+
+
+// To the left
+jQuery(".tl-nav-arrow-left").on("click", function () {
+  //if (navTranslation < 0) {
+    //navTranslation = navTranslation + 86;
+    //jQuery(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
+  //}
+   if (currentSlide > 0) {
+    currentSlide--;
+    prevSlide = eval(currentSlide - 1);
+    nextSlide = eval(currentSlide + 1);
+    //alert("prevSlide =" + prevSlide +" nextSlide = " + nextSlide);
+    //keep going
+    //navTranslation = navTranslation + 86;
+    navTranslation = navTranslation + 80;
+    jQuery(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
+    // Activates the previous item
+    jQuery(".tl-item").removeClass("tl-active");
+    jQuery(".tl-item").removeClass("tl-prev-next");
+    jQuery(".tl-item:eq(" + currentSlide + ")").addClass("tl-active");
+    jQuery(".tl-item:eq(" + prevSlide + ")").addClass("tl-prev-next");
+    jQuery(".tl-item:eq(" + nextSlide + ")").addClass("tl-prev-next");
+
+    // Activates the previous item nav
+    jQuery(".tl-nav li").removeClass("tl-active");
+    jQuery(".tl-nav li").removeClass("tl-prev-next");
+    jQuery(".tl-nav li:eq(" + currentSlide + ")").addClass("tl-active");
+    jQuery(".tl-nav li:eq(" + prevSlide + ")").addClass("tl-prev-next");
+    jQuery(".tl-nav li:eq(" + nextSlide + ")").addClass("tl-prev-next");
+  }
+});
+
+// To the right
+jQuery(".tl-nav-arrow-right").on("click", function () {
+  //if (navTranslation >= navLimit) {
+    //navTranslation = navTranslation - 86;
+    //jQuery(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
+  //}
+  if (currentSlide < totalSlides) {
+    currentSlide++;
+    prevSlide = eval(currentSlide - 1);
+    nextSlide = eval(currentSlide + 1);
+    //alert("prevSlide =" + prevSlide +" nextSlide = " + nextSlide);
+    //keep going
+    //navTranslation = navTranslation - 86;
+    navTranslation = navTranslation - 80;
+    jQuery(".tl-nav").css(prefix + "transform", "translateX(" + navTranslation + "px)");
+    // Activates the next item
+    jQuery(".tl-item").removeClass("tl-active");
+    jQuery(".tl-item").removeClass("tl-prev-next");
+    jQuery(".tl-item:eq(" + currentSlide + ")").addClass("tl-active");
+    jQuery(".tl-item:eq(" + prevSlide + ")").addClass("tl-prev-next");
+    jQuery(".tl-item:eq(" + nextSlide + ")").addClass("tl-prev-next");
+
+
+    // Activates the next item nav
+    jQuery(".tl-nav li").removeClass("tl-active");
+    jQuery(".tl-nav li").removeClass("tl-prev-next");
+    jQuery(".tl-nav li:eq(" + currentSlide + ")").addClass("tl-active");
+    jQuery(".tl-nav li:eq(" + prevSlide + ")").addClass("tl-prev-next");
+    jQuery(".tl-nav li:eq(" + nextSlide + ")").addClass("tl-prev-next");
+  }
+});
+
+
+    //# sourceURL=pen.js
+  </script>

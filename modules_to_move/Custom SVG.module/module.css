@@ -1,0 +1,8 @@
+.custom-svg-wrapper { position: relative;overflow: hidden; }
+.custom-svg-wrapper.align-center { margin: 0 auto; }
+.custom-svg-wrapper.align-right { margin-left: auto; }
+.custom-svg-wrapper .custom-svg { position: absolute; }
+
+@media(max-width: 992px) {
+  .custom-svg-hide-mobile { opacity: 0; pointer-events: none; height: 150px !important; }
+}

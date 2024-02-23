@@ -1,0 +1,209 @@
+{% macro post(post) %}
+<article class="jd-listing-item">
+  <a href="{{post.absolute_url}}" class="jd-listing-img" style="background:url('{{post.featured_image}}')"></a>
+  <div class="jd-listing-content">
+    <div class="jd-post-published"><strong>{{ post.publish_date|format_date('long') }}</strong></div>
+    <h3><a class="jd-post-name" href="{{post.absolute_url}}">{{ post.name }}</a></h3>
+    {% set post_content = post.post_body|striptags %}
+    <div>{{ post_content|truncate(module.character_count_for_summary) }}</div>
+    <div class="jd-listing-read-more">
+      <a href="{{post.absolute_url}}" class="jd-request-btn hs-button">{{module.read_more_button_text}}</a>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+<div class="jd-blog-nav" style="margin-top:0">
+  <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20 7.093l-3-3v-2.093h3v5.093zm4 5.907h-3v10h-18v-10h-3l12-12 12 12zm-10 2h-4v6h4v-6z"/></svg></a>
+  <div class="jd-breadcrumb"></div>
+  <a href="https://course.integrativenutrition.com/blog-home">IIN Blog</a>
+  <div class="jd-breadcrumb"></div>
+  <div style="color:#bd3c4b">All Blogs</div>
+</div>
+
+{% if blog_author %}
+<h1 class="jd-blog-listing-head">{{ blog_author }}'s Posts</h1>
+{% else %}
+<h1 class="jd-blog-listing-head">{{ module.heading }}</h1>
+{% endif %}
+
+{% if !blog_author %}
+<div class="jd-blog-listing-filter">
+  <form id="jd-blog-search-form">
+    <input id="jd-blog-search-input" type="text" placeholder="Search" />
+  </form>
+  <select id="jd-blog-cat-input">
+    <option disabled selected>Filter by Category</option>
+    <option value="all">- Any -</option>
+    {% set my_tags = blog_tags("default", 250) %}
+    {% for item in my_tags|sort(False, False, "slug") %}
+       <option value="{{item|replace(' ', '-')|replace(',', '')|lower}}">{{item}}</option>
+    {% endfor %}
+  </select>
+</div>
+{% endif %}
+
+<div id="blogs-1">
+  <div class="jd-blog-listing">
+    {% if !request.query_dict.search %}
+      {% for content in contents %}
+        {{ post(content) }}
+      {% endfor %}
+      {% if current_page_num  >= contents.total_page_count %}
+      <div id="jd-hide-more"></div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+{% if current_page_num  < contents.total_page_count %}
+<div class="jd-blog-more-wrap">
+  <div class="jd-request-btn hs-button light-button" id="jd-blog-more-btn">Show More Results</div>
+</div>
+{% endif %}
+
+<script>
+(function() {
+  var page = 1;
+  var cat = 'all';
+  var inSearch = false;
+  var numItems = 10;
+  {% if topic %}
+    cat = '{{ topic }}';
+    $('#jd-blog-cat-input').val(cat);
+  {% endif %}
+  
+  function getSearchHTML(results) {
+    var html = '';
+    for(var i = 0; i < numItems; i++) {
+      if(!results[i]) {
+        break; 
+      }
+      var result = results[i];
+      html += `
+      <article class="jd-listing-item">
+        <div class="jd-listing-img" style="background:url('${result.featuredImageUrl}')"></div>
+        <div class="jd-listing-content">
+          <div class="jd-post-published"><strong>${new Date(result.publishedDate).toLocaleString({}, {year: "numeric", month: "long", day: "numeric"})}</strong></div>
+          <h3>${result.title}</h3>
+          <div>${result.description}</div>
+          <div class="jd-listing-read-more">
+            <a href="${result.url}" class="jd-request-btn hs-button">{{module.read_more_button_text}}</a>
+          </div>
+        </div>
+      </article>
+      `;
+    }
+    return html;
+  }
+  
+  $('#jd-blog-more-btn').click(function() {
+    var btn = this;
+    page++;
+    $(this).addClass('disable-btn');
+    {% if blog_author %}
+    var nextUrl = location.href;
+    {% else %}
+    var nextUrl = '{{ blog_all_posts_url("default")|replace('/all', '') }}';
+    {% endif %}
+    if(cat != 'all') {
+      nextUrl += '/tag/' + cat;
+    }
+    if(page != 1) {
+      nextUrl += '/page/' + page;
+    }
+    console.log(nextUrl);
+    var prevContainerId = 'blogs-1';
+    var newContainerId = 'blogs-2';
+    $('#' + prevContainerId).after('<div id="' + newContainerId + '" style="display:none"></div>');
+    if(inSearch) {
+      var search = $('#jd-blog-search-input').val();  
+      var searchUrl = location.origin + '/_hcms/search?&term=' + encodeURIComponent(search) + '&type=BLOG_POST&limit=' + (numItems + 1) + '&offset=' + (numItems * (page - 1));
+      $.get(searchUrl)
+        .done(function(data) {
+          if(data.results.length <= numItems) {
+            $('.jd-blog-more-wrap').hide();
+          } else {
+            $('.jd-blog-more-wrap').show();
+          }
+          $('#blogs-1 .jd-blog-listing').html($('#blogs-1 .jd-blog-listing').html() + getSearchHTML(data.results));
+          $(btn).removeClass('disable-btn');
+        })
+    } else {
+      $('#' + newContainerId).load( nextUrl + ' .jd-blog-listing', function() {
+        $('#' + newContainerId + ' .jd-blog-listing').contents().appendTo('#blogs-1 .jd-blog-listing');
+        $('#' + newContainerId).remove();
+        $(btn).removeClass('disable-btn');
+        if($('#jd-hide-more').length) {
+          $('.jd-blog-more-wrap').hide();
+        } else {
+          $('.jd-blog-more-wrap').show();
+        }
+      });
+    }
+  });
+  
+  $('#jd-blog-search-form').submit(function(e) {
+    e.preventDefault();
+    $('#blogs-1').addClass('jd-blog-load');
+    var search = $('#jd-blog-search-input').val();
+    $('#jd-blog-cat-input').val('all');
+    if(search) {
+      inSearch = true;
+      var searchUrl = location.origin + '/_hcms/search?&term=' + encodeURIComponent(search) + '&type=BLOG_POST&limit=' + (numItems + 1);
+      $.get(searchUrl)
+        .done(function(data) {
+          if(data.results.length <= numItems) {
+            $('.jd-blog-more-wrap').hide();
+          } else {
+            $('.jd-blog-more-wrap').show();
+          }
+          $('#blogs-1').removeClass('jd-blog-load');
+          $('#blogs-1 .jd-blog-listing').html(getSearchHTML(data.results));
+        })
+    } else {
+      inSearch = false;
+      page = 1;
+      var baseUrl = location.origin + '/blog';
+      if(cat != 'all') {
+        baseUrl += '/tag/' + cat;
+      }
+      $('#blogs-1').load( baseUrl + ' .jd-blog-listing', function() {
+        $('#blogs-1').removeClass('jd-blog-load');
+        $('.jd-blog-more-wrap').show();
+      });
+    }
+  });
+  {% if request.query_dict.search %}
+  $('#jd-blog-search-input').val("{{ request.query_dict.search }}");
+  $('#jd-blog-search-form').submit();
+  {% endif %}
+  
+  $('#jd-blog-cat-input').change(function() {
+    $('#jd-blog-search-input').val('');
+    page = 1;
+    cat = $(this).val();
+    inSearch = false;
+    var nextUrl = '{{ blog_all_posts_url("default")|replace('/all', '') }}';
+    if(cat != 'all') {
+      nextUrl += '/tag/' + cat;
+    }
+    $('#blogs-1').addClass('jd-blog-load');
+    var prevContainerId = 'blogs-1';
+    var newContainerId = 'blogs-2';
+    $('#' + prevContainerId).after('<div id="' + newContainerId + '" style="display:none"></div>');
+    $('#' + newContainerId).load( nextUrl + ' .jd-blog-listing', function() {
+      $('#' + prevContainerId + ' .jd-blog-listing').empty();
+      $('#' + newContainerId + ' .jd-blog-listing').contents().appendTo('#' + prevContainerId + ' .jd-blog-listing');
+      $('#' + newContainerId).remove();
+      if($('#jd-hide-more').length) {
+        $('.jd-blog-more-wrap').hide();
+      } else {
+        $('.jd-blog-more-wrap').show(); 
+      }
+      $('#blogs-1').removeClass('jd-blog-load');
+    });
+  });
+  
+})();
+</script>

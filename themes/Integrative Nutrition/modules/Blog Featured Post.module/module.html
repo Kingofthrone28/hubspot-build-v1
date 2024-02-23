@@ -1,0 +1,20 @@
+{% if module.post == 'recent' %}
+  {% set post = blog_recent_posts("default", 1)[0] %}
+{% else %}
+  {% set post = content_by_id(module.blog_post_id) %}
+{% endif %}
+
+<div class="jd-featured-post" style="background: rgba({{ module.card_background.color|convert_rgb }}, {{ module.card_background.opacity / 100 }}">
+  <a href="{{post.absolute_url}}" class="jd-featured-img" style="background:url('{{ post.featured_image }}')"></a>
+  <div class="jd-featured-content">
+    <div style="color: {{ module.featured_post_text_color.color }};font-weight:bold;letter-spacing: 2px;">{{ module.featured_post_text }}</div>
+    <h3><a href="{{post.absolute_url}}">{{ post.name }}</a></h3>
+    <div>      
+      {% set post_content = post.post_body|striptags %}
+      {{ post_content|truncate(module.character_count_for_summary) }}
+    </div>
+    <div class="jd-listing-read-more">
+      <a href="{{post.absolute_url}}" class="jd-request-btn hs-button">{{module.read_more_button_text}}</a>
+    </div>
+  </div>
+</div>

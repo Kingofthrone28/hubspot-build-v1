@@ -1,0 +1,29 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Landing page
+  screenshotPath: ../../images/con_lp.png
+-->
+{% extends '../layouts/base.html' %}
+
+{% block header %}
+<div class="lp-nav">
+  {% module "theme_header" path="../../modules/HeaderLP", label="Header" %}
+</div>
+{% endblock header %}
+
+{% block body %}
+<main class="body-container-wrapper lp-body">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
+  
+  {% include_dnd_partial path='../Sections/IIN_Form_Dark.html' context={} %}
+  {% include_dnd_partial path='../Sections/IIN_faq.html' context={} %}
+  
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
+{% block footer %}
+  {% global_partial path='../partials/flex_footerLP.html' %}
+{% endblock footer %}

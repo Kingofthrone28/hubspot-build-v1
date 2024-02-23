@@ -1,0 +1,205 @@
+{% set all_items = [] %}
+
+{% macro check_filter_vals(filter_index, filter_id, item, filter_matches) %}
+  {% for filter_val in item.filter_values[filter_index-1].values %}
+    {% if request.query_dict[filter_id] is string_containing filter_val %}
+      {% do filter_matches.update({ val: filter_matches.val|replace(filter_id + "=false;", filter_id + "=true;") }) %}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% for item in module.items %}
+  {% set filter_matches = { val: '' } %}
+  {% for filter_id, query_val in request.query_dict.items() %}
+    {% if filter_id is string_containing 'filter' %}
+      {% set filter_split = filter_id|split('-') %}
+      {% set filter_index = filter_split[1] %}
+      {% do filter_matches.update({ val: filter_matches.val + filter_id + "=false;"}) %}
+      {% if request.query_dict[filter_id] %}
+        {{ check_filter_vals(filter_index, filter_id, item, filter_matches) }}
+      {% else %}
+        {% do filter_matches.update({ val: filter_matches.val|replace(filter_id + "=false;", filter_id + "=true;") }) %}
+      {% endif %}
+    {% else %}
+      {% do filter_matches.update({ val: filter_matches.val|replace(filter_id + "=false;", filter_id + "=true;") }) %}
+    {% endif %}
+  {% endfor %}
+  {% if filter_matches.val is string_containing 'false;' %}{% else %}
+    {% if request.query_dict.search %}
+      {% set searchQ = request.query_dict.search|lower %}
+      {% set name = item.name_field|lower %}
+      {% set body = item.body_text|striptags|lower %}
+      {% if name is string_containing searchQ or body is string_containing searchQ %}
+        {% do all_items.append(item) %}
+      {% endif %}
+    {% else %}
+      {% do all_items.append(item) %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if module.style.show_all_items %}
+  {% set page = all_items %}
+{% else %}
+  {% set page = [] %}
+  {% set start = 0 %}
+  {% if request.query_dict.page %}
+    {% set start = (request.query_dict.page - 1) * module.style.items_per_page %}
+  {% endif %}
+  {% set end = start + module.style.items_per_page %}
+  {% for i in range(start, end) %}
+    {% if all_items[i] %}
+      {% do page.append(all_items[i]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if module.style.include_search_bar %}
+<div class="stagger-search{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% endif %}" id="stagger-{{name}}-search">
+  <form title="Search">
+    <button><i class="far fa-search"></i></button>
+    <input type="text" name="search" placeholder="Search" />
+  </form>
+</div>
+{% endif %}
+
+<div class="stagger-grid-filterable{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} id="stagger-grid-{{name}}">
+  <div class="stagger-grid-wrap stagger-show" id="stagger-grid-{{name}}-grid">
+    <div class="stagger-grid-wrap-inner">
+      <div class="stagger-grid">
+        {% if request.postDict.inpageEditorUI || request.query_dict.hs_preview_key %}
+        {% for item in  module.items %}
+        <div class="stagger-item">
+          {% if item.link_field.url.href %}
+              {% set href = item.link_field.url.href %}
+              {% if item.link_field.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              <a href="{{ href }}"
+              {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+            {% else %}
+              <div
+            {% endif %} 
+               class="stagger-item-inner" style="padding: {{item.inner_padding}}">
+            {% if item.image_size == 'natural' %}
+              <div><img src="{{item.image_field.src}}" />
+            {% else %}
+              <div class="stagger-img size-{{ module.style.image_size }}" style="{{ module.style.image_border.css }}background: {{module.style.image_background_color.color}} url({{item.image_field.src}}) center no-repeat {{item.image_position}};background-size: {{item.image_size}}">
+            {% endif %}
+            {% if item.overlay_content %}<div class="stagger-img-overlay" style="background: rgba({{module.style.image_background_color.color|convert_rgb}}, {{module.style.image_background_color.opacity / 100}})"><div>{{item.overlay_content}}</div></div>{% endif %}
+            </div>
+            <div class="stagger-header">
+              {% if item.name_field %}<div>{{ item.name_field }}</div>{% endif %}
+              {% if item.filter_values|length >= 1 %}
+              <div class="stagger-header-filters">
+                {% for filter_item in item.filter_values %}
+                <span>
+                  {% for filter_val in filter_item.values %}
+                    {{filter_val}}{% if not loop.last %},{% endif %}
+                  {% endfor %}
+                  {% if not loop.last and item.filter_values[loop.index].values %}|{% endif %}
+                </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            </div>
+            {% if item.body_text %}<div class="stagger-body">{{item.body_text}}</div>{% endif %}
+          {% if item.link_field.url.href %}</a>{% else %}</div>{% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for item in page %}
+        <div class="stagger-item">
+          {% if item.link_field.url.href %}
+              {% set href = item.link_field.url.href %}
+              {% if item.link_field.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              <a href="{{ href }}"
+              {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+            {% else %}
+              <div
+            {% endif %} 
+               class="stagger-item-inner" style="padding: {{item.inner_padding}}">
+            {% if item.image_size == 'natural' %}
+              <div><img src="{{item.image_field.src}}" />
+            {% else %}
+              <div class="stagger-img size-{{ module.style.image_size }}" style="background: {{module.style.image_background_color.color}} url({{item.image_field.src}}) no-repeat {{item.image_position}};background-size: {{item.image_size}}">
+            {% endif %}
+            {% if item.overlay_content %}<div class="stagger-img-overlay" style="background: rgba({{module.style.image_background_color.color|convert_rgb}}, {{module.style.image_background_color.opacity / 100}})"><div>{{item.overlay_content}}</div></div>{% endif %}
+            </div>
+            <div class="stagger-header">
+              {% if item.name_field %}<div>{{ item.name_field }}</div>{% endif %}
+              {% if item.filter_values|length >= 1 %}
+              <div class="stagger-header-filters">
+                {% for filter_item in item.filter_values %}
+                <span>
+                  {% for filter_val in filter_item.values %}
+                    {{filter_val}}{% if not loop.last %},{% endif %}
+                  {% endfor %}
+                  {% if not loop.last and item.filter_values[loop.index].values %}|{% endif %}
+                </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            </div>
+            {% if item.body_text %}<div class="stagger-body">{{item.body_text}}</div>{% endif %}
+          {% if item.link_field.url.href %}</a>{% else %}</div>{% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% if !module.style.show_all_items %}
+      {% if request.query_dict['page'] %}
+      {% set current_page_num = request.query_dict['page']|int %}
+      {% else %}
+      {% set current_page_num = 1 %}
+      {% endif %}
+      {% set total_pages = (all_items|length / module.style.items_per_page)|round(0, 'ceil') %}
+      {% set more_pages = total_pages - current_page_num %}
+    {% if total_pages > 1 %}
+      <div class="fa-pagi-wrap">
+        <div class="fa-pagi">
+          {% if more_pages <= 1 %}
+          {% if current_page_num - 3 >= 1 %}<div class="pagi-num" data-num="{{ current_page_num - 3 }}">{{ current_page_num - 3 }}</div>{% endif %}
+          {% endif %}
+          {% if current_page_num - 2 >= 1 %}<div class="pagi-num" data-num="{{ current_page_num - 2 }}">{{ current_page_num - 2 }}</div>{% endif %}
+          {% if current_page_num - 1 >= 1 %}<div class="pagi-num" data-num="{{ current_page_num - 1 }}">{{ current_page_num - 1 }}</div>{% endif %}
+          <span class="active pagi-num" data-num="{{ current_page_num  }}">{{ current_page_num }}</span>
+          {% if current_page_num + 1 <= total_pages %}<div class="pagi-num" data-num="{{ current_page_num + 1 }}">{{ current_page_num + 1 }}</div>{% endif %}
+          {% if current_page_num + 2 <= total_pages %}<div class="pagi-num" data-num="{{ current_page_num + 2 }}">{{ current_page_num + 2 }}</div>{% endif %}
+          {% if current_page_num <= 2 %}
+          {% if current_page_num + 3 <= total_pages %}<div class="pagi-num" data-num="{{ current_page_num + 3 }}">{{ current_page_num + 3 }}</div>{% endif %}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  {% if module.style.image_size == 'stagger' %}
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 1) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .35}}px }
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 2) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .65}}px }
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 3) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .5}}px }
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 4) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .5}}px }
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 5) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .65}}px }
+  #stagger-grid-{{name}} .stagger-item:nth-child(6n) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .35}}px }
+  {% endif  %}
+  #stagger-grid-{{name}} .stagger-grid { column-count: {{ module.style.number_of_columns_for_desktop }}; }
+  @media(max-width: 991px) {
+    #stagger-grid-{{name}} .stagger-grid { column-count: {{ module.style.number_of_columns_for_desktop - 1 }}; }
+  }
+
+  @media(max-width: 767px) {
+    #stagger-grid-{{name}} .stagger-grid { column-count: 1; }
+  }
+</style>
+
+

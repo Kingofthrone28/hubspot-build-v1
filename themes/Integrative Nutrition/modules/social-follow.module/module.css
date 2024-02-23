@@ -1,0 +1,2 @@
+.social-links.align-LEFT a:nth-child(1) { padding-left: 0; }
+.social-links.align-RIGHT a:nth-last-child(1) { padding-right: 0; }

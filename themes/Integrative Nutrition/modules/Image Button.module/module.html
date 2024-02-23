@@ -1,0 +1,36 @@
+<a {% if module.link.href %}href="{{ module.link.href }}"{% endif %} class="image-button style-{{ module.image_style }} button-{{name}}{% if module.link_type =='hidden' %} open-section{% endif %}{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %}>
+  {% if module.text_location == 'above' %}
+  <div class="button-top button-text{% if module.style.show_text_on_hover %} hidden-hover{% endif %}">
+    {{ module.text }}
+  </div>
+  {% endif %}
+  <div class="img {% if module.style.round_corners %} custom-img{% endif %}{% if module.style.drop_shadow %} shadow{% endif %}{% if module.style.slide_on_hover %} hover-slide{% endif %}{% if module.style.expand_on_hover %} hover-expand{% endif %}"{% if module.image_style != 'default' %} style="background: url({{ module.image_field.src }}) center;background-size: cover;"{% endif %}>
+    {% if module.image_style == 'default' %}
+    {% if module.image_field.src %}
+    {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+    <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }}>
+    {% endif %}
+    {% else %}
+    <div class="spacer"></div>
+    {% endif %}
+    <div class="overlay{% if module.text_location == 'center' %} center-align{% elif module.text_location == 'bottom' %} bottom-align{% endif %}">
+      {% if module.text_location == 'center' || module.text_location == 'bottom' %}
+      <div class="button-text{% if module.style.show_text_on_hover %} hidden-hover{% endif %}">
+        {{ module.text }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if module.text_location == 'below' %}
+  <div class="button-bottom button-text{% if module.style.show_text_on_hover %} hidden-hover{% endif %}">
+    {{ module.text }}
+  </div>
+  {% endif %}
+</a>
+<style>
+  .button-{{name}} .overlay { background: rgba({{ module.style.overlay_color.color|convert_rgb }}, {{ module.style.overlay_color.opacity / 100 }}); }
+  .button-{{name}}:hover .overlay { background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});{% if module.style.hover_overlay_color.opacity >= 20 %}backdrop-filter: blur(2px);{% endif %} }
+  @media (max-width: 992px) {
+    .button-{{name}} .overlay { background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});{% if module.style.hover_overlay_color.opacity >= 20 %}backdrop-filter: blur(2px);{% endif %} }
+  }
+</style>

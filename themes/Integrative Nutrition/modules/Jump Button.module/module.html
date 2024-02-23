@@ -1,0 +1,3 @@
+<div class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="text-align: {{ module.style.alignment_field.horizontal_align }};">
+  <span data-target="#{{ module.location_id }}" class="jump-button{% if module.style.button %} hs-button{% endif %}" style="background: {{ module.style.background.color }};color: {{ module.style.text_color.color }};">{{ module.text }}</span>
+</div>
