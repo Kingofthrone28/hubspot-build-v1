@@ -1,5 +1,63 @@
-.dnd-section .terms table { border-radius: 0; background: none; width: 100%; }
-.dnd-section .terms td, .dnd-section .terms th { border: 1px solid; }
-.dnd-section .terms th[scope="row"] { text-align: left; }
-.logo-wrapper .mobile-click { display: none; }
-.variant-wrapper { border: 1px solid #2d3841; padding: 10px; margin-bottom: 20px; }
+.enrollment-agreement h2,
+.enrollment-agreement h3 {
+  margin-bottom: 1.4rem;
+  font-size: inherit;
+}
+
+.enrollment-agreement div.p {
+  margin-bottom: 1.4rem;
+}
+
+.enrollment-agreement div.p h2 {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.enrollment-agreement div.p h2 + p {
+  display: inline;
+}
+
+.enrollment-agreement li {
+  margin-top: 0.625rem;
+}
+
+.enrollment-agreement ol ol {
+  list-style-type: lower-alpha;
+}
+
+.enrollment-agreement ol ol ol {
+  list-style-type: upper-roman;
+}
+
+.enrollment-agreement ol ol ol ol {
+  list-style-type: decimal;
+}
+
+.enrollment-agreement .basic-info {
+  margin-bottom: 1.4rem;
+  border: 1px solid #2d3841;
+  padding: 10px;
+}
+
+.enrollment-agreement .details table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+  background: none;
+  width: 100%;
+}
+
+.enrollment-agreement .details td,
+.enrollment-agreement .details th {
+  border: 1px solid;
+}
+
+.enrollment-agreement .details th[scope="row"] {
+  text-align: left;
+}
+
+.enrollment-agreement .hs_cos_wrapper_widget.hs_cos_wrapper_type_image {
+  display: block;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
