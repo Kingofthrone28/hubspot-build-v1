@@ -9,7 +9,7 @@
     {% set sizeAttrs = 'width="{{ module.image_field_1.max_width }}" height="{{ module.image_field_1.max_height }}" style="max-width: 100%; height: auto;"' %}
     {% endif %}
     {% set loadingAttr = module.image_field_1.loading != 'disabled' ? 'loading="{{ module.image_field_1.loading }}"' : '' %}
-     <img class="shape-{{'landscape' if !module.image_shape else module.image_shape}}" src="{{ module.image_field_1.src }}" alt="{{ module.image_field_1.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+     <img class="shape-{{ 'landscape' if !module.image_shape else module.image_shape }}" src="{{ module.image_field_1.src }}" alt="{{ module.image_field_1.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
     {% endif %}
   </div>
 </div>
