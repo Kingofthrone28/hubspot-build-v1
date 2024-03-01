@@ -157,11 +157,6 @@ sub {
 
 /* Focus styles */
 
-:focus {
-  outline: none;
-  outline-color: transparent;
-}
-
 .disable-focus-styles :focus {
   outline: none;
 }
