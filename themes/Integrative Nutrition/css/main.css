@@ -24,6 +24,7 @@
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './objects/tabs.css' %}
+{% include './slider-overrides.css' %}
 
 
 html { max-width: 100%;overflow-x: hidden;overflow-y: scroll;-webkit-overflow-scrolling: touch;scroll-behavior: smooth; }

@@ -1,3 +1,5 @@
+{% set iin_red = 'color: #cc0201;' %}
+
 html {
   font-size: 24px;
 }
@@ -14,6 +16,7 @@ html {
   }
 }
 
+html body {
   color: #494A52;
   line-height: 1.4;
   word-break: break-word;
@@ -26,7 +29,9 @@ html[lang^="ko"] body {
   word-break: break-all;
 }
 
-
+.iin_red {
+  {{ iin_red }};
+}
 
 /* Paragraphs */
 
