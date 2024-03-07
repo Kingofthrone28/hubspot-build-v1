@@ -212,8 +212,7 @@
           }
           
           $(document).ready(function() {
-            var dealBar = `.deal-bar`;
-            var hideDealBar = $(`${dealBar}`).hide();
+            var hideDealBar = () => $('.dealBar').hide();
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
             var dealBarHidden = false;
             $(window).on('resize', function() {
@@ -223,15 +222,15 @@
             });      
             $('.deal-bar-close').click(function() {
               dealBarHidden = true;
-              hideDealBar
-              $('.static-body').css('padding-top', '0px');
+              hideDealBar();
+              $('.static-body').css('padding-top', '0');
             });
-            if(excludePage){
+            if (excludePage) {
               setTimeout(() => {
                dealBarHidden = true;
-               hideDealBar
-              $('.static-body').css('padding-top', '0px');
-             },0)
+               hideDealBar();
+              $('.static-body').css('padding-top', '0');
+             }, 0)
             }
           });
         }
