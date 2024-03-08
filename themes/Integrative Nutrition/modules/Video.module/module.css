@@ -227,11 +227,11 @@ p.hs-video-placeholder__description {
   position: relative;
   z-index: 9;
 }
-.dnd-column.video-open >div.dnd-row:first-child {
+.dnd-column.video-open > div.dnd-row:first-child {
   position: relative;
   z-index: 2;
 }
-.dnd-column.video-open >div.dnd-row:last-child {
+.dnd-column.video-open > div.dnd-row:last-child {
   position: relative;
   z-index: 1;
 }
