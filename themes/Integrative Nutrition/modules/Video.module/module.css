@@ -160,7 +160,7 @@ p.hs-video-placeholder__description {
 }
 .video-modal {
   position: fixed;
- oembed_custom-thumbnail  top: 0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -222,4 +222,16 @@ p.hs-video-placeholder__description {
 }
 .modal-dialog .modal-close svg {
   vertical-align: middle;
+}
+.dnd-column.video-open {
+  position: relative;
+  z-index: 9;
+}
+.dnd-column.video-open >div.dnd-row:first-child {
+  position: relative;
+  z-index: 2;
+}
+.dnd-column.video-open >div.dnd-row:last-child {
+  position: relative;
+  z-index: 1;
 }
