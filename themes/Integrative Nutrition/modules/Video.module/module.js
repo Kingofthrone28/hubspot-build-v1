@@ -39,6 +39,7 @@ function loadOEmbed(container) {
             iframeWrapper.appendChild(iframe);
             this.parentNode.nextElementSibling.getElementsByClassName('modal-dialog')[0].appendChild(iframe);
             this.parentNode.nextElementSibling.classList.add('modal-open');
+            this.closest(".dnd-column").classList.add('video-open');
           };
         } else {
           iframeWrapper.appendChild(iframe);
@@ -50,6 +51,7 @@ function loadOEmbed(container) {
             this.closest(".oembed_modal_container").getElementsByTagName('button')[0].classList.add('oembed_custom-thumbnail');
             this.closest(".oembed_modal_container").getElementsByClassName('video-modal')[0].classList.remove('modal-open');
             this.closest(".oembed_modal_container").getElementsByTagName('iframe')[0].remove();
+            this.closest(".dnd-column").classList.remove('video-open');
           }
         })
 
@@ -59,6 +61,7 @@ function loadOEmbed(container) {
             this.closest(".oembed_modal_container").getElementsByTagName('button')[0].classList.add('oembed_custom-thumbnail');
             this.closest(".oembed_modal_container").getElementsByClassName('video-modal')[0].classList.remove('modal-open');
             this.closest(".oembed_modal_container").getElementsByTagName('iframe')[0].remove();
+            this.closest(".dnd-column").classList.remove('video-open');
           }
         })
 
