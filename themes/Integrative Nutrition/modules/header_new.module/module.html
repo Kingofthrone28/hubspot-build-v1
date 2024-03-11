@@ -111,23 +111,45 @@
       (function() {
         var now = new Date().getTime();
         var row;
-        {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path) %}
+        {% for row in hubdb_table_rows(7048537, 'default=false&exclude_page=' + request.path) %}
+           var start = new Date('{{row.start_time_iso}}').getTime();
+           var end = new Date('{{row.end_time_iso}}').getTime();  
+           if(now >= start && now <= end) {
+             row = {
+                svg_icon: '{{row.svg_icon}}',
+                deal_bar_text: '{{row.deal_bar_text}}',
+                claim_link: '{{row.claim_link}}',
+                claim_tel_mobile: '{{row.claim_tel_mobile}}',
+                claim_text: '{{row.claim_text}}',
+                claim_text_mobile: '{{row.claim_text_mobile}}',
+                start_time_iso: '{{row.start_time_iso}}',
+                end_time_iso: '{{row.end_time_iso}}',
+                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+                exclude_page: '{{row.exclude_page}}',
+              }
+             // todo: remove console logs
+             console.log('DEFAULT FALSE EXCLUDE');
+           }
+        {% endfor %}
+        {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path)%}
           var start = new Date('{{row.start_time_iso}}').getTime();
-          var end = new Date('{{row.end_time_iso}}').getTime();
+          var end = new Date('{{row.end_time_iso}}').getTime();  
           if(now >= start && now <= end) {
-            row = {
-              svg_icon: '{{row.svg_icon}}',
-              deal_bar_text: '{{row.deal_bar_text}}',
-              claim_link: '{{row.claim_link}}',
-              claim_tel_mobile: '{{row.claim_tel_mobile}}',
-              claim_text: '{{row.claim_text}}',
-              claim_text_mobile: '{{row.claim_text_mobile}}',
-              start_time_iso: '{{row.start_time_iso}}',
-              end_time_iso: '{{row.end_time_iso}}',
-              deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-              exclude_page: '{{row.exclude_page}}',
-            }
-          }
+             row = {
+                svg_icon: '{{row.svg_icon}}',
+                deal_bar_text: '{{row.deal_bar_text}}',
+                claim_link: '{{row.claim_link}}',
+                claim_tel_mobile: '{{row.claim_tel_mobile}}',
+                claim_text: '{{row.claim_text}}',
+                claim_text_mobile: '{{row.claim_text_mobile}}',
+                start_time_iso: '{{row.start_time_iso}}',
+                end_time_iso: '{{row.end_time_iso}}',
+                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+                exclude_page: '{{row.exclude_page}}',
+              }
+             // todo: remove console logs
+             console.log('DEFAULT FALSE PAGE SLUG');
+           }
         {% endfor %}
         if(!row) {
           {% for row in hubdb_table_rows(7048537, 'default=true') %}
@@ -146,6 +168,9 @@
                 deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
                 exclude_page: '{{row.exclude_page}}',
               }
+              // todo: remove console logs
+              console.log('DEFAULT TRUE');
+              console.log(row.exclude_page);
             }
           {% endfor %}
         }
@@ -212,7 +237,8 @@
           }
           
           $(document).ready(function() {
-            var hideDealBar = () => $('.dealBar').hide();
+          
+            var hideDealBar = () => $('.deal-bar').hide();
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
             var dealBarHidden = false;
             $(window).on('resize', function() {
