@@ -112,116 +112,103 @@
         var now = new Date().getTime();
         var row;
         {% for row in hubdb_table_rows(7048537, 'default=false&exclude_page=' + request.path) %}
-           var start = new Date('{{row.start_time_iso}}').getTime();
-           var end = new Date('{{row.end_time_iso}}').getTime();  
-           if(now >= start && now <= end) {
+           const start = new Date('{{row.start_time_iso}}').getTime();
+           const end = new Date('{{row.end_time_iso}}').getTime();
+           if (now >= start && now <= end) {
              row = {
-                svg_icon: '{{row.svg_icon}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
                 claim_link: '{{row.claim_link}}',
                 claim_tel_mobile: '{{row.claim_tel_mobile}}',
                 claim_text: '{{row.claim_text}}',
                 claim_text_mobile: '{{row.claim_text_mobile}}',
-                start_time_iso: '{{row.start_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
+                deal_bar_text: '{{row.deal_bar_text}}',
                 deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+                end_time_iso: '{{row.end_time_iso}}',
                 exclude_page: '{{row.exclude_page}}',
+                svg_icon: '{{row.svg_icon}}',
+                start_time_iso: '{{row.start_time_iso}}'
               }
              // todo: remove console logs
              console.log('DEFAULT FALSE EXCLUDE');
            }
         {% endfor %}
         {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path)%}
-          var start = new Date('{{row.start_time_iso}}').getTime();
-          var end = new Date('{{row.end_time_iso}}').getTime();  
-          if(now >= start && now <= end) {
+          const start = new Date('{{row.start_time_iso}}').getTime();
+          const end = new Date('{{row.end_time_iso}}').getTime();
+          if (now >= start && now <= end) {
              row = {
-                svg_icon: '{{row.svg_icon}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
                 claim_link: '{{row.claim_link}}',
                 claim_tel_mobile: '{{row.claim_tel_mobile}}',
                 claim_text: '{{row.claim_text}}',
                 claim_text_mobile: '{{row.claim_text_mobile}}',
-                start_time_iso: '{{row.start_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
+                deal_bar_text: '{{row.deal_bar_text}}',
                 deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-                exclude_page: '{{row.exclude_page}}',
+                end_time_iso: '{{row.end_time_iso}}',
+                svg_icon: '{{row.svg_icon}}',
+                start_time_iso: '{{row.start_time_iso}}'
               }
-             // todo: remove console logs
-             console.log('DEFAULT FALSE PAGE SLUG');
            }
         {% endfor %}
-        if(!row) {
+        if (!row) {
           {% for row in hubdb_table_rows(7048537, 'default=true') %}
-            var start = new Date('{{row.start_time_iso}}').getTime();
-            var end = new Date('{{row.end_time_iso}}').getTime();
-            if(now >= start && now <= end) {
+            const start = new Date('{{row.start_time_iso}}').getTime();
+            const end = new Date('{{row.end_time_iso}}').getTime();
+            if (now >= start && now <= end) {
               row = {
-                svg_icon: '{{row.svg_icon}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
                 claim_link: '{{row.claim_link}}',
                 claim_tel_mobile: '{{row.claim_tel_mobile}}',
                 claim_text: '{{row.claim_text}}',
                 claim_text_mobile: '{{row.claim_text_mobile}}',
-                start_time_iso: '{{row.start_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
+                deal_bar_text: '{{row.deal_bar_text}}',
                 deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+                end_time_iso: '{{row.end_time_iso}}',
                 exclude_page: '{{row.exclude_page}}',
+                svg_icon: '{{row.svg_icon}}',
+                start_time_iso: '{{row.start_time_iso}}'
               }
-              // todo: remove console logs
-              console.log('DEFAULT TRUE');
-              console.log(row.exclude_page);
             }
           {% endfor %}
         }
-        if(row) {
-          var barHTML = `<div class="deal-bar">`;
-          var dealSVG = row.svg_icon;
-          var dealBarText = row.deal_bar_text;
-          var dealEndsTimeIso = row.deal_ends_time_iso;
-          var dealClaimLink = row.claim_link;
-          var dealClaimText = row.claim_text;
-          var dealClaimTelMobile = row.claim_tel_mobile;
-          var dealClaimTextMobile = row.claim_text_mobile;
-          var excludePage = row.exclude_page; 
+        if (row) {
+          let barHTML = `<div class="deal-bar">`;
+          const { 
+             claim_link,
+             claim_tel_mobile,
+             claim_text,
+             claim_text_mobile,
+             deal_bar_text,
+             deal_ends_time_iso,
+             exclude_page,
+             svg_icon,
+          } = row;
           
           barHTML += `<svg class="deal-bar-close" ...></svg>`; // SVG code unchanged
           barHTML += `<div class="deal-bar-inner">`;
           
-          if (dealSVG) {
-            barHTML += dealSVG;
+          if (svg_icon) {
+            barHTML += svg_icon;
           }
-          if (dealBarText) {
-            barHTML += '<span>' + dealBarText + '</span>';
+          if (deal_bar_text) {
+            barHTML += `<span>${deal_bar_text}</span>`;
           }
-          if (dealEndsTimeIso) {
-            barHTML += '<span class="deal-bar-time-text"></span>';
+          if (deal_ends_time_iso) {
+            barHTML += `<span class="deal-bar-time-text"></span>`;
           }
-          if (dealClaimLink && dealClaimTelMobile) {
-            console.log('DEAL DESKTOP');
-            var hrefValue = dealClaimLink;
-            var linkClass = 'deal-bar-btn desktop';
-            barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimText}</a>`;
+          if (claim_link && claim_tel_mobile) {
+            barHTML += `<a href="${claim_link}" class="deal-bar-btn desktop" target="_blank">${claim_text}</a>`;
           }
-          if (dealClaimTelMobile || dealClaimTextMobile) {
-            console.log('DEAL MOBILE');
-            var hrefValue = dealClaimTelMobile;
-            var linkClass = 'deal-bar-btn mobile';
-            barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimTextMobile}</a>`;
+          if (claim_tel_mobile || claim_text_mobile) {
+            barHTML += `<a href="${claim_tel_mobile}" class="deal-bar-btn mobile" target="_blank">${claim_text_mobile}</a>`;
           }
-          if(!dealClaimTelMobile || !dealClaimTextMobile ) {
-            if(dealClaimLink){
-              console.log('DEAL DEFAULT');
-              var hrefValue = dealClaimLink;
-              var linkClass = 'deal-bar-btn';
-              barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimText}</a>`;
+          if(!claim_tel_mobile || !claim_text_mobile ) {
+            if(claim_link){
+              barHTML += `<a href="${claim_link}" class="deal-bar-btn" target="_blank">${claim_text}</a>`;
             }
           }
           barHTML += '</div></div>';
 
           $(barHTML).prependTo('.jd-header-wrap');
           
-          if(row.deal_ends_time_iso) {
+          if (row.deal_ends_time_iso) {
             const endTime = new Date(row.deal_ends_time_iso).getTime();
             function dealTimeDif() {
               const timeDifference = endTime - new Date().getTime();
@@ -237,10 +224,10 @@
           }
           
           $(document).ready(function() {
-          
-            var hideDealBar = () => $('.deal-bar').hide();
+            const domainPath = window.location.pathname;
+            const hideDealBar = () => $('.deal-bar').hide();
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
-            var dealBarHidden = false;
+            let dealBarHidden = false;
             $(window).on('resize', function() {
               if(!dealBarHidden) {
                 $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
@@ -251,9 +238,9 @@
               hideDealBar();
               $('.static-body').css('padding-top', '0');
             });
-            if (excludePage) {
-               dealBarHidden = true;
-               hideDealBar();
+            if (domainPath.includes(exclude_page)) {
+              dealBarHidden = true;
+              hideDealBar();
               $('.static-body').css('padding-top', '0');
             }
           });
