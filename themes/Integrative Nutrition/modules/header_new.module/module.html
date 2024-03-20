@@ -34,26 +34,30 @@
       <div class="jd-ham">
         <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
       </div>
-      
       {% set href = module.image_link.url.href %}
-{% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-	{% set href = "mailto:" + href %}
-{% endif %}
-<a href="{{ href }}"
-	{% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-	{% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-	>
-      {% if module.image_field.src %}
-      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
-      {% if module.image_field.size_type == 'auto' %}
-      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
-      {% elif module.image_field.size_type == 'auto_custom_max' %}
-      {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
+        'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
+        'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
+      %}
+      {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
       {% endif %}
-      {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-  {% endif %} </a>
-      
+      <a href="{{ href }}"
+        {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+        >
+          {% if module.image_field.src %}
+           {% set sizeAttrs = sizeAttrs %}
+          {% if module.image_field.size_type == 'auto' %}
+           {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+          {% elif module.image_field.size_type == 'auto_custom_max' %}
+           {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+
+          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %} 
+      </a>
     </div>
     {% set href = module.request_info_link.url.href %}
     {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -125,6 +129,7 @@
               start_time_iso: '{{row.start_time_iso}}',
               end_time_iso: '{{row.end_time_iso}}',
               deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+              exclude_page: '{{row.exclude_page}}',
             }
           }
         {% endfor %}
@@ -143,6 +148,7 @@
                 start_time_iso: '{{row.start_time_iso}}',
                 end_time_iso: '{{row.end_time_iso}}',
                 deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+                exclude_page: '{{row.exclude_page}}',
               }
             }
           {% endfor %}
@@ -156,6 +162,7 @@
           var dealClaimText = row.claim_text;
           var dealClaimTelMobile = row.claim_tel_mobile;
           var dealClaimTextMobile = row.claim_text_mobile;
+          var excludePage = row.exclude_page; 
           
           barHTML += `<svg class="deal-bar-close" ...></svg>`; // SVG code unchanged
           barHTML += `<div class="deal-bar-inner">`;
@@ -190,6 +197,7 @@
             }
           }
           barHTML += '</div></div>';
+
           $(barHTML).prependTo('.jd-header-wrap');
           
           if(row.deal_ends_time_iso) {
@@ -208,6 +216,7 @@
           }
           
           $(document).ready(function() {
+            var hideDealBar = () => $('.dealBar').hide();
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
             var dealBarHidden = false;
             $(window).on('resize', function() {
@@ -217,9 +226,14 @@
             });      
             $('.deal-bar-close').click(function() {
               dealBarHidden = true;
-              $('.deal-bar').hide();
-              $('.static-body').css('padding-top', '0px');
+              hideDealBar();
+              $('.static-body').css('padding-top', '0');
             });
+            if (excludePage) {
+               dealBarHidden = true;
+               hideDealBar();
+              $('.static-body').css('padding-top', '0');
+            }
           });
         }
      })();
@@ -245,25 +259,28 @@
     <!-- Desktop -->
     <div class="jd-header-main jd-mobile-hide">
       {% set href = module.image_link.url.href %}
-{% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-	{% set href = "mailto:" + href %}
-{% endif %}
-<a href="{{ href }}"
-	{% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-	{% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-	>
-      
-      {% if module.image_field.src %}
-        {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
-        {% if module.image_field.size_type == 'auto' %}
-          {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
-        {% elif module.image_field.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-         {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-        <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
+        'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
+        'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
+      %}
+      {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
       {% endif %}
-      
+      <a href="{{ href }}"
+        {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+        >
+          {% if module.image_field.src %}
+           {% set sizeAttrs = sizeAttrs %}
+          {% if module.image_field.size_type == 'auto' %}
+           {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+          {% elif module.image_field.size_type == 'auto_custom_max' %}
+           {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+
+          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %} 
       </a>
       <nav class="jd-header-dds">
         <ul>
@@ -312,27 +329,30 @@
         <div class="jd-ham">
           <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
         </div>
-        
         {% set href = module.image_link.url.href %}
-{% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-	{% set href = "mailto:" + href %}
-{% endif %}
-<a href="{{ href }}"
-	{% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-	{% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-	>
-        
-        {% if module.image_field.src %}
-          {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
-          {% if module.image_field.size_type == 'auto' %}
-            {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
-          {% elif module.image_field.size_type == 'auto_custom_max' %}
-            {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-           {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-          <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-        {% endif %} </a>
-        
+        {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
+          'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
+          'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
+        %}
+        {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        <a href="{{ href }}"
+          {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+          >
+            {% if module.image_field.src %}
+             {% set sizeAttrs = sizeAttrs %}
+            {% if module.image_field.size_type == 'auto' %}
+             {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+            {% elif module.image_field.size_type == 'auto_custom_max' %}
+             {% set sizeAttrs = sizeAttrs ~ 'style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+
+            {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+            <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %} 
+        </a>
         <div style="flex:1"></div>
         <div class="jd-header-top">
           <ul>
@@ -370,10 +390,8 @@
     </div>
   </div>
   <div class="jd-add-pop-btns">
-    <a href="https://course.integrativenutrition.com/cart" class="jd-view-cart-link jd-request-btn hs-button jd-request-btn-inverse">View Cart</a>
-    <!--
-    <a href="" target="_blank" class="jd-checkout-link jd-request-btn hs-button light-button jd-arrow-link">Checkout</a>
-    -->
+    <a href="{{module.continue_shopping_link.url.href}}" class="jd-request-btn hs-button jd-request-btn-inverse">Continue Shopping</a>
+    <a href="https://course.integrativenutrition.com/cart" target="_blank" class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link">View Cart</a>
   </div>
 </div>
 
@@ -477,10 +495,12 @@ $(document).ready(function() {
       $('.jd-header-wrap').addClass('jd-scrolled');
       $('.hs-content-id-137558861388 .jd-header-wrap .jd-header-main a img').attr('src', 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg');
       $('.hs-content-id-151881679191 .jd-header-wrap .jd-header-main a img').attr('src', 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg');
+      $('.hs-content-id-156853830932 .jd-header-wrap .jd-header-main a img').attr('src', 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg');
     } else {
       $('.jd-header-wrap').removeClass('jd-scrolled');
       $('.hs-content-id-137558861388 .jd-header-wrap .jd-header-main a img').attr('src', 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg');
       $('.hs-content-id-151881679191 .jd-header-wrap .jd-header-main a img').attr('src', 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg');
+      $('.hs-content-id-156853830932 .jd-header-wrap .jd-header-main a img').attr('src', 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg');
     }
   }
   headerScrollCheck();
