@@ -481,19 +481,18 @@ $(document).ready(function() {
     Needle.style = "Theme1";
     Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
    return false; //prevents event bubbling
- }  
-  
-                                               
+ }
+                                           
  function headerScrollCheck() {
     const svgLogoBlack = 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg';
     const svgLogoWhite = 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg';
     
     if($(document).scrollTop() > 150) {
       $('.jd-header-wrap').addClass('jd-scrolled');
-      $('.hs-content-id-151881679191', '.hs-content-id-137558861388', '.hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoBlack);
+      $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoBlack);
     } else {
       $('.jd-header-wrap').removeClass('jd-scrolled');
-      $('.hs-content-id-151881679191', '.hs-content-id-137558861388', '.hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoWhite);
+      $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoWhite);
     }
   }
   headerScrollCheck();
