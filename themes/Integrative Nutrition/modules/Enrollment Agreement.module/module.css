@@ -4,6 +4,11 @@
   font-size: inherit;
 }
 
+.enrollment-agreement h2:last-child,
+.enrollment-agreement h3:last-child {
+  margin-bottom: 0;
+}
+
 .enrollment-agreement div.p {
   margin-bottom: 1.4rem;
 }
@@ -33,13 +38,22 @@
   list-style-type: decimal;
 }
 
+.enrollment-agreement section {
+  margin-bottom: 1.4rem;
+}
+
+.enrollment-agreement section:last-child {
+  margin-bottom: 0;
+}
+
 .enrollment-agreement .basic-info {
   margin-bottom: 1.4rem;
   border: 1px solid #2d3841;
   padding: 10px;
 }
 
-.enrollment-agreement .details table {
+.enrollment-agreement table.data {
+  margin-bottom: 1.4rem;
   border-spacing: 0;
   border-collapse: collapse;
   border-radius: 0;
@@ -47,17 +61,25 @@
   width: 100%;
 }
 
-.enrollment-agreement .details td,
-.enrollment-agreement .details th {
+.enrollment-agreement table.data:last-child {
+  margin-bottom: 0;
+}
+
+.enrollment-agreement table.data td,
+.enrollment-agreement table.data th {
   border: 1px solid;
 }
 
-.enrollment-agreement .details th[scope="row"] {
+.enrollment-agreement table.data th[scope="row"] {
   text-align: left;
 }
 
-.enrollment-agreement .hs_cos_wrapper_widget.hs_cos_wrapper_type_image {
+.enrollment-agreement .hs_cos_wrapper_type_image {
   display: block;
   margin-bottom: 1.4rem;
   text-align: center;
+}
+
+.enrollment-agreement .hs_cos_wrapper_type_image:last-child {
+  margin-bottom: 0;
 }

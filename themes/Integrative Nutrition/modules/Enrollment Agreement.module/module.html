@@ -18,8 +18,11 @@
 {% set hours = clean_dict.hours %}
 {% set phone = clean_dict.Phone %}
 {% set price = clean_dict.Price %}
+{% set promo = clean_dict.Promo %}
 {% set registration = clean_dict.Registration %}
+{% set start_date = clean_dict.StartDate %}
 {% set student_name = clean_dict.Name %}
+{% set tax = clean_dict.Tax %}
 {% set variant = clean_dict.Variant %}
 {% set weeks = clean_dict.weeks %}
 
@@ -31,6 +34,9 @@
 {% set variant_dict = {} %}
 {% set settings = module.settings %}  
 
+{% if start_date %}
+  {% do variant_dict.put(settings.start_date['heading' ~ field_suffix], start_date) %}
+{% endif %}
 {% if variant %}
   {% do variant_dict.put(settings.variant['heading' ~ field_suffix], variant) %}
 {% endif %}
@@ -45,6 +51,28 @@
 {% endif %}
 {% if phone %}
   {% do variant_dict.put(settings.phone['heading' ~ field_suffix], phone) %}
+{% endif %}
+
+{% set summary_dict = {} %}
+{% set summary_should_display = false %}
+
+{% if price %}
+  {% set price_formatted = price|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.price['heading' ~ field_suffix], price_formatted) %}
+{% endif %}
+{% if promo|int %}
+  {% set promo_formatted = promo|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.promo['heading' ~ field_suffix], '-' ~ promo_formatted) %}
+{% endif %}
+{% if tax|int %}
+  {% set tax_formatted = tax|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.tax['heading' ~ field_suffix], tax_formatted) %}
+{% endif %}
+{% if price and (promo|int or tax|int) %}
+  {% set summary_should_display = true %}
+  {% set net_tuition = price|int - promo|int + tax|int %}
+  {% set net_tuition_formatted = net_tuition | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.net_tuition['heading' ~ field_suffix], net_tuition_formatted) %}
 {% endif %}
 
 {# Complaint field is inserted into module rich text fields by using token. #}
@@ -87,12 +115,26 @@
   </div>
   {% endif %}
 
+  {% if summary_should_display %}
+  <section class="summary">
+    <h2>{{ settings.summary['heading' ~ field_suffix] }}</h2>
+    <table class="data">
+    {% for key, value in summary_dict.items() %}
+      <tr>
+        <th scope="row">{{ key }}</th>
+        <td>{{ value }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </section>
+  {% endif %}
+
   {{ module.terms['content' ~ field_suffix] }}
 
   <section class="details">
     <h2>{{ settings.course['heading' ~ field_suffix] }}</h2>
-    {% if books or course or hours or price or registration or weeks  %}
-    <table class="course-data">
+    {% if books or course or hours or price or registration or weeks %}
+    <table class="data">
       {% if course or hours or weeks %}
       <tr>
         <td colspan="2">
@@ -122,7 +164,7 @@
           {{ settings.registration['heading' ~ field_suffix] }}
         </th>
         <td>
-          ${{ registration }}
+          {{ registration | format_currency_value(currency='USD', maxDecimalDigits=0) }}
         </td>
       </tr>
       {% endif %}
@@ -132,7 +174,7 @@
           {{ settings.tuition['heading' ~ field_suffix] }}
         </th>
         <td>
-          ${{ price|int - registration|int - books|int }}
+          {{ (price|int - registration|int - books|int) | format_currency_value(currency='USD', maxDecimalDigits=0) }}
         </td>
       </tr>
       {% endif %}
@@ -142,7 +184,7 @@
           {{ settings.books['heading' ~ field_suffix] }}
         </th>
         <td>
-          ${{ books }}
+          {{ books|int | format_currency_value(currency='USD', maxDecimalDigits=0) }}
         </td>
       </tr>
       {% endif %}
@@ -152,7 +194,7 @@
           {{ settings.price['heading' ~ field_suffix] }}
         </th>
         <td>
-          ${{ price }}
+          {{ price|int | format_currency_value(currency='USD', maxDecimalDigits=0) }}
         </td>
       </tr>
       {% endif %}
