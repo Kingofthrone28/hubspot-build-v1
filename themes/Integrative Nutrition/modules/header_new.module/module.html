@@ -114,39 +114,37 @@
         var now = new Date().getTime();
         var row;
         {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path) %}
-          var start = new Date('{{row.start_time_iso}}').getTime();
-          var end = new Date('{{row.end_time_iso}}').getTime();
-          if(now >= start && now <= end) {
+          const start = new Date("{{row.start_time_iso}}").getTime();
+          const end = new Date("{{row.end_time_iso}}").getTime();
+          if (now >= start && now <= end) {
             row = {
-              svg_icon: '{{row.svg_icon}}',
-              deal_bar_text: '{{row.deal_bar_text}}',
-              claim_link: '{{row.claim_link}}',
-              claim_tel_mobile: '{{row.claim_tel_mobile}}',
-              claim_text: '{{row.claim_text}}',
-              claim_text_mobile: '{{row.claim_text_mobile}}',
-              start_time_iso: '{{row.start_time_iso}}',
-              end_time_iso: '{{row.end_time_iso}}',
-              deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-              exclude_page: '{{row.exclude_page}}',
+              claim_link: "{{row.claim_link}}",
+              claim_tel_mobile: "{{row.claim_tel_mobile}}",
+              claim_text: "{{row.claim_text}}",
+              claim_text_mobile: "{{row.claim_text_mobile}}",
+              deal_bar_text: "{{row.deal_bar_text}}",
+              deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
+              end_time_iso: "{{row.end_time_iso}}",
+              svg_icon: "{{row.svg_icon}}",
+              start_time_iso: "{{row.start_time_iso}}"
             }
           }
         {% endfor %}
-        if(!row) {
+        if (!row) {
           {% for row in hubdb_table_rows(7048537, 'default=true') %}
-            var start = new Date('{{row.start_time_iso}}').getTime();
-            var end = new Date('{{row.end_time_iso}}').getTime();
-            if(now >= start && now <= end) {
+            const start = new Date("{{row.start_time_iso}}").getTime();
+            const end = new Date("{{row.end_time_iso}}").getTime();
+            if (now >= start && now <= end) {
               row = {
-                svg_icon: '{{row.svg_icon}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
-                claim_link: '{{row.claim_link}}',
-                claim_tel_mobile: '{{row.claim_tel_mobile}}',
-                claim_text: '{{row.claim_text}}',
-                claim_text_mobile: '{{row.claim_text_mobile}}',
-                start_time_iso: '{{row.start_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
-                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-                exclude_page: '{{row.exclude_page}}',
+                claim_link: "{{row.claim_link}}",
+                claim_tel_mobile: "{{row.claim_tel_mobile}}",
+                claim_text: "{{row.claim_text}}",
+                claim_text_mobile: "{{row.claim_text_mobile}}",
+                deal_bar_text: "{{row.deal_bar_text}}",
+                deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
+                end_time_iso: "{{row.end_time_iso}}",
+                svg_icon: "{{row.svg_icon}}",
+                start_time_iso: "{{row.start_time_iso}}",
               }
             }
           {% endfor %}
