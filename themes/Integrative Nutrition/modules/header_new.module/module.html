@@ -172,25 +172,15 @@
           if (dealEndsTimeIso) {
             barHTML += '<span class="deal-bar-time-text"></span>';
           }
-          if (dealClaimLink && dealClaimTelMobile) {
-            console.log('DEAL DESKTOP');
+          if (dealClaimLink) {
             var hrefValue = dealClaimLink;
             var linkClass = 'deal-bar-btn desktop';
             barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimText}</a>`;
           }
           if (dealClaimTelMobile || dealClaimTextMobile) {
-            console.log('DEAL MOBILE');
             var hrefValue = dealClaimTelMobile;
             var linkClass = 'deal-bar-btn mobile';
             barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimTextMobile}</a>`;
-          }
-          if(!dealClaimTelMobile || !dealClaimTextMobile ) {
-            if(dealClaimLink){
-              console.log('DEAL DEFAULT');
-              var hrefValue = dealClaimLink;
-              var linkClass = 'deal-bar-btn';
-              barHTML += `<a href="${hrefValue}" class="${linkClass}" target="_blank">${dealClaimText}</a>`;
-            }
           }
           barHTML += '</div></div>';
 
@@ -215,6 +205,8 @@
             var hideDealBar = () => $('.dealBar').hide();
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
             var dealBarHidden = false;
+            var $dealClaimMobile = $('.deal-bar-btn.mobile');
+            $dealClaimMobile.text() ? $('.deal-bar-btn').addClass('desktop') : $('.deal-bar-btn').removeClass('desktop');
             $(window).on('resize', function() {
               if(!dealBarHidden) {
                 $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
