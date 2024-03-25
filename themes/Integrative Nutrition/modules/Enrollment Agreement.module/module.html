@@ -170,13 +170,14 @@
         </td>
       </tr>
       {% endif %}
-      {% if registration or books %}
+      {% set tuition = price|int - books|int - registration|int %}
+      {% if registration or books and tuition > 0 %}
       <tr>
         <th scope="row">
           {{ settings.tuition['heading' ~ field_suffix] }}
         </th>
         <td>
-          {{ (price|int - registration|int - books|int) | format_currency_value(currency='USD', maxDecimalDigits=0) }}
+          {{ tuition | format_currency_value(currency='USD', maxDecimalDigits=0) }}
         </td>
       </tr>
       {% endif %}
