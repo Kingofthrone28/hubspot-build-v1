@@ -19,7 +19,9 @@
 {% set phone = clean_dict.Phone %}
 {% set price = clean_dict.Price %}
 {% set promo = clean_dict.Promo %}
+{% set publication_date = clean_dict.PublicationDate %}
 {% set registration = clean_dict.Registration %}
+{% set revision_date = clean_dict.RevisionDate %}
 {% set start_date = clean_dict.StartDate %}
 {% set student_name = clean_dict.Name %}
 {% set tax = clean_dict.Tax %}
@@ -124,7 +126,7 @@
         <th scope="row">{{ key }}</th>
         <td>{{ value }}</td>
       </tr>
-      {% endfor %}
+    {% endfor %}
     </table>
   </section>
   {% endif %}
@@ -223,7 +225,19 @@
     <p>
       <strong>{{ settings.signature['heading' ~ field_suffix] }}:</strong>
     </p>
-
+    {% if revision_date %}
+    <p>
+      <strong>{{ settings.revision_date['heading' ~ field_suffix] }}:</strong>
+      {{ revision_date }}
+    </p>
+    {% endif %}
+    {% if publication_date %}
+    <p>
+      <strong>{{ settings.publication_date['heading' ~ field_suffix] }}:</strong>
+      {{ publication_date }}
+    </p>
+    {% endif %}
+      
     {% image
       src={{ settings.signature.image.src }},
       alt={{ settings.signature.image.alt }},
