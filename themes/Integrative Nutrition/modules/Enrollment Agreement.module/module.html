@@ -1,112 +1,249 @@
-{% set course = request.query_dict.Course|urldecode|replace('_', ' ')|replace('™','')|trim %}
-{% set course_tm = request.query_dict.Course|urldecode|replace('_', ' ') %}
-{% set query = 'name=' ~ course %}
-{% set product = crm_objects('product', query, 'ip__shopify__handle,name,ip__shopify__body_html,enrollment_agreement___english,enrollment_agreement___spanish', false) %}
-{% set remove_url = request.query|replace('~', ' ') %}
-{% set search_url = remove_url|split('&') %}
-{% if request.query is containing 'Spanish' %}
-  <h1>{{ course }} Enrollment Agreement Spanish</h1>
-  <div class="variant-wrapper">
-    {% for variant in search_url %}{% set type = variant|split('=') %}
-    {% if type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' && type[0] != 'Price' && type[0] != 'hours' && type[0] != 'weeks' && type[0] != 'ProductId' && type[0] != 'Date' && type[0] != 'Registration' && type[0] != 'Tuition' && type[0] != 'Books' %}
-    <div>
-      <strong>{{ type[0]|urldecode|trim }}:</strong> {{ type[1]|urldecode|trim }}
-    </div>
-    {% endif %}
-    {% endfor %}
-  </div>
-  <div class="terms">
-    <p>
-      El “Total restante”, según se establece en la tabla anterior, es su obligación financiera y puede variar del "Costo total del programa" que figura en el Acuerdo de inscripción a continuación. No hay sanciones por hacer los pagos antes de tiempo.
-    </p>
-    <p>
-      El Institute for Integrative Nutrition ("IIN") y el estudiante mencionado anteriormente (“estudiante” o “usted”) (colectivamente denominados las “Partes”) celebran este acuerdo de inscripción (“Acuerdo de Inscripción”) que establece los términos y condiciones de su acceso y uso del curso {{ course }} (el “Programa”) ofrecido por IIN, incluidos, entre otros, los sitios web y las aplicaciones de IIN.  Al firmar este Acuerdo de Inscripción, usted acepta los términos establecidos en este documento, incluido el arbitraje, la renuncia a demanda colectiva y las disposiciones de limitación de responsabilidad, y todos los demás términos, reglas, políticas, regulaciones o lineamientos aquí establecidos.  Usted también acepta los términos establecidos en el Catálogo para Estudiantes de IIN y cualquier otro acuerdo entre IIN y el estudiante (colectivamente denominados los “Acuerdos”).
-    </p>
-    <p>
-      <strong>Programa, Matrícula y Tarifas</strong>
-    </p>
-    <table>
-      <tr>
-        <td colspan="2"><strong>{{ course }}</strong><br>Duración del programa: {{ request.query_dict.hours|urldecode|replace('~', ' ')|trim }} horas <br>Este curso puede completarse en {{ request.query_dict.weeks|urldecode|replace('~', ' ')|trim }} semanas (incluyendo recesos programados).</td>
-      </tr>
-      <tr>
-        <td>Costo total</td>
-        <td>{{request.query_dict.Price|urldecode|replace('~', ' ')|trim}}</td>
-      </tr>
-    </table>
-    {{ module.fallback_agreement_es_ }}
-    <p>
-      <strong>Fecha:</strong> {{ request.query_dict.Date|urldecode|replace('~', ' ')|trim }}
-    </p>
-    <p>
-      A ser completado por el funcionario escolar al recibirlo:
-    </p>
-    <p>
-      <strong>Recibido por:</strong> {{ request.query_dict.Name|urldecode|replace('~', ' ')|trim  }}
-    </p>
-    <p>
-      <strong>Firma del Funcionario Escolar:</strong>
-    </p>
-  </div>
-{% else %}
-  <h1>{{ course }} Enrollment Agreement</h1>
-  <div class="variant-wrapper">
-    {% for variant in search_url %}{% set type = variant|split('=') %}
-    <div style="display: none">{{ type }}</div>
-    {% if type[0] != 'Course' && type[0] != 'Variant' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' && type[0] != 'Price' && type[0] != 'hours' && type[0] != 'weeks' && type[0] != 'ProductId' && type[0] != 'Date' && type[0] != 'Registration' && type[0] != 'Tuition' && type[0] != 'Books' %}
-    <div>
-      <strong>{{ type[0]|urldecode|trim }}:</strong> {{ type[1]|urldecode|trim }}
-    </div>
-    {% endif %}
-    {% endfor %}
-  </div>
-  {% set count = [] %}
-  <div class="terms">
-    <p>
-      The Institute for Integrative Nutrition (“IIN”) and the above named student (“student” or “you”) (collectively, the “Parties”) hereby enter into this enrollment agreement (“Enrollment Agreement”) which sets forth the terms and conditions of your access to and use of {{ course }} (the “Program”) offered by IIN, including but not limited to, IIN’s websites and apps. By accepting this Enrollment Agreement, you agree to the terms set forth herein including the arbitration, class-action waiver, and limitation of liability provisions, and all other terms, rules, policies, regulations, and/or guidelines set forth therein. You also agree to the terms set forth in IIN’s Student Catalog and any other agreements between IIN and the student (together with the Enrollment Agreement, the “Agreements”).
-    </p>
-    <p>
-      <strong>The Course, Tuition, and Fees</strong>
-    </p>
-    <table>
-      <tr>
-        <td colspan="2"><strong>{{ course }}</strong><br>Program length: {{ request.query_dict.hours|urldecode|replace('~', ' ')|trim }} clock hours <br>This program is normally completed in {{ request.query_dict.weeks|urldecode|replace('~', ' ')|trim }} weeks (includes scheduled breaks).</td>
-      </tr>
-      {% if request.query_dict.Registration %}
-      <tr>
-        <td>Registration <i>(non-refundable)</i></td>
-        <td>{{ request.query_dict.Registration|urldecode|replace('~', ' ')|trim }}</td>
-      </tr>
-      {% endif %}
-      {% if request.query_dict.Registration || request.query_dict.Books %}
-      <tr>{% set total = request.query_dict.Price|urldecode|replace('$', '') %}{% set Registration = request.query_dict.Registration|urldecode|replace('$', '') %}{% set Books = request.query_dict.Books|urldecode|replace('$', '') %}{% set dealerval = dealer|render %}
-        <td>Tuition</td>
-        <td>${{ total|int - Registration|int - Books|int }}</td>
-      </tr>
-      {% endif %}
-      {% if request.query_dict.Books %}
-      <tr>
-        <td>Books and Materials <i>(non-refundable once received)</i></td>
-        <td>{{ request.query_dict.Books|urldecode|replace('~', ' ')|trim }}</td>
-      </tr>
-      {% endif %}
-      <tr>
-        <td>Total Cost</td>
-        <td>{{ request.query_dict.Price|urldecode|replace('~', ' ')|trim }}</td>
-      </tr>
-    </table>
-    {{ module.fallback_agreement }}
-    <p>
-      <strong>Date:</strong> {{ request.query_dict.Date|urldecode|replace('~', ' ')|trim }}
-    </p>
-    <p>
-      To be completed by school official upon receipt:
-    </p>
-    <p>
-      <strong>Received by:</strong> {{ request.query_dict.Name|urldecode|replace('~', ' ')|trim }}
-    </p>
-    <p>
-      <strong>Signature of School Official:</strong>
-    </p>
-  </div>
+{# Set dictionary of sanitized param values. #}
+{% set clean_dict = {} %}
+
+{% for key, value in request.query_dict.items() %}
+  {% set cleanKey = key|urldecode|trim %}
+  {% set cleanValue = value|urldecode|replace('™','')|replace('$', '')|replace('_', '')|replace('~', ' ')|trim %}
+  {% if cleanValue %}
+    {% do clean_dict.put(cleanKey, cleanValue) %}
+  {% endif %}
+{% endfor %}
+
+{# Set variables from params to use in template.  #}
+{% set address = clean_dict.Address %}
+{% set books = clean_dict.Books %}
+{% set course = clean_dict.Course %}
+{% set date = clean_dict.Date %}
+{% set email = clean_dict.Email %}
+{% set hours = clean_dict.hours %}
+{% set phone = clean_dict.Phone %}
+{% set price = clean_dict.Price %}
+{% set promo = clean_dict.Promo %}
+{% set publication_date = clean_dict.PublicationDate %}
+{% set registration = clean_dict.Registration %}
+{% set revision_date = clean_dict.RevisionDate %}
+{% set start_date = clean_dict.StartDate %}
+{% set student_name = clean_dict.Name %}
+{% set tax = clean_dict.Tax %}
+{% set variant = clean_dict.Variant %}
+{% set weeks = clean_dict.weeks %}
+
+{# Set field suffix to distinguish between English and Spanish sibling fields. #}
+{% set language_code = 'es' if request.query is containing 'Spanish' else 'en' %}
+{% set field_suffix = '' if language_code == 'en' else '_es'  %}
+
+{# Create dictionary for rendering params #}
+{% set variant_dict = {} %}
+{% set settings = module.settings %}  
+
+{% if start_date %}
+  {% do variant_dict.put(settings.start_date['heading' ~ field_suffix], start_date) %}
 {% endif %}
+{% if variant %}
+  {% do variant_dict.put(settings.variant['heading' ~ field_suffix], variant) %}
+{% endif %}
+{% if student_name %}
+  {% do variant_dict.put(settings.student_name['heading' ~ field_suffix], student_name) %}
+{% endif %}
+{% if email %}
+  {% do variant_dict.put(settings.email['heading' ~ field_suffix], email) %}
+{% endif %}
+{% if address %}
+  {% do variant_dict.put(settings.address['heading' ~ field_suffix], address) %}
+{% endif %}
+{% if phone %}
+  {% do variant_dict.put(settings.phone['heading' ~ field_suffix], phone) %}
+{% endif %}
+
+{% set summary_dict = {} %}
+{% set summary_should_display = false %}
+
+{% if price %}
+  {% set price_formatted = price|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.price['heading' ~ field_suffix], price_formatted) %}
+{% endif %}
+{% if promo|int %}
+  {% set promo_formatted = promo|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.promo['heading' ~ field_suffix], '-' ~ promo_formatted) %}
+{% endif %}
+{% if tax|int %}
+  {% set tax_formatted = tax|int | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.tax['heading' ~ field_suffix], tax_formatted) %}
+{% endif %}
+{% if price and (promo|int or tax|int) %}
+  {% set summary_should_display = true %}
+  {% set net_tuition = price|int - promo|int + tax|int %}
+  {% set net_tuition_formatted = net_tuition | format_currency_value(currency='USD', maxDecimalDigits=0) %}
+  {% do summary_dict.put(settings.net_tuition['heading' ~ field_suffix], net_tuition_formatted) %}
+{% endif %}
+
+{# Complaint field is inserted into module rich text fields by using token. #}
+{% set complaint = module.settings.complaint['content' ~ field_suffix] %}
+
+{#
+  CRM product is not currently used in the template but this approach may have
+  value in the future.
+#}
+{% set query = 'name=' ~ course %}
+{% set crm_options = [
+  'ip__shopify__body_html',
+  'ip__shopify__handle',
+  'name',
+  'enrollment_agreement___english',
+  'enrollment_agreement___spanish'
+] %}
+{% set product = crm_objects('product', query, crm_options|join(','), false) %}
+  
+<div class="enrollment-agreement">
+  {% image
+    src={{ settings.logo.src }},
+    alt={{ settings.logo.alt }},
+    width={{ settings.logo.width }},
+    height={{ settings.logo.height }},
+    loading={{ settings.logo.loading }}
+  %}
+
+  {{ settings.contact }}
+
+  <h1>{{ course }} {{ settings.page['heading' ~ field_suffix] }}</h1>
+
+  {% if variant_dict|length %}
+  <div class="basic-info">
+    {% for key, value in variant_dict.items() %}
+    <div>
+      <strong>{{ key }}:</strong> {{ value }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if summary_should_display %}
+  <section class="summary">
+    <h2>{{ settings.summary['heading' ~ field_suffix] }}</h2>
+    <table class="data">
+    {% for key, value in summary_dict.items() %}
+      <tr>
+        <th scope="row">{{ key }}</th>
+        <td>{{ value }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+  </section>
+  {% endif %}
+
+  {{ module.terms['content' ~ field_suffix] }}
+
+  <section class="details">
+    <h2>{{ settings.course['heading' ~ field_suffix] }}</h2>
+    {% if books or course or hours or price or registration or weeks %}
+    <table class="data">
+      {% if course or hours or weeks %}
+      <tr>
+        <td colspan="2">
+          {% if course %}
+          <h3>{{ course }}</h3>
+          {% endif %}
+          {% if hours %}
+          <p>
+            {{ settings.duration['heading' ~ field_suffix] }}:
+            {{ hours }} {{ settings.duration['units' ~ field_suffix] }}
+          </p>
+          {% endif %}
+          {% if weeks %}
+          <p>
+            {{ settings.completion['intro' ~ field_suffix] }}:
+            {{ weeks }}
+            {{ settings.completion['units' ~ field_suffix] }}
+            {{ settings.completion['notes' ~ field_suffix] }}
+          </p>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+      {% if registration %}
+      <tr>
+        <th scope="row">
+          {{ settings.registration['heading' ~ field_suffix] }}
+        </th>
+        <td>
+          {{ registration | format_currency_value(currency='USD', maxDecimalDigits=0) }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if registration or books %}
+      <tr>
+        <th scope="row">
+          {{ settings.tuition['heading' ~ field_suffix] }}
+        </th>
+        <td>
+          {{ (price|int - registration|int - books|int) | format_currency_value(currency='USD', maxDecimalDigits=0) }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if books %}
+      <tr>
+        <th scope="row">
+          {{ settings.books['heading' ~ field_suffix] }}
+        </th>
+        <td>
+          {{ books|int | format_currency_value(currency='USD', maxDecimalDigits=0) }}
+        </td>
+      </tr>
+      {% endif %}
+      {% if price %}
+      <tr>
+        <th scope="row">
+          {{ settings.price['heading' ~ field_suffix] }}
+        </th>
+        <td>
+          {{ price|int | format_currency_value(currency='USD', maxDecimalDigits=0) }}
+        </td>
+      </tr>
+      {% endif %}
+    </table>
+    {% endif %}
+
+    {{ module.main['content' ~ field_suffix] }}
+
+    {{ settings.acknowledgement['content' ~ field_suffix] }}
+
+    {% if date %}
+    <p>
+      <strong>{{ settings.date['heading' ~ field_suffix] }}:</strong>
+      {{ date }}
+    </p>
+    {% endif %}
+    <p>
+      {{ settings.receiver['instructions' ~ field_suffix] }}
+    </p>
+    {% if student_name %}
+    <p>
+      <strong>{{ settings.receiver['heading' ~ field_suffix] }}:</strong>
+      {{ student_name }}
+    </p>
+    {% endif %}
+    <p>
+      <strong>{{ settings.signature['heading' ~ field_suffix] }}:</strong>
+    </p>
+    {% if revision_date %}
+    <p>
+      <strong>{{ settings.revision_date['heading' ~ field_suffix] }}:</strong>
+      {{ revision_date|strtotime("MM/dd/yyyy") }}
+    </p>
+    {% endif %}
+    {% if publication_date %}
+    <p>
+      <strong>{{ settings.publication_date['heading' ~ field_suffix] }}:</strong>
+      {{ publication_date|strtotime("MM/dd/yyyy")}}
+    </p>
+    {% endif %}
+      
+    {% image
+      src={{ settings.signature.image.src }},
+      alt={{ settings.signature.image.alt }},
+      width={{ settings.signature.image.width }},
+      height={{ settings.signature.image.height }},
+      loading={{ settings.signature.image.loading }}
+    %}
+  </section>
+</div>

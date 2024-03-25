@@ -1,4 +1,85 @@
-.dnd-section .terms table { border-radius: 0; background: none; width: 100%; }
-.dnd-section .terms td, .dnd-section .terms th { border: 1px solid; }
-.logo-wrapper .mobile-click { display: none; }
-.variant-wrapper { border: 1px solid #2d3841; padding: 10px; margin-bottom: 20px; }
+.enrollment-agreement h2,
+.enrollment-agreement h3 {
+  margin-bottom: 1.4rem;
+  font-size: inherit;
+}
+
+.enrollment-agreement h2:last-child,
+.enrollment-agreement h3:last-child {
+  margin-bottom: 0;
+}
+
+.enrollment-agreement div.p {
+  margin-bottom: 1.4rem;
+}
+
+.enrollment-agreement div.p h2 {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.enrollment-agreement div.p h2 + p {
+  display: inline;
+}
+
+.enrollment-agreement li {
+  margin-top: 0.625rem;
+}
+
+.enrollment-agreement ol ol {
+  list-style-type: lower-alpha;
+}
+
+.enrollment-agreement ol ol ol {
+  list-style-type: upper-roman;
+}
+
+.enrollment-agreement ol ol ol ol {
+  list-style-type: decimal;
+}
+
+.enrollment-agreement section {
+  margin-bottom: 1.4rem;
+}
+
+.enrollment-agreement section:last-child {
+  margin-bottom: 0;
+}
+
+.enrollment-agreement .basic-info {
+  margin-bottom: 1.4rem;
+  border: 1px solid #2d3841;
+  padding: 10px;
+}
+
+.enrollment-agreement table.data {
+  margin-bottom: 1.4rem;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+  background: none;
+  width: 100%;
+}
+
+.enrollment-agreement table.data:last-child {
+  margin-bottom: 0;
+}
+
+.enrollment-agreement table.data td,
+.enrollment-agreement table.data th {
+  border: 1px solid;
+}
+
+.enrollment-agreement table.data th[scope="row"] {
+  text-align: left;
+}
+
+.enrollment-agreement .hs_cos_wrapper_type_image {
+  display: block;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.enrollment-agreement .hs_cos_wrapper_type_image:last-child {
+  margin-bottom: 0;
+}
