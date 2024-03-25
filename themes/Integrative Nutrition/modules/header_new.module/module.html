@@ -109,9 +109,9 @@
   <div style="none">
     <script>
       (function() {
-        var now = new Date().getTime();
-        var row;
-        {% for row in hubdb_table_rows(7048537, 'default=false&exclude_page=' + request.path) %}
+        let now = new Date().getTime();
+        let row;
+        {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&exclude_page=' + request.path) %}
            const start = new Date('{{row.start_time_iso}}').getTime();
            const end = new Date('{{row.end_time_iso}}').getTime();
            if (now >= start && now <= end) {
@@ -131,7 +131,7 @@
              console.log('DEFAULT FALSE EXCLUDE');
            }
         {% endfor %}
-        {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path)%}
+        {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&page_slug=' + request.path)%}
           const start = new Date('{{row.start_time_iso}}').getTime();
           const end = new Date('{{row.end_time_iso}}').getTime();
           if (now >= start && now <= end) {
@@ -149,7 +149,7 @@
            }
         {% endfor %}
         if (!row) {
-          {% for row in hubdb_table_rows(7048537, 'default=true') %}
+          {% for row in hubdb_table_rows('top_bar_schedule', 'default=true') %}
             const start = new Date('{{row.start_time_iso}}').getTime();
             const end = new Date('{{row.end_time_iso}}').getTime();
             if (now >= start && now <= end) {
@@ -193,16 +193,11 @@
           if (deal_ends_time_iso) {
             barHTML += `<span class="deal-bar-time-text"></span>`;
           }
-          if (claim_link && claim_tel_mobile) {
+          if (claim_link) {
             barHTML += `<a href="${claim_link}" class="deal-bar-btn desktop" target="_blank">${claim_text}</a>`;
           }
           if (claim_tel_mobile || claim_text_mobile) {
             barHTML += `<a href="${claim_tel_mobile}" class="deal-bar-btn mobile" target="_blank">${claim_text_mobile}</a>`;
-          }
-          if(!claim_tel_mobile || !claim_text_mobile ) {
-            if(claim_link){
-              barHTML += `<a href="${claim_link}" class="deal-bar-btn" target="_blank">${claim_text}</a>`;
-            }
           }
           barHTML += '</div></div>';
 
@@ -225,23 +220,32 @@
           
           $(document).ready(function() {
             const domainPath = window.location.pathname;
-            const hideDealBar = () => $('.deal-bar').hide();
+            const $dealClaimMobile = $('.deal-bar-btn.mobile');
+            const hideDealBar = () => {
+              $('.deal-bar').hide();
+              $('.static-body').css('padding-top', '0');
+            }
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
-            let dealBarHidden = false;
+            let isHidden = false;
+            if($dealClaimMobile.text()){
+              $('.deal-bar-btn').addClass('desktop')
+            }else{
+              $('.deal-bar-btn').removeClass('desktop');
+            }
+            
             $(window).on('resize', function() {
-              if(!dealBarHidden) {
+              if(!isHidden) {
                 $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
               }
             });      
+            
             $('.deal-bar-close').click(function() {
-              dealBarHidden = true;
+              isHidden = true;
               hideDealBar();
-              $('.static-body').css('padding-top', '0');
             });
             if (domainPath.includes(exclude_page)) {
               dealBarHidden = true;
               hideDealBar();
-              $('.static-body').css('padding-top', '0');
             }
           });
         }
