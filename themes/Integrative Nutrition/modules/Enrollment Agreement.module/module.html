@@ -228,13 +228,13 @@
     {% if revision_date %}
     <p>
       <strong>{{ settings.revision_date['heading' ~ field_suffix] }}:</strong>
-      {{ revision_date }}
+      {{ revision_date|strtotime("MM/dd/yyyy") }}
     </p>
     {% endif %}
     {% if publication_date %}
     <p>
       <strong>{{ settings.publication_date['heading' ~ field_suffix] }}:</strong>
-      {{ publication_date }}
+      {{ publication_date|strtotime("MM/dd/yyyy")}}
     </p>
     {% endif %}
       
