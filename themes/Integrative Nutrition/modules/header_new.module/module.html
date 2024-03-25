@@ -116,16 +116,16 @@
            const end = new Date('{{row.end_time_iso}}').getTime();
            if (now >= start && now <= end) {
              row = {
-                claim_link: '{{row.claim_link}}',
-                claim_tel_mobile: '{{row.claim_tel_mobile}}',
-                claim_text: '{{row.claim_text}}',
-                claim_text_mobile: '{{row.claim_text_mobile}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
-                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
-                exclude_page: '{{row.exclude_page}}',
-                svg_icon: '{{row.svg_icon}}',
-                start_time_iso: '{{row.start_time_iso}}'
+                claim_link: "{{row.claim_link}}",
+                claim_tel_mobile: "{{row.claim_tel_mobile}}",
+                claim_text: "{{row.claim_text}}",
+                claim_text_mobile: "{{row.claim_text_mobile}}",
+                deal_bar_text: "{{row.deal_bar_text}}",
+                deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
+                end_time_iso: "{{row.end_time_iso}}",
+                exclude_page: "{{row.exclude_page}}",
+                svg_icon: "{{row.svg_icon}}",
+                start_time_iso: "{{row.start_time_iso}}"
               }
              // todo: remove console logs
              console.log('DEFAULT FALSE EXCLUDE');
@@ -136,15 +136,16 @@
           const end = new Date('{{row.end_time_iso}}').getTime();
           if (now >= start && now <= end) {
              row = {
-                claim_link: '{{row.claim_link}}',
-                claim_tel_mobile: '{{row.claim_tel_mobile}}',
-                claim_text: '{{row.claim_text}}',
-                claim_text_mobile: '{{row.claim_text_mobile}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
-                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
-                svg_icon: '{{row.svg_icon}}',
-                start_time_iso: '{{row.start_time_iso}}'
+               claim_link: "{{row.claim_link}}",
+               claim_tel_mobile: "{{row.claim_tel_mobile}}",
+               claim_text: "{{row.claim_text}}",
+               claim_text_mobile: "{{row.claim_text_mobile}}",
+               deal_bar_text: "{{row.deal_bar_text}}",
+               deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
+               end_time_iso: "{{row.end_time_iso}}",
+               exclude_page: "{{row.exclude_page}}",
+               svg_icon: "{{row.svg_icon}}",
+               start_time_iso: "{{row.start_time_iso}}"
               }
            }
         {% endfor %}
@@ -154,16 +155,16 @@
             const end = new Date('{{row.end_time_iso}}').getTime();
             if (now >= start && now <= end) {
               row = {
-                claim_link: '{{row.claim_link}}',
-                claim_tel_mobile: '{{row.claim_tel_mobile}}',
-                claim_text: '{{row.claim_text}}',
-                claim_text_mobile: '{{row.claim_text_mobile}}',
-                deal_bar_text: '{{row.deal_bar_text}}',
-                deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-                end_time_iso: '{{row.end_time_iso}}',
-                exclude_page: '{{row.exclude_page}}',
-                svg_icon: '{{row.svg_icon}}',
-                start_time_iso: '{{row.start_time_iso}}'
+               claim_link: '{{row.claim_link}}',
+               claim_tel_mobile: '{{row.claim_tel_mobile}}',
+               claim_text: '{{row.claim_text}}',
+               claim_text_mobile: '{{row.claim_text_mobile}}',
+               deal_bar_text: '{{row.deal_bar_text}}',
+               deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
+               end_time_iso: '{{row.end_time_iso}}',
+               exclude_page: '{{row.exclude_page}}',
+               svg_icon: '{{row.svg_icon}}',
+               start_time_iso: '{{row.start_time_iso}}'
               }
             }
           {% endfor %}
@@ -244,7 +245,7 @@
               hideDealBar();
             });
             if (domainPath.includes(exclude_page)) {
-              dealBarHidden = true;
+              isHidden = true;
               hideDealBar();
             }
           });
