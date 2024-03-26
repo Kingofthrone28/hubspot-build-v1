@@ -93,7 +93,11 @@
   'enrollment_agreement___spanish'
 ] %}
 {% set product = crm_objects('product', query, crm_options|join(','), false) %}
-  
+
+{% macro formatted_date(value) -%}
+  {{ (value is containing 'T' ? value : value ~ 'T00:00:00+0000')|strtotime("yyyy-MM-dd'T'HH:mm:ssZ") | format_date('MM/dd/yyyy') }}
+{%- endmacro %}
+
 <div class="enrollment-agreement">
   {% image
     src={{ settings.logo.src }},
@@ -211,7 +215,7 @@
     {% if date %}
     <p>
       <strong>{{ settings.date['heading' ~ field_suffix] }}:</strong>
-      {{ date }}
+      {{ formatted_date(date) }}
     </p>
     {% endif %}
     <p>
@@ -226,18 +230,6 @@
     <p>
       <strong>{{ settings.signature['heading' ~ field_suffix] }}:</strong>
     </p>
-    {% if revision_date %}
-    <p>
-      <strong>{{ settings.revision_date['heading' ~ field_suffix] }}:</strong>
-      {{ revision_date|strtotime("MM/dd/yyyy") }}
-    </p>
-    {% endif %}
-    {% if publication_date %}
-    <p>
-      <strong>{{ settings.publication_date['heading' ~ field_suffix] }}:</strong>
-      {{ publication_date|strtotime("MM/dd/yyyy")}}
-    </p>
-    {% endif %}
       
     {% image
       src={{ settings.signature.image.src }},
@@ -246,5 +238,18 @@
       height={{ settings.signature.image.height }},
       loading={{ settings.signature.image.loading }}
     %}
+
+    {% if revision_date %}
+    <p>
+      <strong>{{ settings.revision_date['heading' ~ field_suffix] }}:</strong>
+      {{ formatted_date(revision_date) }}
+    </p>
+    {% endif %}
+    {% if publication_date %}
+    <p>
+      <strong>{{ settings.publication_date['heading' ~ field_suffix] }}:</strong>
+      {{ formatted_date(publication_date) }}
+    </p>
+    {% endif %}
   </section>
 </div>
