@@ -36,8 +36,12 @@
 {% set variant_dict = {} %}
 {% set settings = module.settings %}  
 
+{% macro formatted_date(value) -%}
+  {{ (value is containing 'T' ? (value|split('T'))[0] : value)|strtodate("yyyy-MM-dd") | format_date('MM/dd/yyyy') }}
+{%- endmacro %}
+
 {% if start_date %}
-  {% do variant_dict.put(settings.start_date['heading' ~ field_suffix], start_date) %}
+  {% do variant_dict.put(settings.start_date['heading' ~ field_suffix], formatted_date(start_date)) %}
 {% endif %}
 {% if variant %}
   {% do variant_dict.put(settings.variant['heading' ~ field_suffix], variant) %}
@@ -93,10 +97,6 @@
   'enrollment_agreement___spanish'
 ] %}
 {% set product = crm_objects('product', query, crm_options|join(','), false) %}
-
-{% macro formatted_date(value) -%}
-  {{ (value is containing 'T' ? value : value ~ 'T00:00:00+0000')|strtotime("yyyy-MM-dd'T'HH:mm:ssZ") | format_date('MM/dd/yyyy') }}
-{%- endmacro %}
 
 <div class="enrollment-agreement">
   {% image
