@@ -3,7 +3,7 @@
 
 {% for key, value in request.query_dict.items() %}
   {% set cleanKey = key|urldecode|trim %}
-  {% set cleanValue = value|urldecode|replace('™','')|replace('$', '')|replace('_', ' ')|replace('~', ' ')|trim %}
+  {% set cleanValue = value|urldecode|replace('™','')|replace('$', '')|replace('_', ' ')|replace('~', ' ')|replace(' (Past)', '')|trim %}
   {% if cleanValue %}
     {% do clean_dict.put(cleanKey, cleanValue) %}
   {% endif %}
