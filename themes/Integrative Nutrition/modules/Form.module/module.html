@@ -1,33 +1,21 @@
-{% if module.style.background.choice_field == 'color' %}
-  {% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}
-{% elif module.style.background.choice_field == 'gradient' %}
-  {% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}
-{% elif module.style.background.choice_field == 'image' %}
-  {% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}
-{% endif %}
-<div id="form-{{ name }}" class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %} button-{{ module.style.button.button_style }}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{ background }}{{ module.style.spacing_field.css }};{% for position in module.style.border_placement %}border-{{ position }}: {{ module.style.border_field.top.width.value }}{{ module.style.border_field.top.width.units }} {{ module.style.border_field.top.style }} rgba({{ module.style.border_field.top.color|convert_rgb }}, {{ module.style.border_field.top.opacity / 100 }});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};">
+{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
+<div id="form-{{name}}" class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %} button-{{ module.style.button.button_style }}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{background}}{{ module.style.spacing_field.css }};{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;display: {{ module.style.display }};">
   {% form
-    form_to_use="{{ module.form_field.form_id }}"
-    response_response_type="{{ module.form_field.response_type }}"
-    response_message="{{ module.form_field.message }}"
-    response_redirect_id="{{ module.form_field.redirect_id }}"
-    response_redirect_url="{{ module.form_field.redirect_url }}"
-    gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
+	form_to_use="{{ module.form_field.form_id }}"
+	response_response_type="{{ module.form_field.response_type }}"
+	response_message="{{ module.form_field.message }}"
+	response_redirect_id="{{ module.form_field.redirect_id }}"
+	response_redirect_url="{{module.form_field.redirect_url}}"
+	gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
   %}
 </div>
 <style>
-  #form-{{ name }} label { color: {{ module.style.labels.label_color.color }}; }
-  {% if !module.style.labels.display_input_labels %}
-  #form-{{ name }} .hs-fieldtype-text > label,
-  #form-{{ name }} .hs-fieldtype-phonenumber > label,
-  #form-{{ name }} .hs-fieldtype-email > label { display: none; }
-  {% endif %}
-  #form-{{ name }} .actions { {{ module.style.button.alignment.css }} }
-  {% if module.style.labels.placeholder_text_color.color %}
-  #form-{{ name }} *::placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }
-  #form-{{ name }} *:-ms-input-placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }
-  #form-{{ name }} *::-ms-input-placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }
-  {% endif %}
+  #form-{{name}} label { color: {{ module.style.labels.label_color.color }}; }
+  {% if !module.style.labels.display_input_labels %}#form-{{name}} .hs-fieldtype-text > label, #form-{{name}} .hs-fieldtype-phonenumber > label, #form-{{name}} .hs-fieldtype-email > label { display: none; }{% endif %}
+  #form-{{name}} .actions { {{ module.style.button.alignment.css }} }
+  {% if module.style.labels.placeholder_text_color.color %}#form-{{name}} *::placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }
+  #form-{{name}} *:-ms-input-placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }
+  #form-{{name}} *::-ms-input-placeholder { color: {{ module.style.labels.placeholder_text_color.color }}; }{% endif %}
 </style>
 <script> 
   {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&limit=1') %}

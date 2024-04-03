@@ -2,7 +2,7 @@
   "id" : "c6051bfc-dace-b2a8-5418-cdf1f45186d4",
   "name" : "link_field",
   "display_width" : null,
-  "label" : "Link",
+  "label" : "Continue Shopping Link",
   "required" : false,
   "locked" : false,
   "supported_types" : [ "EXTERNAL", "CONTENT" ],
@@ -32,4 +32,13 @@
     "gotowebinar_webinar_key" : null,
     "form_type" : "HUBSPOT"
   }
+}, {
+  "id" : "c409f5a1-e95b-bae9-5568-715e61e00f29",
+  "name" : "empty_cart_message",
+  "display_width" : null,
+  "label" : "Empty Cart Message",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<div style=\"text-align: center; font-size: 30px;\">Your cart is empty</div>\n<div style=\"text-align: center; font-size: 20px;\">Find the right course for you</div>"
 } ]

@@ -4,7 +4,7 @@
     <div class="bp-bundled-course bp-{{ item.product_id }}">
       <div class="bp-bundled-course-card">
         <div class="bp-bundled-course-card-head">
-          <div class="bp-bundled-course-card-img" style="background: url('{{item.image_field.src}}')"></div>
+          <div class="bp-bundled-course-card-img"></div>
           <div>
             <div>{{item.course_name}}</div>
             {% if item.product_id %}<div class="bp-price"></div>{% endif %}
@@ -27,8 +27,16 @@
 <script>
 (function () {
   const bundleProducts = [];
+  let priceString = '';
+  const msToCloseAddPopUp = 5000;
   
   $('#{{name}} .bp-add-cart').click(async function() {
+    let cart;
+    await IINShopifyClient.checkout.fetch(getCookie('shopifyCart'))
+      .then(checkout => {
+        cart = checkout;
+      })
+    let lineItemsToAdd = [];
     for(const product of bundleProducts) {
       let variant;
       for(const v of product.variants) {
@@ -45,25 +53,39 @@
         }
       }
       
-      if(!variant) {
-        alert('This combination of options is invalid')
-      } else {
-        const lineItemsToAdd = [
-          {
+      if(variant) {
+        const existingLineItem = cart.lineItems.find(lineItem => {
+          return lineItem.variant.product.id == product.id;
+        });
+        if(!existingLineItem) {
+          lineItemsToAdd.push({
             variantId: variant.id,
             quantity: 1
-          }
-        ];
-        console.log(lineItemsToAdd);
-        await IINShopifyClient.checkout.addLineItems(getCookie('shopifyCart'), lineItemsToAdd)
-          .then((checkout) => {
-          console.log(checkout);
-        })
-          .catch(e => {
-          console.log(e);
-        });
+          });
+        }
       }
     }
+    IINShopifyClient.checkout.addLineItems(getCookie('shopifyCart'), lineItemsToAdd)
+        .then((checkout) => {
+          updateCartTotal(checkout);
+          $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
+          $('.jd-blackout').addClass('jd-blackout-show');
+          $('.jd-add-pop .jd-add-pop-name').text('{{ module.bundle_name }}');
+          $('.jd-add-pop .jd-add-pop-img > div').attr('style', 'background: url(' + checkout.lineItems[0].variant.image.src + ')');
+          let optionsHTML = '';
+          {% for item in module.courses %}
+            optionsHTML += `<div><b>{{item.course_name}}</b></div>`;
+          {% endfor %}
+          $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
+          $('.jd-add-pop .jd-add-pop-price').text('$' + priceString);
+
+          $('.jd-add-pop').css('top', $('.jd-header-wrap').outerHeight() + 'px')
+          $('.jd-add-pop').addClass('jd-add-pop-show');
+          setTimeout(() => {
+            $('.jd-blackout').removeClass('jd-blackout-show');
+            $('.jd-add-pop').removeClass('jd-add-pop-show');
+          }, msToCloseAddPopUp);
+        })
   });
   
   function checkSelectedOptions(changedAttribute, product) {
@@ -124,6 +146,7 @@
       html += '</div>';
     }
 
+    $(`#{{name}} .bp-${product.id.replace('gid://shopify/Product/', '')} .bp-bundled-course-card-img`).css('background', `url('${product.images[0].src}')`);
     $(`#{{name}} .bp-${product.id.replace('gid://shopify/Product/', '')} .bp-card-options`).html(html);
       
     // Option click
@@ -146,6 +169,8 @@
                 variantId: v.id,
                 quantity: 1
               });
+              console.log(v);
+              $('.bp-{{ item.product_id }} .bp-price').text('$' + parseInt(v.price.amount).toLocaleString());
               break;
             }
           }
@@ -166,6 +191,7 @@
             total += parseFloat(discount.value.amount);
           }
         }
+        priceString = totalAfterDiscount.toLocaleString();
         if(total == totalAfterDiscount) {
           $('#course-shopify-price').text('$' + total.toLocaleString());
         } else {

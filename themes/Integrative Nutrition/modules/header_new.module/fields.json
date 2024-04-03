@@ -523,4 +523,31 @@
   "show_emoji_picker" : false,
   "type" : "text",
   "default" : "+1 (513) 776-0960"
+}, {
+  "id" : "d87af676-b798-18f7-43d1-326dfb2f28a1",
+  "name" : "continue_shopping_link",
+  "display_width" : null,
+  "label" : "Continue Shopping Link",
+  "required" : false,
+  "locked" : true,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : 128190697855,
+      "href" : null,
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "b70a7d22-858a-1e4d-d4b4-2f04e1d641cb",
+  "name" : "page_field",
+  "display_width" : null,
+  "label" : "Page",
+  "required" : false,
+  "locked" : true,
+  "type" : "page"
 } ]

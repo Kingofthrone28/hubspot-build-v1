@@ -14,8 +14,8 @@
     {% endif %}
     <a id="{{name}}_btn_{{loop.index}}" href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link"
        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
-      {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
-      >
+       {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+      > 
     {{ item.text_field }}
       {% if item.show_arrow %}
         <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
@@ -36,7 +36,7 @@
   {% scope_css %}
   .jd-request-btn { width: auto; margin-right: 10px; {{ module.style.spacing_field.css }} }
   .jd-subitems a {color: black}
-  svg { display: inline-block;
+   svg { display: inline-block;
     vertical-align: middle;
     margin-left: 6px;
     height: 20px;
@@ -44,4 +44,3 @@
   {% end_scope_css %} 
 </style>
 {% end_require_css %}
-

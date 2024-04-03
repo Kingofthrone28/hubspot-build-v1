@@ -40,20 +40,20 @@
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
       {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
+      {% set href = "mailto:" + href %}
       {% endif %}
       <a href="{{ href }}"
-        {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-        {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-        >
-          {% if module.image_field.src %}
-           {% set sizeAttrs = sizeAttrsTypes %}
-          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-           {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-          {% endif %}
+         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+         >
+        {% if module.image_field.src %}
+        {% set sizeAttrs = sizeAttrsTypes %}
+        {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
+        {% endif %}
 
-          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+        <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
       </a>
     </div>
@@ -65,13 +65,13 @@
        {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
        {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
        >
-       {% if module.update_request_text %}
-          {{module.request_info_text}}
-         {% else %}
-         Request Info
-       {% endif %}
+      {% if module.update_request_text %}
+      {{module.request_info_text}}
+      {% else %}
+      Request Info
+      {% endif %}
     </a>
-    
+
     <nav class="jd-header-dds">
       <ul>
         {% for item in module.main_items %}
@@ -107,15 +107,16 @@
 </div>
 
 <div class="jd-header-wrap">
-  
-  <div style="none">
+    <div style="none">
     <script>
       (function() {
         let now = new Date().getTime();
         let row;
+        let start;
+        let end;
         {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&exclude_page=' + request.path) %}
-           const start = new Date('{{row.start_time_iso}}').getTime();
-           const end = new Date('{{row.end_time_iso}}').getTime();
+           start = new Date('{{row.start_time_iso}}').getTime();
+           end = new Date('{{row.end_time_iso}}').getTime();
            if (now >= start && now <= end) {
              row = {
                 claim_link: "{{row.claim_link}}",
@@ -129,13 +130,11 @@
                 svg_icon: "{{row.svg_icon}}",
                 start_time_iso: "{{row.start_time_iso}}"
               }
-             // todo: remove console logs
-             console.log('DEFAULT FALSE EXCLUDE');
            }
         {% endfor %}
         {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&page_slug=' + request.path)%}
-          const start = new Date('{{row.start_time_iso}}').getTime();
-          const end = new Date('{{row.end_time_iso}}').getTime();
+          start = new Date('{{row.start_time_iso}}').getTime();
+          end = new Date('{{row.end_time_iso}}').getTime();
           if (now >= start && now <= end) {
              row = {
                claim_link: "{{row.claim_link}}",
@@ -153,8 +152,8 @@
         {% endfor %}
         if (!row) {
           {% for row in hubdb_table_rows('top_bar_schedule', 'default=true') %}
-            const start = new Date('{{row.start_time_iso}}').getTime();
-            const end = new Date('{{row.end_time_iso}}').getTime();
+            start = new Date('{{row.start_time_iso}}').getTime();
+            end = new Date('{{row.end_time_iso}}').getTime();
             if (now >= start && now <= end) {
               row = {
                claim_link: '{{row.claim_link}}',
@@ -172,7 +171,7 @@
           {% endfor %}
         }
         if (row) {
-          let barHTML = `<div class="deal-bar">`;
+          
           const { 
            claim_link,
            claim_tel_mobile,
@@ -184,9 +183,10 @@
            svg_icon,
           } = row;
           
+          let barHTML = exclude_page ? `<div class="deal-bar" style="display:none">` : `<div class="deal-bar">` ;
           barHTML += `<svg class="deal-bar-close" ...></svg>`; // SVG code unchanged
           barHTML += `<div class="deal-bar-inner">`;
-          
+        
           if (svg_icon) {
             barHTML += svg_icon;
           }
@@ -202,6 +202,7 @@
           if (claim_tel_mobile || claim_text_mobile) {
             barHTML += `<a href="${claim_tel_mobile}" class="deal-bar-btn mobile" target="_blank">${claim_text_mobile}</a>`;
           }
+          
           barHTML += '</div></div>';
 
           $(barHTML).prependTo('.jd-header-wrap');
@@ -210,10 +211,9 @@
             const endTime = new Date(row.deal_ends_time_iso).getTime();
             function dealTimeDif() {
               const timeDifference = endTime - new Date().getTime();
-              let h,m,s;
-              h = Math.floor(timeDifference/1000/60/60);
-              m = Math.floor((timeDifference/1000/60/60 - h)*60);
-              s = Math.floor(((timeDifference/1000/60/60 - h)*60 - m)*60);
+              let h = Math.floor(timeDifference/1000/60/60);
+              let m = Math.floor((timeDifference/1000/60/60 - h)*60);
+              let s = Math.floor(((timeDifference/1000/60/60 - h)*60 - m)*60);
               let timeString = 'Sale ends in ' + h + 'hrs:' + m + 'mins:' + s + 'sec';
               $('.deal-bar-time-text').text(timeString);
             }
@@ -226,7 +226,6 @@
             const $dealClaimMobile = $('.deal-bar-btn.mobile');
             const hideDealBar = () => {
               $('.deal-bar').hide();
-              $('.static-body').css('padding-top', '0');
             }
             $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
             let isHidden = false;
@@ -240,21 +239,17 @@
                 $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
               }
             });      
-            
             $('.deal-bar-close').click(function() {
               isHidden = true;
               hideDealBar();
-            });
-            if (domainPath.includes(exclude_page)) {
-              isHidden = true;
-              hideDealBar();
-            }
+              $('.static-body').css('padding-top', '0');
+            });       
           });
         }
      })();
     </script>
   </div>
-  
+
   <div class="container" style="padding-top: 5px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
@@ -279,25 +274,25 @@
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
       {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
+      {% set href = "mailto:" + href %}
       {% endif %}
       <a href="{{ href }}"
-        {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-        {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-        >
-          {% if module.image_field.src %}
-           {% set sizeAttrs = sizeAttrsTypes %}
-          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-           {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-          {% endif %}
+         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+         >
+        {% if module.image_field.src %}
+        {% set sizeAttrs = sizeAttrsTypes %}
+        {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
+        {% endif %}
 
-          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+        <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
       </a>
       <nav class="jd-header-dds">
         <ul>
-        {% for item in module.main_items %}
+          {% for item in module.main_items %}
           <li class="jd-nav-item">
             <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
             <ul class="jd-dd">
@@ -305,37 +300,37 @@
               <li>
                 {% set href = item2.link_field.url.href %}
                 {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-                  {% set href = "mailto:" + href %}
+                {% set href = "mailto:" + href %}
                 {% endif %}
                 <a href="{{ href }}"
-                  {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                  {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                  >
+                   {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                   {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+                   >
                   {{ item2.link_text }}
                 </a>
-              {% endfor %}
+                {% endfor %}
               </li>
             </ul>
           </li>
-        {% endfor %}
+          {% endfor %}
         </ul>
       </nav>
       {% set href = module.request_info_link.url.href %}
       {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
+      {% set href = "mailto:" + href %}
       {% endif %}
       <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
-        {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
-        {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
-        >
-       {% if module.update_request_text %}
-          {{module.request_info_text}}
-         {% else %}
+         {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
+         >
+        {% if module.update_request_text %}
+        {{module.request_info_text}}
+        {% else %}
         Request Info
-       {% endif %}
+        {% endif %}
       </a>
     </div>
-    
+
     <!-- Mobile -->
     <div class="jd-mobile-show">
       <div class="jd-header-main">
@@ -348,20 +343,20 @@
           'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
         %}
         {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-          {% set href = "mailto:" + href %}
+        {% set href = "mailto:" + href %}
         {% endif %}
         <a href="{{ href }}"
-          {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-          {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-          >
-            {% if module.image_field.src %}
-             {% set sizeAttrs = sizeAttrsTypes %}
-            {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-             {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-            {% endif %}
+           {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+           {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+           >
+          {% if module.image_field.src %}
+          {% set sizeAttrs = sizeAttrsTypes %}
+          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
+          {% endif %}
 
-            {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-            <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
+          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %} 
         </a>
         <div style="flex:1"></div>
@@ -383,8 +378,8 @@
   </div>
 </div>
 
+<!-- Added to cart pop up -->
 <div class="jd-blackout"></div>
-
 <div class="jd-add-pop">
   <div class="jd-add-pop-item-added">
     <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m2.25 12.321 7.27 6.491c.143.127.321.19.499.19.206 0 .41-.084.559-.249l11.23-12.501c.129-.143.192-.321.192-.5 0-.419-.338-.75-.749-.75-.206 0-.411.084-.559.249l-10.731 11.945-6.711-5.994c-.144-.127-.322-.19-.5-.19-.417 0-.75.336-.75.749 0 .206.084.412.25.56" fill-rule="nonzero"/></svg>
@@ -402,16 +397,16 @@
   </div>
   <div class="jd-add-pop-btns">
     <a href="{{module.continue_shopping_link.url.href}}" class="jd-request-btn hs-button jd-request-btn-inverse">Continue Shopping</a>
-    <a href="https://course.integrativenutrition.com/cart" target="_blank" class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link">View Cart</a>
+    <a href="{{module.cart_link.url.href}}" {% if module.cart_link.open_in_new_tab %}target="_blank"{% endif %} class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link">View Cart</a>
   </div>
 </div>
-
 <script>
   $('.jd-add-pop-close').click(function() {
     $('.jd-blackout').removeClass('jd-blackout-show');
     $('.jd-add-pop').removeClass('jd-add-pop-show');
   });
 </script>
+<!-- End added to cart pop up -->
 
 {% if module.show_admissions_bar %}
 <div class="bottom-float-bar">
@@ -422,100 +417,101 @@
 
 {% require_js %}
 <script>
-$(document).ready(function() {
-  $(document).click(function(e) {
-    if(e.target.className != 'jd-nav-item-title') {
-      $('.jd-nav-item').removeClass('jd-nav-show');
-    }
-  });
-  $('.jd-nav-item-title').click(function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    setTimeout(function() {
-      if($this.parent().hasClass('jd-nav-show')) {
-        $this.parent().removeClass('jd-nav-show');
-      } else {
+  $(document).ready(function() {
+    $(document).click(function(e) {
+      if(e.target.className != 'jd-nav-item-title') {
         $('.jd-nav-item').removeClass('jd-nav-show');
-        $this.parent().addClass('jd-nav-show');
       }
-    }, 50);
-  });
-  $('.jd-contact-link').click(function(e) {
-    e.preventDefault();
-    $('.jd-contact-pop-wrap').css('display', 'flex');
-  });
-  $('.jd-contact-close').click(function(e) {
-    $('.jd-contact-pop-wrap').hide();
-  });
-  $('.jd-ham').click(function(e) {
-    $('#jd-mobile-menu').slideToggle();
-  });
-  $('.jd-language').click(function(e) {
-    e.preventDefault();
-    if(Weglot) {
-      if(Weglot.getCurrentLang() == 'es') {
-        $('.jd-language').text('Español');
-        Weglot.switchTo('en');
-      } else {
-        $('.jd-language').text('English');
-        Weglot.switchTo('es');
+    });
+    $('.jd-nav-item-title').click(function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      setTimeout(function() {
+        if($this.parent().hasClass('jd-nav-show')) {
+          $this.parent().removeClass('jd-nav-show');
+        } else {
+          $('.jd-nav-item').removeClass('jd-nav-show');
+          $this.parent().addClass('jd-nav-show');
+        }
+      }, 50);
+    });
+    $('.jd-contact-link').click(function(e) {
+      e.preventDefault();
+      $('.jd-contact-pop-wrap').css('display', 'flex');
+    });
+    $('.jd-contact-close').click(function(e) {
+      $('.jd-contact-pop-wrap').hide();
+    });
+    $('.jd-ham').click(function(e) {
+      $('#jd-mobile-menu').slideToggle();
+    });
+    $('.jd-language').click(function(e) {
+      e.preventDefault();
+      if(Weglot) {
+        if(Weglot.getCurrentLang() == 'es') {
+          $('.jd-language').text('Español');
+          Weglot.switchTo('en');
+        } else {
+          $('.jd-language').text('English');
+          Weglot.switchTo('es');
+        }
       }
-    }
-  });
- 
-  
-  $('.needle-invite-english').click(function(e) {
+    });
+
+
+    $('.needle-invite-english').click(function(e) {
       e.preventDefault();
       needleInviteEnglish();
-  });
+    });
 
-  $('.needle-invite-spanish').click(function(e) {
+    $('.needle-invite-spanish').click(function(e) {
       e.preventDefault();
       needleInviteSpanish();
-  });
+    });
 
- function needleInviteSpanish() {
-    Needle.PageUpdate('R','&vdata=skill%3dspanish');
-    Needle.cm = "chatreq";
-    Needle.iid = "spanishLink";
-    Needle.campaign = "nt|spanishLInk";
-    Needle.wid = "{{WIN_ID}}";
-    Needle.partner = "Integrative Nutrition";
-    Needle.cucoPosition = "Left";
-    Needle.style = "Theme1";
-    Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
-   return false; //prevents event bubbling
- }
-
- function needleInviteEnglish() {
-    Needle.PageUpdate('R','&vdata=skill%3d');
-    Needle.cm = "chatreq";
-    Needle.iid = "englishLink";
-    Needle.campaign = "nt|englishLInk";
-    Needle.wid = "{{WIN_ID}}";
-    Needle.partner = "Integrative Nutrition";
-    Needle.cucoPosition = "Left";
-    Needle.style = "Theme1";
-    Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
-   return false; //prevents event bubbling
- }
-                                           
- function headerScrollCheck() {
-    const svgLogoBlack = 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg';
-    const svgLogoWhite = 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg';
-    
-    if($(document).scrollTop() > 150) {
-      $('.jd-header-wrap').addClass('jd-scrolled');
-      $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoBlack);
-    } else {
-      $('.jd-header-wrap').removeClass('jd-scrolled');
-      $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoWhite);
+    function needleInviteSpanish() {
+      Needle.PageUpdate('R','&vdata=skill%3dspanish');
+      Needle.cm = "chatreq";
+      Needle.iid = "spanishLink";
+      Needle.campaign = "nt|spanishLInk";
+      Needle.wid = "{{WIN_ID}}";
+      Needle.partner = "Integrative Nutrition";
+      Needle.cucoPosition = "Left";
+      Needle.style = "Theme1";
+      Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
+      return false; //prevents event bubbling
     }
-  }
-  headerScrollCheck();
-  $(document).on('scroll', function() {
+
+    function needleInviteEnglish() {
+      Needle.PageUpdate('R','&vdata=skill%3d');
+      Needle.cm = "chatreq";
+      Needle.iid = "englishLink";
+      Needle.campaign = "nt|englishLInk";
+      Needle.wid = "{{WIN_ID}}";
+      Needle.partner = "Integrative Nutrition";
+      Needle.cucoPosition = "Left";
+      Needle.style = "Theme1";
+      Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
+      return false; //prevents event bubbling
+    }  
+
+    function headerScrollCheck() {
+      const svgLogoBlack = 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg';
+      const svgLogoWhite = 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg';
+
+      if($(document).scrollTop() > 150) {
+        $('.jd-header-wrap').addClass('jd-scrolled');
+        $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoBlack);
+      } else {
+        $('.jd-header-wrap').removeClass('jd-scrolled');
+        $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoWhite);
+      }
+    }
     headerScrollCheck();
+    $(document).on('scroll', function() {
+      headerScrollCheck();
+    });
   });
-});
 </script>
+ 
 {% end_require_js %}

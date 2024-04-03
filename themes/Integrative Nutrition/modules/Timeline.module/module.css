@@ -174,7 +174,6 @@ html {
   margin: 0;
   padding: 16px 0px 0 0;
   /*border-top: 1px solid #b2e9ff;*/
-  overflow-x: hidden;
   width: 100%;
 }
 .tl-nav-wrapper:before, .tl-nav-wrapper:after {
@@ -372,6 +371,18 @@ html {
           transform: rotate(-45deg);
 }
 
+@media screen and (min-width:767px){
+  .tl-nav-wrapper {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    margin: 0;
+    padding: 16px 0px 0 0;
+    /*border-top: 1px solid #b2e9ff;*/
+    overflow: hidden;
+    width: 100%;
+  }
+}
 /*.no-csstransforms .tl-nav-arrow-left,
 .no-csstransforms .tl-nav-arrow-right {
   display: none;

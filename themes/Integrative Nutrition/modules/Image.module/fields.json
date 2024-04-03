@@ -300,6 +300,27 @@
     "max_height" : 293
   }
 }, {
+  "id" : "0427da87-72e9-d68a-04a2-976804f6c03d",
+  "name" : "image_shape",
+  "display_width" : null,
+  "label" : "Image Shape",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "image_field_1",
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "NOT_EMPTY",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "circle", "Circle" ], [ "square", "Square" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+}, {
   "id" : "03e721a0-d38b-a699-8590-548161d0613e",
   "name" : "image_overhang",
   "display_width" : null,

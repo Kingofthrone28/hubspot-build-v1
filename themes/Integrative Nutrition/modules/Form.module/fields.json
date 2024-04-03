@@ -320,7 +320,7 @@
       "label" : "Apply Animation to",
       "required" : false,
       "locked" : false,
-      "display" : "radio",
+      "display" : "select",
       "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
       "multiple" : false,
       "reordering_enabled" : true,

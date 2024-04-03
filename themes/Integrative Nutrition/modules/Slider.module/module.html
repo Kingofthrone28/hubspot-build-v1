@@ -59,7 +59,7 @@
 {% endif %}
 {% endif %}
 {% endmacro %}
-<div id="section-{{ parent_custom_widget_name }}" class="{% if module.item|length < 3 %}center-cards{% endif %} {% if module.option.navigation.dots_on_side %}slider-dots-side{% elif module.option.previews_with_full_view %}slider-preview-vids{% endif %}{% if module.option.animation.apply_animation_to == 'this' %} {{ module.option.animation.animation }}{% else %} load-parent{% endif %}"{% if module.option.animation.apply_animation_to != 'this' %} data-load="{{ module.option.animation.animation }}" data-target="{{ module.option.animation.apply_animation_to }}"{% endif %}>
+<div id="section-{{ parent_custom_widget_name }}" class="{% if module.item|length < 3 %}center-cards{% endif %} {% if module.option.navigation.dots_on_side %}slider-dots-side{% elif module.option.previews_with_full_view %}slider-preview-vids{% endif %}{% if module.option.animation.apply_animation_to == 'this' %} {{ module.option.animation.animation }}{% else %} load-parent{% endif %}{% if module.custom_css_class %} {{ module.custom_css_class }}{% endif %}"{% if module.option.animation.apply_animation_to != 'this' %} data-load="{{ module.option.animation.animation }}" data-target="{{ module.option.animation.apply_animation_to }}"{% endif %}>
   {% if module.option.previews_with_full_view %}
   <div class="slider-full-vid-title" id="title-{{name}}">{{module.item[0].content|striptags}}</div>
   <div class="slider-full-vid-wrap">

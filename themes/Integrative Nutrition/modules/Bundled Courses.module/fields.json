@@ -87,4 +87,16 @@
       "max_height" : 480
     }
   } ]
+}, {
+  "id" : "fa69a0be-6b59-494f-2eb1-ff3354953804",
+  "name" : "bundle_name",
+  "display_width" : null,
+  "label" : "Bundle Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The Health Coach Training Bundle"
 } ]

@@ -1269,4 +1269,15 @@
   "show_emoji_picker" : false,
   "type" : "text",
   "default" : "Read More"
+}, {
+  "id" : "66465204-43a1-08bd-c96b-0ba10f77a585",
+  "name" : "custom_css_class",
+  "display_width" : null,
+  "label" : "Custom CSS Class",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
 } ]

@@ -32,6 +32,25 @@
     "max_height" : 30
   }
 }, {
+  "id" : "b14ef51c-79f9-1198-319f-f1efeff40942",
+  "name" : "image_link",
+  "display_width" : null,
+  "label" : "Link",
+  "required" : false,
+  "locked" : true,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "href" : "https://www.integrativenutrition.com/",
+      "type" : "EXTERNAL"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
   "id" : "2aa3ffec-641b-4c91-8020-70eac21d1a10",
   "name" : "main_items",
   "display_width" : null,
