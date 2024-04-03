@@ -1,3 +1,136 @@
+{% macro info_link() %}
+  {% set href = module.request_info_link.url.href %}
+  {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+  {% endif %}
+  <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
+    {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
+    {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
+  >
+    {% if module.update_request_text %}
+      {{ module.request_info_text }}
+    {% else %}
+      Request Info
+    {% endif %}
+  </a>
+{% endmacro %}
+
+{% macro logo_image() %}
+  {% set image = module.image_field %}
+  {% if image.src %}
+    {% set size_type = image.size_type %}
+    {% set height = size_type == 'auto_custom_max' ? image.max_height : image.height %}
+    {% set width = size_type == 'auto_custom_max' ? image.max_width : image.width %}
+    <img
+      src="{{ image.src }}"
+      alt="{{ image.alt }}"
+      {% if width %}
+        width="{{ width }}"
+      {% endif %}
+      {% if height %}
+        height="{{ height }}"
+      {% endif %}
+      {% if size_type == 'auto' or size_type == 'auto_custom_max' %}
+        style="max-width: 100%; height: auto"
+      {% endif %}
+      {% if image.loading != 'disabled' %}
+        loading="{{ image.loading }}"
+      {% endif %}
+    >
+  {% endif %} 
+{% endmacro %}
+
+{% macro logo_link() %}
+  {% set href = module.image_link.url.href %}
+  {% if href %}
+    {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+    {% endif %}
+    <a href="{{ href }}"
+      {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
+    >
+      {{ logo_image() }}
+    </a>
+  {% else %}
+    {{ logo_image() }}
+  {% endif %}
+{% endmacro %}
+
+{% macro main_nav() %}
+  <nav class="jd-header-dds">
+    <ul>
+      {% for item in module.main_items %}
+      <li class="jd-nav-item">
+        <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
+        <ul class="jd-dd">
+          {% for item2 in item.links %}
+          <li>
+            {% set href = item2.link_field.url.href %}
+            {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+              {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
+            >
+              {{ item2.link_text }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endmacro %}
+
+{% set current_timestamp = unixtimestamp(local_dt) %}
+{% set iso_date_format = "yyyy-MM-dd'T'HH:mm:ss" %}
+{% set top_bar = {} %}
+    
+{% macro set_top_bar(row) %}
+  {% set excluded_pages = [] %}
+  {% if row.exclude_page %}
+    {% for slug in row.exclude_page.split(',') %}
+      {% do excluded_pages.append(slug|trim) %}
+    {% endfor %}
+  {% endif %}
+  
+  {% set end_timestamp = 0 %}
+  {% if row.end_time_iso %}
+    {% set end_date = (row.end_time_iso|split('.'))[0]|strtodate(iso_date_format) %}
+    {% if end_date %}
+      {% set end_timestamp = end_date|unixtimestamp %}
+    {% endif %}
+  {% endif %}
+
+  {% set start_timestamp = 0 %}
+  {% if row.start_time_iso %}
+    {% set start_date = (row.start_time_iso|split('.'))[0]|strtodate(iso_date_format) %}
+    {% if start_date %}
+      {% set start_timestamp = start_date|unixtimestamp %}
+    {% endif %}
+  {% endif %}
+
+  {% if current_timestamp >= start_timestamp and current_timestamp <= end_timestamp %}
+    {% unless excluded_pages is containing content.slug %}
+      {% do top_bar.update(row) %}
+    {% endunless %}
+  {% endif %}
+{% endmacro %}
+
+{% set table_name = 'top_bar_schedule' %}
+
+{% for row in hubdb_table_rows(table_name, 'default=false&page_slug=' + request.path) %}
+  {{ set_top_bar(row) }}
+{% endfor %}
+{% if !top_bar %}
+  {% for row in hubdb_table_rows(table_name, 'default=true') %}
+    {{ set_top_bar(row) }}
+  {% endfor %}
+{% endif %}
+
 <div class="jd-contact-pop-wrap">
   <div class="jd-contact-pop">
     <div class="jd-contact-close">
@@ -34,301 +167,66 @@
       <div class="jd-ham">
         <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
       </div>
-      {% set href = module.image_link.url.href %}
-      {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
-        'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
-        'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
-      %}
-      {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-      {% set href = "mailto:" + href %}
-      {% endif %}
-      <a href="{{ href }}"
-         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-         >
-        {% if module.image_field.src %}
-        {% set sizeAttrs = sizeAttrsTypes %}
-        {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-        {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-
-        {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-        <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-        {% endif %} 
-      </a>
+      {{ logo_link() }}
     </div>
-    {% set href = module.request_info_link.url.href %}
-    {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
-    {% set href = "mailto:" + href %}
-    {% endif %}
-    <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
-       {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
-       {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
-       >
-      {% if module.update_request_text %}
-      {{module.request_info_text}}
-      {% else %}
-      Request Info
-      {% endif %}
-    </a>
-
-    <nav class="jd-header-dds">
-      <ul>
-        {% for item in module.main_items %}
-        <li class="jd-nav-item">
-          <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-          <ul class="jd-dd">
-            {% for item2 in item.links %}
-            <li>
-              {% set href = item2.link_field.url.href %}
-              {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-              {% endif %}
-              <a href="{{ href }}"
-                 {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                 {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                 >
-                {{ item2.link_text }}
-              </a>
-              {% endfor %}
-            </li>
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    {{ info_link() }}
+    {{ main_nav() }}
   </div>
   <div class="jd-header-top jd-mobile-foot">
     <ul>
       <li><a class="jd-language" href="#">Español</a></li>
-      <li><a id="jd-student" href="{{module.student_login_link.url.href}}" {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}>Student Login</a></li>
+      <li><a id="jd-student" href="{{module.student_login_link.url.href}}"{% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}>Student Login</a></li>
     </ul>
   </div>
 </div>
 
 <div class="jd-header-wrap">
-    <div style="none">
-    <script>
-      (function() {
-        let now = new Date().getTime();
-        let row;
-        let start;
-        let end;
-        {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&exclude_page=' + request.path) %}
-           start = new Date('{{row.start_time_iso}}').getTime();
-           end = new Date('{{row.end_time_iso}}').getTime();
-           if (now >= start && now <= end) {
-             row = {
-                claim_link: "{{row.claim_link}}",
-                claim_tel_mobile: "{{row.claim_tel_mobile}}",
-                claim_text: "{{row.claim_text}}",
-                claim_text_mobile: "{{row.claim_text_mobile}}",
-                deal_bar_text: "{{row.deal_bar_text}}",
-                deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
-                end_time_iso: "{{row.end_time_iso}}",
-                exclude_page: "{{row.exclude_page}}",
-                svg_icon: "{{row.svg_icon}}",
-                start_time_iso: "{{row.start_time_iso}}"
-              }
-           }
-        {% endfor %}
-        {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&page_slug=' + request.path)%}
-          start = new Date('{{row.start_time_iso}}').getTime();
-          end = new Date('{{row.end_time_iso}}').getTime();
-          if (now >= start && now <= end) {
-             row = {
-               claim_link: "{{row.claim_link}}",
-               claim_tel_mobile: "{{row.claim_tel_mobile}}",
-               claim_text: "{{row.claim_text}}",
-               claim_text_mobile: "{{row.claim_text_mobile}}",
-               deal_bar_text: "{{row.deal_bar_text}}",
-               deal_ends_time_iso: "{{row.deal_ends_time_iso}}",
-               end_time_iso: "{{row.end_time_iso}}",
-               exclude_page: "{{row.exclude_page}}",
-               svg_icon: "{{row.svg_icon}}",
-               start_time_iso: "{{row.start_time_iso}}"
-              }
-           }
-        {% endfor %}
-        if (!row) {
-          {% for row in hubdb_table_rows('top_bar_schedule', 'default=true') %}
-            start = new Date('{{row.start_time_iso}}').getTime();
-            end = new Date('{{row.end_time_iso}}').getTime();
-            if (now >= start && now <= end) {
-              row = {
-               claim_link: '{{row.claim_link}}',
-               claim_tel_mobile: '{{row.claim_tel_mobile}}',
-               claim_text: '{{row.claim_text}}',
-               claim_text_mobile: '{{row.claim_text_mobile}}',
-               deal_bar_text: '{{row.deal_bar_text}}',
-               deal_ends_time_iso: '{{row.deal_ends_time_iso}}',
-               end_time_iso: '{{row.end_time_iso}}',
-               exclude_page: '{{row.exclude_page}}',
-               svg_icon: '{{row.svg_icon}}',
-               start_time_iso: '{{row.start_time_iso}}'
-              }
-            }
-          {% endfor %}
-        }
-        if (row) {
-          
-          const { 
-           claim_link,
-           claim_tel_mobile,
-           claim_text,
-           claim_text_mobile,
-           deal_bar_text,
-           deal_ends_time_iso,
-           exclude_page,
-           svg_icon,
-          } = row;
-          
-          let barHTML = exclude_page ? `<div class="deal-bar" style="display:none">` : `<div class="deal-bar">` ;
-          barHTML += `<svg class="deal-bar-close" ...></svg>`; // SVG code unchanged
-          barHTML += `<div class="deal-bar-inner">`;
-        
-          if (svg_icon) {
-            barHTML += svg_icon;
-          }
-          if (deal_bar_text) {
-            barHTML += `<span>${deal_bar_text}</span>`;
-          }
-          if (deal_ends_time_iso) {
-            barHTML += `<span class="deal-bar-time-text"></span>`;
-          }
-          if (claim_link) {
-            barHTML += `<a href="${claim_link}" class="deal-bar-btn desktop" target="_blank">${claim_text}</a>`;
-          }
-          if (claim_tel_mobile || claim_text_mobile) {
-            barHTML += `<a href="${claim_tel_mobile}" class="deal-bar-btn mobile" target="_blank">${claim_text_mobile}</a>`;
-          }
-          
-          barHTML += '</div></div>';
-
-          $(barHTML).prependTo('.jd-header-wrap');
-          
-          if (row.deal_ends_time_iso) {
-            const endTime = new Date(row.deal_ends_time_iso).getTime();
-            function dealTimeDif() {
-              const timeDifference = endTime - new Date().getTime();
-              let h = Math.floor(timeDifference/1000/60/60);
-              let m = Math.floor((timeDifference/1000/60/60 - h)*60);
-              let s = Math.floor(((timeDifference/1000/60/60 - h)*60 - m)*60);
-              let timeString = 'Sale ends in ' + h + 'hrs:' + m + 'mins:' + s + 'sec';
-              $('.deal-bar-time-text').text(timeString);
-            }
-            dealTimeDif();
-            setInterval(dealTimeDif, 1000);
-          }
-          
-          $(document).ready(function() {
-            const domainPath = window.location.pathname;
-            const $dealClaimMobile = $('.deal-bar-btn.mobile');
-            const hideDealBar = () => {
-              $('.deal-bar').hide();
-            }
-            $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
-            let isHidden = false;
-            if($dealClaimMobile.text()){
-              $('.deal-bar-btn').addClass('desktop')
-            }else{
-              $('.deal-bar-btn').removeClass('desktop');
-            }
-            $(window).on('resize', function() {
-              if(!isHidden) {
-                $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
-              }
-            });      
-            $('.deal-bar-close').click(function() {
-              isHidden = true;
-              hideDealBar();
-              $('.static-body').css('padding-top', '0');
-            });       
-          });
-        }
-     })();
-    </script>
+  {% if top_bar %}
+  <div class="deal-bar">
+    <svg class="deal-bar-close"></svg>
+    <div class="deal-bar-inner">
+    {% if top_bar.svg_icon %}  
+      {{ top_bar.svg_icon }}
+    {% endif %}
+    {% if top_bar.deal_bar_text %}  
+      <span>{{ top_bar.deal_bar_text }}</span>
+    {% endif %}
+    {% if top_bar.deal_ends_time_iso %}  
+      <span class="deal-bar-time-text"></span>
+    {% endif %}
+    {% if top_bar.claim_link and top_bar.claim_text %}  
+      <a href="{{ top_bar.claim_link }}" class="deal-bar-btn desktop" target="_blank">{{ top_bar.claim_text }}</a>
+    {% endif %}
+    {% if top_bar.claim_tel_mobile %}  
+      {% set claim_text_mobile = top_bar.claim_text_mobile ? top_bar.claim_text_mobile : top_bar.claim_tel_mobile %}
+      <a href="{{ top_bar.claim_tel_mobile }}" class="deal-bar-btn mobile" target="_blank">{{ claim_text_mobile }}</a>
+    {% endif %}
+    </div>
   </div>
+  {% endif %}
 
   <div class="container" style="padding-top: 5px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
         <li><a id="jd-contact" class="jd-contact-link" href="#">Contact</a></li>
         <li><a class="jd-language" href="#">Español</a></li>
-        <li><a id="jd-student" href="{{module.student_login_link.url.href}}" {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}>Student Login</a></li>
+        <li><a id="jd-student" href="{{module.student_login_link.url.href}}"{% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}>Student Login</a></li>
         <li id="jd-cart">
-          <a href="{{module.cart_link.url.href}}" {% if module.cart_link.open_in_new_tab %}target="_blank"{% endif %}>
+          <a href="{{module.cart_link.url.href}}"{% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <div class="jd-cart-item-count" style="display:none">0</div>
+          <div class="jd-cart-item-count" style="display: none">0</div>
         </li>
       </ul>
     </div>
   </div>
+
   <div class="container">
     <!-- Desktop -->
     <div class="jd-header-main jd-mobile-hide">
-      {% set href = module.image_link.url.href %}
-      {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
-        'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
-        'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
-      %}
-      {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-      {% set href = "mailto:" + href %}
-      {% endif %}
-      <a href="{{ href }}"
-         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-         >
-        {% if module.image_field.src %}
-        {% set sizeAttrs = sizeAttrsTypes %}
-        {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-        {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-        {% endif %}
-
-        {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-        <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-        {% endif %} 
-      </a>
-      <nav class="jd-header-dds">
-        <ul>
-          {% for item in module.main_items %}
-          <li class="jd-nav-item">
-            <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-            <ul class="jd-dd">
-              {% for item2 in item.links %}
-              <li>
-                {% set href = item2.link_field.url.href %}
-                {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-                {% set href = "mailto:" + href %}
-                {% endif %}
-                <a href="{{ href }}"
-                   {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                   {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                   >
-                  {{ item2.link_text }}
-                </a>
-                {% endfor %}
-              </li>
-            </ul>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% set href = module.request_info_link.url.href %}
-      {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
-      {% set href = "mailto:" + href %}
-      {% endif %}
-      <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
-         {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
-         {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
-         >
-        {% if module.update_request_text %}
-        {{module.request_info_text}}
-        {% else %}
-        Request Info
-        {% endif %}
-      </a>
+      {{ logo_link() }}
+      {{ main_nav() }}
+      {{ info_link() }}
     </div>
 
     <!-- Mobile -->
@@ -337,28 +235,7 @@
         <div class="jd-ham">
           <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
         </div>
-        {% set href = module.image_link.url.href %}
-        {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
-          'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
-          'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
-        %}
-        {% if module.image_link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
-        {% endif %}
-        <a href="{{ href }}"
-           {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
-           {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-           >
-          {% if module.image_field.src %}
-          {% set sizeAttrs = sizeAttrsTypes %}
-          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-          {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-
-          {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-          <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-          {% endif %} 
-        </a>
+        {{ logo_link() }}
         <div style="flex:1"></div>
         <div class="jd-header-top">
           <ul>
@@ -368,7 +245,7 @@
               </a>
             </li>
             <li id="jd-cart">
-              <a href="{{module.cart_link.url.href}}" {% if module.cart_link.open_in_new_tab %}target="_blank"{% endif %}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="{{module.cart_link.url.href}}"{% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
               <div class="jd-cart-item-count" style="display:none">0</div>
             </li>
           </ul>
@@ -417,58 +294,7 @@
 
 {% require_js %}
 <script>
-  $(document).ready(function() {
-    $(document).click(function(e) {
-      if(e.target.className != 'jd-nav-item-title') {
-        $('.jd-nav-item').removeClass('jd-nav-show');
-      }
-    });
-    $('.jd-nav-item-title').click(function(e) {
-      e.preventDefault();
-      var $this = $(this);
-      setTimeout(function() {
-        if($this.parent().hasClass('jd-nav-show')) {
-          $this.parent().removeClass('jd-nav-show');
-        } else {
-          $('.jd-nav-item').removeClass('jd-nav-show');
-          $this.parent().addClass('jd-nav-show');
-        }
-      }, 50);
-    });
-    $('.jd-contact-link').click(function(e) {
-      e.preventDefault();
-      $('.jd-contact-pop-wrap').css('display', 'flex');
-    });
-    $('.jd-contact-close').click(function(e) {
-      $('.jd-contact-pop-wrap').hide();
-    });
-    $('.jd-ham').click(function(e) {
-      $('#jd-mobile-menu').slideToggle();
-    });
-    $('.jd-language').click(function(e) {
-      e.preventDefault();
-      if(Weglot) {
-        if(Weglot.getCurrentLang() == 'es') {
-          $('.jd-language').text('Español');
-          Weglot.switchTo('en');
-        } else {
-          $('.jd-language').text('English');
-          Weglot.switchTo('es');
-        }
-      }
-    });
-
-
-    $('.needle-invite-english').click(function(e) {
-      e.preventDefault();
-      needleInviteEnglish();
-    });
-
-    $('.needle-invite-spanish').click(function(e) {
-      e.preventDefault();
-      needleInviteSpanish();
-    });
-
+  $(function() {
     function needleInviteSpanish() {
       Needle.PageUpdate('R','&vdata=skill%3dspanish');
       Needle.cm = "chatreq";
@@ -493,25 +319,145 @@
       Needle.style = "Theme1";
       Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
       return false; //prevents event bubbling
-    }  
+    }
 
     function headerScrollCheck() {
-      const svgLogoBlack = 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/black_logo.svg';
-      const svgLogoWhite = 'https://info.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets/white_logo.svg';
+      const logoPath = 'https://course.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets';
+      const logoSvgBlack = `${logoPath}/black_logo.svg`;
+      const logoSvgWhite = `${logoPath}/white_logo.svg`;
+      const targets = [
+        '.hs-content-id-137558861388',
+        '.hs-content-id-151881679191',
+        '.hs-content-id-156853830932'
+      ];
+      const $content = $(targets.join(', '));
+      const $wrapper = $content.find('.jd-header-wrap');
+      const $images = $wrapper.find('.jd-header-main a img');
 
-      if($(document).scrollTop() > 150) {
-        $('.jd-header-wrap').addClass('jd-scrolled');
-        $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoBlack);
+      if ($(document).scrollTop() > 150) {
+        $wrapper.addClass('jd-scrolled');
+        $images.attr('src', logoSvgBlack);
       } else {
-        $('.jd-header-wrap').removeClass('jd-scrolled');
-        $('.hs-content-id-151881679191, .hs-content-id-137558861388, .hs-content-id-156853830932').find('.jd-header-wrap .jd-header-main a img').attr('src', svgLogoWhite);
+        $wrapper.removeClass('jd-scrolled');
+        $images.attr('src', logoSvgWhite);
       }
     }
+
+    $(document).click(function(e) {
+      if (e.target.className != 'jd-nav-item-title') {
+        $('.jd-nav-item').removeClass('jd-nav-show');
+      }
+    });
+
+    $('.jd-nav-item-title').click(function(e) {
+      e.preventDefault();
+      const $this = $(this);
+      setTimeout(function() {
+        if ($this.parent().hasClass('jd-nav-show')) {
+          $this.parent().removeClass('jd-nav-show');
+        } else {
+          $('.jd-nav-item').removeClass('jd-nav-show');
+          $this.parent().addClass('jd-nav-show');
+        }
+      }, 50);
+    });
+
+    $('.jd-contact-link').click(function(e) {
+      e.preventDefault();
+      $('.jd-contact-pop-wrap').css('display', 'flex');
+    });
+
+    $('.jd-contact-close').click(function(e) {
+      $('.jd-contact-pop-wrap').hide();
+    });
+
+    $('.jd-ham').click(function(e) {
+      $('#jd-mobile-menu').slideToggle();
+    });
+
+    $('.jd-language').click(function(e) {
+      e.preventDefault();
+      if (Weglot && Weglot.getCurrentLang() == 'es') {
+        $('.jd-language').text('Español');
+        Weglot.switchTo('en');
+      } else if (Weglot) {
+        $('.jd-language').text('English');
+        Weglot.switchTo('es');
+      }
+    });
+  
+    $('.needle-invite-english').click(function(e) {
+      e.preventDefault();
+      needleInviteEnglish();
+    });
+
+    $('.needle-invite-spanish').click(function(e) {
+      e.preventDefault();
+      needleInviteSpanish();
+    });
+
     headerScrollCheck();
+
     $(document).on('scroll', function() {
       headerScrollCheck();
     });
   });
 </script>
- 
 {% end_require_js %}
+
+{% if top_bar %}
+  {% require_js %}
+  <script>
+    (function () {
+      const dealEndsTimeIso = `{{ top_bar.deal_ends_time_iso }}`;
+      const excludePage = `{{ top_bar.exclude_page }}`;
+  
+      if (dealEndsTimeIso) {
+        const endTime = new Date(dealEndsTimeIso).getTime();
+  
+        const updateTimer = () => {
+          const timeDifference = endTime - new Date().getTime();
+          const h = Math.floor(timeDifference / 1000 / 60 / 60);
+          const m = Math.floor((timeDifference / 1000 / 60 / 60 - h) * 60);
+          const s = Math.floor(((timeDifference / 1000 / 60 / 60 - h) * 60 - m) * 60);
+          const timeString = 'Sale ends in ' + h + 'hrs:' + m + 'mins:' + s + 'sec';
+          $('.deal-bar-time-text').text(timeString);
+        };
+  
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      }
+  
+      $(function() {
+        let isHidden = false;
+  
+        const hideDealBar = () => {
+          isHidden = true;
+          $('.deal-bar').hide();
+          $('.static-body').css('padding-top', '0');
+        };
+  
+        const offsetDealBar = () => {
+          $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
+        };
+  
+        if ($('.deal-bar-btn.mobile').text()) {
+          $('.deal-bar-btn').addClass('desktop')
+        } else {
+          $('.deal-bar-btn').removeClass('desktop');
+        }
+  
+        $('.deal-bar-close').click(function() {
+          hideDealBar();
+        });
+  
+        $(window).on('resize', function() {
+          if (!isHidden) {
+            offsetDealBar();
+          }
+        });      
+      });
+    })();
+  </script>
+  {% end_require_js %}
+{% endif %}
