@@ -2,7 +2,7 @@
 {% for item in module.popup %}
 <div id="pop-{{ item.pop_up_id }}" class="re-pop-wrapper">
   <div class="re-pop">
-    <div class="hide-labels-{{ item.hide_labels }}">
+    <div>
       <span class="close" style="background: url({{ get_asset_url('/Integrative Nutrition/images/download.svg') }}) center;image-size: contain;"></span>
       {{ item.popup_content }}
       {% if item.add_form %}
@@ -21,7 +21,6 @@
       </div>
       {% endif %}
     </div>
-  </div>
 </div>
 {% endfor %}
 {% endif %}
