@@ -124,25 +124,6 @@
       "message" : "Thanks for submitting the form."
     }
   }, {
-    "id" : "18462686-62f6-a729-82d2-421f9f9450a4",
-    "name" : "hide_labels",
-    "display_width" : null,
-    "label" : "Hide Labels",
-    "help_text" : "Hide form labels",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "cff80b84-5198-a00c-702d-439005fd7f48",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : true
-  }, {
     "id" : "0f23ce40-9987-151f-56f8-87822cd95e21",
     "name" : "footer",
     "display_width" : null,
@@ -155,15 +136,5 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "default" : {
-    "pop_up_id" : "unique_id",
-    "popup_content" : "<h3 style=\"text-align: center;\">Content Header</h3>",
-    "add_form" : false,
-    "form_field" : {
-      "response_type" : "inline",
-      "message" : "Thanks for submitting the form."
-    },
-    "hide_labels" : true,
-    "footer" : "<span style=\"color: #999999; font-size: 13px;\">By clicking 'Send Me My Class!', I consent to Integrative Nutrition and its affiliates contacting me by email at the address provided and/or by telephone at the number provided (by live, automated, or prerecorded phone calls or text messages) about its courses. I understand that my consent is not required for enrollment and may be withdrawn.&nbsp;This page is protected by Google reCAPTCHA.</span>"
-  }
+  "default" : [ ]
 } ]
