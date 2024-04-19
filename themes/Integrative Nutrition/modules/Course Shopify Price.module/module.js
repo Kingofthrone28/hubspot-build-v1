@@ -6,26 +6,44 @@
 
     moduleData = JSON.parse(rawData);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return;
   }
 
-  IINShopifyClient.product.fetch(`gid://shopify/Product/${moduleData.productID}`).then(function(product) {
-      let variant = product.variants[0];
-      for(const v of product.variants) {
-        if(v.available) {
-          variant = v;
+  const setPrice = async () => {
+    try {
+      const gidPath = `gid://shopify/Product/${moduleData.productID}`;
+      const product = await IINShopifyClient.product.fetch(gidPath);
+      let [matchedVariant] = product.variants;
+
+      for (const variant of product.variants) {
+        if (variant.available) {
+          matchedVariant = variant;
           break;
         }
       }
+
+      // TODO: remove
       console.log(product);
-      console.log("PDP");
-      console.log(variant);
-  
-      $('#course-shopify-price').text('$' + parseInt(variant.price.amount).toLocaleString());
-      if(variant.compareAtPrice && variant.compareAtPrice.amount && variant.compareAtPrice.amount != variant.price.amount) {
-        $('#course-shopify-compare').text('$' + parseInt(variant.compareAtPrice.amount).toLocaleString());
+      console.log('PDP');
+      console.log(matchedVariant);
+
+      const marchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
+      const matchedPrice = matchedVariant.price.amount;
+
+      $('#course-shopify-price').text(
+        `$${parseInt(matchedPrice).toLocaleString()}`
+      );
+
+      if (marchedCompareAtPrice && marchedCompareAtPrice !== matchedPrice) {
+        $('#course-shopify-compare').text(
+          `$${parseInt(matchedVariant.compareAtPrice.amount).toLocaleString()}`
+        );
       }
-    })
-    .catch(e => { console.log(e); });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  setPrice();
 })();
