@@ -254,7 +254,9 @@
       }
 
       Object.entries(data).forEach(([key, value]) => {
-        if (key === 'source') {
+        if (key === 'sldiscountcode') {
+          setHiddenField('promo_code', value);
+        } else if (key === 'source') {
           setHiddenField('partner_lead_source', value);
         } else {
           setHiddenField(key, value);
