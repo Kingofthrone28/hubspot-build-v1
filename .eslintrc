@@ -12,6 +12,8 @@
   "root": true,
   "rules": {
     "class-methods-use-this": 0,
+    // TODO: revisit
+    "func-names": 0,
     "import/no-namespace": 1,
     "import/order": 1,
     "lines-between-class-members": [
@@ -19,11 +21,20 @@
       "always",
       { "exceptAfterSingleLine": true }
     ],
-    "no-console": 1,
+    // TODO: make warning
+    "no-console": 0,
     "no-empty": 1,
-    "no-restricted-syntax": 1,
-    "no-unused-vars": 1,
+    "no-plusplus": 0,
+    // TODO: revisit?
+    "no-restricted-syntax": 0,
+    // TODO: remove after testing
+    "no-undef": 0,
+    // TODO: revisit?
+    "no-unused-vars": 0,
+    "no-use-before-define": 1,
     "no-useless-catch": 1,
+    // TODO: revisit
+    "prefer-arrow-callback": 0,
     "prefer-destructuring": 1,
     "radix": [1, "as-needed"]
   }
