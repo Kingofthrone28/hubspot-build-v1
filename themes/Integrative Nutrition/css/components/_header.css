@@ -198,14 +198,15 @@
   box-shadow: 0 4px 12px rgba(29,29,29,.2) !important;
 }
 
+.jd-header-wrap #jd-cart svg path,
 .jd-header-wrap.jd-scrolled #jd-cart svg path,
 .jd-header-wrap.jd-no-scroll #jd-cart svg path {
   stroke: {{ theme.global_colors.primary_color.color }};
 }
 
+.jd-header-wrap .jd-contact-link svg path,
 .jd-header-wrap.jd-scrolled .jd-contact-link svg path,
 .jd-header-wrap.jd-no-scroll .jd-contact-link svg path {
-  stroke: {{ theme.global_colors.primary_color.color }};
   fill: {{ theme.global_colors.primary_color.color }};
 }
 
