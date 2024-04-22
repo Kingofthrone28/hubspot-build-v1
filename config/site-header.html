@@ -2,7 +2,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,700;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
 />
 <link
   rel="alternate"
@@ -16,103 +16,5 @@
 />
 
 <script src="{{ get_asset_url('/Integrative Nutrition/js/datalayertoggle.js') }}"></script>
-
-<!-- Shopify Client -->
 <script src="https://sdks.shopifycdn.com/js-buy-sdk/2.21.1/index.unoptimized.umd.min.js"></script>
-
-<script>
-  let IINShopifyClient = ShopifyBuy.buildClient({
-    domain: 'the-institute-for-integrative-nutrition.myshopify.com',
-    storefrontAccessToken: '626e521d492a31fd27657fc6fa8e95b7',
-  });
-  
-  // Get Cookie
-  function getCookie(cname) {
-    const name = `${cname}=`;
-    const decodedCookie = document.cookie;
-    const ca = decodedCookie.split(';');
-
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1);
-      }
-
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-
-    return '';
-  }
-  
-  function setShopifyCartCookie(checkout, skipHubSpotEmail) {
-    const future = new Date();
-    future.setYear(future.getFullYear() + 1);
-    document.cookie = `shopifyCart=${checkout.id}; domain=.integrativenutrition.com; expires=${future.toUTCString()};`;
-    $('.jd-checkout-link').attr('href', checkout.webUrl.replace('the-institute-for-integrative-nutrition.myshopify.com', 'store.integrativenutrition.com'))
-
-    const email = '{{ contact.email }}'.toLowerCase().trim();
-    const currentEmail = `${checkout.email}`.toLowerCase().trim();
-
-    if (email && !skipHubSpotEmail && email !== currentEmail) {
-      IINShopifyClient.checkout.updateEmail(getCookie('shopifyCart'), email)
-      	.then(checkoutNew => {
-          document.cookie = `shopifyCart=${checkoutNew.id}; domain=.integrativenutrition.com; expires=${future.toUTCString()};`;
-              $('.jd-checkout-link').attr('href', checkoutNew.webUrl.replace('the-institute-for-integrative-nutrition.myshopify.com', 'store.integrativenutrition.com'));
-              updateCartTotal(checkoutNew);
-    		 });
-    } else {
-      updateCartTotal(checkout);
-    }
-  }
-  
-  // Update cart total display
-  function updateCartTotal(cart) {
-    $(function() {
-      let total = 0;
-
-      for (const line of cart.lineItems) {
-        total += line.quantity;
-      }
-
-      if (total > 0) {
-        $('.jd-cart-item-count').text(total);
-        $('.jd-cart-item-count').show();
-        $('.jd-view-cart-link').text(`View Cart ('${total}')`);
-      }
-    });
-  }
-  
-  const currentCart = getCookie('shopifyCart');
-
-  if (currentCart) {
-    IINShopifyClient.checkout.fetch(currentCart)
-      .then((checkout) => {
-        // TODO: remove
-        console.log('CART')
-        console.log(checkout);
-
-        if (checkout) {
-          setShopifyCartCookie(checkout);
-        } else {
-          // Creating new checkout if existing errors
-          IINShopifyClient.checkout.create().then((checkout) => {
-            setShopifyCartCookie(checkout);
-          });
-        }
-      })
-      .catch((e) => {
-        // Creating new checkout if existing errors
-        IINShopifyClient.checkout.create().then((checkout) => {
-          setShopifyCartCookie(checkout);
-        });
-      });
-  } else {
-    IINShopifyClient.checkout.create().then((checkout) => {
-      setShopifyCartCookie(checkout);
-    });
-  }
-</script>
-<!-- End Shopify Client -->
+<script src="{{ get_asset_url('/Integrative Nutrition/js/cart.js') }}"></script>
