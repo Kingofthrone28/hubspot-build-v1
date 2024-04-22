@@ -31,28 +31,12 @@
   </div>
 </div>
 {% if !module.ignore_product %}
-<script type="text/javascript">
-/*<![CDATA[*/
-(function () {
-  IINShopifyClient.product.fetch('gid://shopify/Product/{{ module.product_id }}').then(function(product) {
-      let variant = product.variants[0];
-      for(const v of product.variants) {
-        if(v.available) {
-          variant = v;
-          break;
-        }
-      }
-      console.log(product);
-      console.log("PDP");
-      console.log(variant);
-  
-      $('#course-shopify-price').text('$' + parseInt(variant.price.amount).toLocaleString());
-      if(variant.compareAtPrice && variant.compareAtPrice.amount && variant.compareAtPrice.amount != variant.price.amount) {
-        $('#course-shopify-compare').text('$' + parseInt(variant.compareAtPrice.amount).toLocaleString());
-      }
-    })
-    .catch(e => { console.log(e); });
-})();
-/*]]>*/
+<script>
+  {%- set raw_data = { productID: module.product_id } %}
+  (function () {
+    const jsonData = JSON.stringify({{ raw_data|tojson }});
+
+    window.sessionStorage.setItem('course_shopify_price', jsonData);
+  })();
 </script>
 {% endif %}
