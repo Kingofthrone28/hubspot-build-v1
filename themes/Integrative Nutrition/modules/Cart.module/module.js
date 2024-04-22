@@ -1,348 +1,844 @@
-(function() {
-  let cartData = {}
-  
+// Slick Carousel https://kenwheeler.github.io/slick/
+
+(function () {
+  let moduleData = {};
+
   try {
     const rawData = window.sessionStorage.getItem('cart');
 
-    cartData = JSON.parse(rawData);
+    moduleData = JSON.parse(rawData);
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    return;
   }
 
+  const rootDomain = 'integrativenutrition.com';
+  const cookieDomain = `.${rootDomain}`;
+  const externalDomain = `store.${rootDomain}`;
+  const internalDomain =
+    'the-institute-for-integrative-nutrition.myshopify.com';
+  const imagePath = `https://course.${rootDomain}/hubfs/Course%20Page%20Images`;
+  const gidPath = 'gid://shopify/Product/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
-  
-  if(window.innerWidth < sliderBreakMobile) {
-    $('.jd-checkout-btn-wrap').appendTo('body');
-  }
-  
-  let currentWidth = window.innerWidth;
-  $(window).on('resize', function() {
-    if(window.innerWidth <= sliderBreakMobile && currentWidth > sliderBreakMobile) {
-      $('.jd-checkout-btn-wrap').appendTo('body');
-    } else if(window.innerWidth > sliderBreakMobile && currentWidth <= sliderBreakMobile) {
-      $('.jd-checkout-btn-wrap').appendTo('.jd-cart-summary-outer');
+
+  const agreementTags = [
+    {
+      name: 'admin-CertificationAgreement',
+      pathSuffix: 'certification',
+    },
+    {
+      name: 'admin-MasteryAgreement',
+      pathSuffix: 'mastery',
+    },
+    {
+      name: 'admin-FoundationsAgreement',
+      pathSuffix: 'foundations',
+    },
+  ];
+
+  const getMetafield = (data, fieldName) => {
+    const matchedField = data?.metafields.find((metafield) =>
+      metafield?.key && metafield.key === fieldName
+    );
+
+    const matchedValue = matchedField?.value;
+    let value = null;
+
+    if (typeof matchedValue !== 'undefined') {
+      value = matchedValue;
     }
-    if(window.innerWidth <= sliderBreakSmDesk && currentWidth > sliderBreakSmDesk) {
-      const rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
-      rowFluid.attr('style', 'width:100% !important;max-width:100% !important');
-    } else if(window.innerWidth > sliderBreakSmDesk && currentWidth <= sliderBreakSmDesk) {
-      const rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
-      rowFluid.attr('style', '');
+
+    return value;
+  };
+
+  const makeKeyValueStringFromObject = (data, separator = '&') =>
+    Object.entries(data)
+      .map(([key, value]) => `${key}=${value}`)
+      .join(separator);
+
+  const makeObjectFromKeyValueString = (keyValueString, separator = '&') => {
+    const newObject = {};
+    const decodedValue = decodeURIComponent(keyValueString);
+
+    let pairs = [];
+
+    try {
+      const parsedValues = JSON.parse(decodedValue);
+
+      Object.entries(parsedValues).forEach(([key, value]) => {
+        pairs.push(`${key}=${value}`);
+      });
+    } catch (e) {
+      pairs = decodedValue?.split(separator) || [];
     }
-    currentWidth = window.innerWidth;
-  });
-  
-  let cohortProducts = [];
-  let checkoutURL = '';
-  
-  $('.jd-cart-enrollment svg').click(function() {
-    $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
-  });
-  // Enrollment form
-  $(document).ready(function() {
-    let books = '', tuition = '', registration = '', hours = '', weeks = '', fullName = '', firstName = '', lastName = '', email = '', address = '', phone = '', 
-        city = '', state = '', zip = '', fullAddress = '', company = '', address2 = '';
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "23273748",
-      formId: cartData.formID,
-      target: '.jd-cart-enrollment-form-target',
-      onFormReady: function() {
-        $('.jd-cart-enrollment-form-target input[name=email]').change(function() {
-          if($(this).val()) {
-            IINShopifyClient.checkout.updateEmail(getCookie('shopifyCart'), $(this).val() )
-              .then(checkoutNew => {
-                console.log('EMAIL UPDATE');
-                console.log(checkoutNew);
-                setShopifyCartCookie(checkoutNew, true)
-                checkoutURL = checkoutNew.webUrl.replace('the-institute-for-integrative-nutrition.myshopify.com', 'store.integrativenutrition.com');
-            })
-          }
-        })
-      },
-      onBeforeFormSubmit: function($form, submissionValues) {
-        console.log("HERE");
-        console.log(submissionValues);
-        fullName = '', firstName = '', lastName = '', email = '', address = '', phone = '', 
-            city = '', state = '', zip = '', fullAddress = '', company = '', address2 = '';
-        for(const field of submissionValues) {
-          if(field.name == 'email') {
-            email = encodeURIComponent(field.value);
-          } else if(field.name == 'firstname') {
-            fullName += encodeURIComponent(field.value);
-            firstName = encodeURIComponent(field.value);
-          } else if(field.name == 'lastname') {
-            fullName += encodeURIComponent(' ' + field.value);
-            lastName = encodeURIComponent(field.value);
-          } else if(field.name == 'phone') {
-            phone = encodeURIComponent(field.value);
-          } else if(field.name == 'country_region_dropdown') {
-            fullAddress += encodeURIComponent(field.value + ', ');
-          } else if(field.name == 'city') {
-            fullAddress += encodeURIComponent(field.value + ', ');
-            city = encodeURIComponent(field.value);
-          } else if(field.name == 'us_state') {
-            fullAddress += encodeURIComponent(field.value + ', ');
-            state = encodeURIComponent(field.value);
-          } else if(field.name == 'zip') {
-            fullAddress += encodeURIComponent(field.value + ', ');
-            zip = encodeURIComponent(field.value);
-          } else if(field.name == 'address') {
-            fullAddress = encodeURIComponent(field.value + ', ') + fullAddress;
-            address = encodeURIComponent(field.value);
-          } else if(field.name == 'company') {
-            company = encodeURIComponent(field.value);
-          } else if(field.name == 'apartment__suite__ect_') {
-            address2 = encodeURIComponent(field.value);
-          }
+
+    pairs.forEach((pair) => {
+      try {
+        if (typeof pair === 'string') {
+          const [key, value] = pair.split('=');
+
+          newObject[key] = value;
+        } else {
+          throw new Error('Key/value pair could not be constructed.')
         }
-        if(fullAddress.length > 6) {
-          fullAddress = fullAddress.substring(0, fullAddress.length - 6);
-        }
-        var future = new Date();
-        future.setYear(future.getFullYear() + 1);
-        document.cookie = `enrollmentAgreementQuery=&Name=${fullName}&Email=${email}&Address=${fullAddress}&Phone=${phone}; domain=.integrativenutrition.com; expires=${future.toUTCString()};`;
-        setEnrollmentLinks();
-        const checkoutQuery = `&checkout[email]=${email}&checkout[billing_address][first_name]=${firstName}&checkout[billing_address][last_name]=${lastName}&checkout[billing_address][address1]=${address}&checkout[billing_address][address2]=${address2}&checkout[billing_address][city]=${city}&checkout[billing_address][state]=${state}&checkout[billing_address][zip]=${zip}&&checkout[billing_address][phone]=${phone}&checkout[billing_address][company]=${company}`;
-        document.cookie = `checkoutQuery=${checkoutQuery}; domain=.integrativenutrition.com; expires=${future.toUTCString()};`;
-      },
-      onFormSubmit: function(form) {
-        $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
-        setTimeout(function() {
-          window.open(checkoutURL + getCookie('checkoutQuery'), '_self');
-        }, 100);
+      } catch (e) {
+        console.log(e);
       }
-    });
-  });
-  
-  $('.jd-cart-enrollment').appendTo('body');
-  
-  $('#jd-checkout-btn').click(function(e) {
-    const checkoutQuery = getCookie('checkoutQuery');
-    if(cohortProducts.length > 0) {
-      if(checkoutQuery) {
-        window.open(checkoutURL + checkoutQuery, '_self');
-      } else {
-        $('.jd-cart-enrollment').addClass('jd-cart-enrollment-show');
-      }
-    } else {
-      if(checkoutQuery) {
-        window.open(checkoutURL + checkoutQuery, '_self');
-      } else {
-        window.open(checkoutURL, '_self');
-      }
-    }
-  });
-  
-  function initCohortProducts(checkout) {
-    cohortProducts = [];
-    $('.jd-checkout-btn-wrap').hide();
-    
-    if(!checkout.lineItems.length) {
-      return;
-    }
-    
-    let productQuery = '';
-    for(let i = 0; i < checkout.lineItems.length; i++) {
-      productQuery += `id:${checkout.lineItems[i].variant.product.id.replace('gid://shopify/Product/', '')}`;
-      if(i < checkout.lineItems.length - 1) {
-        productQuery += ' OR ';
-      }
-    }
-      
-    const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
-      root.addConnection('products', { args: { first: 100, query: productQuery } }, (product) => {
-        product.add('handle');
-        product.add('tags');
-        product.add('title');
-        product.add(
-          'metafields',
-          {
-            args: {
-              identifiers: [
-                { key: 'registration_cost', namespace: 'custom' },
-                { key: 'tuition', namespace: 'custom' },
-                { key: 'books_and_materials', namespace: 'custom' },
-                { key: 'number_of_clock_hours', namespace: 'custom' },
-                { key: 'number_of_weeks', namespace: 'custom' },
-              ],
-            },
-          },
-          (metafield) => {
-            metafield.add('key')
-            metafield.add('value')
-          }
-        )    
-      })
     });
 
-    IINShopifyClient.graphQLClient.send(productsQuery).then(({model, data}) => {
-      for(const product of model.products) {
-        for(const tag of product.tags) {
-          if(tag.value == 'Cohort') {
-            let lineItem;
-            for(const item of checkout.lineItems) {
-              if(item.variant.product.id == product.id) {
-                let total = parseFloat(item.variant.price.amount) * item.quantity;
-                if(item.discountAllocations.length) {
-                  for(const discount of item.discountAllocations) {
-                    total -= parseFloat(discount.allocatedAmount.amount) * item.quantity;
-                  }
+    const cleanObject = {};
+
+    Object.entries(newObject).forEach(([key, value]) => {
+      if (key && typeof value !== 'undefined') {  
+        cleanObject[key] = value;
+      }
+    });
+
+    return cleanObject;
+  };
+
+  const makeURLFromCookieParams = (baseURL, cookieName, separator = '&') => {
+    const encodedURL = new URL(baseURL);
+    const encodedParams = new URLSearchParams(encodedURL.search);
+    const targetCookie = getCookie(cookieName);
+    const cookieParams = makeObjectFromKeyValueString(targetCookie, separator);
+
+    Object.entries(cookieParams).forEach(([key, value]) => {
+      encodedParams.set(key, value);
+    });
+
+    let queryString = '';
+
+    // Some keys must match exactly field names in the target page
+    // for values to be auto-populated.
+    [...encodedParams].forEach(([key, value], index) => {
+      if (index > 0) {
+        queryString += '&';
+      }
+
+      queryString += `${decodeURIComponent(key)}=${value}`;
+    });
+
+    encodedURL.search = '';
+
+    let targetURL = encodedURL.toString();
+
+    if (queryString) {
+      targetURL += `?${queryString}`;
+    }
+
+    return targetURL;
+  };
+
+  let agreementProducts = [];
+  let checkoutURL = '';
+  let currentWidth = window.innerWidth;
+
+  async function addToCart(bundleID) {
+    const cartItems = [];
+
+    $(`#bundle-${bundleID} .jd-cart-rec-item-to-add`).each(function () {
+      const variantID = $(this).val();
+
+      if (variantID) {
+        cartItems.push({
+          variantId: variantID,
+          quantity: 1,
+        });
+      }
+    });
+
+    const cartCookie = getCookie('shopifyCart');
+
+    try {
+      await IINShopifyClient.checkout.addLineItems(cartCookie, cartItems);
+      await loadCart();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function initCohortProducts(checkout) {
+    agreementProducts = [];
+
+    $('.jd-checkout-btn-wrap').hide();
+
+    if (!checkout?.lineItems.length) {
+      return;
+    }
+
+    let productQuery = '';
+
+    checkout.lineItems.forEach((lineItem, index) => {
+      const { id } = lineItem.variant.product;
+
+      productQuery += `id:${id.replace(gidPath, '')}`;
+
+      if (index < checkout.lineItems.length - 1) {
+        productQuery += ' OR ';
+      }
+    });
+
+    const namespace = 'custom';
+    const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
+      root.addConnection(
+        'products',
+        {
+          args: {
+            first: 100,
+            query: productQuery,
+          },
+        },
+        (product) => {
+          product.add('handle');
+          product.add('tags');
+          product.add('title');
+          product.add(
+            'metafields',
+            {
+              args: {
+                identifiers: [
+                  { key: 'agreement_publication_date', namespace },
+                  { key: 'agreement_revision_date', namespace },
+                  { key: 'books_and_materials', namespace },
+                  { key: 'number_of_clock_hours', namespace },
+                  { key: 'number_of_weeks', namespace },
+                  { key: 'registration_cost', namespace },
+                ],
+              },
+            },
+            (metafield) => {
+              metafield.add('key');
+              metafield.add('value');
+            }
+          );
+          product.addConnection(
+            'variants',
+            {
+              args: {
+                first: 100,
+              },
+            },
+            (variant) => {
+              variant.add('availableForSale');
+              variant.add('title');
+              variant.add(
+                'metafields',
+                {
+                  args: {
+                    identifiers: [{ key: 'start_date', namespace }],
+                  },
+                },
+                (metafield) => {
+                  metafield.add('key');
+                  metafield.add('value');
                 }
-                product.price = total;
+              );
+            }
+          );
+        }
+      );
+    });
+
+    try {
+      const { model } = await IINShopifyClient.graphQLClient.send(
+        productsQuery
+      );
+
+      model.products.forEach((product) => {
+        for (const tag of product.tags) {
+          if (
+            agreementTags.some(
+              (agreementTag) => tag.value === agreementTag.name
+            )
+          ) {
+            const adjustedProduct = { ...product };
+
+            checkout.lineItems.forEach((lineItem) => {
+              if (lineItem.variant.product.id !== product.id) {
+                return;
+              }
+
+              let totalDiscount = 0;
+
+              if (lineItem.discountAllocations.length) {
+                lineItem.discountAllocations.forEach((allocation) => {
+                  const discountAmount =
+                    parseFloat(allocation.allocatedAmount.amount) || 0;
+
+                  totalDiscount -= discountAmount * lineItem.quantity;
+                });
+              }
+
+              adjustedProduct.price =
+                parseFloat(lineItem.variant.price.amount) || 0;
+              adjustedProduct.totalDiscount = totalDiscount;
+
+              const selectedVariant = product.variants.find(
+                (productVariant) => productVariant.id === lineItem.variant.id
+              );
+
+              if (selectedVariant) {
+                adjustedProduct.variant = selectedVariant;
+              }
+            });
+
+            agreementProducts.push(adjustedProduct);
+            break;
+          }
+        }
+      });
+
+      // TODO: remove
+      console.log('AGREEMENT PRODUCTS');
+      console.log(agreementProducts);
+
+      const agreementCookie = getCookie('enrollmentAgreementQuery');
+
+      if (agreementProducts.length && !agreementCookie) {
+        $('#jd-checkout-btn').text('Proceed to Enrollment');
+      } else {
+        $('#jd-checkout-btn').text('Proceed to Checkout');
+        await setEnrollmentLinks();
+      }
+
+      $('.jd-checkout-btn-wrap').show();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function loadCart(noProductChange) {
+    const cartCookie = getCookie('shopifyCart');
+
+    if (!cartCookie) {
+      $('.jd-cart-outer').addClass('jd-cart-empty');
+      $('.jd-cart-items').html('');
+      await productRecommendations();
+      return;
+    }
+
+    const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
+
+    if (!noProductChange) {
+      await initCohortProducts(checkout);
+      checkoutURL = checkout.webUrl.replace(internalDomain, externalDomain);
+
+      let parsedItems;
+
+      try {
+        parsedItems = JSON.parse(JSON.stringify(checkout.lineItems));
+      } catch (e) {
+        console.error(e);
+      }
+
+      if (parsedItems) {
+        await productRecommendations(parsedItems);
+      }
+    }
+
+    const itemCount = checkout.lineItems.length;
+
+    if (!itemCount) {
+      $('.jd-cart-outer').addClass('jd-cart-empty');
+      $('.jd-cart-items').html('');
+      return;
+    }
+
+    $('.jd-cart-outer').removeClass('jd-cart-empty');
+
+    // Program label metafield
+    let productQuery = '';
+
+    checkout.lineItems.forEach((lineItem, index) => {
+      const { id } = lineItem.variant.product;
+
+      productQuery += `id:${id.replace(gidPath, '')}`;
+
+      if (index < itemCount - 1) {
+        productQuery += ' OR ';
+      }
+    });
+
+    const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
+      root.addConnection(
+        'products',
+        {
+          args: {
+            first: 100,
+            query: productQuery,
+          },
+        },
+        (product) => {
+          product.add('title');
+          product.add(
+            'metafields',
+            {
+              args: {
+                identifiers: [
+                  {
+                    key: 'program_label',
+                    namespace: 'custom',
+                  },
+                ],
+              },
+            },
+            (metafield) => {
+              metafield.add('key');
+              metafield.add('value');
+            }
+          );
+        }
+      );
+    });
+
+    try {
+      const { model } = await IINShopifyClient.graphQLClient.send(
+        productsQuery
+      );
+
+      model.products.forEach((product) => {
+        const matchedItem = checkout.lineItems.find(
+          (lineItem) => lineItem.variant.product.id === product.id
+        );
+
+        if (!matchedItem) {
+          return;
+        }
+
+        for (const metafield of product.metafields) {
+          if (metafield?.key === 'program_label') {
+            if (metafield.value) {
+              matchedItem.programLabel = metafield.value;
+            }
+
+            break;
+          }
+        }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
+    let itemsHTML = '';
+    let itemSummaryHTML = '';
+
+    for (const lineItem of checkout.lineItems) {
+      const options = [];
+
+      lineItem.variant.selectedOptions.forEach((option) => {
+        if (option.value !== 'Default Title') {
+          options.push({ name: option.name, value: option.value });
+        }
+      });
+
+      if (lineItem.quantity > 1) {
+        options.push({ name: 'Quantity', value: lineItem.quantity });
+      }
+
+      let optionsHTML = '';
+
+      options.forEach((option) => {
+        optionsHTML += `
+          <div>
+            <strong>${option.name}:</strong> ${option.value}
+          </div>
+        `;
+      });
+
+      const priceAmount = parseFloat(lineItem.variant.price.amount) || 0;
+      const totalPreDiscount = priceAmount * lineItem.quantity;
+      let total = totalPreDiscount;
+
+      if (lineItem.discountAllocations.length) {
+        lineItem.discountAllocations.forEach((discount) => {
+          const discountAmount =
+            parseFloat(discount.allocatedAmount.amount) || 0;
+
+          if (total > 0) {
+            total -= discountAmount * lineItem.quantity;
+          }
+        });
+      }
+
+      let itemAmountHTML = '';
+
+      if (total === totalPreDiscount) {
+        itemAmountHTML = `
+          <div style="margin-top: 15px" class="jd-cart-item-price">
+            $${total.toLocaleString()}
+          </div>
+        `;
+      } else {
+        itemAmountHTML = `
+          <div class="jd-cart-item-price-dis">
+            $${totalPreDiscount.toLocaleString()}
+          </div>
+          <div class="jd-cart-item-price">
+            $${total.toLocaleString()}
+          </div>
+        `;
+      }
+
+      let programLabel = '';
+
+      if (lineItem.programLabel) {
+        programLabel = `
+          <div class="jd-cart-rec-item-program">
+            ${lineItem.programLabel.toUpperCase()}
+          </div>
+        `;
+      }
+
+      itemsHTML += `
+        <div class="jd-cart-item">
+          <div class="jd-add-pop-content">
+            <div class="jd-add-pop-img">
+              <div style="background: url(${lineItem.variant.image.src})"></div>
+            </div>
+            <div class="jd-add-pop-content-main">
+              ${programLabel}
+              <div class="jd-add-pop-name">${lineItem.title}</div>
+              <div class="jd-add-pop-options">${optionsHTML}</div>
+              <div class="jd-cart-item-btns">
+                ${
+                  optionsHTML
+                    ? `
+                    <button
+                      data-line="${lineItem.id}"
+                      class="jd-cart-item-btn jd-cart-item-edit"
+                      type="button"
+                    >
+                      <svg
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                        stroke-linejoin="round"
+                        stroke-miterlimit="2"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.749c0-.414.336-.75.75-.75s.75.336.75.75v9.249c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm1.521 9.689 9.012-9.012c.133-.133.217-.329.217-.532 0-.179-.065-.363-.218-.515l-2.423-2.415c-.143-.143-.333-.215-.522-.215s-.378.072-.523.215l-9.027 8.996c-.442 1.371-1.158 3.586-1.264 3.952-.126.433.198.834.572.834.41 0 .696-.099 4.176-1.308zm-2.258-2.392 1.17 1.171c-.704.232-1.274.418-1.729.566zm.968-1.154 7.356-7.331 1.347 1.342-7.346 7.347z" fill-rule="nonzero"/>
+                      </svg>
+                      Edit
+                    </button>
+                    <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                    `
+                    : ''
+                }
+                <button
+                  data-line="${lineItem.id}"
+                  class="jd-cart-item-btn jd-cart-item-delete"
+                  type="button"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"/>
+                  </svg>
+                  Delete
+                </button>
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <div>
+            ${itemAmountHTML}
+          </div>
+        </div>
+      `;
+
+      itemSummaryHTML += `
+        <div style="font-size: 20px;">
+          $${total.toLocaleString()}
+        </div>
+      `;
+    }
+
+    if (itemCount > 1) {
+      // TODO: move styles to CSS
+      itemSummaryHTML += `
+        <div style="font-size: 20px; border-top: 1px solid #ccc; padding-top: 5px">
+          $${parseFloat(checkout.totalPrice.amount).toLocaleString()}
+        </div>
+      `;
+    }
+
+    $('.jd-cart-items').html(itemsHTML);
+
+    const summaryHeading = `Order Summary <em>(${itemCount} item${
+      itemCount === 1 ? '' : 's'
+    })</em>`;
+
+    $('.jd-cart-summary > div:first-child').html(summaryHeading);
+
+    if (itemCount) {
+      $('.jd-cart-summary-items').html(itemSummaryHTML);
+      $('.jd-checkout-btn-wrap').show();
+    } else {
+      $('.jd-cart-summary-items').html('');
+      $('.jd-checkout-btn-wrap').hide();
+    }
+
+    const deleteFromCart = async (lineID) => {
+      const newCartCookie = getCookie('shopifyCart');
+      const newCheckout = await IINShopifyClient.checkout.removeLineItems(
+        newCartCookie,
+        [lineID]
+      );
+
+      await loadCart();
+      updateCartTotal(newCheckout);
+    };
+
+    $('.jd-cart-item-delete').click(function (e) {
+      e.preventDefault();
+
+      const lineID = $(this).data('line');
+
+      deleteFromCart(lineID);
+    });
+
+    const editCart = async (lineID, target) => {
+      let line;
+
+      for (const lineItem of checkout.lineItems) {
+        if (lineItem.id === lineID) {
+          line = lineItem;
+          break;
+        }
+      }
+
+      if (!line) {
+        return;
+      }
+
+      const productID = line.variant.product.id;
+      const lineProduct = await IINShopifyClient.product.fetch(productID);
+      const uniqueID = new Date().getTime();
+
+      let selectHTML = `<select id="${uniqueID}" class="jd-cart-rec-select">`;
+
+      lineProduct.variants.forEach((variant, variantIndex) => {
+        if (!variant.available) {
+          return;
+        }
+
+        selectHTML += `
+          <option value="${variant.id}"${variantIndex === 0 ? ' selected' : ''}>
+            ${variant.title}
+          </option>
+        `;
+      });
+
+      selectHTML += `</select>`;
+
+      $(target).parent().next().html(selectHTML);
+
+      const changeCart = async (variantID) => {
+        const lineItemUpdate = [
+          {
+            id: lineID,
+            variantId: variantID,
+          },
+        ];
+
+        const newCartCookie = getCookie('shopifyCart');
+
+        await IINShopifyClient.checkout.updateLineItems(
+          newCartCookie,
+          lineItemUpdate
+        );
+
+        loadCart(true);
+      };
+
+      $(`#${uniqueID}`).change(function (e) {
+        const variantID = $(this).val();
+
+        changeCart(variantID);
+      });
+    };
+
+    $('.jd-cart-item-edit').click(function (e) {
+      e.preventDefault();
+
+      const lineID = $(this).data('line');
+      const { target } = e;
+
+      editCart(lineID, target);
+    });
+  }
+
+  async function productRecommendations(lineItems) {
+    $('.jd-cart-rec-outer').hide();
+
+    const sortedItems = lineItems?.sort((a, b) => {
+      const aPrice = parseFloat(a.variant.price.amount);
+      const bPrice = parseFloat(b.variant.price.amount);
+
+      if (aPrice > bPrice) {
+        return -1;
+      }
+
+      if (aPrice < bPrice) {
+        return 1;
+      }
+
+      return 0;
+    }) || [];
+
+    const bundleData = moduleData?.bundles || [];
+
+    // TODO: remove
+    console.log('BUNDLE DATA');
+    console.log(bundleData);
+
+    const matchedBundles = [];
+    const maximumCount = 3;
+    let firstMatchedID = 'NO_MATCH';
+    let bundlesFirstItem = 0;
+
+    for (const lineItem of sortedItems) {
+      for (const bundle of bundleData) {
+        const existingBundle = matchedBundles.find(
+          (matchedBundle) => matchedBundle.name === bundle.name
+        );
+
+        if (!existingBundle || bundle.shopify_product_ids) {
+          const { id } = lineItem.variant.product;
+          const productID = id.replace(gidPath, '');
+
+          if (bundle.shopify_product_ids.includes(productID)) {
+            let hasAllItems = true;
+            const bundleIDs = bundle.shopify_product_ids.split(',');
+
+            for (const bundleID of bundleIDs) {
+              const existingLineItem = sortedItems.find(
+                (li) => li.variant.product.id === `${gidPath}${bundleID}`
+              );
+
+              if (!existingLineItem) {
+                hasAllItems = false;
+                break;
               }
             }
-            cohortProducts.push(product);
+
+            if (hasAllItems) {
+              bundle.hasAllItems = true;
+            } else {
+              if (firstMatchedID === productID && bundlesFirstItem > 2) {
+                bundlesFirstItem++;
+              } else if (firstMatchedID === 'NO_MATCH') {
+                firstMatchedID = productID;
+                bundlesFirstItem++;
+              }
+
+              matchedBundles.push(bundle);
+            }
+          }
+
+          if (matchedBundles.length === maximumCount) {
             break;
           }
         }
       }
-      console.log("COHORT PRODUCTS");
-      console.log(cohortProducts);
-      
-      if(cohortProducts.length > 0 && !getCookie('enrollmentAgreementQuery')) {
-        $('#jd-checkout-btn').text('Proceed to Enrollment');
-      } else {
-        $('#jd-checkout-btn').text('Proceed to Checkout');
-        setEnrollmentLinks();
-      }
-      
-      $('.jd-checkout-btn-wrap').show();
-    })
-      .catch(e => {
-      console.log(e);
-    })
-  }
-  
-  async function productRecommendations(lineItems) {
-    $('.jd-cart-rec-outer').hide();
-    lineItems.sort((a, b) => {
-      let aPrice = parseFloat(a.variant.price.amount);
-      let bPrice = parseFloat(b.variant.price.amount);
-      if(aPrice > bPrice) {
-        return -1;
-      } else if(aPrice < bPrice) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-    
-    const bundleData = cartData?.bundles || [];
 
-    console.log("BUNDLE DATA");
-    console.log(bundleData);
-
-    let matchedBundles = [];
-    let firstMatchedID = 'NO_MATCH';
-    let bundlesFirstItem = 0;
-    for(const lineItem of lineItems) {
-      for(const bundle of bundleData) {
-        const existingBundle = matchedBundles.find(b => {
-          return b.name == bundle.name;
-        });
-        if(existingBundle) {
-          continue; 
-        }
-        if(!bundle.shopify_product_ids) {
-          continue;
-        }
-        const productID = lineItem.variant.product.id.replace('gid://shopify/Product/', '');
-        if(bundle.shopify_product_ids.includes(productID)) {
-          let hasAllItems = true;
-          const bundleIDs = bundle.shopify_product_ids.split(',');
-          for(const bundleID of bundleIDs) {
-            const existingLineItem = lineItems.find(li => {
-              return li.variant.product.id == 'gid://shopify/Product/' + bundleID;
-            });
-            if(!existingLineItem) {
-              hasAllItems = false;
-              break;
-            }
-          }
-          if(!hasAllItems) {
-            if(firstMatchedID == productID) {
-              if(bundlesFirstItem < 2) {
-                bundlesFirstItem++;
-                matchedBundles.push(bundle);
-              }
-            } else if(firstMatchedID == 'NO_MATCH') {
-              firstMatchedID = productID;
-              bundlesFirstItem++;
-              matchedBundles.push(bundle);
-            } else {
-              matchedBundles.push(bundle);
-            }
-          } else {
-            bundle.hasAllItems = true;
-          }
-        }
-        if(matchedBundles.length == 3) {
-          break;
-        }
-      }
-      if(matchedBundles.length == 3) {
+      if (matchedBundles.length === maximumCount) {
         break;
       }
     }
-    
-    console.log("MATCHED BUNDLES1");
+
+    // TODO: remove
+    console.log('MATCHED BUNDLES1');
     console.log(matchedBundles);
-    
+
     // Add other bundles if less than 3 matches
-    if(matchedBundles.length < 3) {
-      for(const bundle of bundleData) {
-        const existingBundle = matchedBundles.find(b => {
-          return b.name == bundle.name;
-        });
-        if(!existingBundle && !bundle.hasAllItems && !bundle.shopify_product_ids.includes(firstMatchedID)) {
+    if (matchedBundles.length < maximumCount) {
+      for (const bundle of bundleData) {
+        const existingBundle = matchedBundles.find(
+          (matchedBundle) => matchedBundle.name === bundle.name
+        );
+
+        if (
+          !existingBundle &&
+          !bundle.hasAllItems &&
+          !bundle.shopify_product_ids.includes(firstMatchedID)
+        ) {
           matchedBundles.push(bundle);
         }
-        if(matchedBundles.length == 3) {
+
+        if (matchedBundles.length === maximumCount) {
           break;
         }
       }
     }
-    console.log("MATCHED BUNDLES2");
+
+    // TODO: remove
+    console.log('MATCHED BUNDLES2');
     console.log(matchedBundles);
-    if(matchedBundles.length == 0) {
+
+    if (!matchedBundles.length) {
       return;
     }
-    
+
     const promises = [];
-    for(let i = 0; i < matchedBundles.length; i++) {
-      const promise = new Promise(async (resolve, reject) => {
-        const matchedBundle = matchedBundles[i];
-        let bundleProducts = [];
-        const bundleIDs = matchedBundle.shopify_product_ids.split(',');
-       
-        let productQuery = '';
-        for(let i = 0; i < bundleIDs.length; i++) {
-          productQuery += `id:${bundleIDs[i]}`;
-          if(i < bundleIDs.length - 1) {
-            productQuery += ' OR ';
-          }
+
+    const setBundles = async (matchedBundle, bundleIndex) => {
+      const bundleIDs = matchedBundle.shopify_product_ids.split(',');
+
+      let bundleProducts = [];
+      let productQuery = '';
+
+      bundleIDs.forEach((bundleID, idIndex) => {
+        productQuery += `id:${bundleID}`;
+
+        if (idIndex < bundleIDs.length - 1) {
+          productQuery += ' OR ';
         }
-        const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
-          root.addConnection('products', { args: { first: 100, query: productQuery } }, (product) => {
+      });
+
+      const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
+        root.addConnection(
+          'products',
+          {
+            args: {
+              first: 100,
+              query: productQuery,
+            },
+          },
+          (product) => {
             product.add('handle');
             product.add('tags');
             product.add('title');
             product.addConnection(
               'images',
-              { args: { first: 1 }},
+              {
+                args: {
+                  first: 1,
+                },
+              },
               (image) => {
                 image.add('src');
               }
             );
             product.addConnection(
               'variants',
-              { args: { first: 100 }},
+              {
+                args: {
+                  first: 100,
+                },
+              },
               (variant) => {
                 variant.add('priceV2', (price) => {
-                  price.add('amount')
+                  price.add('amount');
                 });
+
                 variant.add('availableForSale');
                 variant.add('title');
               }
@@ -352,255 +848,404 @@
               {
                 args: {
                   identifiers: [
-                    { key: 'program_label', namespace: 'custom' }
+                    {
+                      key: 'program_label',
+                      namespace: 'custom',
+                    },
                   ],
                 },
               },
               (metafield) => {
-                metafield.add('key')
-                metafield.add('value')
+                metafield.add('key');
+                metafield.add('value');
               }
-            )    
-          })
+            );
+          }
+        );
+      });
+
+      try {
+        const { model } = await IINShopifyClient.graphQLClient.send(
+          productsQuery
+        );
+
+        bundleProducts = model.products;
+      } catch (e) {
+        console.error(e);
+      }
+
+      // TODO: remove
+      console.log(`BUNDLE PRODUCTS [${bundleIndex}]`);
+      console.log(bundleProducts);
+
+      if (!Array.isArray(bundleProducts) || !bundleProducts.length) {
+        throw new Error('No bundle products were found');
+      }
+
+      const cartItems = [];
+      const existingProducts = [];
+      const newProducts = [];
+
+      bundleProducts.forEach((bundleProduct) => {
+        for (const variant of bundleProduct.variants) {
+          if (variant.availableForSale) {
+            cartItems.push({
+              variantId: variant.id,
+              quantity: 1,
+            });
+
+            break;
+          }
+        }
+      });
+
+      let cartRecPricesHTML = '';
+
+      const cart = await IINShopifyClient.checkout.create();
+
+      await IINShopifyClient.checkout.addLineItems(cart.id, cartItems);
+
+      const checkout = await IINShopifyClient.checkout.fetch(cart.id);
+      const totalAfterDiscount = parseFloat(checkout.totalPrice.amount) || 0;
+      let total = totalAfterDiscount;
+
+      if (checkout.discountApplications?.length) {
+        checkout.discountApplications.forEach((discount) => {
+          total += parseFloat(discount.value.amount) || 0;
+        });
+      }
+
+      cartRecPricesHTML = '<div>Bundle Total price: </div>';
+
+      const savings =
+        total === totalAfterDiscount ? 0 : total - totalAfterDiscount;
+
+      const localeOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      };
+
+      if (total === totalAfterDiscount) {
+        cartRecPricesHTML += `
+          <div></div>
+          <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
+        `;
+      } else {
+        cartRecPricesHTML += `
+          <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
+          <div>$${totalAfterDiscount.toLocaleString(
+            undefined,
+            localeOptions
+          )} USD</div>
+        `;
+      }
+
+      bundleProducts.forEach((bundleProduct) => {
+        const existingLineItem = sortedItems.find(
+          (li) => li.variant.product.id === bundleProduct.id
+        );
+
+        if (existingLineItem) {
+          existingProducts.push(bundleProduct);
+        } else {
+          newProducts.push(bundleProduct);
+        }
+      });
+
+      let courseListHTML = '';
+
+      existingProducts.forEach((existingProduct, productIndex) => {
+        let price = '';
+
+        for (const variant of existingProduct.variants) {
+          if (variant.availableForSale) {
+            price = variant.priceV2.amount;
+            break;
+          }
+        }
+
+        let topSavings = '';
+
+        if (productIndex === 0 && savings) {
+          topSavings = `
+            <div class="jd-cart-rec-save-tag">
+              Save $${savings.toLocaleString()}
+            </div>
+          `;
+        }
+
+        let programLabel = '';
+
+        for (const metafield of existingProduct.metafields) {
+          if (metafield?.key === 'program_label') {
+            if (metafield.value) {
+              let logo = 'iin_logo.png';
+
+              if (metafield.value.toLowerCase().includes('chopra')) {
+                logo = 'chopra_logo.png';
+              }
+
+              const src = `${imagePath}/${logo}`;
+
+              programLabel = `
+                <div class="jd-cart-rec-item-program">
+                  <div><img src=${src}></div>
+                  ${metafield.value}
+                </div>
+              `;
+            }
+
+            break;
+          }
+        }
+
+        const imageSource = existingProduct.images[0].src;
+
+        courseListHTML += `
+          <div class="jd-cart-rec-item">
+            ${topSavings}
+            ${
+              imageSource
+                ? `<div class="jd-cart-rec-item-img" style="background: url('${imageSource}');"></div>`
+                : ''
+            }
+            <div class="jd-cart-rec-item-inner"${
+              topSavings ? 'style="padding-top: 30px"' : ''
+            }>
+              <div>
+                ${programLabel}
+                <div>${existingProduct.title}</div>
+              </div>
+              <div>$${parseFloat(price).toLocaleString(
+                undefined,
+                localeOptions
+              )}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      if (existingProducts.length && newProducts.length) {
+        courseListHTML += `
+          <div class="jd-cart-rec-plus">
+            <svg
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+            >
+              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+            </svg>
+          </div>
+        `;
+      }
+
+      newProducts.forEach((product, productIndex) => {
+        let price = '';
+
+        for (const variant of product.variants) {
+          if (variant.availableForSale) {
+            price = variant.priceV2.amount;
+            break;
+          }
+        }
+
+        let topSavings = '';
+
+        if (productIndex === 0 && !existingProducts.length) {
+          topSavings = `
+            <div class="jd-cart-rec-save-tag">
+              Save $${savings.toLocaleString()}
+            </div>
+          `;
+        }
+
+        let programLabel = '';
+
+        for (const metafield of product.metafields) {
+          if (metafield?.key === 'program_label') {
+            if (metafield.value) {
+              let logo = 'iin_logo.png';
+
+              if (metafield.value.toLowerCase().includes('chopra')) {
+                logo = 'chopra_logo.png';
+              }
+
+              const src = `${imagePath}/${logo}`;
+
+              programLabel += `
+                <div class="jd-cart-rec-item-program">
+                  <div><img src="${src}"></div>
+                  ${metafield.value}
+                </div>
+              `;
+            }
+
+            break;
+          }
+        }
+
+        let optionHTML = '';
+
+        product.variants.forEach((variant, variantIndex) => {
+          if (variant.availableForSale) {
+            optionHTML += `
+              <option value="${variant.id}"${
+              variantIndex === 0 ? ' selected' : ''
+            }>
+                ${variant.title}
+              </option>
+            `;
+          }
         });
 
-        await IINShopifyClient.graphQLClient.send(productsQuery).then(({model, data}) => {
-          bundleProducts = model.products;
-        })
-        .catch(e => {
-          console.log(e);
-        })
-        
-        if(!bundleProducts || bundleProducts.length == 0) {
-          reject();
-          return;
-        }
-        
-        console.log("BUNDLE PRODUCTS");
-        console.log(bundleProducts);
-        let newProducts = [];
-        let existingProducts = [];
-        let imgListHTML = '';
-        let cartItems = [];
-        for(let j = 0; j < bundleProducts.length; j++) {
-          const product = bundleProducts[j];
-          for(const v of product.variants) {
-            if(v.availableForSale) {
-              cartItems.push({
-                variantId: v.id,
-                quantity: 1
-              })
-              break;
-            }
-          }
-        }
+        const hasSingleVariant =
+          product.variants.length === 1 &&
+          product.variants[0].title === 'Default Title';
 
-        let cart;
-        let cartRecPricesHTML = '';
-        await IINShopifyClient.checkout.create().then((checkout) => {
-          cart = checkout;
-        });
-        let savings;
-        await IINShopifyClient.checkout.addLineItems(cart.id, cartItems);
-        await IINShopifyClient.checkout.fetch(cart.id)
-        .then(checkout => {
-          let totalAfterDiscount = parseFloat(checkout.totalPrice.amount);
-          let total = totalAfterDiscount;
-          if(checkout.discountApplications && checkout.discountApplications.length) {
-            for(const discount of checkout.discountApplications) {
-              total += parseFloat(discount.value.amount);
-            }
-          }
-          if(total == totalAfterDiscount) {
-            cartRecPricesHTML = `
-            <div>Bundle Total price: </div>
-            <div></div>
-            <div>$${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-            `;
-          } else {
-            savings = total - totalAfterDiscount;
-            cartRecPricesHTML = `
-            <div>Bundle Total price: </div>
-            <div>$${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-            <div>$${totalAfterDiscount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-            `;
-          }
-        })
-
-        for(let j = 0; j < bundleProducts.length; j++) {
-          const product = bundleProducts[j];
-          const existingLineItem = lineItems.find(li => {
-            return li.variant.product.id == product.id;
-          });
-          if(existingLineItem) {
-            existingProducts.push(product);
-          } else {
-            newProducts.push(product);
-          }
-        }
-        let courseListHTML = '';
-        for(let j = 0; j < existingProducts.length; j++) {
-          const product = existingProducts[j];
-          let price = '';
-          for(const v of product.variants) {
-            if(v.availableForSale) {
-              price = v.priceV2.amount;
-              break;
-            }
-          }
-          let topSavings = '';
-          if(j == 0 && savings) {
-            topSavings = `<div class="jd-cart-rec-save-tag">Save $${savings.toLocaleString()}</div>`;
-          }
-          let programLabel = '';
-          for(const meta of product.metafields) {
-            if(!meta) continue;
-            if(meta.key == 'program_label') {
-              if(meta.value) {
-                let img = '<img src="https://course.integrativenutrition.com/hubfs/Course%20Page%20Images/iin_logo.png">';
-                if(meta.value.toLowerCase().includes('chopra')) {
-                  img = '<img src="https://course.integrativenutrition.com/hubfs/Course%20Page%20Images/chopra_logo.png">';
-                }
-                programLabel = `<div class="jd-cart-rec-item-program"><div>${img}</div>${meta.value}</div>`;
-              }
-              break;
-            }
-          }
-          courseListHTML += `
-            <div class="jd-cart-rec-item">
-              ${topSavings}
-              <div class="jd-cart-rec-item-img" style="background:url('${product.images[0].src}');"></div>
-              <div class="jd-cart-rec-item-inner" style="${topSavings ? 'padding-top: 30px' : ''}">
+        courseListHTML += `
+          <div class="jd-cart-rec-item">
+            ${topSavings}
+            <div
+              class="jd-cart-rec-item-img"
+              style="background: url('${product.images[0].src}');"
+            >
+            </div>
+            <div style="flex: 1">
+              <div
+                class="jd-cart-rec-item-inner"
+                style="
+                  ${topSavings ? 'padding-top: 30px;' : ''}
+                  ${hasSingleVariant ? '' : 'padding-bottom: 10px;'}
+                "
+              >
                 <div>
                   ${programLabel}
                   <div>${product.title}</div>
                 </div>
-                <div>$${parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-              </div>
-            </div>`;
-        }
-        if(existingProducts.length && newProducts.length) {
-          courseListHTML += `<div class="jd-cart-rec-plus"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></div>`;
-        }
-        for(let j = 0; j < newProducts.length; j++) {
-            const product = newProducts[j];
-            let price = '';
-            for(const v of product.variants) {
-              if(v.availableForSale) {
-                price = v.priceV2.amount;
-                break;
-              }
-            }
-            let topSavings = '';
-            if(j == 0 && !existingProducts.length) {
-              topSavings = `<div class="jd-cart-rec-save-tag">Save $${savings.toLocaleString()}</div>`;
-            }
-            let programLabel = '';
-            for(const meta of product.metafields) {
-              if(!meta) continue;
-              if(meta.key == 'program_label') {
-                if(meta.value) {
-                  let img = '<img src="https://course.integrativenutrition.com/hubfs/Course%20Page%20Images/iin_logo.png">';
-                  if(meta.value.toLowerCase().includes('chopra')) {
-                    img = '<img src="https://course.integrativenutrition.com/hubfs/Course%20Page%20Images/chopra_logo.png">';
-                  }
-                  programLabel = `<div class="jd-cart-rec-item-program"><div>${img}</div>${meta.value}</div>`;
-                }
-                break;
-              }
-            }
-            let optionHTML = '';
-            for(let k = 0; k < product.variants.length; k++) {
-              const v = product.variants[k];
-              if(v.availableForSale) {
-                optionHTML += `<option ${k == 0 ? 'selected' : ''} value="${v.id}">${v.title}</option>`;
-              }
-            }
-            courseListHTML += `
-            <div class="jd-cart-rec-item">
-              ${topSavings}
-              <div class="jd-cart-rec-item-img" style="background:url('${product.images[0].src}');"></div>
-              <div style="flex:1">
-                <div style="${product.variants.length == 1 && product.variants[0].title == 'Default Title' ? '' : 'padding-bottom:10px;'} ${topSavings ? 'padding-top: 30px' : ''}" class="jd-cart-rec-item-inner">
-                  <div>
-                    ${programLabel}
-                    <div>${product.title}</div>
-                  </div>
-                  <div>$${parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-                </div>
-                <div style="${product.variants.length == 1 && product.variants[0].title == 'Default Title' ? 'display:none' : ''}" class="jd-cart-rec-item-inner-2">
-                  <div>
-                    <select class="jd-cart-rec-select jd-cart-rec-item-to-add">
-                      ${optionHTML}
-                    </select>
-                  </div>
+                <div>
+                  $${parseFloat(price).toLocaleString(undefined, localeOptions)} USD
                 </div>
               </div>
-            </div>`;
-        }
-        
-        let title = `<h3 class="jd-cart-rec-title">${matchedBundle.name}</h3>`;
-        if(matchedBundle.page_link) {
-          title = `<h3 class="jd-cart-rec-title"><a href="${matchedBundle.page_link}">${matchedBundle.name}</a></h3>`;
-        }
+              <div
+                class="jd-cart-rec-item-inner-2"
+                style="${hasSingleVariant ? 'display: none' : ''}"
+              >
+                <div>
+                  <select class="jd-cart-rec-select jd-cart-rec-item-to-add">
+                    ${optionHTML}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
 
-        resolve(`<div class="jd-cart-rec-wrap" id="bundle-${i}">
+      let title = '<h3 class="jd-cart-rec-title">';
+
+      if (matchedBundle.page_link) {
+        title += `<a href="${matchedBundle.page_link}">${matchedBundle.name}</a>`;
+      } else {
+        title += matchedBundle.name;
+      }
+
+      title += '</h3>';
+
+      return `
+        <div class="jd-cart-rec-wrap" id="bundle-${bundleIndex}">
           <div class="jd-cart-rec">
             <div>Save Buying Together</div>
             ${title}
-            <div class="jd-cart-rec-list">${courseListHTML}</div>
+            <div class="jd-cart-rec-list">
+              ${courseListHTML}
+            </div>
             <div class="jd-cart-rec-bottom">
               <div class="jd-cart-rec-prices">
                 ${cartRecPricesHTML}
               </div>
               <div class="jd-cart-rec-add-wrap">
-                <div data-bundle="${i}" class="jd-cart-rec-add jd-request-btn hs-button light-button">Add to cart</div>
-                ${ savings ?
-                `<div>and save $${savings.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>` : ''}
+                <button
+                  class="jd-cart-rec-add jd-request-btn hs-button light-button"
+                  data-bundle="${bundleIndex}"
+                  type="button"
+                >
+                  Add to cart
+                </button>
+                ${
+                  savings
+                    ? `<div>and save $${savings.toLocaleString(
+                        undefined,
+                        localeOptions
+                      )}</div>`
+                    : ''
+                }
               </div>
             </div>
           </div>
-        </div>`)
-      });
+        </div>
+      `;
+    };
+
+    matchedBundles.forEach((matchedBundle, bundleIndex) => {
+      const promise = setBundles(matchedBundle, bundleIndex);
+
       promises.push(promise);
-    }
-    
-    let bundleHTML = '';
-    await Promise.all(promises).then(values => {
-      values.forEach(html => {
-        bundleHTML += html;
-      })
     });
-    
+
+    let bundleHTML = '';
+
+    try {
+      const values = await Promise.all(promises);
+
+      values.forEach((value) => {
+        if (value) {
+          bundleHTML += value;
+        }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
     try {
       $('.jd-cart-rec-outer').slick('unslick');
-    } catch(e) {  }
+    } catch (e) {
+      // Slick is not already attached to '.jd-cart-rec-outer'.
+    }
+
     $('.jd-cart-rec-outer').html(bundleHTML);
 
-    $('.jd-cart-rec-add').click(function() {
-      const cartItems = [];
-      $(`#bundle-${$(this).data('bundle')} .jd-cart-rec-item-to-add`).each(function() {
-        cartItems.push({
-          variantId: $(this).val(),
-          quantity: 1
+    $('.jd-cart-rec-outer').show();
+
+    if (window.innerWidth <= sliderBreakSmDesk) {
+      const rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
+      const rowStyle = 'width: 100% !important; max-width: 100% !important';
+
+      rowFluid.attr('style', rowStyle);
+    }
+
+    const slidesToScroll = 1;
+
+    const slideCommonSettings = {
+      centerMode: true,
+      centerPadding: '25px',
+      slidesToScroll,
+    };
+
+    try {
+      $('.jd-cart-rec-outer').on('init', () => {
+        // This listener must be set after the slick carousel has been initialized
+        $('.jd-cart-rec-add').click(function () {
+          const bundleID = $(this).data('bundle');
+
+          addToCart(bundleID);
         });
       });
-      IINShopifyClient.checkout.addLineItems(getCookie('shopifyCart'), cartItems)
-        .then((checkout) => {
-        loadCart();
-      })
-    });
-    
-    $('.jd-cart-rec-outer').show();
-    
-    if(window.innerWidth <= sliderBreakSmDesk) {
-      const rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
-      rowFluid.attr('style', 'width:100% !important;max-width:100% !important');
-    }
-    
-    $('.jd-cart-rec-outer').slick({
+
+      $('.jd-cart-rec-outer').slick({
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll,
         dots: false,
         arrows: false,
         responsive: [
@@ -608,267 +1253,470 @@
             breakpoint: sliderBreakSmDesk,
             settings: {
               slidesToShow: 2,
-              centerMode: true,
-              centerPadding: '25px',
-              slidesToScroll: 1
-            }
+              ...slideCommonSettings,
+            },
           },
           {
             breakpoint: sliderBreakMobile,
             settings: {
               slidesToShow: 1,
-              centerMode: true,
-              centerPadding: '25px',
-              slidesToScroll: 1
-            }
-          }
-        ]
-    });
-  }
-  
-  loadCart();
-  function loadCart(noProductChange) {
-    if(!getCookie('shopifyCart')) {
-      $('.jd-cart-outer').addClass('jd-cart-empty');
-      $('.jd-cart-items').html('');
-      return;
-    }
-    
-    IINShopifyClient.checkout.fetch(getCookie('shopifyCart'))
-    .then(async checkout => {
-      if(!noProductChange) {
-        initCohortProducts(checkout);
-        checkoutURL = checkout.webUrl.replace('the-institute-for-integrative-nutrition.myshopify.com', 'store.integrativenutrition.com');
-        productRecommendations(JSON.parse(JSON.stringify(checkout.lineItems)));
-      }
-      
-      if(checkout.lineItems.length == 0) {
-        $('.jd-cart-outer').addClass('jd-cart-empty');
-        $('.jd-cart-items').html('');
-        return;
-      } else {
-        $('.jd-cart-outer').removeClass('jd-cart-empty');
-      }
-      
-      // Program label metafield
-      let productQuery = '';
-      for(let i = 0; i < checkout.lineItems.length; i++) {
-        productQuery += `id:${checkout.lineItems[i].variant.product.id.replace('gid://shopify/Product/', '')}`;
-        if(i < checkout.lineItems.length - 1) {
-          productQuery += ' OR ';
-        }
-      }
-      const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
-        root.addConnection('products', { args: { first: 100, query: productQuery } }, (product) => {
-          product.add('title');
-          product.add(
-            'metafields',
-            {
-              args: {
-                identifiers: [
-                  { key: 'program_label', namespace: 'custom' }
-                ],
-              },
+              ...slideCommonSettings,
             },
-            (metafield) => {
-              metafield.add('key')
-              metafield.add('value')
+          },
+        ],
+      });
+    } catch (e) {
+      console.error('Slick could not be attached to recommendations.', e);
+    }
+  }
+
+  async function setEnrollmentLinks() {
+    const customAttributes = [];
+
+    agreementProducts.forEach((product) => {
+      const productID = product.id.replace(gidPath, '');
+
+      let hasAgreement = false;
+      let hasAgreementTag = false;
+      let agreementPath = 'enrollment-agreement';
+
+      agreementTags.forEach(({ name, pathSuffix }) => {
+        if (!hasAgreementTag) {
+          product.tags.forEach((productTag) => {
+            if (!hasAgreementTag && productTag.value === name) {
+              hasAgreementTag = true;
+              agreementPath += `-${pathSuffix}`;
             }
-          )    
-        })
+          });
+        }
+
+        if (!hasAgreement && hasAgreementTag) {
+          hasAgreement = true;
+        }
       });
 
-      await IINShopifyClient.graphQLClient.send(productsQuery).then(({model, data}) => {
-        for(const product of model.products) {
-          const lineItem = checkout.lineItems.find(lineItem => {
-            return lineItem.variant.product.id == product.id;
-          })
-          if(lineItem) {
-            for(const meta of product.metafields) {
-              if(!meta) continue;
-              if(meta.key == 'program_label') {
-                if(meta.value) {
-                  lineItem.programLabel = meta.value;
-                }
-                break;
-              }
-            }
-          }
-        }
-      })
-      .catch(e => {
-        console.log(e);
-      })
-      
-      let itemsHTML = '';
-      let itemSummaryHTML = '';
-      for(const item of checkout.lineItems){
-        let optionsHTML = '';
-        for(const o of item.variant.selectedOptions) {
-          if(o.value != 'Default Title') {
-            optionsHTML += `<div><b>${o.name}:</b> ${o.value}</div>`;
-          }
-        }
-        if(item.quantity > 1) {
-          optionsHTML += `<div><b>Quantity:</b> ${item.quantity}</div>`;
-        }
-        let totalPreDiscount = parseFloat(item.variant.price.amount) * item.quantity;
-        let total = totalPreDiscount;
-        if(item.discountAllocations.length) {
-          for(const discount of item.discountAllocations) {
-            total -= parseFloat(discount.allocatedAmount.amount) * item.quantity;
-          }
-        }
-        let itemAmountHTML = '';
-        if(total != totalPreDiscount) {
-          itemAmountHTML = `
-          <div class="jd-cart-item-price-dis">$${totalPreDiscount.toLocaleString()}</div>
-          <div class="jd-cart-item-price">$${total.toLocaleString()}</div>
-          `;
-        } else {
-          itemAmountHTML = `
-          <div style="margin-top:15px" class="jd-cart-item-price">$${total.toLocaleString()}</div>
-          `;
-        }
-        let programLabel = '';
-        if(item.programLabel) {
-          programLabel = `<div class="jd-cart-rec-item-program">${item.programLabel.toUpperCase()}</div>`;
-        }
-        itemsHTML += `
-        <div class="jd-cart-item">
-          <div class="jd-add-pop-content">
-            <div class="jd-add-pop-img"><div style="background: url(${item.variant.image.src})"></div></div>
-            <div class="jd-add-pop-content-main">
-              ${programLabel}
-              <div class="jd-add-pop-name">${item.title}</div>
-              <div class="jd-add-pop-options">${optionsHTML}</div>
-              <div class="jd-cart-item-btns">
-                ${ optionsHTML ?
-                `<a data-line="${item.id}" class="jd-cart-item-edit" href="">
-                  <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.749c0-.414.336-.75.75-.75s.75.336.75.75v9.249c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm1.521 9.689 9.012-9.012c.133-.133.217-.329.217-.532 0-.179-.065-.363-.218-.515l-2.423-2.415c-.143-.143-.333-.215-.522-.215s-.378.072-.523.215l-9.027 8.996c-.442 1.371-1.158 3.586-1.264 3.952-.126.433.198.834.572.834.41 0 .696-.099 4.176-1.308zm-2.258-2.392 1.17 1.171c-.704.232-1.274.418-1.729.566zm.968-1.154 7.356-7.331 1.347 1.342-7.346 7.347z" fill-rule="nonzero"/></svg>
-                  Edit
-                </a>
-                <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>` : ''
-                }
-                <a data-line="${item.id}" class="jd-cart-item-delete" href="">
-                  <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"/></svg>
-                  Delete
-                </a>
-              </div>
-              <div></div>
-            </div>
-          </div>
-          <div>
-            ${itemAmountHTML}
-          </div>
-        </div>
-        `;
-        
-        itemSummaryHTML += `<div style="font-size: 20px;">$${total.toLocaleString()}</div>`;
+      const agreementData = {};
+
+      const books = parseFloat(
+        getMetafield(product, 'books_and_materials')?.replace('$', '')
+      );
+
+      if (books) {
+        agreementData.Books = books.toFixed(2);
       }
-      if(checkout.lineItems.length > 1) {
-        itemSummaryHTML += `<div style="font-size: 20px;border-top: 1px solid #ccc; padding-top: 5px">$${parseFloat(checkout.totalPrice.amount).toLocaleString()}</div>`;
+
+      if (product.title) {
+        agreementData.Course = product.title;
       }
-      $('.jd-cart-items').html(itemsHTML);
-      if(checkout.lineItems.length) {
-        $('.jd-cart-summary > div:first-child').html(`Order Summary <i>(${checkout.lineItems.length} items)</i>`);
-        $('.jd-cart-summary-items').html(itemSummaryHTML);
-        $('.jd-checkout-btn-wrap').show();
-      } else {
-        $('.jd-cart-summary > div:first-child').html(`Order Summary <i>(0 items)</i>`);
-        $('.jd-cart-summary-items').html('');
-        $('.jd-checkout-btn-wrap').hide();
+
+      [agreementData.Date] = new Date().toISOString().split('T');
+
+      const hours = parseFloat(getMetafield(product, 'number_of_clock_hours'));
+
+      if (hours) {
+        agreementData.hours = hours;
       }
-      $('.jd-cart-item-delete').click(function(e) {
-        e.preventDefault();
-        IINShopifyClient.checkout.removeLineItems(getCookie('shopifyCart'), [ $(this).data('line') ]).then((checkout) => {
-          loadCart();
-          updateCartTotal(checkout);
-        });
+
+      agreementData.Price = product.price.toFixed(2);
+      agreementData.ProductId = productID;
+
+      // TODO: how can the value for agreementData.Promo be calculated here?
+      // Discounts don't get applied until checkout.
+      let discountTotal = 0;
+
+      product.discount_allocations?.forEach((allocation) => {
+        discountTotal += allocation.amount;
       });
-      $('.jd-cart-item-edit').click(function(e) {
-        e.preventDefault();
-        console.log(checkout);
-        console.log($(this).data('line'));
-        const lineID = $(this).data('line');
-        let line;
-        for(const lineItem of checkout.lineItems) {
-          if(lineItem.id == lineID) {
-            line = lineItem;
-            break;
-          }
-        }
-        if(!line) {
-          return;
-        }
-        IINShopifyClient.product.fetch(line.variant.product.id).then((p) => {
-          console.log(p);
-          const ts = new Date().getTime();
-          let selectHTML = `<select id="${ts}" class="jd-cart-rec-select">`;
-          for(let i = 0; i < p.variants.length; i++) {
-            const variant = p.variants[i];
-            if(variant.available) {
-              selectHTML += `<option ${i == 0 ? 'selected' : ''} value="${variant.id}">${variant.title}</option>`;
+
+      if (discountTotal) {
+        agreementData.Promo = discountTotal.toFixed(2);
+      }
+
+      const publicationDate = getMetafield(
+        product,
+        'agreement_publication_date'
+      );
+
+      if (publicationDate) {
+        agreementData.PublicationDate = publicationDate;
+      }
+
+      const registrationCost = parseFloat(
+        getMetafield(product, 'registration_cost')?.replace('$', '')
+      );
+
+      if (registrationCost) {
+        agreementData.Registration = registrationCost.toFixed(2);
+      }
+
+      const revisionDate = getMetafield(product, 'agreement_revision_date');
+
+      if (revisionDate) {
+        agreementData.RevisionDate = revisionDate;
+      }
+
+      const startDate = getMetafield(product.variant, 'start_date');
+
+      if (startDate) {
+        agreementData.StartDate = startDate;
+      }
+
+      const variantTitle =
+        product.variant.title === 'Default Title' ? '' : product.variant.title;
+
+      if (variantTitle) {
+        agreementData.Variant = variantTitle;
+      }
+
+      const weeks = getMetafield(product, 'number_of_weeks');
+
+      if (weeks) {
+        agreementData.weeks = weeks;
+      }
+
+      const agreementParams = new URLSearchParams();
+      const agreementCookie = getCookie('enrollmentAgreementQuery');
+
+      if (agreementCookie) {
+        try {
+          const separator = '&';
+
+          const cookieParams = makeObjectFromKeyValueString(
+            agreementCookie,
+            separator
+          );
+
+          Object.entries(cookieParams).forEach(([key, value]) => {
+            if (value) {
+              agreementData[key] = value;
             }
-          }
-          selectHTML += `</select>`;
-          $(this).parent().next().html(selectHTML);
-          $('#' + ts).change(function() {
-            const lineItemUpdate = [{
-              id: lineID,
-              variantId: $(this).val()
-            }]
-            IINShopifyClient.checkout.updateLineItems(getCookie('shopifyCart'), lineItemUpdate).then((checkout) => {
-              loadCart(true);
-            });
           });
-        })
-      });
-    })
-  }
-  
-  function setEnrollmentLinks() {
-    const cartAttributes = {
-      customAttributes: []
-    }
-    for(const product of cohortProducts) {
-      const course = encodeURIComponent(product.title);
-      const productID = product.id.replace('gid://shopify/Product/', '');
-      const price = encodeURIComponent('$' + product.price.toLocaleString());
-      const dateObj = new Date();
-      const year = dateObj.getFullYear();
-      let month = dateObj.getMonth() + 1;
-      if(month < 10) {
-        month = '0' + month;
-      }
-      let d = dateObj.getDate();
-      if(d < 10) {
-        d = '0' + d;
-      }
-      const date = `${year}-${month}-${d}`;
-      let books = '', tuition = '', registration = '', hours = '', weeks = '';
-      for(const metaField of product.metafields) {
-        if(!metaField) continue;
-        if(metaField.key == 'registration_cost') {
-          registration = encodeURIComponent(metaField.value);
-        } else if(metaField.key == 'books_and_materials') {
-          books = encodeURIComponent(metaField.value);
-        } else if(metaField.key == 'number_of_clock_hours') {
-          hours = encodeURIComponent(metaField.value);
-        } else if(metaField.key == 'number_of_weeks') {
-          weeks = encodeURIComponent(metaField.value);
-        } else if(metaField.key == 'tuition') {
-          tuition = encodeURIComponent(metaField.value);
+        } catch (e) {
+          console.error(e);
         }
       }
-      cartAttributes.customAttributes.push({
-        key: product.title,
-        value: `https://course.integrativenutrition.com/enrollment-agreement?Course=${course}&ProductId=${productID}&Books=${books}&Tuition=${tuition}&Registration=${registration}&Date=${date}&Price=${price}&hours=${hours}&weeks=${weeks}${getCookie('enrollmentAgreementQuery')}`
+
+      Object.entries(agreementData).forEach(([key, value]) => {
+        const trimmedValue = typeof value === 'number' ? value : value?.trim();
+
+        if (trimmedValue) {
+          agreementParams.set(key, trimmedValue);
+        }
       });
-      console.log(cartAttributes.customAttributes);
-    }
-    IINShopifyClient.checkout.updateAttributes(getCookie('shopifyCart'), cartAttributes).then((checkout) => {
-      console.log(checkout);
+
+      const agreementOrigin = 'https://course.integrativenutrition.com';
+      const agreementURL = new URL(`${agreementOrigin}/${agreementPath}`);
+
+      agreementURL.search = agreementParams.toString();
+
+      const newAttribute = {
+        key: `${product.title} Enrollment Agreement`,
+        value: agreementURL.toString(),
+      };
+
+      customAttributes.push(newAttribute);
     });
+
+    const cartAttributes = { customAttributes };
+    const cartCookie = getCookie('shopifyCart');
+
+    try {
+      await IINShopifyClient.checkout.updateAttributes(
+        cartCookie,
+        cartAttributes
+      );
+    } catch (e) {
+      console.error(e);
+    }
   }
+
+  $(function () {
+    if (window.innerWidth < sliderBreakMobile) {
+      $('.jd-checkout-btn-wrap').appendTo('body');
+    }
+
+    // Enrollment form
+    hbspt.forms.create({
+      region: 'na1',
+      portalId: '23273748',
+      formId: moduleData?.formID,
+      target: '.jd-cart-enrollment-form-target',
+      onFormReady($form) {
+        const updateEmail = async (value) => {
+          if (!value) {
+            return;
+          }
+
+          const cartCookie = getCookie('shopifyCart');
+
+          const checkoutNew = await IINShopifyClient.checkout.updateEmail(
+            cartCookie,
+            value
+          );
+
+          // TODO: remove
+          console.log('EMAIL UPDATE');
+          console.log(checkoutNew);
+
+          await setShopifyCartCookie(checkoutNew, true);
+
+          checkoutURL = checkoutNew.webUrl.replace(
+            internalDomain,
+            externalDomain
+          );
+        };
+
+        $('.jd-cart-enrollment-form-target input[name=email]').change(
+          function () {
+            const value = $(this).val();
+
+            updateEmail(value);
+          }
+        );
+      },
+      onBeforeFormSubmit($form, submissionValues) {
+        const addEnrollmentAgreements = async () => {
+          let address = '';
+          let address2 = '';
+          let country = '';
+          let email = '';
+          let firstName = '';
+          let lastName = '';
+          let phone = '';
+          let state = '';
+          let zip = '';
+
+          submissionValues.forEach((field) => {
+            if (field.name === 'address') {
+              address = field.value;
+            } else if (field.name === 'apartment__suite__ect_') {
+              address2 = field.value;
+            } else if (field.name === 'city') {
+              city = field.value;
+            } else if (field.name === 'company') {
+              company = field.value;
+            } else if (field.name === 'country_region_dropdown') {
+              country = field.value;
+            } else if (field.name === 'email') {
+              email = field.value;
+            } else if (field.name === 'firstname') {
+              firstName = field.value;
+            } else if (field.name === 'lastname') {
+              lastName = field.value;
+            } else if (field.name === 'phone') {
+              phone = field.value;
+            } else if (field.name === 'zip') {
+              zip = field.value;
+            } else if (
+              field.name === 'australia_state' ||
+              field.name === 'canada_province' ||
+              field.name === 'mexico_state' ||
+              field.name === 'us_state'
+            ) {
+              state = field.value;
+            }
+          });
+
+          const fullAddressFields = [address, address2, state, zip, country];
+
+          let fullAddress = '';
+
+          fullAddressFields.forEach((value) => {
+            const trimmedValue =
+              typeof value === 'number' ? value : value?.trim();
+
+            if (trimmedValue) {
+              fullAddress += fullAddress ? `, ${trimmedValue}` : trimmedValue;
+            }
+          });
+
+          let fullName = firstName || '';
+
+          if (lastName) {
+            fullName += ` ${lastName}`;
+          }
+
+          const agreementData = {};
+
+          if (fullName) {
+            agreementData.Name = fullName;
+          }
+
+          if (email) {
+            agreementData.Email = email;
+          }
+
+          if (fullAddress) {
+            agreementData.Address = fullAddress;
+          }
+
+          if (phone) {
+            agreementData.Phone = phone;
+          }
+
+          const agreementParams = new URLSearchParams();
+
+          Object.entries(agreementData).forEach(([key, value]) => {
+            const trimmedValue =
+              typeof value === 'number' ? value : value?.trim();
+
+            if (trimmedValue) {
+              agreementParams.set(key, trimmedValue);
+            }
+          });
+
+          const cookieSeparator = '; ';
+          const expirationDate = new Date();
+
+          expirationDate.setYear(expirationDate.getFullYear() + 1);
+
+          const agreementCookieData = {
+            enrollmentAgreementQuery: agreementParams.toString(),
+            domain: cookieDomain,
+            expires: expirationDate.toUTCString(),
+          };
+
+          document.cookie = makeKeyValueStringFromObject(
+            agreementCookieData,
+            cookieSeparator
+          );
+
+          await setEnrollmentLinks();
+
+          const checkoutData = {
+            '[email]': email,
+          };
+
+          // Properties should stay in this sequence
+          const billingAddress = {
+            first_name: firstName,
+            last_name: lastName,
+            phone,
+            company,
+            address1: address,
+            address2,
+            city,
+            province: state,
+            zip,
+            country,
+          };
+
+          Object.entries(billingAddress).forEach(([key, value]) => {
+            const trimmedValue =
+              typeof value === 'number' ? value : value?.trim();
+
+            if (trimmedValue) {
+              const newKey = `[billing_address][${key}]`;
+
+              checkoutData[newKey] = trimmedValue;
+            }
+          });
+
+          const checkoutParams = new URLSearchParams();
+
+          Object.entries(checkoutData).forEach(([key, value]) => {
+            const newKey = `checkout${key}`;
+
+            if (value) {
+              checkoutParams.set(newKey, value);
+            }
+          });
+
+          const checkoutCookieData = {
+            checkoutQuery: checkoutParams.toString(),
+            domain: cookieDomain,
+            expires: expirationDate.toUTCString(),
+          };
+
+          document.cookie = makeKeyValueStringFromObject(
+            checkoutCookieData,
+            cookieSeparator
+          );
+        };
+
+        addEnrollmentAgreements();
+      },
+      onFormSubmit($form) {
+        $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
+
+        const maximumAttempts = 50;
+        let attempts = 0;
+
+        // An async function is awaited in onBeforeSubmit that must resolve in
+        // order to set checkoutQuery cookie.
+        const cookieCheck = setInterval(() => {
+          const checkoutCookie = getCookie('checkoutQuery');
+
+          if (!checkoutCookie) {
+            return;
+          }
+
+          let targetURL =
+            makeURLFromCookieParams(checkoutURL, 'checkoutQuery');
+
+          targetURL = makeURLFromCookieParams(targetURL, 'params');
+          clearInterval(cookieCheck);
+          window.location.href = targetURL;
+        }, 100);
+ 
+        if (attempts > maximumAttempts) {
+          clearInterval(cookieCheck);
+          console.error('Checkout cookie could not be found');
+        }
+      },
+    });
+
+    $(window).on('resize', function () {
+      if (
+        window.innerWidth <= sliderBreakMobile &&
+        currentWidth > sliderBreakMobile
+      ) {
+        $('.jd-checkout-btn-wrap').appendTo('body');
+      } else if (
+        window.innerWidth > sliderBreakMobile &&
+        currentWidth <= sliderBreakMobile
+      ) {
+        $('.jd-checkout-btn-wrap').appendTo('.jd-cart-summary-outer');
+      }
+  
+      const $rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
+  
+      if (
+        window.innerWidth <= sliderBreakSmDesk &&
+        currentWidth > sliderBreakSmDesk
+      ) {
+        const rowStyle = 'width: 100% !important; max-width: 100% !important';
+  
+        $rowFluid.attr('style', rowStyle);
+      } else if (
+        window.innerWidth > sliderBreakSmDesk &&
+        currentWidth <= sliderBreakSmDesk
+      ) {
+        $rowFluid.attr('style', '');
+      }
+  
+      currentWidth = window.innerWidth;
+    });
+  
+    $('.jd-cart-enrollment-form-btn').click(function () {
+      $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
+    });
+
+    $('.jd-cart-enrollment').appendTo('body');
+
+    $('#jd-checkout-btn').click(function () {
+      const checkoutCookie = getCookie('checkoutQuery');
+  
+      if (agreementProducts.length && !checkoutCookie) {
+        $('.jd-cart-enrollment').addClass('jd-cart-enrollment-show');
+      } else {
+        let targetURL = makeURLFromCookieParams(checkoutURL, 'checkoutQuery');
+
+        targetURL = makeURLFromCookieParams(checkoutURL, 'params');
+        window.location.href = targetURL;
+      }
+    });
+
+    loadCart();
+  });
 })();
