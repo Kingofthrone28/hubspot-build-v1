@@ -1,0 +1,195 @@
+
+<form id="circle_life" class="circle_life">
+  <div id="col-canvas" class="col-results"></div>  
+   {% set topics = module.slider_options  %}
+   {% for topic in topics %}
+    {% set topic_clean = topic.linkLabel|lower|replace(' ', '-') %}
+    {% set topic_clean_fieldname = topic.linkLabel|lower|replace(' ', '_') %}
+    {# mobile sliders #}
+    <div class="sliderfield webform-sliderfield">
+    <input class="edit-submitted-{{ topic_clean }}-forsliderfield" type="hidden" data-name="{{ topic.linkLabel }}" name="submitted[{{ topic.linkLabel|lower }}]" value="">
+    <div class="form-type-slider form-item---sliderfield-submitted-{{ topic_clean }} form-item form-group">
+    <label for\="edit-sliderfield-submitted-{{ topic_clean }}" style="display: inline-block;">{{ topic.linkLabel }} </label>
+     <div id="edit-sliderfield-submitted-{{ topic_clean }}-slider" class="form-wrapper form-group">
+       <div id="edit-sliderfield-submitted-{{ topic_clean }}" class="sliderfield">
+          <div class="sliderfield-event-field-container">
+            <div class="form-type-textfield form-item---sliderfield-submitted-{{ topic_clean }}-value form-item form-group">
+              <input class="sliderfield-value-field form-control form-text sliderfield-processed" 
+               type="text" id="edit-sliderfield-submitted-{{ topic_clean }}-value" name="__sliderfield[submitted][{{ topic.linkLabel|lower }}][value]" 
+               value="" size="3" maxlength="128" style="display: none;">
+              <script>
+                $(function() {
+                  $("#edit-sliderfield-submitted-{{ topic_clean }}-slider").slider({
+                    range: "min",
+                    value: 0, 
+                    min: 1,
+                    max: 10,
+                    slide: function(event, ui) {
+                      const sliderValues = ui.value;
+                      // Update the input field with the slider value
+                      $("input.edit-submitted-{{ topic_clean }}-forsliderfield").val(sliderValues);
+                        
+                      //slider key / values stored for radar graph on mobile   
+                      sessionStorage.setItem('{{ topic_clean_fieldname }}', sliderValues);  
+                    }
+                  });
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
+  {# end mobile sliders #}
+  {% endfor %}
+  <button type="submit" form="circle_life">Show Me My Circle</button>
+</form>
+<script>
+ $(document).ready(function(){
+
+   const getCategories = (topic) => { 
+    const categoriesArray = []
+    const $categoryName = $('#col-canvas span');
+     
+    if ($categoryName.length) {
+      $categoryName.each(function() {
+        topic = $(this).data('field');
+        console.log('TOPIC:', topic);
+        categoriesArray.push(topic);
+    });
+       
+    return categoriesArray;
+    }
+  }
+   
+   const setCopyOnSubmit = () => {
+     //switch text copy on submit
+     const $submittedCopy = $('.col-text-submitted');
+     const $textCopy = $('.col-text,.col-text-mobile');
+     
+     if ($textCopy || $submittedCopy) {
+        $textCopy.hide();
+        $submittedCopy.show();
+     }
+   }
+   
+   const drawLinesOnSubmit = () => {
+   
+      const baseRadius = 100;
+      const scale = 2.5;
+      const radius = baseRadius * scale;
+      const diameter = radius * 2;
+     
+      // set ID point to draw lines from radar 
+      const $linesToDraw = $('#col-lines');
+
+      // check against category field, if key matched in session storage 
+      // display our values
+      if ($linesToDraw.length) {
+        const paper = Raphael("col-lines", diameter, diameter);
+        const matchedPairs = {};         
+        const categoryKeys = getCategories();
+        
+        categoryKeys.forEach((key) => {
+        if (sessionStorage.hasOwnProperty(key)) {
+            matchedPairs[key] = sessionStorage.getItem(key);
+          }
+        });
+
+        const circleData =  [matchedPairs];
+        const colValues = Object.values(circleData[0]);
+
+        // we need to convert the object into an array and display the values as an integer
+        // from session storage
+        const cleanColValues = colValues.map(value => parseInt(value)); 
+
+        //disable click handler to prevent change of values
+        $('#col-canvas').click(() => false);
+        
+        if (cleanColValues.length) {
+          const radar = paper.radar(radius, radius, radius, cleanColValues, {
+            armFill: 'none', // color of arm fill
+            armStroke: 'none', // color of arm stroke
+            armStrokeWidth: 1, // width of arm stroke
+            dotFill: '#000',
+            drawArms: false, // to draw arms or not
+            drawLabels: false, // to draw labels or not
+            drawMesh: false, // to draw mesh or not
+            drawPathCircles: true, // whether to draw the circles on the data path
+            drawValues: false, // to draw labels or not
+            labelFontSize: 20, // huge font
+            labels: [],
+            max: 10, // maximum value, if not present, calculated from maximum value of data array
+            meshFill: 'none', // color of mesh fill
+            meshSize: 30, // the space between adjacent meshes,
+            meshStroke: 'none', // color of mesh stroke
+            meshStrokeWidth: 1, // width of mesh stroke
+            pathCircleInnerRadius: 1, // data path circle inner radius
+            pathCircleOuterRadius: 2, // data path circle outer radius
+            pathFill: 'none', // color of data path fill
+            pathStroke: 'black', // color of data path stroke
+            pathStrokeWidth: 3, // data path stroke width
+           })
+         }
+      }
+
+      // manipulate DOM to inject to svg path
+      // remove original circles pre-submit to prevent duplicate dots.
+      const $outerSvgPath = $('.svg-wrapper > svg > path');
+      const $outerCircle = $('.svg-wrapper > svg > circle'); 
+
+      if ($outerSvgPath.length) {
+        const $svgPath = $('#col-lines > svg').clone();
+        $('#col-lines').replaceWith($svgPath);
+        if($outerCircle.length){
+          $($outerCircle).hide();
+        } 
+      }
+      // switch text copy on submit 
+      setCopyOnSubmit();
+           
+      $('form > button, .sliderfield').hide();
+     
+      // Create a media query that targets viewports less than 768px wide
+      const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+      // Function to execute when condition is met
+      const handleViewportChange = (e) => {
+        if (e.matches) {
+          $('#col-canvas').addClass('show-mobile');
+        } 
+      }
+      // Add listener for changes in the viewport using jQuery
+      $(mediaQuery).on('change', handleViewportChange);
+      handleViewportChange(mediaQuery);
+   
+    } 
+   
+   const storeLinesOnRefresh = () => {
+     if (sessionStorage.length > 0) {
+      const sessionKeys = Object.keys(sessionStorage);
+      const topics = getCategories();
+      
+      sessionKeys.forEach((sessionKey) => {
+        // Check if sessionKey is in the topics array.
+        if (topics.includes(sessionKey)) { 
+          console.log('MATCH FOUND:', sessionKey);
+          drawLinesOnSubmit();
+        }
+      });
+    }
+  }
+   
+   $('#circle_life').on('submit', function(e) {
+     e.preventDefault(); 
+     drawLinesOnSubmit();
+   })   
+
+   // Check if the page is reloaded and session storage is set
+   // we keep our lines 
+   window.onload = () => {
+     storeLinesOnRefresh();
+   };
+});  
+</script>

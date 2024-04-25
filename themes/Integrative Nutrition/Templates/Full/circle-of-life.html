@@ -1,0 +1,788 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Circle of Life New
+  screenshotPath: /Integrative Nutrition/images/Circle of LIfe New.png
+-->
+{% extends '../layouts/base-circle-of-life.html' %}
+
+
+{% block body %}
+<main class="body-container-wrapper">
+  {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
+  {% dnd_area 'dnd_area' class='body-container body-container--circle_of_life', label='Main section' %}
+
+{# HERO SECTION #}
+  
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "top" : "220px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=7
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <div>
+                  <div class="entity-paragraphs-item paragraphs-item-headline">
+                  <h1 style="font-size: 72px;">Total Well-Being Bundle</h1>
+                  </div>
+                  </div>
+                  <div id="pane-class-185703">
+                  <p><span><br>[Copy around the advantage of bundling. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.]<br></span></p>
+                  </div>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=7,
+            width=5
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/Integrative Nutrition/modules/Course Shopify Price",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Arrow Buttons",
+            offset=0,
+            width=12,
+            buttons=[ {
+              "boolean_field" : false,
+              "link_field" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "rel" : "",
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://store.integrativenutrition.com/products/the-health-coach-training-program",
+                  "type" : "EXTERNAL"
+                },
+                "user_generated_content" : false
+              },
+              "text_field" : "Add Bundle to Cart"
+            } ],
+            style={
+              "spacing_field" : {
+                "css" : "padding-top: 15px;padding-right: 3.5em;padding-bottom: 15px;padding-left: 3.5em;margin-bottom: 5px;",
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 80
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 30
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 15
+                  },
+                  "left" : {
+                    "units" : "em",
+                    "value" : 3.5
+                  },
+                  "right" : {
+                    "units" : "em",
+                    "value" : 3.5
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 15
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div>
+              <div class="entity-paragraphs-item paragraphs-item-headline">
+              <h3>Courses in this bundle</h3><br>
+              </div>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Bundled Courses",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Shopify Button",
+        offset=0,
+        width=12,
+        ShopifyBuy_createComponant_id="7480487641277",
+        align="left",
+        main_style={
+          "button_text" : "Buy this course ",
+          "icon" : {
+            "alt" : "Shopify Button Arrow",
+            "height" : 162,
+            "loading" : "lazy",
+            "max_height" : 162,
+            "max_width" : 161,
+            "size_type" : "auto",
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Shopify%20Button%20Arrow.png",
+            "width" : 161
+          }
+        },
+        product_component_id="product-component-1686688156223"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END HERO SECTION #}
+  
+  
+  
+{# MEET TEACHERS SECTION #}
+  
+ {% dnd_section
+  background_color="rgba(249, 242, 224, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h2 style="text-align: center;">Meet some of your teachers</h2>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/Integrative Nutrition/modules/Slider",
+            offset=0,
+            width=12,
+            item=[ {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class="entity-paragraphs-item paragraphs-item-copy"><h4 style="text-align: center;"><strong>Zach Bush, MD</strong></h4><div style="text-align: center;">Board-Certified Physician and Microbiome Expert<br><br></div></div><div class="entity-paragraphs-item paragraphs-item-copy"><p style="text-align: center;"><strong>Curriculum topics<br></strong>Your body and gut microbiome<strong><br></strong></p></div>',
+              "image_field" : {
+                "alt" : "Zach Bush",
+                "height" : 220,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Zach%20Bush.png",
+                "width" : 221
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            }, {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class="entity-paragraphs-item paragraphs-item-copy"><h4 style="text-align: center;"><strong>Deanna Minich, PhD</strong></h4><div style="text-align: center;">Health Educator, Researcher, and Author<br><br></div></div><div class="entity-paragraphs-item paragraphs-item-copy"><p style="text-align: center;"><strong>Curriculum topics<br></strong>Colorful food as medicine</p></div>',
+              "image_field" : {
+                "alt" : "vt-deanna_1_0",
+                "height" : 220,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/vt-deanna_1_0.png",
+                "width" : 220
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            }, {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class="entity-paragraphs-item paragraphs-item-copy"><h4 style="text-align: center;"><strong>Zach Bush, MD</strong></h4><div style="text-align: center;">Board-Certified Physician and Microbiome Expert<br><br></div></div><div class="entity-paragraphs-item paragraphs-item-copy"><p style="text-align: center;"><strong>Curriculum topics<br></strong>Your body and gut microbiome<strong><br></strong></p></div>',
+              "image_field" : {
+                "alt" : "drew-remsy_0",
+                "height" : 220,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/drew-remsy_0.png",
+                "width" : 221
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            }, {
+              "add_quote_mark" : false,
+              "boolean_field" : false,
+              "content" : '<div class="entity-paragraphs-item paragraphs-item-copy"><h4 style="text-align: center;"><strong>Zach Bush, MD</strong></h4>\n<div style="text-align: center;">Board-Certified Physician and Microbiome Expert<br><br></div></div>\n<div class="entity-paragraphs-item paragraphs-item-copy"><p style="text-align: center;"><strong>Curriculum topics<br></strong>Your body and gut microbiome<strong><br></strong></p></div>',
+              "image_field" : {
+                "alt" : "Zach Bush",
+                "height" : 220,
+                "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Zach%20Bush.png",
+                "width" : 221
+              },
+              "image_url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "open_in_new_tab" : false,
+              "testimonial_footer" : false,
+              "testimonial_image" : {
+                "alt" : "Xvoucher-Horizontial-RGB registered",
+                "height" : 264,
+                "loading" : "lazy",
+                "max_height" : 264,
+                "max_width" : 604,
+                "size_type" : "auto",
+                "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+                "width" : 604
+              },
+              "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style=\"font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+              "url" : {
+                "add_section_link" : false,
+                "box_url" : {
+                  "href" : "",
+                  "type" : "EXTERNAL"
+                },
+                "open_in_new_tab" : false
+              },
+              "video_icon" : false
+            } ],
+            option={
+              "image" : {
+                "image_shape" : "circle",
+                "image_width" : 150
+              },
+              "navigation" : {
+                "arrow_color" : {
+                  "color" : "#2d3841",
+                  "opacity" : 100
+                },
+                "dot_arrow_hover_active_color" : {
+                  "color" : "#2d3841",
+                  "opacity" : 100
+                },
+                "navigation_arrows" : false
+              },
+              "outer_spacing" : {
+                "css" : "padding-right: 0px;padding-left: 0px;",
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 50
+                  },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : { },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <div class="entity-paragraphs-item paragraphs-item-copy"><span style="background-color: transparent;"></span>
+          <div class="entity-paragraphs-item paragraphs-item-copy">
+          <div style="text-align: center;">
+          <div class="entity-paragraphs-item paragraphs-item-copy">
+          <div style="text-align: center;"><a href="https://www.integrativenutrition.com/visiting-teachers" rel="noopener"><span style="color: #2d3841;">View all visiting faculty</span>&nbsp;</a><svg style="vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125ZM1.875 10C1.875 5.51269 5.51269 1.875 10 1.875C14.4873 1.875 18.125 5.51269 18.125 10C18.125 14.4873 14.4873 18.125 10 18.125C5.51269 18.125 1.875 14.4873 1.875 10Z" fill="#D72A25"></path> <path style="padding-top: 5px;" fill-rule="evenodd" clip-rule="evenodd" d="M10.0307 6.90669C10.2748 6.66261 10.6705 6.66261 10.9146 6.90669L13.5662 9.55833C13.8103 9.80241 13.8103 10.1981 13.5662 10.4422L10.9146 13.0939C10.6705 13.3379 10.2748 13.3379 10.0307 13.0939C9.78664 12.8498 9.78664 12.454 10.0307 12.21L12.2404 10.0003L10.0307 7.79057C9.78664 7.5465 9.78664 7.15077 10.0307 6.90669Z" fill="#D72A25"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.25 10C6.25 9.65482 6.52982 9.375 6.875 9.375H13.125C13.4702 9.375 13.75 9.65482 13.75 10C13.75 10.3452 13.4702 10.625 13.125 10.625H6.875C6.52982 10.625 6.25 10.3452 6.25 10Z" fill="#D72A25"></path> </svg></div>
+          </div>
+          </div>
+          </div>
+          </div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %} 
+  
+{# END MEET TEACHERS SECTION #}
+  
+{# CIRCLE OF LIFE #}
+{% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+{% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+   {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Circle_Of_life.module",
+        offset=0,
+        width=12
+      %}
+     {% end_dnd_module %}
+   {% end_dnd_row %}  
+  {% end_dnd_column %}
+{% end_dnd_section %}
+{# END CIRCLE OF LIFE #}
+
+{# STUDENT TESTIMONIALS SECTION #}
+  {% dnd_section
+  background_color="rgba(248, 245, 240, 1)",
+  padding={
+    "default" : {
+      "left" : "20px",
+      "right" : "20px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    padding={
+      "mobile" : {
+        "bottom" : "0px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;">Hear from our students</h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Slider",
+        offset=0,
+        width=12,
+        item=[ {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>IIN’s Health Coach Training Program gave me the tools and confidence to support millions of people with eating more superfoods and powerful plants with my company Your Super and with my published book, Your Super Life. If you are looking to help others along their health journey, this program is for you!</p>\n<div><strong>Kristel de Groot</strong><br><small>Plant-Based IIN Health Coach &amp; Founder of Your Super</small></div>",
+          "image_field" : {
+            "alt" : "quote-laura-heath",
+            "height" : 250,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/quote-laura-heath.jpg",
+            "width" : 250
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>IIN’s training program launched my dream career as a Health Coach! Today, I work in a functional medicine practice that specializes in helping women heal the root causes of their gut, hormone, and mood symptoms. I am so grateful to wake up every day excited to work.</p>\n<div><strong>Rachel Sunley</strong><br><small>IIN Health Coach at Functional Medicine Practice</small></div>",
+          "image_field" : {
+            "alt" : "quote-laura-heath",
+            "height" : 250,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/quote-laura-heath.jpg",
+            "width" : 250
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        }, {
+          "add_quote_mark" : true,
+          "boolean_field" : false,
+          "content" : "<p>I now work as a holistic career coach, where I help women discover their gifts, fulfill their purpose, and create a joyful life.</p>\n<div><strong>Joy Randolph</strong><br><small>IIN Health Coach &amp; Speaker</small></div>",
+          "image_field" : {
+            "alt" : "quote-laura-heath",
+            "height" : 250,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/quote-laura-heath.jpg",
+            "width" : 250
+          },
+          "image_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "open_in_new_tab" : false,
+          "testimonial_footer" : false,
+          "testimonial_image" : {
+            "alt" : "Xvoucher-Horizontial-RGB registered",
+            "height" : 264,
+            "loading" : "lazy",
+            "max_height" : 264,
+            "max_width" : 604,
+            "size_type" : "auto",
+            "src" : "https://info.xvoucher.com/hubfs/Xvoucher%20Logos/Xvoucher-Horizontial-RGB%20registered.png",
+            "width" : 604
+          },
+          "testimonial_text" : '<p style="font-size: 20px;"><span style="color: #0d638a;"><strong>FIRST LAST NAME</strong></span></p><p style="font-size: 16px;"><span style="color: #5b9044;"><strong>JOB TITLE</strong></span></p>',
+          "url" : {
+            "add_section_link" : false,
+            "box_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "open_in_new_tab" : false
+          },
+          "video_icon" : false
+        } ],
+        option={
+          "image" : {
+            "image_shape" : "circle",
+            "image_width" : 150
+          },
+          "outer_spacing" : {
+            "css" : "padding-right: 0px;padding-left: 0px;",
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          },
+          "spacing_field" : {
+            "css" : "padding: 0px;",
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END STUDENT TESTIMONIALS SECTION #}
+  
+  
+  
+{# CONTENT IMAGE TABS SECTION #}
+  
+  {% dnd_section
+  background_color="rgba(250, 233, 189, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "left" : "20px",
+      "right" : "20px"
+    }
+  },
+  full_width=false,
+  max_width='1440'
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    background_color="rgba(255, 255, 255, 1)",
+    padding={
+      "default" : {
+        "bottom" : "20px",
+        "left" : "0px",
+        "right" : "0px",
+        "top" : "0px"
+      },
+      "mobile" : {
+        "bottom" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/Integrative Nutrition/modules/Tabbed Content",
+        offset=0,
+        width=12,
+        tabs=[ {
+          "content" : '<div data-hs-responsive-table="true" style="overflow-x: auto; max-width: 100%; width: 100%; margin-left: auto; margin-right: auto;"><table style="width: 100%; border-collapse: collapse; table-layout: fixed; border: 0px none #99acc2; height: 131px; border-color: #FFFFFF;"><tbody><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><div><div><span style="color: #2d3841;"><strong>Bio-individuality</strong></span></div><div><span style="color: #2d3841;">Simple yet powerful, this IIN core concept emphasizes finding the foods and lifestyle practices that align with your unique needs to create sustainable healthy habits.</span></div></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style=\"width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr></tbody></table></div><p>&nbsp;</p>',
+          "header" : '<h2 style="text-align: center;">What You Will Learn</h2>',
+          "image_field" : {
+            "alt" : "1679581988image-20230308-193545_0",
+            "height" : 768,
+            "max_height" : 768,
+            "max_width" : 768,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679581988image-20230308-193545_0.png",
+            "width" : 768
+          },
+          "name_field" : "Chopra Health Certification",
+          "special_list_character" : true
+        }, {
+          "content" : '<div data-hs-responsive-table="true" style="overflow-x: auto; max-width: 100%; width: 100%; margin-left: auto; margin-right: auto;"><table style="width: 100%; border-collapse: collapse; table-layout: fixed; border: 0px none #99acc2; height: 131px; border-color: #FFFFFF;">\n<tbody>\n<tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><div><div><span style="color: #2d3841;"><strong>Bio-individuality</strong></span></div><div><span style="color: #2d3841;">Simple yet powerful, this IIN core concept emphasizes finding the foods and lifestyle practices that align with your unique needs to create sustainable healthy habits.</span></div></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr></tbody></table></div><p>&nbsp;</p>',
+          "header" : '<h2 style="text-align: center;">What You Will Learn</h2>',
+          "image_field" : {
+            "alt" : "1679581988image-20230308-193545_0",
+            "height" : 768,
+            "max_height" : 768,
+            "max_width" : 768,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679581988image-20230308-193545_0.png",
+            "width" : 768
+          },
+          "name_field" : "Chopra Meditation Certificate",
+          "special_list_character" : true
+        }, {
+          "content" : '<div data-hs-responsive-table="true" style="overflow-x: auto; max-width: 100%; width: 100%; margin-left: auto; margin-right: auto;"><table style="width: 100%; border-collapse: collapse; table-layout: fixed; border: 0px none #99acc2; height: 131px; border-color: #FFFFFF;"><tbody><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"<div><div><span style="color: #2d3841;"><strong>Bio-individuality</strong></span></div><div><span style="color: #2d3841;">Simple yet powerful, this IIN core concept emphasizes finding the foods and lifestyle practices that align with your unique needs to create sustainable healthy habits.</span></div></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr><tr style="height: 24.7969px; border: 0px;"><td style="width: 11.041%; padding-right: 10px; height: 25px; text-align: right; vertical-align: top; background-color: #ffffff;">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.6455 7.03246C16.3508 6.72514 16.0461 6.40746 15.9309 6.12906C15.8251 5.87332 15.8187 5.44974 15.8125 5.04004C15.801 4.27763 15.7879 3.41353 15.1872 2.81279C14.5865 2.21205 13.7224 2.19901 12.96 2.18748C12.5503 2.1813 12.1267 2.1749 11.8709 2.06908C11.5926 1.95395 11.2749 1.64923 10.9675 1.35451C10.4278 0.836776 9.81581 0.25 9 0.25C8.18419 0.25 7.57231 0.836776 7.03246 1.35451C6.72514 1.64923 6.40746 1.95395 6.12906 2.06908C5.87332 2.1749 5.44974 2.1813 5.04004 2.18748C4.27763 2.19901 3.41353 2.21205 2.81279 2.81279C2.21205 3.41353 2.19901 4.27763 2.18748 5.04004C2.1813 5.44974 2.1749 5.87332 2.06908 6.12906C1.95395 6.40738 1.64923 6.72514 1.35451 7.03246C0.836776 7.57224 0.25 8.18419 0.25 9C0.25 9.81581 0.836776 10.4277 1.35451 10.9675C1.64923 11.2749 1.95395 11.5925 2.06908 11.8709C2.1749 12.1267 2.1813 12.5503 2.18748 12.96C2.19901 13.7224 2.21205 14.5865 2.81279 15.1872C3.41353 15.7879 4.27763 15.801 5.04004 15.8125C5.44974 15.8187 5.87332 15.8251 6.12906 15.9309C6.40738 16.0461 6.72514 16.3508 7.03246 16.6455C7.57224 17.1632 8.18419 17.75 9 17.75C9.81581 17.75 10.4277 17.1632 10.9675 16.6455C11.2749 16.3508 11.5925 16.0461 11.8709 15.9309C12.1267 15.8251 12.5503 15.8187 12.96 15.8125C13.7224 15.801 14.5865 15.7879 15.1872 15.1872C15.7879 14.5865 15.801 13.7224 15.8125 12.96C15.8187 12.5503 15.8251 12.1267 15.9309 11.8709C16.0461 11.5926 16.3508 11.2749 16.6455 10.9675C17.1632 10.4278 17.75 9.81581 17.75 9C17.75 8.18419 17.1632 7.57231 16.6455 7.03246ZM12.869 7.57712L8.28566 11.9521C8.1694 12.0631 8.01486 12.125 7.85414 12.125C7.69342 12.125 7.53888 12.0631 7.42262 11.9521L5.13098 9.76462C5.07157 9.70796 5.02391 9.64015 4.99072 9.56507C4.95752 9.48998 4.93944 9.40909 4.93751 9.32702C4.93559 9.24495 4.94984 9.1633 4.97948 9.08674C5.00911 9.01018 5.05354 8.94021 5.11022 8.88083C5.1669 8.82144 5.23472 8.7738 5.30982 8.74063C5.38492 8.70746 5.46581 8.68941 5.54788 8.68752C5.62996 8.68562 5.7116 8.69991 5.78815 8.72957C5.8647 8.75923 5.93465 8.80368 5.99402 8.86038L7.85414 10.636L12.006 6.67288C12.0653 6.61618 12.1353 6.57173 12.2119 6.54207C12.2884 6.51241 12.37 6.49812 12.4521 6.50002C12.5342 6.50191 12.6151 6.51996 12.6902 6.55313C12.7653 6.5863 12.8331 6.63394 12.8898 6.69332C12.9465 6.75271 12.9909 6.82268 13.0205 6.89924C13.0502 6.9758 13.0644 7.05745 13.0625 7.13952C13.0606 7.22159 13.0425 7.30248 13.0093 7.37757C12.9761 7.45265 12.9284 7.52046 12.869 7.57712Z" fill="#D72A25">&nbsp;</path></svg></td><td style="width: 88.959%; padding: 4px; background-color: #ffffff; height: 25px;"><span style="color: #2d3841;"><span style="color: #2d3841;">&nbsp;</span></span><strong style="color: #2d3841;">Integrative Nutrition</strong><div><span style="color: #2d3841;">The broadest, most comprehensive curriculum covers seven categories: physical health, nutrition, mental and emotional health, primary food, spirituality, coaching, and business.</span></div></td></tr></tbody></table></div><p>&nbsp;</p>',
+          "header" : '<h2 style="text-align: center;">What You Will Learn</h2>',
+          "image_field" : {
+            "alt" : "1679581988image-20230308-193545_0",
+            "height" : 768,
+            "max_height" : 768,
+            "max_width" : 768,
+            "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/1679581988image-20230308-193545_0.png",
+            "width" : 768
+          },
+          "name_field" : "Chopra Coaching Certificate",
+          "special_list_character" : true
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+  
+{# END CONTENT IMAGE TABS SECTION #}
+  
+  
+  
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
