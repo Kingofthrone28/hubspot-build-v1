@@ -15,69 +15,96 @@
   const selectedOptions = {};
   let product;
 
-  function getValidVariant(productData) {
-    let validVariant;
-
-    for (const variant of productData.variants) {
-      if (variant.available) {
-        let isMatch = true;
-
-        variant.selectedOptions?.forEach(({ name, value }) => {
-          if (selectedOptions[name] !== value) {
-            isMatch = false;
-          }
-        });
-
-        if (isMatch) {
-          validVariant = variant;
-        }
+  const getValidVariant = (productData) => {
+    const variant = productData.variants.find(({ available }) => {
+      if (available) {
+        return true;
       }
+
+      return false;
+    });
+
+    if (!variant) {
+      return null;
     }
 
-    return validVariant;
-  }
+    const options = variant.selectedOptions;
+
+    if (!variant.selectedOptions?.length) {
+      return variant;
+    }
+
+    let isMatch = true;
+
+    // TODO: does forEach make sense here
+    options.forEach(({ name, value }) => {
+      // TODO: check this
+      if (selectedOptions[name] !== value) {
+        isMatch = false;
+      }
+    });
+
+    if (isMatch) {
+      return variant;
+    }
+
+    return null;
+  };
 
   // Update selectedOptions and show/hide buttons when an attribute is changed
-  function checkSelectedOptions(changedAttribute) {
+  const checkSelectedOptions = (changedAttribute) => {
     const options = {};
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
 
-    for (const variant of product.variants) {
-      if (variant.available) {
-        let isValid = false;
-
-        // Loading all for changed field
-        for (const selectedOption of variant.selectedOptions) {
-          if (selectedOption.name === changedAttribute) {
-            if (!options[selectedOption.name]) {
-              options[selectedOption.name] = [selectedOption.value];
-            } else if (
-              !options[selectedOption.name].includes(selectedOption.value)
-            ) {
-              options[selectedOption.name].push(selectedOption.value);
-            }
-
-            if (selectedOption.value === selectedOptions[changedAttribute]) {
-              isValid = true;
-            }
-          }
-        }
-
-        // Only loading options if valid relative to the changed option
-        if (isValid) {
-          for (const selectedOption of variant.selectedOptions) {
-            if (selectedOption.name !== changedAttribute) {
-              if (!options[selectedOption.name]) {
-                options[selectedOption.name] = [selectedOption.value];
-              } else if (
-                !options[selectedOption.name].includes(selectedOption.value)
-              ) {
-                options[selectedOption.name].push(selectedOption.value);
-              }
-            }
-          }
-        }
+    variants.forEach((variant) => {
+      if (!variant.available) {
+        return;
       }
-    }
+
+      let isValid = false;
+
+      // Loading all for changed field
+      let variantOptions = [];
+
+      if (Array.isArray(variant.selectedOptions)) {
+        variantOptions = variant.selectedOptions;
+      }
+
+      // TODO: remove
+      console.log('checkSelectedOptions variantOptions:', variantOptions);
+
+      variantOptions.forEach(({ name, value }) => {
+        if (name !== changedAttribute) {
+          return;
+        }
+
+        if (!options[name]) {
+          options[name] = [value];
+        } else if (!options[name].includes(value)) {
+          options[name].push(value);
+        }
+
+        if (value === selectedOptions[changedAttribute]) {
+          isValid = true;
+        }
+      });
+
+      if (!isValid) {
+        return;
+      }
+
+      variantOptions.forEach(({ name, value }) => {
+        if (name === changedAttribute) {
+          return;
+        }
+
+        if (!options[name]) {
+          options[name] = [value];
+        } else if (!options[name].includes(value)) {
+          options[name].push(value);
+        }
+      });
+    });
 
     Object.entries(options).forEach(([key, value]) => {
       if (!value.includes(selectedOptions[key])) {
@@ -93,59 +120,28 @@
     console.log('SELECTED OPTIONS');
     console.log(selectedOptions);
 
-    // Original buttons
-    /*
-    let html = '';
-
-    // Not showing options if there is only 1 default field
-    if (options[optionKeys[0]][0] !== 'Default Title') {
-      for (const optionKey of optionKeys) {
-        html += `<div class="jd-buy-option-label">${optionKey}</div>`;
-        html += '<div class="jd-shopify-option-wrap">';
-
-        for (let i = 0; i < options[optionKey].length; i++) {
-          const val = options[optionKey][i];
-
-          html += `
-            <div
-              data-shopify-option-val="${val}"
-              data-shopify-option-type="${optionKey}"
-              class="jd-shopify-option jd-request-btn hs-button jd-gray-btn${val === selectedOptions[optionKey] ? ' jd-shopify-option-selected' : ''}"
-            >
-              ${val}
-            </div>
-          `;
-        }
-
-        html += '</div>';
-      }
-    }
-
-    html += `
-      <button
-        class="jd-shopify-add-btn jd-request-btn hs-button light-button"
-        type="button"
-      >
-        Add to Cart
-      </button>
-    `;
-    */
-
     // Checkboxes
     let html = '<div class="jd-shopify-options">';
 
+    const firstVariantTitle = options[optionKeys[0]]?.[0];
+
+    // TODO: remove
+    console.log(`firstVariantTitle:`, firstVariantTitle);
+
     // Not showing options if there is only 1 default field
-    if (options[optionKeys[0]][0] !== 'Default Title') {
-      for (const optionKey of optionKeys) {
+    if (firstVariantTitle !== 'Default Title') {
+      optionKeys.forEach((optionKey) => {
         html += `
           <div>
-            <div class="jd-buy-option-label">${optionKey}</div>
+            <div class="jd-buy-option-label">
+              ${optionKey}
+            </div>
             <div class="jd-shopify-option-wrap">
         `;
 
-        const values = options[optionKey];
+        const values = options[optionKey] || [];
 
-        for (const value of values) {
+        values.forEach((value) => {
           html += `
             <div>
               <input
@@ -158,10 +154,10 @@
               <label for="${optionKey}_${value}">${value}</label>
             </div>
           `;
-        }
+        });
 
         html += '</div></div>';
-      }
+      });
     }
 
     html += `
@@ -213,22 +209,18 @@
       // TODO: remove
       console.log({ productData });
 
-      const variant = getValidVariant(productData);
+      const validVariant = getValidVariant(productData);
 
-      if (!variant) {
+      if (!validVariant) {
+        // TODO: remove
         alert('This combination of options is invalid');
       } else {
-        let alreadyInCart = false;
-
         const cartCookie = getCookie('shopifyCart');
         const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
 
-        for (const lineItem of checkout.lineItems) {
-          if (lineItem.variant.product.id === productData.id) {
-            alreadyInCart = true;
-            break;
-          }
-        }
+        const alreadyInCart = checkout.lineItems.some(
+          ({ variant }) => variant.product.id === productData.id
+        );
 
         if (alreadyInCart) {
           $(`#${moduleData.name} .jd-shopify-add-exists-msg`).show();
@@ -239,7 +231,7 @@
 
         const lineItemsToAdd = [
           {
-            variantId: variant.id,
+            variantId: validVariant.id,
             quantity: 1,
           },
         ];
@@ -258,7 +250,7 @@
           $('.jd-add-pop .jd-add-pop-name').text(`${moduleData.courseName}`);
           $('.jd-add-pop .jd-add-pop-img > div').attr(
             'style',
-            `background: url(${variant.image.src})`
+            `background: url(${validVariant.image.src})`
           );
 
           let optionsHTML = '';
@@ -270,9 +262,15 @@
           });
 
           $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
-          $('.jd-add-pop .jd-add-pop-price').text(
-            `$${parseFloat(variant.price.amount).toLocaleString()}`
-          );
+
+          const amount = parseFloat(validVariant.price?.amount) || 0;
+
+          if (amount || amount === 0) {
+            $('.jd-add-pop .jd-add-pop-price').text(
+              `$${amount.toLocaleString()}`
+            );
+          }
+
           $('.jd-add-pop').css(
             'top',
             `${$('.jd-header-wrap').outerHeight()}px`
@@ -290,12 +288,12 @@
     };
 
     // Add to cart click
-    $(`#${moduleData.name} .jd-shopify-add-btn`).click(function () {
+    $(`#${moduleData.name} .jd-shopify-add-btn`).click(() => {
       addToCart(product);
     });
-  }
+  };
 
-  async function getProductData() {
+  const getProductData = async () => {
     try {
       const gidPath = `gid://shopify/Product/${moduleData.productID}`;
 
@@ -303,27 +301,33 @@
 
       let initialOptionToCheck;
 
-      for (const variant of product.variants) {
-        if (variant.available) {
-          for (const { name, value } of variant.selectedOptions) {
-            if (!initialOptionToCheck) {
-              initialOptionToCheck = name;
-              selectedOptions[name] = value;
-            }
+      const variant = product.variants?.find(({ available }) => {
+        if (available) {
+          return true;
+        }
 
-            // Keeping keys in array to preserve order
-            optionKeys.push(name);
+        return false;
+      });
+
+      const options = variant?.selectedOptions;
+
+      if (Array.isArray(options) && options.length) {
+        options.forEach(({ name, value }) => {
+          if (!initialOptionToCheck) {
+            initialOptionToCheck = name;
+            selectedOptions[name] = value;
           }
 
-          break;
-        }
+          // Keeping keys in array to preserve order
+          optionKeys.push(name);
+        });
       }
 
       checkSelectedOptions(initialOptionToCheck);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   getProductData();
 })();

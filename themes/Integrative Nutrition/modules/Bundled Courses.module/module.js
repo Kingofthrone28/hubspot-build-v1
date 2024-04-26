@@ -14,185 +14,176 @@
   const bundleProducts = [];
   let priceString = '';
 
-  const addToCart = async (bundleName, courses) => {
-    const cartCookie = getCookie('shopifyCart');
-    let cart;
+  const makeOptionHTML = ({ isDisabled, name, selectedValue, value }) => {
+    let html = '';
 
-    const lineItemsToAdd = [];
-
-    try {
-      cart = await IINShopifyClient.checkout.fetch(cartCookie);
-
-      for (const product of bundleProducts) {
-        let matchedVariant;
-
-        for (const variant of product.variants) {
-          if (variant.available) {
-            let isMatch = true;
-
-            for (const selectedOption of variant.selectedOptions) {
-              if (
-                product.userSelectedOptions[selectedOption.name] !==
-                selectedOption.value
-              ) {
-                isMatch = false;
-              }
-            }
-
-            if (isMatch) {
-              matchedVariant = variant;
-            }
-          }
-        }
-
-        if (matchedVariant) {
-          const existingLineItem = cart.lineItems.find(
-            (lineItem) => lineItem.variant.product.id === product.id
-          );
-
-          if (!existingLineItem) {
-            lineItemsToAdd.push({
-              variantId: matchedVariant.id,
-              quantity: 1,
-            });
-          }
-        }
-      }
-    } catch (e) {
-      console.error(e);
+    if (typeof name === 'undefined' && typeof value === 'undefined') {
+      return html;
     }
 
-    if (!lineItemsToAdd.length) {
-      return;
-    }
+    const isSelected = typeof value !== 'undefined' && value === selectedValue;
 
-    try {
-      const checkout = await IINShopifyClient.checkout.addLineItems(
-        cartCookie,
-        lineItemsToAdd
-      );
+    html = `
+      <option
+        ${typeof value === 'undefined' ? '' : `value="${value}"`}
+        ${isDisabled ? 'disabled' : ''}
+        ${isSelected ? 'selected' : ''}
+      >
+        ${value || name}
+      </option>
+    `;
 
-      updateCartTotal(checkout);
-      $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
-      $('.jd-blackout').addClass('jd-blackout-show');
-      $('.jd-add-pop .jd-add-pop-name').text(bundleName);
-
-      $('.jd-add-pop .jd-add-pop-img > div').attr(
-        'style',
-        `background: url('${checkout.lineItems[0].variant.image.src}')`
-      );
-
-      let optionsHTML = '';
-
-      Object.entries(courses).forEach(([, value]) => {
-        const courseName = value.course_name;
-
-        if (courseName) { 
-          optionsHTML += `<div><strong>${courseName}</strong></div>`;
-        }
-      });
-
-      $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
-      $('.jd-add-pop .jd-add-pop-price').text(`$${priceString}`);
-      $('.jd-add-pop').css('top', `${$('.jd-header-wrap').outerHeight()}px`);
-      $('.jd-add-pop').addClass('jd-add-pop-show');
-
-      setTimeout(() => {
-        $('.jd-blackout').removeClass('jd-blackout-show');
-        $('.jd-add-pop').removeClass('jd-add-pop-show');
-      }, msToCloseAddPopUp);
-    } catch (e) {
-      console.error(e);
-    }
+    return html;
   };
 
-  const checkSelectedOptions = (changedAttribute, product) => {
+  const makeSelectHTML = ({ bundleProduct, isInvalid, options, optionKey }) => {
+    let html = '';
+
+    const optionValues = options[optionKey];
+
+    if (!Array.isArray(optionValues) || !optionValues.length) {
+      return html;
+    }
+
+    html += `<select data-shopify-option-type="${optionKey}">`;
+
+    const defaultOptionHTML = makeOptionHTML({
+      isDisabled: true,
+      name: optionKey,
+    });
+
+    if (defaultOptionHTML) {
+      html += defaultOptionHTML;
+    }
+
+    const selectedValue = bundleProduct.userSelectedOptions[optionKey];
+
+    optionValues.forEach((value) => {
+      const optionHTML = makeOptionHTML({ isInvalid, selectedValue, value });
+
+      if (optionHTML) {
+        html += optionHTML;
+      }
+    });
+
+    html += '</select>';
+
+    return html;
+  };
+
+  const makeOptions = (changedAttribute, bundleProduct) => {
     const options = {};
 
-    for (const variant of product.variants) {
-      if (variant.available) {
-        let isValid = false;
+    const setOption = (name, value) => {
+      const existingValues = options[name];
 
-        // Loading all for changed field
-        for (const selectedOption of variant.selectedOptions) {
-          if (selectedOption.name === changedAttribute) {
-            if (!options[selectedOption.name]) {
-              options[selectedOption.name] = [selectedOption.value];
-            } else if (
-              !options[selectedOption.name].includes(selectedOption.value)
-            ) {
-              options[selectedOption.name].push(selectedOption.value);
-            }
-
-            if (
-              selectedOption.value ===
-              product.userSelectedOptions[changedAttribute]
-            ) {
-              isValid = true;
-            }
-          }
-        }
-
-        // Only loading options if valid relative to the changed option
-        if (isValid) {
-          for (const selectedOption of variant.selectedOptions) {
-            if (selectedOption.name !== changedAttribute) {
-              if (!options[selectedOption.name]) {
-                options[selectedOption.name] = [selectedOption.value];
-              } else if (
-                !options[selectedOption.name].includes(selectedOption.value)
-              ) {
-                options[selectedOption.name].push(selectedOption.value);
-              }
-            }
-          }
-        }
+      if (!existingValues || !existingValues.length) {
+        options[name] = [value];
+      } else if (!existingValues.includes(value)) {
+        options[name].push(value);
       }
+    };
+
+    const variants = bundleProduct?.variants;
+
+    console.log('makeOptions variants:', variants);
+
+    if (!Array.isArray(variants)) {
+      return options;
     }
 
-    const updatedProduct = { ...product };
-
-    for (const key in options) {
-      if (!options[key].includes(product.userSelectedOptions[key])) {
-        [updatedProduct.userSelectedOptions[key]] = options[key];
+    variants.forEach(({ available, selectedOptions }) => {
+      if (!available || !selectedOptions.length) {
+        return;
       }
-    }
 
+      let isValid = false;
+
+      // Loading all for changed field
+      selectedOptions.forEach(({ name, value }) => {
+        const userSelectedValue =
+          bundleProduct.userSelectedOptions?.[changedAttribute];
+
+        if (!isValid && value === userSelectedValue) {
+          isValid = true;
+        }
+
+        setOption(name, value);
+      });
+
+      if (!isValid) {
+        return;
+      }
+
+      // Loading all for changed field
+      selectedOptions.forEach(({ name, value }) => {
+        if (name !== changedAttribute) {
+          setOption(name, value);
+        }
+      });
+    });
+
+    return options;
+  };
+
+  const checkSelectedOptions = (changedAttribute, bundleProduct) => {
+    const updatedProduct = { ...bundleProduct };
+    const options = makeOptions(changedAttribute, updatedProduct);
+
+    Object.entries(options).forEach(([key, values]) => {
+      const userSelectedValue = updatedProduct.userSelectedOptions?.[key];
+
+      if (!values.includes(userSelectedValue)) {
+        [updatedProduct.userSelectedOptions[key]] = values;
+      }
+    });
+
+    // TODO: remove
     console.log('OPTIONS');
     console.log(options);
 
+    // TODO: remove
     console.log('SELECTED OPTIONS');
     console.log(updatedProduct.userSelectedOptions);
+
+    // TODO: started down this path...
+    // const { optionKeys, userSelectedOptions, variants } = updatedProduct;
+    // const possibleVariants = [];
+
+    // optionKeys.forEach((optionKey) => {
+    //   const availableVariants =
+    //     variants.filter(({ available }) => Boolean(available));
+
+    //   availableVariants.forEach((variant) => {
+    //     const wasAdded = possibleVariants.some(({ id }) => id === variant.id);
+    //     const userValue = userSelectedOptions[optionKey];
+
+    //     if (!wasAdded) {
+    //       possibleVariants.push(variant);
+    //     }
+    //   });
+    // });
 
     let html = '';
 
     // Not showing options if there is only 1 default field
-    if (options[updatedProduct.optionKeys[0]][0] !== 'Default Title') {
+    const [firstOptionKey] = updatedProduct.optionKeys;
+    const firstVariantTitle = options?.[firstOptionKey]?.[0];
+
+    if (firstVariantTitle !== 'Default Title') {
       html += '<div class="bp-options">';
 
-      for (const optionKey of updatedProduct.optionKeys) {
-        html += `<select data-shopify-option-type="${optionKey}">`;
-        html += `<option disabled>${optionKey}</option>`;
+      updatedProduct.optionKeys.forEach((optionKey) => {
+        const selectHTML = makeSelectHTML({
+          options,
+          optionKey,
+          bundleProduct: updatedProduct,
+        });
 
-        for (let i = 0; i < options[optionKey].length; i++) {
-          const value = options[optionKey][i];
-
-          html += `
-            <option
-              value="${value}"
-              ${
-                value === updatedProduct.userSelectedOptions[optionKey]
-                  ? 'selected'
-                  : ''
-              }
-            >
-              ${value}
-            </option>
-          `;
+        if (selectHTML) {
+          html += selectHTML;
         }
-
-        html += '</select>';
-      }
+      });
 
       html += '</div>';
     }
@@ -209,9 +200,8 @@
     // Option click
     $(`#${moduleData.name} .bp-${productID} select`).change(function () {
       const type = $(this).data('shopify-option-type');
-      const value = $(this).val();
 
-      updatedProduct.userSelectedOptions[type] = value;
+      updatedProduct.userSelectedOptions[type] = $(this).val();
       checkSelectedOptions(type, updatedProduct);
     });
   };
@@ -219,30 +209,144 @@
   const addBundleProduct = async (productID) => {
     try {
       const product = await IINShopifyClient.product.fetch(productID);
-      let initialOptionToCheck;
 
-      product.userSelectedOptions = {};
-      product.optionKeys = [];
-
-      for (const variant of product.variants) {
-        if (variant.available) {
-          for (const selectedOption of variant.selectedOptions) {
-            if (!initialOptionToCheck) {
-              initialOptionToCheck = selectedOption.name;
-              product.userSelectedOptions[selectedOption.name] =
-                selectedOption.value;
-            }
-
-            // Keeping keys in array to preserve order
-            product.optionKeys.push(selectedOption.name);
-          }
-
-          break;
-        }
+      if (!product) {
+        throw new Error('Product not could not be fetched.');
       }
 
-      bundleProducts.push(product);
-      checkSelectedOptions(initialOptionToCheck, product);
+      let initialOptionToCheck;
+
+      const bundleProduct = { ...product };
+
+      bundleProduct.optionKeys = [];
+      bundleProduct.userSelectedOptions = {};
+
+      const availableVariant = bundleProduct.variants.find((variant) => {
+        const { available } = variant;
+        const variantOptions = variant.selectedOptions;
+
+        return Boolean(
+          available && Array.isArray(variantOptions) && variantOptions.length
+        );
+      });
+
+      const availableVariantOptions = availableVariant?.selectedOptions || [];
+
+      availableVariantOptions.forEach((option) => {
+        if (!initialOptionToCheck) {
+          initialOptionToCheck = option.name;
+          bundleProduct.userSelectedOptions[option.name] = option.value;
+        }
+
+        // Keeping keys in array to preserve order
+        bundleProduct.optionKeys.push(option.name);
+      });
+
+      bundleProducts.push(bundleProduct);
+      checkSelectedOptions(initialOptionToCheck, bundleProduct);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const addToCart = async (bundleName, courses) => {
+    const cartCookie = getCookie('shopifyCart');
+    let cart;
+
+    const lineItemsToAdd = [];
+
+    try {
+      cart = await IINShopifyClient.checkout.fetch(cartCookie);
+
+      bundleProducts.forEach((bundleProduct) => {
+        let matchedVariant;
+
+        bundleProduct.variants?.forEach((variant) => {
+          if (!variant.available) {
+            return;
+          }
+
+          let isMatch = true;
+
+          // TODO: does this for loop make sense/
+          let options = [];
+
+          if (Array.isArray(variant.selectedOptions)) {
+            options = variant.selectedOptions;
+          }
+
+          options.forEach(({ name, value }) => {
+            const userSelectedOption = bundleProduct.userSelectedOptions[name];
+
+            if (userSelectedOption !== value) {
+              isMatch = false;
+            }
+          });
+
+          if (isMatch) {
+            matchedVariant = variant;
+          }
+        });
+
+        if (!matchedVariant) {
+          return;
+        }
+
+        const existingLineItem = cart.lineItems.find(
+          (lineItem) => lineItem.variant.product.id === bundleProduct.id
+        );
+
+        if (existingLineItem) {
+          return;
+        }
+
+        lineItemsToAdd.push({
+          variantId: matchedVariant.id,
+          quantity: 1,
+        });
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
+    if (!lineItemsToAdd.length) {
+      return;
+    }
+
+    try {
+      const checkout = await IINShopifyClient.checkout.addLineItems(
+        cartCookie,
+        lineItemsToAdd
+      );
+
+      updateCartTotal(checkout);
+
+      const backgroundURL = checkout.lineItems[0].variant.image.src;
+      const backgroundStyle = { background: `url('${backgroundURL}')` };
+
+      let optionsHTML = '';
+
+      Object.entries(courses).forEach(([, value]) => {
+        const courseName = value.course_name;
+
+        if (courseName) {
+          optionsHTML += `<div><strong>${courseName}</strong></div>`;
+        }
+      });
+
+      $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
+      $('.jd-add-pop .jd-add-pop-img > div').css(backgroundStyle);
+      $('.jd-add-pop .jd-add-pop-name').text(bundleName);
+      $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
+      $('.jd-add-pop .jd-add-pop-price').text(`$${priceString}`);
+      $('.jd-add-pop').css('top', `${$('.jd-header-wrap').outerHeight()}px`);
+      $('.jd-add-pop').addClass('jd-add-pop-show');
+      $('.jd-blackout').addClass('jd-blackout-show');
+
+      setTimeout(() => {
+        $('.jd-add-pop').removeClass('jd-add-pop-show');
+        $('.jd-blackout').removeClass('jd-blackout-show');
+      }, msToCloseAddPopUp);
     } catch (e) {
       console.error(e);
     }
@@ -259,22 +363,35 @@
       const gidPath = `gid://shopify/Product/${productID}`;
       const product = await IINShopifyClient.product.fetch(gidPath);
 
-      for (const variant of product.variants) {
-        if (variant.available) {
-          lineItem = {
-            variantId: variant.id,
-            quantity: 1,
-          };
-
-          const formattedAmount = `$${parseInt(
-            variant.price.amount
-          ).toLocaleString()}`;
-
-          // TODO: move this side effect
-          $(`.bp-${productID} .bp-price`).text(formattedAmount);
-          break;
+      const variant = product.variants.find(({ available }) => {
+        if (available) {
+          return true;
         }
+
+        return false;
+      });
+
+      if (!variant) {
+        return lineItem;
       }
+
+      if (variant.id) {
+        lineItem = {
+          variantId: variant.id,
+          quantity: 1,
+        };
+      }
+
+      const amount = parseInt(variant.price?.amount);
+
+      if (!amount && amount !== 0) {
+        return lineItem;
+      }
+
+      const formattedAmount = `$${amount.toLocaleString()}`;
+
+      // TODO: move this side effect
+      $(`.bp-${productID} .bp-price`).text(formattedAmount);
     } catch (e) {
       console.error(e);
     }
@@ -285,12 +402,12 @@
   const getLineItemsToAdd = async (courses) => {
     const promises = [];
 
-    for (const course of courses) {
+    courses.forEach((course) => {
       const productID = course.product_id;
       const promise = getLineItem(productID);
 
       promises.push(promise);
-    }
+    });
 
     const responses = await Promise.all(promises);
     const lineItemsToAdd = [];
@@ -304,31 +421,33 @@
     return lineItemsToAdd;
   };
 
-  const createCheckout = async (courseData) => {
-    const checkout = await IINShopifyClient.checkout.create();
-    const courses = [];
+  const setBundles = (checkout) => {
+    const lineItems = checkout?.lineItems || [];
 
-    Object.values(courseData).forEach((value) => {
-      if (value) {
-        courses.push(value);
+    if (!Array.isArray(lineItems)) {
+      return;
+    }
+
+    lineItems.forEach((lineItem) => {
+      const productID = lineItem?.variant?.product?.id;
+
+      if (productID) {
+        addBundleProduct(productID);
       }
     });
+  };
 
-    const lineItemsToAdd = await getLineItemsToAdd(courses);
+  const setPrice = (checkout) => {
+    const applications = checkout?.discountApplications;
+    const discounts = Array.isArray(applications) ? applications : [];
+    const totalAfterDiscount = parseFloat(checkout.totalPrice?.amount);
+    let total = totalAfterDiscount > -1 ? totalAfterDiscount : 0;
 
-    if (lineItemsToAdd.length) {
-      await IINShopifyClient.checkout.addLineItems(checkout.id, lineItemsToAdd);
-    }
+    discounts.forEach(({ value }) => {
+      const amount = parseFloat(value?.amount) || 0;
 
-    const existingCheckout = await IINShopifyClient.checkout.fetch(checkout.id);
-    const totalAfterDiscount = parseFloat(existingCheckout.totalPrice.amount);
-    let total = totalAfterDiscount;
-
-    if (existingCheckout.discountApplications?.length) {
-      for (const discount of existingCheckout.discountApplications) {
-        total += parseFloat(discount.value.amount);
-      }
-    }
+      total += amount;
+    });
 
     priceString = totalAfterDiscount.toLocaleString();
 
@@ -340,18 +459,42 @@
       $('#bundle-shopify-price-savings').html(
         `Savings of <span>$${difference.toLocaleString()}</span> by bundling together`
       );
+
       $('#course-shopify-price').text(
         `$${totalAfterDiscount.toLocaleString()}`
       );
+
       $('#course-shopify-compare').text(`$${total.toLocaleString()}`);
       $('#course-shopify-compare').show();
     }
+  };
 
-    for (const line of existingCheckout.lineItems) {
-      const productID = line?.variant?.product?.id;
+  const createCheckout = async (courseData) => {
+    const checkout = await IINShopifyClient.checkout.create();
 
-      addBundleProduct(productID);
+    if (!courseData) {
+      console.error('Course data was not provided.');
+      return;
     }
+
+    const courses = [];
+
+    Object.values(courseData).forEach((value) => {
+      if (value) {
+        courses.push(value);
+      }
+    });
+
+    const lineItemsToAdd = await getLineItemsToAdd(courses);
+
+    if (Array.isArray(lineItemsToAdd) && lineItemsToAdd.length) {
+      await IINShopifyClient.checkout.addLineItems(checkout.id, lineItemsToAdd);
+    }
+
+    const updatedCheckout = await IINShopifyClient.checkout.fetch(checkout.id);
+
+    setPrice(updatedCheckout);
+    setBundles(updatedCheckout);
   };
 
   createCheckout(moduleData.courses);

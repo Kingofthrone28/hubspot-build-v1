@@ -21,6 +21,7 @@
   const gidPath = 'gid://shopify/Product/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
+  const shopifyCookies = ['checkoutQuery', 'params'];
 
   const agreementTags = [
     {
@@ -38,8 +39,8 @@
   ];
 
   const getMetafield = (data, fieldName) => {
-    const matchedField = data?.metafields.find((metafield) =>
-      metafield?.key && metafield.key === fieldName
+    const matchedField = data?.metafields.find(
+      (metafield) => metafield?.key && metafield.key === fieldName
     );
 
     const matchedValue = matchedField?.value;
@@ -80,7 +81,7 @@
 
           newObject[key] = value;
         } else {
-          throw new Error('Key/value pair could not be constructed.')
+          throw new Error('Key/value pair could not be constructed.');
         }
       } catch (e) {
         console.log(e);
@@ -90,7 +91,7 @@
     const cleanObject = {};
 
     Object.entries(newObject).forEach(([key, value]) => {
-      if (key && typeof value !== 'undefined') {  
+      if (key && typeof value !== 'undefined') {
         cleanObject[key] = value;
       }
     });
@@ -98,15 +99,24 @@
     return cleanObject;
   };
 
-  const makeURLFromCookieParams = (baseURL, cookieName, separator = '&') => {
+  const makeURLFromCookieParams = (baseURL, cookieNames, separator = '&') => {
     const encodedURL = new URL(baseURL);
     const encodedParams = new URLSearchParams(encodedURL.search);
-    const targetCookie = getCookie(cookieName);
-    const cookieParams = makeObjectFromKeyValueString(targetCookie, separator);
 
-    Object.entries(cookieParams).forEach(([key, value]) => {
-      encodedParams.set(key, value);
-    });
+    const setEncodedParams = (cookieName) => {
+      const keyValue = getCookie(cookieName);
+      const cookieParams = makeObjectFromKeyValueString(keyValue, separator);
+
+      Object.entries(cookieParams).forEach(([key, value]) => {
+        encodedParams.set(key, value);
+      });
+    };
+
+    if (Array.isArray(cookieNames)) {
+      cookieNames.forEach((cookieName) => {
+        setEncodedParams(cookieName);
+      });
+    }
 
     let queryString = '';
 
@@ -658,7 +668,7 @@
         loadCart(true);
       };
 
-      $(`#${uniqueID}`).change(function (e) {
+      $(`#${uniqueID}`).change(function () {
         const variantID = $(this).val();
 
         changeCart(variantID);
@@ -678,20 +688,21 @@
   async function productRecommendations(lineItems) {
     $('.jd-cart-rec-outer').hide();
 
-    const sortedItems = lineItems?.sort((a, b) => {
-      const aPrice = parseFloat(a.variant.price.amount);
-      const bPrice = parseFloat(b.variant.price.amount);
+    const sortedItems =
+      lineItems?.sort((a, b) => {
+        const aPrice = parseFloat(a.variant.price.amount);
+        const bPrice = parseFloat(b.variant.price.amount);
 
-      if (aPrice > bPrice) {
-        return -1;
-      }
+        if (aPrice > bPrice) {
+          return -1;
+        }
 
-      if (aPrice < bPrice) {
-        return 1;
-      }
+        if (aPrice < bPrice) {
+          return 1;
+        }
 
-      return 0;
-    }) || [];
+        return 0;
+      }) || [];
 
     const bundleData = moduleData?.bundles || [];
 
@@ -1125,7 +1136,10 @@
                   <div>${product.title}</div>
                 </div>
                 <div>
-                  $${parseFloat(price).toLocaleString(undefined, localeOptions)} USD
+                  $${parseFloat(price).toLocaleString(
+                    undefined,
+                    localeOptions
+                  )} USD
                 </div>
               </div>
               <div
@@ -1322,10 +1336,15 @@
 
       // TODO: how can the value for agreementData.Promo be calculated here?
       // Discounts don't get applied until checkout.
+      let discounts = [];
       let discountTotal = 0;
 
-      product.discount_allocations?.forEach((allocation) => {
-        discountTotal += allocation.amount;
+      if (Array.isArray(product.discount_allocations)) {
+        discounts = product.discount_allocations;
+      }
+
+      discounts.forEach((discount) => {
+        discountTotal += discount?.amount || 0;
       });
 
       if (discountTotal) {
@@ -1430,7 +1449,7 @@
     }
   }
 
-  $(function () {
+  $(() => {
     if (window.innerWidth < sliderBreakMobile) {
       $('.jd-checkout-btn-wrap').appendTo('body');
     }
@@ -1441,7 +1460,7 @@
       portalId: '23273748',
       formId: moduleData?.formID,
       target: '.jd-cart-enrollment-form-target',
-      onFormReady($form) {
+      onFormReady() {
         const updateEmail = async (value) => {
           if (!value) {
             return;
@@ -1474,66 +1493,44 @@
           }
         );
       },
-      onBeforeFormSubmit($form, submissionValues) {
+      onBeforeFormSubmit($form, data) {
+        const address = data.find(({ name }) => name === 'address')?.value;
+        const aptField = 'apartment__suite__ect_';
+        const address2 = data.find(({ name }) => name === aptField)?.value;
+        const city = data.find(({ name }) => name === 'city')?.value;
+        const company = data.find(({ name }) => name === 'company')?.value;
+        const countryField = 'country_region_dropdown';
+        const country = data.find(({ name }) => name === countryField)?.value;
+        const email = data.find(({ name }) => name === 'email')?.value;
+        const firstName = data.find(({ name }) => name === 'firstname')?.value;
+        const lastName = data.find(({ name }) => name === 'lastname')?.value;
+        const phone = data.find(({ name }) => name === 'phone')?.value;
+        const zip = data.find(({ name }) => name === 'zip')?.value;
+
+        const state = data.find(({ name }) => {
+          const words = name?.split('_');
+          const lastWord = words[words.length - 1];
+          const validWords = ['province', 'state'];
+          return validWords.includes(lastWord);
+        })?.value;
+
         const addEnrollmentAgreements = async () => {
-          let address = '';
-          let address2 = '';
-          let country = '';
-          let email = '';
-          let firstName = '';
-          let lastName = '';
-          let phone = '';
-          let state = '';
-          let zip = '';
-
-          submissionValues.forEach((field) => {
-            if (field.name === 'address') {
-              address = field.value;
-            } else if (field.name === 'apartment__suite__ect_') {
-              address2 = field.value;
-            } else if (field.name === 'city') {
-              city = field.value;
-            } else if (field.name === 'company') {
-              company = field.value;
-            } else if (field.name === 'country_region_dropdown') {
-              country = field.value;
-            } else if (field.name === 'email') {
-              email = field.value;
-            } else if (field.name === 'firstname') {
-              firstName = field.value;
-            } else if (field.name === 'lastname') {
-              lastName = field.value;
-            } else if (field.name === 'phone') {
-              phone = field.value;
-            } else if (field.name === 'zip') {
-              zip = field.value;
-            } else if (
-              field.name === 'australia_state' ||
-              field.name === 'canada_province' ||
-              field.name === 'mexico_state' ||
-              field.name === 'us_state'
-            ) {
-              state = field.value;
-            }
-          });
-
-          const fullAddressFields = [address, address2, state, zip, country];
+          const addressValues = [address, address2, state, zip, country];
 
           let fullAddress = '';
 
-          fullAddressFields.forEach((value) => {
-            const trimmedValue =
-              typeof value === 'number' ? value : value?.trim();
+          addressValues.forEach((value) => {
+            const trimmedValue = value?.trim();
 
             if (trimmedValue) {
-              fullAddress += fullAddress ? `, ${trimmedValue}` : trimmedValue;
+              fullAddress += `${fullAddress ? ', ' : ''}${trimmedValue}`;
             }
           });
 
           let fullName = firstName || '';
 
           if (lastName) {
-            fullName += ` ${lastName}`;
+            fullName += `${firstName ? ' ' : ''}${lastName}`;
           }
 
           const agreementData = {};
@@ -1636,7 +1633,7 @@
 
         addEnrollmentAgreements();
       },
-      onFormSubmit($form) {
+      onFormSubmit() {
         $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
 
         const maximumAttempts = 50;
@@ -1648,17 +1645,16 @@
           const checkoutCookie = getCookie('checkoutQuery');
 
           if (!checkoutCookie) {
+            attempts++;
             return;
           }
 
-          let targetURL =
-            makeURLFromCookieParams(checkoutURL, 'checkoutQuery');
+          const newURL = makeURLFromCookieParams(checkoutURL, shopifyCookies);
 
-          targetURL = makeURLFromCookieParams(targetURL, 'params');
           clearInterval(cookieCheck);
-          window.location.href = targetURL;
+          window.location.href = newURL;
         }, 100);
- 
+
         if (attempts > maximumAttempts) {
           clearInterval(cookieCheck);
           console.error('Checkout cookie could not be found');
@@ -1666,7 +1662,7 @@
       },
     });
 
-    $(window).on('resize', function () {
+    $(window).on('resize', () => {
       if (
         window.innerWidth <= sliderBreakMobile &&
         currentWidth > sliderBreakMobile
@@ -1678,15 +1674,15 @@
       ) {
         $('.jd-checkout-btn-wrap').appendTo('.jd-cart-summary-outer');
       }
-  
+
       const $rowFluid = $('.jd-cart-rec-outer').parents('.row-fluid').eq(1);
-  
+
       if (
         window.innerWidth <= sliderBreakSmDesk &&
         currentWidth > sliderBreakSmDesk
       ) {
         const rowStyle = 'width: 100% !important; max-width: 100% !important';
-  
+
         $rowFluid.attr('style', rowStyle);
       } else if (
         window.innerWidth > sliderBreakSmDesk &&
@@ -1694,26 +1690,25 @@
       ) {
         $rowFluid.attr('style', '');
       }
-  
+
       currentWidth = window.innerWidth;
     });
-  
-    $('.jd-cart-enrollment-form-btn').click(function () {
+
+    $('.jd-cart-enrollment-form-btn').click(() => {
       $('.jd-cart-enrollment').removeClass('jd-cart-enrollment-show');
     });
 
     $('.jd-cart-enrollment').appendTo('body');
 
-    $('#jd-checkout-btn').click(function () {
+    $('#jd-checkout-btn').click(() => {
       const checkoutCookie = getCookie('checkoutQuery');
-  
+
       if (agreementProducts.length && !checkoutCookie) {
         $('.jd-cart-enrollment').addClass('jd-cart-enrollment-show');
       } else {
-        let targetURL = makeURLFromCookieParams(checkoutURL, 'checkoutQuery');
+        const newURL = makeURLFromCookieParams(checkoutURL, shopifyCookies);
 
-        targetURL = makeURLFromCookieParams(checkoutURL, 'params');
-        window.location.href = targetURL;
+        window.location.href = newURL;
       }
     });
 

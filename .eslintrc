@@ -29,13 +29,15 @@
     "no-restricted-syntax": 0,
     // TODO: remove after testing
     "no-undef": 0,
-    // TODO: revisit?
-    "no-unused-vars": 0,
+    "no-unused-vars": 1,
     "no-use-before-define": 1,
     "no-useless-catch": 1,
-    // TODO: revisit
-    "prefer-arrow-callback": 0,
+    "object-shorthand": 1,
+    "prefer-arrow-callback": 1,
     "prefer-destructuring": 1,
-    "radix": [1, "as-needed"]
+    "prefer-template": 1,
+    "radix": [1, "as-needed"],
+    "spaced-comment": 1
   }
 }
+
