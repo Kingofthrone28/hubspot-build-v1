@@ -70,9 +70,6 @@
         variantOptions = variant.selectedOptions;
       }
 
-      // TODO: remove
-      console.log('checkSelectedOptions variantOptions:', variantOptions);
-
       variantOptions.forEach(({ name, value }) => {
         if (name !== changedAttribute) {
           return;
@@ -124,9 +121,6 @@
     let html = '<div class="jd-shopify-options">';
 
     const firstVariantTitle = options[optionKeys[0]]?.[0];
-
-    // TODO: remove
-    console.log(`firstVariantTitle:`, firstVariantTitle);
 
     // Not showing options if there is only 1 default field
     if (firstVariantTitle !== 'Default Title') {
@@ -206,9 +200,6 @@
       .focus();
 
     const addToCart = async (productData) => {
-      // TODO: remove
-      console.log({ productData });
-
       const validVariant = getValidVariant(productData);
 
       if (!validVariant) {
