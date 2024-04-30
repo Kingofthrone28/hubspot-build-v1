@@ -23,11 +23,6 @@
         }
       }
 
-      // TODO: remove
-      console.log(product);
-      console.log('PDP');
-      console.log(matchedVariant);
-
       const marchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
       const matchedPrice = matchedVariant.price.amount;
 
