@@ -131,6 +131,8 @@ const initializeCheckout = async () => {
   } else {
     console.error('A checkout could not be created.');
   }
+
+  return currentCheckout;
 };
 
 $(() => {

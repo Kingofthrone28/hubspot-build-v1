@@ -331,7 +331,7 @@
         console.error(e);
       }
     }
- 
+
     if (!checkout) {
       $('.jd-cart-outer').addClass('jd-cart-empty');
       $('.jd-cart-items').html('');
@@ -603,10 +603,30 @@
       $('.jd-checkout-btn-wrap').hide();
     }
 
+    const refreshCheckout = async () => {
+      const cookie = getCookie('shopifyCart');
+      const currentCheckout = await IINShopifyClient.checkout.fetch(cookie);
+      let refreshedCheckout = currentCheckout;
+
+      if (!currentCheckout || currentCheckout.completedAt) {
+        refreshedCheckout = await initializeCheckout();
+        await loadCart();
+      }
+
+      return refreshedCheckout;
+    };
+
     const deleteFromCart = async (lineID) => {
-      const newCartCookie = getCookie('shopifyCart');
+      const refreshedCheckout = await refreshCheckout();
+
+      if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
+        return;
+      }
+
+      const cookie = getCookie('shopifyCart');
+
       const newCheckout = await IINShopifyClient.checkout.removeLineItems(
-        newCartCookie,
+        cookie,
         [lineID]
       );
 
@@ -623,9 +643,15 @@
     });
 
     const editCart = async (lineID, target) => {
+      const refreshedCheckout = await refreshCheckout();
+
+      if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
+        return;
+      }
+
       let line;
 
-      for (const lineItem of checkout.lineItems) {
+      for (const lineItem of refreshedCheckout.lineItems) {
         if (lineItem.id === lineID) {
           line = lineItem;
           break;
@@ -666,13 +692,15 @@
           },
         ];
 
-        const newCartCookie = getCookie('shopifyCart');
+        const newCheckout = await refreshCheckout();
 
-        await IINShopifyClient.checkout.updateLineItems(
-          newCartCookie,
-          lineItemUpdate
-        );
+        if (!newCheckout || !newCheckout.lineItems?.length) {
+          return;
+        }
 
+        const cookie = getCookie('shopifyCart');
+
+        await IINShopifyClient.checkout.updateLineItems(cookie, lineItemUpdate);
         loadCart(true);
       };
 
