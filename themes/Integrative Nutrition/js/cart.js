@@ -93,15 +93,13 @@ const setShopifyCartCookie = async (checkout, skipHubSpotEmail) => {
 };
 
 const initializeCheckout = async () => {
-  const cartCookie = getCookie('shopifyCart');
+  const cookie = getCookie('shopifyCart');
 
   let currentCheckout;
 
-  if (cartCookie) {
+  if (cookie) {
     try {
-      const existingCheckout = await IINShopifyClient.checkout.fetch(
-        cartCookie
-      );
+      const existingCheckout = await IINShopifyClient.checkout.fetch(cookie);
 
       // TODO: remove
       console.log('CART');
@@ -116,7 +114,7 @@ const initializeCheckout = async () => {
   }
 
   // Create new checkout if existing errors
-  if (!currentCheckout) {
+  if (!currentCheckout || currentCheckout.completedAt) {
     try {
       const newCheckout = await IINShopifyClient.checkout.create();
 

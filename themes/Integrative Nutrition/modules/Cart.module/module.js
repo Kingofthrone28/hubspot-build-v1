@@ -322,14 +322,22 @@
   async function loadCart(noProductChange) {
     const cartCookie = getCookie('shopifyCart');
 
-    if (!cartCookie) {
+    let checkout;
+
+    if (cartCookie) {
+      try {
+        checkout = await IINShopifyClient.checkout.fetch(cartCookie);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+ 
+    if (!checkout) {
       $('.jd-cart-outer').addClass('jd-cart-empty');
       $('.jd-cart-items').html('');
       await productRecommendations();
       return;
     }
-
-    const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
 
     if (!noProductChange) {
       await initCohortProducts(checkout);
