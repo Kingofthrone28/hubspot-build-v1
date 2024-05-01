@@ -135,6 +135,30 @@ const initializeCheckout = async () => {
   return currentCheckout;
 };
 
+const refreshCheckout = async () => {
+  const cookie = getCookie('shopifyCart');
+  const currentCheckout = await IINShopifyClient.checkout.fetch(cookie);
+  let refreshedCheckout = currentCheckout;
+
+  if (!currentCheckout || currentCheckout.completedAt) {
+    refreshedCheckout = await initializeCheckout();
+  }
+
+  return refreshedCheckout;
+};
+
 $(() => {
   initializeCheckout();
+});
+
+window.addEventListener('pageshow', (event) => {
+  console.log('pageshow persisted', event.persisted);
+
+  if (!event.persisted) {
+    return;
+  }
+
+  $(() => {
+    refreshCheckout();
+  });
 });

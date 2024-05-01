@@ -86,7 +86,9 @@
   right: 50px;
   z-index: 9999;
   background: #fff;
-  padding: 10px 15px;
+  padding: 19px 33px 25px;
+  box-shadow: 0 24px 40px 0 #000;
+  border-radius: 0 0 16px 16px;
 }
 
 .jd-add-pop-show {
