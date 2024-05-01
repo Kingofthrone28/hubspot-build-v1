@@ -61,46 +61,43 @@
         return;
       }
 
-      let isValid = false;
-
-      // Loading all for changed field
       let variantOptions = [];
 
       if (Array.isArray(variant.selectedOptions)) {
         variantOptions = variant.selectedOptions;
       }
 
-      variantOptions.forEach(({ name, value }) => {
-        if (name !== changedAttribute) {
-          return;
-        }
+      // First field all options are avaialable
+      if (!options[optionKeys[0]]) {
+        options[optionKeys[0]] = [variantOptions[0].value];
+      } else if (!options[optionKeys[0]].includes(variantOptions[0].value)) {
+        options[optionKeys[0]].push(variantOptions[0].value);
+      }
 
-        if (!options[name]) {
-          options[name] = [value];
-        } else if (!options[name].includes(value)) {
-          options[name].push(value);
-        }
-
-        if (value === selectedOptions[changedAttribute]) {
-          isValid = true;
-        }
-      });
-
-      if (!isValid) {
+      if (optionKeys.length < 2) {
         return;
       }
 
-      variantOptions.forEach(({ name, value }) => {
-        if (name === changedAttribute) {
-          return;
+      // Each field after first checks every field before it in order adding options for that field if the variant matches the previous selections
+      for (let i = 1; i < optionKeys.length; i++) {
+        let isValid = true;
+
+        for (let j = 0; j < i; j++) {
+          if (selectedOptions[optionKeys[j]] !== variantOptions[j].value) {
+            isValid = false;
+          }
         }
 
-        if (!options[name]) {
-          options[name] = [value];
-        } else if (!options[name].includes(value)) {
-          options[name].push(value);
+        if (isValid) {
+          if (!options[optionKeys[i]]) {
+            options[optionKeys[i]] = [variantOptions[i].value];
+          } else if (
+            !options[optionKeys[i]].includes(variantOptions[i].value)
+          ) {
+            options[optionKeys[i]].push(variantOptions[i].value);
+          }
         }
-      });
+      }
     });
 
     Object.entries(options).forEach(([key, value]) => {
@@ -306,11 +303,11 @@
         options.forEach(({ name, value }) => {
           if (!initialOptionToCheck) {
             initialOptionToCheck = name;
-            selectedOptions[name] = value;
           }
 
           // Keeping keys in array to preserve order
           optionKeys.push(name);
+          selectedOptions[name] = value;
         });
       }
 

@@ -97,30 +97,37 @@
         return;
       }
 
-      let isValid = false;
+      let variantOptions = [];
 
-      // Loading all for changed field
-      selectedOptions.forEach(({ name, value }) => {
-        const userSelectedValue =
-          bundleProduct.userSelectedOptions?.[changedAttribute];
+      if (Array.isArray(selectedOptions)) {
+        variantOptions = selectedOptions;
+      }
 
-        if (!isValid && value === userSelectedValue) {
-          isValid = true;
-        }
+      // First field all options are avaialable
+      setOption(bundleProduct.optionKeys[0], variantOptions[0].value);
 
-        setOption(name, value);
-      });
-
-      if (!isValid) {
+      if (bundleProduct.optionKeys.length < 2) {
         return;
       }
 
-      // Loading all for changed field
-      selectedOptions.forEach(({ name, value }) => {
-        if (name !== changedAttribute) {
-          setOption(name, value);
+      // Each field after first checks every field before it in order adding
+      // options for that field if the variant matches the previous selections
+      for (let i = 1; i < bundleProduct.optionKeys.length; i++) {
+        let isValid = true;
+
+        for (let j = 0; j < i; j++) {
+          if (
+            bundleProduct.userSelectedOptions[bundleProduct.optionKeys[j]] !==
+            variantOptions[j].value
+          ) {
+            isValid = false;
+          }
         }
-      });
+
+        if (isValid) {
+          setOption(bundleProduct.optionKeys[i], variantOptions[i].value);
+        }
+      }
     });
 
     return options;
@@ -235,11 +242,11 @@
       availableVariantOptions.forEach((option) => {
         if (!initialOptionToCheck) {
           initialOptionToCheck = option.name;
-          bundleProduct.userSelectedOptions[option.name] = option.value;
         }
 
         // Keeping keys in array to preserve order
         bundleProduct.optionKeys.push(option.name);
+        bundleProduct.userSelectedOptions[option.name] = option.value;
       });
 
       bundleProducts.push(bundleProduct);
