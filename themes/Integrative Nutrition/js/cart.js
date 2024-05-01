@@ -101,10 +101,6 @@ const initializeCheckout = async () => {
     try {
       const existingCheckout = await IINShopifyClient.checkout.fetch(cookie);
 
-      // TODO: remove
-      console.log('CART');
-      console.log(existingCheckout);
-
       if (existingCheckout) {
         currentCheckout = existingCheckout;
       }
@@ -152,8 +148,6 @@ $(() => {
 });
 
 window.addEventListener('pageshow', (event) => {
-  console.log('pageshow persisted', event.persisted);
-
   if (!event.persisted) {
     return;
   }

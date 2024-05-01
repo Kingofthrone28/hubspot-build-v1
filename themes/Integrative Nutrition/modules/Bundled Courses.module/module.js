@@ -86,8 +86,6 @@
 
     const variants = bundleProduct?.variants;
 
-    console.log('makeOptions variants:', variants);
-
     if (!Array.isArray(variants)) {
       return options;
     }
@@ -144,32 +142,6 @@
         [updatedProduct.userSelectedOptions[key]] = values;
       }
     });
-
-    // TODO: remove
-    console.log('OPTIONS');
-    console.log(options);
-
-    // TODO: remove
-    console.log('SELECTED OPTIONS');
-    console.log(updatedProduct.userSelectedOptions);
-
-    // TODO: started down this path...
-    // const { optionKeys, userSelectedOptions, variants } = updatedProduct;
-    // const possibleVariants = [];
-
-    // optionKeys.forEach((optionKey) => {
-    //   const availableVariants =
-    //     variants.filter(({ available }) => Boolean(available));
-
-    //   availableVariants.forEach((variant) => {
-    //     const wasAdded = possibleVariants.some(({ id }) => id === variant.id);
-    //     const userValue = userSelectedOptions[optionKey];
-
-    //     if (!wasAdded) {
-    //       possibleVariants.push(variant);
-    //     }
-    //   });
-    // });
 
     let html = '';
 

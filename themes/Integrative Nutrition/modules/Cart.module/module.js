@@ -84,7 +84,7 @@
           throw new Error('Key/value pair could not be constructed.');
         }
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     });
 
@@ -299,10 +299,6 @@
           }
         }
       });
-
-      // TODO: remove
-      console.log('AGREEMENT PRODUCTS');
-      console.log(agreementProducts);
 
       const agreementCookie = getCookie('enrollmentAgreementQuery');
 
@@ -741,11 +737,6 @@
       }) || [];
 
     const bundleData = moduleData?.bundles || [];
-
-    // TODO: remove
-    console.log('BUNDLE DATA');
-    console.log(bundleData);
-
     const matchedBundles = [];
     const maximumCount = 3;
     let firstMatchedID = 'NO_MATCH';
@@ -801,10 +792,6 @@
       }
     }
 
-    // TODO: remove
-    console.log('MATCHED BUNDLES1');
-    console.log(matchedBundles);
-
     // Add other bundles if less than 3 matches
     if (matchedBundles.length < maximumCount) {
       for (const bundle of bundleData) {
@@ -825,10 +812,6 @@
         }
       }
     }
-
-    // TODO: remove
-    console.log('MATCHED BUNDLES2');
-    console.log(matchedBundles);
 
     if (!matchedBundles.length) {
       return;
@@ -920,10 +903,6 @@
       } catch (e) {
         console.error(e);
       }
-
-      // TODO: remove
-      console.log(`BUNDLE PRODUCTS [${bundleIndex}]`);
-      console.log(bundleProducts);
 
       if (!Array.isArray(bundleProducts) || !bundleProducts.length) {
         throw new Error('No bundle products were found');
@@ -1508,10 +1487,6 @@
             cartCookie,
             value
           );
-
-          // TODO: remove
-          console.log('EMAIL UPDATE');
-          console.log(checkoutNew);
 
           await setShopifyCartCookie(checkoutNew, true);
 

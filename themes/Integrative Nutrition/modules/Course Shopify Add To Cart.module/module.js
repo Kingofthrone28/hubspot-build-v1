@@ -106,14 +106,6 @@
       }
     });
 
-    // TODO: remove
-    console.log('OPTIONS');
-    console.log(options);
-
-    // TODO: remove
-    console.log('SELECTED OPTIONS');
-    console.log(selectedOptions);
-
     // Checkboxes
     let html = '<div class="jd-shopify-options">';
 
