@@ -76,7 +76,7 @@
 }
 
 .jd-add-pop {
-  width: 420px;
+  width: 520px;
   max-width: calc(100vw - 100px);
   opacity: 0;
   {{ trans3 }}
@@ -1937,4 +1937,3 @@ body.open .mb-custom-header-wrapper #mobile-menu {
 .page-black-friday .jd-header-wrap {
   background: #fff
 }
-  
