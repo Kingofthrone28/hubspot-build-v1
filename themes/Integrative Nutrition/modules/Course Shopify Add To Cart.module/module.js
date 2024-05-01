@@ -15,40 +15,32 @@
   const selectedOptions = {};
   let product;
 
-  const getValidVariant = (productData) => {
-    const variant = productData.variants.find(({ available }) => {
-      if (available) {
-        return true;
+  const getSelectedVariant = (productData) => {
+    const selectedVariant = productData.variants.find((variant) => {
+      const variantOptions = variant?.selectedOptions || [];
+
+      if (
+        !variant?.available ||
+        !Array.isArray(variantOptions) ||
+        !variantOptions.length
+      ) {
+        return false;
       }
 
-      return false;
+      let isMatch = true;
+
+      variantOptions?.forEach(({ name, value }) => {
+        const selectedValue = selectedOptions[name];
+
+        if (selectedValue !== value) {
+          isMatch = false;
+        }
+      });
+
+      return isMatch;
     });
 
-    if (!variant) {
-      return null;
-    }
-
-    const options = variant.selectedOptions;
-
-    if (!variant.selectedOptions?.length) {
-      return variant;
-    }
-
-    let isMatch = true;
-
-    // TODO: does forEach make sense here
-    options.forEach(({ name, value }) => {
-      // TODO: check this
-      if (selectedOptions[name] !== value) {
-        isMatch = false;
-      }
-    });
-
-    if (isMatch) {
-      return variant;
-    }
-
-    return null;
+    return selectedVariant || null;
   };
 
   // Update selectedOptions and show/hide buttons when an attribute is changed
@@ -158,21 +150,6 @@
 
     $(`#${moduleData.name}`).html(html);
 
-    // Option click button
-    /*
-    $(`#${moduleData.name} .jd-shopify-option`).click(function() {
-      if ($(this).hasClass('jd-shopify-option-selected')) {
-        return;
-      }
-
-      const type = $(this).data('shopify-option-type');
-      const val = $(this).data('shopify-option-val');
-
-      selectedOptions[type] = val;
-      checkSelectedOptions(type);
-    });
-    */
-
     // Option click checkbox
     $(`#${moduleData.name} .jd-shopify-option-wrap input[type=radio]`).change(
       function () {
@@ -189,10 +166,10 @@
       .focus();
 
     const addToCart = async (productData) => {
-      const validVariant = getValidVariant(productData);
+      const selectedVariant = getSelectedVariant(productData);
 
-      if (!validVariant) {
-        // TODO: remove
+      if (!selectedVariant) {
+        // TODO: replace "alert" with alternative UX choice, pop-up, or message
         alert('This combination of options is invalid');
       } else {
         const cartCookie = getCookie('shopifyCart');
@@ -211,7 +188,7 @@
 
         const lineItemsToAdd = [
           {
-            variantId: validVariant.id,
+            variantId: selectedVariant.id,
             quantity: 1,
           },
         ];
@@ -230,7 +207,7 @@
           $('.jd-add-pop .jd-add-pop-name').text(`${moduleData.courseName}`);
           $('.jd-add-pop .jd-add-pop-img > div').attr(
             'style',
-            `background: url(${validVariant.image.src})`
+            `background: url(${selectedVariant.image.src})`
           );
 
           let optionsHTML = '';
@@ -243,7 +220,7 @@
 
           $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
 
-          const amount = parseFloat(validVariant.price?.amount) || 0;
+          const amount = parseFloat(selectedVariant.price?.amount) || 0;
 
           if (amount || amount === 0) {
             $('.jd-add-pop .jd-add-pop-price').text(
@@ -251,10 +228,9 @@
             );
           }
 
-          $('.jd-add-pop').css(
-            'top',
-            `${$('.jd-header-wrap').outerHeight()}px`
-          );
+          const headerHeight = $('.jd-header-wrap').outerHeight();
+
+          $('.jd-add-pop').css('top', `${headerHeight}px`);
           $('.jd-add-pop').addClass('jd-add-pop-show');
 
           setTimeout(() => {
