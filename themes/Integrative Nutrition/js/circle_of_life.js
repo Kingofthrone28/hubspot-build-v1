@@ -1,6 +1,5 @@
 
-$(document).ready(function() {
-
+$(function() {
   const $canvas = $('#col-canvas');
   if (!$canvas.length) {
     return;
@@ -96,7 +95,7 @@ $(document).ready(function() {
   const pieChart = raphael.piechart(radius, radius, radius, slicesConfig, {strokewidth: 2});
   
   const setFluidSvgCanvas = () => {
-    const maxWidth = 1170;
+    const maxWidth = 992;
     const width = $(window).width();
     
     const $canvasSvg = $('#col-canvas > svg');
@@ -171,12 +170,6 @@ $(document).ready(function() {
     const circleArea = circles[sid].attr({cx: radius - distance});
 
     sessionStorage.setItem(sidField, score);
-
-    console.log('Score');
-    console.log(score);
-    console.log('Categories Sector');
-    console.log(categories); 
-    console.log(categories[sid]) 
  });
 });
 
