@@ -166,7 +166,7 @@ $(function(){
     } 
    
    const storeLinesOnRefresh = () => {
-     if (sessionStorage.length > 0) {
+     if (sessionStorage.length) {
        const categoryName = $('#col-canvas span');
        const sessionKeys = Object.keys(sessionStorage);
 
