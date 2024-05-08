@@ -119,21 +119,6 @@
   fill:{{ pistachio }} ;
   fill-opacity: 0.5;
 }
-.webform-component input {
-  margin: 0;
-  border: 1px solid ;
-  border-radius: 0 !important;
-  box-shadow: none;
-  width: 100%;
-  height: 44px;
-  font-family: ;
-  font-size: ;
- }
- .webform-component input:focus {
-  transition: border-color 0.2s;
-  border-color: !important;
-  box-shadow: none !important;
- }
 
  @media only screen and (min-width: 540px) and (max-width: 768px) {
    #col-canvas .slice {
@@ -144,26 +129,6 @@
  @media only screen and (max-width: 540px) {
    #col-canvas .slice {
      font-size: 12px;
-   }
- }
- 
- @media screen and (min-width: 1024px) {
-  .webform-component--radar-graph {
-   flex: 1 0 30%;
-  }
- }
-
- @media screen and (min-width: 1024px) {
-   #circle_life {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   }
-  .webform-component--results {
-   flex: 1 0 45%;
-   order: -1;
-   padding-right: 20px;
    }
  }
  
@@ -220,7 +185,7 @@
   margin-top: 20px;
 }
  
-.circle_life .form-item label:before {
+.circle-life .form-item label:before {
    border-radius: 20px;
    content: '';
    height: 30px;
@@ -229,152 +194,152 @@
    width: 30px;    
 }
 
-.circle_life .form-item label {
+.circle-life .form-item label {
   padding: 0 0 20px 30px; 
 }
 
-.circle_life .form-item---sliderfield-submitted-creativity label:before {
+.circle-life .form-item---sliderfield-submitted-creativity label:before {
   background-color: {{ peach }};
 }
 
-.circle_life .form-item---sliderfield-submitted-creativity .slider-selection {
+.circle-life .form-item---sliderfield-submitted-creativity .slider-selection {
   background-color: rgba(227,122,52,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
   background-color: {{ peach }} ;
 }
 
-.circle_life .form-item---sliderfield-submitted-finances label:before {
+.circle-life .form-item---sliderfield-submitted-finances label:before {
   background-color: {{ palo }};
 }
 
-.circle_life .form-item---sliderfield-submitted-finances .slider-percent-fill {
+.circle-life .form-item---sliderfield-submitted-finances .slider-percent-fill {
   background-image: none;
   background-color: rgba(243,162,47,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-finances .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-finances .ui-slider-handle {
   background-color: {{ palo }} ;
 }
 
-.circle_life .form-item---sliderfield-submitted-career label:before {
+.circle-life .form-item---sliderfield-submitted-career label:before {
   background-color: {{ sky }};
 }
 
-.circle_life .form-item---sliderfield-submitted-career .slider-selection {
+.circle-life .form-item---sliderfield-submitted-career .slider-selection {
   background-color: rgba(245,208,24,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-career .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-career .ui-slider-handle {
   background-color: {{ sky }};
 }
 
-.circle_life .form-item---sliderfield-submitted-education label:before {
+.circle-life .form-item---sliderfield-submitted-education label:before {
   background-color: {{ pistachio }};
 }
 
-.circle_life .form-item---sliderfield-submitted-education .slider-selection {
+.circle-life .form-item---sliderfield-submitted-education .slider-selection {
   background-color: rgba(235,229,52,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-education .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-education .ui-slider-handle {
   background-color: {{ pistachio }} ;
 }
 
-.circle_life .form-item---sliderfield-submitted-health label:before {
+.circle-life .form-item---sliderfield-submitted-health label:before {
   background-color: {{ peach }} ;
 }
 
-.circle_life .form-item---sliderfield-submitted-health .slider-selection {
+.circle-life .form-item---sliderfield-submitted-health .slider-selection {
   background-color: rgba(168,202,75,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-health .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-health .ui-slider-handle {
   background-color: {{ peach }};
 }
 
-.circle_life .form-item---sliderfield-submitted-physical-activity label:before {
+.circle-life .form-item---sliderfield-submitted-physical-activity label:before {
   background-color: {{ palo }};
 }
 
-.circle_life .form-item---sliderfield-submitted-physical-activity .slider-selection {
+.circle-life .form-item---sliderfield-submitted-physical-activity .slider-selection {
   background-color: rgba(168,202,75,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
   background-color: {{ palo }};
 }
 
-.circle_life .form-item---sliderfield-submitted-home-cooking label:before {
+.circle-life .form-item---sliderfield-submitted-home-cooking label:before {
   background-color: {{ sky }};
 }
 
-.circle_life .form-item---sliderfield-submitted-home-cooking .slider-selection {
+.circle-life .form-item---sliderfield-submitted-home-cooking .slider-selection {
   background-color: rgba(78,181,82,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
   background-color: {{ sky }};
 }
 
-.circle_life .form-item---sliderfield-submitted-home-environment label:before {
+.circle-life .form-item---sliderfield-submitted-home-environment label:before {
   background-color: {{ pistachio }};
 }
 
-.circle_life .form-item---sliderfield-submitted-home-environment .slider-selection {
+.circle-life .form-item---sliderfield-submitted-home-environment .slider-selection {
   background-color: rgba(48,192,202,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
   background-color: {{ pistachio }};
 }
 
-.circle_life .form-item---sliderfield-submitted-relationships label:before {
+.circle-life .form-item---sliderfield-submitted-relationships label:before {
   background-color: {{ peach }};
 }
 
-.circle_life .form-item---sliderfield-submitted-relationships .slider-selection {
+.circle-life .form-item---sliderfield-submitted-relationships .slider-selection {
   background-color: rgba(35,135,184,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
   background-color: {{ peach }};
 }
 
-.circle_life .form-item---sliderfield-submitted-social-life label:before {
+.circle-life .form-item---sliderfield-submitted-social-life label:before {
   background-color: {{ palo }};
 }
 
-.circle_life .form-item---sliderfield-submitted-social-life .slider-selection {
+.circle-life .form-item---sliderfield-submitted-social-life .slider-selection {
   background-color: rgba(98,60,138,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
   background-color: {{ palo }};
 }
 
-.circle_life .form-item---sliderfield-submitted-joy label:before {
+.circle-life .form-item---sliderfield-submitted-joy label:before {
   background-color: {{ sky }};
 }
 
-.circle_life .form-item---sliderfield-submitted-joy .slider-selection {
+.circle-life .form-item---sliderfield-submitted-joy .slider-selection {
   background-color: rgba(181,53,149,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-joy .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-joy .ui-slider-handle {
   background-color: {{ sky }} ;
 }
 
-.circle_life .form-item---sliderfield-submitted-spirituality label:before {
+.circle-life .form-item---sliderfield-submitted-spirituality label:before {
   background-color: {{ pistachio }};
 }
 
-.circle_life .form-item---sliderfield-submitted-spirituality .slider-selection {
+.circle-life .form-item---sliderfield-submitted-spirituality .slider-selection {
   background-color: rgba(217,50,72,0);
 }
 
-.circle_life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
+.circle-life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
   background-color: {{ pistachio }};
 }
 
