@@ -49,13 +49,13 @@
       {% endblock footer %}
     </div>
     {{ standard_footer_includes }}
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/raphael-min.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/g.raphael-min.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/g.pie-min.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/g.radar-min.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/circle_of_life.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/bootstrap-slider.js') }}"></script>
-    <script src="{{ get_asset_url('/Integrative Nutrition/js/jquery-ui.min.js') }}"></script>
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/raphael-min.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/g.raphael-min.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/g.pie-min.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/g.radar-min.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/circle_of_life.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/bootstrap-slider.js")) }}
+    {{ require_js(get_asset_url("/Integrative Nutrition/js/jquery-ui.min.js")) }}
     
     
     <!-- Weglot Init -->
