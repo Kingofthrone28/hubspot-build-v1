@@ -4,364 +4,378 @@
 {% set sky = "#C4E1E5" %}             {#  use  {{ sky }} #}
 
 
-#col-canvas {
-	display: none;
-	position: relative;
-	margin: 0 auto;
+ #col-canvas {
+	 display: none;
+	 position: relative;
+	 margin: 0 auto;
 }
 
-#col-canvas .slice {
-	display: flex;
-	align-content: space-between;
-	justify-content: space-between;
-	position: absolute;
-	z-index: 999;
-	top: 47%;
-	left: 0;
-	transform: translateY(-50%) rotate(80deg);
-	transform-origin: center right;
-	box-sizing: border-box;
-	padding-left: 20px;
-	width: 50%;
-	color: !important;
-	font-size: 16px;
-	white-space: nowrap;
-	pointer-events: none;
+ #col-canvas .slice {
+	 display: flex;
+	 align-content: space-between;
+	 justify-content: space-between;
+	 position: absolute;
+	 z-index: 999;
+	 top: 47%;
+	 left: 0;
+	 transform: translateY(-50%) rotate(80deg);
+	 transform-origin: center right;
+	 box-sizing: border-box;
+	 padding-left: 20px;
+	 width: 50%;
+	 color: !important;
+	 font-size: 16px;
+	 white-space: nowrap;
+	 pointer-events: none;
 }
-
-#col-canvas .slice:nth-child(1) {
-	transform: rotate(calc(30deg  * 14.3));
+ #col-canvas .slice:nth-child(1) {
+	 transform: rotate(calc(30deg  * 14.3));
 }
-
-#col-canvas .slice:nth-child(2) {
-	transform: rotate(calc(30deg * 13.3));
+ #col-canvas .slice:nth-child(2) {
+	 transform: rotate(calc(30deg * 13.3));
 }
-
-#col-canvas .slice:nth-child(3) {
-	transform: rotate(calc(30deg * 12.3));
+ #col-canvas .slice:nth-child(3) {
+	 transform: rotate(calc(30deg * 12.3));
 }
-
 #col-canvas .slice:nth-child(4) {
-	transform: rotate(calc(30deg * 11.3));
+	 transform: rotate(calc(30deg * 11.3));
 }
-
 #col-canvas .slice:nth-child(5) {
-	transform: rotate(calc(30deg * 10.3));
+	 transform: rotate(calc(30deg * 10.3));
 }
-
 #col-canvas .slice:nth-child(6) {
-	transform: rotate(calc(30deg * 9.3));
+	 transform: rotate(calc(30deg * 9.3));
 }
-
 #col-canvas .slice:nth-child(7) {
-	transform: rotate(calc(30deg * 8.3));
+	 transform: rotate(calc(30deg * 8.3));
 }
-
 #col-canvas .slice:nth-child(8) {
-	transform: rotate(calc(30deg * 7.3));
+	 transform: rotate(calc(30deg * 7.3));
 }
-
 #col-canvas .slice:nth-child(9) {
-	transform: rotate(calc(30deg * 6.3));
+	 transform: rotate(calc(30deg * 6.3));
 }
-
 #col-canvas .slice:nth-child(10) {
-	transform: rotate(calc(30deg * 5.3));
+	 transform: rotate(calc(30deg * 5.3));
 }
-
 #col-canvas .slice:nth-child(11) {
-	transform: rotate(calc(30deg * 4.3));
+	 transform: rotate(calc(30deg * 4.3));
 }
-
 #col-canvas .slice:nth-child(12) {
-	transform: rotate(calc(30deg * 3.3));
+	 transform: rotate(calc(30deg * 3.3));
 }
-
 #col-canvas .slice:nth-child(n + 7) .inner {
-	transform: rotate(180deg);
+	 transform: rotate(180deg);
 }
-
 #col-canvas .svg-wrapper {
-	position: relative;
+	 position: relative;
 }
-
 #col-canvas path[data-name='Career'] {
-	fill: {{ sky }};
-	fill-opacity: 0.5;
+   fill: {{ sky }};
+	 fill-opacity: 0.5;
 }
-
 #col-canvas path[data-name='Creativity'] {
-	fill: {{ peach }};
-	fill-opacity: 0.3;
+	 fill: {{ peach }};
+	 fill-opacity: 0.3;
 }
-
 #col-canvas path[data-name='Education'] {
-	fill: {{ pistachio }} ;
-	fill-opacity: 0.7;
+	 fill: {{ pistachio }} ;
+	 fill-opacity: 0.7;
 }
-
 #col-canvas path[data-name='Finances'] {
-	fill: {{ palo }};
-	fill-opacity: 0.5;
+	 fill: {{ palo }};
+	 fill-opacity: 0.5;
 }
-
 #col-canvas path[data-name='Health'] {
-	fill: {{ peach }};
-	fill-opacity: 0.4;
+	 fill: {{ peach }};
+	 fill-opacity: 0.4;
 }
-
 #col-canvas path[data-name='Home Cooking'] {
-	fill: {{ sky }};
-	fill-opacity: 0.7;
+	 fill: {{ sky }};
+	 fill-opacity: 0.7;
 }
-
 #col-canvas path[data-name='Home Environment'] {
-	fill: {{ pistachio }};
-	fill-opacity: 0.9;
+	 fill: {{ pistachio }};
+	 fill-opacity: 0.9;
 }
-
 #col-canvas path[data-name='Joy'] {
-	fill: {{ sky }};
-	fill-opacity: 0.9;
+	 fill: {{ sky }};
+	 fill-opacity: 0.9;
 }
-
 #col-canvas path[data-name='Physical Activity'] {
-	fill:{{ palo }} ;
-	fill-opacity: 0.7;
+	 fill:{{ palo }} ;
+	 fill-opacity: 0.7;
 }
-
 #col-canvas path[data-name='Relationships'] {
-	fill: {{ peach }};
-	fill-opacity: 0.6;
+	 fill: {{ peach }};
+	 fill-opacity: 0.6;
 }
-
 #col-canvas path[data-name='Social Life'] {
-	fill:{{ palo }} ;
-	fill-opacity: 0.9;
+	 fill:{{ palo }} ;
+	 fill-opacity: 0.9;
 }
 
 #col-canvas path[data-name='Spirituality'] {
-	fill:{{ pistachio }} ;
-	fill-opacity: 0.5;
+	 fill:{{ pistachio }} ;
+	 fill-opacity: 0.5;
 }
+.webform-component input {
+	 margin: 0;
+	 border: 1px solid ;
+	 border-radius: 0 !important;
+	 box-shadow: none;
+	 width: 100%;
+	 height: 44px;
+	 font-family: ;
+	 font-size: ;
+ }
+ .webform-component input:focus {
+	 transition: border-color 0.2s;
+	 border-color: !important;
+	 box-shadow: none !important;
+ }
 
-@media screen and (min-width: 768px) {
-	.webform-sliderfield {
-		display: none;
-	}
+ @media only screen and (min-width: 540px) and (max-width: 768px) {
+   #col-canvas .slice {
+     font-size: 14px;
+   }
+ }
 
-   #circle-life {
+ @media only screen and (max-width: 540px) {
+   #col-canvas .slice {
+     font-size: 12px;
+   }
+ }
+ 
+ @media screen and (min-width: 1024px) {
+	 .webform-component--radar-graph {
+		 flex: 1 0 30%;
+	 }
+ }
+
+ @media screen and (min-width: 1024px) {
+   #circle_life {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-}
+   }
+	 .webform-component--results {
+		 flex: 1 0 45%;
+		 order: -1;
+		 padding-right: 20px;
+  	}
+ }
+ 
+ @media screen and (min-width: 768px) {
+	 .webform-sliderfield {
+		 display: none;
+   }
+ }
 
-@media screen and (min-width:768px) {
-	#col-canvas {
-		display: block;
-		max-width: 500px;
+ @media screen and (min-width:768px) {
+	 #col-canvas {
+		 display: block;
+		 max-width: 500px;
 	}
+ }
+
+ @media screen and (max-width:768px) {
+  #col-canvas {
+	 display: none;
+  } 
+  #col-canvas.show-mobile {
+	 display: block;
+	 position: relative;
+	 margin: 0 auto;
+  } 
+ }
+
+ .webform-sliderfield .ui-slider {
+	 border-color: transparent;
+	 background: #dde4ec;
+	 width: 100%;
+	 height: 10px;
+ }
+
+ .webform-sliderfield .ui-slider .ui-slider-handle {
+	 top: -2px;
+	 margin-left: -3px;
+	 border-color: transparent;
+	 border-radius: 6px;
+	 width: 10px;
 }
 
-@media screen and (max-width:768px) {
-	#col-canvas {
-		display: none;
-	} 
-
-	#col-canvas.show-mobile {
-		display: block;
-		position: relative;
-		margin: 0 auto;
-	} 
+ .webform-sliderfield .ui-slider .ui-slider-handle:hover, 
+ .webform-sliderfield .ui-slider .ui-slider-handle:focus {
+	 outline: none;
+	 border: none;
 }
 
-.webform-sliderfield .ui-slider {
-	border-color: transparent;
-	background: #dde4ec;
-	width: 100%;
-	height: 10px;
+ .webform-sliderfield .ui-slider .ui-slider-range {
+	 background: transparent;
 }
 
-.webform-sliderfield .ui-slider .ui-slider-handle {
-	top: -2px;
-	margin-left: -3px;
-	border-color: transparent;
-	border-radius: 6px;
-	width: 10px;
-}
-
-.webform-sliderfield .ui-slider .ui-slider-handle:hover, 
-.webform-sliderfield .ui-slider .ui-slider-handle:focus {
-	outline: none;
-	border: none;
-}
-
-.webform-sliderfield .ui-slider .ui-slider-range {
-	background: transparent;
-}
-
-.webform-sliderfield + .webform-sliderfield {
-	margin-top: 20px;
+ .webform-sliderfield + .webform-sliderfield {
+	 margin-top: 20px;
 }
  
-.circle-life .form-item label:before {
-	border-radius: 20px;
-	content: '';
-	height: 30px;
-	left: 20px;
-	position: absolute;  
-	width: 30px;    
+.circle_life .form-item label:before {
+   border-radius: 20px;
+   content: '';
+   height: 30px;
+   left: 20px;
+   position: absolute;  
+   width: 30px;    
 }
 
-.circle-life .form-item label {
+.circle_life .form-item label {
   padding: 0 0 20px 30px; 
 }
 
-.circle-life .form-item---sliderfield-submitted-creativity label:before {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-creativity label:before {
+	 background-color: {{ peach }};
 }
 
-.circle-life .form-item---sliderfield-submitted-creativity .slider-selection {
-	background-color: rgba(227,122,52,0);
+.circle_life .form-item---sliderfield-submitted-creativity .slider-selection {
+	 background-color: rgba(227,122,52,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
+	 background-color: {{ peach }} ;
 }
 
-.circle-life .form-item---sliderfield-submitted-finances label:before {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-finances label:before {
+	 background-color: {{ palo }};
 }
 
-.circle-life .form-item---sliderfield-submitted-finances .slider-percent-fill {
-	background-image: none;
-	background-color: rgba(243,162,47,0);
+.circle_life .form-item---sliderfield-submitted-finances .slider-percent-fill {
+	 background-image: none;
+	 background-color: rgba(243,162,47,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-finances .ui-slider-handle {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-finances .ui-slider-handle {
+	 background-color: {{ palo }} ;
 }
 
-.circle-life .form-item---sliderfield-submitted-career label:before {
-	background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-career label:before {
+	 background-color: {{ sky }};
 }
 
-.circle-life .form-item---sliderfield-submitted-career .slider-selection {
-	background-color: rgba(245,208,24,0);
+.circle_life .form-item---sliderfield-submitted-career .slider-selection {
+	 background-color: rgba(245,208,24,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-career .ui-slider-handle {
-	background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-career .ui-slider-handle {
+	 background-color: {{ sky }};
 }
 
-.circle-life .form-item---sliderfield-submitted-education label:before {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-education label:before {
+	 background-color: {{ pistachio }};
 }
 
-.circle-life .form-item---sliderfield-submitted-education .slider-selection {
-	background-color: rgba(235,229,52,0);
+.circle_life .form-item---sliderfield-submitted-education .slider-selection {
+	 background-color: rgba(235,229,52,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-education .ui-slider-handle {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-education .ui-slider-handle {
+	 background-color: {{ pistachio }} ;
 }
 
-.circle-life .form-item---sliderfield-submitted-health label:before {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-health label:before {
+	 background-color: {{ peach }} ;
 }
 
-.circle-life .form-item---sliderfield-submitted-health .slider-selection {
-	background-color: rgba(168,202,75,0);
+.circle_life .form-item---sliderfield-submitted-health .slider-selection {
+	 background-color: rgba(168,202,75,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-health .ui-slider-handle {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-health .ui-slider-handle {
+	 background-color: {{ peach }};
 }
 
-.circle-life .form-item---sliderfield-submitted-physical-activity label:before {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-physical-activity label:before {
+	 background-color: {{ palo }};
 }
 
-.circle-life .form-item---sliderfield-submitted-physical-activity .slider-selection {
-	background-color: rgba(168,202,75,0);
+.circle_life .form-item---sliderfield-submitted-physical-activity .slider-selection {
+	 background-color: rgba(168,202,75,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
+	 background-color: {{ palo }};
 }
 
-.circle-life .form-item---sliderfield-submitted-home-cooking label:before {
-	background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-home-cooking label:before {
+	 background-color: {{ sky }};
 }
 
-.circle-life .form-item---sliderfield-submitted-home-cooking .slider-selection {
-	background-color: rgba(78,181,82,0);
+.circle_life .form-item---sliderfield-submitted-home-cooking .slider-selection {
+	 background-color: rgba(78,181,82,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
-	background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
+	 background-color: {{ sky }};
 }
 
-.circle-life .form-item---sliderfield-submitted-home-environment label:before {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-home-environment label:before {
+	 background-color: {{ pistachio }};
 }
 
-.circle-life .form-item---sliderfield-submitted-home-environment .slider-selection {
-	background-color: rgba(48,192,202,0);
+.circle_life .form-item---sliderfield-submitted-home-environment .slider-selection {
+	 background-color: rgba(48,192,202,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
+	 background-color: {{ pistachio }};
 }
 
-.circle-life .form-item---sliderfield-submitted-relationships label:before {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-relationships label:before {
+	 background-color: {{ peach }};
 }
 
-.circle-life .form-item---sliderfield-submitted-relationships .slider-selection {
-	background-color: rgba(35,135,184,0);
+.circle_life .form-item---sliderfield-submitted-relationships .slider-selection {
+	 background-color: rgba(35,135,184,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
-	background-color: {{ peach }};
+.circle_life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
+	 background-color: {{ peach }};
 }
 
-.circle-life .form-item---sliderfield-submitted-social-life label:before {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-social-life label:before {
+	 background-color: {{ palo }};
 }
 
-.circle-life .form-item---sliderfield-submitted-social-life .slider-selection {
-	background-color: rgba(98,60,138,0);
+.circle_life .form-item---sliderfield-submitted-social-life .slider-selection {
+	 background-color: rgba(98,60,138,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
-	background-color: {{ palo }};
+.circle_life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
+	 background-color: {{ palo }};
 }
 
-.circle-life .form-item---sliderfield-submitted-joy label:before {
-	background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-joy label:before {
+	 background-color: {{ sky }};
 }
 
-.circle-life .form-item---sliderfield-submitted-joy .slider-selection {
-	background-color: rgba(181,53,149,0);
+.circle_life .form-item---sliderfield-submitted-joy .slider-selection {
+	 background-color: rgba(181,53,149,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-joy .ui-slider-handle {
- background-color: {{ sky }};
+.circle_life .form-item---sliderfield-submitted-joy .ui-slider-handle {
+	 background-color: {{ sky }} ;
 }
 
-.circle-life .form-item---sliderfield-submitted-spirituality label:before {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-spirituality label:before {
+	 background-color: {{ pistachio }};
 }
 
-.circle-life .form-item---sliderfield-submitted-spirituality .slider-selection {
-	background-color: rgba(217,50,72,0);
+.circle_life .form-item---sliderfield-submitted-spirituality .slider-selection {
+	 background-color: rgba(217,50,72,0);
 }
 
-.circle-life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
-	background-color: {{ pistachio }};
+.circle_life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
+	 background-color: {{ pistachio }};
 }
 
 .col-text-submitted,
@@ -370,11 +384,11 @@
 }
 
 @media screen and (max-width:768px) {
-
+  
  .col-text-mobile {
    display:block
   }
-
+  
   .col-text{
     display:none;
   }
@@ -382,5 +396,8 @@
 }  
 
 form > button {
-  margin-top: 20px;
+  margin: 20px auto 0;
+  display: block !important;;
 }
+
+ 
