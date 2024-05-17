@@ -1,58 +1,44 @@
 <div class="course-shopify-price">
-<div id="course-shopify-amount"><span id="course-shopify-compare"></span>&nbsp;<span id="course-shopify-price">$x,xxx</span></div>
-<p>{{ module.line_2_text }}&nbsp;
-{% if module.line_2_image.src %}
-	{% set sizeAttrs = 'width="{{ module.line_2_image.width }}" height="{{ module.line_2_image.height }}"' %}
-	{% if module.line_2_image.size_type == 'auto' %}
-		{% set sizeAttrs = 'width="{{ module.line_2_image.width }}" height="{{ module.line_2_image.height }}" style="max-width: 100%; height: auto;"' %}
-	{% elif module.line_2_image.size_type == 'auto_custom_max' %}
-		{% set sizeAttrs = 'width="{{ module.line_2_image.max_width }}" height="{{ module.line_2_image.max_height }}" style="max-width: 100%; height: auto;"' %}
-	{% endif %}
-	 {% set loadingAttr = module.line_2_image.loading != 'disabled' ? 'loading="{{ module.line_2_image.loading }}"' : '' %}
-	<img src="{{ module.line_2_image.src }}" alt="{{ module.line_2_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-{% endif %}
-</p>
+  <div id="course-shopify-amount">
+    <span id="course-shopify-compare"></span>
+    <span id="course-shopify-price">$x,xxx</span>
+  </div>
+  <p>{{ module.line_2_text }}&nbsp;
+    {% if module.line_2_image.src %}
+      {% set sizeAttrs = 'width="{{ module.line_2_image.width }}" height="{{ module.line_2_image.height }}"' %}
+      {% if module.line_2_image.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.line_2_image.width }}" height="{{ module.line_2_image.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.line_2_image.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.line_2_image.max_width }}" height="{{ module.line_2_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.line_2_image.loading != 'disabled' ? 'loading="{{ module.line_2_image.loading }}"' : '' %}
+      <img src="{{ module.line_2_image.src }}" alt="{{ module.line_2_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </p>
   <div class="learn-more-icon">
-
-{% set href = module.learn_more_link.url.href %}
-{% if href %}
-{% if module.learn_more_link.url.type is equalto "EMAIL_ADDRESS" %}
-	{% set href = "mailto:" + href %}
-{% endif %}
-<a href="{{ href }}"
-	{% if module.learn_more_link.open_in_new_tab %}target="_blank"{% endif %}
-	{% if module.learn_more_link.rel %}rel="{{ module.learn_more_link.rel }}"{% endif %}
-	>
-	<span style="color: #2d3841;"><span style="font-weight: bold;">Learn more</span></span> &nbsp; 
-</a>
-<span data-hs-icon-hubl="true" style="display: inline-block; vertical-align: middle; float: right; fill: #D72A25;">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span>
-{% endif %}
-        
+    {% set href = module.learn_more_link.url.href %}
+    {% if href %}
+      {% if module.learn_more_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if module.learn_more_link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.learn_more_link.rel %}rel="{{ module.learn_more_link.rel }}"{% endif %}
+      >
+        <span style="color: #2d3841;"><span style="font-weight: bold;">Learn more</span></span>
+      </a>
+      <span data-hs-icon-hubl="true" style="display: inline-block; vertical-align: middle; float: right; fill: #D72A25;">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span>
+    {% endif %}
   </div>
 </div>
+
 {% if !module.ignore_product %}
-<script type="text/javascript">
-/*<![CDATA[*/
-(function () {
-  IINShopifyClient.product.fetch('gid://shopify/Product/{{ module.product_id }}').then(function(product) {
-      let variant = product.variants[0];
-      for(const v of product.variants) {
-        if(v.available) {
-          variant = v;
-          break;
-        }
-      }
-      console.log(product);
-      console.log("PDP");
-      console.log(variant);
-  
-      $('#course-shopify-price').text('$' + parseInt(variant.price.amount).toLocaleString());
-      if(variant.compareAtPrice && variant.compareAtPrice.amount && variant.compareAtPrice.amount != variant.price.amount) {
-        $('#course-shopify-compare').text('$' + parseInt(variant.compareAtPrice.amount).toLocaleString());
-      }
-    })
-    .catch(e => { console.log(e); });
-})();
-/*]]>*/
+<script>
+  {%- set raw_data = { productID: module.product_id } %}
+  (function () {
+    const jsonData = JSON.stringify({{ raw_data|tojson }});
+
+    window.sessionStorage.setItem('course_shopify_price', jsonData);
+  })();
 </script>
 {% endif %}

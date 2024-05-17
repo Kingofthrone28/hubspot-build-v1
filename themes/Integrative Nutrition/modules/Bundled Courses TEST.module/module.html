@@ -1,0 +1,52 @@
+<div id="{{ name }}" class="bp-bundled-courses-wrap">
+  <div class="bp-bundled-courses{% if module.courses|length > 4 %} bp-bundled-courses-sm-plus{% endif %}">
+    {% for item in module.courses %}
+    <div class="bp-bundled-course bp-{{ item.product_id }}">
+      <div class="bp-bundled-course-card">
+        <div class="bp-bundled-course-card-head">
+          <div class="bp-bundled-course-card-img"></div>
+          <div>
+            <div>{{ item.course_name }}</div>
+            {% if item.product_id %}<div class="bp-price"></div>{% endif %}
+          </div>
+        </div>
+        <div class="bp-card-options"></div>
+      </div>
+    </div>
+
+    {% if not loop.last %}
+    <div class="bp-plus">
+      <svg
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+      >
+        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+      </svg>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  
+  <button
+    class="bp-add-cart jd-request-btn hs-button light-button jd-arrow-link"
+    type="button"
+  >
+    Add Bundle to Cart
+  </button>
+</div>
+
+<script>
+  {%- set raw_data = {
+    bundleName: module.bundle_name,
+    courses: module.courses,
+    name: name
+  } %}
+  (function () {
+    const jsonData = JSON.stringify({{ raw_data|tojson }});
+
+    window.sessionStorage.setItem('bundled_courses', jsonData);
+  })();
+</script>

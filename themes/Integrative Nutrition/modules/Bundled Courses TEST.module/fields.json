@@ -1,0 +1,103 @@
+[ {
+  "id" : "52ea5065-0f73-ea13-6937-d20abf1345a7",
+  "name" : "courses",
+  "display_width" : null,
+  "label" : "Courses",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "a95b9e52-f75a-1f09-31f6-124757f8a3e9",
+    "name" : "course_name",
+    "display_width" : null,
+    "label" : "Course Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Chopra Health Certification"
+  }, {
+    "id" : "71763977-2419-f19a-a142-8c7a91ebd75d",
+    "name" : "product_id",
+    "display_width" : null,
+    "label" : "Product ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "7485891150013"
+  }, {
+    "id" : "dba54f08-39e9-2ad9-5444-b3ab2992b945",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/erin-holt-functional-nutritionist-6_0.jpg",
+      "alt" : "erin-holt-functional-nutritionist-6_0",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 480,
+      "max_width" : 480,
+      "max_height" : 480
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ {
+    "course_name" : "Chopra Health Certification",
+    "product_id" : "7485891150013",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/erin-holt-functional-nutritionist-6_0.jpg",
+      "alt" : "erin-holt-functional-nutritionist-6_0",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 480,
+      "max_width" : 480,
+      "max_height" : 480
+    }
+  }, {
+    "course_name" : "Chopra Health Certification",
+    "product_id" : "7485891150013",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/erin-holt-functional-nutritionist-6_0.jpg",
+      "alt" : "erin-holt-functional-nutritionist-6_0",
+      "loading" : "lazy",
+      "width" : 480,
+      "height" : 480,
+      "max_width" : 480,
+      "max_height" : 480
+    }
+  } ]
+}, {
+  "id" : "fa69a0be-6b59-494f-2eb1-ff3354953804",
+  "name" : "bundle_name",
+  "display_width" : null,
+  "label" : "Bundle Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The Health Coach Training Bundle"
+} ]

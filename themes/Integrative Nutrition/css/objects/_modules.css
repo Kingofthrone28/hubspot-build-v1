@@ -1070,6 +1070,16 @@ html .mfp-auto-cursor .mfp-content .mfp-close { color: white;border: 2px solid w
 .hs-content-id-156853830932 .jd-header-wrap .jd-header-top ul li a {
   color: #ffffff;
 }
+.hs-content-id-137558861388 .jd-header-wrap .jd-header-top .jd-contact-link svg path,
+.hs-content-id-151881679191 .jd-header-wrap .jd-header-top .jd-contact-link svg path,
+.hs-content-id-156853830932 .jd-header-wrap .jd-header-top .jd-contact-link svg path {
+  fill: #ffffff;
+}
+.hs-content-id-137558861388 .jd-header-wrap .jd-header-top #jd-cart a svg path,
+.hs-content-id-151881679191 .jd-header-wrap .jd-header-top #jd-cart a svg path,
+.hs-content-id-156853830932 .jd-header-wrap .jd-header-top #jd-cart a svg path {
+  stroke: #ffffff;
+}
 .hs-content-id-137558861388 .jd-header-wrap #jd-contact::before,
 .hs-content-id-151881679191 .jd-header-wrap #jd-contact::before,
 .hs-content-id-156853830932 .jd-header-wrap #jd-contact::before {

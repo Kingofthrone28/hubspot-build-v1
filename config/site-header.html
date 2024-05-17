@@ -2,7 +2,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,700;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
 />
 <link
   rel="alternate"
@@ -15,12 +15,14 @@
   href="https://es.course.integrativenutrition.com"
 />
 
-<!-- Shopify Client -->
-<script src="https://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
-<script>
-  let IINShopifyClient = ShopifyBuy.buildClient({
-    domain: 'the-institute-for-integrative-nutrition.myshopify.com',
-    storefrontAccessToken: '52d11f680720b243f88329952fbe0e55',
-  });
-</script>
-<!-- End Shopify Client -->
+<!-- Initialize global namespace -->
+<script>const IIN = {};</script>
+
+<script src="https://sdks.shopifycdn.com/js-buy-sdk/2.21.1/index.unoptimized.umd.min.js"></script>
+<script src="{{ get_asset_url('/Integrative Nutrition/js/datalayertoggle.js') }}"></script>
+
+<script src="{{ get_asset_url('/Integrative Nutrition/js/_utilities.js') }}"></script>
+<script src="{{ get_asset_url('/Integrative Nutrition/js/_cookies.js') }}"></script>
+<script src="{{ get_asset_url('/Integrative Nutrition/js/params.js') }}"></script>
+<script src="{{ get_asset_url('/Integrative Nutrition/js/cart.js') }}"></script>
+
