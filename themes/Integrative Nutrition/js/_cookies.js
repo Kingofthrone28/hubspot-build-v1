@@ -188,14 +188,9 @@ IIN.cookies = {
   },
 
   /**
-   * Check localStorage value for backwards compatibility and convert to cookie.
-   * This method should be avoided for new functionality.
    * @param {string} itemName
    * @param {string} [cookieName]
-   * @param {number} [dayCount]
    * @return {string|null} Cookie value or null.
-   *
-   * @todo Refactor to move cookie side effects into new function.
    */
   useValue(itemName, cookieName, dayCount) {
     const cookieObject = IIN.cookies.getCookieObject(cookieName);
@@ -206,25 +201,11 @@ IIN.cookies = {
       return existingData || null;
     }
 
+    // existingData is an object!  Parse out the requested value, if available
     const cookieValue = existingData?.[itemName];
-    const localValue = localStorage.getItem(itemName);
 
-    if (cookieValue || !localValue) {
-      return existingData || null;
-    }
+    return cookieValue || null;
 
-    const newData = encodeURIComponent(
-      JSON.stringify({
-        ...data,
-        [itemName]: localValue,
-      })
-    );
-
-    localStorage.removeItem(itemName);
-    IIN.cookies.deleteCookie(cookieName);
-    IIN.cookies.setCookie(cookieName, newData, dayCount);
-
-    return newData?.[itemName] || null;
   },
 };
 

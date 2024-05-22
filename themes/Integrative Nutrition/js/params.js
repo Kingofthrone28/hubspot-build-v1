@@ -198,7 +198,7 @@
       newUrl.pathname = oldPathname;
     }
 
-    newUrl.search = newParams;
+    newUrl.search = IIN.utilities.makeKeyValueStringFromObject(newParams);
     // eslint-disable-next-line no-param-reassign
     link.href = newUrl;
   };
