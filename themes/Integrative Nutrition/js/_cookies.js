@@ -192,7 +192,7 @@ IIN.cookies = {
    * @param {string} [cookieName]
    * @return {string|null} Cookie value or null.
    */
-  useValue(itemName, cookieName, dayCount) {
+  useValue(itemName, cookieName) {
     const cookieObject = IIN.cookies.getCookieObject(cookieName);
     const cookieString = IIN.cookies.getCookieString(cookieName);
     const existingData = cookieObject || cookieString;
