@@ -633,6 +633,8 @@ html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn.jd-shopify-op
   }
 
   .jd-cart-item-price-dis {
+    padding-left: 80px;
+    text-align: left;
     font-size: 14px;
   }
 

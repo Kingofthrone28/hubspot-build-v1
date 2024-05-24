@@ -98,7 +98,7 @@
      * const ambassadorID = trackingParams?.ambassadorID;
      * const sldiscountcode = trackingParams?.sldiscountcode;
      * const shouldRedirect = Boolean(ambassadorID && sldiscountcode);
-     
+     *
      * if (shouldRedirect) {
      *   targetParams.redirect = encodeURIComponent(targetURL.pathname);
      *   targetURL.pathname = `/discount/${sldiscountcode}`;
@@ -192,6 +192,7 @@
     });
 
     const namespace = 'custom';
+
     const productsQuery = IINShopifyClient.graphQLClient.query((root) => {
       root.addConnection(
         'products',

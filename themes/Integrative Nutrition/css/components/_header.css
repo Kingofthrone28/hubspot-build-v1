@@ -107,7 +107,8 @@
   height: 16px;
 }
 
-.jd-add-pop-item-added b {
+.jd-add-pop-item-added b,
+.jd-add-pop-item-added strong {
   flex: 1;
   padding-left: 10px;
 }
