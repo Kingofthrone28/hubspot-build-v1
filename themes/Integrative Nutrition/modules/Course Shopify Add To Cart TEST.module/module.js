@@ -50,9 +50,8 @@
 
   /**
    * Updates selectedOptions and show/hide buttons when an attribute is changed.
-   * @param {string} changedAttribute
    */
-  const checkSelectedOptions = (changedAttribute) => {
+  const checkSelectedOptions = () => {
     const options = {};
     const variants = Array.isArray(product?.variants) ? product.variants : [];
 
@@ -168,13 +167,15 @@
         const val = $(this).val();
 
         selectedOptions[type] = val;
-        checkSelectedOptions(type);
+        checkSelectedOptions();
+
+        const $checkedInputs = $(
+          `#${moduleData.name} .jd-shopify-option-wrap input[name="${type}"]:checked`
+        );
+
+        $checkedInputs.first().focus();
       }
     );
-
-    $(`.jd-shopify-option-wrap input[name="${changedAttribute}"]`)
-      .first()
-      .focus();
 
     /**
      * Adds a product to the cart.
@@ -275,8 +276,6 @@
 
       product = await IINShopifyClient.product.fetch(gidPath);
 
-      let initialOptionToCheck;
-
       const variant = product.variants?.find(({ available }) => {
         if (available) {
           return true;
@@ -289,17 +288,13 @@
 
       if (Array.isArray(options) && options.length) {
         options.forEach(({ name, value }) => {
-          if (!initialOptionToCheck) {
-            initialOptionToCheck = name;
-          }
-
           // Keeping keys in an array to preserve order.
           optionKeys.push(name);
           selectedOptions[name] = value;
         });
       }
 
-      checkSelectedOptions(initialOptionToCheck);
+      checkSelectedOptions();
     } catch (e) {
       console.error(e);
     }
