@@ -677,21 +677,28 @@
         return;
       }
 
-      const productID = line.variant.product.id;
-      const lineProduct = await IINShopifyClient.product.fetch(productID);
       const uniqueID = new Date().getTime();
 
       let selectHTML = `<select id="${uniqueID}" class="jd-cart-rec-select">`;
 
       selectHTML += '<option disabled>Cohorts</option>';
 
-      lineProduct.variants.forEach((variant, variantIndex) => {
+      const { selectedOptions } = line.variant;
+      const selectedValues = selectedOptions.map((option) => option.value);
+      const selectedTitle = selectedValues.join(' / ');
+      const productID = line.variant.product.id;
+      const lineProduct = await IINShopifyClient.product.fetch(productID);
+
+      lineProduct.variants.forEach((variant) => {
         if (!variant.available) {
           return;
         }
 
         selectHTML += `
-          <option value="${variant.id}"${variantIndex === 0 ? ' selected' : ''}>
+          <option
+            value="${variant.id}"
+            ${variant.title === selectedTitle ? 'selected' : ''}
+          >
             ${variant.title}
           </option>
         `;
