@@ -201,29 +201,29 @@
 <div class="course-catalog-no-results" style="display: none;">
   {% set contact_prop = contact['vertical_hs']|string %}
   {% if module.no_results_behavior %}
-  {% set course_rows = [] %}
-     {% if contact_prop is string_containing "Nutrition & Wellness" %}
+    {% set course_rows = [] %}
+    {% if contact_prop is string_containing "Nutrition & Wellness" %}
       {% if module.nutrition_wellness|length > 0 %}
         {% for row in module.nutrition_wellness %}
           {% do course_rows.append(hubdb_table_row(row.table_id, row.id)) %}
         {% endfor %}
       {% endif %}
-     {% endif %}
-    {% if contact_prop is string_containing "Transformational Coaching" %}
-        {% if module.transformational_coaching|length > 0 %}
+    {% endif %}
+    {% if contact_prop is string_containing "Health & Life Coaching" %}
+      {% if module.transformational_coaching|length > 0 %}
         {% for row in module.transformational_coaching %}
           {% do course_rows.append(hubdb_table_row(row.table_id, row.id)) %}
         {% endfor %}
       {% endif %}
     {% endif %}
     {% if contact_prop is string_containing "Yoga & Meditation" %}
-        {% if module.yoga_meditation|length > 0 %}
+      {% if module.yoga_meditation|length > 0 %}
         {% for row in module.yoga_meditation %}
           {% do course_rows.append(hubdb_table_row(row.table_id, row.id)) %}
         {% endfor %}
       {% endif %}
     {% endif %}
-  {% for row in course_rows %}
+    {% for row in course_rows %}
       <div class="course-card-wrap"
         data-Topics="{% for topic in row.course_topics %}{{topic.label}}{% if not loop.last %},{% endif %}{% endfor %}" 
         data-Levels="{% for level in row.levels %}{{level.label}}{% if not loop.last %},{% endif %}{% endfor %}"
