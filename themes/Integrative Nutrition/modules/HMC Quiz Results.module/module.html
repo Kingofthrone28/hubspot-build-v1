@@ -5,197 +5,232 @@
 } %}
 
 {% if !module.category_filter and module.hubdb_rows|length == 0 and !module.quiz_results %}
-<div class="course-catalog-filter-wrap">
-  <div class="course-catalog-filter">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 4.87427C10.1642 4.87427 10.5 5.21005 10.5 5.62427V7.12432L20.25 7.12427C20.6642 7.12427 21 7.46005 21 7.87426C21 8.28848 20.6642 8.62427 20.25 8.62427L10.5 8.62432V10.1243C10.5 10.5385 10.1642 10.8743 9.75 10.8743C9.33579 10.8743 9 10.5385 9 10.1243V7.87433V5.62427C9 5.21005 9.33579 4.87427 9.75 4.87427ZM3 7.87425C3.00001 7.46004 3.3358 7.12426 3.75001 7.12427L6.75001 7.12432C7.16423 7.12433 7.50001 7.46012 7.5 7.87434C7.49999 8.28855 7.1642 8.62433 6.74999 8.62432L3.74999 8.62427C3.33577 8.62426 2.99999 8.28847 3 7.87425ZM12.75 15.3743L3.75 15.3743C3.33579 15.3743 3 15.7101 3 16.1243C3 16.5385 3.33579 16.8743 3.75 16.8743L12.75 16.8743C13.1642 16.8743 13.5 16.5385 13.5 16.1243C13.5 15.7101 13.1642 15.3743 12.75 15.3743ZM15 16.1243V13.8743C15 13.4601 15.3358 13.1243 15.75 13.1243C16.1642 13.1243 16.5 13.4601 16.5 13.8743V15.3743L20.25 15.3743C20.6642 15.3743 21 15.7101 21 16.1243C21 16.5385 20.6642 16.8743 20.25 16.8743L16.5 16.8743V18.3743C16.5 18.7885 16.1642 19.1243 15.75 19.1243C15.3358 19.1243 15 18.7885 15 18.3743V16.1243Z" fill="#2D3841"></path></svg>
-    Filter
-  </div>
-</div>
-
-<div class="course-filter-pop-wrap">
-  <div class="course-filter-pop">
-    <div class="course-filter-pop-close">
-      <svg clip-rule="evenodd" width="32" height="32" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
-    </div>
-    <div class="course-filter-pop-top">
-      <div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 4.87427C10.1642 4.87427 10.5 5.21005 10.5 5.62427V7.12432L20.25 7.12427C20.6642 7.12427 21 7.46005 21 7.87426C21 8.28848 20.6642 8.62427 20.25 8.62427L10.5 8.62432V10.1243C10.5 10.5385 10.1642 10.8743 9.75 10.8743C9.33579 10.8743 9 10.5385 9 10.1243V7.87433V5.62427C9 5.21005 9.33579 4.87427 9.75 4.87427ZM3 7.87425C3.00001 7.46004 3.3358 7.12426 3.75001 7.12427L6.75001 7.12432C7.16423 7.12433 7.50001 7.46012 7.5 7.87434C7.49999 8.28855 7.1642 8.62433 6.74999 8.62432L3.74999 8.62427C3.33577 8.62426 2.99999 8.28847 3 7.87425ZM12.75 15.3743L3.75 15.3743C3.33579 15.3743 3 15.7101 3 16.1243C3 16.5385 3.33579 16.8743 3.75 16.8743L12.75 16.8743C13.1642 16.8743 13.5 16.5385 13.5 16.1243C13.5 15.7101 13.1642 15.3743 12.75 15.3743ZM15 16.1243V13.8743C15 13.4601 15.3358 13.1243 15.75 13.1243C16.1642 13.1243 16.5 13.4601 16.5 13.8743V15.3743L20.25 15.3743C20.6642 15.3743 21 15.7101 21 16.1243C21 16.5385 20.6642 16.8743 20.25 16.8743L16.5 16.8743V18.3743C16.5 18.7885 16.1642 19.1243 15.75 19.1243C15.3358 19.1243 15 18.7885 15 18.3743V16.1243Z" fill="#2D3841"></path></svg>
-        Filter
-      </div>
-    </div>
-    <div class="course-filter-pop-middle">
-      <div>
-        <div class="course-pop-filter-label course-pop-filter-active">Topics</div>
-        <div class="course-pop-filter-label">Levels</div>
-        <div class="course-pop-filter-label">Type</div>
-      </div>
-      <div>
-        <div id="course-pop-Topics" class="course-pop-filter-choice-section" style="display:block">
-          <div class="course-pop-filter-selected">Topics</div>
-          <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(6844700, 'course_topics') %}
-            {% for option in topicInfo.options %}
-            <div>
-              <input id="topics_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Topics" value="{{option.name}}" {% if request.query_dict.topic && request.query_dict.topic|regex_replace("[^A-Za-z]", '') == option.name|regex_replace("[^A-Za-z]", '') %}checked{% endif %} />
-              <label for="topics_{{option.name|regex_replace("[^A-Za-z]", '')}}">{{option.name}}</label>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div id="course-pop-Levels" class="course-pop-filter-choice-section">
-          <div class="course-pop-filter-selected">Levels</div>
-          <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(6844700, 'levels') %}
-            {% for option in topicInfo.options %}
-            <div>
-              <input id="levels_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Levels" value="{{option.name}}" />
-              <label for="levels_{{option.name|regex_replace("[^A-Za-z]", '')}}">{{option.name}}</label>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div id="course-pop-Type" class="course-pop-filter-choice-section">
-          <div class="course-pop-filter-selected">Type</div>
-          <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(6844700, 'type') %}
-            {% for option in topicInfo.options %}
-            <div>
-              <input id="type_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Type" value="{{option.name}}" checked />
-              <label for="type_{{option.name|regex_replace("[^A-Za-z]", '')}}">{{option.name}}</label>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="course-filter-pop-bottom">
-      <button id="course-filter-save">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M21.2803 6.22041C21.5732 6.51331 21.5732 6.98819 21.2803 7.28107L10.7803 17.7806C10.4874 18.0735 10.0126 18.0735 9.71969 17.7806L4.46969 12.5311C4.17679 12.2382 4.17677 11.7633 4.46965 11.4704C4.76253 11.1775 5.2374 11.1775 5.53031 11.4704L10.25 16.1896L20.2197 6.22039C20.5126 5.9275 20.9875 5.92751 21.2803 6.22041Z" fill="#2D3841"/>
-</svg>
-        Save</button>
-      <button id="course-filter-clear">Clear</button>
+  <div class="course-catalog-filter-wrap">
+    <div class="course-catalog-filter">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 4.87427C10.1642 4.87427 10.5 5.21005 10.5 5.62427V7.12432L20.25 7.12427C20.6642 7.12427 21 7.46005 21 7.87426C21 8.28848 20.6642 8.62427 20.25 8.62427L10.5 8.62432V10.1243C10.5 10.5385 10.1642 10.8743 9.75 10.8743C9.33579 10.8743 9 10.5385 9 10.1243V7.87433V5.62427C9 5.21005 9.33579 4.87427 9.75 4.87427ZM3 7.87425C3.00001 7.46004 3.3358 7.12426 3.75001 7.12427L6.75001 7.12432C7.16423 7.12433 7.50001 7.46012 7.5 7.87434C7.49999 8.28855 7.1642 8.62433 6.74999 8.62432L3.74999 8.62427C3.33577 8.62426 2.99999 8.28847 3 7.87425ZM12.75 15.3743L3.75 15.3743C3.33579 15.3743 3 15.7101 3 16.1243C3 16.5385 3.33579 16.8743 3.75 16.8743L12.75 16.8743C13.1642 16.8743 13.5 16.5385 13.5 16.1243C13.5 15.7101 13.1642 15.3743 12.75 15.3743ZM15 16.1243V13.8743C15 13.4601 15.3358 13.1243 15.75 13.1243C16.1642 13.1243 16.5 13.4601 16.5 13.8743V15.3743L20.25 15.3743C20.6642 15.3743 21 15.7101 21 16.1243C21 16.5385 20.6642 16.8743 20.25 16.8743L16.5 16.8743V18.3743C16.5 18.7885 16.1642 19.1243 15.75 19.1243C15.3358 19.1243 15 18.7885 15 18.3743V16.1243Z" fill="#2D3841"/>
+      </svg>
+      Filter
     </div>
   </div>
-</div>
+
+  <div class="course-filter-pop-wrap">
+    <div class="course-filter-pop">
+      <div class="course-filter-pop-close">
+        <svg clip-rule="evenodd" width="32" height="32" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
+        </svg>
+      </div>
+      <div class="course-filter-pop-top">
+        <div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 4.87427C10.1642 4.87427 10.5 5.21005 10.5 5.62427V7.12432L20.25 7.12427C20.6642 7.12427 21 7.46005 21 7.87426C21 8.28848 20.6642 8.62427 20.25 8.62427L10.5 8.62432V10.1243C10.5 10.5385 10.1642 10.8743 9.75 10.8743C9.33579 10.8743 9 10.5385 9 10.1243V7.87433V5.62427C9 5.21005 9.33579 4.87427 9.75 4.87427ZM3 7.87425C3.00001 7.46004 3.3358 7.12426 3.75001 7.12427L6.75001 7.12432C7.16423 7.12433 7.50001 7.46012 7.5 7.87434C7.49999 8.28855 7.1642 8.62433 6.74999 8.62432L3.74999 8.62427C3.33577 8.62426 2.99999 8.28847 3 7.87425ZM12.75 15.3743L3.75 15.3743C3.33579 15.3743 3 15.7101 3 16.1243C3 16.5385 3.33579 16.8743 3.75 16.8743L12.75 16.8743C13.1642 16.8743 13.5 16.5385 13.5 16.1243C13.5 15.7101 13.1642 15.3743 12.75 15.3743ZM15 16.1243V13.8743C15 13.4601 15.3358 13.1243 15.75 13.1243C16.1642 13.1243 16.5 13.4601 16.5 13.8743V15.3743L20.25 15.3743C20.6642 15.3743 21 15.7101 21 16.1243C21 16.5385 20.6642 16.8743 20.25 16.8743L16.5 16.8743V18.3743C16.5 18.7885 16.1642 19.1243 15.75 19.1243C15.3358 19.1243 15 18.7885 15 18.3743V16.1243Z" fill="#2D3841"/>
+          </svg>
+          Filter
+        </div>
+      </div>
+      <div class="course-filter-pop-middle">
+        <div>
+          <div class="course-pop-filter-label course-pop-filter-active">Topics</div>
+          <div class="course-pop-filter-label">Levels</div>
+          <div class="course-pop-filter-label">Type</div>
+        </div>
+        <div>
+          <div id="course-pop-Topics" class="course-pop-filter-choice-section" style="display:block">
+            <div class="course-pop-filter-selected">Topics</div>
+            <div class="course-pop-filter-choices">
+              {% set topicInfo = hubdb_table_column(6844700, 'course_topics') %}
+              {% for option in topicInfo.options %}
+                <div>
+                  <input id="topics_{{ option.name|regex_replace("[^A-Za-z]", '') }}" type="checkbox" name="Topics" value="{{ option.name }}" {% if request.query_dict.topic && request.query_dict.topic|regex_replace("[^A-Za-z]", '') == option.name|regex_replace("[^A-Za-z]", '') %}checked{% endif %} />
+                  <label for="topics_{{ option.name|regex_replace("[^A-Za-z]", '') }}">{{ option.name }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div id="course-pop-Levels" class="course-pop-filter-choice-section">
+            <div class="course-pop-filter-selected">Levels</div>
+            <div class="course-pop-filter-choices">
+              {% set topicInfo = hubdb_table_column(6844700, 'levels') %}
+              {% for option in topicInfo.options %}
+                <div>
+                  <input id="levels_{{ option.name|regex_replace("[^A-Za-z]", '') }}" type="checkbox" name="Levels" value="{{ option.name }}" />
+                  <label for="levels_{{ option.name|regex_replace("[^A-Za-z]", '') }}">{{ option.name }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div id="course-pop-Type" class="course-pop-filter-choice-section">
+            <div class="course-pop-filter-selected">Type</div>
+            <div class="course-pop-filter-choices">
+              {% set topicInfo = hubdb_table_column(6844700, 'type') %}
+              {% for option in topicInfo.options %}
+                <div>
+                  <input id="type_{{ option.name|regex_replace("[^A-Za-z]", '') }}" type="checkbox" name="Type" value="{{ option.name }}" checked />
+                  <label for="type_{{ option.name|regex_replace("[^A-Za-z]", '') }}">{{ option.name }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="course-filter-pop-bottom">
+        <button id="course-filter-save">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2803 6.22041C21.5732 6.51331 21.5732 6.98819 21.2803 7.28107L10.7803 17.7806C10.4874 18.0735 10.0126 18.0735 9.71969 17.7806L4.46969 12.5311C4.17679 12.2382 4.17677 11.7633 4.46965 11.4704C4.76253 11.1775 5.2374 11.1775 5.53031 11.4704L10.25 16.1896L20.2197 6.22039C20.5126 5.9275 20.9875 5.92751 21.2803 6.22041Z" fill="#2D3841"/>
+          </svg>
+          Save
+        </button>
+        <button id="course-filter-clear">Clear</button>
+      </div>
+    </div>
+  </div>
 {% endif %}
 
-<div class="course-catalog" style="display:none">
-{% if module.hubdb_rows|length > 0 %}
-  {% set rows = [] %}
-  {% for row in module.hubdb_rows %}
-    {% do rows.append(row.columns) %}
-  {% endfor %}
-{% elif module.category_filter %}
-  {% set rows = hubdb_table_rows(6844700, 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
-{% else %}
-  {% set rows = hubdb_table_rows(6844700) %}
-{% endif %}
-{% for row in rows %}
-{% set valid_row = { val: true } %}
-{% if module.quiz_results %}
-    {% for prop in module.quiz_result_properties %}
-      {% set is_prop_match = { val: false } %}
-      {% for row_val in row[prop] %}
-        {% set contact_prop = contact[prop]|string %}
-        {% if contact_prop is string_containing row_val.label|string %}
-          {% do is_prop_match.update({ val: true }) %}
+<div class="course-catalog" style="display: none">
+  {% if module.hubdb_rows|length > 0 %}
+    {% set rows = [] %}
+    {% for row in module.hubdb_rows %}
+      {% do rows.append(row.columns) %}
+    {% endfor %}
+  {% elif module.category_filter %}
+    {% set rows = hubdb_table_rows(6844700, 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
+  {% else %}
+    {% set rows = hubdb_table_rows(6844700) %}
+  {% endif %}
+
+  {% for row in rows %}
+    {% set valid_row = { val: true } %}
+    {% if module.quiz_results %}
+      {% for prop in module.quiz_result_properties %}
+        {% set is_prop_match = { val: false } %}
+        {% for row_val in row[prop] %}
+          {% set contact_prop = contact[prop]|string %}
+          {% if contact_prop is string_containing row_val.label|string %}
+            {% do is_prop_match.update({ val: true }) %}
+          {% endif %}
+        {% endfor %}
+        {% if !is_prop_match.val %}
+          {% do valid_row.update({ val: false }) %}
         {% endif %}
       {% endfor %}
-      {% if !is_prop_match.val %}
-        {% do valid_row.update({ val: false }) %}
-      {% endif %}
-    {% endfor %}
-  
-{% endif %}
-
-{% if valid_row.val %}
-<div class="course-card-wrap"
-    data-Topics="{% for topic in row.course_topics %}{{topic.label}}{% if not loop.last %},{% endif %}{% endfor %}" 
-    data-Levels="{% for level in row.levels %}{{level.label}}{% if not loop.last %},{% endif %}{% endfor %}"
-    data-Type="{% for type in row.Type %}{{type.label}}{% if not loop.last %},{% endif %}{% endfor %}">
-  
-  <a class="course-card {% if module.use_slim_style %}course-card-slim{% endif %}" href="{{row.inside_page_link}}">
-    {% if module.add_tag && module.tag_placement == 'top' && row.tag %}
-      <div class="course-tag course-tag-top" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
     {% endif %}
-    <div class="course-card-img" style="background: url('{{row.featured_image.url}}')"></div>
-    <div class="course-card-body">
-      {% if module.add_tag && module.tag_placement == 'body' && row.tag %}
-        <div class="course-tag course-tag-body" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
-      {% endif %}
-      <div style="display:flex;justify-content:space-between;">
-        <div class="course-card-category">
-          {% if row.category.label is string_containing 'Chopra' %}
-          <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
-          {% else %}
-          <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+
+    {% if valid_row.val %}
+      <div class="course-card-wrap"
+        data-Topics="{% for topic in row.course_topics %}{{ topic.label }}{% if not loop.last %},{% endif %}{% endfor %}" 
+        data-Levels="{% for level in row.levels %}{{ level.label }}{% if not loop.last %},{% endif %}{% endfor %}"
+        data-Type="{% for type in row.Type %}{{ type.label }}{% if not loop.last %},{% endif %}{% endfor %}"
+      >
+        <a class="course-card{% if module.use_slim_style %} course-card-slim{% endif %}" href="{{ row.inside_page_link }}">
+          {% if module.add_tag && module.tag_placement == 'top' && row.tag %}
+            <div class="course-tag course-tag-top" style="background: {{ tagColorDict[row.tag.label] }}">
+              {{ row.tag.label }}
+            </div>
           {% endif %}
-          <div>{{row.category.label}}</div>
-        </div>
-        {#
-        {% if row.new_tag %}
-        <div><div class="course-card-new">New</div></div>
-        {% endif %}
-        #}
+          <div class="course-card-img" style="background: url('{{ row.featured_image.url }}')"></div>
+          <div class="course-card-body">
+            {% if module.add_tag && module.tag_placement == 'body' && row.tag %}
+              <div class="course-tag course-tag-body" style="background: {{ tagColorDict[row.tag.label] }}">
+                {{ row.tag.label }}
+              </div>
+            {% endif %}
+            <div style="display: flex; justify-content: space-between;">
+              <div class="course-card-category">
+                {% if row.category.label is string_containing 'Chopra' %}
+                <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                {% else %}
+                <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                {% endif %}
+                <div>{{ row.category.label }}</div>
+              </div>
+              {#
+              {% if row.new_tag %}
+                <div><div class="course-card-new">New</div></div>
+              {% endif %}
+              #}
+            </div>
+            <div class="course-card-title">
+              <div>{{ row.name }}</div>
+            </div>
+            {% if row.description %}
+              <div class="course-card-description">{{ row.description }}</div>
+            {% endif %}
+          </div>
+          <div style="flex: 1;"></div>
+          <div class="course-card-price">
+            <div>
+              <span class="cc-price-{{ row.product_id }}">{{ row.price }}</span>
+              <span style="{% if row.product_id || !row.actual_price %}display: none{% endif %}" class="cc-price-strike cc-actual-price-{{ row.product_id }}">{{ row.actual_price }}</span>
+            </div>
+
+            {% if row.product_id %}
+              <script>
+                /*<![CDATA[*/
+                (function () {
+                  IINShopifyClient.product.fetch('gid://shopify/Product/{{ row.product_id }}').then(function(product) {
+                    $('.cc-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].price.amount).toLocaleString());
+
+                    if (
+                      product.variants[0].compareAtPrice &&
+                      product.variants[0].compareAtPrice.amount &&
+                      product.variants[0].compareAtPrice.amount !== product.variants[0].price.amount
+                    ) {
+                      $('.cc-actual-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].compareAtPrice.amount).toLocaleString());
+                      $('.cc-actual-price-{{ row.product_id }}').show();
+                    }
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+                })();
+                /*]]>*/
+              </script>
+            {% endif %}
+
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="arr-right" y="32">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#D72A25"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.05 11.05a1 1 0 0 1 1.414 0l4.243 4.243a1 1 0 0 1 0 1.415l-4.243 4.242a1 1 0 0 1-1.414-1.414L19.586 16l-3.536-3.535a1 1 0 0 1 0-1.414z" fill="#D72A25"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 16a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1z" fill="#D72A25"/>
+              </svg>
+            </div>
+          </div>
+          <div class="course-card-bottom">
+            <div class="course-card-bottom-inner">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"/>
+                </svg>
+                {{ row.duration }}
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="laptop" y="256">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7 8a1 1 0 0 0-1 1v13a1 1 0 1 1-2 0V9a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v13a1 1 0 1 1-2 0V9a1 1 0 0 0-1-1H7z" fill="#4F4F4F"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2 22a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2zm2 1v1a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-1H4zM13 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1z" fill="#4F4F4F"/>
+                </svg>
+                {{ row.location_description }}
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="globe" y="224">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.499 5.569c-2.741.92-5 2.89-6.3 5.431h4.262c.262-1.355.63-2.59 1.084-3.651.279-.651.597-1.252.954-1.78zM10.16 13H5.414c-.27.954-.414 1.96-.414 3s.144 2.046.414 3h4.746a27.707 27.707 0 0 1-.16-3c0-1.03.055-2.036.16-3zm2.013 6A25.59 25.59 0 0 1 12 16c0-1.044.06-2.05.173-3h7.654c.112.95.173 1.956.173 3s-.06 2.05-.173 3h-7.654zm-1.712 2H6.199a11.034 11.034 0 0 0 6.3 5.431 10.723 10.723 0 0 1-.954-1.78c-.454-1.06-.822-2.296-1.084-3.651zm9.04 5.431c2.741-.92 5-2.89 6.3-5.431h-4.262c-.262 1.355-.63 2.59-1.084 3.651a10.723 10.723 0 0 1-.954 1.78zM19.498 21a15.646 15.646 0 0 1-.882 2.864c-.42.983-.896 1.714-1.373 2.185-.472.467-.891.629-1.243.629-.352 0-.77-.162-1.243-.63-.477-.47-.952-1.201-1.373-2.184A15.654 15.654 0 0 1 12.502 21h6.996zm2.342-2h4.746c.27-.954.414-1.96.414-3s-.144-2.046-.414-3H21.84c.105.964.16 1.97.16 3 0 1.031-.055 2.036-.16 3zm-.3-8h4.26a11.034 11.034 0 0 0-6.299-5.431c.357.528.675 1.129.954 1.78.454 1.06.822 2.296 1.084 3.651zm-2.042 0h-6.996c.23-1.075.53-2.041.882-2.864.42-.982.896-1.714 1.373-2.185.472-.466.891-.629 1.243-.629.352 0 .77.163 1.243.63.477.47.953 1.202 1.373 2.184.352.823.652 1.789.882 2.864zM16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3z" fill="#4F4F4F"/>
+                </svg>
+                {% for language in row.languages %}
+                  {{ language.label }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            {% if module.add_tag && module.tag_placement == 'bottom' && row.tag %}
+              <div class="course-tag course-tag-bottom" style="background: {{ tagColorDict[row.tag.label] }}">
+                {{ row.tag.label }}
+              </div>
+            {% endif %}
+          </div>
+        </a>
       </div>
-      <div class="course-card-title">
-        <div>{{row.name}}</div>
-      </div>
-      {% if row.description %}<div class="course-card-description">{{row.description}}</div>{% endif %}
-    </div>
-    <div style="flex: 1;"></div>
-    <div class="course-card-price">
-      <div>
-        <span class="cc-price-{{row.product_id}}">{{row.price}}</span>
-        <span style="{% if row.product_id || !row.actual_price %}display:none{% endif %}" class="cc-price-strike cc-actual-price-{{row.product_id}}">{{row.actual_price}}</span>
-      </div>
-      
-{% if row.product_id %}
-<script type="text/javascript">
-/*<![CDATA[*/
-(function () {
-  IINShopifyClient.product.fetch('gid://shopify/Product/{{ row.product_id }}').then(function(product) {
-      $('.cc-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].price.amount).toLocaleString());
-      if(product.variants[0].compareAtPrice && product.variants[0].compareAtPrice.amount && product.variants[0].compareAtPrice.amount != product.variants[0].price.amount) {
-        $('.cc-actual-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].compareAtPrice.amount).toLocaleString());
-        $('.cc-actual-price-{{ row.product_id }}').show();
-      }
-    })
-    .catch(e => { console.log(e); });
-})();
-/*]]>*/
-</script>
-{% endif %}
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="arr-right" y="32"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#D72A25"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16.05 11.05a1 1 0 0 1 1.414 0l4.243 4.243a1 1 0 0 1 0 1.415l-4.243 4.242a1 1 0 0 1-1.414-1.414L19.586 16l-3.536-3.535a1 1 0 0 1 0-1.414z" fill="#D72A25"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10 16a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1z" fill="#D72A25"/></svg>
-      </div>
-    </div>
-    <div class="course-card-bottom">
-      <div class="course-card-bottom-inner">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"/></svg>
-          {{row.duration}}
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="laptop" y="256"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 8a1 1 0 0 0-1 1v13a1 1 0 1 1-2 0V9a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v13a1 1 0 1 1-2 0V9a1 1 0 0 0-1-1H7z" fill="#4F4F4F"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2 22a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2zm2 1v1a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-1H4zM13 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1z" fill="#4F4F4F"/></svg>
-          {{row.location_description}}
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="globe" y="224"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.499 5.569c-2.741.92-5 2.89-6.3 5.431h4.262c.262-1.355.63-2.59 1.084-3.651.279-.651.597-1.252.954-1.78zM10.16 13H5.414c-.27.954-.414 1.96-.414 3s.144 2.046.414 3h4.746a27.707 27.707 0 0 1-.16-3c0-1.03.055-2.036.16-3zm2.013 6A25.59 25.59 0 0 1 12 16c0-1.044.06-2.05.173-3h7.654c.112.95.173 1.956.173 3s-.06 2.05-.173 3h-7.654zm-1.712 2H6.199a11.034 11.034 0 0 0 6.3 5.431 10.723 10.723 0 0 1-.954-1.78c-.454-1.06-.822-2.296-1.084-3.651zm9.04 5.431c2.741-.92 5-2.89 6.3-5.431h-4.262c-.262 1.355-.63 2.59-1.084 3.651a10.723 10.723 0 0 1-.954 1.78zM19.498 21a15.646 15.646 0 0 1-.882 2.864c-.42.983-.896 1.714-1.373 2.185-.472.467-.891.629-1.243.629-.352 0-.77-.162-1.243-.63-.477-.47-.952-1.201-1.373-2.184A15.654 15.654 0 0 1 12.502 21h6.996zm2.342-2h4.746c.27-.954.414-1.96.414-3s-.144-2.046-.414-3H21.84c.105.964.16 1.97.16 3 0 1.031-.055 2.036-.16 3zm-.3-8h4.26a11.034 11.034 0 0 0-6.299-5.431c.357.528.675 1.129.954 1.78.454 1.06.822 2.296 1.084 3.651zm-2.042 0h-6.996c.23-1.075.53-2.041.882-2.864.42-.982.896-1.714 1.373-2.185.472-.466.891-.629 1.243-.629.352 0 .77.163 1.243.63.477.47.953 1.202 1.373 2.184.352.823.652 1.789.882 2.864zM16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3z" fill="#4F4F4F"/></svg>
-          {% for language in row.languages %}
-          {{language.label}}{% if not loop.last %},{% endif %}
-          {% endfor %}
-        </div>
-      </div>
-      {% if module.add_tag && module.tag_placement == 'bottom' && row.tag %}
-        <div class="course-tag course-tag-bottom" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
-      {% endif %}
-    </div>
-  </a>
-</div>
-{% endif %}
-{% endfor %}
+    {% endif %}
+  {% endfor %}
 </div>
 
 <div class="course-catalog-no-results" style="display: none;">
@@ -226,156 +261,193 @@
     {% endif %}
     {% for row in course_rows %}
       <div class="course-card-wrap"
-        data-Topics="{% for topic in row.course_topics %}{{topic.label}}{% if not loop.last %},{% endif %}{% endfor %}" 
-        data-Levels="{% for level in row.levels %}{{level.label}}{% if not loop.last %},{% endif %}{% endfor %}"
-        data-Type="{% for type in row.Type %}{{type.label}}{% if not loop.last %},{% endif %}{% endfor %}">
-
-      <a class="course-card {% if module.use_slim_style %}course-card-slim{% endif %}" href="{{row.inside_page_link}}">
-        {% if module.add_tag && module.tag_placement == 'top' && row.tag %}
-          <div class="course-tag course-tag-top" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
-        {% endif %}
-        <div class="course-card-img" style="background: url('{{row.featured_image.url}}')"></div>
-        <div class="course-card-body">
-          {% if module.add_tag && module.tag_placement == 'body' && row.tag %}
-            <div class="course-tag course-tag-body" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
-          {% endif %}
-          <div style="display:flex;justify-content:space-between;">
-            <div class="course-card-category">
-              {% if row.category.label is string_containing 'Chopra' %}
-              <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
-              {% else %}
-              <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
-              {% endif %}
-              <div>{{row.category.label}}</div>
+        data-Topics="{% for topic in row.course_topics %}{{ topic.label }}{% if not loop.last %},{% endif %}{% endfor %}" 
+        data-Levels="{% for level in row.levels %}{{ level.label }}{% if not loop.last %},{% endif %}{% endfor %}"
+        data-Type="{% for type in row.Type %}{{ type.label }}{% if not loop.last %},{% endif %}{% endfor %}"
+      >
+        <a class="course-card {% if module.use_slim_style %}course-card-slim{% endif %}" href="{{ row.inside_page_link }}">
+          {% if module.add_tag && module.tag_placement == 'top' && row.tag %}
+            <div class="course-tag course-tag-top" style="background: {{ tagColorDict[row.tag.label] }}">
+              {{ row.tag.label }}
             </div>
-            {#
-            {% if row.new_tag %}
-            <div><div class="course-card-new">New</div></div>
+          {% endif %}
+          <div class="course-card-img" style="background: url('{{ row.featured_image.url }}')"></div>
+          <div class="course-card-body">
+            {% if module.add_tag && module.tag_placement == 'body' && row.tag %}
+              <div class="course-tag course-tag-body" style="background: {{ tagColorDict[row.tag.label] }}">
+                {{ row.tag.label }}
+              </div>
             {% endif %}
-            #}
+            <div style="display: flex; justify-content: space-between;">
+              <div class="course-card-category">
+                {% if row.category.label is string_containing 'Chopra' %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/chopra_logo.png" />
+                {% else %}
+                  <img src="https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Course%20Page%20Images/iin_logo.png" />
+                {% endif %}
+                <div>{{ row.category.label }}</div>
+              </div>
+              {#
+              {% if row.new_tag %}
+                <div><div class="course-card-new">New</div></div>
+              {% endif %}
+              #}
+            </div>
+            <div class="course-card-title">
+              <div>{{ row.name }}</div>
+            </div>
+            {% if row.description %}
+              <div class="course-card-description">{{ row.description }}</div>
+            {% endif %}
           </div>
-          <div class="course-card-title">
-            <div>{{row.name}}</div>
-          </div>
-          {% if row.description %}<div class="course-card-description">{{row.description}}</div>{% endif %}
-        </div>
-        <div style="flex: 1;"></div>
-        <div class="course-card-price">
-          <div>
-            <span class="cc-price-{{row.product_id}}">{{row.price}}</span>
-            <span style="{% if row.product_id || !row.actual_price %}display:none{% endif %}" class="cc-price-strike cc-actual-price-{{row.product_id}}">{{row.actual_price}}</span>
-          </div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="arr-right" y="32"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#D72A25"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16.05 11.05a1 1 0 0 1 1.414 0l4.243 4.243a1 1 0 0 1 0 1.415l-4.243 4.242a1 1 0 0 1-1.414-1.414L19.586 16l-3.536-3.535a1 1 0 0 1 0-1.414z" fill="#D72A25"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10 16a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1z" fill="#D72A25"/></svg>
-          </div>
-        </div>
-        <div class="course-card-bottom">
-          <div class="course-card-bottom-inner">
+          <div style="flex: 1;"></div>
+          <div class="course-card-price">
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"/></svg>
-              {{row.duration}}
+              <span class="cc-price-{{ row.product_id }}">{{ row.price }}</span>
+              <span style="{% if row.product_id || !row.actual_price %}display: none{% endif %}" class="cc-price-strike cc-actual-price-{{ row.product_id }}">{{ row.actual_price }}</span>
             </div>
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="laptop" y="256"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 8a1 1 0 0 0-1 1v13a1 1 0 1 1-2 0V9a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v13a1 1 0 1 1-2 0V9a1 1 0 0 0-1-1H7z" fill="#4F4F4F"/><path fill-rule="evenodd" clip-rule="evenodd" d="M2 22a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2zm2 1v1a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-1H4zM13 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1z" fill="#4F4F4F"/></svg>
-              {{row.location_description}}
-            </div>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="globe" y="224"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.499 5.569c-2.741.92-5 2.89-6.3 5.431h4.262c.262-1.355.63-2.59 1.084-3.651.279-.651.597-1.252.954-1.78zM10.16 13H5.414c-.27.954-.414 1.96-.414 3s.144 2.046.414 3h4.746a27.707 27.707 0 0 1-.16-3c0-1.03.055-2.036.16-3zm2.013 6A25.59 25.59 0 0 1 12 16c0-1.044.06-2.05.173-3h7.654c.112.95.173 1.956.173 3s-.06 2.05-.173 3h-7.654zm-1.712 2H6.199a11.034 11.034 0 0 0 6.3 5.431 10.723 10.723 0 0 1-.954-1.78c-.454-1.06-.822-2.296-1.084-3.651zm9.04 5.431c2.741-.92 5-2.89 6.3-5.431h-4.262c-.262 1.355-.63 2.59-1.084 3.651a10.723 10.723 0 0 1-.954 1.78zM19.498 21a15.646 15.646 0 0 1-.882 2.864c-.42.983-.896 1.714-1.373 2.185-.472.467-.891.629-1.243.629-.352 0-.77-.162-1.243-.63-.477-.47-.952-1.201-1.373-2.184A15.654 15.654 0 0 1 12.502 21h6.996zm2.342-2h4.746c.27-.954.414-1.96.414-3s-.144-2.046-.414-3H21.84c.105.964.16 1.97.16 3 0 1.031-.055 2.036-.16 3zm-.3-8h4.26a11.034 11.034 0 0 0-6.299-5.431c.357.528.675 1.129.954 1.78.454 1.06.822 2.296 1.084 3.651zm-2.042 0h-6.996c.23-1.075.53-2.041.882-2.864.42-.982.896-1.714 1.373-2.185.472-.466.891-.629 1.243-.629.352 0 .77.163 1.243.63.477.47.953 1.202 1.373 2.184.352.823.652 1.789.882 2.864zM16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3z" fill="#4F4F4F"/></svg>
-              {% for language in row.languages %}
-              {{language.label}}{% if not loop.last %},{% endif %}
-              {% endfor %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="arr-right" y="32">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#D72A25"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.05 11.05a1 1 0 0 1 1.414 0l4.243 4.243a1 1 0 0 1 0 1.415l-4.243 4.242a1 1 0 0 1-1.414-1.414L19.586 16l-3.536-3.535a1 1 0 0 1 0-1.414z" fill="#D72A25"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 16a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H11a1 1 0 0 1-1-1z" fill="#D72A25"/>
+              </svg>
             </div>
           </div>
-          {% if module.add_tag && module.tag_placement == 'bottom' && row.tag %}
-            <div class="course-tag course-tag-bottom" style="background: {{tagColorDict[row.tag.label]}}">{{row.tag.label}}</div>
-          {% endif %}
-        </div>
-      </a>
-    </div>
-  {% endfor %}
+          <div class="course-card-bottom">
+            <div class="course-card-bottom-inner">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="clock" y="128">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 5C9.925 5 5 9.925 5 16s4.925 11 11 11 11-4.925 11-11S22.075 5 16 5zM3 16C3 8.82 8.82 3 16 3s13 5.82 13 13-5.82 13-13 13S3 23.18 3 16z" fill="#4F4F4F"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-7a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" fill="#4F4F4F"/>
+                </svg>
+                {{ row.duration }}
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="laptop" y="256">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7 8a1 1 0 0 0-1 1v13a1 1 0 1 1-2 0V9a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v13a1 1 0 1 1-2 0V9a1 1 0 0 0-1-1H7z" fill="#4F4F4F"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M2 22a1 1 0 0 1 1-1h26a1 1 0 0 1 1 1v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2zm2 1v1a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-1H4zM13 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1z" fill="#4F4F4F"/>
+                </svg>
+                {{ row.location_description }}
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="globe" y="224">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.499 5.569c-2.741.92-5 2.89-6.3 5.431h4.262c.262-1.355.63-2.59 1.084-3.651.279-.651.597-1.252.954-1.78zM10.16 13H5.414c-.27.954-.414 1.96-.414 3s.144 2.046.414 3h4.746a27.707 27.707 0 0 1-.16-3c0-1.03.055-2.036.16-3zm2.013 6A25.59 25.59 0 0 1 12 16c0-1.044.06-2.05.173-3h7.654c.112.95.173 1.956.173 3s-.06 2.05-.173 3h-7.654zm-1.712 2H6.199a11.034 11.034 0 0 0 6.3 5.431 10.723 10.723 0 0 1-.954-1.78c-.454-1.06-.822-2.296-1.084-3.651zm9.04 5.431c2.741-.92 5-2.89 6.3-5.431h-4.262c-.262 1.355-.63 2.59-1.084 3.651a10.723 10.723 0 0 1-.954 1.78zM19.498 21a15.646 15.646 0 0 1-.882 2.864c-.42.983-.896 1.714-1.373 2.185-.472.467-.891.629-1.243.629-.352 0-.77-.162-1.243-.63-.477-.47-.952-1.201-1.373-2.184A15.654 15.654 0 0 1 12.502 21h6.996zm2.342-2h4.746c.27-.954.414-1.96.414-3s-.144-2.046-.414-3H21.84c.105.964.16 1.97.16 3 0 1.031-.055 2.036-.16 3zm-.3-8h4.26a11.034 11.034 0 0 0-6.299-5.431c.357.528.675 1.129.954 1.78.454 1.06.822 2.296 1.084 3.651zm-2.042 0h-6.996c.23-1.075.53-2.041.882-2.864.42-.982.896-1.714 1.373-2.185.472-.466.891-.629 1.243-.629.352 0 .77.163 1.243.63.477.47.953 1.202 1.373 2.184.352.823.652 1.789.882 2.864zM16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13S23.18 3 16 3z" fill="#4F4F4F"/>
+                </svg>
+                {% for language in row.languages %}
+                  {{ language.label }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            {% if module.add_tag && module.tag_placement == 'bottom' && row.tag %}
+              <div class="course-tag course-tag-bottom" style="background: {{ tagColorDict[row.tag.label] }}">{{ row.tag.label }}</div>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endfor %}
   {% else %}
-  {{ module.filter_no_results_message }}
+    {{ module.filter_no_results_message }}
   {% endif %}
 </div>
 
-
 {% if module.category_filter %}
-{% require_css %}
-<style>
-  {% scope_css %}
-  @media(max-width: 1024px) and (min-width: 768px) {
-    .course-card-wrap { width: 33.33%; }
-  }
-  {% end_scope_css %}
-</style>
-{% end_require_css %}
+  {% require_css %}
+  <style>
+    {% scope_css %}
+    @media(max-width: 1024px) and (min-width: 768px) {
+      .course-card-wrap { width: 33.33%; }
+    }
+    {% end_scope_css %}
+  </style>
+  {% end_require_css %}
 {% endif %}
 
 {% require_js %}
 <script>
-  $('.course-filter-pop-wrap').appendTo('body');
-  
   function filterResults(topicInit) {
     $('.course-catalog-no-results').hide();
-    const checked = $('.course-filter-pop-wrap input[type=checkbox]:checked');
-    if(checked.length == 0) {
-      $('.course-card-wrap').show();
-    } else {
+    $('.course-card-wrap').show();
+
+    const $checked = $('.course-filter-pop-wrap input[type=checkbox]:checked');
+
+    if ($checked.length) {
       $('.course-card-wrap').show();
       const filters = {};
-      checked.each(function() {
-        if(!filters[$(this).attr('name')]) {
+
+      $checked.each(function () {
+        if (!filters[$(this).attr('name')]) {
           filters[$(this).attr('name')] = [];
         }
+
         filters[$(this).attr('name')].push($(this).val());
       });
-      for(const filter in filters) {
-        $('.course-card-wrap').each(function() {
+
+      for (const filter in filters) {
+        $('.course-card-wrap').each(function () {
           let show = false;
-          for(const c of filters[filter]) {
-            if($(this).data(filter.toLowerCase()).includes(c)) {
+
+          for (const c of filters[filter]) {
+            if ($(this).data(filter.toLowerCase()).includes(c)) {
               show = true;
             }
           }
-          if(!show) {
+
+          if (!show) {
             $(this).hide();
           }
         });
       }
-      if(!topicInit && !$('.course-card:visible').length) {
+
+      if (!topicInit && !$('.course-card:visible').length) {
         $('.course-catalog-no-results').show();
       }
     }
+
     $('.course-filter-pop-wrap').hide();
-    if(!topicInit) {
-      $("html, body").animate({ scrollTop: $('.course-catalog').offset().top - 240 }, 300);
+
+    if (!topicInit) {
+      $('html, body').animate({
+        scrollTop: $('.course-catalog').offset().top - 240
+      }, 300);
     }
   }
   
-  $(document).ready(function() {
+  $('.course-filter-pop-wrap').appendTo('body');
+  
+  $(function () {
     {% if request.query_dict.topic %}
       filterResults(true);
     {% endif %}
+
     $('.course-catalog').show();
     
-    $('.course-catalog-filter').click(function() {
+    $('.course-catalog-filter').click(function () {
       $('.course-filter-pop-wrap').css('display', 'flex');
     });
-    $('.course-filter-pop-close').click(function() {
+
+    $('.course-filter-pop-close').click(function () {
       $('.course-filter-pop-wrap').hide();
     });
-    $('.course-pop-filter-label').click(function() {
+
+    $('.course-pop-filter-label').click(function () {
       $('.course-pop-filter-label').removeClass('course-pop-filter-active');
       $(this).addClass('course-pop-filter-active');
       $('.course-pop-filter-choice-section').hide();
       $('#course-pop-' + $(this).text()).show();
     });
-    $('#course-filter-save').click(function() { filterResults(false) });
-    $('#course-filter-clear').click(function() {
-      $('.course-filter-pop-wrap input[type=checkbox]').prop( "checked", false );
+
+    $('#course-filter-save').click(function () {
+      filterResults(false);
+    });
+
+    $('#course-filter-clear').click(function () {
+      $('.course-filter-pop-wrap input[type=checkbox]').prop('checked', false);
       $('.course-card-wrap').show();
       $('.course-filter-pop-wrap').hide();
-      $("html, body").animate({ scrollTop: $('.course-catalog').offset().top - 240 }, 300);
+      $('html, body').animate({
+        scrollTop: $('.course-catalog').offset().top - 240
+      }, 300);
     });
   });
 </script>

@@ -229,17 +229,10 @@ const initializeCheckout = async () => {
 const refreshCheckout = async () => {
   const cookie = IIN.cookies.getCookieString('shopifyCart');
   const currentCheckout = await IINShopifyClient.checkout.fetch(cookie);
-
-  // TODO: remove
-  console.log('refreshCheckout cookie:', cookie);
-
   let refreshedCheckout = currentCheckout;
 
   if (!currentCheckout || currentCheckout.completedAt) {
     refreshedCheckout = await initializeCheckout();
-
-    // TODO: remove
-    console.log('refreshCheckout refreshedCheckout:', refreshedCheckout);
   }
 
   return refreshedCheckout;
@@ -258,10 +251,6 @@ $(() => {
  */ 
 window.addEventListener('pageshow', (event) => {
   const navigationType = performance.getEntriesByType('navigation')[0].type;
-
-  // TODO: remove
-  console.log('pageshow navigationType:', navigationType);
-  console.log(`pageshow event.persisted: ${event.persisted}`);
 
   if (!event.persisted && navigationType !== 'back_forward') {
     return;

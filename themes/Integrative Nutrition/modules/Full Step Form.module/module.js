@@ -16,18 +16,15 @@ $(() => {
   }
 
   function submitHelpMeChoose() {
-    const firstname = $('input[name="firstname"]').val();
-    const lastname = $('input[name="lastname"]').val();
-    const email = $('input[name="email"]').val();
-    const checkboxes = document.getElementsByName('vertical_hs');
-    let vertical = '';
+    const verticalInputs = document.getElementsByName('vertical_hs');
+    const verticalValues = [];
 
-    for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        vertical += `${checkboxes[i].value};`;
+    for (let i = 0; i < verticalInputs.length; i++) {
+      if (verticalInputs[i].checked) {
+        verticalValues.push(verticalInputs[i].value);
       }
     }
-    
+
     // Your HubSpot portal ID and form GUID
     const portalId = '23273748';
     const formId = '560a7049-23c2-4464-b831-4d277001c85e';
@@ -40,19 +37,19 @@ $(() => {
       fields: [
         {
           name: 'email',
-          value: email
+          value: $('input[name="email"]').val()
         },
         {
           name: 'firstname',
-          value: firstname
+          value: $('input[name="firstname"]').val()
         },
         {
           name: 'lastname',
-          value: lastname
+          value: $('input[name="lastname"]').val()
         },
         {
           name: 'vertical_hs',
-          value: vertical
+          value: verticalValues.join(';')
         },
         // ...other form fields here
       ],
@@ -63,7 +60,7 @@ $(() => {
         pageName: document.title
       },
     };
-    
+
     // Submit the form using Fetch API
     fetch(endpoint, {
       method: 'POST',
@@ -75,7 +72,7 @@ $(() => {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response data
-      // console.log(data);
+      console.log('Full Step Form JS response data:', data);
     })
     .catch((error) => {
       // Handle the error
@@ -108,7 +105,10 @@ $(() => {
   });
 
   setTimeout(() => {
-    if ($('.help-me-choose-section .full-step-active input[name=firstname]').length || $('.help-me-choose-section .full-step-active input[name=email]').length) {
+    if (
+      $('.help-me-choose-section .full-step-active input[name=firstname]').length ||
+      $('.help-me-choose-section .full-step-active input[name=email]').length
+    ) {
       $('.full-step-skip').hide();
     } else {
       $('.full-step-skip').show();

@@ -1,15 +1,15 @@
 <div class="full-step-alt-nav">
   <div class="container">
-      {% if module.header_image.src %}
+    {% if module.header_image.src %}
       {% set sizeAttrs = 'width="{{ module.header_image.width }}" height="{{ module.header_image.height }}"' %}
       {% if module.header_image.size_type == 'auto' %}
-      {% set sizeAttrs = 'width="{{ module.header_image.width }}" height="{{ module.header_image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% set sizeAttrs = 'width="{{ module.header_image.width }}" height="{{ module.header_image.height }}" style="max-width: 100%; height: auto;"' %}
       {% elif module.header_image.size_type == 'auto_custom_max' %}
-      {% set sizeAttrs = 'width="{{ module.header_image.max_width }}" height="{{ module.header_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% set sizeAttrs = 'width="{{ module.header_image.max_width }}" height="{{ module.header_image.max_height }}" style="max-width: 100%; height: auto;"' %}
       {% endif %}
       {% set loadingAttr = module.header_image.loading != 'disabled' ? 'loading="{{ module.header_image.loading }}"' : '' %}
       <img src="{{ module.header_image.src }}" alt="{{ module.header_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-      {% endif %}
+    {% endif %}
   </div>
 </div>
 
@@ -19,9 +19,7 @@
   </div>
   <div class="container">
     <div class="full-step-form-start">
-      <div>
-        {{ module.starting_text }}
-      </div>
+      <div>{{ module.starting_text }}</div>
       <div class="full-step-buttons">
         <div class="full-step-start hs-button jd-request-btn jd-request-btn-inverse">Get Started</div>
       </div>
@@ -37,117 +35,164 @@
   </div>
 </div>
 
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script charset="utf-8" src="//js.hsforms.net/forms/embed/v2.js"></script>
+
 <script>
   $('.deal-bar').hide();
   $('.static-body').addClass('remove-top-padding');
+
   hbspt.forms.create({
-    region: "na1",
-    portalId: "23273748",
-    formId: "{{ module.form_field.form_id }}",
-    target: ".full-step-form",
-    onFormReady: function() {
+    region: 'na1',
+    portalId: '23273748',
+    formId: '{{ module.form_field.form_id }}',
+    target: '.full-step-form',
+    onFormReady: function () {
       const bgImages = [];
+
       {% for item in module.background_image %}
-        bgImages.push('{{item.src}}');
+        bgImages.push('{{ item.src }}');
       {% endfor %}
-      $('.full-step-form fieldset').first().addClass('full-step-active');
-       let stepCount = $('.full-step-form fieldset').length;
+
+      const stepCount = $('.full-step-form fieldset').length;
+
       $('.full-step-form-slide-count').text('1/' + stepCount);
-      var hasNextStep = true;
-      var hasStarted = false;
-      var isPopping = false;
+      $('.full-step-form fieldset').first().addClass('full-step-active');
+
+      let hasNextStep = true;
+      let hasStarted = false;
+      let isPopping = false;
+
       function nextStep(skip) {
-        if(isPopping) {
+        if (isPopping) {
           return;
         }
-        var currentStep = $('.full-step-form fieldset.full-step-active');
-        if(skip) {
-          currentStep.find('input').each(function() {
+
+        const $currentStep = $('.full-step-form fieldset.full-step-active');
+
+        if (skip) {
+          $currentStep.find('input').each(function () {
             $(this).val('').change();
             $(this).prop('checked', false);
           });
         }
-        var missingRequired = false;
-        currentStep.find('input[required]').each(function() {
-          if(!$(this).val()) {
+
+        let missingRequired = false;
+
+        $currentStep.find('input[required]').each(function () {
+          if (!$(this).val()) {
             missingRequired = true;
           }
         });
-        if(missingRequired) {
+
+        if (missingRequired) {
           console.log('missing required');
           return;
         }
-        if(currentStep.find('.invalid').length > 0) {
+
+        if ($currentStep.find('.invalid').length > 0) {
           console.log('error');
           return;
         }
-        var nextIndex = currentStep.next().index();
-        if(nextIndex+1 == {{ module.step_to_show_pop }}) {
-           isPopping = true;
-           try {
-             var name = $('.full-step-form input[name=firstname]').val().trim();
-             $('.full-step-pop-content').html($('.full-step-pop-content').html().replace(/FIRST_NAME/g, name))
-           } catch(e) {  }
+
+        const nextIndex = $currentStep.next().index();
+
+        if (nextIndex + 1 === {{ module.step_to_show_pop }}) {
+          isPopping = true;
+
+          try {
+            const name = $('.full-step-form input[name=firstname]').val().trim();
+
+            $('.full-step-pop-content').html($('.full-step-pop-content').html().replace(/FIRST_NAME/g, name))
+          } catch(e) {
+            console.log(e);
+          }
            
           $('.full-step-pop').show();
           $('.full-step-alt-nav').show();
           $('#jd-mobile-menu').hide();
           $('.jd-header-wrap').hide();
-          setTimeout(function() {
+
+          setTimeout(function () {
             $('.full-step-pop').hide();
             $('.full-step-form-outer').hide();
-            $('.full-step-form-outer').slideDown({ duration: 400, easing: 'linear' });
+
+            $('.full-step-form-outer').slideDown({
+              duration: 400,
+              easing: 'linear'
+            });
+
             isPopping = false;
           }, {{ module.pop_message_duration_ms }});
         }
-        var bgImage = bgImages[nextIndex+1];
-        if(!bgImage) {
-          bgImage = bgImages[bgImages.length-1];
+
+        let bgImage = bgImages[nextIndex + 1];
+
+        if (!bgImage) {
+          bgImage = bgImages[bgImages.length - 1];
         }
+
         $('.full-step-form-wrap').css('background', 'url("' + bgImage + '")');
         $('.full-step-form-outer').hide();
-        currentStep.removeClass('full-step-active');
-        currentStep.next().addClass('full-step-active');
-        if(!isPopping) {
-          $('.full-step-form-outer').slideDown({ duration: 400, easing: 'linear' });
+        $currentStep.removeClass('full-step-active');
+        $currentStep.next().addClass('full-step-active');
+
+        if (!isPopping) {
+          $('.full-step-form-outer').slideDown({
+            duration: 400,
+            easing: 'linear'
+          });
         } else {
           $('.full-step-form-outer').show();
         }
-        $('.full-step-form-slide-count').text(nextIndex+1 + '/' + $('.full-step-form fieldset').length);
-        if(!currentStep.next().next().is('fieldset')) {
+
+        $('.full-step-form-slide-count').text(nextIndex + 1 + '/' + $('.full-step-form fieldset').length);
+
+        if (!$currentStep.next().next().is('fieldset')) {
           hasNextStep = false;
           $('.full-step-buttons').hide();
           $('.full-step-form .hs-submit').show();
         }
       }
-      $('.full-step-buttons .full-step-next').click(function() {
+
+      $('.full-step-buttons .full-step-next').click(function () {
         nextStep(false)
       });
-      $('.full-step-buttons .full-step-skip').click(function() {
+
+      $('.full-step-buttons .full-step-skip').click(function () {
         nextStep(true)
       });
+
       $(document).keypress(function (e) {
-        var key = e.which;
-        if(key == 13 && hasNextStep && hasStarted) {
+        const key = e.which;
+
+        if (key === 13 && hasNextStep && hasStarted) {
           e.preventDefault();
           nextStep();
         }
-      });  
-      $('.full-step-start').click(function() {
-        var bgImage = bgImages[1];
-        if(!bgImage) {
-          bgImage = bgImages[bgImages.length-1];
+      });
+
+      $('.full-step-start').click(function () {
+        let bgImage = bgImages[1];
+
+        if (!bgImage) {
+          bgImage = bgImages[bgImages.length - 1];
         }
+
         $('.full-step-form-wrap').css('background', 'url("' + bgImage + '")');
         $('.full-step-form-start').hide();
-        $('.full-step-form-outer').slideDown({ duration: 400, easing: 'linear' });
+
+        $('.full-step-form-outer').slideDown({
+          duration: 400,
+          easing: 'linear'
+        });
+
         hasStarted = true;
       });
     },
-    onFormSubmitted: function() {
+    onFormSubmitted: function () {
       console.log('submitted');
-      setTimeout(function() {
+
+      setTimeout(function () {
         window.location.href = '{{ module.redirect_url }}';
       }, 3000);
     }
