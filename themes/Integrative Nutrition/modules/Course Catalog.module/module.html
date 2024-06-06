@@ -101,8 +101,10 @@
 <script>
   const rowsData = {{ rows|tojson }}.objects;
 
-  for (let index = 0; index < rowsData.length; ++index){
-    rowsData[index].is_visiable = true;
+  if (rowsData?.length) {
+    for (let index = 0; index < rowsData.length; ++index){
+      rowsData[index].is_visiable = true;
+    }
   }
 </script>
 {% for row in rows %}
