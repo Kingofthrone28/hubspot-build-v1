@@ -25,8 +25,19 @@
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
     {{ standard_header_includes }}
+
     <!-- Needle Embed Code -->
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
+
+    <!-- Weglot Init -->
+    <link rel="alternate" hreflang="en" href="https://course.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.course.integrativenutrition.com">
+    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+    <link rel="alternate" hreflang="en" href="https://www.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    {{ require_js(get_asset_url('../../js/translation.js')) }}
   </head>
   <body class="page-{{ content.slug }}">
     <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
@@ -56,44 +67,5 @@
     {{ require_js(get_asset_url("/Integrative Nutrition/js/circle_of_life.js")) }}
     {{ require_js(get_asset_url("/Integrative Nutrition/js/bootstrap-slider.js")) }}
     {{ require_js(get_asset_url("/Integrative Nutrition/js/jquery-ui.min.js")) }}
-    
-    
-    <!-- Weglot Init -->
-    <link rel="alternate" hreflang="en" href="https://course.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.course.integrativenutrition.com">
-    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
-    <link rel="alternate" hreflang="en" href="https://www.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
-    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-    <script>
-      const { hostname } = window.location;
-
-      // API keys 
-      const courseKey = "wg_8ba62aec1c27a90846ee8a15c4acf00d8";
-      const infoKey = "wg_9a4056032062028e8fdd8b0aa75aae418";
-      const wwwKey = "wg_22f91c0430456d0d120ff3f524319edf0";
-        
-      // Object containing all Weglot API keys, including "es" subdomains
-      const weglotApiKeys = {
-       'info': infoKey,
-       'es.info': infoKey, 
-       'course': courseKey,
-       'es.course': courseKey, 
-       'www': wwwKey 
-      };
-        
-      // Use array destructuring and join to handle subdomains like "es.info" or "es.course"
-      const subdomains = hostname.split('.').slice(0, -2).join('.'); 
-    
-      // Determine the correct Weglot API key based on the subdomain(s)
-      // Use default key if subdomain is not found
-      const weglotApiKey = weglotApiKeys[subdomains] || weglotApiKeys['www']; 
-    
-      // Initialize Weglot with the determined API key
-      Weglot.initialize({
-        api_key: weglotApiKey
-      });
-    </script>
   </body>
 </html>

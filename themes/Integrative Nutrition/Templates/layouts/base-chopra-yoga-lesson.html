@@ -28,36 +28,23 @@
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
     {{ standard_header_includes }}
+
     <!-- Needle Embed Code -->
-    
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
-    <!-- Weglot Init INFO -->
-    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+
+    <!-- Weglot Init www -->
+    <link rel="alternate" hreflang="en" href="https://wwww.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
+
     {% if not is_hubspot_user %}
     <!-- Weglot Init -->
     <link rel="alternate" hreflang="en" href="https://course.integrativenutrition.com">
     <link rel="alternate" hreflang="es" href="https://es.course.integrativenutrition.com">
     <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
     <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
-    <link rel="alternate" hreflang="en" href="https://www.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
-    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-    <script>
-      var weglotApiKey = "wg_22f91c0430456d0d120ff3f524319edf0";
-      var hostname = window.location.hostname;
-      var infoIIN = 'info.integrativenutrition.com';
-      var courseIIN = 'course.integrativenutrition.com';
-      if (hostname === infoIIN) {
-        weglotApiKey = "wg_9a4056032062028e8fdd8b0aa75aae418";
-      } 
-      if (hostname === courseIIN) {
-        weglotApiKey = "wg_8ba62aec1c27a90846ee8a15c4acf00d8";
-      } 
-      Weglot.initialize({
-        api_key: weglotApiKey
-      });
-    </script>
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    {{ require_js(get_asset_url('../../js/translation.js')) }}
+
     <link type="text/css" rel="stylesheet" href="https://course.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/icomoon.css">
     <script type="text/javascript" src="https://course.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/player-0.0.11.min.js"></script>
     <script type="text/javascript" src="https://course.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/lzwcompress.js"></script>
@@ -126,7 +113,6 @@
         window.__loadRemoteEntry = __loadRemoteEntry
       })()
     </script>
-
     {% endif %}
   </head>
   <body>
