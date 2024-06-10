@@ -1,0 +1,608 @@
+{% import './tools/_macros.css' %}
+
+{## Table of contents
+
+  1. Variables
+    1a. Containers
+    1b. Colors
+    1c. Typography
+    1d. Buttons
+    1e. Forms
+    1f. Tables
+    1g. Site header
+    1h. Site footer
+  2. Containers / Grid / DnD Areas
+  3. Typography
+  4. Buttons
+  5. Forms
+  6. Tables
+  7. Site header
+  8. Site footer
+  9. Blog
+  10. System pages
+  11. Modules
+
+##}
+
+{###########################################################################}
+{############################   1. Variables   #############################}
+{###########################################################################}
+
+/* 1a. Containers */
+
+{% set container_width = theme.spacing.max_width ~ 'px' %}
+{% set dnd_section_padding = theme.spacing.vertical_spacing ~ 'px ' ~ '20px' %}
+
+/* 1b. Colors */
+
+{% set primary_color = theme.global_colors.primary_color.color  %}
+{% set secondary_color = theme.global_colors.secondary_color.color %}
+
+/* 1c. Typography */
+
+{% set primary_font = theme.global_fonts.primary_font %}
+{% set secondary_font = theme.global_fonts.secondary_font %}
+
+{% set body_font = theme.typography.body_text %}
+
+{% set heading_one = theme.typography.heading_one %}
+{% set heading_two = theme.typography.heading_two %}
+{% set heading_three = theme.typography.heading_three %}
+{% set heading_four = theme.typography.heading_four %}
+{% set heading_five = theme.typography.heading_five %}
+{% set heading_six = theme.typography.heading_six %}
+
+{% set anchor_font_color = theme.typography.link_color.color %}
+
+/* 1d. Buttons */
+
+{% set button_bg_color = color(theme.buttons.background_color) %}
+{% set button_font_color = theme.buttons.text_color.color %}
+{% set button_border = theme.buttons.border_width ~ 'px solid ' ~ theme.buttons.border_color.color %}
+{% set button_corner_radius = theme.buttons.border_radius ~ 'px' %}
+{% set button_spacing = theme.buttons.vertical_padding ~ 'px' ~ ' ' ~ theme.buttons.horizontal_padding ~ 'px' %}
+
+/* 1e. Forms */
+
+{% set form_title_bg_color = color(theme.forms.header_background_color) %}
+{% set form_title_font_color = theme.forms.header_text_color.color %}
+
+{% set form_label_font_color = theme.forms.label_color.color %}
+{% set form_help_text_font_color = theme.forms.help_text_color.color %}
+
+{% set form_input_border_color = theme.forms.field_border_color.color %}
+{% set form_input_focus_border_color = theme.forms.field_focus_border_color.color %}
+
+/* 1f. Tables */
+
+{% set table_head_bg_color = color(theme.tables.header_background_color) %}
+{% set table_head_font_color = theme.tables.header_text_color.color %}
+
+{% set table_bg_color = color(theme.tables.body_background_color) %}
+{% set table_font_color = theme.tables.body_text_color.color %}
+{% set table_border_color = theme.tables.border_color.color %}
+
+{% set table_footer_bg_color = color(theme.tables.footer_background_color) %}
+{% set table_footer_font_color = theme.tables.footer_text_color.color %}
+
+/* 1g. Site header */
+
+{% set header_bg_color = color(theme.header.background_color) %}
+{% set header_nav_link_color = theme.header.menu_link_color.color %}
+{% set header_child_nav_border_color = theme.header.child_menu_border_color.color %}
+
+/* 1h. Site footer */
+
+{% set footer_bg_color = color(theme.footer.background_color) %}
+{% set footer_font_color = theme.footer.text_color.color %}
+
+.hero-section .dnd-column { text-shadow: 2px 2px 2px rgba({{  theme.spacing.overlay_color.color|convert_rgb }}, {{  theme.spacing.overlay_color.opacity / 100 }}); }
+.hero-section div[class*="background-color"] * { text-shadow: none; }
+.hero-section:after { content: '';display:block;position: absolute;z-index: 2;top:0;bottom:0;left:0;right:0;background: rgba({{  theme.spacing.overlay_color.color|convert_rgb }}, {{  theme.spacing.overlay_color.opacity / 100 }});background: linear-gradient(180deg, rgba({{  theme.spacing.overlay_color.color|convert_rgb }},{{  theme.spacing.overlay_color.opacity / 100 }}) 50%, rgba({{  theme.spacing.overlay_color.color|convert_rgb }},{{  theme.spacing.overlay_color.opacity / 300 }}) 100%); }
+.hero-section > .row-fluid { position: relative;z-index: 3; }
+
+{###########################################################################}
+{###########################   3. Typography   #############################}
+{###########################################################################}
+
+html {
+  font-size: {{ body_font.size ~ body_font.size_unit }};
+}
+
+body {
+  {{ body_font.style }};
+  color: {{ body_font.color }};
+}
+
+body h1, body h2, body h3, body h4 * { font-family: 'JuniusX', Cardo, Arial; }
+@font-face { 
+  font-family: 'JuniusX-Bold'; 
+  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Bold.ttf') format('truetype');
+}
+
+@font-face { 
+  font-family: 'JuniusX-Regular'; 
+  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Regular.ttf') format('truetype');
+}
+
+@font-face { 
+  font-family: 'JuniusX-Medium'; 
+  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Medium.ttf') format('truetype');
+}
+
+@font-face { 
+  font-family: 'JuniusX-Light'; 
+  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Light.ttf') format('truetype');
+}
+
+@font-face { 
+  font-family: 'JuniusX-Semibold'; 
+  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Semibold.ttf') format('truetype');
+}
+
+/* Paragraphs */
+
+p {
+  {{ body_font.style }};
+}
+
+/* Anchors */
+
+a {
+  color: {{ anchor_font_color }};
+}
+
+a:hover,
+a:focus {
+  color: {{ theme.global_colors.primary_color.color }};
+}
+
+a:active {
+  color: {{ color_variant(anchor_font_color, 40) }};
+}
+
+/* Headings */
+
+h1 {
+  {{ heading_one.style }};
+  color: {{ heading_one.color }};
+  font-size: {{ heading_one.size ~ heading_one.size_unit }};
+  line-height: 1.2em;
+  {% if theme.typography.h1_transform %}text-transform: uppercase;{% endif %}
+}
+.single-header h1 { font-size: {{ heading_two.size ~ heading_two.size_unit }}; }
+
+h2 {
+  {{ heading_two.style }};
+  color: {{ heading_two.color }};
+  font-size: {{ heading_two.size ~ heading_two.size_unit }};
+  line-height: 1.2em;
+  {% if theme.typography.h2_transform %}text-transform: uppercase;{% endif %}
+}
+
+h3 {
+  {{ heading_three.style }};
+  color: {{ heading_three.color }};
+  font-size: {{ heading_three.size ~ heading_three.size_unit }};
+  line-height: 1.2em;
+  margin-top: 0;
+  {% if theme.typography.h3_transform %}text-transform: uppercase;{% endif %}
+}
+
+h4 {
+  {{ heading_four.style }};
+  color: {{ heading_four.color }};
+  font-size: {{ heading_four.size ~ heading_four.size_unit }};
+  line-height: 1.2em;
+  {% if theme.typography.h4_transform %}text-transform: uppercase;{% endif %}
+}
+
+h5 {
+  {{ heading_five.style }};
+  color: {{ heading_five.color }};
+  font-size: {{ heading_five.size ~ heading_five.size_unit }};
+  {% if theme.typography.h5_transform %}text-transform: uppercase;{% endif %}
+}
+
+h6 {
+  {{ heading_six.style }};
+  color: {{ heading_six.color }};
+  font-size: {{ heading_six.size ~ heading_six.size_unit }};
+  {% if theme.typography.h6_transform %}text-transform: uppercase;{% endif %}
+}
+.size-small { font-size: {{ body_font.size ~ body_font.size_unit }}; }
+
+/* Blockquote */
+
+blockquote {
+  border-left-color: {{ secondary_color }};
+}
+
+@media (max-width: 767px) {
+
+  h1 {
+    font-size: {{ ((heading_one.size / 2) + (body_font.size / 2)) ~ heading_one.size_unit }};
+    line-height: 1.2em;
+  }
+  .single-header h1 { font-size: {{ ((heading_two.size / 2) + (body_font.size / 2)) ~ heading_two.size_unit }}; }
+
+  h2 {
+    font-size: {{ ((heading_two.size / 2) + (body_font.size / 2)) ~ heading_two.size_unit }};
+    line-height: 1.2em;
+  }
+
+  h3 {
+    font-size: {{ ((heading_three.size / 2) + (body_font.size / 2)) ~ heading_three.size_unit }};
+    line-height: 1.2em;
+  }
+
+  h4 {
+    font-size: {{ ((heading_four.size / 2) + (body_font.size / 2)) ~ heading_four.size_unit }};
+    line-height: 1.2em;
+  }
+}
+
+{###########################################################################}
+{############################   4. Buttons   ###############################}
+{###########################################################################}
+
+.dnd-section button,
+.dnd-section .button, .dnd-section .hs-button, .menu-wrapper .hs-button {
+  display: inline-block;
+  text-align: center;
+  max-width: 350px;
+  text-decoration: none;
+  background: {{ button_bg_color }};
+  border: {{ button_border }};
+  border-radius: {{ button_corner_radius }};
+  color: {{ button_font_color }};
+  padding: {{ button_spacing }};
+  font-family: {{ primary_font.font }};
+  /*
+  box-shadow: {% if theme.buttons.gr_color.color %}rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 0 0 10px -10px inset{% endif %};
+  */
+  text-shadow: none;
+}
+.dnd-section .span4 button, .dnd-section .span4 .button, .dnd-section .span4 .hs-button, .dnd-section .span3 button, .dnd-section .span3 .button, .dnd-section .span3 .hs-button, .dnd-section .span2 button, .dnd-section .span2 .button, .dnd-section .span2 .hs-button, .dnd-section .span1 button, .dnd-section .span1 .button, .dnd-section .span1 .hs-button { max-width: 100%; }
+
+.dnd-section button:hover,
+.menu-wrapper .hs-button:hover,
+.dnd-section button:focus,
+.dnd-section .button:hover,
+.dnd-section .button:focus,
+.dnd-section .hs-button:hover,
+.dnd-section .hs-button:focus,
+.slick-active button {
+  text-decoration: none;
+  color: {{ theme.buttons.h_text_color.color }} !important;
+  /*
+  box-shadow: {% if theme.buttons.gr_color.color %}rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 350px 0 10px -10px inset{% endif %};
+  */
+  background: {{ theme.buttons.gr_color.color }};
+}
+.dnd-section button svg,
+.dnd-section button svg,
+.dnd-section .button svg,
+.dnd-section .button svg,
+.dnd-section .hs-button svg,
+.dnd-section .hs-button svg { fill: {{ button_font_color }}; }
+.dnd-section button:hover svg,
+.dnd-section button:focus svg,
+.dnd-section .button:hover svg,
+.dnd-section .button:focus svg,
+.dnd-section .hs-button:hover svg,
+.dnd-section .hs-button:focus svg,
+.slick-active button svg { fill: {{ theme.buttons.h_text_color.color }} !important; }
+
+body .hs-button.light-button, .dnd-section .button-light form input[type=submit], .dnd-section .button-light form .hs-button, .menu-wrapper .button-light {
+  display: inline-block;
+  text-align: center;
+  max-width: 350px;
+  text-decoration: none;
+  background:  {{ theme.buttons.light_buttons.background_color.color }};
+  border: {{ theme.buttons.light_buttons.border_width ~ 'px solid ' ~ theme.buttons.light_buttons.border_color.color }};
+  border-radius: {{ theme.buttons.light_buttons.border_radius ~ 'px' }};
+  color: {{ theme.buttons.light_buttons.text_color.color }};
+  padding: {{ button_spacing }};
+  font-family: {{ primary_font.font }};
+  /*
+  box-shadow: {% if theme.buttons.light_buttons.gr_color.color %}rgba({{ theme.buttons.light_buttons.gr_color.color|convert_rgb }},1) 0 0 10px -10px inset{% endif %};
+  */
+}
+
+body .hs-button.light-button:hover, .menu-wrapper .button-light:hover,
+body .hs-button.light-button:focus, .dnd-section .button-light form input[type=submit]:hover, .dnd-section .button-light form .hs-button:hover {
+  text-decoration: none;
+  color: {{ theme.buttons.light_buttons.h_text_color.color }} !important;
+  /*
+  box-shadow: {% if theme.buttons.light_buttons.gr_color.color %}rgba({{ theme.buttons.light_buttons.gr_color.color|convert_rgb }},1) 350px 0 10px -10px inset{% endif %};
+  */
+  background: {{theme.buttons.light_buttons.gr_color.color}};
+}
+
+body .hs-button.light-button:active {
+  background-color: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
+  border-color: {{ theme.buttons.light_buttons.border_color.color }};
+  color: {{ button_font_color }};
+}
+
+
+{###########################################################################}
+{#############################   6. Tables   ###############################}
+{###########################################################################}
+
+.dnd-section table {
+  background-color: {{ table_bg_color }};
+  border-color: {{ table_border_color }};
+  max-width: 100%;
+}
+
+.dnd-section th,
+.dnd-section td {
+  border: none;
+  color: {{ table_font_color }};
+}
+
+.dnd-section thead th,
+.dnd-section thead td {
+  background-color: {{ table_head_bg_color }};
+  border: {{ table_head_bg_color }};
+  color: {{ table_head_font_color }};
+}
+
+.dnd-section tfoot td {
+  background-color: {{ table_footer_bg_color }};
+  color: {{ table_footer_font_color }};
+}
+
+.dnd-section tbody + tbody {
+  border-top-color: {{ table_border_color }};
+}
+
+.dnd-section table { border: none;border-radius: {{ button_corner_radius }};overflow: hidden;background: #f5f5f5; }
+.dnd-section thead th, .dnd-section thead td { border-collapse: collapse; }
+.dnd-section thead th:nth-child(1) { border-radius: {{ button_corner_radius }} 0 0 0; }
+.dnd-section thead th:nth-last-child(1) { border-radius: 0 {{ button_corner_radius }} 0 0 ; }
+.dnd-section tbody { border: none; }
+.dnd-section tbody tr { border-bottom: 1px solid {{ table_border_color }}; }
+.dnd-section tbody tr:nth-last-child(1) { border-bottom: none; }
+.dnd-section tbody tr:hover { background: #cfd9e8; }
+
+{###########################################################################}
+{###########################   7. Site header   ############################}
+{###########################################################################}
+
+.header {
+  background-color: {{ header_bg_color }};
+}
+
+body .navigation-primary a,
+.header__logo .logo-company-name,
+.header__language-switcher-label-current,
+.header__language-switcher .lang_list_class li a {
+  color: {{ header_nav_link_color }};
+  font-family: {{ body_font.font }};
+}
+
+body .navigation-primary a:hover,
+body .navigation-primary a:focus,
+.header__language-switcher-label-current:hover,
+.header__language-switcher-label-current:focus,
+.header__language-switcher .lang_list_class li:hover a,
+.header__language-switcher .lang_list_class li a:focus {
+  color: {{ color_variant(header_nav_link_color, -40) }};
+}
+
+body .navigation-primary a:active,
+body .header__language-switcher-label-current:active,
+body .header__language-switcher .lang_list_class li a:active {
+  color: {{ color_variant(header_nav_link_color, 40) }};
+}
+
+body .navigation-primary .submenu.level-1 > li > a.active-item:after {
+  background-color: {{ primary_color }};
+}
+
+body .submenu.level-2,
+body .header__language-switcher .lang_list_class li {
+  background-color: {{ header_bg_color }};
+  border-color: {{ header_child_nav_border_color }};
+}
+html .header__language-switcher .lang_list_class { padding-top: 50px;border-bottom: 3px solid {{theme.global_colors.primary_color.color}};width: 100px; }
+html .lang_list_class:before { top: 34px;border: 8px solid transparent;border-bottom-color: white;margin-left: -8px; }
+html .lang_list_class:after { content: none; }
+html .header__language-switcher .lang_list_class li { border: none !important;background: white; }
+
+body .submenu.level-2 > li:first-child:before {
+  border-color: {{ header_child_nav_border_color }};
+}
+
+
+body .submenu.level-2 .menu-item .menu-link:hover,
+body .submenu.level-2 .menu-item .menu-link:focus,
+body .header__language-switcher .lang_list_class li:hover,
+body .submenu.level-2 > li:first-child:hover:before,
+body .submenu.level-2 > li:first-child.focus:before {
+  background-color: {{ header_bg_color }};
+}
+
+.header__language-switcher .lang_list_class.first-active::after {
+  border-bottom-color: {{ header_bg_color }};
+}
+
+.header__language-switcher-label-current,
+.header__language-switcher .lang_list_class li a {
+  font-family: {{ body_font.font }};
+}
+
+.header__language-switcher-label-current:after {
+  border-top-color: {{ header_nav_link_color }};
+}
+
+@media(max-width: 767px) {
+  .header__navigation {
+    background-color: {{ header_bg_color }};
+  }
+
+  .header__navigation-toggle svg,
+  .menu-arrow svg {
+    fill: {{ header_nav_link_color }};
+  }
+}
+
+{###########################################################################}
+{###########################   8. Site footer   ############################}
+{###########################################################################}
+
+.footer {
+  background-color: {{ footer_bg_color }};
+}
+
+/* Footer Content */
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6
+.footer p,
+.footer a,
+.footer div,
+.footer span {
+  color: {{ footer_font_color }};
+}
+
+{###########################################################################}
+{##############################   9. Blog   ################################}
+{###########################################################################}
+
+.blog-post__date {
+  border-color: {{ body_font.color }};
+}
+
+.blog-tag-filter__menu-link,
+.blog-post__tag-link,
+.blog-card__tag-link,
+.blog-post__author-name,
+.blog-card__title a {
+  color: {{ body_font.color }};
+}
+
+.blog-card__tag-link:hover,
+.blog-card__title a:hover,
+.blog-tag-filter__menu-link:hover,
+.blog-post__tag-link:hover,
+.blog-post__author-name:hover,
+.blog-card__tag-link:focus,
+.blog-card__title a:focus,
+.blog-tag-filter__menu-link:focus,
+.blog-post__tag-link:focus,
+.blog-post__author-name:focus {
+  color: {{ color_variant(body_font.color, -40) }};
+}
+
+.blog-card__tag-link:active,
+.blog-card__title a:active,
+.blog-tag-filter__menu-link:active,
+.blog-post__tag-link:active,
+.blog-post__author-name:active {
+  color: {{ color_variant(body_font.color, 40) }};
+}
+
+.blog-tag-filter__menu-link--active-item:after {
+  background-color: {{ primary_color }};
+}
+
+.blog-pagination__link {
+  color: {{ body_font.color }};
+}
+
+.blog-pagination__link--active:after,
+.blog-pagination__prev-link:after,
+.blog-pagination__next-link:after {
+  background-color: {{ primary_color }};
+}
+
+.blog-post__title {
+  {{ heading_two.style }};
+  color: {{ heading_two.color }};
+  font-size: {{ heading_two.size ~ heading_two.size_unit }};
+}
+
+.blog-post__author {
+  background-color: {{ secondary_color }};
+}
+
+#comments-listing .comment-reply-to {
+  color: {{ anchor_font_color }};
+}
+
+#comments-listing .comment-reply-to:hover,
+#comments-listing .comment-reply-to:focus {
+  color: {{ color_variant(anchor_font_color, -40) }};
+}
+
+#comments-listing .comment-reply-to:active {
+  color: {{ color_variant(anchor_font_color, 40) }};
+}
+
+{###########################################################################}
+{##########################   10. System pages   ###########################}
+{###########################################################################}
+
+
+
+{###########################################################################}
+{############################   11. Modules   ##############################}
+{###########################################################################}
+
+body .icon svg {
+  fill: {{ primary_color }};
+}
+
+body .tns-nav button.tns-nav-active {
+  background-color: {{ primary_color }};
+}
+
+body .tns-nav button:hover,
+body .tns-nav button:focus {
+  background-color: {{ primary_color }};
+}
+
+body .team-member__description {
+  background-color: {{ secondary_color }};
+}
+
+.mb-resource-filter .topic-list {
+  font-size: 14px!important; color: #707070;
+}
+
+
+
+{###########################################################################}
+{############################   Form contact ##############################}
+{###########################################################################}
+
+.dnd-section .hsForm_4a043b7e-cde8-4f0c-8bd9-35d78c377c04 .actions .large {
+ max-width:100% !important;
+}
+
+
+
+.map * {
+ height:500px !important;
+ min-height:394px !important;
+ max-height:394px !important;
+  
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .dnd-section table { width: auto !important; }
+ .hs_firstname #hs-form-4a043b7e-cde8-4f0c-8bd9-35d78c377c04_8d2743a0-4066-483c-b4cd-e71eb843216a  .form-columns-2 input {
+    margin-right: 0px !important;
+  }
+  
+}
+
+

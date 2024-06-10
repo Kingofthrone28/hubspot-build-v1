@@ -1,0 +1,33 @@
+:root {
+  /* IIN */
+  --color--bone: #F8F5F0;
+  --color--iin-red: #D72A25;
+  --color--melon: #ED8A72;
+  --color--midnight: #2D3841;
+  --color--olives: #818A5C;
+  --color--palo-santo: #EAE2D3;
+  --color--sage: #D3DDCC;
+  --color--sky: #C4E1E5;
+
+  /* Neutrals */
+  --color--black: #000;
+  --color--grey: #333;
+  --color--grey-2: #4F4F4F;
+  --color--grey-3: #828282;
+  --color--grey-4: #BDBDBD;
+  --color--grey-5: #E7E7E7;
+  --color--white: #FFF;
+
+  /* Chopra */
+  --color--earth: #23C369;
+  --color--fire: #F05A38;
+  --color--gold: #D99C64;
+  --color--midnight: #001432;
+  --color--midnight-light: #5F5F73;
+  --color--sand: #FBF2DE;
+  --color--sand-light: #FFFAF3;
+  --color--space: #0E394D;
+  --color--sunshine: #FFBE3C;
+  --color--sunshine-light: #FFE1AA;
+  --color--water: #3757B6;
+}

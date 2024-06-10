@@ -1,0 +1,7 @@
+/* Number in the variable name represents a multiplier for 0.25rem */
+:root {
+  --container--sm: 40rem;
+  --container--md: 48rem;
+  --container--lg: 64rem;
+  --container--xl: 80rem;
+}

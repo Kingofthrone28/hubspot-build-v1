@@ -1,0 +1,171 @@
+{% set iin_red = 'color: #cc0201;' %}
+
+html {
+  font-size: 24px;
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html body {
+  color: #494A52;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+html[lang^="ja"] body,
+html[lang^="zh"] body,
+html[lang^="ko"] body {
+  line-break: strict;
+  word-break: break-all;
+}
+
+.iin_red {
+  {{ iin_red }};
+}
+
+/* Paragraphs */
+
+p {
+  font-size: 1rem;
+  margin: 0 0 1.4rem;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Anchors */
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* Headings */
+@media (max-width: 767px) {
+  .entity-paragraphs-item.paragraphs-item-headline {
+   font-size: 40px;
+   line-height: auto!important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #494A52;
+  font-weight: 700;
+  margin: 0 0 1.4rem;
+}
+
+h1 {
+  font-size: 2.1rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.175rem;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+}
+
+/* Lists */
+
+ul,
+ol {
+  margin: 0 0 1.5rem;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin: 0;
+}
+
+ul.no-list {
+  list-style: none;
+}
+
+/* Code blocks */
+
+code {
+  vertical-align: bottom;
+}
+
+/* Blockquotes */
+
+blockquote {
+  border-left: 2px solid #A9A9A9;
+  margin: 0 0 1.4rem;
+  padding-left: 15px;
+}
+
+/* Horizontal rules */
+
+hr {
+  /*
+  background-color: #CCC;
+  */
+  border: none;
+  color: #CCC;
+  height: 1px;
+}
+
+/* Subscripts and superscripts */
+
+sup,
+sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Focus styles */
+
+:focus {
+  outline: none;
+  outline-color: transparent;
+}
+
+.disable-focus-styles :focus {
+  outline: none;
+}
