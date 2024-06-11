@@ -4,8 +4,6 @@
  */
 (() => {
   const weglotApiKeys = {
-    course: 'wg_8ba62aec1c27a90846ee8a15c4acf00d8',
-    info: 'wg_9a4056032062028e8fdd8b0aa75aae418',
     www: 'wg_22f91c0430456d0d120ff3f524319edf0'
   };
 
