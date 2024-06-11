@@ -52,7 +52,12 @@ html .dnd-section[class*="max-width-section-centering"] > .row-fluid {
 .hs_cos_wrapper_widget:not(.widget-type-rich_text) { height: auto; }
 .hs_cos_wrapper_widget.widget-type-linked_image { height: auto; }
 
-.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1), .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) > .row-fluid, .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module, .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module > div { height: 100%; }
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1),
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) > .row-fluid,
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module,
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module > div {
+  height: auto;
+}
 
 .responsive-space { padding-top: {{ theme.spacing.vertical_spacing / 2 }}px; }
 .full-space { padding-top: {{ theme.spacing.vertical_spacing }}px; }
