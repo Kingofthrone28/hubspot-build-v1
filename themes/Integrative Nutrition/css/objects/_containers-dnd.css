@@ -38,7 +38,7 @@ html .dnd-section[class*="max-width-section-centering"] > .row-fluid {
 .static-body .dnd-section:nth-child(1) { padding-top: {{ theme.spacing.vertical_spacing }}px !important; }
 {% endif %}
 
-.dnd-section .dnd-column { padding: 20px;opacity: 0; }
+.dnd-section .dnd-column { padding: 20px; opacity: 0;}
 .dnd-section .dnd-column .dnd-column { padding: 0px; }
 .dnd-section .dnd-column[class*="background-gradient"] { border-radius: {{ theme.spacing.border_radius }}px;padding: 20px;overflow: hidden;{% if theme.spacing.dropshadow %}box-shadow: 1px 1px 20px rgba(0,0,0, .15);{% endif %} }
 .dnd-section .dnd-column[class*="background-color"], .dnd-section .dnd-column .dnd-column[class*="background-color"], .dnd-section .dnd-column[class*="background-image"] { border-radius: {{ theme.spacing.border_radius }}px;padding: 20px;overflow: hidden;{% if theme.spacing.dropshadow %}box-shadow: 1px 1px 20px rgba(0,0,0, .15);{% endif %}backdrop-filter: blur(8px); }
@@ -49,10 +49,15 @@ html .dnd-section[class*="max-width-section-centering"] > .row-fluid {
 .dnd-section .dnd-column[class*="background-color"] > div:nth-last-child(1) { margin-top: auto; }
 
 .dnd-row > .row-fluid { display: flex; }
-.hs_cos_wrapper_widget:not(.widget-type-rich_text) { height: 100%; }
+.hs_cos_wrapper_widget:not(.widget-type-rich_text) { height: auto; }
 .hs_cos_wrapper_widget.widget-type-linked_image { height: auto; }
 
-.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1), .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) > .row-fluid, .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module, .body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module > div { height: 100%; }
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1),
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) > .row-fluid,
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module,
+.body-container-wrapper .dnd-column > .row-fluid-wrapper:nth-child(1).row-fluid-wrapper:nth-last-child(1) .dnd-module > div {
+  height: auto;
+}
 
 .responsive-space { padding-top: {{ theme.spacing.vertical_spacing / 2 }}px; }
 .full-space { padding-top: {{ theme.spacing.vertical_spacing }}px; }
