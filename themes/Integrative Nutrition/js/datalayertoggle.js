@@ -15,6 +15,12 @@ function renderAnalyticsDatalayerJS() {
       // DLTest - Setting a cookie and loading datalayer JS...
       document.cookie = "analyticstest=true;domain=.integrativenutrition.com";
     }
+    window.dataLayer = window.dataLayer || [];
+    // Requirement from GTM to indicate the preview mode to choose gtm bucket
+    window.dataLayer.unshift({
+        'env_name': 'preview'
+    });
+
     loadScript(datalayerurl);
     // DLTest - Successfully loaded datalayer JS...
   } else if (isTestingDisabled()) {
@@ -23,14 +29,18 @@ function renderAnalyticsDatalayerJS() {
   } else if (checkCookie("analyticstest")) { 
     //handles pages with no matching analytics-test param. example; prod or other preview urls.
     // DLTest - cookie already exists so loading datalayer JS...
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.unshift({
+      'env_name': 'preview'
+    });
     loadScript(datalayerurl);
     // DLTest - Successfully loaded datalayer JS...
-  }
+  } 
 }
 
 // Function to check if the current environment is a testing enabled
 function isTestingEnabled() {
-  return window.location.href.includes('?hs_preview=') && window.location.href.includes('analytics-test=true');
+  return window.location.href.includes('hs_preview=') && window.location.href.includes('analytics-test=true');
 }
 
 // Function to check if the current environment is a testing disabled
