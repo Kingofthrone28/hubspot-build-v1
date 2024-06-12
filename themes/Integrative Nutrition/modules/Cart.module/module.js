@@ -1519,7 +1519,7 @@
         }
       });
 
-      const agreementOrigin = 'https://course.integrativenutrition.com';
+      const agreementOrigin = 'https://www.integrativenutrition.com';
       const agreementURL = new URL(`${agreementOrigin}/${agreementPath}`);
 
       agreementURL.search =
