@@ -1,60 +1,60 @@
 
 .deal-bar {
-	background: #2d3841;
-	color: #fff;
-	padding: 5px 45px 5px 5px;
-	position: relative;
-	text-align: center;
+ background: #2d3841;
+ color: #fff;
+ padding: 5px 45px 5px 5px;
+ position: relative;
+ text-align: center;
 }
 
 .deal-bar-inner {
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+ align-items: center;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
 }
 
 .deal-bar-inner:hover {
-	text-decoration: underline;
+ text-decoration: underline;
 }
 
 .deal-bar-inner > * {
-	margin: 5px 5px 5px 0;
+ margin: 5px 5px 5px 0;
 }
 
 .deal-bar-time-text {
-	background: #fff;
-	color: #2d3841;
-	margin-right: 20px;
-	padding: 0px 20px;
+ background: #fff;
+ color: #2d3841;
+ margin-right: 20px;
+ padding: 0px 20px;
 }
 
 .deal-bar-btn {
-	border: 1px solid #fff;
-	border-radius: 5px;
-	color: #fff;
-	padding: 0 4px;
+ border: 1px solid #fff;
+ border-radius: 5px;
+ color: #fff;
+ padding: 0 4px;
 }
 
 .deal-bar-btn:hover {
-	color: #fff;
-	text-decoration: none;
+ color: #fff;
+ text-decoration: none;
 }
 
 .deal-bar-close {
-	height: 36px;
-	fill: #ccc;
-	position: absolute;
-	right: 5px;
-	top: 3px;
-	width: 36px;
+ height: 36px;
+ fill: #ccc;
+ position: absolute;
+ right: 5px;
+ top: 3px;
+ width: 36px;
 }
 
 @media (max-width: 767px) {
-	.deal-bar-inner {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+ .deal-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+ }
 }
