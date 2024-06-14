@@ -1,5 +1,5 @@
 .jd-blackout {
-  background: rgba(0, 0, 0, .5) !important;
+  background: var(--color--legacy--black--black--alpha-50) !important;
 }
 
 
@@ -9,11 +9,11 @@
 }
 
 .jd-cart-rec {
-  background: #fff;
-  border: 1px solid #E7E7E7;
+  background: var(--color--white);
+  border: 1px solid var(--color--grey-5);
   padding: 35px 30px 25px;
   border-radius: 16px;
-  box-shadow: 0px 4px 40px 0px rgba(0,0,0,.05);
+  box-shadow: 0px 4px 40px 0px var(--color--legacy--black--black--alpha-5);
 }
 
 .jd-cart-rec > div:first-child {
@@ -60,7 +60,7 @@ h3.jd-cart-rec-title a {
 }
 
 select.jd-cart-rec-select {
-  background: #fff !important;
+  background: var(--color--white) !important;
   margin-top: 5px !important;
   padding: 5px 15px !important;
   border-radius: 15px !important;
@@ -94,8 +94,8 @@ select.jd-cart-rec-select {
   overflow: hidden;
   display: flex;
   border-radius: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0px 4px 40px 0px rgba(0,0,0,.1);
+  border: 1px solid var(--color--legacy--white--gainsboro-1);
+  box-shadow: 0px 4px 40px 0px var(--color--legacy--black--black--alpha-10);
 }
 
 .jd-cart-rec-item-img {
@@ -167,7 +167,7 @@ select.jd-cart-rec-select {
   right: 0;
   padding: 6px 20px;
   font-size: 14px;
-  background: #C4E1E5;
+  background: var(--color-sky);
   border-radius: 12px 0 0 12px;
 }
 
@@ -198,7 +198,7 @@ select.jd-cart-rec-select {
 
 .jd-your-cart a {
   display: flex;
-  color: #2d3841;
+  color: var(--color--midnight);
   text-decoration: underline;
   font-weight: 600;
 }
@@ -215,7 +215,7 @@ select.jd-cart-rec-select {
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
-  border-bottom: 2px solid #2d3841;
+  border-bottom: 2px solid var(--color--midnight);
   margin: 20px 0 30px;
 }
 
@@ -241,7 +241,7 @@ select.jd-cart-rec-select {
   justify-content: space-between;
   margin-bottom: 30px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--color--legacy--grey--very-light-grey-1);
 }
 
 .jd-cart-item:last-child {
@@ -302,7 +302,7 @@ select.jd-cart-rec-select {
 .jd-cart-outer {
   display: flex;
   padding-bottom: 15px;
-  border-bottom: 2px solid #2d3841;
+  border-bottom: 2px solid var(--color--midnight);
 }
 
 .jd-cart-summary-outer {
@@ -311,7 +311,7 @@ select.jd-cart-rec-select {
 }
 
 .jd-cart-summary {
-  background: #fff;
+  background: var(--color--white);
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 15px;
@@ -319,7 +319,7 @@ select.jd-cart-rec-select {
 
 .jd-cart-summary > div:first-child {
   font-weight: 600;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid var(--color--legacy--grey--very-light-grey-1);
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
@@ -347,7 +347,7 @@ select.jd-cart-rec-select {
   transition: .3s all;
   opacity: 0;
   pointer-events: none;
-  background: rgba(0, 0, 0, .9);
+  background: var(--color--legacy--black--black--alpha-90);
   position: fixed;
   z-index: 99999999;
   top: 0;
@@ -372,7 +372,7 @@ select.jd-cart-rec-select {
   overflow: auto;
   padding: 50px 35px;
   border-radius: 5px;
-  background: #fff;
+  background: var(--color--white);
 }
 
 .jd-cart-enrollment-form h3 {
@@ -392,11 +392,11 @@ select.jd-cart-rec-select {
 .jd-cart-enrollment-form .hs-form-field input[type=email],
 .jd-cart-enrollment-form .hs-form-field input[type=tel],
 .jd-cart-enrollment-form .hs-form-field input[type=text] {
-  background: #F7F5F0;
+  background: var(--color--legacy--grey--alabaster);
 }
 
 .jd-cart-enrollment-form .hs-form-field select {
-  background: url('data: image/svg+xml;base64, PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat #F7F5F0 !important;
+  background: url('data: image/svg+xml;base64, PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat var(--color--legacy--grey--alabaster) !important;
   background-position: right 15px top 17px !important;
 }
 
@@ -411,7 +411,7 @@ select.jd-cart-rec-select {
 }
 
 .jd-cart-enrollment-form .hs-submit .actions .hs-button:hover {
-  background: #f04b45;
+  background: var(--color--legacy--red--cinnabar);
 }
 
 .jd-cart-enrollment-form .jd-cart-enrollment-form-btn {
@@ -440,7 +440,7 @@ select.jd-cart-rec-select {
 }
 
 .jd-add-pop-content-main .jd-cart-rec-item-program {
-  color: #828282;
+  color: var(--color--grey-3);
   letter-spacing: .1rem;
 }
 
@@ -516,8 +516,8 @@ html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn {
 }
 
 html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn.jd-shopify-option-selected {
-  background: #2d3841;
-  color: #fff !important;
+  background: var(--color--midnight);
+  color: var(--color--white) !important;
 }
 
 .jd-shopify-add-btn {
@@ -562,7 +562,7 @@ html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn.jd-shopify-op
     bottom: 0;
     left: 0;
     right: 0;
-    background: #f8f5f0;
+    background: var(--color--bone);
   }
 }
 

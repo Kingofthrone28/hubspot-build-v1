@@ -106,12 +106,12 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 }
 
 .hs-inline-edit .hs-video-placeholder {
-  background-color: #f5f8fa !important;
+  background-color: var(--color--legacy--blue--solitude-6) !important;
   border: 1px dashed #516f90 !important;
   display: block !important;
   font-size: 14px !important;
   margin: 2px 1px !important;
-  outline: 1px dashed #fff !important;
+  outline: 1px dashed var(--color--white) !important;
   text-align: center !important;
 }
 
@@ -124,7 +124,7 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 }
 
 p.hs-video-placeholder__title {
-  color: #7c98b6 !important;
+  color: var(--color--legacy--blue--wild-blue-yonder) !important;
   font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif !important;
   font-size: 14px !important;
   font-style: italic !important;
@@ -137,7 +137,7 @@ p.hs-video-placeholder__title {
 }
 
 p.hs-video-placeholder__description {
-  color: #7c98b6 !important;
+  color: var(--color--legacy--blue--wild-blue-yonder) !important;
   font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
@@ -183,8 +183,8 @@ p.hs-video-placeholder__description {
   left: 0;
   right: 0;
   cursor: pointer;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color--black);
+  background-color: var(--color--legacy--black--black--alpha-70);
   z-index: 1;
   height: 0;
   width: 0;
@@ -197,7 +197,7 @@ p.hs-video-placeholder__description {
 }
 .modal-dialog {
   border-radius: 6px;
-  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 11px 15px -7px var(--color--legacy--black--black--alpha-20), 0 24px 38px 3px var(--color--legacy--black--black--alpha-14), 0 9px 46px 8px var(--color--legacy--black--black--alpha-12);
   position: relative;
   width: 90%;
   max-height: 70%;
@@ -213,7 +213,7 @@ p.hs-video-placeholder__description {
   position: absolute;
   right: -20px;
   z-index: 999;
-  background-color: #fff;
+  background-color: var(--color--white);
   vertical-align: middle;
   border-radius: 50%;
   padding: 5px;

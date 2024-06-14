@@ -1,5 +1,5 @@
 .blog-posts .post-listing { margin-left: -10px;margin-right: -10px; }
-.blog-posts .mb-resource { border-top: 1px solid #d3d3d3; }
+.blog-posts .mb-resource { border-top: 1px solid var(--color--legacy--grey--light-grey); }
 .blog-posts .post-listing .column-1 { width: 100%; }
 .blog-posts .post-listing .column-2 { width: 50%; }
 .blog-posts .post-listing .column-3 { width: 33.33%; }

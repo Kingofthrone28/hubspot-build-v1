@@ -1,1 +1,1 @@
-.varient-wrapper { border: 1px solid #2d3841;padding: 10px;margin-bottom: 20px; }
+.varient-wrapper { border: 1px solid var(--color--midnight);padding: 10px;margin-bottom: 20px; }

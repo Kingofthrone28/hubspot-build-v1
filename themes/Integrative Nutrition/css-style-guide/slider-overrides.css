@@ -29,7 +29,7 @@
 }
 .dnd_area-row-1-max-width-section-centering.dnd-section.three-column-section .row-number-9 .hs-image-widget {
   position: relative;
-  box-shadow: 0 4px 12px rgba(29, 29, 29, 0.2);
+  box-shadow: 0 4px 12px var(--color--legacy--grey--nero--alpha-20);
   transition: -webkit-transform .3s;
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
@@ -124,7 +124,7 @@
 .image-slide-show .mb-scroller-outer .mb-scroller-wrapper .item .item-inner.box img {
   display: inline;
   position: relative;
-  box-shadow: 0 4px 12px rgba(29, 29, 29, 0.2);
+  box-shadow: 0 4px 12px var(--color--legacy--grey--nero--alpha-20);
   transition: -webkit-transform .3s;
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;

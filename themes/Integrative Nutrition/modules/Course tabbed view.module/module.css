@@ -19,13 +19,13 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      color: #2D3841;
+      color: var(--color--midnight);
       word-wrap: break-word;
-      background-color: #FFFFFF;
+      background-color: var(--color--white);
       background-clip: border-box;
-      border: 0 solid rgba(29, 29, 29, 0.175);
+      border: 0 solid var(--color--legacy--grey--nero--alpha-18);
       border-radius: 0.5rem;
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0px 4px 20px var(--color--legacy--black--black--alpha-8);
     }
 
     .hub-view-courses .hub-card {
@@ -36,11 +36,11 @@
 
     .hub-view-courses .hub-card .paragraphs-item-image {
       opacity: .1;
-      background: #6c757d
+      background: var(--color--legacy--blue--raven)
     }
 
     .hub-view-courses .hub-card .circle-img {
-      background: #e9ecef
+      background: var(--color--legacy--blue--solitude-2)
     }
 
     .hub-view-courses .hub-view-header {
@@ -71,16 +71,16 @@
       line-height: 40px;
       font-weight: 700;
       text-decoration: none;
-      background: #ced4da;
+      background: var(--color--legacy--blue--link-water-1);
       text-align: center;
-      color: #2d3841;
+      color: var(--color--midnight);
       white-space: nowrap;
       padding: 0 1.5em;
     }
 
     .hub-view-courses .hub-view-header .tab-items .tab-item a.active {
-      background: #2d3841;
-      color: #fff;
+      background: var(--color--midnight);
+      color: var(--color--white);
       text-align: center;
     }
 
@@ -129,7 +129,7 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover {
-      background-color: #f8f5f0
+      background-color: var(--color--bone)
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover .card-title {
@@ -161,7 +161,7 @@
       height: 100px;
       margin-left: auto;
       margin-right: auto;
-      background: #e9ecef;
+      background: var(--color--legacy--blue--solitude-2);
       position: absolute;
       left: 0;
       bottom: -20px;
@@ -177,8 +177,8 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .circle-img img {
-      border: 2px solid #fff;
-      background: #fff;
+      border: 2px solid var(--color--white);
+      background: var(--color--white);
       border-radius: 50%;
       max-width: 100%;
       height: auto
@@ -222,7 +222,7 @@
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card-body p {
       font-size: 14px;
-      color: #4f4f4f
+      color: var(--color--grey-2)
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .course-teaser-price {
@@ -233,7 +233,7 @@
     .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer {
       margin-top: 1rem;
       padding-top: .5rem;
-      border-top: 2px solid #e9ecef;
+      border-top: 2px solid var(--color--legacy--blue--solitude-2);
       clear: both
     }
 
@@ -243,7 +243,7 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer ul li {
-      color: #4f4f4f;
+      color: var(--color--grey-2);
       line-height: 30px;
       display: block;
       font-size: 12px
@@ -328,7 +328,7 @@
     }
 
     .card-badge {
-      background: #eae2d3;
+      background: var(--color--palo-santo);
       padding: 8px 16px;
       border-radius: 16px;
       font-weight: 700;

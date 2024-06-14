@@ -580,8 +580,8 @@
 </div>
 <style>
   .chopra .jd-header-top{display:none}
-  .jd-contact-pop.chopra { background: #fbf2de;}
-  .jd-contact-pop.chopra .jd-request-btn.hs-button {background: #001432;}
+  .jd-contact-pop.chopra { background: var(--color--sand);}
+  .jd-contact-pop.chopra .jd-request-btn.hs-button {background: var(--color--midnight--dark);}
   .menu-wrapper .hs-button { {% if module.style.nav.transform_uppercase %}text-transform: uppercase;{% endif %}{{ module.style.nav.font_field.style }};font-size: {{ module.style.nav.font_field.size }}{{module.style.nav.font_field.size_unit }}; }
   .mb-main-nav .hs-menu-depth-1 > a { {% if module.style.nav.transform_uppercase %}text-transform: uppercase;{% endif %}{% if module.style.nav.font_field.font %}font-family: {{ module.style.nav.font_field.font }}; {% endif %}{{ module.style.nav.font_field.style }}; color: {{ module.style.nav.font_field.color }}; font-size: {{ module.style.nav.font_field.size }}{{module.style.nav.font_field.size_unit }}; }
   .menu__link--active-link { border-bottom: 2px solid rgba({{ module.style.nav.active_link_highlight.color|convert_rgb }}, {{ module.style.nav.active_link_highlight.opacity / 100 }}); }

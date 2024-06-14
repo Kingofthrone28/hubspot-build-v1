@@ -1,8 +1,8 @@
 .hs-form__actions__submit {
-  background: #d72a25;
-  border: 0 solid #fff;
+  background: var(--color--iin-red);
+  border: 0 solid var(--color--white);
   border-radius: 100px;
-  color: #fff;
+  color: var(--color--white);
   display: inline-block;
   max-width: 350px;
   padding: 13px 55px;

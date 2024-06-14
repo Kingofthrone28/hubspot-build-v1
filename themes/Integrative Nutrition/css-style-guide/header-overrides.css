@@ -7,19 +7,19 @@
 }
 
 .jd-header-wrap .jd-nav-item > a {
-  color: #fff;
+  color: var(--color--white);
 }
 
 .jd-header-wrap .jd-nav-show > a {
-  color: #000;
+  color: var(--color--black);
 }
 
 .jd-header-wrap li.jd-nav-item:not(.jd-nav-show) > a::after {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="&%2310; /* background: black; */&%2310;"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125ZM1.875 10C1.875 5.51269 5.51269 1.875 10 1.875C14.4873 1.875 18.125 5.51269 18.125 10C18.125 14.4873 14.4873 18.125 10 18.125C5.51269 18.125 1.875 14.4873 1.875 10Z" fill="white"/%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M6.7694 8.59795C7.02597 8.36703 7.42115 8.38783 7.65206 8.6444L10 11.2532L12.3479 8.6444C12.5789 8.38783 12.974 8.36703 13.2306 8.59795C13.4872 8.82886 13.508 9.22404 13.2771 9.48061L10.4646 12.6056C10.346 12.7373 10.1772 12.8125 10 12.8125C9.82283 12.8125 9.65397 12.7373 9.53545 12.6056L6.72295 9.48061C6.49203 9.22404 6.51283 8.82886 6.7694 8.59795Z" fill="white"/%3E%3C/svg%3E')
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="&%2310; /* background: var(--color--black); */&%2310;"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M10 3.125C6.20304 3.125 3.125 6.20304 3.125 10C3.125 13.797 6.20304 16.875 10 16.875C13.797 16.875 16.875 13.797 16.875 10C16.875 6.20304 13.797 3.125 10 3.125ZM1.875 10C1.875 5.51269 5.51269 1.875 10 1.875C14.4873 1.875 18.125 5.51269 18.125 10C18.125 14.4873 14.4873 18.125 10 18.125C5.51269 18.125 1.875 14.4873 1.875 10Z" fill="white"/%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M6.7694 8.59795C7.02597 8.36703 7.42115 8.38783 7.65206 8.6444L10 11.2532L12.3479 8.6444C12.5789 8.38783 12.974 8.36703 13.2306 8.59795C13.4872 8.82886 13.508 9.22404 13.2771 9.48061L10.4646 12.6056C10.346 12.7373 10.1772 12.8125 10 12.8125C9.82283 12.8125 9.65397 12.7373 9.53545 12.6056L6.72295 9.48061C6.49203 9.22404 6.51283 8.82886 6.7694 8.59795Z" fill="white"/%3E%3C/svg%3E')
 }
 
 .jd-header-wrap .jd-header-top ul li a {
-  color: #fff;
+  color: var(--color--white);
 }
 
 .jd-header-wrap #jd-contact::before {
@@ -36,11 +36,11 @@
 
 /* scrolled */
 .jd-header-wrap.jd-scrolled .jd-nav-item > a {
-  color: #2D3841;
+  color: var(--color--midnight);
 }
 
 .jd-header-wrap.jd-scrolled .jd-nav-show > a {
-  color: #000;
+  color: var(--color--black);
 }
 
 .jd-header-wrap.jd-scrolled li.jd-nav-item:not(.jd-nav-show) > a::after {
@@ -48,7 +48,7 @@
 }
 
 .jd-header-wrap.jd-scrolled .jd-header-top ul li a {
-  color: #2D3841;
+  color: var(--color--midnight);
 }
 
 .jd-header-wrap.jd-scrolled #jd-contact::before {
@@ -64,9 +64,9 @@
 }
 
 .jd-header-wrap.jd-scrolled .jd-mobile-show svg {
-  fill: #000 !important;
+  fill: var(--color--black) !important;
 }
 
 .jd-mobile-show .jd-ham svg {
-  fill: #fff;
+  fill: var(--color--white);
 }
