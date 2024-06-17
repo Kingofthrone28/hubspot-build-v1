@@ -15,12 +15,12 @@
 }
 
 .blog-item h4 a {
-  color: #494a52;
+  color: var(--color--legacy--violet--gun-powder);
 }
 
 .blog-item .item-meta {
   font-weight: bold;
-  color: #456caa;
+  color: var(--color--legacy--blue--mariner-2);
   font-size: 16px;
   margin-bottom: 15px;
 }
@@ -140,7 +140,7 @@
     left: 18px;
     line-height: 1;
     top: 5px;
-    color: #818a5c;
+    color: var(--color--olives);
     z-index: 0;
     font-family: 'JuniusX', Cardo, Arial;
 }
@@ -161,7 +161,7 @@
     opacity: .4;
     left: calc(-.1 * 120px);
     top: calc(-.2 * 120px);
-    color: #ffbb95;
+    color: var(--color--legacy--orange--peach);
     z-index: -1
 }
 

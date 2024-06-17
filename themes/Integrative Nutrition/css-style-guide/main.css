@@ -73,7 +73,7 @@ html .row-fluid .container, .container { width: {{theme.spacing.max_width}}px;ma
   min-width: 300px !important;
 }
 .page-black-friday .hs-fieldtype-intl-phone.hs-input select {
-  background-color: #fff !important;
+  background-color: var(--color--white) !important;
 }
 
 

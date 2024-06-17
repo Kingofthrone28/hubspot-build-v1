@@ -359,14 +359,14 @@ body .hs-button.light-button:active {
   border-top-color: {{ table_border_color }};
 }
 
-.dnd-section table { border: none;border-radius: {{ button_corner_radius }};overflow: hidden;background: #f5f5f5; }
+.dnd-section table { border: none;border-radius: {{ button_corner_radius }};overflow: hidden;background: var(--color--legacy--white--white-smoke-5); }
 .dnd-section thead th, .dnd-section thead td { border-collapse: collapse; }
 .dnd-section thead th:nth-child(1) { border-radius: {{ button_corner_radius }} 0 0 0; }
 .dnd-section thead th:nth-last-child(1) { border-radius: 0 {{ button_corner_radius }} 0 0 ; }
 .dnd-section tbody { border: none; }
 .dnd-section tbody tr { border-bottom: 1px solid {{ table_border_color }}; }
 .dnd-section tbody tr:nth-last-child(1) { border-bottom: none; }
-.dnd-section tbody tr:hover { background: #cfd9e8; }
+.dnd-section tbody tr:hover { background: var(--color--legacy--blue--hawkes-blue); }
 
 {###########################################################################}
 {###########################   7. Site header   ############################}
@@ -409,9 +409,9 @@ body .header__language-switcher .lang_list_class li {
   border-color: {{ header_child_nav_border_color }};
 }
 html .header__language-switcher .lang_list_class { padding-top: 50px;border-bottom: 3px solid {{theme.global_colors.primary_color.color}};width: 100px; }
-html .lang_list_class:before { top: 34px;border: 8px solid transparent;border-bottom-color: white;margin-left: -8px; }
+html .lang_list_class:before { top: 34px;border: 8px solid transparent;border-bottom-color: var(--color--white);margin-left: -8px; }
 html .lang_list_class:after { content: none; }
-html .header__language-switcher .lang_list_class li { border: none !important;background: white; }
+html .header__language-switcher .lang_list_class li { border: none !important;background: var(--color--white); }
 
 body .submenu.level-2 > li:first-child:before {
   border-color: {{ header_child_nav_border_color }};
@@ -575,7 +575,7 @@ body .team-member__description {
 }
 
 .mb-resource-filter .topic-list {
-  font-size: 14px!important; color: #707070;
+  font-size: 14px!important; color: var(--color--legacy--grey--dim-grey-2);
 }
 
 

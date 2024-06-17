@@ -1,9 +1,3 @@
-{% set palo = "#EAE2D3" %}            {#  use  {{ palo }} #}
-{% set pistachio = "#D1DECD" %}       {#  use  {{ pistachio }} #}
-{% set peach = "#FFBB95" %}           {#  use  {{ peach }} #}
-{% set sky = "#C4E1E5" %}             {#  use  {{ sky }} #}
-
-
  #col-canvas {
 	 display: none;
 	 position: relative;
@@ -71,52 +65,52 @@
 	 position: relative;
 }
 #col-canvas path[data-name='Career'] {
-   fill: {{ sky }};
+   fill: var(--color-sky);
 	 fill-opacity: 0.5;
 }
 #col-canvas path[data-name='Creativity'] {
-	 fill: {{ peach }};
+	 fill: var(--color--legacy--orange--peach);
 	 fill-opacity: 0.3;
 }
 #col-canvas path[data-name='Education'] {
-	 fill: {{ pistachio }} ;
+	 fill: var(--color--legacy--green--pistachio);
 	 fill-opacity: 0.7;
 }
 #col-canvas path[data-name='Finances'] {
-	 fill: {{ palo }};
+	 fill: var(--color--palo-santo);
 	 fill-opacity: 0.5;
 }
 #col-canvas path[data-name='Health'] {
-	 fill: {{ peach }};
+	 fill: var(--color--legacy--orange--peach);
 	 fill-opacity: 0.4;
 }
 #col-canvas path[data-name='Home Cooking'] {
-	 fill: {{ sky }};
+	 fill: var(--color-sky);
 	 fill-opacity: 0.7;
 }
 #col-canvas path[data-name='Home Environment'] {
-	 fill: {{ pistachio }};
+	 fill: var(--color--legacy--green--pistachio);
 	 fill-opacity: 0.9;
 }
 #col-canvas path[data-name='Joy'] {
-	 fill: {{ sky }};
+	 fill: var(--color-sky);
 	 fill-opacity: 0.9;
 }
 #col-canvas path[data-name='Physical Activity'] {
-	 fill:{{ palo }} ;
+	 fill: var(--color--palo-santo);
 	 fill-opacity: 0.7;
 }
 #col-canvas path[data-name='Relationships'] {
-	 fill: {{ peach }};
+	 fill: var(--color--legacy--orange--peach);
 	 fill-opacity: 0.6;
 }
 #col-canvas path[data-name='Social Life'] {
-	 fill:{{ palo }} ;
+	 fill: var(--color--palo-santo);
 	 fill-opacity: 0.9;
 }
 
 #col-canvas path[data-name='Spirituality'] {
-	 fill:{{ pistachio }} ;
+	 fill: var(--color--legacy--green--pistachio);
 	 fill-opacity: 0.5;
 }
 
@@ -158,7 +152,7 @@
 
  .webform-sliderfield .ui-slider {
 	 border-color: transparent;
-	 background: #dde4ec;
+	 background: var(--color--legacy--blue--solitude-1);
 	 width: 100%;
 	 height: 10px;
  }
@@ -184,7 +178,22 @@
  .webform-sliderfield + .webform-sliderfield {
 	 margin-top: 20px;
 }
- 
+
+.circle-life {
+  --color--legacy--blue--medium-turquoise--alpha-0: rgba(48, 192, 202, 0); /* #30C0CA */
+  --color--legacy--blue--pelorous--alpha-0: rgba(35, 135, 184, 0); /* #2387B8 */
+  --color--legacy--green--celery--alpha-0: rgba(168, 202, 75, 0); /* #A8CA4B */
+  --color--legacy--green--fruit-salad--alpha-0: rgba(78, 181, 82,0); /* #4EB552 */
+  --color--legacy--green--golden-fizz--alpha-0: rgba(235, 229, 52, 0); /* #EBE534 */
+  --color--legacy--green--pistachio: #D1DECD;
+  --color--legacy--orange--west-side--alpha-0: rgba(227, 122, 52, 0); /* #E37A34 */
+  --color--legacy--violet--cerise--alpha-0: rgba(217, 50, 72, 0); /* #D93248 */
+  --color--legacy--violet--daisy-bush--alpha-0: rgba(98, 60, 138,0); /* #623C8A */
+  --color--legacy--violet--medium-red-violet--alpha-0: rgba(181, 53, 149, 0); /* #B53595 */
+  --color--legacy--yellow--turbo--alpha-0: rgba(245, 208, 24, 0); /* #F5D018 */
+  --color--legacy--yellow--yellow-sea--alpha-0; rgba(243, 162, 47, 0); /* #F3A22F */
+}
+
 .circle-life .form-item label:before {
    border-radius: 20px;
    content: '';
@@ -199,148 +208,148 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-creativity label:before {
-	 background-color: {{ peach }};
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-creativity .slider-selection {
-	 background-color: rgba(227,122,52,0);
+	 background-color: var(--color--legacy--orange--west-side--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
-	 background-color: {{ peach }} ;
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-finances label:before {
-	 background-color: {{ palo }};
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .slider-percent-fill {
 	 background-image: none;
-	 background-color: rgba(243,162,47,0);
+	 background-color: var(--color--legacy--yellow--yellow-sea--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .ui-slider-handle {
-	 background-color: {{ palo }} ;
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-career label:before {
-	 background-color: {{ sky }};
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-career .slider-selection {
-	 background-color: rgba(245,208,24,0);
+	 background-color: var(--color--legacy--yellow--turbo--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-career .ui-slider-handle {
-	 background-color: {{ sky }};
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-education label:before {
-	 background-color: {{ pistachio }};
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-education .slider-selection {
-	 background-color: rgba(235,229,52,0);
+	 background-color: var(--color--legacy--green--golden-fizz--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-education .ui-slider-handle {
-	 background-color: {{ pistachio }} ;
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-health label:before {
-	 background-color: {{ peach }} ;
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-health .slider-selection {
-	 background-color: rgba(168,202,75,0);
+	 background-color: var(--color--legacy--green--celery--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-health .ui-slider-handle {
-	 background-color: {{ peach }};
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity label:before {
-	 background-color: {{ palo }};
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .slider-selection {
-	 background-color: rgba(168,202,75,0);
+	 background-color: var(--color--legacy--green--celery--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
-	 background-color: {{ palo }};
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking label:before {
-	 background-color: {{ sky }};
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .slider-selection {
-	 background-color: rgba(78,181,82,0);
+	 background-color: var(--color--legacy--green--fruit-salad--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
-	 background-color: {{ sky }};
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment label:before {
-	 background-color: {{ pistachio }};
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment .slider-selection {
-	 background-color: rgba(48,192,202,0);
+	 background-color: var(--color--legacy--blue--medium-turquoise--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
-	 background-color: {{ pistachio }};
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-relationships label:before {
-	 background-color: {{ peach }};
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-relationships .slider-selection {
-	 background-color: rgba(35,135,184,0);
+	 background-color: var(--color--legacy--blue--pelorous--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
-	 background-color: {{ peach }};
+	 background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life label:before {
-	 background-color: {{ palo }};
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .slider-selection {
-	 background-color: rgba(98,60,138,0);
+	 background-color: var(--color--legacy--violet--daisy-bush--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
-	 background-color: {{ palo }};
+	 background-color: var(--color--palo-santo);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy label:before {
-	 background-color: {{ sky }};
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .slider-selection {
-	 background-color: rgba(181,53,149,0);
+	 background-color: var(--color--legacy--violet--medium-red-violet--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .ui-slider-handle {
-	 background-color: {{ sky }} ;
+	 background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality label:before {
-	 background-color: {{ pistachio }};
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality .slider-selection {
-	 background-color: rgba(217,50,72,0);
+	 background-color: var(--color--legacy--violet--cerise--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
-	 background-color: {{ pistachio }};
+	 background-color: var(--color--legacy--green--pistachio);
 }
 
 .col-text-submitted,

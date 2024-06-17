@@ -11,12 +11,12 @@
   text-align: center;
   width: 900px;
   margin: -200px auto 0;
-  background: white;
+  background: var(--color--white);
   box-shadow: 0 0 10px rgb(0 0 0 / 20%);
 }
 
 .error-page:before {
-  color: #F3F6F9;
+  color: var(--color--legacy--blue--solitude-4);
   content: attr(data-error);
   font-size: 40vw;
   font-weight: bold;
@@ -45,15 +45,15 @@
   margin: -200px auto 0;
   max-width: 900px;
   padding: 5rem 50px;
-  background: white;
+  background: var(--color--white);
   box-shadow: 0 0 10px rgb(0 0 0 / 20%);
 }
 
 .systems-page .success {
-  background-color: #CDE3CC;
-  border: 1.5px solid #4F7D24;
+  background-color: var(--color--legacy--green--peppermint);
+  border: 1.5px solid var(--color--legacy--green--bilbao);
   border-radius: 6px;
-  color: #4F7D24;
+  color: var(--color--legacy--green--bilbao);
   display: inline-block;
   margin: 1.4rem 0;
   padding: 0.1rem 0.7rem;
@@ -75,7 +75,7 @@
 }
 
 .hs-search-field__suggestions {
-  background-color: #FFF;
+  background-color: var(--color--white);
   max-width: 360px;
   position: absolute;
   right: 0;
@@ -92,7 +92,7 @@ ul.hs-search-results__listing li {
 }
 
 .hs-search-results__title {
-  color: #494A52;
+  color: var(--color--legacy--violet--gun-powder);
   font-size: 1.25rem;
   margin-bottom: 0.35rem;
   text-decoration: underline;
@@ -111,7 +111,7 @@ ul.hs-search-results__listing li {
 }
 
 .hs-search-results__pagination a {
-  color: #0270E0;
+  color: var(--color--legacy--blue--navy-blue);
 }
 
 /* Password prompt */

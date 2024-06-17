@@ -1,5 +1,5 @@
 /* Form */
-select { -webkit-appearance: none; appearance: none; position: relative; background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat, linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important; background-position: right 15px top 17px !important; }
+select { -webkit-appearance: none; appearance: none; position: relative; background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat, linear-gradient(--color--legacy--white--white--alpha-100, --color--legacy--white--white--alpha-100) !important; background-position: right 15px top 17px !important; }
 /* select { -webkit-appearance: none; appearance: none; position: relative; background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat !important; background-position: right 15px top 17px !important; } */
 
 {% set form_label_font_color = theme.forms.label_color.color %}
@@ -18,7 +18,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 {% if theme.forms.form_background_color.opacity > 0 %}
 .dnd-section .widget-type-form { background: {{ theme.forms.form_background_color.color }};border-radius: {{ theme.spacing.border_radius }}px;overflow: hidden; }
 .dnd-section .widget-type-form form { padding: 7%; }
-.dnd-section .dnd-column[class*="background-color"] .widget-type-form { box-shadow: 0 0 15px rgba(0,0,0, .15); }
+.dnd-section .dnd-column[class*="background-color"] .widget-type-form { box-shadow: 0 0 15px var(--color--legacy--black--black--alpha-15); }
 {% endif %}
 .dnd-section .hs-form-field {
   margin-bottom: 1rem;
@@ -27,7 +27,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 /* Labels */
 
 .dnd-section form label {
-  color: #33475B;
+  color: var(--color--legacy--blue--gulf-blue);
   display: block;
   font-size: 1rem;
   padding-top: 0;
@@ -39,7 +39,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 /* Help text - legends */
 
 .dnd-section form legend {
-  color: #33475B;
+  color: var(--color--legacy--blue--gulf-blue);
   font-size: 1rem;
 }
 
@@ -57,7 +57,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 .dnd-section input[type=file],
 .dnd-section select,
 .dnd-section textarea {
-  color: #33475B;
+  color: var(--color--legacy--blue--gulf-blue);
   display: inline-block;
   font-size: 1rem;
   padding: 0 20px 16px 20px;
@@ -68,10 +68,10 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
   padding: 16px 20px;
 }
 .filter-form.direction-hori .tp-main {
-  border: 1px solid #D1D6DC;
+  border: 1px solid var(--color--legacy--blue--link-water-2);
   border-color: {{ form_input_border_color }};
   color: {{ theme.typography.body_text.color }};
-  background: #f3f3f3;
+  background: var(--color--legacy--white--white-smoke-4);
   font-size: 1rem;
   padding: 12px 20px;
   border-radius: 3px;
@@ -87,10 +87,10 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 .systems-page input[type=file],
 .systems-page select,
 .systems-page textarea {
-  background-color: #FFF;
-  border: 1px solid #D1D6DC;
+  background-color: var(--color--white);
+  border: 1px solid var(--color--legacy--blue--link-water-2);
   border-radius: 3px;
-  color: #33475B;
+  color: var(--color--legacy--blue--gulf-blue);
   display: inline-block;
   font-size: 1rem;
   padding: 0.7rem;
@@ -107,7 +107,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 .dnd-section input[type=file]:focus,
 .dnd-section select:focus,
 .dnd-section textarea:focus {
-  outline-color: rgba(82, 168, 236, 0.8);
+  outline-color: var(--color--legacy--blue--cornflower-blue--alpha-80);
 }
 
 .dnd-section fieldset {
@@ -149,7 +149,7 @@ form .inputs-list {
 }
 
 /* .hs-fieldtype-intl-phone.hs-input select {
- color: white!important;
+ color: var(--color--white)!important;
 } */
 
 @media (max-width: 765px) {
@@ -161,7 +161,7 @@ form .inputs-list {
 /* Inputs - datepicker */
 
 .hs-fieldtype-date .input .hs-dateinput:before {
-  color: #33475B;
+  color: var(--color--legacy--blue--gulf-blue);
   content:'\01F4C5';
   position: absolute;
   right: 10px;
@@ -172,23 +172,23 @@ form .inputs-list {
 }
 
 .fn-date-picker .pika-table thead th {
-  color: #FFF;
+  color: var(--color--white);
 }
 
 .fn-date-picker td.is-today .pika-button {
-  color: #343A40;
+  color: var(--color--legacy--blue--mirage);
 }
 
 .fn-date-picker td.is-selected .pika-button {
-  background: #343A40;
+  background: var(--color--legacy--blue--mirage);
   border-radius: 0;
   box-shadow: none;
 }
 
 .fn-date-picker td .pika-button:hover {
-  background-color: #343A40 !important;
+  background-color: var(--color--legacy--blue--mirage) !important;
   border-radius: 0 !important;
-  color: #FFF;
+  color: var(--color--white);
 }
 
 /* Inputs - file picker */
@@ -233,11 +233,11 @@ form .header {
 }
 
 .hs-input.invalid.error {
-  border-color: #EF6B51;
+  border-color: var(--color--legacy--brown--burnt-sienna);
 }
 
 .hs-error-msg {
-  color: #EF6B51;
+  color: var(--color--legacy--brown--burnt-sienna);
   margin-top: 0.35rem;
 }
 
@@ -245,10 +245,10 @@ form .header {
 
 .dnd-section form input[type=submit],
 .dnd-section form .hs-button {
-  background-color: #494A52;
-  border: 1px solid #494A52;
+  background-color: var(--color--legacy--violet--gun-powder);
+  border: 1px solid var(--color--legacy--violet--gun-powder);
   border-radius: 6px;
-  color: #FFF;
+  color: var(--color--white);
   cursor: pointer;
   display: inline-block;
   font-size: 0.92rem;
@@ -270,10 +270,10 @@ form .header {
 
 .dnd-section form input[type=submit]:active,
 .dnd-section form .hs-button:active {
-  background-color: #71727A;
-  border-color: #71727A;
+  background-color: var(--color--legacy--blue--storm-grey);
+  border-color: var(--color--legacy--blue--storm-grey);
 {# see "no form selected" note above #}
-  color: #FFF;
+  color: var(--color--white);
 }
 
 /* Captcha */
@@ -306,7 +306,7 @@ form,
 
 /* Form inputs */
 
-#form-module_166872823299214 label span{color:white!important}
+#form-module_166872823299214 label span{color: var(--color--white)!important}
 
 .dnd-section input[type=text],
 .dnd-section input[type=email],
@@ -396,11 +396,11 @@ form,
 }
 
 .dnd-section .span6 form input[type=submit], .dnd-section .span6 form .hs-button, .dnd-section .span5 form input[type=submit], .dnd-section .span5 form .hs-button, .dnd-section .span4 form input[type=submit], .dnd-section .span4 form .hs-button, .dnd-section .span3 form input[type=submit], .dnd-section .span3 form .hs-button { width: 100%;padding: 12px; }
-.dnd-section .span6 form input[type=submit]:hover, .dnd-section .span6 form .hs-button:hover, .dnd-section .span5 form input[type=submit]:hover, .dnd-section .span5 form .hs-button:hover, .dnd-section .span4 form input[type=submit]:hover, .dnd-section .span4 form .hs-button:hover, .dnd-section .span3 form input[type=submit]:hover, .dnd-section .span3 form .hs-button:hover { box-shadow: 3px 3px 10px rgba(0,0,0, .2){% if theme.buttons.gr_color.color %}, rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 600px 0 10px -10px inset{% endif %}; }
+.dnd-section .span6 form input[type=submit]:hover, .dnd-section .span6 form .hs-button:hover, .dnd-section .span5 form input[type=submit]:hover, .dnd-section .span5 form .hs-button:hover, .dnd-section .span4 form input[type=submit]:hover, .dnd-section .span4 form .hs-button:hover, .dnd-section .span3 form input[type=submit]:hover, .dnd-section .span3 form .hs-button:hover { box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 600px 0 10px -10px inset{% endif %}; }
 
-.color-section, .color-section form label, .color-section h2, .color-section h3, .color-section h4, .color-section h5 { color: white; }
+.color-section, .color-section form label, .color-section h2, .color-section h3, .color-section h4, .color-section h5 { color: var(--color--white); }
 .color-section div[class*="background-color"], .color-section div[class*="background-color"] form label, .color-section div[class*="background-color"] h2, .color-section div[class*="background-color"] h3, .color-section div[class*="background-color"] h4, .color-section div[class*="background-color"] h5 { color: {{ theme.typography.body_text.color }}; }
-.color-section form input[type=text], .color-section form input[type=email], .color-section form input[type=password], .color-section form input[type=tel], .color-section form input[type=number], .color-section form input[type=file], .color-section form select, .color-section form textarea { border-color: white; }
+.color-section form input[type=text], .color-section form input[type=email], .color-section form input[type=password], .color-section form input[type=tel], .color-section form input[type=number], .color-section form input[type=file], .color-section form select, .color-section form textarea { border-color: var(--color--white); }
 .color-section div[class*="background-color"] form input[type=text], .color-section div[class*="background-color"] form input[type=email], .color-section div[class*="background-color"] form input[type=password], .color-section div[class*="background-color"] form input[type=tel], .color-section div[class*="background-color"] form input[type=number], .color-section div[class*="background-color"] form input[type=file], .color-section div[class*="background-color"] form select, .color-section div[class*="background-color"] form textarea  { border-color: {{ theme.forms.field_border_color.color }}; }
 .color-section form input[type=submit], .color-section form .hs-button {
   text-align: center;
@@ -433,10 +433,10 @@ html .color-section div[class*="background-color"] form input[type=submit]:hover
 html .color-section div[class*="background-color"] form input[type=submit]:focus,
 html .color-section div[class*="background-color"] form .hs-button:hover,
 html .color-section div[class*="background-color"] form .hs-button:focus { color: {{ theme.buttons.h_text_color.color }} !important;box-shadow: {% if theme.buttons.gr_color.color %}rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 300px 0 10px -10px inset{% endif %} !important; }
-html .color-section select { background: white; }
-html .color-section input::placeholder { color: white; }
-html .color-section input::-ms-input-placeholder { color: white; }
-html .color-section input:-ms-input-placeholder{ color: white; }
+html .color-section select { background: var(--color--white); }
+html .color-section input::placeholder { color: var(--color--white); }
+html .color-section input::-ms-input-placeholder { color: var(--color--white); }
+html .color-section input:-ms-input-placeholder{ color: var(--color--white); }
 html .color-section div[class*="background-color"] input::placeholder { color: {{ body_font.color }}; }
 html .color-section div[class*="background-color"] input::-ms-input-placeholder { color: {{ body_font.color }}; }
 html .color-section div[class*="background-color"] input:-ms-input-placeholder{ color: {{ body_font.color }}; }

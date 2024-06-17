@@ -170,7 +170,7 @@
 .ui-selectable-helper {
 	position: absolute;
 	z-index: 100;
-	border: 1px dotted black;
+	border: 1px dotted var(--color--black);
 }
 .ui-sortable-handle {
 	-ms-touch-action: none;
@@ -376,7 +376,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-checkboxradio-label .ui-icon-background {
-	box-shadow: inset 1px 1px 1px #ccc;
+	box-shadow: inset 1px 1px 1px var(--color--legacy--grey--very-light-grey-1);
 	border-radius: .12em;
 	border: none;
 }
