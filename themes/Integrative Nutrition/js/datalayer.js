@@ -1,8 +1,6 @@
 window.dataLayer = window.dataLayer || [];
-// Set 6 Tracking -- START
 
-// Accordion Click Tracking
-function sendAction(element) {
+function trackAccordionClick(element) {
   let action = 'open';
   if (element.classList.contains('active')) {
     action = 'close';
@@ -15,16 +13,7 @@ function sendAction(element) {
   element.classList.toggle('active');
 }
 
-const accordion = document.querySelectorAll('div.ex-label');
-if (accordion) {
-  accordion.forEach((link) => {
-    link.addEventListener('click', () => {
-      sendAction(link);
-    });
-  });
-}
-
-function viewBio(element) {
+function trackBioView(element) {
   window.dataLayer.push({
     'event': 'accordion_click',
     'click_text': element.innerText,
@@ -32,14 +21,7 @@ function viewBio(element) {
   });
 }
 
-const viewBioButtons = document.querySelectorAll('.bio-label .bio-closed strong');
-viewBioButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    viewBio(button);
-  });
-});
-
-function closeBio(element) {
+function trackBioClose(element) {
   window.dataLayer.push({
     'event': 'accordion_click',
     'click_text': element.innerText,
@@ -47,28 +29,7 @@ function closeBio(element) {
   });
 }
 
-const closeBioButtons = document.querySelectorAll('.bio-label .bio-open strong');
-closeBioButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    closeBio(button);
-  });
-});
-
-function openChat() {
-  window.dataLayer.push({
-    'event': 'chat_click',
-    'chat_action': 'open'
-  });
-}
-
-function closeChat() {
-  window.dataLayer.push({
-    'event': 'chat_click',
-    'chat_action': 'close'
-  });
-}
-
-function socialShare(element) {
+function trackSocialShare(element) {
   const blogTitle = element.parentElement.previousElementSibling.innerText;
   let shareType;
   if (element.href.includes('facebook')) {
@@ -89,30 +50,71 @@ function socialShare(element) {
   });
 }
 
-const socialShareLogos = document.querySelectorAll('.jd-post-share a');
-if (socialShareLogos != null) {
+function trackOpenChat() {
+  window.dataLayer.push({
+    'event': 'chat_click',
+    'chat_action': 'open'
+  });
+}
+function trackCloseChat() {
+  window.dataLayer.push({
+    'event': 'chat_click',
+    'chat_action': 'close'
+  });
+}
+
+function initiliseEvents() {
+
+  const accordion = document.querySelectorAll('div.ex-label');
+  accordion.forEach((link) => {
+    link.addEventListener('click', () => {
+      trackAccordionClick(link);
+    });
+  });
+
+
+  const bioViewButtons = document.querySelectorAll('.bio-label .bio-closed strong');
+  bioViewButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      trackBioView(button);
+    });
+  });
+
+
+  const closeBioButtons = document.querySelectorAll('.bio-label .bio-open strong');
+  closeBioButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      trackBioClose(button);
+    });
+  });
+
+
+  const socialShareLogos = document.querySelectorAll('.jd-post-share a');
   socialShareLogos.forEach((logo) => {
     logo.addEventListener('click', () => {
-      socialShare(logo);
+      trackSocialShare(logo);
     });
   });
-}
 
-// Chat Click Event Tracking
-const chatbtnOpen = document.querySelector('div#chatbtn');
-if (chatbtnOpen) {
-  chatbtnOpen.addEventListener('click', () => {
-    openChat();
-  });
-}
-
-const inviteDiv = document.querySelector('div#inviteBody');
-if (inviteDiv && inviteDiv.children.length > 3) {
-  const chatbtnClose = inviteDiv.children[3];
-  if (chatbtnClose) {
-    chatbtnClose.addEventListener('click', () => {
-      closeChat();
+  const openChatBtn = document.querySelector('div#chatbtn');
+  if (openChatBtn) {
+    openChatBtn.addEventListener('click', () => {
+      trackOpenChat();
     });
   }
+
+  const inviteDiv = document.querySelector('div#inviteBody');
+  if (inviteDiv && inviteDiv.children.length > 3) {
+    const closeChatBtn = inviteDiv.children[3];
+    if (closeChatBtn) {
+      closeChatBtn.addEventListener('click', () => {
+        trackCloseChat();
+      });
+    }
+  }
+
 }
-// Set 6 Tracking -- END
+
+window.addEventListener("load", () => {
+  initiliseEvents();
+});
