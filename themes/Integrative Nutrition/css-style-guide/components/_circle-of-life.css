@@ -191,7 +191,7 @@
   --color--legacy--violet--daisy-bush--alpha-0: rgba(98, 60, 138,0); /* #623C8A */
   --color--legacy--violet--medium-red-violet--alpha-0: rgba(181, 53, 149, 0); /* #B53595 */
   --color--legacy--yellow--turbo--alpha-0: rgba(245, 208, 24, 0); /* #F5D018 */
-  --color--legacy--yellow--yellow-sea--alpha-0; rgba(243, 162, 47, 0); /* #F3A22F */
+  --color--legacy--yellow--yellow-sea--alpha-0: rgba(243, 162, 47, 0); /* #F3A22F */
 }
 
 .circle-life .form-item label:before {
