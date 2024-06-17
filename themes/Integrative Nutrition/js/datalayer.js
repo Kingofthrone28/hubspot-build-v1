@@ -2,79 +2,75 @@ window.dataLayer = window.dataLayer || [];
 // Set 6 Tracking -- START
 
 // Accordion Click Tracking
-function sendAction(element){
-  var action = 'open';
-  if (element.classList.contains('active')){
+function sendAction(element) {
+  let action = 'open';
+  if (element.classList.contains('active')) {
     action = 'close';
   }
   window.dataLayer.push({
-      'event':'accordion_click',
-      'click_text':element.firstChild.innerText,
-      'action':action
-      });
+    'event': 'accordion_click',
+    'click_text': element.firstChild.innerText,
+    'action': action
+  });
   element.classList.toggle('active');
 }
 
 const accordion = document.querySelectorAll('div.ex-label');
 if (accordion) {
-  accordion.forEach(function(link) {
-    link.addEventListener('click', function() {
+  accordion.forEach((link) => {
+    link.addEventListener('click', () => {
       sendAction(link);
     });
-});
+  });
 }
 
 function viewBio(element) {
   window.dataLayer.push({
-    'event':'accordion_click',
-    'click_text':element.innerText,
-    'action':'open'
+    'event': 'accordion_click',
+    'click_text': element.innerText,
+    'action': 'open'
   });
 }
 
 const viewBioButtons = document.querySelectorAll('.bio-label .bio-closed strong');
-if (viewBioButtons) {
-  viewBioButtons.forEach(function(button) {
-    button.addEventListener('click',function() {
-      viewBio(button);
-    });
+viewBioButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    viewBio(button);
   });
-}
+});
 
 function closeBio(element) {
   window.dataLayer.push({
-    'event':'accordion_click',
-    'click_text':element.innerText,
-    'action':'close'
+    'event': 'accordion_click',
+    'click_text': element.innerText,
+    'action': 'close'
   });
 }
 
 const closeBioButtons = document.querySelectorAll('.bio-label .bio-open strong');
-if (closeBioButtons) {
-  closeBioButtons.forEach(function(button) {
-    button.addEventListener('click',function() {
-      closeBio(button);
-    });
+closeBioButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    closeBio(button);
+  });
+});
+
+function openChat() {
+  window.dataLayer.push({
+    'event': 'chat_click',
+    'chat_action': 'open'
   });
 }
 
-function chatOpen() {
+function closeChat() {
   window.dataLayer.push({
-    'event':'chat_click',
-    'chat_action':'open'
-  });
-}
-
-function chatClose() {
-  window.dataLayer.push({
-    'event':'chat_click',
-    'chat_action':'close'
+    'event': 'chat_click',
+    'chat_action': 'close'
   });
 }
 
 function socialShare(element) {
-  var blogTitle = element.parentElement.previousElementSibling.innerText;
-  var shareType;
+  const blogTitle = element.parentElement.previousElementSibling.innerText;
+  let shareType;
   if (element.href.includes('facebook')) {
     shareType = 'facebook';
   } else if (element.href.includes('linkedin')) {
@@ -87,37 +83,36 @@ function socialShare(element) {
     shareType = 'mail';
   }
   window.dataLayer.push({
-    'event':'social_share',
-    'blog_title':blogTitle,
-    'share_type':shareType
+    'event': 'social_share',
+    'blog_title': blogTitle,
+    'share_type': shareType
   });
 }
 
 const socialShareLogos = document.querySelectorAll('.jd-post-share a');
 if (socialShareLogos != null) {
-  socialShareLogos.forEach(function(logo) {
-    logo.addEventListener('click',function() {
+  socialShareLogos.forEach((logo) => {
+    logo.addEventListener('click', () => {
       socialShare(logo);
     });
   });
 }
 
 // Chat Click Event Tracking
-const chatbtn_open = document.querySelector('div#chatbtn');
-if (chatbtn_open) {
-  chatbtn_open.addEventListener('click',function() {
-    chatOpen();
-});
+const chatbtnOpen = document.querySelector('div#chatbtn');
+if (chatbtnOpen) {
+  chatbtnOpen.addEventListener('click', () => {
+    openChat();
+  });
 }
 
 const inviteDiv = document.querySelector('div#inviteBody');
-if (inviteDiv &&inviteDiv.children.length > 3){ 
-  const chatbtn_close = inviteDiv.children[3];
-  if (chatbtn_close) {
-      chatbtn_close.addEventListener('click',function() {
-        chatClose();
-  });
- }
+if (inviteDiv && inviteDiv.children.length > 3) {
+  const chatbtnClose = inviteDiv.children[3];
+  if (chatbtnClose) {
+    chatbtnClose.addEventListener('click', () => {
+      closeChat();
+    });
+  }
 }
-
 // Set 6 Tracking -- END
