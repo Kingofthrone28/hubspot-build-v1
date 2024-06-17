@@ -1,4 +1,4 @@
-const datalayerurl = "{{ get_asset_url(" / Integrative Nutrition/js/datalayer.js") }}"
+const datalayerurl = "{{ get_asset_url("/Integrative Nutrition/js/datalayer.js") }}"
 //Control of code starts here.
 document.addEventListener('DOMContentLoaded', function () {
   // DLTest - inside dataLayerToggle JS...
