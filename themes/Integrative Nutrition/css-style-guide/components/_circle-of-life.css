@@ -77,7 +77,7 @@
 	 fill-opacity: 0.7;
 }
 #col-canvas path[data-name='Finances'] {
-	 fill: var(--color--palo-santo);
+	 fill: var(--color--legacy--green--carrara);
 	 fill-opacity: 0.5;
 }
 #col-canvas path[data-name='Health'] {
@@ -97,7 +97,7 @@
 	 fill-opacity: 0.9;
 }
 #col-canvas path[data-name='Physical Activity'] {
-	 fill: var(--color--palo-santo);
+	 fill: var(--color--legacy--green--carrara);
 	 fill-opacity: 0.7;
 }
 #col-canvas path[data-name='Relationships'] {
@@ -105,7 +105,7 @@
 	 fill-opacity: 0.6;
 }
 #col-canvas path[data-name='Social Life'] {
-	 fill: var(--color--palo-santo);
+	 fill: var(--color--legacy--green--carrara);
 	 fill-opacity: 0.9;
 }
 
@@ -220,7 +220,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-finances label:before {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .slider-percent-fill {
@@ -229,7 +229,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .ui-slider-handle {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-career label:before {
@@ -269,7 +269,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity label:before {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .slider-selection {
@@ -277,7 +277,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking label:before {
@@ -317,7 +317,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life label:before {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .slider-selection {
@@ -325,7 +325,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
-	 background-color: var(--color--palo-santo);
+	 background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy label:before {

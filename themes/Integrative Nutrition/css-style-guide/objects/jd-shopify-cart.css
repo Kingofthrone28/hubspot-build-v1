@@ -198,7 +198,7 @@ select.jd-cart-rec-select {
 
 .jd-your-cart a {
   display: flex;
-  color: var(--color--midnight);
+  color: var(--color--legacy--blue--oxford-blue);
   text-decoration: underline;
   font-weight: 600;
 }
@@ -215,7 +215,7 @@ select.jd-cart-rec-select {
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
-  border-bottom: 2px solid var(--color--midnight);
+  border-bottom: 2px solid var(--color--legacy--blue--oxford-blue);
   margin: 20px 0 30px;
 }
 
@@ -302,7 +302,7 @@ select.jd-cart-rec-select {
 .jd-cart-outer {
   display: flex;
   padding-bottom: 15px;
-  border-bottom: 2px solid var(--color--midnight);
+  border-bottom: 2px solid var(--color--legacy--blue--oxford-blue);
 }
 
 .jd-cart-summary-outer {
@@ -516,7 +516,7 @@ html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn {
 }
 
 html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn.jd-shopify-option-selected {
-  background: var(--color--midnight);
+  background: var(--color--legacy--blue--oxford-blue);
   color: var(--color--white) !important;
 }
 
@@ -562,7 +562,7 @@ html .jd-shopify-option-wrap .hs-button.jd-request-btn.jd-gray-btn.jd-shopify-op
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--color--bone);
+    background: var(--color--chalk);
   }
 }
 

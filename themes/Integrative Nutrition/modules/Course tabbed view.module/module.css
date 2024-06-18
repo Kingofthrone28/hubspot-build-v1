@@ -19,7 +19,7 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      color: var(--color--midnight);
+      color: var(--color--legacy--blue--oxford-blue);
       word-wrap: break-word;
       background-color: var(--color--white);
       background-clip: border-box;
@@ -73,13 +73,13 @@
       text-decoration: none;
       background: var(--color--legacy--blue--link-water-1);
       text-align: center;
-      color: var(--color--midnight);
+      color: var(--color--legacy--blue--oxford-blue);
       white-space: nowrap;
       padding: 0 1.5em;
     }
 
     .hub-view-courses .hub-view-header .tab-items .tab-item a.active {
-      background: var(--color--midnight);
+      background: var(--color--legacy--blue--oxford-blue);
       color: var(--color--white);
       text-align: center;
     }
@@ -129,7 +129,7 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover {
-      background-color: var(--color--bone)
+      background-color: var(--color--chalk)
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover .card-title {
@@ -328,7 +328,7 @@
     }
 
     .card-badge {
-      background: var(--color--palo-santo);
+      background: var(--color--legacy--green--carrara);
       padding: 8px 16px;
       border-radius: 16px;
       font-weight: 700;

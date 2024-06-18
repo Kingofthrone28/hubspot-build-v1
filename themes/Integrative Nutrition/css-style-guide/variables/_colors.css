@@ -1,39 +1,30 @@
 :root {
   /* Style Guide */
 
-  /* IIN */
-  --color--bone: #F8F5F0;
-  --color--iin-red: #D72A25;
+  /* Primary and Secondary */
+  --color--cherry: #D72A25;
+  --color--gold: #E4AB00;
   --color--melon: #ED8A72;
-  --color--midnight: #2D3841;
-  --color--olives: #818A5C;
-  --color--palo-santo: #EAE2D3;
-  --color--sage: #D3DDCC;
-  --color--sky: #C4E1E5;
+  --color--water: #003D4B;
   /* End IIN */  
 
-  /* Neutrals */
+  /* Base */
   --color--black: #000; /* rgb(0, 0, 0) */
+  --color--chalk: #F8F5F0;
+  --color--slate: #142023;
+  --color--white: #FFF; /* rgb(255, 255, 255) */
+
+  /* Neutrals */
   --color--grey-1: #333;
   --color--grey-2: #4F4F4F;
   --color--grey-3: #828282;
   --color--grey-4: #BDBDBD;
   --color--grey-5: #E7E7E7;
-  --color--white: #FFF; /* rgb(255, 255, 255) */
   /* End Neutrals */
 
   /* Chopra */
-  --color--earth: #23C369;
-  --color--fire: #F05A38;
-  --color--gold: #D99C64;
-  --color--midnight--dark: #001432;
-  --color--midnight--light: #5F5F73;
+  --color--midnight: #001432;
   --color--sand: #FBF2DE;
-  --color--sand--light: #FFFAF3;
-  --color--space: #0E394D;
-  --color--sunshine: #FFBE3C;
-  --color--sunshine--light: #FFE1AA;
-  --color--water: #3757B6;
   /* End Chopra */
 
   /* End Style Guide */
@@ -119,6 +110,7 @@
   --color--legacy--blue--mariner-2: #456CAA;
   --color--legacy--blue--mirage: #343A40;
   --color--legacy--blue--navy-blue: #0270E0;
+  --color--legacy--blue--oxford-blue: #2D3841; /* Midnight */
   --color--legacy--blue--pattens-blue: #F8FAFC;
   --color--legacy--blue--raven: #6C757D;
   --color--legacy--blue--regal-blue-1: #173753;
@@ -138,8 +130,10 @@
   --color--legacy--green--atlantis: #95D03A;
   --color--legacy--green--bilbao: #4F7D24;
   --color--legacy--green--blue-stone: #134863;
+  --color--legacy--green--carrara: #EAE2D3; /* Palo Santo */
   --color--legacy--green--de-york: #7FBD74;
   --color--legacy--green--emerald: #61CE70;
+  --color--legacy--green--highland: #818A5C; /* Olives */
   --color--legacy--green--peppermint: #CDE3CC;
   --color--legacy--green--rolling-stone: #707372;
   --color--legacy--orange--peach: #FFBB95;
