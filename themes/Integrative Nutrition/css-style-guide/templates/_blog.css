@@ -398,7 +398,7 @@ h3.blog-filter-topics-label { margin-bottom: 0 !important; }
 }
 
 .blog-index__post-content p {
-  font-family: Lato, sans-serif;
+  font-family: var(--font-family--legacy--blog);
 }
 
 .blog-index__post-content a {
@@ -419,7 +419,7 @@ h3.blog-filter-topics-label { margin-bottom: 0 !important; }
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: Lato, sans-serif;
+  font-family: var(--font-family--legacy--blog);
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -670,7 +670,7 @@ html .hs-search-field__suggestions a:hover { color: {{theme.global_colors.tertia
 
 .resource-section .post-page .right-column { padding-left: 0;width: 100%; }
 .resource-section .post-page h1 { margin-bottom: 10px; }
-.read-time { font-family: bebas-neue, sans-serif;font-size: 18px; }
+.read-time { font-family: var(--font-family--legacy--bebas);font-size: 18px; }
 .author-share { font-weight: 600;padding-bottom: 30px; }
 .author-share a { color: {{theme.global_colors.tertiary_color.color}};text-decoration: none; }
 .author-share a:hover { color: {{theme.global_colors.tertiary_color.color}};opacity: .8; }
@@ -699,7 +699,7 @@ html .hs-search-field__suggestions a:hover { color: {{theme.global_colors.tertia
   .blog-topics-wrapper { position: relative;background: var(--color--white); }
   .mb-resource-filter h3, .blog-topics-wrapper a { color: var(--color--legacy--grey--suva-grey); }
   .mb-resource-filter h3 { padding: 10px 20px 10px 10px;margin: 0;font-size: 16px;position: relative; }
-  .mb-resource-filter h3:after { content: '';position: absolute;right: 10px;font-family: "Font Awesome 5 Pro"; }
+  .mb-resource-filter h3:after { content: '';position: absolute;right: 10px;font-family: var(--font-family--icons); }
   .blog-topics-wrapper > div { max-height: 70vh;overflow: auto;position: absolute;width: 100%;background: var(--color--white);border-top: 1px solid var(--color--legacy--grey--suva-grey);box-shadow: 0 3px 5px var(--color--legacy--black--black--alpha-15);display: none; }
   .blog-topics-wrapper:hover > div { display: block; }
 }

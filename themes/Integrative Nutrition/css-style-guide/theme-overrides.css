@@ -114,7 +114,7 @@ body {
   color: {{ body_font.color }};
 }
 
-body h1, body h2, body h3, body h4 * { font-family: 'JuniusX', Cardo, Arial; }
+body h1, body h2, body h3, body h4 * { font-family: var(--font-family--legacy--heading); }
 @font-face { 
   font-family: 'JuniusX-Bold'; 
   src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Bold.ttf') format('truetype');

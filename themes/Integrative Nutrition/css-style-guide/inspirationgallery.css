@@ -5,7 +5,7 @@
 .btn-main {
 	text-align: center;
   transition: .3s all;
- font-family: "Roboto", Sans-serif;
+ font-family: var(--font-family--legacy--gallery);
     font-weight: 300;
   font-size: 16px;
     text-transform: uppercase;
@@ -19,7 +19,7 @@
 .btn-main:hover { background-color: var(--color--legacy--green--blue-stone); color: var(--color--white) !important; }
 
 .amenities-back { margin-bottom: 25px; }
-.amenities-back a { transition: .3s all; display: inline-block; font-family: "Roboto", Sans-serif; font-weight: 300; text-transform: uppercase; background-color: var(--color--legacy--green--emerald); border-radius: 2px 2px 2px 2px; padding: 15px 45px 15px 45px; color: var(--color--white); }
+.amenities-back a { transition: .3s all; display: inline-block; font-family: var(--font-family--legacy--gallery); font-weight: 300; text-transform: uppercase; background-color: var(--color--legacy--green--emerald); border-radius: 2px 2px 2px 2px; padding: 15px 45px 15px 45px; color: var(--color--white); }
 .amenities-back a:hover { background-color: var(--color--legacy--blue--allports-2); }
 
 
@@ -141,7 +141,7 @@ a.show-full-desc { margin-top: 10px; }
 
 .filter-search { display: flex; border: 1px solid var(--color--legacy--grey--dark-grey-2); border-radius: 3px; }
 .filter-search input { border: none !important; background: transparent !important; color: var(--color--legacy--grey--bright-grey) !important; }
-.filter-search input[type=submit] { padding: 12px 15px !important; font-family: 'Font Awesome 5 Pro'; }
+.filter-search input[type=submit] { padding: 12px 15px !important; font-family: var(--font-family--icons); }
 .amenities-cats { text-align: center; }
 .amenities-cats .category { white-space: nowrap; margin: 0 10px; cursor: pointer; transition: .3s all; }
 .amenities-cats .category:hover { opacity: .7; }

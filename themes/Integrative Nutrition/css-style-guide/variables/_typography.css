@@ -1,50 +1,92 @@
 :root {
-  /* font-family */
-  --font-family--heading: 'JuniusX', 'Arial', sans-serif;  
-  --font-family--body: 'Public Sans', 'Arial', sans-serif;  
+  /* Style Guide */
 
-  /* font-size variable name represents a multiplier for 0.25rem ≈ 4px*/
-  --font-size--1:  5rem;     /* ≈ 80px */
-  --font-size--2:  3rem;     /* ≈ 48px */
-  --font-size--3:  2.5rem;   /* ≈ 40px */
-  --font-size--4:  2rem;     /* ≈ 32px */
-  --font-size--5:  1.5rem;   /* ≈ 24px */
+  /* Style Guide Font Family */
+  --font-family--body: 'Public Sans', 'Arial', sans-serif;
+  --font-family--heading: 'Junicode', 'Times New Roman', serif;
+  --font-family--icons: 'Font Awesome 5 Pro';
+  --font-family--icons--alt: 'Font Awesome 6 Sharp';
+
+  /* Style Guide Font Size */
+  --font-size--1:  0.75rem;  /* ≈ 12px */
+  --font-size--2:  0.875rem; /* ≈ 14px */
+  --font-size--3:  1rem;     /* ≈ 16px */
+  --font-size--4:  1.125rem; /* ≈ 18px */
+  --font-size--5:  1.25rem;  /* ≈ 20px */
   --font-size--6:  1.375rem; /* ≈ 22px */
-  --font-size--7:  1.25rem;  /* ≈ 20px */
-  --font-size--8:  1.125rem; /* ≈ 18px */
-  --font-size--9:  1rem;     /* ≈ 16px */
-  --font-size--10: 0.875rem; /* ≈ 14px */
-  --font-size--h1--desktop:   var(--font-size--1);
-  --font-size--h1--mobile:    var(--font-size--3);
-  --font-size--h2--desktop:   var(--font-size--2);
-  --font-size--h2--mobile:    var(--font-size--4);
-  --font-size--h3--desktop:   var(--font-size--4);
-  --font-size--h3--mobile:    var(--font-size--5);
-  --font-size--h4--desktop:   var(--font-size--5);
-  --font-size--h4--mobile:    var(--font-size--7);
-  --font-size--h5--desktop:   var(--font-size--6);
-  --font-size--h5--mobile:    var(--font-size--8);
-  --font-size--h6--desktop:   var(--font-size--7);
-  --font-size--h6--mobile:    var(--font-size--9);
-  --font-size--body--desktop: var(--font-size--9);
-  --font-size--body--mobile:  var(--font-size--10);
-
-  /* line-height */
+  --font-size--7:  1.5rem;   /* ≈ 24px */
+  --font-size--8:  2rem;     /* ≈ 32px */
+  --font-size--9:  2.5rem;   /* ≈ 40px */
+  --font-size--10: 3rem;     /* ≈ 48px */
+  --font-size--11: 5rem;     /* ≈ 80px */
+  --font-size--h1--desktop: var(--font-size--11);
+  --font-size--h1--mobile:  var(--font-size--9);
+  --font-size--h2--desktop: var(--font-size--10);
+  --font-size--h2--mobile:  var(--font-size--8);
+  --font-size--h3--desktop: var(--font-size--8);
+  --font-size--h3--mobile:  var(--font-size--7);
+  --font-size--h4--desktop: var(--font-size--7);
+  --font-size--h4--mobile:  var(--font-size--5);
+  --font-size--h5--desktop: var(--font-size--6);
+  --font-size--h5--mobile:  var(--font-size--4);
+  --font-size--h6--desktop: var(--font-size--5);
+  --font-size--h6--mobile:  var(--font-size--3);
+  --font-size--extra-large-paragraph: var(--font-size--7);
+  --font-size--large-paragraph--desktop: var(--font-size--4);
+  --font-size--large-paragraph--mobile:  var(--font-size--3);
+  --font-size--paragraph--desktop: var(--font-size--3);
+  --font-size--paragraph--mobile:  var(--font-size--2);
+  --font-size--small-paragraph: var(--font-size--2);
+  --font-size--testimonial-content: var(--font-size--4);
+  --font-size--testimonial-name: var(--font-size--3);
+  --font-size--legal: var(--font-size--1);
+  
+  /* Line Height */
   --line-height--0: 1;
   --line-height--1: 1.1;
-  --line-height--legacy--1: 0.75;
-  --line-height--legacy--2: 0.88;
-  --line-height--legacy--3: 1.15;
-  --line-height--legacy--4: 1.2;
-  --line-height--legacy--5: 1.25;
-  --line-height--legacy--6: 1.3;
-  --line-height--legacy--7: 1.4;
-  --line-height--legacy--8: 1.5;
-  --line-height--legacy--9: 1.6;
+  --line-height--h1: var(--line-height--1);
+  
+  /*
+    Legacy variables should be renamed if they get moved into the guide.
+    The whimsical color names are derived from
+    https://www.color-blindness.com/color-name-hue/
+  */
+  
+  /* Legacy Font Family */
+  --font-family--legacy--bebas: 'bebas-neue', sans-serif;
+  --font-family--legacy--blog: 'Lato', sans-serif;
+  --font-family--legacy--gallery: 'Roboto', sans-serif;
+  --font-family--legacy--heading: 'JuniusX', 'Cardo', serif;
+  --font-family--legacy--heading--bold: 'JuniusX-Bold', 'Cardo', serif;
+  --font-family--legacy--timeline: 'Oxygen', sans-serif;
+  --font-family--legacy--video: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  
+  /* Legacy Font Size */
+  --font-size--legacy--1:  0.625rem;   /* ≈ 10px */
+  --font-size--legacy--2:  0.8125rem;  /* ≈ 13px */
+  --font-size--legacy--3:  1.75rem;    /* ≈ 28px */
+  --font-size--legacy--4:  1.875rem;   /* ≈ 30px */
+  --font-size--legacy--5:  2.1875rem;  /* ≈ 35px */
+  --font-size--legacy--6:  2.25rem;    /* ≈ 36px */
+  --font-size--legacy--7:  2.375rem;   /* ≈ 38px */
+  --font-size--legacy--8:  2.625rem;   /* ≈ 42px */
+  --font-size--legacy--9:  3.75rem;    /* ≈ 60px */
+  --font-size--legacy--10: 4.375rem;   /* ≈ 70px */
+  --font-size--legacy--11: 7.5rem;    /* ≈ 120px */
+  
+  /* Legacy Line Height */
+  --line-height--legacy--1:  0.75;
+  --line-height--legacy--2:  0.88;
+  --line-height--legacy--3:  1.15;
+  --line-height--legacy--4:  1.2;
+  --line-height--legacy--5:  1.25;
+  --line-height--legacy--6:  1.3;
+  --line-height--legacy--7:  1.4;
+  --line-height--legacy--8:  1.5;
+  --line-height--legacy--9:  1.6;
   --line-height--legacy--10: 1.8;
   --line-height--legacy--11: 2;
   --line-height--legacy--12: 2.5;
-  --line-height--h1:      var(--line-height--1);
-  --line-height--heading: var(--line-height--legacy--4);
-  --line-height--body:    var(--line-height--legacy--5);
+  --line-height--legacy--heading: var(--line-height--legacy--4);
+  --line-height--legacy--body: var(--line-height--legacy--5);
 }

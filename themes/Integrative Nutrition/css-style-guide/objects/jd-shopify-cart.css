@@ -78,7 +78,7 @@ select.jd-cart-rec-select {
 }
 
 .jd-cart-rec-item-title span:first-child {
-  font-family: JuniusX, Cardo, Arial;
+  font-family: var(--font-family--legacy--heading);
   font-weight: 700;
 }
 
