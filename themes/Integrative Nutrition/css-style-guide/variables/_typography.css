@@ -46,11 +46,7 @@
   --line-height--1: 1.1;
   --line-height--h1: var(--line-height--1);
   
-  /*
-    Legacy variables should be renamed if they get moved into the guide.
-    The whimsical color names are derived from
-    https://www.color-blindness.com/color-name-hue/
-  */
+  /* Legacy variables should be renamed if they get moved into the guide. */
   
   /* Legacy Font Family */
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
