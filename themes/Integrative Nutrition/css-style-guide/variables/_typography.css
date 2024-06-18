@@ -1,27 +1,50 @@
-/* Number in the variable name represents a multiplier for 0.25rem */
 :root {
-  --font-size--1: 5rem;
-  --font-size--2: 3rem;
-  --font-size--3: 2.5rem;
-  --font-size--4: 2rem;
-  --font-size--5: 1.5rem;
-  --font-size--6: 1.375rem;
-  --font-size--7: 1.25rem;
-  --font-size--8: 1.125rem;
-  --font-size--9: 1rem;
-  --font-size--10: 0.875rem;
-  --font-size--h1--desktop: var(--font-size--1);
-  --font-size--h2--desktop: var(--font-size--2);
-  --font-size--h3--desktop: var(--font-size--4);
-  --font-size--h4--desktop: var(--font-size--5);
-  --font-size--h5--desktop: var(--font-size--6);
-  --font-size--h6--desktop: var(--font-size--7);
+  /* font-family */
+  --font-family--heading: 'JuniusX', 'Arial', sans-serif;  
+  --font-family--body: 'Public Sans', 'Arial', sans-serif;  
+
+  /* font-size variable name represents a multiplier for 0.25rem ≈ 4px*/
+  --font-size--1:  5rem;     /* ≈ 80px */
+  --font-size--2:  3rem;     /* ≈ 48px */
+  --font-size--3:  2.5rem;   /* ≈ 40px */
+  --font-size--4:  2rem;     /* ≈ 32px */
+  --font-size--5:  1.5rem;   /* ≈ 24px */
+  --font-size--6:  1.375rem; /* ≈ 22px */
+  --font-size--7:  1.25rem;  /* ≈ 20px */
+  --font-size--8:  1.125rem; /* ≈ 18px */
+  --font-size--9:  1rem;     /* ≈ 16px */
+  --font-size--10: 0.875rem; /* ≈ 14px */
+  --font-size--h1--desktop:   var(--font-size--1);
+  --font-size--h1--mobile:    var(--font-size--3);
+  --font-size--h2--desktop:   var(--font-size--2);
+  --font-size--h2--mobile:    var(--font-size--4);
+  --font-size--h3--desktop:   var(--font-size--4);
+  --font-size--h3--mobile:    var(--font-size--5);
+  --font-size--h4--desktop:   var(--font-size--5);
+  --font-size--h4--mobile:    var(--font-size--7);
+  --font-size--h5--desktop:   var(--font-size--6);
+  --font-size--h5--mobile:    var(--font-size--8);
+  --font-size--h6--desktop:   var(--font-size--7);
+  --font-size--h6--mobile:    var(--font-size--9);
   --font-size--body--desktop: var(--font-size--9);
-  --font-size--h1--mobile: var(--font-size--3);
-  --font-size--h2--mobile: var(--font-size--4);
-  --font-size--h3--mobile: var(--font-size--5);
-  --font-size--h4--mobile: var(--font-size--7)
-  --font-size--h5--mobile: var(--font-size--8);
-  --font-size--h6--mobile: var(--font-size--9);
-  --font-size--body--mobile: var(--font-size--10);
+  --font-size--body--mobile:  var(--font-size--10);
+
+  /* line-height */
+  --line-height--0: 1;
+  --line-height--1: 1.1;
+  --line-height--legacy--1: 0.75;
+  --line-height--legacy--2: 0.88;
+  --line-height--legacy--3: 1.15;
+  --line-height--legacy--4: 1.2;
+  --line-height--legacy--5: 1.25;
+  --line-height--legacy--6: 1.3;
+  --line-height--legacy--7: 1.4;
+  --line-height--legacy--8: 1.5;
+  --line-height--legacy--9: 1.6;
+  --line-height--legacy--10: 1.8;
+  --line-height--legacy--11: 2;
+  --line-height--legacy--12: 2.5;
+  --line-height--h1:      var(--line-height--1);
+  --line-height--heading: var(--line-height--legacy--4);
+  --line-height--body:    var(--line-height--legacy--5);
 }

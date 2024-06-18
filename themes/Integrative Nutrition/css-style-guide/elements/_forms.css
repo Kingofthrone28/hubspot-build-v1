@@ -254,7 +254,7 @@ form .header {
   font-size: 0.92rem;
   font-weight: normal;
   height: auto;
-  line-height: 1.1;
+  line-height: var(--line-height--1);
   margin: 0;
   padding: 15px 53px;
   position: relative;
@@ -442,7 +442,7 @@ html .color-section div[class*="background-color"] input::-ms-input-placeholder 
 html .color-section div[class*="background-color"] input:-ms-input-placeholder{ color: {{ body_font.color }}; }
 
 .hs-form__legal-consent * {
-  line-height: 14px;
+  line-height: var(--line-height--legacy--3);
   font-size: 12px;
 }
 /* @media (max-width: 765px) {

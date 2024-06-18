@@ -11,7 +11,7 @@
 }
 
 .social-sharing a {
-  line-height: 1;
+  line-height: var(--line--height--0);
 }
 
 .social-sharing__icon {

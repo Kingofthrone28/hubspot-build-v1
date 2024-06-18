@@ -301,7 +301,7 @@ h3.blog-filter-topics-label { margin-bottom: 0 !important; }
 
 .blog-index__tag-subtitle {
   font-size: 1.16rem;
-  line-height: 1.1;
+  line-height: var(--line-height--1);
 }
 
 .blog-index__tag-heading {
@@ -434,7 +434,7 @@ h3.blog-filter-topics-label { margin-bottom: 0 !important; }
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  line-height: 1;
+  line-height: var(--line--height--0);
   margin: 0 0.1rem;
   padding: 0.25rem 0.4rem;
   text-decoration: none;

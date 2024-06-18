@@ -167,7 +167,7 @@ h1 {
   {{ heading_one.style }};
   color: {{ heading_one.color }};
   font-size: {{ heading_one.size ~ heading_one.size_unit }};
-  line-height: 1.2em;
+  line-height: var(--line-height--legacy--4);
   {% if theme.typography.h1_transform %}text-transform: uppercase;{% endif %}
 }
 .single-header h1 { font-size: {{ heading_two.size ~ heading_two.size_unit }}; }
@@ -176,7 +176,7 @@ h2 {
   {{ heading_two.style }};
   color: {{ heading_two.color }};
   font-size: {{ heading_two.size ~ heading_two.size_unit }};
-  line-height: 1.2em;
+  line-height: var(--line-height--legacy--4);
   {% if theme.typography.h2_transform %}text-transform: uppercase;{% endif %}
 }
 
@@ -184,7 +184,7 @@ h3 {
   {{ heading_three.style }};
   color: {{ heading_three.color }};
   font-size: {{ heading_three.size ~ heading_three.size_unit }};
-  line-height: 1.2em;
+  line-height: var(--line-height--legacy--4);
   margin-top: 0;
   {% if theme.typography.h3_transform %}text-transform: uppercase;{% endif %}
 }
@@ -193,7 +193,7 @@ h4 {
   {{ heading_four.style }};
   color: {{ heading_four.color }};
   font-size: {{ heading_four.size ~ heading_four.size_unit }};
-  line-height: 1.2em;
+  line-height: var(--line-height--legacy--4);
   {% if theme.typography.h4_transform %}text-transform: uppercase;{% endif %}
 }
 
@@ -222,23 +222,23 @@ blockquote {
 
   h1 {
     font-size: {{ ((heading_one.size / 2) + (body_font.size / 2)) ~ heading_one.size_unit }};
-    line-height: 1.2em;
+    line-height: var(--line-height--legacy--4);
   }
   .single-header h1 { font-size: {{ ((heading_two.size / 2) + (body_font.size / 2)) ~ heading_two.size_unit }}; }
 
   h2 {
     font-size: {{ ((heading_two.size / 2) + (body_font.size / 2)) ~ heading_two.size_unit }};
-    line-height: 1.2em;
+    line-height: var(--line-height--legacy--4);
   }
 
   h3 {
     font-size: {{ ((heading_three.size / 2) + (body_font.size / 2)) ~ heading_three.size_unit }};
-    line-height: 1.2em;
+    line-height: var(--line-height--legacy--4);
   }
 
   h4 {
     font-size: {{ ((heading_four.size / 2) + (body_font.size / 2)) ~ heading_four.size_unit }};
-    line-height: 1.2em;
+    line-height: var(--line-height--legacy--4);
   }
 }
 

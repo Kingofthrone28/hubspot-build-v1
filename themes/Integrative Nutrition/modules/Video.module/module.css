@@ -141,7 +141,7 @@ p.hs-video-placeholder__description {
   font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  line-height: 1.6 !important;
+  line-height: var(--line-height--legacy--9) !important;
   margin: 0 !important;  
   text-shadow: 0 -1px 0 hsla(0,0%,100%,.5) !important;
 }

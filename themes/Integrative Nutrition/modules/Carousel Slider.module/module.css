@@ -138,7 +138,7 @@
     font-size: 120px;
     opacity: .4;
     left: 18px;
-    line-height: 1;
+    line-height: var(--line--height--0);
     top: 5px;
     color: var(--color--olives);
     z-index: 0;
@@ -155,7 +155,7 @@
     content: '“';
     position: absolute;
     height: 120px;
-    line-height: 120px;
+    line-height: var(--line--height--0);
     font-family: JuniusX,serif;
     font-size: 120px;
     opacity: .4;

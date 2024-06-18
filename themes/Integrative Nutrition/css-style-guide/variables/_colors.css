@@ -46,7 +46,7 @@
   */
 
   /* Legacy Neutrals */
-  --color--legacy--black--black--alpha-0: rgba(0, 0, 0, 0);
+  --color--legacy--black--black--alpha-0: rgba(0, 0, 0, 0); /* #000 */
   --color--legacy--black--black--alpha-5: rgba(0, 0, 0, 0.05);
   --color--legacy--black--black--alpha-8: rgba(0, 0, 0, 0.08);
   --color--legacy--black--black--alpha-10: rgba(0, 0, 0, 0.1);
@@ -77,6 +77,7 @@
   --color--legacy--grey--nero: #1D1D1D; /* rgb(29, 29, 29) */
   --color--legacy--grey--nero--alpha-18: rgba(29, 29, 29, 0.18);
   --color--legacy--grey--nero--alpha-20: rgba(29, 29, 29, 0.2);
+  --color--legacy--grey--romantic--alpha-90: rgba(249, 246, 241, 0.9); /* F9F6F1 */
   --color--legacy--grey--silver-1: #BABABA;
   --color--legacy--grey--silver-2: #BCBCBC;
   --color--legacy--grey--suva-grey: #888;
@@ -84,15 +85,15 @@
   --color--legacy--grey--very-light-grey-2: #CFCFCF;
   --color--legacy--grey--zircon-1: #D9E1E2;
   --color--legacy--grey--zircon-2: #DEE2E6;
-  --color--legacy--white--white--alpha-10: rgba(255, 255, 255, 0.1);
+  --color--legacy--white--gainsboro-1: #DDD;
+  --color--legacy--white--gainsboro-2: #E5E5E5;
+  --color--legacy--white--white--alpha-10: rgba(255, 255, 255, 0.1); /* #FFF */
   --color--legacy--white--white--alpha-30: rgba(255, 255, 255, 0.3);
   --color--legacy--white--white--alpha-40: rgba(255, 255, 255, 0.4);
   --color--legacy--white--white--alpha-48: rgba(255, 255, 255, 0.48);
   --color--legacy--white--white--alpha-50: rgba(255, 255, 255, 0.5);
   --color--legacy--white--white--alpha-70: rgba(255, 255, 255, 0.7);
   --color--legacy--white--white--alpha-100: rgba(255, 255, 255, 1);
-  --color--legacy--white--gainsboro-1: #DDD;
-  --color--legacy--white--gainsboro-2: #E5E5E5;
   --color--legacy--white--white-smoke-1: #EBEBEB;
   --color--legacy--white--white-smoke-2: #EEE;
   --color--legacy--white--white-smoke-3: #EFEFEF;
@@ -142,6 +143,7 @@
   --color--legacy--green--peppermint: #CDE3CC;
   --color--legacy--green--rolling-stone: #707372;
   --color--legacy--orange--peach: #FFBB95;
+  --color--legacy--orange--peach--alpha-30: rgba(255, 187, 149, 0.3);
   --color--legacy--red--cardinal: #CB2027;
   --color--legacy--red--cinnabar: #F04B45;
   --color--legacy--red--persian-red: #CF3C32;

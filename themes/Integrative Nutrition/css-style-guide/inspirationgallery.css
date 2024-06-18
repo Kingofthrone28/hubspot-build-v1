@@ -14,7 +14,7 @@
     padding: 15px 45px 15px 45px; 
   border: none;
   outline: none;
-  color: var(--color--white); cursor: pointer; border-radius: 2px; line-height: 1; white-space: nowrap; text-decoration: none; display: inline-block;
+  color: var(--color--white); cursor: pointer; border-radius: 2px; line-height: var(--line--height--0); white-space: nowrap; text-decoration: none; display: inline-block;
 }
 .btn-main:hover { background-color: var(--color--legacy--green--blue-stone); color: var(--color--white) !important; }
 
@@ -92,7 +92,7 @@ a.show-full-desc { margin-top: 10px; }
 .amenities-left-card h4 { margin-bottom: 15px; }
 .amenities-bottom { padding: 0 35px 20px; display: flex; justify-content: space-between; align-items: center; }
 .amenities-more, .amenities-slide-more { color: var(--color--legacy--yellow--rob-roy); font-size: 14px; font-weight: bold; cursor: pointer; }
-.amenities-loc { text-align: right; color: var(--color--legacy--green--de-york); font-size: 14px; font-weight: bold; line-height: 1.15; }
+.amenities-loc { text-align: right; color: var(--color--legacy--green--de-york); font-size: 14px; font-weight: bold; line-height: var(--line-height--legacy--3); }
 #search { position: relative; }
 #search i { position:absolute; top: 0; right: 0; padding: 7px; }
 #search-input { padding-right: 25px; }
