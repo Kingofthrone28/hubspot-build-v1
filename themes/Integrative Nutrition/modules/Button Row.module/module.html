@@ -1,7 +1,7 @@
 <div style="display:flex;flex-wrap:wrap;position:relative; justify-content:{{ module.alignment }};">
 {% for item in module.buttons %}
   {% if item.jump_link %}
-    <span id="{{name}}_btn_{{loop.index}}" data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button">
+    <span id="{{name}}_btn_{{loop.index}}" data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button" data-tracking-id="{{ item.dl_label }}">
       {{ item.text_field }}
       {% if item.show_arrow %}
         <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
@@ -12,7 +12,7 @@
     {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
       {% set href = "mailto:" + href %}
     {% endif %}
-    <a id="{{name}}_btn_{{loop.index}}" href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link"
+    <a id="{{name}}_btn_{{loop.index}}" href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link" data-tracking-id="{{ item.dl_label }}"
        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
        {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
       > 
