@@ -1,7 +1,3 @@
-{% set flex = 'display: -webkit-flex; display: flex;' %}
-{% set flexcenter = 'display: -webkit-flex; display: flex;-webkit-align-items: center; align-items: center;' %}
-{% set flexwrap = 'display: -webkit-flex; display: flex;-webkit-flex-wrap: wrap; flex-wrap: wrap;' %}
-
 {% include './variables/_theme.css' %}
 {% include './variables/_colors.css' %}
 {% include './variables/_containers.css' %}
