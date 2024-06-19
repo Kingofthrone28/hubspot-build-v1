@@ -11,6 +11,7 @@
   /* Global fonts */
   
   --theme--global-fonts--primary-font: {{ theme.global_fonts.primary_font.font }};
+  --theme--global-fonts--primary-font--color: {{ theme.global_fonts.primary_font.color }};
   --theme--global-fonts--secondary-font: {{ theme.global_fonts.secondary_font.font }};
   
   /* Typography */

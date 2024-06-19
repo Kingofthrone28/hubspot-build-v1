@@ -790,7 +790,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close { color: var(--color--white);borde
 .port-inside .port-right { width: 40%; }
 
 .portfolio-filter { margin-bottom: 20px;text-align: right; }
-.mb-resource-filter .topic-list { width: 250px;display: inline-block;text-align: left;position: relative;background: var(--color--white);color: {{ var(--theme--global-fonts--primary-font).color }}; }
+.mb-resource-filter .topic-list { width: 250px;display: inline-block;text-align: left;position: relative;background: var(--color--white);color: var(--theme--global-fonts--primary-font--color); }
 .mb-resource-filter .topic-list .tp-main { padding: 5px 10px;display: flex; align-items: center; }
 .mb-resource-filter .topic-list .tp-main i { margin-left: auto; }
 .mb-resource-filter .topic-list .options { position: absolute;z-index: 900;background: var(--color--white);width: 100%;display: none;padding: 4px 0;border-top: 2px solid var(--color--legacy--white--white-smoke-1);box-shadow: 0 5px 5px var(--color--legacy--black--black--alpha-20); }
