@@ -145,7 +145,7 @@ a.show-full-desc { margin-top: 10px; }
 .amenities-cats { text-align: center; }
 .amenities-cats .category { white-space: nowrap; margin: 0 10px; cursor: pointer; transition: .3s all; }
 .amenities-cats .category:hover { opacity: .7; }
-.amenities-cats .category.active { color: {{theme.global_colors.primary_color.color}}; font-weight: bold; }
+.amenities-cats .category.active { color: var(--theme--global-colors--primary-color); font-weight: bold; }
 .amenities-pop-cred > *:first-child { margin-bottom: 25px; }
 
 @media(max-width: 1024px) {

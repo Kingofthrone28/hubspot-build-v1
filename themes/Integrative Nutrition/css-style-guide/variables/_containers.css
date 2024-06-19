@@ -14,13 +14,14 @@
   --container--legacy--lg--max--2: 1140px;
   --container--legacy--lg--max--3: 1139px;
   --container--legacy--lg--min:    1024px;
-  --container--legacy--md--max:    1023px;
-  --container--legacy--md--min--1: 998px;
-  --container--legacy--md--min--2: 993px;
-  --container--legacy--md--min--3: 992px;
-  --container--legacy--md--min--4: 768px;
-  --container--legacy--sm--max:    767px;
-  --container--legacy--sm--min-1:  640px;
-  --container--legacy--sm--min-2:  601px;
-  --container--legacy--xs:         360px;
+  --container--legacy--md--max-1:  1023px;
+  --container--legacy--md--max-2:  1000px;
+  --container--legacy--md--min--1:  998px;
+  --container--legacy--md--min--2:  993px;
+  --container--legacy--md--min--3:  992px;
+  --container--legacy--md--min--4:  768px;
+  --container--legacy--sm--max:     767px;
+  --container--legacy--sm--min-1:   640px;
+  --container--legacy--sm--min-2:   601px;
+  --container--legacy--xs:          360px;
 }
