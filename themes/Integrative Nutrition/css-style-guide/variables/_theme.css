@@ -1,3 +1,5 @@
+/* color_variant(): https://developers.hubspot.com/docs/cms/hubl/functions#color-variant */
+
 :root {
   /* Global colors */
   
@@ -16,9 +18,6 @@
   
   /* Typography */
 
-  /* TODO: remove default and style after testing */
-  --theme--typography--body-text--style: {{ theme.typography.body_text.style }};
-  --theme--typography--body-text--default: {{ theme.typography.body_text.default }};
   --theme--typography--body-text--font: {{ theme.typography.body_text.font }};
   --theme--typography--body-text--color: {{ theme.typography.body_text.color }};
   --theme--typography--body-text--color--lightened: {{ color_variant(theme.typography.body_text.color, 40) }};
@@ -51,21 +50,18 @@
   --theme--buttons--border-color--lightened: {{ color_variant(theme.buttons.border_color.color, 40) }};
   --theme--buttons--border-radius: {{ theme.buttons.border_radius }}px;
   --theme--buttons--padding: {{ theme.buttons.vertical_padding }}px {{ theme.buttons.horizontal_padding }}px;
-  --theme--buttons--background-color--default: {{ theme.buttons.background_color }};
-  --theme--buttons--background-color--color: {{ theme.buttons.background_color.color }};
-  --theme--buttons--background-color: rgba({{ theme.buttons.background_color.color|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
+  --theme--buttons--background-color: {{ theme.buttons.background_color.rgba }};
   --theme--buttons--background-color--lightened: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
-  --theme--buttons--hover-color: rgba({{ theme.buttons.gr_color.color|convert_rgb }}, {{ theme.buttons.gr_color.opacity / 100 }});
+  --theme--buttons--hover-color: {{ theme.buttons.gr_color.rgba }};
   --theme--buttons--hover-color--lightened: rgba({{ theme.buttons.gr_color.color|convert_rgb }}, 1);
   --theme--buttons--text-color: {{ theme.buttons.text_color.color }};
   --theme--buttons--hover-text-color: {{ theme.buttons.h_text_color.color }};
-  /* TODO: Confirm that .color is appropriate */
   --theme--buttons--light-button--border: {{ theme.buttons.light_buttons.border_width }}px solid {{ theme.buttons.light_buttons.border_color.color }};
   --theme--buttons--light-button--border-color: {{ theme.buttons.light_buttons.border_color.color }};
   --theme--buttons--light-button--border-radius: {{ theme.buttons.light_buttons.border_radius }}px;
   --theme--buttons--light-button--padding: {{ theme.buttons.light_buttons.vertical_padding }}px {{ theme.buttons.light_buttons.horizontal_padding }}px;
-  --theme--buttons--light-button--background-color: rgba({{ theme.buttons.light_buttons.background_color.color|convert_rgb }}, {{ theme.buttons.light_buttons.background_color.opacity / 100 }});
-  --theme--buttons--light-button--hover-color: rgba({{ theme.buttons.light_buttons.gr_color.color|convert_rgb }}, {{ theme.buttons.light_buttons.gr_color.opacity / 100 }});
+  --theme--buttons--light-button--background-color: {{ theme.buttons.light_buttons.background_color.rgba }};
+  --theme--buttons--light-button--hover-color: {{ theme.buttons.light_buttons.gr_color.rgba }};
   --theme--buttons--light-button--hover-color--lightened: rgba({{ color_variant(theme.buttons.light_buttons.gr_color.color, 1)|convert_rgb }}, {{ theme.buttons.light_buttons.gr_color.opacity / 100 }});
   --theme--buttons--light-button--text-color: {{ theme.buttons.light_buttons.text_color.color }};
   --theme--buttons--light-button--hover-text-color: {{ theme.buttons.light_buttons.h_text_color.color }};
@@ -73,14 +69,11 @@
   /* Forms */
   
   --theme--forms--border-radius: {{ theme.forms.border_radius }}px;
-  --theme--forms--field-background-color: rgba({{ theme.forms.field_background_color.color|convert_rgb }}, {{ theme.forms.field_background_color.opacity / 100 }});
+  --theme--forms--field-background-color: {{ theme.forms.field_background_color.rgba }};
   --theme--forms--field-border-color: {{ theme.forms.field_border_color.color }};
-  --theme--forms--field-border-radius: {{ theme.forms.field_border_radius }}px;
-  --theme--forms--field-border-style: {{ theme.forms.field_border_style }};
-  /* TODO: Confirm that .color is appropriate */
   --theme--forms--field-focus-border-color: {{ theme.forms.field_focus_border_color.color }};
-  --theme--forms--form-background-color: rgba({{ theme.forms.form_background_color.color|convert_rgb }}, {{ theme.forms.form_background_color.opacity / 100 }});
-  --theme--forms--header-background-color: rgba({{ theme.forms.header_background_color.color|convert_rgb }}, {{ theme.forms.header_background_color.opacity / 100 }});
+  --theme--forms--form-background-color: {{ theme.forms.form_background_color.rgba }};
+  --theme--forms--header-background-color: {{ theme.forms.header_background_color.rgba }};
   --theme--forms--help-text-color: {{ theme.forms.help_text_color.color }};
   --theme--forms--header-text-color: {{ theme.forms.header_text_color.color }};
   --theme--forms--label-color: {{ theme.forms.label_color.color }};
@@ -88,13 +81,12 @@
   
   /* Tables */
   
-  --theme--tables--body-background-color: rgba({{ theme.tables.body_background_color.color|convert_rgb }}, {{ theme.tables.body_background_color.opacity / 100 }});
+  --theme--tables--body-background-color: {{ theme.tables.body_background_color.rgba }};
   --theme--tables--body-text-color: {{ theme.tables.body_text_color.color }};
-  --theme--tables--footer-background-color: rgba({{ theme.tables.footer_background_color.color|convert_rgb }}, {{ theme.tables.footer_background_color.opacity / 100 }});
+  --theme--tables--footer-background-color: {{ theme.tables.footer_background_color.rgba }};
   --theme--tables--footer-text-color: {{ theme.tables.footer_text_color.color }};
-  --theme--tables--header-background-color: rgba({{ theme.tables.header_background_color.color|convert_rgb }}, {{ theme.tables.header_background_color.opacity / 100 }});
+  --theme--tables--header-background-color: {{ theme.tables.header_background_color.rgba }};
   --theme--tables--header-text-color: {{ theme.tables.header_text_color.color }};
-  /* TODO: Confirm that .color is appropriate */
   --theme--tables--border-color: {{ theme.tables.border_color.color }};
     
   /* Sections */
@@ -102,19 +94,19 @@
   --theme--spacing--border-radius: {{ theme.spacing.border_radius }}px;
   --theme--spacing--max-width: {{ theme.spacing.max_width }}px;
   --theme--spacing--vertical-spacing: {{ theme.spacing.vertical_spacing }}px;
-  --theme--spacing--overlay-color: rgba({{ theme.spacing.overlay_color.color|convert_rgb }}, {{ theme.spacing.overlay_color.opacity / 100 }});
+  --theme--spacing--overlay-color: {{ theme.spacing.overlay_color.rgba }};
   --theme--spacing--overlay-color--alpha-33: rgba({{ theme.spacing.overlay_color.color|convert_rgb }}, {{ theme.spacing.overlay_color.opacity / 300 }});
   --theme--spacing--system-color: {{ theme.spacing.system_color.color }};
 
-  /* Footer - TODO: does background_color exist on footer? */
+  /* Footer - TODO: field "background_color" does not exist in the theme footer settings. */
 
-  --theme--footer--background-color: rgba({{ theme.footer.background_color.color|convert_rgb }}, {{ theme.footer.background_color.opacity / 100 }});
+  --theme--footer--background-color: {{ theme.footer.background_color.rgba }};
   --theme--footer--link-color: {{ theme.footer.link_color.color }};
   --theme--footer--text-color: {{ theme.footer.text_color.color }};
 
-  /* Header - TODO: does header config section exist? */
+  /* Header - TODO: section "header" does not exist in the theme settings. */
 
-  --theme--header--background-color: rgba({{ theme.header.background_color.color|convert_rgb }}, {{ theme.header.background_color.opacity / 100 }});
+  --theme--header--background-color: {{ theme.header.background_color.rgba }};
   --theme--header--menu-link-color: {{ theme.header.menu_link_color.color }};
   --theme--header--menu-link-color--lightened: {{ color_variant(theme.header.menu_link_color.color, 40) }};
   --theme--header--menu-link-color--darkened: {{ color_variant(theme.header.menu_link_color.color, -40) }};
