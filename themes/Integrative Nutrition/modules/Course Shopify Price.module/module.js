@@ -23,14 +23,14 @@
         }
       }
 
-      const marchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
+      const matchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
       const matchedPrice = matchedVariant.price.amount;
 
       $('#course-shopify-price').text(
         `$${parseInt(matchedPrice).toLocaleString()}`
       );
 
-      if (marchedCompareAtPrice && marchedCompareAtPrice !== matchedPrice) {
+      if (matchedCompareAtPrice && matchedCompareAtPrice !== matchedPrice) {
         $('#course-shopify-compare').text(
           `$${parseInt(matchedVariant.compareAtPrice.amount).toLocaleString()}`
         );
