@@ -721,7 +721,7 @@ svg.deal-bar-close {
   padding: 1.5px 8px;
   background: var(--color--white);
   border-radius: 2px;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .plus .bar.hz {
@@ -782,7 +782,7 @@ body.open .sticky-header > div:nth-last-child(1) {
 .mb-custom-header .nav-body {
   padding-top: 10px;
   padding-bottom: 10px;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .mb-custom-header.scroll .nav-body {
@@ -791,7 +791,7 @@ body.open .sticky-header > div:nth-last-child(1) {
 }
 
 .mb-custom-header .top-section {
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .mb-custom-header.scroll .top-section {
@@ -1038,7 +1038,7 @@ body.open .mb-custom-header .hs_cos_wrapper_widget:not(.widget-type-rich_text) {
 }
 
 a svg {
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .contact-bubble svg {
@@ -1063,7 +1063,7 @@ a svg {
   opacity: 0;
   overflow: hidden;
   border-radius: 0;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .sticky-header.sticky .nav-search .hs-search-field {
@@ -1184,7 +1184,7 @@ a svg {
   width: auto;
   max-height: 100px;
   max-width: 100%;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 .scroll .nav-img {
@@ -1638,7 +1638,7 @@ body.open .mb-custom-header-wrapper {
 
 .mb-custom-header-wrapper > div:nth-last-child(1) {
   flex: 1 auto;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 body.open .mb-custom-header-wrapper {
@@ -1656,7 +1656,7 @@ body.open .mb-custom-header-wrapper {
   height: 0px;
   position: absolute;
   left: -100%;
-  transition: var(--transition--default)
+  transition: var(--transition--default);
 }
 
 body.open .mb-custom-header-wrapper #mobile-menu {
