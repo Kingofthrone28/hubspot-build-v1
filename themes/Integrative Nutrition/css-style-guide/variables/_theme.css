@@ -16,7 +16,8 @@
   
   /* Typography */
 
-  /* TODO: remove default after testing */
+  /* TODO: remove default and style after testing */
+  --theme--typography--body-text--style: {{ theme.typography.body_text.style }};
   --theme--typography--body-text--default: {{ theme.typography.body_text.default }};
   --theme--typography--body-text--font: {{ theme.typography.body_text.font }};
   --theme--typography--body-text--color: {{ theme.typography.body_text.color }};
@@ -50,6 +51,8 @@
   --theme--buttons--border-color--lightened: {{ color_variant(theme.buttons.border_color.color, 40) }};
   --theme--buttons--border-radius: {{ theme.buttons.border_radius }}px;
   --theme--buttons--padding: {{ theme.buttons.vertical_padding }}px {{ theme.buttons.horizontal_padding }}px;
+  --theme--buttons--background-color--default: {{ theme.buttons.background_color }};
+  --theme--buttons--background-color--color: {{ theme.buttons.background_color.color }};
   --theme--buttons--background-color: rgba({{ theme.buttons.background_color.color|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
   --theme--buttons--background-color--lightened: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
   --theme--buttons--hover-color: rgba({{ theme.buttons.gr_color.color|convert_rgb }}, {{ theme.buttons.gr_color.opacity / 100 }});
