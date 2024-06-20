@@ -9,7 +9,7 @@
   vertical-align: super;
 }
 .course-card-category, .course-offer-text {
-  colorvar(--color--iin-red)
+  colorvar(--color--cherry)
 }
 .price-container {
   display: flex;

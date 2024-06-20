@@ -1,5 +1,5 @@
-.main-banner { background: {{theme.spacing.system_color.color}};padding: {{ theme.spacing.vertical_spacing }}px 0 {{ theme.spacing.vertical_spacing + 200 }}px; }
-.system-header {  background: {{theme.spacing.system_color.color}};padding-bottom: {{ theme.spacing.vertical_spacing + 200 }}px; }
+.main-banner { background: var(--theme--spacing--system-color);padding: var(--theme--spacing--vertical-spacing) 0 calc(var(--theme--spacing--vertical-spacing) + 200px); }
+.system-header {  background: var(--theme--spacing--system-color);padding-bottom: calc(var(--theme--spacing--vertical-spacing) + 200px);
 .main-banner .container { width: 900px; }
 
 .system-body .dnd-section { padding-top: 0; }

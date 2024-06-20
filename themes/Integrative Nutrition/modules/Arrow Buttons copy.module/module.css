@@ -39,11 +39,11 @@
 }
 
 html .hs-button.jd-request-btn.jd-trans-btn {
-  background: var(--color--bone) !important;
+  background: var(--color--chalk) !important;
   margin: 5px 0 0px;
 }
 html .hs-button.jd-request-btn.jd-trans-btn:hover {
-  background: var(--color--midnight) !important;
+  background: var(--color--legacy--blue--oxford-blue) !important;
 }
 
 #hs_cos_wrapper_module_1691081394813 .jd-request-btn{
@@ -62,7 +62,7 @@ html .hs-button.jd-request-btn.jd-trans-btn:hover {
 }
 
 div#bg_widget_1691090785466 {
-    background: var(--color--bone) !important;
+    background: var(--color--chalk) !important;
 }
 
  [data-hs-row-id="dnd_area-row-0"] {

@@ -138,11 +138,11 @@
     font-size: 120px;
     opacity: .4;
     left: 18px;
-    line-height: 1;
+    line-height: var(--line--height--0);
     top: 5px;
-    color: var(--color--olives);
+    color: var(--color--legacy--green--highland);
     z-index: 0;
-    font-family: 'JuniusX', Cardo, Arial;
+    font-family: var(--font-family--legacy--heading);
 }
 
 
@@ -155,8 +155,8 @@
     content: '“';
     position: absolute;
     height: 120px;
-    line-height: 120px;
-    font-family: JuniusX,serif;
+    line-height: var(--line--height--0);
+    font-family: var(--font-family--legacy--heading);
     font-size: 120px;
     opacity: .4;
     left: calc(-.1 * 120px);

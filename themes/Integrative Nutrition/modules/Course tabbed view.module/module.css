@@ -19,7 +19,7 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      color: var(--color--midnight);
+      color: var(--color--legacy--blue--oxford-blue);
       word-wrap: break-word;
       background-color: var(--color--white);
       background-clip: border-box;
@@ -73,13 +73,13 @@
       text-decoration: none;
       background: var(--color--legacy--blue--link-water-1);
       text-align: center;
-      color: var(--color--midnight);
+      color: var(--color--legacy--blue--oxford-blue);
       white-space: nowrap;
       padding: 0 1.5em;
     }
 
     .hub-view-courses .hub-view-header .tab-items .tab-item a.active {
-      background: var(--color--midnight);
+      background: var(--color--legacy--blue--oxford-blue);
       color: var(--color--white);
       text-align: center;
     }
@@ -129,7 +129,7 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover {
-      background-color: var(--color--bone)
+      background-color: var(--color--chalk)
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover .card-title {
@@ -189,7 +189,7 @@
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span {
-      line-height: 100%
+      line-height: var(--line--height--0);
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span:nth-child(2) {
@@ -211,9 +211,9 @@
       font-size: 24px;
       display: flex;
       align-items: end;
-      font-family: JuniusX, serif;
+      font-family: var(--font-family--legacy--heading);
       font-weight: 600;
-      line-height: 1.2;
+      line-height: var(--line-height--legacy--4);
     }
 
     .hub-view-courses .hub-view-content .hub-views-row .card-title .float-icon {
@@ -244,7 +244,7 @@
 
     .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer ul li {
       color: var(--color--grey-2);
-      line-height: 30px;
+      line-height: var(--line-height--legacy--12);
       display: block;
       font-size: 12px
     }
@@ -328,12 +328,12 @@
     }
 
     .card-badge {
-      background: var(--color--palo-santo);
+      background: var(--color--legacy--green--carrara);
       padding: 8px 16px;
       border-radius: 16px;
       font-weight: 700;
       font-size: 12px;
-      line-height: 14px;
+      line-height: var(--line-height--legacy--3);
       margin-left: auto;
       margin-right: -10px;
       position: relative;

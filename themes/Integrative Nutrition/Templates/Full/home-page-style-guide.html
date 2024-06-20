@@ -1,13 +1,13 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Course Page New (Style Guide)
-  screenshotPath: /Integrative Nutrition/images/Course Page New.png
+  label: Home Page (Style Guide)
+  screenshotPath: /Integrative Nutrition/images/Home Page New.png
 -->
 {% extends '../layouts/base-style-guide.html' %}
 
 {% block body %}
-<main class="body-container-wrapper">
+<main class="body-container-wrapper homepage-section">
   {# All templates are recommended to have an h1 present for both accessibility and SEO best practice. This should be at the top of the template before any other textual content. The h1 element below is within a dnd area to allow content editors the ability to adjust the content and alignment of the text. #}
   {% dnd_area 'dnd_area' class='body-container body-container--home', label='Main section' %}
 
@@ -197,8 +197,7 @@
             "user_generated_content" : false
           },
           "show_arrow" : true,
-          "text_field" : "Request Information",
-          "tracking_value" : "Request_Information",
+          "text_field" : "Request Information"
         }, {
           "boolean_field" : false,
           "inverse_button_style" : true,
@@ -213,8 +212,7 @@
             },
             "user_generated_content" : false
           },
-          "text_field" : "Schedule an Appointment",
-          "tracking_value" : "Schedule_an_Appointment",
+          "text_field" : "Schedule an Appointment"
         }, {
           "gray_button_style" : false,
           "inverse_button_style" : true,
