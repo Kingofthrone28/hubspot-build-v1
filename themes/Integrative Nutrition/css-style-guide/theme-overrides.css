@@ -189,7 +189,7 @@ blockquote {
   padding: var(--theme--buttons--padding);
   font-family: var(--theme--global-fonts--primary-font);
   /*
-  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 0 0 10px -10px inset{% endif %};
+  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 0 0 10px -10px inset{% endif %};
   */
   text-shadow: none;
 }
@@ -206,7 +206,7 @@ blockquote {
   text-decoration: none;
   color: var(--theme--buttons--hover-text-color) !important;
   /*
-  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 350px 0 10px -10px inset{% endif %};
+  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 350px 0 10px -10px inset{% endif %};
   */
   background: var(--theme--buttons--hover-color);
 }

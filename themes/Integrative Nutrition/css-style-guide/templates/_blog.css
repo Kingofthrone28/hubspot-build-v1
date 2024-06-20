@@ -607,13 +607,13 @@ html .blog-sub form .input { padding: 0; }
   white-space: nowrap;
   height: 60px;
   font-family: var(--theme--global-fonts--secondary-font);
-  box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color--lightened) 0 0 10px -10px inset{% endif %};
+  box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color) 0 0 10px -10px inset{% endif %};
 }
 .blog-sub .actions input:hover,
 .blog-sub .actions input:focus {
   text-decoration: none;
   color: var(--theme--buttons--text-color);
-  box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color--lightened) 300px 0 10px -10px inset{% endif %};
+  box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color) 300px 0 10px -10px inset{% endif %};
 }
 
 .mp-posts { display: flex; flex-wrap: wrap; }

@@ -53,7 +53,6 @@
   --theme--buttons--background-color: {{ theme.buttons.background_color.rgba }};
   --theme--buttons--background-color--lightened: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
   --theme--buttons--hover-color: {{ theme.buttons.gr_color.rgba }};
-  --theme--buttons--hover-color--lightened: rgba({{ theme.buttons.gr_color.color|convert_rgb }}, 1);
   --theme--buttons--text-color: {{ theme.buttons.text_color.color }};
   --theme--buttons--hover-text-color: {{ theme.buttons.h_text_color.color }};
   --theme--buttons--light-button--border: {{ theme.buttons.light_buttons.border_width }}px solid {{ theme.buttons.light_buttons.border_color.color }};

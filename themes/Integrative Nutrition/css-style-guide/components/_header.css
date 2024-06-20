@@ -1346,12 +1346,12 @@ a svg {
   color: var(--theme--buttons--text-color) !important;
   border: var(--theme--buttons--border);
   border-radius: var(--theme--buttons--border-radius);
-  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 0 0 10px -10px inset{% endif %};
+  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 0 0 10px -10px inset{% endif %};
 }
 
 .button-true .mb-main-nav .hs-menu-depth-1:nth-last-child(1) a:hover {
   color: var(--theme--buttons--text-color) !important;
-  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 300px 0 10px -10px inset{% endif %};
+  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 300px 0 10px -10px inset{% endif %};
 }
 
 .dnd_header img {

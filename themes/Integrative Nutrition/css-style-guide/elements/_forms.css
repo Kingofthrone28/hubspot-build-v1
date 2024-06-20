@@ -384,7 +384,7 @@ form,
 }
 
 .dnd-section .span6 form input[type=submit], .dnd-section .span6 form .hs-button, .dnd-section .span5 form input[type=submit], .dnd-section .span5 form .hs-button, .dnd-section .span4 form input[type=submit], .dnd-section .span4 form .hs-button, .dnd-section .span3 form input[type=submit], .dnd-section .span3 form .hs-button { width: 100%;padding: 12px; }
-.dnd-section .span6 form input[type=submit]:hover, .dnd-section .span6 form .hs-button:hover, .dnd-section .span5 form input[type=submit]:hover, .dnd-section .span5 form .hs-button:hover, .dnd-section .span4 form input[type=submit]:hover, .dnd-section .span4 form .hs-button:hover, .dnd-section .span3 form input[type=submit]:hover, .dnd-section .span3 form .hs-button:hover { box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color--lightened) 600px 0 10px -10px inset{% endif %}; }
+.dnd-section .span6 form input[type=submit]:hover, .dnd-section .span6 form .hs-button:hover, .dnd-section .span5 form input[type=submit]:hover, .dnd-section .span5 form .hs-button:hover, .dnd-section .span4 form input[type=submit]:hover, .dnd-section .span4 form .hs-button:hover, .dnd-section .span3 form input[type=submit]:hover, .dnd-section .span3 form .hs-button:hover { box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20){% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color) 600px 0 10px -10px inset{% endif %}; }
 
 .color-section, .color-section form label, .color-section h2, .color-section h3, .color-section h4, .color-section h5 { color: var(--color--white); }
 .color-section div[class*="background-color"], .color-section div[class*="background-color"] form label, .color-section div[class*="background-color"] h2, .color-section div[class*="background-color"] h3, .color-section div[class*="background-color"] h4, .color-section div[class*="background-color"] h5 { color: var(--theme--typography--body-text--color); }
@@ -410,7 +410,7 @@ form,
   border-radius: var(--theme--buttons--border-radius);
   color: var(--theme--buttons--text-color);
   font-family: var(--theme--global-fonts--secondary-font);
-  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 0 0 10px -10px inset{% endif %};
+  box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 0 0 10px -10px inset{% endif %};
   text-shadow: none;
 }
 html .color-section form input[type=submit]:hover,
@@ -420,7 +420,7 @@ html .color-section form .hs-button:focus { color: var(--theme--buttons--light-b
 html .color-section div[class*="background-color"] form input[type=submit]:hover,
 html .color-section div[class*="background-color"] form input[type=submit]:focus,
 html .color-section div[class*="background-color"] form .hs-button:hover,
-html .color-section div[class*="background-color"] form .hs-button:focus { color: var(--theme--buttons--hover-text-color) !important;box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color--lightened) 300px 0 10px -10px inset{% endif %} !important; }
+html .color-section div[class*="background-color"] form .hs-button:focus { color: var(--theme--buttons--hover-text-color) !important;box-shadow: {% if theme.buttons.gr_color.color %}var(--theme--buttons--hover-color) 300px 0 10px -10px inset{% endif %} !important; }
 html .color-section select { background: var(--color--white); }
 html .color-section input::placeholder { color: var(--color--white); }
 html .color-section input::-ms-input-placeholder { color: var(--color--white); }
