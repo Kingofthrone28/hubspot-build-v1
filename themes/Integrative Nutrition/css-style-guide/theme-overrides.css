@@ -87,7 +87,7 @@ h1 {
   {{ theme.typography.heading_one.style }};
   color: var(--theme--typography--heading-1--color);
   font-size: var(--theme--typography--heading-1--font-size);
-  line-height: var(--line-height--legacy--4);
+  line-height: var(--line-height--legacy--heading);
   {% if theme.typography.h1_transform %}text-transform: uppercase;{% endif %}
 }
 
@@ -99,7 +99,7 @@ h2 {
   {{ theme.typography.heading_two.style }};
   color: var(--theme--typography--heading-2--color);
   font-size: var(--theme--typography--heading-2--font-size);
-  line-height: var(--line-height--legacy--4);
+  line-height: var(--line-height--legacy--heading);
   {% if theme.typography.h2_transform %}text-transform: uppercase;{% endif %}
 }
 
@@ -107,7 +107,7 @@ h3 {
   {{ theme.typography.heading_three.style }};
   color: var(--theme--typography--heading-3--color);
   font-size: var(--theme--typography--heading-3--font-size);
-  line-height: var(--line-height--legacy--4);
+  line-height: var(--line-height--legacy--heading);
   margin-top: 0;
   {% if theme.typography.h3_transform %}text-transform: uppercase;{% endif %}
 }
@@ -116,7 +116,7 @@ h4 {
   {{ theme.typography.heading_four.style }};
   color: var(--theme--typography--heading-4--color);
   font-size: var(--theme--typography--heading-4--font-size);
-  line-height: var(--line-height--legacy--4);
+  line-height: var(--line-height--legacy--heading);
   {% if theme.typography.h4_transform %}text-transform: uppercase;{% endif %}
 }
 
@@ -147,7 +147,7 @@ blockquote {
 @media (max-width: 767px) {
   h1 {
     font-size: var(--theme--typography--heading-1--small--font-size);
-    line-height: var(--line-height--legacy--4);
+    line-height: var(--line-height--legacy--heading);
   }
 
   .single-header h1 {
@@ -156,17 +156,17 @@ blockquote {
 
   h2 {
     font-size: var(--theme--typography--heading-2--small--font-size);
-    line-height: var(--line-height--legacy--4);
+    line-height: var(--line-height--legacy--heading);
   }
 
   h3 {
     font-size: var(--theme--typography--heading-3--small--font-size);
-    line-height: var(--line-height--legacy--4);
+    line-height: var(--line-height--legacy--heading);
   }
 
   h4 {
     font-size: var(--theme--typography--heading-4--small--font-size);
-    line-height: var(--line-height--legacy--4);
+    line-height: var(--line-height--legacy--heading);
   }
 }
 
@@ -499,7 +499,7 @@ body .team-member__description {
 }
 
 .mb-resource-filter .topic-list {
-  font-size: 14px!important; color: var(--color--legacy--grey--dim-grey-2);
+  font-size: var(--font-size--legacy--4)!important; color: var(--color--legacy--grey--dim-grey-2);
 }
 
 

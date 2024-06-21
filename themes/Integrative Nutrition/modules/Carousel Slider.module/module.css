@@ -21,13 +21,13 @@
 .blog-item .item-meta {
   font-weight: bold;
   color: var(--color--legacy--blue--mariner-2);
-  font-size: 16px;
+  font-size: var(--font-size--legacy--7);
   margin-bottom: 15px;
 }
 
 .blog-item .item-meta .topic-link {
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: var(--font-size--legacy--7);
 }
 
 .blog-item .item-inner {
@@ -135,7 +135,7 @@
 .quote-mark:before {
     content: '“';
     position: absolute;
-    font-size: 120px;
+    font-size: var(--font-size--legacy--29);
     opacity: .4;
     left: 18px;
     line-height: var(--line--height--0);
@@ -157,7 +157,7 @@
     height: 120px;
     line-height: var(--line--height--0);
     font-family: var(--font-family--legacy--heading);
-    font-size: 120px;
+    font-size: var(--font-size--legacy--29);
     opacity: .4;
     left: calc(-.1 * 120px);
     top: calc(-.2 * 120px);

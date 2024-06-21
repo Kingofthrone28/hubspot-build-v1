@@ -1,5 +1,5 @@
 .arrow-nav { padding-top: 30px;text-align: right; }
-.arrow-nav .slick-arrow { position: static; font-size: 36px;border: none;box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-15);background: var(--color--white); }
+.arrow-nav .slick-arrow { position: static; font-size: var(--font-size--legacy--21);border: none;box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-15);background: var(--color--white); }
 .arrow-nav .slick-prev { padding: 15px 27px 15px 24px !important;border-radius: 4px 0 0 4px; }
 .arrow-nav .slick-next { padding: 15px 24px 15px 27px !important;border-radius: 0 4px 4px 0; }
 .testimonial-q.q-top { float: none;margin-bottom: 30px; }

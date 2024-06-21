@@ -17,7 +17,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 .dnd-section form label {
   color: var(--color--legacy--blue--gulf-blue);
   display: block;
-  font-size: 1rem;
+  font-size: var(--font-size--3);
   padding-top: 0;
   margin-bottom: 0;
   text-align: left;
@@ -28,7 +28,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 
 .dnd-section form legend {
   color: var(--color--legacy--blue--gulf-blue);
-  font-size: 1rem;
+  font-size: var(--font-size--3);
 }
 
 /* Inputs */
@@ -47,7 +47,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 .dnd-section textarea {
   color: var(--color--legacy--blue--gulf-blue);
   display: inline-block;
-  font-size: 1rem;
+  font-size: var(--font-size--3);
   padding: 0 20px 16px 20px;
   width: 100%;
 }
@@ -60,7 +60,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
   border-color: var(--theme--forms--field-border-color);
   color: var(--theme--typography--body-text--color);
   background: var(--color--legacy--white--white-smoke-4);
-  font-size: 1rem;
+  font-size: var(--font-size--3);
   padding: 12px 20px;
   border-radius: 3px;
 }
@@ -80,7 +80,7 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
   border-radius: 3px;
   color: var(--color--legacy--blue--gulf-blue);
   display: inline-block;
-  font-size: 1rem;
+  font-size: var(--font-size--3);
   padding: 0.7rem;
   width: 100%;
 }
@@ -121,7 +121,7 @@ form .inputs-list {
 
 .inputs-list input,
 .inputs-list span {
-  font-size: 1rem;
+  font-size: var(--font-size--3);
   vertical-align: middle;
 }
 
@@ -193,7 +193,7 @@ input[type=file] {
 
 form .hs-richtext,
 form .hs-richtext p {
-  font-size: 0.875rem;
+  font-size: var(--font-size--2);
   margin: 0 0 1.4rem;
 }
 
@@ -210,7 +210,7 @@ form .header {
 
 .legal-consent-container .hs-form-booleancheckbox-display > span,
 .legal-consent-container .hs-form-booleancheckbox-display > span p {
-  font-size: 0.875rem;
+  font-size: var(--font-size--2);
   margin-left: 1rem !important;
 }
 
@@ -239,7 +239,7 @@ form .header {
   color: var(--color--white);
   cursor: pointer;
   display: inline-block;
-  font-size: 0.92rem;
+  font-size: var(--font-size--legacy--6);
   font-weight: normal;
   height: auto;
   line-height: var(--line-height--1);
@@ -431,7 +431,7 @@ html .color-section div[class*="background-color"] input:-ms-input-placeholder{ 
 
 .hs-form__legal-consent * {
   line-height: var(--line-height--legacy--3);
-  font-size: 12px;
+  font-size: var(--font-size--legacy--2);
 }
 /* @media (max-width: 765px) {
   .hs-fieldtype-intl-phone.hs-input select {

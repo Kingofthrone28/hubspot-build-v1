@@ -68,8 +68,8 @@ html .dnd-section[class*="max-width-section-centering"] > .row-fluid {
 .dnd-section-custom-bg { position: absolute;left:0;right:0;z-index: -1; }
 .dnd-section-custom-bg .overlay { height: 100%;width: 100%; }
 .dnd-section-custom-bg.content-width { margin-left: auto;margin-right: auto;width: var(--theme--spacing--max-width);max-width: 95%;border-radius: var(--theme--spacing--border-radius);box-shadow: 1px 1px 10px var(--color--legacy--black--black--alpha-20); }
-.edit-icon { background: var(--color--white);border-radius: 5px;padding: 8px 5px 2px;box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-20);text-align: center;width: 40px;color: var(--theme--global-colors--secondary-color);font-size: 14px;line-height: var(--line-height--1); }
-.edit-icon i { font-size: 40px;line-height: var(--line-height--legacy--1); }
+.edit-icon { background: var(--color--white);border-radius: 5px;padding: 8px 5px 2px;box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-20);text-align: center;width: 40px;color: var(--theme--global-colors--secondary-color);font-size: var(--font-size--legacy--4);line-height: var(--line-height--1); }
+.edit-icon i { font-size: var(--font-size--legacy--23);line-height: var(--line-height--legacy--1); }
 .dnd-section-custom-bg svg { position: absolute;bottom: -1px; }
 
 .tall-hero-section > .row-fluid { width: 50% !important; }
