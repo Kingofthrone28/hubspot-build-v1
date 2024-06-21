@@ -93,7 +93,7 @@ ul.hs-search-results__listing li {
 
 .hs-search-results__title {
   color: var(--color--legacy--violet--gun-powder);
-  font-size: 1.25rem;
+  font-size: var(--font-size--5);
   margin-bottom: 0.35rem;
   text-decoration: underline;
 }

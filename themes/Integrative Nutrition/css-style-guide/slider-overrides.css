@@ -4,7 +4,7 @@
 }
 .widget-type-custom_widget .list-icons .icon {
   margin-right: 0.5em;
-  font-size: 24px;
+  font-size: var(--font-size--legacy--13);
 }
 .widget-type-custom_widget .list-icons .icon.icon-check_circle:before {
   background-position: 0em -6em;
@@ -58,7 +58,7 @@
   flex-basis: 40%;
 }
 .top-right-arrows-flex-slider .slick-list .item .item-inner .vertical-card-content .quote-head .caption {
-  font-size: 0.875rem;
+  font-size: var(--font-size--2);
 }
 @media (min-width: 998px) {
   .top-right-arrows-flex-slider .slick-list .item .item-inner .vertical-card-content >div:nth-child(2) {
@@ -68,11 +68,11 @@
   }
 }
 .top-right-arrows-flex-slider .slick-list .item .item-inner .vertical-card-content .quote-body {
-  font-size: 24px;
+  font-size: var(--font-size--legacy--13);
   text-align: left;
 }
 .top-right-arrows-flex-slider .slick-list .item .item-inner .vertical-card-content .quote-body p {
-  font-size: 24px;
+  font-size: var(--font-size--legacy--13);
 }
 .top-right-arrows-flex-slider .slick-list .item .item-inner .vertical-card-content .quote-body .quote-mark {
   width: 35px;

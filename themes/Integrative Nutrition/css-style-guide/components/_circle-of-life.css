@@ -18,7 +18,7 @@
 	 padding-left: 20px;
 	 width: 50%;
 	 color: !important;
-	 font-size: 16px;
+	 font-size: var(--font-size--legacy--7);
 	 white-space: nowrap;
 	 pointer-events: none;
 }
@@ -116,13 +116,13 @@
 
  @media only screen and (min-width: 540px) and (max-width: 768px) {
    #col-canvas .slice {
-     font-size: 14px;
+     font-size: var(--font-size--legacy--4);
    }
  }
 
  @media only screen and (max-width: 540px) {
    #col-canvas .slice {
-     font-size: 12px;
+     font-size: var(--font-size--legacy--2);
    }
  }
  
