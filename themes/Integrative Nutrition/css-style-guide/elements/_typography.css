@@ -1,22 +1,6 @@
-html {
-  font-size: 24px;
-}
-
-@media (max-width: 767px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 html body {
   color: var(--color--legacy--violet--gun-powder);
-  line-height: 1.4;
+  line-height: var(--line-height--legacy--7);
   word-break: break-word;
 }
 
@@ -28,13 +12,12 @@ html[lang^="ko"] body {
 }
 
 .iin_red {
-  color: var(--color--iin-red);
+  color: var(--color--cherry);
 }
 
 /* Paragraphs */
 
 p {
-  font-size: 1rem;
   margin: 0 0 1.4rem;
 }
 
@@ -48,15 +31,16 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   text-decoration: underline;
 }
 
 /* Headings */
 @media (max-width: 767px) {
   .entity-paragraphs-item.paragraphs-item-headline {
-   font-size: 40px;
-   line-height: auto!important;
+    font-size: 40px;
+    line-height: auto !important;
   }
 }
 
@@ -123,7 +107,7 @@ code {
 /* Blockquotes */
 
 blockquote {
-  border-left: 2px solid var(--color--legacy--grey--dark-grey-1)
+  border-left: 2px solid var(--color--legacy--grey--dark-grey-1);
   margin: 0 0 1.4rem;
   padding-left: 15px;
 }

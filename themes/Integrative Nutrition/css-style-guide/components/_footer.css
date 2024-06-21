@@ -22,13 +22,12 @@
 .footer-container h3, 
 .footer-container h4, 
 .footer-container h5 { 
-  color: {{theme.footer.text_color.color}}; 
+  color: var(--color--white); 
 }
 
-@media (max-width:--container--lg) {
+@media (max-width:1000px) {
   .footer-container, 
-  .footer-container 
-  .social-links { 
+  .footer-container .social-links { 
     text-align: center; 
   }
   .footer-container img { 
@@ -37,7 +36,7 @@
 }
 
 .footer-container a { 
-  color: {{theme.footer.link_color.color}};
+  color: var(--color--white);
   display: inline-block;
 }
 
@@ -55,7 +54,5 @@
 }
 
 h3.form-title { 
-  font-size: {{ theme.typography.heading_five.size ~ theme.typography.heading_five.size_unit }}; 
+  font-size: var(--font-size--h3--desktop); 
 }
-
-

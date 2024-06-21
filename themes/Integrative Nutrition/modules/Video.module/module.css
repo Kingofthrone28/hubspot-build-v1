@@ -125,7 +125,7 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 
 p.hs-video-placeholder__title {
   color: var(--color--legacy--blue--wild-blue-yonder) !important;
-  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif !important;
+  font-family: var(--font-family--legacy--video) !important;
   font-size: 14px !important;
   font-style: italic !important;
   font-weight: 700 !important;
@@ -138,10 +138,10 @@ p.hs-video-placeholder__title {
 
 p.hs-video-placeholder__description {
   color: var(--color--legacy--blue--wild-blue-yonder) !important;
-  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif !important;
+  font-family: var(--font-family--legacy--video) !important;
   font-style: italic !important;
   font-weight: 400 !important;
-  line-height: 1.6 !important;
+  line-height: var(--line-height--legacy--9) !important;
   margin: 0 !important;  
   text-shadow: 0 -1px 0 hsla(0,0%,100%,.5) !important;
 }

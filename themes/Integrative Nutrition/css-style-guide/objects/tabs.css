@@ -13,7 +13,7 @@
 .dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) { min-height: 400px;margin-left: 0 !important; }
 .dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) > .dnd-row { padding: 30px 20px;color: var(--color--white);border-bottom: 1px solid var(--color--legacy--white--white--alpha-50);cursor: pointer; }
 .dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) > .dnd-row:hover { background: var(--color--legacy--white--white--alpha-10); }
-.dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) > .dnd-row.selected { background: var(--color--white);color: {{theme.global_colors.primary_color.color}}; }
+.dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) > .dnd-row.selected { background: var(--color--white);color: var(--theme--global-colors--primary-color); }
 .dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(1) > .dnd-row:nth-last-child(1) { border-bottom: none; }
 
 .dnd-section.vert-tabs > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid > .dnd-column:nth-child(2) { position: relative;z-index: 1;overflow: hidden; }
@@ -29,7 +29,7 @@
 /* Handle */
 .dnd-row::-webkit-scrollbar-thumb { background: var(--color--legacy--white--white-smoke-1);border-radius: 5px; }
 /* Handle on hover */
-.dnd-row::-webkit-scrollbar-thumb:hover { background: {{theme.global_colors.secondary_color.color}}; }
+.dnd-row::-webkit-scrollbar-thumb:hover { background: var(--theme--global-colors--secondary-color); }
 
 
 
@@ -37,7 +37,7 @@
 .dnd-section.vert-tabs.vert2 > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid>.dnd-column:nth-child(1) > .dnd-row { padding: 40px 0 0; }
 .dnd-section.vert-tabs.vert2 > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid>.dnd-column:nth-child(1) > .dnd-row { color: var(--color--legacy--grey--grey-3); }
 .dnd-section.vert-tabs.vert2 > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid>.dnd-column:nth-child(1) > .dnd-row.selected { font-weight: 600;position: relative; }
-.dnd-section.vert-tabs.vert2 > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid>.dnd-column:nth-child(1) > .dnd-row.selected:before { content: '►';position: absolute;left: -30px;font-size: 25px;color: {{theme.global_colors.tertiary_color.color}}; }
+.dnd-section.vert-tabs.vert2 > .row-fluid > .dnd-column > .dnd-row[class*="background-color"] > .row-fluid>.dnd-column:nth-child(1) > .dnd-row.selected:before { content: '►';position: absolute;left: -30px;font-size: 25px;color: var(--theme--global-colors--tertiary-color); }
 
 
 

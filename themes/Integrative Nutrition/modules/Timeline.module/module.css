@@ -5,7 +5,7 @@
 }
 
 html {
-  font-family: 'Oxygen', sans-serif;
+  font-family: var(--font-family--legacy--timeline);
 }
 
 *,
