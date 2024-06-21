@@ -140,9 +140,9 @@
     left: 18px;
     line-height: var(--line--height--0);
     top: 5px;
-    color: var(--color--olives);
+    color: var(--color--legacy--green--highland);
     z-index: 0;
-    font-family: 'JuniusX', Cardo, Arial;
+    font-family: var(--font-family--legacy--heading);
 }
 
 
@@ -156,7 +156,7 @@
     position: absolute;
     height: 120px;
     line-height: var(--line--height--0);
-    font-family: JuniusX,serif;
+    font-family: var(--font-family--legacy--heading);
     font-size: 120px;
     opacity: .4;
     left: calc(-.1 * 120px);

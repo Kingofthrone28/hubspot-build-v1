@@ -1,54 +1,39 @@
 :root {
   /* Style Guide */
 
-  /* IIN */
-  --color--bone: #F8F5F0;
-  --color--iin-red: #D72A25;
+  /* Style Guide Primary and Secondary Colors */
+  --color--cherry: #D72A25;
+  --color--gold: #E4AB00;
   --color--melon: #ED8A72;
-  --color--midnight: #2D3841;
-  --color--olives: #818A5C;
-  --color--palo-santo: #EAE2D3;
-  --color--sage: #D3DDCC;
-  --color--sky: #C4E1E5;
-  /* End IIN */  
+  --color--water: #003D4B;
 
-  /* Neutrals */
+  /* Style Guide Base Colors */
   --color--black: #000; /* rgb(0, 0, 0) */
+  --color--chalk: #F8F5F0;
+  --color--slate: #142023;
+  --color--white: #FFF; /* rgb(255, 255, 255) */
+
+  /* Style Guide Neutral Colors */
   --color--grey-1: #333;
   --color--grey-2: #4F4F4F;
   --color--grey-3: #828282;
   --color--grey-4: #BDBDBD;
   --color--grey-5: #E7E7E7;
-  --color--white: #FFF; /* rgb(255, 255, 255) */
-  /* End Neutrals */
 
-  /* Chopra */
-  --color--earth: #23C369;
-  --color--fire: #F05A38;
-  --color--gold: #D99C64;
-  --color--midnight--dark: #001432;
-  --color--midnight--light: #5F5F73;
+  /* Style Guide Chopra Colors */
+  --color--midnight: #001432;
   --color--sand: #FBF2DE;
-  --color--sand--light: #FFFAF3;
-  --color--space: #0E394D;
-  --color--sunshine: #FFBE3C;
-  --color--sunshine--light: #FFE1AA;
-  --color--water: #3757B6;
-  /* End Chopra */
 
-  /* End Style Guide */
-
-  /* Legacy
-
-    These variables should be renamed if they get moved into the guide.
-    
-    The whimsical color names are derived from https://www.color-blindness.com/color-name-hue/
+  /*
+    Legacy variables should be renamed if they get moved into the guide.
+    The whimsical color names are derived from
+    https://www.color-blindness.com/color-name-hue/
   */
 
   /* Legacy Neutrals */
-  --color--legacy--black--black--alpha-0: rgba(0, 0, 0, 0); /* #000 */
-  --color--legacy--black--black--alpha-5: rgba(0, 0, 0, 0.05);
-  --color--legacy--black--black--alpha-8: rgba(0, 0, 0, 0.08);
+  --color--legacy--black--black--alpha-0:  rgba(0, 0, 0, 0); /* #000 */
+  --color--legacy--black--black--alpha-5:  rgba(0, 0, 0, 0.05);
+  --color--legacy--black--black--alpha-8:  rgba(0, 0, 0, 0.08);
   --color--legacy--black--black--alpha-10: rgba(0, 0, 0, 0.1);
   --color--legacy--black--black--alpha-12: rgba(0, 0, 0, 0.12);
   --color--legacy--black--black--alpha-14: rgba(0, 0, 0, 0.14);
@@ -87,19 +72,18 @@
   --color--legacy--grey--zircon-2: #DEE2E6;
   --color--legacy--white--gainsboro-1: #DDD;
   --color--legacy--white--gainsboro-2: #E5E5E5;
-  --color--legacy--white--white--alpha-10: rgba(255, 255, 255, 0.1); /* #FFF */
-  --color--legacy--white--white--alpha-30: rgba(255, 255, 255, 0.3);
-  --color--legacy--white--white--alpha-40: rgba(255, 255, 255, 0.4);
-  --color--legacy--white--white--alpha-48: rgba(255, 255, 255, 0.48);
-  --color--legacy--white--white--alpha-50: rgba(255, 255, 255, 0.5);
-  --color--legacy--white--white--alpha-70: rgba(255, 255, 255, 0.7);
+  --color--legacy--white--white--alpha-10:  rgba(255, 255, 255, 0.1); /* #FFF */
+  --color--legacy--white--white--alpha-30:  rgba(255, 255, 255, 0.3);
+  --color--legacy--white--white--alpha-40:  rgba(255, 255, 255, 0.4);
+  --color--legacy--white--white--alpha-48:  rgba(255, 255, 255, 0.48);
+  --color--legacy--white--white--alpha-50:  rgba(255, 255, 255, 0.5);
+  --color--legacy--white--white--alpha-70:  rgba(255, 255, 255, 0.7);
   --color--legacy--white--white--alpha-100: rgba(255, 255, 255, 1);
   --color--legacy--white--white-smoke-1: #EBEBEB;
   --color--legacy--white--white-smoke-2: #EEE;
   --color--legacy--white--white-smoke-3: #EFEFEF;
   --color--legacy--white--white-smoke-4: #F3F3F3;
   --color--legacy--white--white-smoke-5: #F5F5F5;
-  /* End Legacy Neutrals */
   
   /* Legacy Colors */
   --color--legacy--blue--allports-1: #186286;
@@ -119,6 +103,7 @@
   --color--legacy--blue--mariner-2: #456CAA;
   --color--legacy--blue--mirage: #343A40;
   --color--legacy--blue--navy-blue: #0270E0;
+  --color--legacy--blue--oxford-blue: #2D3841; /* Midnight */
   --color--legacy--blue--pattens-blue: #F8FAFC;
   --color--legacy--blue--raven: #6C757D;
   --color--legacy--blue--regal-blue-1: #173753;
@@ -138,8 +123,10 @@
   --color--legacy--green--atlantis: #95D03A;
   --color--legacy--green--bilbao: #4F7D24;
   --color--legacy--green--blue-stone: #134863;
+  --color--legacy--green--carrara: #EAE2D3; /* Palo Santo */
   --color--legacy--green--de-york: #7FBD74;
   --color--legacy--green--emerald: #61CE70;
+  --color--legacy--green--highland: #818A5C; /* Olives */
   --color--legacy--green--peppermint: #CDE3CC;
   --color--legacy--green--rolling-stone: #707372;
   --color--legacy--orange--peach: #FFBB95;
@@ -151,7 +138,4 @@
   --color--legacy--violet--gun-powder: #494A52;
   --color--legacy--yellow--amber: #FFBD00;
   --color--legacy--yellow--rob-roy: #DDA858;
-  /* End Legacy Colors */
-
-  /* End Legacy */
 }

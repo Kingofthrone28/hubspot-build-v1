@@ -36,7 +36,7 @@
 
 /* scrolled */
 .jd-header-wrap.jd-scrolled .jd-nav-item > a {
-  color: var(--color--midnight);
+  color: var(--color--legacy--blue--oxford-blue);
 }
 
 .jd-header-wrap.jd-scrolled .jd-nav-show > a {
@@ -48,7 +48,7 @@
 }
 
 .jd-header-wrap.jd-scrolled .jd-header-top ul li a {
-  color: var(--color--midnight);
+  color: var(--color--legacy--blue--oxford-blue);
 }
 
 .jd-header-wrap.jd-scrolled #jd-contact::before {
