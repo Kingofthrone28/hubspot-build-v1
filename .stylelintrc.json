@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended"
+  ],
+  "plugins": [
+    "stylelint-no-unsupported-browser-features"
+  ],
+  "rules": {
+    "custom-property-pattern": null,
+    "plugin/no-unsupported-browser-features": [true, {
+      "ignore": [],
+      "ignorePartialSupport": true,
+      "severity": "warning"
+    }]
+  }
+}

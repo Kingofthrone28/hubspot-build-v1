@@ -2,19 +2,25 @@
   "name": "hubspot",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "browserslist": "^4.23.1",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^7.1.0",
-    "prettier": "^2.7.1"
+    "prettier": "^3.3.2",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-no-unsupported-browser-features": "^8.0.1",
+    "stylelint-prettier": "^5.0.0"
   },
   "scripts": {
     "format": "npx prettier --write .",
-    "lint": "eslint . --ext .js,.jsx,.html --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx,.html --fix --ignore-path .gitignore",
+    "eslint": "eslint . --ext .js,.jsx,.html --ignore-path .gitignore",
+    "eslint:fix": "eslint . --ext .js,.jsx,.html --fix --ignore-path .gitignore",
+    "stylelint": "stylelint . --ext .css --ignore-path .gitignore",
+    "stylelint:fix": "stylelint . --ext .css --fix --ignore-path .gitignore",
     "sync": "hs fetch --account=iin-production / --overwrite"
   }
 }
