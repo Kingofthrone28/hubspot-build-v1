@@ -63,18 +63,18 @@ function trackCloseChat() {
   });
 }
 
-function initiliseEvents() {
+function initializeEvents() {
 
-  const accordion = document.querySelectorAll('div.ex-label');
-  accordion.forEach((link) => {
+  const accordions = document.querySelectorAll('div.ex-label');
+  accordions.forEach((link) => {
     link.addEventListener('click', () => {
       trackAccordionClick(link);
     });
   });
 
 
-  const bioViewButtons = document.querySelectorAll('.bio-label .bio-closed strong');
-  bioViewButtons.forEach((button) => {
+  const viewBioButtons = document.querySelectorAll('.bio-label .bio-closed strong');
+  viewBioButtons.forEach((button) => {
     button.addEventListener('click', () => {
       trackBioView(button);
     });
@@ -96,15 +96,15 @@ function initiliseEvents() {
     });
   });
 
-  const openChatBtn = document.querySelector('div#chatbtn');
-  if (openChatBtn) {
-    openChatBtn.addEventListener('click', () => {
+  const openChatButton = document.querySelector('div#chatbtn');
+  if (openChatButton) {
+    openChatButton.addEventListener('click', () => {
       trackOpenChat();
     });
   }
 
   const inviteDiv = document.querySelector('div#inviteBody');
-  if (inviteDiv && inviteDiv.children.length > 3) {
+  if (inviteDiv?.children.length > 3) {
     const closeChatBtn = inviteDiv.children[3];
     if (closeChatBtn) {
       closeChatBtn.addEventListener('click', () => {
@@ -115,6 +115,6 @@ function initiliseEvents() {
 
 }
 
-window.addEventListener("load", () => {
-  initiliseEvents();
+window.addEventListener('load', () => {
+  initializeEvents();
 });
