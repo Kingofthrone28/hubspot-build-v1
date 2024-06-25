@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+    - develop
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+      - name: HubSpot Deploy Action
+        uses: HubSpot/hubspot-cms-deploy-action@v1.7
+        with:
+          src_dir: hubspot
+          dest_dir: /@hubspot
+          portal_id: ${{ 43960453 }}
+          personal_access_key: ${{ pat-na1-6a65ce58-8b5d-4822-b2b8-cd6b1a7a9be5 }}
