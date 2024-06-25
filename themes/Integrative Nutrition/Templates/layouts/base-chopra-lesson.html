@@ -13,6 +13,9 @@
     <title>{{ page_meta.html_title }}</title>
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {% module "shared_head" path="../../modules/SharedHead", label="Shared Head" %}
+
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ standard_header_includes }}
     <title>Chopra Coaching [IIN Sample Lesson]</title>
