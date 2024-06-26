@@ -213,8 +213,10 @@
 </div>
 
 <style>
-  #section-{{ parent_custom_widget_name }} .slick-prev svg path, #section-{{ parent_custom_widget_name }} .slick-next svg path,
-  #section-{{ parent_custom_widget_name }} .slick-prev svg line, #section-{{ parent_custom_widget_name }} .slick-next svg line { 
+  #section-{{ parent_custom_widget_name }} .slick-prev svg path, 
+  #section-{{ parent_custom_widget_name }} .slick-next svg path,
+  #section-{{ parent_custom_widget_name }} .slick-prev svg line, 
+  #section-{{ parent_custom_widget_name }} .slick-next svg line { 
     stroke: {{ module.option.navigation.arrow_color.color }}; 
     opacity: {{ module.option.navigation.arrow_color.opacity / 100 }}; 
   }
@@ -222,20 +224,22 @@
   #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item-inner { 
     border-radius: {{ module.option.border.border_radius_all }}px; 
     border: {{ module.option.border.border_width }}px solid {{ module.option.border.border_color.color }}; 
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.14);
+    box-shadow:0 5px 5px 0 var(--color--legacy--black--black--alpha-14);
   }
 
-  #section-{{ parent_custom_widget_name }} .slick-prev i, #section-{{ parent_custom_widget_name }} .slick-next i { 
+  #section-{{ parent_custom_widget_name }} .slick-prev i, 
+  #section-{{ parent_custom_widget_name }} .slick-next i { 
     color: {{ module.option.navigation.arrow_color.color }}; 
     opacity: {{ module.option.navigation.arrow_color.opacity / 100 }};  
-  
   }
+
   #section-{{ parent_custom_widget_name }} .nav-item { 
     background-color: {{ module.option.navigation.dots_color.color }}; 
     opacity: {{ module.option.navigation.dots_color.opacity / 100 }}; 
   }
 
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current, #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { 
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current,
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { 
     background: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; 
     opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
   }
@@ -245,13 +249,13 @@
     opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
   }
 
-  #section-{{ parent_custom_widget_name }} .quote-mark:before {
-    color: var(--color--grey-3)
+  #section-{{ parent_custom_widget_name }} .quote-mark::before {
+    color: var(--color--grey-3);
   };
 
   {% if module.option.border.border_width > 0 %}
     #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .content { 
-      padding: 30px 30px !important; 
+      padding: 30px !important; 
     }
   {% endif %}
 
@@ -269,7 +273,9 @@
     }
 
     #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item { 
-      padding: 5px 0; display: flex; align-items: center; 
+      padding: 5px 0; 
+      display: flex; 
+      align-items: center; 
     }
   {% endif %}
 </style>
