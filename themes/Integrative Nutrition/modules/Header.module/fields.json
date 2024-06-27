@@ -202,6 +202,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "transform_uppercase" : true,
@@ -382,6 +383,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "show_site_search" : true,
@@ -483,6 +485,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "mobile_background" : {
@@ -501,6 +504,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "layout" : "top",
@@ -821,6 +825,7 @@
       } ],
       "tab" : "CONTENT",
       "expanded" : false,
+      "group_occurrence_meta" : null,
       "type" : "group",
       "default" : [ {
         "sub_label" : "Sub Menu",
@@ -918,6 +923,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : [ {
       "main_label" : "Menu Item",
@@ -1211,6 +1217,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "menu_type" : "mega",
@@ -1646,6 +1653,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "link_field_1" : {
@@ -1845,6 +1853,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "link_field_1" : {
@@ -1988,6 +1997,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "icon_field" : {

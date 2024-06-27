@@ -94,6 +94,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -160,6 +161,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -226,6 +228,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -292,6 +295,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -358,6 +362,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -424,6 +429,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -490,6 +496,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "column1_header" : "Header Text",
@@ -505,6 +512,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "column_1" : {
@@ -746,6 +754,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "fadeDown",
@@ -754,6 +763,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "textalignment_field" : {
@@ -935,6 +945,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ { }, { }, { } ]
 } ]
