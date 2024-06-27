@@ -235,3 +235,11 @@ function getCookie(cookieName) {
 
   return '';
 }
+
+/**
+ * Check if cookie existed.
+ * DEPRECATED: Please use or create IIN.cookies object methods
+ */
+function checkCookie(cookieName) {
+  return document.cookie.includes(cookieName);
+}
