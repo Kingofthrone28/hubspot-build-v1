@@ -149,6 +149,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "title" : { },
@@ -310,6 +311,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "background_color" : {
@@ -531,6 +533,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "background_color" : {
@@ -628,6 +631,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "drop_shadow" : true
@@ -656,6 +660,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "none"
@@ -663,6 +668,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "fonts" : {
@@ -971,6 +977,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "read_more_text" : "Read More",
@@ -1020,6 +1027,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "loaction" : "top",
