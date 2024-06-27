@@ -173,6 +173,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "name_field" : "Card Title",
@@ -474,6 +475,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "center_focus_slide" : true,
@@ -517,6 +519,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "fadeDown",
@@ -525,6 +528,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "border_field" : {

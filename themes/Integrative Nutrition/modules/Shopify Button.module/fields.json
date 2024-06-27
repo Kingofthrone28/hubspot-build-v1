@@ -106,6 +106,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "button_text" : "Add to Bag",
@@ -179,6 +180,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "icon" : {

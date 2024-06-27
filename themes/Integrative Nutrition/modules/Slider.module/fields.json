@@ -176,6 +176,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "add_section_link" : false,
@@ -277,6 +278,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "image_field" : {
@@ -484,6 +486,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "image_size" : "cover",
@@ -694,6 +697,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "nav_location" : "before",
@@ -838,6 +842,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "number_of_slides_to_scroll" : "one",
@@ -891,6 +896,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "desktop" : 3,
@@ -963,6 +969,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "border_width" : 0,
@@ -1056,6 +1063,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "none",
@@ -1064,6 +1072,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "image" : {
