@@ -7,7 +7,7 @@ a.post-link:hover { text-decoration: none; }
 .blog-item-content { align-self: center; }
 .flex-blog-section .topics { margin: 5px 0; }
 .blog-item.mb-resource-wrapper { flex-direction: column;padding-bottom: 20px; }
-.author-date { font-size: 14px; }
+.author-date { font-size: var(--font-size--legacy--4); }
 .auth-img { display: inline-block;width: 50px;height: 50px;float: left;margin-right: 10px;border-radius: 50%; }
 .flex-blog-section .mb-resource .more-link i { color: unset; }
 .post-footer { display: flex;align-items: flex-end; }

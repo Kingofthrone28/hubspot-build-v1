@@ -23,22 +23,47 @@
         }
       }
 
-      const marchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
+      const matchedCompareAtPrice = matchedVariant.compareAtPrice?.amount;
       const matchedPrice = matchedVariant.price.amount;
 
       $('#course-shopify-price').text(
         `$${parseInt(matchedPrice).toLocaleString()}`
       );
 
-      if (marchedCompareAtPrice && marchedCompareAtPrice !== matchedPrice) {
+      if (matchedCompareAtPrice && matchedCompareAtPrice !== matchedPrice) {
         $('#course-shopify-compare').text(
           `$${parseInt(matchedVariant.compareAtPrice.amount).toLocaleString()}`
         );
       }
+      return [product, matchedVariant];
     } catch (e) {
       console.error(e);
     }
   };
 
-  setPrice();
+  setPrice().then(([product, matchedVariant]) => {
+
+    const variantID = matchedVariant.id;
+    const itemPrice = matchedVariant.price.amount;
+    const viewItemPayLoad = {
+      event: 'view_item',
+      ecommerce: {
+        product_type: 'Individual',
+        currency: matchedVariant.price.currencyCode,
+        value: parseFloat(itemPrice),
+        items: [{
+          'item_id': moduleData.productID,
+          'item_name': product.title,
+          'item_type': product.productType || 'NA',
+          'variant_id': variantID.match(/\/(\d+)$/)[1],
+          'price': parseFloat(itemPrice),
+          'sku': matchedVariant.sku || 'NA',
+          'discount': parseFloat(product?.discountAllocations?.allocatedAmount?.amount) || 'NA',
+          'quantity': product?.quantity || 1
+        }]
+      }
+    };
+    // Trigger View item tracking event
+    triggerECommEvent(viewItemPayLoad);
+  });
 })();

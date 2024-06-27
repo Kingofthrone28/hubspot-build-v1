@@ -35,6 +35,6 @@
 }
 
 .social-sharing__text {
-  font-size: 13px;
+  font-size: var(--font-size--legacy--3);
   margin-right: 15px;
 }
