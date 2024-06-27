@@ -11,3 +11,6 @@ private.key
 
 # HubSpot config file
 hubspot.config.yml
+
+# Temporarily hide css-style-guide
+css-style-guide
