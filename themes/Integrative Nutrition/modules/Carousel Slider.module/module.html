@@ -186,24 +186,64 @@
 </div>
 
 <style>
-  #section-{{ parent_custom_widget_name }} .slick-prev svg path, #section-{{ parent_custom_widget_name }} .slick-next svg path,
-  #section-{{ parent_custom_widget_name }} .slick-prev svg line, #section-{{ parent_custom_widget_name }} .slick-next svg line{ stroke: {{ module.option.navigation.arrow_color.color }}; opacity: {{ module.option.navigation.arrow_color.opacity / 100 }}; }
-  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item-inner { border-radius: {{ module.option.border.border_radius_all }}px; border: {{ module.option.border.border_width }}px solid {{ module.option.border.border_color.color }}; }
-  #section-{{ parent_custom_widget_name }} .slick-prev i, #section-{{ parent_custom_widget_name }} .slick-next i { color: {{ module.option.navigation.arrow_color.color }}; opacity: {{ module.option.navigation.arrow_color.opacity / 100 }};  }
-  #section-{{ parent_custom_widget_name }} .nav-item { background-color: {{ module.option.navigation.dots_color.color }}; opacity: {{ module.option.navigation.dots_color.opacity / 100 }}; }
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current, #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { background: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; }
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav button:hover i { color: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; }
+  #section-{{ parent_custom_widget_name }} .slick-prev svg path, 
+  #section-{{ parent_custom_widget_name }} .slick-next svg path,
+  #section-{{ parent_custom_widget_name }} .slick-prev svg line, 
+  #section-{{ parent_custom_widget_name }} .slick-next svg line{ 
+    stroke: {{ module.option.navigation.arrow_color.color }}; 
+    opacity: {{ module.option.navigation.arrow_color.opacity / 100 }}; 
+  
+  }
+
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item-inner { 
+    border-radius: {{ module.option.border.border_radius_all }}px; 
+    border: {{ module.option.border.border_width }}px solid {{ module.option.border.border_color.color }}; 
+  }
+
+  #section-{{ parent_custom_widget_name }} .slick-prev i, 
+  #section-{{ parent_custom_widget_name }} .slick-next i { 
+    color: {{ module.option.navigation.arrow_color.color }};
+    opacity: {{ module.option.navigation.arrow_color.opacity / 100 }};  
+  }
+
+  #section-{{ parent_custom_widget_name }} .nav-item { 
+    background-color: {{ module.option.navigation.dots_color.color }}; 
+    opacity: {{ module.option.navigation.dots_color.opacity / 100 }}; 
+  }
+
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current, 
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { 
+    background: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; 
+    opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
+  }
+
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav button:hover i { 
+    color: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; 
+    opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
+  }
+
   {% if module.option.border.border_width > 0 %}
-  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .content { padding: 30px 30px !important; }
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .content { 
+    padding: 30px !important; 
+  }
   {% endif %}
+
   {% if module.option.previews_with_full_view %}
   #section-{{ parent_custom_widget_name }} .item-img { cursor: pointer; }
   {% endif %}
+
   {% if module.option.navigation.dots_on_side %}
   #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper, 
-    #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .slick-track,
-    #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper>.item { display: block !important; }
-  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item { padding: 5px 0; display: flex; align-items: center; }
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .slick-track,
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper>.item { 
+    display: block !important; 
+  }
+
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item { 
+    padding: 5px 0; 
+    display: flex; 
+    align-items: center; 
+  }
   {% endif %}
 </style>
 
