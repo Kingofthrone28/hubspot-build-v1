@@ -11,7 +11,7 @@ jobs:
       - name: HubSpot Deploy Action
         uses: HubSpot/hubspot-cms-deploy-action@v1.7
         with:
-          src_dir: hubspot
-          dest_dir: /@hubspot
-          portal_id: ${{ 43960453 }}
-          personal_access_key: ${{ pat-na1-6a65ce58-8b5d-4822-b2b8-cd6b1a7a9be5 }}
+          src_dir: themes
+          dest_dir: .
+          portal_id: ${{ secrets.portal_id }}
+          personal_access_key: ${{ secrets.personal_access_key }}
