@@ -5,6 +5,8 @@ Before your code is committed, several linting and formatting steps should take 
 - For JavaScript only, run `npx eslint --fix [path to file]`.
 - For CSS only, run `npx stylelint --fix [path to file]`.
 - For either, run one of the above linters then run `npx prettier --write [path to file]`.
+- See scripts in package.json to run linting and formatting globally
+
 
 In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop`.
 

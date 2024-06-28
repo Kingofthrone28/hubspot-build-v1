@@ -11,16 +11,20 @@
     "eslint-plugin-html": "^7.1.0",
     "prettier": "^3.3.2",
     "stylelint": "^16.6.1",
+    "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-standard": "^36.0.0",
-    "stylelint-no-unsupported-browser-features": "^8.0.1",
-    "stylelint-prettier": "^5.0.0"
+    "stylelint-no-unsupported-browser-features": "^8.0.1"
   },
   "scripts": {
-    "format": "npx prettier --write .",
-    "eslint": "eslint . --ext .js,.jsx,.html --ignore-path .gitignore",
-    "eslint:fix": "eslint . --ext .js,.jsx,.html --fix --ignore-path .gitignore",
-    "stylelint": "stylelint . --ext .css --ignore-path .gitignore",
-    "stylelint:fix": "stylelint . --ext .css --fix --ignore-path .gitignore",
+    "build": "npm run js:build && npm run css:build",
+    "css:build": "npm run css:fix && npm run css:format && npm run css:lint",
+    "css:lint": "stylelint 'themes/Integrative Nutrition/**/*.css'",
+    "css:fix": "npm run css:lint -- --fix",
+    "css:format": "prettier './themes/Integrative Nutrition/**/*.css' --write --ignore-path=.stylelintignore --ignore-path=.prettierignore",
+    "js:build": "npm run js:fix && npm run js:format && npm run js:lint",
+    "js:lint": "eslint './themes/Integrative Nutrition/js/**/*.js'",
+    "js:fix": "npm run js:lint -- --fix",
+    "js:format": "prettier './themes/Integrative Nutrition/js/**/*.js' --write",
     "sync": "hs fetch --account=iin-production / --overwrite"
   }
 }
