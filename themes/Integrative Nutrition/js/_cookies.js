@@ -4,6 +4,11 @@
  */
 IIN.cookies = {
   cookiePath: '/',
+  trackingCookie: 'params',
+  trackingKeyMap: Object.freeze({
+    sldiscountcode: 'promo_code',
+    source: 'partner_lead_source',
+  }),
 
   /**
    * Polls for the cookie until it is found or max attempts have been reached.
@@ -159,6 +164,44 @@ IIN.cookies = {
   },
 
   /**
+   * Get the old key for a new form parameter
+   * @param {string} key
+   * @returns {string}
+   */
+  getTrackingCookieKey(key) {
+    if (!key) {
+      return '';
+    }
+
+    const pair = Object.entries(IIN.cookies.trackingKeyMap).find(
+      ([, value]) => key === value,
+    );
+
+    if (pair?.[0]) {
+      return pair[0];
+    }
+
+    return key;
+  },
+
+  /**
+   * Some hidden form keys need to be converted for proper tracking. This function is used to retrieve them.
+   * @param {string} key key to check
+   * @returns {string} An object key, or empty string
+   */
+  getTrackingFormKey(key) {
+    if (!key) {
+      return '';
+    }
+
+    if (Object.prototype.hasOwnProperty.call(IIN.cookies.trackingKeyMap, key)) {
+      return IIN.cookies.trackingKeyMap[key];
+    }
+
+    return key;
+  },
+
+  /**
    * Sets the named cookie.
    * @param {string} name
    * @param {*} data
@@ -205,7 +248,6 @@ IIN.cookies = {
     const cookieValue = existingData?.[itemName];
 
     return cookieValue || null;
-
   },
 };
 
