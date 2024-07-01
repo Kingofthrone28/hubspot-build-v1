@@ -1,9 +1,6 @@
 **/.*
 **/*-min.*
 **/*.min.*
-jquery-*.js
-.vscode
-fontAwesome
 modules_to_move
 node_modules
 
@@ -17,6 +14,8 @@ node_modules
 /themes/Marketplace
 
 # Third Party Files
+fontAwesome
+jquery-*.js
 /themes/Integrative Nutrition/js/bootstrap-slider.js
 /themes/Integrative Nutrition/js/lazyload.js
 /themes/Integrative Nutrition/js/magnific-popup.js
