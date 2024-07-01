@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-concentric-order"
+  ],
+  "plugins": [
+    "stylelint-no-unsupported-browser-features"
+  ],
+  "rules": {
+    "custom-property-pattern": null,
+    "no-descending-specificity": [true, {
+      "severity": "warning"
+    }],
+    "plugin/no-unsupported-browser-features": [true, {
+      "ignore": [],
+      "ignorePartialSupport": true,
+      "severity": "warning"
+    }],
+    "selector-class-pattern": null,
+    "selector-id-pattern": null
+  }
+}
