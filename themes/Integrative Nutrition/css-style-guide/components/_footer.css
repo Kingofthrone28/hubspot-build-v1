@@ -3,7 +3,7 @@
 }
 
 .footer-container .hs-menu-wrapper li {
-  font-size: 10px;
+  font-size: var(--font-size--legacy--1);
 }
 
 .footer-container .hs-menu-wrapper .hs-menu-children-wrapper { 
