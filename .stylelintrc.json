@@ -8,9 +8,14 @@
   ],
   "rules": {
     "custom-property-pattern": null,
+    "media-feature-range-notation": null,
+    "no-empty-source": [true, {
+      "severity": "warning"
+    }],
     "no-descending-specificity": [true, {
       "severity": "warning"
     }],
+    "number-max-precision": null,
     "plugin/no-unsupported-browser-features": [true, {
       "ignore": [],
       "ignorePartialSupport": true,

@@ -37,24 +37,12 @@ fontAwesome
 /themes/Integrative Nutrition/css*/ui.css
 
 # TODO: Remove after refactoring
-/themes/Integrative Nutrition/css*/components/_cards.css
 /themes/Integrative Nutrition/css*/components/_circle-of-life.css
-/themes/Integrative Nutrition/css*/components/_default-modules.css
-/themes/Integrative Nutrition/css*/components/_footer.css
-/themes/Integrative Nutrition/css*/components/_promo-banner.css
-/themes/Integrative Nutrition/css*/elements/_buttons.css
-/themes/Integrative Nutrition/css*/elements/_tables.css
-/themes/Integrative Nutrition/css*/elements/_typography.css
-/themes/Integrative Nutrition/css*/objects/_layout.css
 /themes/Integrative Nutrition/css*/objects/jd-shopify-cart.css
 /themes/Integrative Nutrition/css*/objects/tabs.css
-/themes/Integrative Nutrition/css*/templates/_system.css
-/themes/Integrative Nutrition/css*/header-overrides.css
 /themes/Integrative Nutrition/css*/inspirationgallery.css
 /themes/Integrative Nutrition/css*/magnific-popup.css
 /themes/Integrative Nutrition/css*/slick.css
-/themes/Integrative Nutrition/css*/slider-overrides.css
 
 # TODO: Remove after module CSS files have been evaluated
 /themes/Integrative Nutrition/**/*.module/*.css
-/themes/Integrative Nutrition/css*/variables/**/*.css

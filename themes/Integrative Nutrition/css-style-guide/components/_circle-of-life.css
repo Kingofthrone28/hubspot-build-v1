@@ -1,377 +1,397 @@
- #col-canvas {
-	 display: none;
-	 position: relative;
-	 margin: 0 auto;
+#col-canvas {
+  display: none;
+  position: relative;
+  margin: 0 auto;
 }
 
- #col-canvas .slice {
-	 display: flex;
-	 align-content: space-between;
-	 justify-content: space-between;
-	 position: absolute;
-	 z-index: 999;
-	 top: 47%;
-	 left: 0;
-	 transform: translateY(-50%) rotate(80deg);
-	 transform-origin: center right;
-	 box-sizing: border-box;
-	 padding-left: 20px;
-	 width: 50%;
-	 color: !important;
-	 font-size: var(--font-size--legacy--7);
-	 white-space: nowrap;
-	 pointer-events: none;
+#col-canvas .slice {
+  box-sizing: border-box;
+  display: flex;
+  position: absolute;
+  top: 47%;
+  left: 0;
+  place-content: space-between space-between;
+  transform: translateY(-50%) rotate(80deg);
+  transform-origin: center right;
+  z-index: 999;
+  padding-left: 20px;
+  width: 50%;
+  white-space: nowrap;
+  font-size: var(--font-size--legacy--7);
+  pointer-events: none;
 }
- #col-canvas .slice:nth-child(1) {
-	 transform: rotate(calc(30deg  * 14.3));
+
+#col-canvas .slice:nth-child(1) {
+  transform: rotate(calc(30deg * 14.3));
 }
- #col-canvas .slice:nth-child(2) {
-	 transform: rotate(calc(30deg * 13.3));
+
+#col-canvas .slice:nth-child(2) {
+  transform: rotate(calc(30deg * 13.3));
 }
- #col-canvas .slice:nth-child(3) {
-	 transform: rotate(calc(30deg * 12.3));
+
+#col-canvas .slice:nth-child(3) {
+  transform: rotate(calc(30deg * 12.3));
 }
+
 #col-canvas .slice:nth-child(4) {
-	 transform: rotate(calc(30deg * 11.3));
+  transform: rotate(calc(30deg * 11.3));
 }
+
 #col-canvas .slice:nth-child(5) {
-	 transform: rotate(calc(30deg * 10.3));
+  transform: rotate(calc(30deg * 10.3));
 }
+
 #col-canvas .slice:nth-child(6) {
-	 transform: rotate(calc(30deg * 9.3));
+  transform: rotate(calc(30deg * 9.3));
 }
+
 #col-canvas .slice:nth-child(7) {
-	 transform: rotate(calc(30deg * 8.3));
+  transform: rotate(calc(30deg * 8.3));
 }
+
 #col-canvas .slice:nth-child(8) {
-	 transform: rotate(calc(30deg * 7.3));
+  transform: rotate(calc(30deg * 7.3));
 }
+
 #col-canvas .slice:nth-child(9) {
-	 transform: rotate(calc(30deg * 6.3));
+  transform: rotate(calc(30deg * 6.3));
 }
+
 #col-canvas .slice:nth-child(10) {
-	 transform: rotate(calc(30deg * 5.3));
+  transform: rotate(calc(30deg * 5.3));
 }
+
 #col-canvas .slice:nth-child(11) {
-	 transform: rotate(calc(30deg * 4.3));
+  transform: rotate(calc(30deg * 4.3));
 }
+
 #col-canvas .slice:nth-child(12) {
-	 transform: rotate(calc(30deg * 3.3));
+  transform: rotate(calc(30deg * 3.3));
 }
+
 #col-canvas .slice:nth-child(n + 7) .inner {
-	 transform: rotate(180deg);
+  transform: rotate(180deg);
 }
+
 #col-canvas .svg-wrapper {
-	 position: relative;
+  position: relative;
 }
+
 #col-canvas path[data-name='Career'] {
-   fill: var(--color-sky);
-	 fill-opacity: 0.5;
+  fill: var(--color-sky);
+  fill-opacity: 0.5;
 }
+
 #col-canvas path[data-name='Creativity'] {
-	 fill: var(--color--legacy--orange--peach);
-	 fill-opacity: 0.3;
+  fill: var(--color--legacy--orange--peach);
+  fill-opacity: 0.3;
 }
+
 #col-canvas path[data-name='Education'] {
-	 fill: var(--color--legacy--green--pistachio);
-	 fill-opacity: 0.7;
+  fill: var(--color--legacy--green--pistachio);
+  fill-opacity: 0.7;
 }
+
 #col-canvas path[data-name='Finances'] {
-	 fill: var(--color--legacy--green--carrara);
-	 fill-opacity: 0.5;
+  fill: var(--color--legacy--green--carrara);
+  fill-opacity: 0.5;
 }
+
 #col-canvas path[data-name='Health'] {
-	 fill: var(--color--legacy--orange--peach);
-	 fill-opacity: 0.4;
+  fill: var(--color--legacy--orange--peach);
+  fill-opacity: 0.4;
 }
+
 #col-canvas path[data-name='Home Cooking'] {
-	 fill: var(--color-sky);
-	 fill-opacity: 0.7;
+  fill: var(--color-sky);
+  fill-opacity: 0.7;
 }
+
 #col-canvas path[data-name='Home Environment'] {
-	 fill: var(--color--legacy--green--pistachio);
-	 fill-opacity: 0.9;
+  fill: var(--color--legacy--green--pistachio);
+  fill-opacity: 0.9;
 }
+
 #col-canvas path[data-name='Joy'] {
-	 fill: var(--color-sky);
-	 fill-opacity: 0.9;
+  fill: var(--color-sky);
+  fill-opacity: 0.9;
 }
+
 #col-canvas path[data-name='Physical Activity'] {
-	 fill: var(--color--legacy--green--carrara);
-	 fill-opacity: 0.7;
+  fill: var(--color--legacy--green--carrara);
+  fill-opacity: 0.7;
 }
+
 #col-canvas path[data-name='Relationships'] {
-	 fill: var(--color--legacy--orange--peach);
-	 fill-opacity: 0.6;
+  fill: var(--color--legacy--orange--peach);
+  fill-opacity: 0.6;
 }
+
 #col-canvas path[data-name='Social Life'] {
-	 fill: var(--color--legacy--green--carrara);
-	 fill-opacity: 0.9;
+  fill: var(--color--legacy--green--carrara);
+  fill-opacity: 0.9;
 }
 
 #col-canvas path[data-name='Spirituality'] {
-	 fill: var(--color--legacy--green--pistachio);
-	 fill-opacity: 0.5;
+  fill: var(--color--legacy--green--pistachio);
+  fill-opacity: 0.5;
 }
 
- @media only screen and (min-width: 540px) and (max-width: 768px) {
-   #col-canvas .slice {
-     font-size: var(--font-size--legacy--4);
-   }
- }
+@media only screen and (min-width: 540px) and (max-width: 768px) {
+  #col-canvas .slice {
+    font-size: var(--font-size--legacy--4);
+  }
+}
 
- @media only screen and (max-width: 540px) {
-   #col-canvas .slice {
-     font-size: var(--font-size--legacy--2);
-   }
- }
- 
- @media screen and (min-width: 768px) {
-	 .webform-sliderfield {
-		 display: none;
-   }
- }
+@media only screen and (max-width: 540px) {
+  #col-canvas .slice {
+    font-size: var(--font-size--legacy--2);
+  }
+}
 
- @media screen and (min-width:768px) {
-	 #col-canvas {
-		 display: block;
-		 max-width: 500px;
-	}
- }
+@media screen and (min-width: 768px) {
+  .webform-sliderfield {
+    display: none;
+  }
+}
 
- @media screen and (max-width:768px) {
+@media screen and (min-width: 768px) {
   #col-canvas {
-	 display: none;
-  } 
+    display: block;
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #col-canvas {
+    display: none;
+  }
+
   #col-canvas.show-mobile {
-	 display: block;
-	 position: relative;
-	 margin: 0 auto;
-  } 
- }
-
- .webform-sliderfield .ui-slider {
-	 border-color: transparent;
-	 background: var(--color--legacy--blue--solitude-1);
-	 width: 100%;
-	 height: 10px;
- }
-
- .webform-sliderfield .ui-slider .ui-slider-handle {
-	 top: -2px;
-	 margin-left: -3px;
-	 border-color: transparent;
-	 border-radius: 6px;
-	 width: 10px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+  }
 }
 
- .webform-sliderfield .ui-slider .ui-slider-handle:hover, 
- .webform-sliderfield .ui-slider .ui-slider-handle:focus {
-	 outline: none;
-	 border: none;
+.webform-sliderfield .ui-slider {
+  border-color: transparent;
+  background: var(--color--legacy--blue--solitude-1);
+  width: 100%;
+  height: 10px;
 }
 
- .webform-sliderfield .ui-slider .ui-slider-range {
-	 background: transparent;
+.webform-sliderfield .ui-slider .ui-slider-handle {
+  top: -2px;
+  margin-left: -3px;
+  border-radius: 6px;
+  border-color: transparent;
+  width: 10px;
 }
 
- .webform-sliderfield + .webform-sliderfield {
-	 margin-top: 20px;
+.webform-sliderfield .ui-slider .ui-slider-handle:hover,
+.webform-sliderfield .ui-slider .ui-slider-handle:focus {
+  outline: none;
+  border: none;
+}
+
+.webform-sliderfield .ui-slider .ui-slider-range {
+  background: transparent;
+}
+
+.webform-sliderfield + .webform-sliderfield {
+  margin-top: 20px;
 }
 
 .circle-life {
-  --color--legacy--blue--medium-turquoise--alpha-0: rgba(48, 192, 202, 0); /* #30C0CA */
-  --color--legacy--blue--pelorous--alpha-0: rgba(35, 135, 184, 0); /* #2387B8 */
-  --color--legacy--green--celery--alpha-0: rgba(168, 202, 75, 0); /* #A8CA4B */
-  --color--legacy--green--fruit-salad--alpha-0: rgba(78, 181, 82,0); /* #4EB552 */
-  --color--legacy--green--golden-fizz--alpha-0: rgba(235, 229, 52, 0); /* #EBE534 */
-  --color--legacy--green--pistachio: #D1DECD;
-  --color--legacy--orange--west-side--alpha-0: rgba(227, 122, 52, 0); /* #E37A34 */
-  --color--legacy--violet--cerise--alpha-0: rgba(217, 50, 72, 0); /* #D93248 */
-  --color--legacy--violet--daisy-bush--alpha-0: rgba(98, 60, 138,0); /* #623C8A */
-  --color--legacy--violet--medium-red-violet--alpha-0: rgba(181, 53, 149, 0); /* #B53595 */
-  --color--legacy--yellow--turbo--alpha-0: rgba(245, 208, 24, 0); /* #F5D018 */
-  --color--legacy--yellow--yellow-sea--alpha-0: rgba(243, 162, 47, 0); /* #F3A22F */
+  --color--legacy--blue--medium-turquoise--alpha-0: rgb(48 192 202 / 0%); /* #30c0ca */
+  --color--legacy--blue--pelorous--alpha-0: rgb(35 135 184 / 0%); /* #2387b8 */
+  --color--legacy--green--celery--alpha-0: rgb(168 202 75 / 0%); /* #a8ca4b */
+  --color--legacy--green--fruit-salad--alpha-0: rgb(78 181 82 / 0%); /* #4eb552 */
+  --color--legacy--green--golden-fizz--alpha-0: rgb(235 229 52 / 0%); /* #ebe534 */
+  --color--legacy--green--pistachio: #d1decd;
+  --color--legacy--orange--west-side--alpha-0: rgb(227 122 52 / 0%); /* #e37a34 */
+  --color--legacy--violet--cerise--alpha-0: rgb(217 50 72 / 0%); /* #d93248 */
+  --color--legacy--violet--daisy-bush--alpha-0: rgb(98 60 138 / 0%); /* #623C8a */
+  --color--legacy--violet--medium-red-violet--alpha-0: rgb(181 53 149 / 0%); /* #b53595 */
+  --color--legacy--yellow--turbo--alpha-0: rgb(245 208 24 / 0%); /* #f5d018 */
+  --color--legacy--yellow--yellow-sea--alpha-0: rgb(243 162 47 / 0%); /* #f3a22f */
 }
 
-.circle-life .form-item label:before {
-   border-radius: 20px;
-   content: '';
-   height: 30px;
-   left: 20px;
-   position: absolute;  
-   width: 30px;    
+.circle-life .form-item label::before {
+  position: absolute;
+  left: 20px;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  content: '';
 }
 
 .circle-life .form-item label {
-  padding: 0 0 20px 30px; 
+  padding: 0 0 20px 30px;
 }
 
-.circle-life .form-item---sliderfield-submitted-creativity label:before {
-	 background-color: var(--color--legacy--orange--peach);
+.circle-life .form-item---sliderfield-submitted-creativity label::before {
+  background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-creativity .slider-selection {
-	 background-color: var(--color--legacy--orange--west-side--alpha-0);
+  background-color: var(--color--legacy--orange--west-side--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-creativity .ui-slider-handle {
-	 background-color: var(--color--legacy--orange--peach);
+  background-color: var(--color--legacy--orange--peach);
 }
 
-.circle-life .form-item---sliderfield-submitted-finances label:before {
-	 background-color: var(--color--legacy--green--carrara);
+.circle-life .form-item---sliderfield-submitted-finances label::before {
+  background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .slider-percent-fill {
-	 background-image: none;
-	 background-color: var(--color--legacy--yellow--yellow-sea--alpha-0);
+  background-color: var(--color--legacy--yellow--yellow-sea--alpha-0);
+  background-image: none;
 }
 
 .circle-life .form-item---sliderfield-submitted-finances .ui-slider-handle {
-	 background-color: var(--color--legacy--green--carrara);
+  background-color: var(--color--legacy--green--carrara);
 }
 
-.circle-life .form-item---sliderfield-submitted-career label:before {
-	 background-color: var(--color-sky);
+.circle-life .form-item---sliderfield-submitted-career label::before {
+  background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-career .slider-selection {
-	 background-color: var(--color--legacy--yellow--turbo--alpha-0);
+  background-color: var(--color--legacy--yellow--turbo--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-career .ui-slider-handle {
-	 background-color: var(--color-sky);
+  background-color: var(--color-sky);
 }
 
-.circle-life .form-item---sliderfield-submitted-education label:before {
-	 background-color: var(--color--legacy--green--pistachio);
+.circle-life .form-item---sliderfield-submitted-education label::before {
+  background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-education .slider-selection {
-	 background-color: var(--color--legacy--green--golden-fizz--alpha-0);
+  background-color: var(--color--legacy--green--golden-fizz--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-education .ui-slider-handle {
-	 background-color: var(--color--legacy--green--pistachio);
+  background-color: var(--color--legacy--green--pistachio);
 }
 
-.circle-life .form-item---sliderfield-submitted-health label:before {
-	 background-color: var(--color--legacy--orange--peach);
+.circle-life .form-item---sliderfield-submitted-health label::before {
+  background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-health .slider-selection {
-	 background-color: var(--color--legacy--green--celery--alpha-0);
+  background-color: var(--color--legacy--green--celery--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-health .ui-slider-handle {
-	 background-color: var(--color--legacy--orange--peach);
+  background-color: var(--color--legacy--orange--peach);
 }
 
-.circle-life .form-item---sliderfield-submitted-physical-activity label:before {
-	 background-color: var(--color--legacy--green--carrara);
+.circle-life .form-item---sliderfield-submitted-physical-activity label::before {
+  background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .slider-selection {
-	 background-color: var(--color--legacy--green--celery--alpha-0);
+  background-color: var(--color--legacy--green--celery--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-physical-activity .ui-slider-handle {
-	 background-color: var(--color--legacy--green--carrara);
+  background-color: var(--color--legacy--green--carrara);
 }
 
-.circle-life .form-item---sliderfield-submitted-home-cooking label:before {
-	 background-color: var(--color-sky);
+.circle-life .form-item---sliderfield-submitted-home-cooking label::before {
+  background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .slider-selection {
-	 background-color: var(--color--legacy--green--fruit-salad--alpha-0);
+  background-color: var(--color--legacy--green--fruit-salad--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
-	 background-color: var(--color-sky);
+  background-color: var(--color-sky);
 }
 
-.circle-life .form-item---sliderfield-submitted-home-environment label:before {
-	 background-color: var(--color--legacy--green--pistachio);
+.circle-life .form-item---sliderfield-submitted-home-environment label::before {
+  background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment .slider-selection {
-	 background-color: var(--color--legacy--blue--medium-turquoise--alpha-0);
+  background-color: var(--color--legacy--blue--medium-turquoise--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment .ui-slider-handle {
-	 background-color: var(--color--legacy--green--pistachio);
+  background-color: var(--color--legacy--green--pistachio);
 }
 
-.circle-life .form-item---sliderfield-submitted-relationships label:before {
-	 background-color: var(--color--legacy--orange--peach);
+.circle-life .form-item---sliderfield-submitted-relationships label::before {
+  background-color: var(--color--legacy--orange--peach);
 }
 
 .circle-life .form-item---sliderfield-submitted-relationships .slider-selection {
-	 background-color: var(--color--legacy--blue--pelorous--alpha-0);
+  background-color: var(--color--legacy--blue--pelorous--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-relationships .ui-slider-handle {
-	 background-color: var(--color--legacy--orange--peach);
+  background-color: var(--color--legacy--orange--peach);
 }
 
-.circle-life .form-item---sliderfield-submitted-social-life label:before {
-	 background-color: var(--color--legacy--green--carrara);
+.circle-life .form-item---sliderfield-submitted-social-life label::before {
+  background-color: var(--color--legacy--green--carrara);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .slider-selection {
-	 background-color: var(--color--legacy--violet--daisy-bush--alpha-0);
+  background-color: var(--color--legacy--violet--daisy-bush--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-social-life .ui-slider-handle {
-	 background-color: var(--color--legacy--green--carrara);
+  background-color: var(--color--legacy--green--carrara);
 }
 
-.circle-life .form-item---sliderfield-submitted-joy label:before {
-	 background-color: var(--color-sky);
+.circle-life .form-item---sliderfield-submitted-joy label::before {
+  background-color: var(--color-sky);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .slider-selection {
-	 background-color: var(--color--legacy--violet--medium-red-violet--alpha-0);
+  background-color: var(--color--legacy--violet--medium-red-violet--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .ui-slider-handle {
-	 background-color: var(--color-sky);
+  background-color: var(--color-sky);
 }
 
-.circle-life .form-item---sliderfield-submitted-spirituality label:before {
-	 background-color: var(--color--legacy--green--pistachio);
+.circle-life .form-item---sliderfield-submitted-spirituality label::before {
+  background-color: var(--color--legacy--green--pistachio);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality .slider-selection {
-	 background-color: var(--color--legacy--violet--cerise--alpha-0);
+  background-color: var(--color--legacy--violet--cerise--alpha-0);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality .ui-slider-handle {
-	 background-color: var(--color--legacy--green--pistachio);
+  background-color: var(--color--legacy--green--pistachio);
 }
 
-.col-text-submitted,
-.col-text-mobile{
-  display:none;
+.col-text-mobile,
+.col-text-submitted {
+  display: none;
 }
 
-@media screen and (max-width:768px) {
-  
- .col-text-mobile {
-   display:block
+@media screen and (max-width: 768px) {
+  .col-text-mobile {
+    display: block;
   }
   
-  .col-text{
-    display:none;
+  .col-text {
+    display: none;
   }
-  
-}  
+}
 
 form > button {
+  display: block !important;
   margin: 20px auto 0;
-  display: block !important;;
 }
-
- 

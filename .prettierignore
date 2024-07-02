@@ -26,6 +26,7 @@ jquery-*.js
 /themes/Integrative Nutrition/js/ui.js
 
 # TODO: Remove after refactoring
+/themes/Integrative Nutrition/css*/slider-overrides.css
 /themes/Integrative Nutrition/js/_animation.js
 /themes/Integrative Nutrition/js/_marketing.js
 /themes/Integrative Nutrition/js/_plugins.js
