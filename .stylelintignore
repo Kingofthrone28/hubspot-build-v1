@@ -1,7 +1,7 @@
-**/*-min.*
-**/*.min.*
+.*
+*-min.*
+*.min.*
 modules_to_move
-node_modules
 
 # Root files
 /config
@@ -34,6 +34,7 @@ node_modules
 
 # Third Party Files
 fontAwesome
+node_modules
 /themes/Integrative Nutrition/css*/ui.css
 
 # TODO: Remove after refactoring
