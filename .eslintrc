@@ -4,7 +4,6 @@
     "es2021": true
   },
   "extends": ["airbnb-base", "eslint:recommended", "prettier"],
-  "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest"
   },
@@ -21,12 +20,12 @@
       "always",
       { "exceptAfterSingleLine": true }
     ],
-    // TODO: make warning
     "no-console": 0,
     "no-empty": 1,
     "no-plusplus": 0,
     // TODO: revisit?
     "no-restricted-syntax": 0,
+    "no-shadow": 1,
     // TODO: remove after testing
     "no-undef": 0,
     "no-unused-vars": 1,
