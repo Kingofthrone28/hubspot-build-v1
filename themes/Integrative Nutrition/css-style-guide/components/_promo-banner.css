@@ -1,16 +1,3 @@
-.deal-bar-btn:hover {
-  color: var(--color--white);
-  text-decoration: none;
-}
-
-.deal-bar-close:hover {
-  fill: var(--color--grey--5);
-}
-
-.deal-bar-inner a:hover {
-  text-decoration: underline;
-}
-
 .deal-bar {
   background: var(--color--cherry);
   color: var(--color--white);
@@ -19,11 +6,9 @@
   text-align: center;
 }
 
-.deal-bar-inner {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.deal-bar-btn:hover {
+  color: var(--color--white);
+  text-decoration: none;
 }
 
 .deal-bar-close {
@@ -35,8 +20,23 @@
   width: 36px;
 }
 
+.deal-bar-close:hover {
+  fill: var(--color--grey--5);
+}
+
+.deal-bar-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .deal-bar-inner > * {
   margin: 5px 5px 5px 0;
+}
+
+.deal-bar-inner a:hover {
+  text-decoration: underline;
 }
 
 .deal-bar-time-text {
