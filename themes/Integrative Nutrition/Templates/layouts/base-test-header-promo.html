@@ -9,6 +9,9 @@
     <title>{{ page_meta.html_title }}</title>
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {% module "shared_head" path="../../modules/SharedHead", label="Shared Head" %}
+
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../../css/slick.css')) }}
     {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
@@ -49,6 +52,9 @@
         {% block body %}
         {% endblock body %}
       </div>
+      <!-- OneTrust Cookies Settings button start -->
+      <button id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie Settings</button>
+      <!-- OneTrust Cookies Settings button end --> 
       {% global_partial path='../partials/pop_ups.html' %}
       {% block footer %}
         {% global_partial path='../partials/flex_footer.html' %}
