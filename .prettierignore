@@ -1,8 +1,7 @@
-**/.*
-**/*-min.*
-**/*.min.*
+.*
+*-min.*
+*.min.*
 modules_to_move
-node_modules
 
 # Root files
 /config
@@ -18,6 +17,7 @@ node_modules
 # Third Party Files
 fontAwesome
 jquery-*.js
+node_modules
 /themes/Integrative Nutrition/js/bootstrap-slider.js
 /themes/Integrative Nutrition/js/lazyload.js
 /themes/Integrative Nutrition/js/magnific-popup.js
