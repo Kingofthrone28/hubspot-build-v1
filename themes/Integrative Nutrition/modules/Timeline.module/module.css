@@ -243,7 +243,7 @@ html {
   float: left;
   cursor: pointer;
   margin-right: 1rem;
-  font-size: 12px;
+  font-size: var(--font-size--legacy--2);
   text-align: center;
   margin-top: 18px;
   z-index: 5;
@@ -303,7 +303,7 @@ html {
   background: var(--color--legacy--blue--big-stone);
   color: var(--color--white);
   border: none;
-  font-size: 24px;
+  font-size: var(--font-size--legacy--13);
   padding-top: 23px;
 }
 

@@ -109,7 +109,7 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
   background-color: var(--color--legacy--blue--solitude-6) !important;
   border: 1px dashed #516f90 !important;
   display: block !important;
-  font-size: 14px !important;
+  font-size: var(--font-size--legacy--4) !important;
   margin: 2px 1px !important;
   outline: 1px dashed var(--color--white) !important;
   text-align: center !important;
@@ -126,7 +126,7 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 p.hs-video-placeholder__title {
   color: var(--color--legacy--blue--wild-blue-yonder) !important;
   font-family: var(--font-family--legacy--video) !important;
-  font-size: 14px !important;
+  font-size: var(--font-size--legacy--4) !important;
   font-style: italic !important;
   font-weight: 700 !important;
   line-height: initial !important;

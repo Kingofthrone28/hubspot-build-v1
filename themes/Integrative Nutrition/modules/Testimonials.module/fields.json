@@ -84,6 +84,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : true,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "image_width" : 4,
@@ -147,6 +148,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "quote" : {
@@ -269,6 +271,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "fadeDown",
@@ -277,6 +280,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "image" : {
@@ -374,6 +378,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
     "person" : "<p><em>First and Last Name, Profession / Company</em></p>",
