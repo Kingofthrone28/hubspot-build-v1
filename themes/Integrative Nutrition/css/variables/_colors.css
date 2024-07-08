@@ -1,0 +1,141 @@
+:root {
+  /* Style Guide */
+
+  /* Style Guide Primary and Secondary Colors */
+  --color--cherry: #d72a25;
+  --color--gold: #e4ab00;
+  --color--melon: #ed8a72;
+  --color--water: #003d4b;
+
+  /* Style Guide Base Colors */
+  --color--black: #000; /* rgb(0 0 0) */
+  --color--chalk: #f8f5f0;
+  --color--slate: #142023;
+  --color--white: #fff; /* rgb(255 255 255) */
+
+  /* Style Guide Neutral Colors */
+  --color--grey-1: #333;
+  --color--grey-2: #4f4f4f;
+  --color--grey-3: #828282;
+  --color--grey-4: #bdbdbd;
+  --color--grey-5: #e7e7e7;
+
+  /* Style Guide Chopra Colors */
+  --color--midnight: #001432;
+  --color--sand: #fbf2de;
+
+  /*
+    Legacy variables should be renamed if they get moved into the guide.
+    The whimsical color names are derived from
+    https://www.color-blindness.com/color-name-hue/
+  */
+
+  /* Legacy Neutrals */
+  --color--legacy--black--black--alpha-0: rgb(0 0 0 / 0%); /* #000 */
+  --color--legacy--black--black--alpha-5: rgb(0 0 0 / 5%);
+  --color--legacy--black--black--alpha-8: rgb(0 0 0 / 8%);
+  --color--legacy--black--black--alpha-10: rgb(0 0 0 / 10%);
+  --color--legacy--black--black--alpha-12: rgb(0 0 0 / 12%);
+  --color--legacy--black--black--alpha-14: rgb(0 0 0 / 14%);
+  --color--legacy--black--black--alpha-15: rgb(0 0 0 / 15%);
+  --color--legacy--black--black--alpha-20: rgb(0 0 0 / 20%);
+  --color--legacy--black--black--alpha-30: rgb(0 0 0 / 30%);
+  --color--legacy--black--black--alpha-40: rgb(0 0 0 / 40%);
+  --color--legacy--black--black--alpha-50: rgb(0 0 0 / 50%);
+  --color--legacy--black--black--alpha-60: rgb(0 0 0 / 60%);
+  --color--legacy--black--black--alpha-70: rgb(0 0 0 / 70%);
+  --color--legacy--black--black--alpha-90: rgb(0 0 0 / 90%);
+  --color--legacy--black--light-black: #0b0b0b;
+  --color--legacy--grey--alabaster: #f7f5f0;
+  --color--legacy--grey--bright-grey: #53565a;
+  --color--legacy--grey--dark-grey-1: #a9a9a9;
+  --color--legacy--grey--dark-grey-2: #aaa;
+  --color--legacy--grey--dim-grey-1: #666;
+  --color--legacy--grey--dim-grey-2: #707070;
+  --color--legacy--grey--charcoal-1: #3f3f3f;
+  --color--legacy--grey--charcoal-2: #444;
+  --color--legacy--grey--fuscous-grey: #3e3c3e;
+  --color--legacy--grey--grey-1: #777;
+  --color--legacy--grey--grey-2: #7d7d7d;
+  --color--legacy--grey--grey-3: #808080;
+  --color--legacy--grey--light-grey: #d3d3d3;
+  --color--legacy--grey--nero: #1d1d1d; /* rgb(29 29 29) */
+  --color--legacy--grey--nero--alpha-18: rgb(29 29 29 / 18%);
+  --color--legacy--grey--nero--alpha-20: rgb(29 29 29 / 20%);
+  --color--legacy--grey--romantic--alpha-90: rgb(249 246 241 / 90%);
+  --color--legacy--grey--silver-1: #bababa;
+  --color--legacy--grey--silver-2: #bcbcbc;
+  --color--legacy--grey--suva-grey: #888;
+  --color--legacy--grey--very-light-grey-1: #ccc;
+  --color--legacy--grey--very-light-grey-2: #cfcfcf;
+  --color--legacy--grey--zircon-1: #d9e1e2;
+  --color--legacy--grey--zircon-2: #dee2e6;
+  --color--legacy--white--gainsboro-1: #ddd;
+  --color--legacy--white--gainsboro-2: #e5e5e5;
+  --color--legacy--white--white--alpha-10: rgb(255 255 255 / 10%); /* #fff */
+  --color--legacy--white--white--alpha-30: rgb(255 255 255 / 30%);
+  --color--legacy--white--white--alpha-40: rgb(255 255 255 / 40%);
+  --color--legacy--white--white--alpha-48: rgb(255 255 255 / 48%);
+  --color--legacy--white--white--alpha-50: rgb(255 255 255 / 50%);
+  --color--legacy--white--white--alpha-70: rgb(255 255 255 / 70%);
+  --color--legacy--white--white--alpha-100: rgb(255 255 255 / 100%);
+  --color--legacy--white--white-smoke-1: #ebebeb;
+  --color--legacy--white--white-smoke-2: #eee;
+  --color--legacy--white--white-smoke-3: #efefef;
+  --color--legacy--white--white-smoke-4: #f3f3f3;
+  --color--legacy--white--white-smoke-5: #f5f5f5;
+
+  /* Legacy Colors */
+  --color--legacy--blue--allports-1: #186286;
+  --color--legacy--blue--allports-2: #196b91;
+  --color--legacy--blue--big-stone: #333f48;
+  --color--legacy--blue--blue-whale: #17223c;
+  --color--legacy--blue--columbia-blue: #b2e9ff;
+  --color--legacy--blue--cornflower-blue--alpha-80: rgb(82 168 236 / 80%);
+  --color--legacy--blue--dark-cerulean: #0b6481;
+  --color--legacy--blue--dodger-blue: #1da1f2;
+  --color--legacy--blue--gulf-blue: #33475b;
+  --color--legacy--blue--endeavour: #2c5b9b;
+  --color--legacy--blue--hawkes-blue: #cfd9e8;
+  --color--legacy--blue--link-water-1: #ced4da;
+  --color--legacy--blue--link-water-2: #d1d6dc;
+  --color--legacy--blue--mariner-1: #3b5998;
+  --color--legacy--blue--mariner-2: #456caa;
+  --color--legacy--blue--mirage: #343a40;
+  --color--legacy--blue--navy-blue: #0270e0;
+  --color--legacy--blue--oxford-blue: #2d3841; /* Midnight */
+  --color--legacy--blue--pattens-blue: #f8fafc;
+  --color--legacy--blue--raven: #6c757d;
+  --color--legacy--blue--regal-blue-1: #173753;
+  --color--legacy--blue--regal-blue-2: #193047;
+  --color--legacy--blue--solitude-1: #dde4ec;
+  --color--legacy--blue--solitude-2: #e9ecef;
+  --color--legacy--blue--solitude-3: #f1f3f6;
+  --color--legacy--blue--solitude-4: #f3f6f9;
+  --color--legacy--blue--solitude-5: #f5f7f8;
+  --color--legacy--blue--solitude-6: #f5f8fa;
+  --color--legacy--blue--spindle: #b0c1d4;
+  --color--legacy--blue--storm-grey: #71727a;
+  --color--legacy--blue--wild-blue-yonder: #7c98b6;
+  --color--legacy--brown--burnt-sienna: #ef6b51;
+  --color--legacy--brown--thatch--alpha-20: rgb(173 144 144 / 20%);
+  --color--legacy--green--apple--alpha-100: rgb(104 170 69 / 100%);
+  --color--legacy--green--atlantis: #95d03a;
+  --color--legacy--green--bilbao: #4f7d24;
+  --color--legacy--green--blue-stone: #134863;
+  --color--legacy--green--carrara: #eae2d3; /* Palo Santo */
+  --color--legacy--green--de-york: #7fbd74;
+  --color--legacy--green--emerald: #61ce70;
+  --color--legacy--green--highland: #818a5c; /* Olives */
+  --color--legacy--green--peppermint: #cde3cc;
+  --color--legacy--green--rolling-stone: #707372;
+  --color--legacy--orange--peach: #ffbb95;
+  --color--legacy--orange--peach--alpha-30: rgb(255 187 149 / 30%);
+  --color--legacy--red--cardinal: #cb2027;
+  --color--legacy--red--cinnabar: #f04b45;
+  --color--legacy--red--persian-red: #cf3c32;
+  --color--legacy--red--sunset: #bd3c4b;
+  --color--legacy--violet--gun-powder: #494a52;
+  --color--legacy--yellow--amber: #ffbd00;
+  --color--legacy--yellow--rob-roy: #dda858;
+}
