@@ -147,6 +147,7 @@
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
 
     try {
+       $('#spinner')?.show();
       let existingCheckout;
 
       if (cartCookie) {
@@ -162,6 +163,8 @@
       await loadCart();
     } catch (e) {
       console.error(e);
+    } finally {
+      $('#spinner')?.hide();
     }
   }
 
