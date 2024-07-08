@@ -1,0 +1,67 @@
+.circle-image-banner-outer {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+}
+
+.circle-image-banner {
+  width: 100%;
+}
+
+.circle-image-banner-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.circle-image-banner-content {
+  padding: 10px 335px 10px 0;
+  flex: 1;
+}
+
+.circle-image-banner-image {
+  background-position: center !important;
+  background-size: cover !important;
+  border-radius: 50%;
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  right: 0;
+}
+
+.circle-image-quote > div:nth-child(2) {
+  font-style: italic;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.circle-image-quote > div:nth-child(3) {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.circle-image-quote > div:nth-child(4) {
+  font-style: italic;
+  font-size: 16px;
+}
+
+@media (width <= 991px) {
+  .circle-image-banner-inner {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+
+  .circle-image-banner-content {
+    padding: 10px 0 0;
+    order: 2;
+  }
+
+  .circle-image-banner-image {
+    position: relative;
+    margin: 0 auto;
+  }
+}

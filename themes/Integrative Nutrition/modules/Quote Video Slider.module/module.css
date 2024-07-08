@@ -1,0 +1,120 @@
+.quote-video-slider-arrows {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.quote-video-slider-arrows .slick-arrow {
+  margin-left: 20px;
+  background: none !important;
+  padding: 0 !important;
+  color: #003d4b !important;
+  position: relative !important;
+}
+
+.quote-video-slider-arrows .slick-arrow:hover,
+.quote-video-slider-arrows .slick-arrow:focus {
+  color: #003d4b !important;
+}
+
+.quote-video-slider-arrows .slick-dots button {
+  width: 8px;
+  height: 8px;
+  background: #bdbdbd;
+}
+
+.quote-video-slider-arrows .slick-dots .slick-active button {
+  background: #142023;
+}
+
+.quote-video-card-wrap {
+  padding: 0 15px;
+}
+
+.quote-video-card {
+  overflow: hidden;
+  position: relative;
+  padding: 32px 24px;
+  font-style: italic;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+.quote-video-card-video > * {
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.quote-video-card > div:first-child {
+  margin-bottom: 5px;
+}
+
+.quote-video-card-name {
+  font-weight: bold;
+  margin: 15px 0 5px;
+}
+
+.quote-video-lightbox {
+  z-index: 9999;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0 0 0 / 70%);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-video-lightbox-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.quote-video-lightbox-close {
+  z-index: 99999;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+}
+
+.quote-video-lightbox-close i {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.quote-video-slider-arrows .slick-arrow i {
+  color: #142023;
+}
+
+.quote-video-slider-arrows .slick-arrow.slick-disabled i {
+  color: #bdbdbd;
+}
+
+.quote-video-lightbox-content-wrap {
+  max-width: 100%;
+  width: 1000px;
+}
+
+.quote-video-lightbox-content {
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
+}
+
+.quote-video-lightbox-content > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}

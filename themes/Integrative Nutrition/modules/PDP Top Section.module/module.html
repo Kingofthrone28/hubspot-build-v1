@@ -1,0 +1,148 @@
+<div id="{{name}}" class="pdp-top">
+  <div class="pdp-top-slide-wrap">
+    <div class="pdp-top-slide-btns">
+      {% for slide in module.image_slides %}
+      <div id="pdp-top-slide-btn-{{loop.index}}" data-index="{{loop.index}}" class="pdp-top-slide-btn {% if loop.first %}pdp-top-slide-btn-active{% endif %}">
+        {{ slide.label_field }}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="pdp-top-slide-slides">
+      <div class="pdp-top-slide-dots-wrap">
+        <div class="pdp-top-slide-dots-inner">
+          <div class="pdp-top-slide-dots">
+            {% for slide in module.image_slides %}
+            <div data-index="{{loop.index}}" id="pdp-top-slide-dot-{{loop.index}}" class="pdp-top-slide-dot {% if slide.video_embed %}pdp-top-slide-dot-video{% endif %} {% if loop.first %}pdp-top-slide-dot-active{% endif %}"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% for slide in module.image_slides %}
+      <div id="pdp-top-slide-slide-{{ loop.index }}" class="pdp-top-slide-slide {% if loop.first %}pdp-top-slide-slide-active{% endif %}">
+        <div class="pdp-top-slide-img {% if slide.video_embed %}pdp-top-slide-video-img{% endif %}" style="background:url({{ slide.image_field.src }})">
+          {% if slide.video_embed %}
+            <div class="pdp-top-slide-video-placeholder"></div>
+            <script>
+              $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').click(function() {
+                $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').css('background', 'none');
+                $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-placeholder').replaceWith(`{{ slide.video_embed }}`);
+              });
+            </script>
+          {% endif %}
+        </div>
+        <div>{{ slide.lower_text }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="pdp-top-content">
+    <div class="pdp-top-content-top">
+      <div>
+        <img src="{{ module.category_image.src }}" />
+        <div>{{ module.category_text }}</div>
+      </div>
+      <div>
+        {% for image in module.provider_image %}
+          <img src="{{ image.src }}" />
+        {% endfor %}
+      </div>
+    </div>
+    <h1>{{ module.course_name }}</h1>
+    <div class="pdp-top-content-sub">{{ module.sub_head }}</div>
+    <div class="jd-add-cart-wrap pdp-options"></div>
+    <div class="pdp-top-bottom">
+      <div class="pdp-affirm-line">{{ module.affirm_line }}</div>
+      {% set codeObj = { val: '' } %}
+      {% for code in module.code_offers %}
+        {% if unixtimestamp(local_dt) >= unixtimestamp(code.start_time) && unixtimestamp(local_dt) < unixtimestamp(code.end_time) %}
+          {% do codeObj.update({ val: code.text_field }) %}
+        {% endif %}
+      {% endfor %}
+      {% if codeObj.val %}
+      <div class="pdp-code-wrap">
+        <div class="pdp-code">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5H5.01M5 1H10C10.512 1 11.024 1.195 11.414 1.586L18.414 8.586C18.7889 8.96106 18.9996 9.46967 18.9996 10C18.9996 10.5303 18.7889 11.0389 18.414 11.414L11.414 18.414C11.0389 18.7889 10.5303 18.9996 10 18.9996C9.46967 18.9996 8.96106 18.7889 8.586 18.414L1.586 11.414C1.4 11.2285 1.25249 11.0081 1.15192 10.7655C1.05136 10.5228 0.99973 10.2627 1 10V5C1 3.93913 1.42143 2.92172 2.17157 2.17157C2.92172 1.42143 3.93913 1 5 1Z" stroke="#142023" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>{{ codeObj.val }}</div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="pdp-sticky-wrap">
+  <div class="pdp-sticky">
+    <div class="pdp-sticky-inner">
+      <div class="pdp-sticky-head">
+        <div>
+          <div><img src="{{ module.category_image.src }}" /></div>
+          <h3>{{ module.course_name }}</h3>
+        </div>
+        <div>{{ module.sticky_nav.subhead }}</div>
+      </div>
+      <div class="pdp-sticky-btns">
+        {% if module.sticky_nav.left_button_link %}
+        <div>
+          <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button jd-arrow-link pdp-sticky-btn-left" target="_blank"> 
+            {{ module.sticky_nav.left_button_text }}
+            <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
+          </a>
+        </div>
+        {% endif %}
+        <div>
+          <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button jd-arrow-link light-button pdp-sticky-btn-right"> 
+            Enroll
+            <i class="pdp-sticky-enroll-chev-down fal fal fa-chevron-down" style="padding-left: 10px;"></i>
+            <i class="pdp-sticky-enroll-chev-up fal fal fa-chevron-up" style="padding-left: 10px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pdp-sticky-enroll">
+    <div class="pdp-sticky-enroll-inner">
+      <div class="pdp-bottom">
+        <div>
+          <h3>{{ module.sticky_nav.dropdown_left_text }}</h3>
+        </div>
+        <div>
+          <div>
+            <div class="pdp-bottom-options"></div>
+          </div>
+        </div>
+        <div>
+          <div class="pdp-bottom-price"></div>
+          <div class="pdp-bottom-3-bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .pdp-top-slide-img, .pdp-top-slide-dots-wrap { padding-top: {{ module.slide_image_height }}; }
+  
+  {% end_scope_css %}
+  
+</style>
+{% end_require_css %}
+
+<script>
+  {%- set raw_data = {
+    category: module.category_text,
+    courseName: module.course_name,
+    name: 'pdp_options_' + name,
+    productID: module.product_id
+  } %}
+  (function () {
+    const jsonData = JSON.stringify({{ raw_data|tojson }});
+
+    window.sessionStorage.setItem('course_shopify_add_to_cart', jsonData);
+  })();
+</script>

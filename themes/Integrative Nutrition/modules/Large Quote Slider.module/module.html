@@ -1,0 +1,28 @@
+<div id="{{name}}" class="large-quote-slider">
+  {% for item in module.cards %}
+  <div>
+    <div class="large-quote-slide">
+      <div class="large-quote-img" style="background: url({{item.image_field.src}})"></div>
+      <div class="large-quote-quote">
+        <div>{{ item.quote_svg }}</div>
+        <div>{{ item.body_content }}</div>
+        <div>{{ item.person_name }}</div>
+        <div>{{ item.person_title }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#{{ name }}').slick({
+    dots: true,
+    arrows: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: '<button type="button" class="slick-prev"><i class="fal fa-chevron-left"></i></button>',
+    nextArrow: '<button type="button" class="slick-next"><i class="fal fa-chevron-right"></i></button>',
+  });
+});
+</script>

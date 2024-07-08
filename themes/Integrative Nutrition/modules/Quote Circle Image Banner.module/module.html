@@ -1,0 +1,25 @@
+<div class="circle-image-banner-outer">
+  <div class="circle-image-banner">
+    <div class="circle-image-banner-inner">
+      <div class="circle-image-banner-content circle-image-quote">
+        <div>{{ module.quote_svg }}</div>
+        <div>{{ module.body_content }}</div>
+        <div>{{ module.person_name }}</div>
+        <div>{{ module.person_title }}</div>
+      </div>
+      <div class="circle-image-banner-image"></div>
+    </div>
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .circle-image-banner { background: {{ module.bg_color.color }}; }
+  .circle-image-banner-image { background: url({{ module.image_field.src }}); }
+  
+  {% end_scope_css %}
+  
+</style>
+{% end_require_css %}

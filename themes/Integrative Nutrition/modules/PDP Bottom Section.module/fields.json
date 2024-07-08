@@ -1,0 +1,70 @@
+[ {
+  "id" : "c842546b-5f49-710a-9abe-a7c9ec3681de",
+  "name" : "category_text",
+  "display_width" : null,
+  "label" : "Category Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "IIN Category Program"
+}, {
+  "id" : "e37beeda-1d7e-c580-0566-233fa451f598",
+  "name" : "category_image",
+  "display_width" : null,
+  "label" : "Category Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/IIN%20Favicon.png",
+    "alt" : "IIN Favicon",
+    "loading" : "lazy",
+    "width" : 103,
+    "height" : 112,
+    "max_width" : 103,
+    "max_height" : 112
+  }
+}, {
+  "id" : "32a327ee-b4ec-4f8c-0738-c817ad248d64",
+  "name" : "course_name",
+  "display_width" : null,
+  "label" : "Course Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The Health Coach Training Program"
+}, {
+  "id" : "d95ff812-bc6a-1c2c-578e-bac9cc360374",
+  "name" : "sub_head",
+  "display_width" : null,
+  "label" : "Sub head",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Reframe what you know about health and wellness to live a fulfilling life in this comprehensive, integrated and dynamic program that includes content and activities related to holistic nutrition and lifestyle."
+}, {
+  "id" : "623c37b0-aa8b-7825-5830-3479a902b45d",
+  "name" : "middle_head",
+  "display_width" : null,
+  "label" : "Middle Head",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Just a few questions before you enroll:"
+} ]

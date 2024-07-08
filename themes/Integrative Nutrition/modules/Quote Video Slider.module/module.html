@@ -1,0 +1,121 @@
+<div id="{{name}}">
+  <div class="quote-video-slider-arrows">
+    
+  </div>
+  <div class="quote-video-slider">
+    {% for card in module.cards %}
+      {% if card.video_or_quote == 'video' %}
+        <div class="quote-video-card-wrap">
+          <div id="quote-video-card-{{ loop.index }}" class="quote-video-card quote-video-card-video" style="background:url({{card.image_field.src}})">
+            <div class="quote-video-card-video-placeholder"></div>
+            {% if card.lightbox_video %}
+            <script>
+              $('#{{name}} #quote-video-card-{{ loop.index }}').click(function() {
+                $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(`{{ card.video_embed }}`);
+                $('#{{name}}-quote-video-lightbox').addClass('quote-video-lightbox-show');
+              });
+            </script>
+            {% else %}
+            <script>
+              $('#{{name}} #quote-video-card-{{ loop.index }}').click(function() {
+                $('#{{name}} #quote-video-card-{{ loop.index }} .quote-video-card-video-placeholder').replaceWith(`{{ card.video_embed }}`);
+              });
+            </script>
+            {% endif %}
+          </div>
+          <div style="flex: 1"></div>
+          <div>
+            <div class="quote-video-card-name">{{ card.person_name }}</div>
+            <div>{{ card.person_title }}</div>
+          </div>
+        </div>
+      {% elif card.video_or_quote == 'quote' %}
+        <div class="quote-video-card-wrap">
+          <div class="quote-video-card" style="background:{{card.bg_color.color}}">
+            <div>
+              <svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.30189 24C5.94003 24 4.69407 23.5986 3.56402 22.7957C2.46294 21.9928 1.59367 20.9319 0.956199 19.6129C0.318733 18.2652 0 16.8172 0 15.2688C0 13.1183 0.550539 11.0681 1.65162 9.11828C2.78167 7.16846 4.25943 5.41935 6.08491 3.87097C7.93935 2.32258 9.96766 1.06093 12.1698 0.0860215C12.2567 0.0286738 12.3871 0 12.561 0C12.8218 0 13.0825 0.172043 13.3433 0.516129C13.5462 0.802867 13.6476 1.03226 13.6476 1.2043C13.6476 1.34767 13.5462 1.50538 13.3433 1.67742C11.6917 3.13978 10.4313 4.77419 9.56199 6.58065C8.69272 8.35842 8.25809 10.1362 8.25809 11.914C8.25809 12.3441 8.3595 12.6882 8.56233 12.9462C8.76516 13.1756 9.1998 13.405 9.86624 13.6344C10.7935 13.9498 11.6338 14.6093 12.3871 15.6129C13.1405 16.5878 13.5172 17.7921 13.5172 19.2258C13.5172 20.2294 13.2129 21.0896 12.6044 21.8065C11.996 22.5233 11.2136 23.0681 10.2574 23.4409C9.30121 23.8136 8.31604 24 7.30189 24ZM25.9043 24C24.5425 24 23.2965 23.5986 22.1664 22.7957C21.0654 21.9928 20.1961 20.9319 19.5586 19.6129C18.9212 18.2652 18.6024 16.8172 18.6024 15.2688C18.6024 13.1183 19.153 11.0681 20.254 9.11828C21.3841 7.16846 22.8619 5.41935 24.6873 3.87097C26.5418 2.32258 28.5701 1.06093 30.7722 0.0860215C30.8592 0.0286738 30.9896 0 31.1634 0C31.4242 0 31.685 0.172043 31.9458 0.516129C32.1486 0.802867 32.25 1.03226 32.25 1.2043C32.25 1.34767 32.1486 1.50538 31.9458 1.67742C30.2941 3.13978 29.0337 4.77419 28.1644 6.58065C27.2951 8.35842 26.8605 10.1362 26.8605 11.914C26.8605 12.3441 26.9619 12.6882 27.1648 12.9462C27.3676 13.1756 27.8022 13.405 28.4687 13.6344C29.3959 13.9498 30.2362 14.6093 30.9896 15.6129C31.7429 16.5878 32.1196 17.7921 32.1196 19.2258C32.1196 20.2294 31.8154 21.0896 31.2069 21.8065C30.5984 22.5233 29.816 23.0681 28.8598 23.4409C27.9036 23.8136 26.9185 24 25.9043 24Z" fill="#003D4B"/>
+              </svg>
+            </div>
+            <div>
+              {{ card.quote_text }}
+            </div>
+          </div>
+          <div style="flex: 1"></div>
+          <div>
+            <div class="quote-video-card-name">{{ card.person_name }}</div>
+            <div>{{ card.person_title }}</div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <div id="{{name}}-quote-video-lightbox" class="quote-video-lightbox">
+    <div class="quote-video-lightbox-close"><i class="fa-solid fa-xmark"></i></div>
+    <div class="quote-video-lightbox-content-wrap"><div class="quote-video-lightbox-content"></div></div>
+  </div>
+</div>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .quote-video-card { min-height: {{ module.min_card_height }}; }
+  
+  {% if module.show_overflow  %}
+    .slick-slider .slick-list { overflow: visible !important; }
+    .slick-slide[aria-hidden="true"] { opacity: .5 !important; }
+  {% endif %}
+  
+  {% end_scope_css %}
+  
+</style>
+{% end_require_css %}
+
+<script>
+$(document).ready(function() {
+  $('#{{name}}-quote-video-lightbox').appendTo('body');
+  $('#{{name}}-quote-video-lightbox .quote-video-lightbox-close').click(function() {
+    $('#{{name}}-quote-video-lightbox').removeClass('quote-video-lightbox-show');
+    $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(``);
+  });
+  $('#{{name}}-quote-video-lightbox').on('click', function(e) {
+    if (e.target !== this)
+      return;
+    $('#{{name}}-quote-video-lightbox').removeClass('quote-video-lightbox-show');
+    $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(``);
+  });
+  
+  $('#{{ name }} .quote-video-slider').slick({
+    dots: false,
+    arrows: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: false,
+    appendArrows: $('#{{ name }} .quote-video-slider-arrows'),
+    prevArrow: '<button type="button" class="slick-prev"><i class="fal fa-chevron-left"></i></button>',
+    nextArrow: '<button type="button" class="slick-next"><i class="fal fa-chevron-right"></i></button>',
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+});
+</script>

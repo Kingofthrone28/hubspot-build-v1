@@ -1,0 +1,141 @@
+.pdp-bottom .jd-add-cart-wrap {
+  width: 100%;
+  display: flex;
+}
+
+.pdp-bottom .jd-shopify-options {
+  display: block;
+}
+
+.pdp-bottom .jd-shopify-option-wrap > * {
+  margin-bottom: 0;
+}
+
+.pdp-bottom .jd-buy-option-label {
+  color: #494a52;
+  font-size: 12px;
+}
+
+.pdp-bottom .jd-shopify-add-btn {
+  padding: 12px !important;
+  margin-top: 0;
+  width: 240px !important;
+  min-width: 150px !important;
+  max-width: 100% !important;
+}
+
+.pdp-bottom .jd-shopify-option-wrap input {
+  accent-color: #494a52;
+  margin: 0 5px 5px 0;
+}
+
+.pdp-bottom .jd-shopify-option-wrap label {
+  display: inline-block;
+}
+
+.pdp-bottom .jd-add-cart-wrap > * {
+  flex: 1;
+}
+
+.pdp-bottom .pdp-price-button-wrap {
+  margin-top: 0;
+}
+
+.pdp-bottom .pdp-price-discount {
+  display: none;
+}
+
+.pdp-bottom .pdp-price-wrap {
+  display: flex;
+  align-items: flex-end;
+}
+
+.pdp-bottom .pdp-slash {
+  margin-right: 5px;
+}
+
+.pdp-bottom .pdp-price-total {
+  font-size: 18px;
+}
+
+.pdp-bottom {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pdp-bottom > div:nth-child(1) {
+  width: 33.33%;
+  min-width: 33.33%;
+  padding: 0 20px 0 0;
+}
+
+.pdp-bottom > div:nth-child(2) {
+  display: flex;
+  width: 33.33%;
+  min-width: 33.33%;
+  padding: 0 10px 0 50px;
+}
+
+.pdp-bottom > div:nth-child(3) {
+  width: 33.33%;
+  min-width: 33.33%;
+  padding: 0 0 0 20px;
+}
+
+.pdp-bottom-middle-head {
+  font-size: 24px;
+  margin-bottom: 10px;
+  max-width: 250px;
+}
+
+.pdp-bottom .pdp-div {
+  display: none;
+}
+
+.pdp-bottom h3 {
+  font-size: 48px;
+}
+
+@media (width <= 1000px) {
+  .pdp-bottom > div:nth-child(1) {
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+
+  .pdp-bottom > div:nth-child(2) {
+    display: block;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 20px 0 0;
+  }
+
+  .pdp-bottom > div:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 50%;
+    min-width: 50%;
+    padding: 0 0 0 20px;
+  }
+}
+
+@media (width <= 767px) {
+  .pdp-bottom > div:nth-child(1) {
+    margin-bottom: 25px;
+  }
+
+  .pdp-bottom > div:nth-child(2) {
+    margin-bottom: 25px;
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+  }
+  
+  .pdp-bottom > div:nth-child(3) {
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+  }
+}
