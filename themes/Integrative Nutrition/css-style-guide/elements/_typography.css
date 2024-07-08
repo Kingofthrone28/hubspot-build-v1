@@ -1,0 +1,153 @@
+html body {
+  line-height: var(--line-height--legacy--body);
+  word-break: break-word;
+  color: var(--color--legacy--violet--gun-powder);
+}
+
+html[lang^='ja'] body,
+html[lang^='zh'] body,
+html[lang^='ko'] body {
+  line-break: strict;
+  word-break: break-all;
+}
+
+.iin_red {
+  color: var(--color--cherry);
+}
+
+/* Paragraphs */
+
+p {
+  margin: 0 0 1.4rem;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Anchors */
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Headings */
+@media (max-width: 767px) {
+  .entity-paragraphs-item.paragraphs-item-headline {
+    line-height: auto !important;
+    font-size: var(--font-size--legacy--23);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 1.4rem;
+  color: var(--color--legacy--violet--gun-powder);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: var(--font-size--legacy--19);
+}
+
+h2 {
+  font-size: var(--font-size--legacy--15);
+}
+
+h3 {
+  font-size: var(--font-size--5);
+}
+
+h4 {
+  font-size: var(--font-size--legacy--10);
+  font-weight: normal;
+}
+
+h5 {
+  font-size: var(--font-size--3);
+}
+
+h6 {
+  font-size: var(--font-size--legacy--5);
+}
+
+/* Lists */
+
+ul,
+ol {
+  margin: 0 0 1.5rem;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin: 0;
+}
+
+ul.no-list {
+  list-style: none;
+}
+
+/* Code blocks */
+
+code {
+  vertical-align: bottom;
+}
+
+/* Blockquotes */
+
+blockquote {
+  margin: 0 0 1.4rem;
+  border-left: 2px solid var(--color--legacy--grey--dark-grey-1);
+  padding-left: 15px;
+}
+
+/* Horizontal rules */
+
+hr {
+  /*
+  background-color: var(--color--legacy--grey--very-light-grey-1);
+  */
+  border: none;
+  height: 1px;
+  color: var(--color--legacy--grey--very-light-grey-1);
+}
+
+/* Subscripts and superscripts */
+
+sup,
+sub {
+  position: relative;
+  vertical-align: baseline;
+  line-height: 0;
+  font-size: 75%;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Focus styles */
+
+:focus {
+  outline: none;
+  outline-color: transparent;
+}
+
+.disable-focus-styles :focus {
+  outline: none;
+}

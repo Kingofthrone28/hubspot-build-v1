@@ -5,7 +5,7 @@
 }
 
 html {
-  font-family: 'Oxygen', sans-serif;
+  font-family: var(--font-family--legacy--timeline);
 }
 
 *,
@@ -88,7 +88,7 @@ html {
   margin-top: 150px;
   padding: 16px;
   padding: 1rem;
-  color: #333F48;
+  color: var(--color--legacy--blue--big-stone);
 }
 
 .tl-description {
@@ -127,7 +127,7 @@ html {
   left: 0;
   width: 28px;
   height: 2px;
-  background: #fff;
+  background: var(--color--white);
 }
 
 .tl-items-arrow-left {
@@ -173,7 +173,7 @@ html {
   left: 0;
   margin: 0;
   padding: 16px 0px 0 0;
-  /*border-top: 1px solid #b2e9ff;*/
+  /*border-top: 1px solid var(--color--legacy--blue--columbia-blue);*/
   width: 100%;
 }
 .tl-nav-wrapper:before, .tl-nav-wrapper:after {
@@ -182,7 +182,7 @@ html {
   height: 32px;
   position: absolute;
   top: 53px;
-  background: #333F48;
+  background: var(--color--legacy--blue--big-stone);
   z-index: 50;
 }
 .tl-nav-wrapper:before {
@@ -243,7 +243,7 @@ html {
   float: left;
   cursor: pointer;
   margin-right: 1rem;
-  font-size: 12px;
+  font-size: var(--font-size--legacy--2);
   text-align: center;
   margin-top: 18px;
   z-index: 5;
@@ -258,9 +258,9 @@ html {
   width: 20px;
   height: 20px;
   margin: auto;
-  background: #F5F7F8;
-  color: #F5F7F8;
-  border: 1px solid #333F48;
+  background: var(--color--legacy--blue--solitude-5);
+  color: var(--color--legacy--blue--solitude-5);
+  border: 1px solid var(--color--legacy--blue--big-stone);
   padding-top: 7px;
   border-radius: 1000px;
   -webkit-transition: 0.6s ease;
@@ -273,9 +273,9 @@ html {
     width: 20px;
     height: 20px;
     margin: auto;
-    background: #F5F7F8;
-    color: #F5F7F8;
-    border: 1px solid #333F48;
+    background: var(--color--legacy--blue--solitude-5);
+    color: var(--color--legacy--blue--solitude-5);
+    border: 1px solid var(--color--legacy--blue--big-stone);
     padding-top: 7px;
     border-radius: 1000px;
     -webkit-transition: 0.6s ease;
@@ -288,9 +288,9 @@ html {
   width: 35px;
   height: 35px;
   margin: auto;
-  background: #F5F7F8;
-  color: #333F48;
-  border: 1px solid #333F48;
+  background: var(--color--legacy--blue--solitude-5);
+  color: var(--color--legacy--blue--big-stone);
+  border: 1px solid var(--color--legacy--blue--big-stone);
   padding-top: 7px;
   border-radius: 1000px;
   -webkit-transition: 0.6s ease;
@@ -300,17 +300,17 @@ html {
 .tl-nav li:hover div, .tl-nav li.tl-active div {
   width: 80px;
   height: 80px;
-  background: #333F48;
-  color: #fff;
+  background: var(--color--legacy--blue--big-stone);
+  color: var(--color--white);
   border: none;
-  font-size: 24px;
+  font-size: var(--font-size--legacy--13);
   padding-top: 23px;
 }
 
 /*** The nav's nav styles ***/
 .tl-line {
     width: 100%;
-    border-top: solid 1px #333F48;
+    border-top: solid 1px var(--color--legacy--blue--big-stone);
     z-index: 0;
     position: absolute;
     margin-top: 109px;
@@ -332,7 +332,7 @@ html {
   position: absolute;
   width: 14px;
   height: 2px;
-  background: #fff;
+  background: var(--color--white);
 }
 
 .tl-nav-arrow-left {
@@ -378,7 +378,7 @@ html {
     left: 0;
     margin: 0;
     padding: 16px 0px 0 0;
-    /*border-top: 1px solid #b2e9ff;*/
+    /*border-top: 1px solid var(--color--legacy--blue--columbia-blue);*/
     overflow: hidden;
     width: 100%;
   }

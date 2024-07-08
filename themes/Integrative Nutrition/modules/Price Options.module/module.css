@@ -7,7 +7,7 @@
 .video-card-wrap:nth-child(3) .option-pop { transform-origin: right; }
 .option-pop.show-option-pop { transform: scaleX(1); opacity: 1; pointer-events: auto; }
 .price-options .stagger-img-overlay { opacity: 1; padding: 15px; display: flex; flex-direction: column; }
-.option-pop-header { width: 100%; color: white; font-weight: bold; display: flex; margin-bottom: 10px; border-bottom: 1px solid white; }
+.option-pop-header { width: 100%; color: var(--color--white); font-weight: bold; display: flex; margin-bottom: 10px; border-bottom: 1px solid var(--color--white); }
 .option-pop-header > div:first-child { margin-right: 20px; }
 .option-pop-body { width: 100%; overflow: auto; }
 .option-pop-body > * { margin-bottom: 5px !important; }

@@ -9,7 +9,7 @@
   vertical-align: super;
 }
 .course-card-category, .course-offer-text {
-  color: #d72a25
+  colorvar(--color--cherry)
 }
 .price-container {
   display: flex;
@@ -18,7 +18,7 @@
 .actual-price-strike {
   text-decoration: line-through;
   margin-left: 13px;
-  font-size: 14px
+  font-size: var(--font-size--legacy--4)
 }
 @media (max-width: 767px) {
   .course-catalog > div {
