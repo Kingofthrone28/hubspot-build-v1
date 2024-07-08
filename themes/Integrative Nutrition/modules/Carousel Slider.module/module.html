@@ -189,10 +189,9 @@
   #section-{{ parent_custom_widget_name }} .slick-prev svg path, 
   #section-{{ parent_custom_widget_name }} .slick-next svg path,
   #section-{{ parent_custom_widget_name }} .slick-prev svg line, 
-  #section-{{ parent_custom_widget_name }} .slick-next svg line{ 
+  #section-{{ parent_custom_widget_name }} .slick-next svg line { 
     stroke: {{ module.option.navigation.arrow_color.color }}; 
     opacity: {{ module.option.navigation.arrow_color.opacity / 100 }}; 
-  
   }
 
   #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item-inner { 
@@ -211,13 +210,13 @@
     opacity: {{ module.option.navigation.dots_color.opacity / 100 }}; 
   }
 
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current, 
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { 
+  #section-{{ parent_custom_widget_name }} .more-slider-nav .nav-item.slick-current, 
+  #section-{{ parent_custom_widget_name }} .more-slider-nav .nav-item:hover { 
     background: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; 
     opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
   }
 
-  #section-{{ parent_custom_widget_name }}  .more-slider-nav button:hover i { 
+  #section-{{ parent_custom_widget_name }} .more-slider-nav button:hover i { 
     color: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; 
     opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; 
   }
@@ -235,7 +234,7 @@
   {% if module.option.navigation.dots_on_side %}
   #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper, 
   #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .slick-track,
-  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper>.item { 
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper > .item { 
     display: block !important; 
   }
 
