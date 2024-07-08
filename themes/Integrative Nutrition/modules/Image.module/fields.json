@@ -173,6 +173,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "gradient_direction" : "to bottom",
@@ -229,6 +230,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "animation" : "none",
@@ -237,6 +239,7 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "spacing_field" : { },
@@ -386,6 +389,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "overhang_unit" : "px",

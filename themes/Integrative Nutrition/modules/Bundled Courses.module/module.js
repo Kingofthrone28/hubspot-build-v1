@@ -228,6 +228,38 @@
     }
   };
 
+  const trackAddToCartEvent = (updatedCheckout, lineItemsToAdd) => {
+    try {
+      const addToCartPayload = {};
+      addToCartPayload.event = 'add_to_cart';
+      addToCartPayload.ecommerce = {};
+      addToCartPayload.ecommerce.product_type = 'Bundle';
+      addToCartPayload.ecommerce.currency = moduleData.currencyCode || 'USD';
+      addToCartPayload.ecommerce.value = parseFloat(priceString.replace(/,/g, ''));
+      addToCartPayload.ecommerce.coupon = updatedCheckout?.discountApplications[0]?.title;
+      addToCartPayload.ecommerce.items = [];
+
+      const filteredList = updatedCheckout.lineItems.filter(item =>
+        lineItemsToAdd.some(compareItem => compareItem.variantId === item.variant.id)
+      );
+
+      addToCartPayload.ecommerce.items.push(...filteredList.map(course => ({
+        'item_id': course.variant.product.id.replace('gid://shopify/Product/',''),
+        'item_name': course.title,
+        'item_type': course.productType || 'NA',
+        'variant_id': course.variant?.id?.replace('gid://shopify/ProductVariant/',''),
+        'discount': parseFloat(course.discountAllocations[0]?.allocatedAmount?.amount) || 'NA',
+        'price': parseFloat(course.variant?.price?.amount) || '',
+        'quantity': course.quantity,
+        'sku': course.variant?.sku || 'NA'
+      })));
+      // Sending add to cart bundle product
+      triggerECommEvent(addToCartPayload);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   const addToCart = async (bundleName, courses) => {
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
     let cart;
@@ -299,6 +331,7 @@
       );
 
       updateCartTotal(checkout);
+      trackAddToCartEvent(checkout, lineItemsToAdd);
 
       const backgroundURL = checkout.lineItems[0].variant.image.src;
       const backgroundStyle = { background: `url('${backgroundURL}')` };
@@ -416,6 +449,36 @@
     });
   };
 
+  const trackViewItemEvent = (updatedCheckout, courses) => {
+    // Track view_item payload construction
+    try {
+      const viewItemPayload = {};
+      viewItemPayload.event = 'view_item';
+      viewItemPayload.ecommerce = {};
+      viewItemPayload.ecommerce.product_type = 'Bundle';
+      viewItemPayload.ecommerce.currency = moduleData.currencyCode || 'USD';
+      viewItemPayload.ecommerce.value = parseFloat(priceString.replace(/,/g, ''));
+      viewItemPayload.ecommerce.coupon = updatedCheckout?.discountApplications[0]?.title;
+      viewItemPayload.ecommerce.bundle_name = updatedCheckout?.discountApplications[0]?.title;
+      viewItemPayload.ecommerce.items = [];
+
+      viewItemPayload.ecommerce.items.push(...updatedCheckout.lineItems.map(course => ({
+        'item_id': courses.find(item => course.title.includes(item.course_name)).product_id,
+        'item_name': course.title,
+        'item_type': course.productType || 'NA',
+        'variant_id': course.variant?.id?.replace('gid://shopify/ProductVariant/',''),
+        'discount': parseFloat(course?.discountAllocations[0]?.allocatedAmount?.amount) || 'NA',
+        'price': parseFloat(course.variant.price.amount) || '',
+        'quantity': course.quantity,
+        'sku': course.variant?.sku || 'NA'
+      })));
+      // Sending view item bundle product
+      triggerECommEvent(viewItemPayload);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   const setPrice = (checkout) => {
     const applications = checkout?.discountApplications;
     const discounts = Array.isArray(applications) ? applications : [];
@@ -474,6 +537,7 @@
 
     setPrice(updatedCheckout);
     setBundles(updatedCheckout);
+    trackViewItemEvent(updatedCheckout, courses);
   };
 
   createCheckout(moduleData.courses);

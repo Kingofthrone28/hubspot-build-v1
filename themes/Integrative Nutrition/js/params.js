@@ -63,7 +63,7 @@
   );
 
   const cookieSettings = settings.custom_cookie_settings;
-  const defaultCookieName = 'params';
+  const defaultCookieName = IIN.cookies.trackingCookie;
   const defaultDayCount = parseInt(cookieSettings.cookie_duration) || 1;
   const queryString = search.startsWith('?') ? search.slice(1) : search;
   const urlParams = IIN.utilities.makeObjectFromKeyValueString(queryString);
@@ -113,9 +113,9 @@
    * Sets a hidden field.
    * @param {string} name
    * @param {number|string} value
-   * @param {boolean} condition
+   * @param {Document|HTMLElement} context target for using `querySelectorAll`
    */
-  const setHiddenField = (name, value) => {
+  const setHiddenField = (name, value, context = window.document) => {
     /** Checks if 'value' is falsy and return early if true. */
     if (!value) {
       return;
@@ -124,7 +124,7 @@
     const selector = `input[type='hidden'][name='${name}']`;
 
     /** Gets nodes using the constructed selector. */
-    const fields = document.querySelectorAll(selector);
+    const fields = context.querySelectorAll(selector);
 
     /** Sets the 'value' for each selected field. */
     fields.forEach((field) => {
@@ -138,22 +138,16 @@
   /**
    * Sets hidden fields automatically.
    * @param {Object} data
+   * @param {Document|HTMLElement} context target for using `querySelectorAll`
    */
-  const setHiddenFields = (data) => {
+  const setHiddenFields = (data, context = window.document) => {
     if (!data) {
       return;
     }
 
     Object.entries(data).forEach(([key, value]) => {
-      let hiddenKey = key;
-
-      if (key === 'sldiscountcode') {
-        hiddenKey = 'promo_code';
-      } else if (key === 'source') {
-        hiddenKey = 'partner_lead_source';
-      }
-
-      setHiddenField(hiddenKey, value);
+      const mappedKey = IIN.cookies.getTrackingFormKey(key);
+      setHiddenField(mappedKey, value, context);
     });
   };
 
@@ -292,11 +286,12 @@
     return updatedData;
   };
 
+  // Initialization
   const cookieData = updateCookieData(defaultCookieName);
 
   /** After the page loads set the cookie and registers event listeners. */
-  window.addEventListener('DOMContentLoaded', () => {
-    setHiddenFields(cookieData);
+  window.addEventListener('load', () => {
+    setHiddenFields(cookieData, window.document);
     updateLinks(cookieData);
     updateSocialLadderTracking(defaultCookieName);
   });

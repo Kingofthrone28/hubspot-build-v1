@@ -1,0 +1,47 @@
+.deal-bar {
+  position: relative;
+  background: var(--color--cherry);
+  padding: 5px 45px 5px 5px;
+  text-align: center;
+  color: var(--color--white);
+}
+
+.deal-bar-btn:hover {
+  text-decoration: none;
+  color: var(--color--white);
+}
+
+.deal-bar-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  width: 36px;
+  height: 36px;
+  fill: var(--color--white);
+}
+
+.deal-bar-close:hover {
+  fill: var(--color--grey--5);
+}
+
+.deal-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.deal-bar-inner > * {
+  margin: 5px 5px 5px 0;
+}
+
+.deal-bar-inner a:hover {
+  text-decoration: underline;
+}
+
+.deal-bar-time-text {
+  margin-right: 20px;
+  background: var(--color--white);
+  padding: 0 20px;
+  color: var(--color--cherry);
+}

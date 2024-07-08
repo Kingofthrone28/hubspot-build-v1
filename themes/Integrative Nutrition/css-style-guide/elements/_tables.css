@@ -1,8 +1,8 @@
 /* Table */
 
 table {
-  border: 1px solid var(--color--legacy--grey--zircon-2);
   margin-bottom: 1.4rem;
+  border: 1px solid var(--color--legacy--grey--zircon-2);
 }
 
 tbody + tbody {
@@ -22,8 +22,8 @@ td {
 
 thead th,
 thead td {
-  background-color: var(--color--legacy--blue--mirage);
   border-bottom: 2px solid var(--color--legacy--grey--zircon-2);
-  color: var(--color--white);
+  background-color: var(--color--legacy--blue--mirage);
   vertical-align: bottom;
+  color: var(--color--white);
 }

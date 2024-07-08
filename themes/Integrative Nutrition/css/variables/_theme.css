@@ -1,0 +1,113 @@
+/* color_variant(): https://developers.hubspot.com/docs/cms/hubl/functions#color-variant */
+
+:root {
+  /* Global colors */
+  
+  --theme--global-colors--primary-color: {{ theme.global_colors.primary_color.color }};
+  --theme--global-colors--primary-color--darkened: {{ color_variant(theme.global_colors.primary_color.color, -10) }};
+  --theme--global-colors--secondary-color: {{ theme.global_colors.secondary_color.color }};
+  --theme--global-colors--secondary-color--darkened: {{ color_variant(theme.global_colors.secondary_color.color, -20) }};
+  --theme--global-colors--tertiary-color: {{ theme.global_colors.tertiary_color.color }};
+  --theme--global-colors--quaternary-color: {{ theme.global_colors.quat_color.color }};
+  
+  /* Global fonts */
+  
+  --theme--global-fonts--primary-font: {{ theme.global_fonts.primary_font.font }};
+  --theme--global-fonts--primary-font--color: {{ theme.global_fonts.primary_font.color }};
+  --theme--global-fonts--secondary-font: {{ theme.global_fonts.secondary_font.font }};
+  
+  /* Typography */
+
+  --theme--typography--body-text--font: {{ theme.typography.body_text.font }};
+  --theme--typography--body-text--color: {{ theme.typography.body_text.color }};
+  --theme--typography--body-text--color--lightened: {{ color_variant(theme.typography.body_text.color, 40) }};
+  --theme--typography--body-text--color--darkened: {{ color_variant(theme.typography.body_text.color, -40) }};
+  --theme--typography--body-text--font-size: {{ theme.typography.body_text.size ~ theme.typography.body_text.size_unit }};
+  --theme--typography--heading-1--color: {{ theme.typography.heading_one.color }};
+  --theme--typography--heading-1--font-size: {{ theme.typography.heading_one.size ~ theme.typography.heading_one.size_unit }};
+  --theme--typography--heading-1--small--font-size: {{ ((theme.typography.heading_one.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_one.size_unit }};
+  --theme--typography--heading-2--color: {{ theme.typography.heading_two.color }};
+  --theme--typography--heading-2--font-size: {{ theme.typography.heading_two.size ~ theme.typography.heading_two.size_unit }};
+  --theme--typography--heading-2--small--font-size: {{ ((theme.typography.heading_two.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_two.size_unit }};
+  --theme--typography--heading-3--color: {{ theme.typography.heading_three.color }};
+  --theme--typography--heading-3--font-size: {{ theme.typography.heading_three.size ~ theme.typography.heading_three.size_unit }};
+  --theme--typography--heading-3--small--font-size: {{ ((theme.typography.heading_three.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_three.size_unit }};
+  --theme--typography--heading-4--color: {{ theme.typography.heading_four.color }};
+  --theme--typography--heading-4--font-size: {{ theme.typography.heading_four.size ~ theme.typography.heading_four.size_unit }};
+  --theme--typography--heading-4--small--font-size: {{ ((theme.typography.heading_four.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_four.size_unit }};
+  --theme--typography--heading-5--color: {{ theme.typography.heading_five.color }};
+  --theme--typography--heading-5--font-size: {{ theme.typography.heading_five.size ~ theme.typography.heading_five.size_unit }};
+  --theme--typography--heading-6--color: {{ theme.typography.heading_six.color }};
+  --theme--typography--heading-6--font-size: {{ theme.typography.heading_six.size ~ theme.typography.heading_size.size_unit }};
+  --theme--typography--link-color: {{ theme.typography.link_color.color }};
+  --theme--typography--link-color--lightened: {{ color_variant(theme.typography.link_color.color, 40) }};
+  --theme--typography--link-color--darkened: {{ color_variant(theme.typography.link_color.color, -40) }};
+  
+  /* Buttons */
+  
+  --theme--buttons--border: {{ theme.buttons.border_width }}px solid {{ theme.buttons.border_color.color }};
+  --theme--buttons--border-color: {{ theme.buttons.border_color.color }};
+  --theme--buttons--border-color--lightened: {{ color_variant(theme.buttons.border_color.color, 40) }};
+  --theme--buttons--border-radius: {{ theme.buttons.border_radius }}px;
+  --theme--buttons--padding: {{ theme.buttons.vertical_padding }}px {{ theme.buttons.horizontal_padding }}px;
+  --theme--buttons--background-color: {{ theme.buttons.background_color.rgba }};
+  --theme--buttons--background-color--lightened: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
+  --theme--buttons--hover-color: {{ theme.buttons.gr_color.rgba }};
+  --theme--buttons--text-color: {{ theme.buttons.text_color.color }};
+  --theme--buttons--hover-text-color: {{ theme.buttons.h_text_color.color }};
+  --theme--buttons--light-button--border: {{ theme.buttons.light_buttons.border_width }}px solid {{ theme.buttons.light_buttons.border_color.color }};
+  --theme--buttons--light-button--border-color: {{ theme.buttons.light_buttons.border_color.color }};
+  --theme--buttons--light-button--border-radius: {{ theme.buttons.light_buttons.border_radius }}px;
+  --theme--buttons--light-button--padding: {{ theme.buttons.light_buttons.vertical_padding }}px {{ theme.buttons.light_buttons.horizontal_padding }}px;
+  --theme--buttons--light-button--background-color: {{ theme.buttons.light_buttons.background_color.rgba }};
+  --theme--buttons--light-button--hover-color: {{ theme.buttons.light_buttons.gr_color.rgba }};
+  --theme--buttons--light-button--hover-color--lightened: rgba({{ color_variant(theme.buttons.light_buttons.gr_color.color, 1)|convert_rgb }}, {{ theme.buttons.light_buttons.gr_color.opacity / 100 }});
+  --theme--buttons--light-button--text-color: {{ theme.buttons.light_buttons.text_color.color }};
+  --theme--buttons--light-button--hover-text-color: {{ theme.buttons.light_buttons.h_text_color.color }};
+  
+  /* Forms */
+  
+  --theme--forms--border-radius: {{ theme.forms.border_radius }}px;
+  --theme--forms--field-background-color: {{ theme.forms.field_background_color.rgba }};
+  --theme--forms--field-border-color: {{ theme.forms.field_border_color.color }};
+  --theme--forms--field-focus-border-color: {{ theme.forms.field_focus_border_color.color }};
+  --theme--forms--form-background-color: {{ theme.forms.form_background_color.rgba }};
+  --theme--forms--header-background-color: {{ theme.forms.header_background_color.rgba }};
+  --theme--forms--help-text-color: {{ theme.forms.help_text_color.color }};
+  --theme--forms--header-text-color: {{ theme.forms.header_text_color.color }};
+  --theme--forms--label-color: {{ theme.forms.label_color.color }};
+  --theme--forms--padding: {{ theme.forms.vertical_padding }}px {{ theme.forms.horizontal_padding }}px;
+  
+  /* Tables */
+  
+  --theme--tables--body-background-color: {{ theme.tables.body_background_color.rgba }};
+  --theme--tables--body-text-color: {{ theme.tables.body_text_color.color }};
+  --theme--tables--footer-background-color: {{ theme.tables.footer_background_color.rgba }};
+  --theme--tables--footer-text-color: {{ theme.tables.footer_text_color.color }};
+  --theme--tables--header-background-color: {{ theme.tables.header_background_color.rgba }};
+  --theme--tables--header-text-color: {{ theme.tables.header_text_color.color }};
+  --theme--tables--border-color: {{ theme.tables.border_color.color }};
+    
+  /* Sections */
+
+  --theme--spacing--border-radius: {{ theme.spacing.border_radius }}px;
+  --theme--spacing--max-width: {{ theme.spacing.max_width }}px;
+  --theme--spacing--vertical-spacing: {{ theme.spacing.vertical_spacing }}px;
+  --theme--spacing--overlay-color: {{ theme.spacing.overlay_color.rgba }};
+  --theme--spacing--overlay-color--alpha-33: rgba({{ theme.spacing.overlay_color.color|convert_rgb }}, {{ theme.spacing.overlay_color.opacity / 300 }});
+  --theme--spacing--system-color: {{ theme.spacing.system_color.color }};
+
+  /* Footer - TODO: field "background_color" does not exist in the theme footer settings. */
+
+  --theme--footer--background-color: {{ theme.footer.background_color.rgba }};
+  --theme--footer--link-color: {{ theme.footer.link_color.color }};
+  --theme--footer--text-color: {{ theme.footer.text_color.color }};
+
+  /* Header - TODO: section "header" does not exist in the theme settings. */
+
+  --theme--header--background-color: {{ theme.header.background_color.rgba }};
+  --theme--header--menu-link-color: {{ theme.header.menu_link_color.color }};
+  --theme--header--menu-link-color--lightened: {{ color_variant(theme.header.menu_link_color.color, 40) }};
+  --theme--header--menu-link-color--darkened: {{ color_variant(theme.header.menu_link_color.color, -40) }};
+  --theme--header--child-menu-border-color: {{ theme.header.child_menu_border_color.color }};
+}

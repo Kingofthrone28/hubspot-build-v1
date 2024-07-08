@@ -26,6 +26,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "content" : "<p>The Institute for Integrative Nutrition (“IIN”) and the above named student (“student” or “you”) (collectively, the “Parties”) hereby enter into this enrollment agreement (“Enrollment Agreement”) which sets forth the terms and conditions of your access to and use of {{ personalization_token('course', 'undefined') }} (the “Program”) offered by IIN, including but not limited to, IIN’s websites and apps. By accepting this Enrollment Agreement, you agree to the terms set forth herein including the arbitration, class-action waiver, and limitation of liability provisions, and all other terms, rules, policies, regulations, and/or guidelines set forth therein. You also agree to the terms set forth in IIN’s Student Catalog and any other agreements between IIN and the student (together with the Enrollment Agreement, the “Agreements”).</p>",
@@ -59,6 +60,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "content" : "<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"1\">The total cost of the Course, as set forth in the table above, must be paid in full at the time of enrollment unless an alternative payment plan is offered by IIN and accepted by the student.&nbsp;&nbsp;</li>\n<li aria-level=\"1\">Tuition and fee charges are subject to change at the school’s discretion. Any tuition or fee increases will become effective for the school term following student notification of the increase.&nbsp; All dollar amounts referenced herein are in U.S. dollars.&nbsp;&nbsp;&nbsp;</li>\n</ol>\n<p><strong>Withdrawal and Refund Policy.</strong> Students can withdraw from the Course at any time by providing written notice to IIN.&nbsp; Refunds will be made in accordance with the following:</p>\n<ol>\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">If you withdraw, IIN may keep five percent of the cash price, but not to exceed fifty dollars (non-refundable registration fee), <span style=\"text-decoration: underline;\">and</span> a pro rata portion of the tuition based upon the lessons or services you have used by your last day of attendance, defined as logging into an instructional module.</li>\n<li aria-level=\"2\">IIN may receive or demand the cost of any ancillary goods which you have consumed or wish to retain after withdrawal.&nbsp;</li>\n<li aria-level=\"2\">All refunds will be made within thirty days following withdrawal and the refunded amounts shall be charged back to the credit card on file.</li>\n</ol>\n</ol>\n<p><strong>Late Payments and Non-Payments</strong>. &nbsp;In the event that IIN permits a student to pay for tuition and fees on a payment plan, IIN imposes the following policies and fees:</p>\n<ol>\n<li style=\"list-style-type: none;\">\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">Late payments are subject to a late fee in the amount of $35.00.&nbsp; All late fees are non-refundable.&nbsp;&nbsp;</li>\n<li aria-level=\"2\">A student who fails to make a timely payment is not in good financial standing until such late payment is cured and may, in IIN’s sole discretion, be suspended or withdrawn from the Course and/or have their outstanding payments accelerated.&nbsp; IIN may refer a student to a collections agency if a payment is not received within sixty days of being due, and the student may be subject to costs and charges imposed by any such collection agency.&nbsp; A student who fails to make any payment within forty-five days of enrollment in a Course may be withdrawn from the Course by IIN, in its sole discretion.&nbsp;</li>\n</ol>\n</li>\n</ol>\n<p><strong>Transfers</strong>.&nbsp; While enrolled in the Course, Students may transfer from one class to another, except transfers are not permitted for the Coaching Intensive Practicum. &nbsp;A transfer fee of $99 will be charged to a student for each such transfer.&nbsp; If the Student, following withdrawal, enrolls in a later class than the one from which he or she withdrew, and then subsequently decides to withdraw from the later class, the refund policy will relate to the date and class in which the student used the most lessons or services.</p>\n<p><strong style=\"font-size: 1rem; background-color: transparent;\">Code of Conduct</strong><span style=\"font-size: 1rem; background-color: transparent;\">.&nbsp; Students are required to comply with the Code of Conduct set forth in the Student Catalog.&nbsp; IIN, in its sole discretion, may determine whether you have violated the Code of Conduct, in which case, IIN may suspend or withdraw you from the Course, or take other action as IIN deems necessary.</span></p>\n<p><strong style=\"font-size: 1rem; background-color: transparent;\">Good Academic Standing</strong><span style=\"font-size: 1rem; background-color: transparent;\">: Students who comply with the Code of Conduct and who satisfy all additional requirements set forth in the Agreements will be in Good Academic Standing and continue to have full access to the Course and any other resources or materials IIN may make available. Students who fail to comply with the Code of Conduct or any other requirements set forth in the Agreements will not be in Good Academic Standing and may be suspended or withdrawn from the Course, or subject to other disciplinary action, in IIN’s sole discretion.</span></p>\n<p><strong style=\"font-size: 1rem; background-color: transparent;\">Confidentiality</strong><span style=\"font-size: 1rem; background-color: transparent;\">: At times, students may be invited and encouraged to share personal and/or private information with others. You agree not to disclose this information to others. By sharing such information you acknowledge that IIN is not responsible for ensuring that others maintain the confidentiality of such information and you agree not to hold IIN liable or otherwise responsible for the disclosure of such information.</span></p>\n<p><strong style=\"font-size: 1rem; background-color: transparent;\">Non-Compete</strong><span style=\"font-size: 1rem; background-color: transparent;\">: You acknowledge that IIN has invested extensive resources into developing the Course. By enrolling in the Course, you gain access to confidential information that constitutes IIN’s proprietary materials and business methods. As a result, your use of this information to compete with IIN would be unfair and would violate IIN’s legitimate business interests. Accordingly, while enrolled in the Course and for a period of one (1) year from the completion date of the Course, you agree not to compete with IIN by providing the same or similar services as IIN provides, which include, but are not limited to, developing, designing, providing, marketing, or selling a course, curriculum, or materials relating to the subject matter of the Course (“Competitive Services”). Accordingly, you will not own an interest in, operate, serve as a director or officer for, and/or otherwise work (either as employee or independent contractor) for, a school or other organization that provides Competitive Services. You acknowledge and agree that these restrictions are reasonable and necessary to protect IIN’s legitimate interests, and that IIN would not have permitted you to enroll in the Course in the absence of your agreement to comply with such restrictions. Nothing in this paragraph shall prevent the student from owning shares in a publicly-traded company that is registered on national exchanges or from coaching individual or group clients.</span></p>\n<p><strong style=\"font-size: 1rem; background-color: transparent;\">Non-Disparagement:</strong><span style=\"font-size: 1rem; background-color: transparent;\"> You agree not to disparage IIN or any of its officers, directors, or employees. For purposes of this section, “disparage” shall mean any negative statement, whether oral or written, whether in print or electronic form, including, without limitation, on any Internet site or web application such as Facebook, YouTube, Instagram, Twitter, chat forums, communities, and/or message boards. You acknowledge and agree that this provision is a material term of this Enrollment Agreement, and that IIN would not have permitted you to enroll in the Course in the absence of your agreement to comply with this provision. You further acknowledge that if it becomes necessary to commence legal action to ascertain your name from an anonymous post, you will be responsible for all legal and related fees and costs associated therewith.</span></p>\n<p><strong>Course Technology.</strong>&nbsp; The Course will be made available online. The Student Catalog contains additional information regarding the technology requirements necessary to participate in the Course. Students are solely responsible for ensuring they have the appropriate hardware, software, Internet access, and/or other equipment necessary to participate in the Course.&nbsp; IIN may provide you with limited technical support to access the Course, but in no event will such support include providing desktop computer troubleshooting (i.e., computer freezes, browser problems), assistance with third-party websites, or support with non-IIN products.</p>\n<p><strong>Intellectual Property.</strong>&nbsp;&nbsp;</p>\n<ol>\n<li style=\"list-style-type: none;\">\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">You acknowledge and agree that the Course and any resources or materials relating to the Course, including all concepts, techniques, methods, handouts, materials and/or other information (collectively, the “Materials”) constitute the sole and exclusive property of IIN. You acknowledge that IIN has invested substantial resources in developing the Materials, and that the Materials constitute commercially valuable and confidential property of IIN. IIN reserves all ownership rights to the Course and Materials, including any copyrights, trade names, trademarks, trade dress, logos, or service marks therein. You agree not to reproduce, copy, duplicate, distribute, lend, sell, or otherwise transfer or disclose to any other individual or party, the Materials, without the express prior written consent of IIN, which such consent may be withheld in IIN’s sole and exclusive discretion.&nbsp; You agree to comply with any instructions and limitations regarding use of the Materials contained herein or otherwise provided to you by IIN.</li>\n<li aria-level=\"2\">Notwithstanding and subject to the foregoing, Students who are in Good Financial Standing, Good Academic Standing, and are otherwise in full compliance with the Agreements (“Licensee”) shall be granted a worldwide, royalty-free, non-exclusive, non-transferable, non-sublicenseable, revocable, license to access the Course and Materials for their own personal, non-commercial use, while enrolled in the Course (the “Student IP License”).&nbsp; Unless otherwise agreed to by IIN, you may not use any Materials for any other purpose including, but not limited to use on any websites, social media sites, other forms of online and offline media, or in connection or as part of any other materials owned or used by you or any other party.&nbsp; You agree to comply with any additional instructions and/or restrictions accompanying any Materials.&nbsp;&nbsp;</li>\n<li aria-level=\"2\">IIN, in its sole discretion, may modify the Student IP License at any time, for any reason.&nbsp; By accessing the Course and/or using any Materials you shall be deemed to have accepted any changes to the Student IP License.</li>\n<li aria-level=\"2\">The Student IP License may be terminated if:\n<ol style=\"list-style-type: upper-roman;\">\n<li aria-level=\"3\">IIN or Licensee provide notice of termination, at any time, for any reason;</li>\n<li aria-level=\"3\">Licensee withdraws or is withdrawn or suspended from this Course or any other course offered by IIN or its affiliates;</li>\n<li aria-level=\"3\">Licensee fails to remain in Good Financial or Academic Standing with respect to this Course or any other course offered by IIN or its affiliates;</li>\n<li aria-level=\"3\">Licensee violates any provision of the Agreements or any other terms and conditions applicable to any products and services offered by IIN or its affiliates.</li>\n<li aria-level=\"3\">Upon termination of the Student IP License, for any reason, Licensee shall immediately cease and desist from using any of the Materials.</li>\n</ol>\n</li>\n<li aria-level=\"2\">Students and graduates of IIN’s Health Coach Training Program (“HCTP”) continue to be bound by any HCTP IP Terms of Use, which are incorporated by reference herein.&nbsp;&nbsp;</li>\n<li aria-level=\"2\">You grant IIN and its affiliates a worldwide, irrevocable, perpetual, royalty-free, nonexclusive, sub-licensable, transferable license to use, reproduce, create derivative works of, distribute, publicly perform, publicly display, transfer, transmit, distribute and publish content you submit in connection with the Courses (the “IIN IP License”). The IIN IP License applies to the distribution and the storage of your content in any form, medium, or technology now known or later developed. You acknowledge that, any content you would like to retain as your exclusive intellectual property, or that you wish to keep private, should not be posted or otherwise shared by you in connection with the Courses.</li>\n</ol>\n</li>\n</ol>\n<p><strong>Student Benefits.</strong>&nbsp; In addition to the Course and Materials, IIN may, in its discretion, provide you with additional benefits, including technological support, and/or invitations to attend live seminars, conferences, webinars, or other events (“Live Event(s)”) (collectively, “Student Benefits”).</p>\n<ol>\n<li style=\"list-style-type: none;\">\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">By attending a Live Event, you acknowledge and agree that any photographs, audio, or video recordings (the “Media”) of the Live Event taken by or on behalf of IIN are the exclusive property of IIN, and IIN has the exclusive right to print, display, publish, exploit, disseminate, and otherwise utilize the Media, whether or not you, your likeness, and/or your voice is captured in the Media, and without any fees, royalties, or payments of any kind owed to you. You waive all rights and release and discharge IIN from any claim, demand, or cause of action for defamation, invasion of privacy, infringement, or any other rights relating to the use of the Media.</li>\n<li aria-level=\"2\">Your access to and use of Student Benefits is subject to you being in Good Financial and Academic Standing and being in compliance with the Enrollment Agreement, Student Catalog, and any other agreement with IIN.&nbsp; Student Benefits are subject to change and/or termination, at any time, with or without notice to you.</li>\n</ol>\n</li>\n</ol>\n<p><strong>Complaint or Grievance Procedure</strong>. All student complaints should be first directed to the school personnel involved. If no resolution is forthcoming, a written complaint shall be submitted to the director of the school. Whether or not the problem or complaint has been resolved to his/her satisfaction by the school, the student may direct any problem or complaint to the Executive Director, State Board of Career Colleges and Schools, 30 East Broad Street, Suite 2481, Columbus, Ohio, 43215, Phone 614-466-2752; toll free 877-275-4219.</p>\n<p><strong>Arbitration, Class-Action Waiver, Venue, and Governing Law.</strong>&nbsp;&nbsp;</p>\n<p><strong>THE FOLLOWING TERMS TO WHICH YOU ARE CONSENTING CONSIST OF A BINDING ARBITRATION PROVISION AND A CLASS-ACTION WAIVER.</strong></p>\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">Except with respect to the equitable remedies available to IIN as set forth in paragraph 25 below, in the event a dispute arises between the parties, either arising from the Agreements or otherwise relating to the Course,&nbsp;<strong>THE PARTIES SHALL SUBMIT TO BINDING ARBITRATION ADMINISTERED BY THE AMERICAN ARBITRATION ASSOCIATION. ANY ARBITRATION COMMENCED BETWEEN THE PARTIES MUST BE HELD IN NEW YORK COUNTY, NEW YORK.</strong></li>\n<li aria-level=\"2\"><strong>YOU UNDERSTAND THAT CERTAIN LEGAL RIGHTS WILL BE FORFEITED, INCLUDING THE RIGHT TO SUE IN COURT, THE RIGHT TO A JURY TRIAL, AND THE RIGHT TO BRING, OR BE PART OF, A CLASS ACTION CASE.</strong>&nbsp;<strong>ARBITRATION MUST BE ON AN INDIVIDUAL BASIS. THIS MEANS NEITHER YOU NOR IIN MAY JOIN OR CONSOLIDATE CLAIMS IN ARBITRATION WITH OR AGAINST OTHER STUDENTS, OR LITIGATE IN COURT OR ARBITRATE ANY CLAIMS AS A REPRESENTATIVE OR MEMBER OF A CLASS.</strong></li>\n<li aria-level=\"2\">You further understand and agree that: (i) the arbitrator shall not be empowered to award punitive, incidental, consequential, indirect, exemplary, or special damages; (2) under no circumstances will you be permitted to obtain awards for, and you hereby waive all rights to claim, punitive, incidental, consequential, indirect, exemplary, special, or any other damages other than the amount of tuition and fees previously paid by you to IIN; and (3) any and all claims, judgments, and awards shall be limited to, and shall not exceed, the tuition and fees previously paid by you to IIN.</li>\n<li aria-level=\"2\">Except as may be required by law, neither a party nor an arbitrator may disclose the existence, content, or results of any arbitration hereunder without the prior written consent of all Parties.</li>\n<li aria-level=\"2\">All issues and questions concerning the construction, validity, interpretation, and enforceability of the Agreements, or the rights and obligations of any student in connection with the Course, shall be governed by, enforced under, and construed in accordance with, the laws of the State of New York, without giving effect to any choice of law or conflict of law rules which would cause the application of the laws of any jurisdiction other than the State of New York.</li>\n<li aria-level=\"2\">If you need to initiate an arbitration claim, you must serve notice to IIN by regular and certified mail (return receipt requested) at the following address: Legal Department, Integrative Nutrition Inc., 245 Fifth Avenue, FL 7, New York, NY 10016. If IIN needs to initiate an arbitration claim, it shall notify you at the address provided by you at the time of enrollment in the Course or such other address that you have provided in writing to IIN.</li>\n<li aria-level=\"2\">Rules for the&nbsp;<strong>AMERICAN ARBITRATION ASSOCIATION</strong>&nbsp;are available at:<a href=\"https://www.adr.org/\" style=\"color: #0000ff;\"><strong><span>https://www.adr.org</span></strong></a><strong><span style=\"color: #0000ff; text-decoration: underline;\">.</span></strong></li>\n</ol>\n<p><strong>YOU HEREBY ACKNOWLEDGE THAT YOU HAVE READ AND UNDERSTAND THE FOREGOING ARBITRATION PROVISION AND CLASS-ACTION WAIVER</strong></p>\n<p><strong>Notices</strong>.&nbsp; All notices, consents, waivers, and other communications under the Agreements shall be in writing and shall be deemed to have been duly given and received when delivered by electronic mail or by first-class mail. You agree to provide IIN with your current, complete, and accurate email address and postal address and agree that notice can be delivered at either of those addresses. Notice can be sent to IIN via email at&nbsp;<a href=\"mailto:support@integrativenutrition.com\" style=\"color: #0000ff;\"><span>support@integrativenutrition.com</span></a> or via mail at 245 Fifth Avenue, FL 7, New York, NY 10016. Notwithstanding the foregoing, if you need to initiate an arbitration claim, you must comply with the notice requirements of paragraph 14 above.</p>\n<p><strong>Indemnification.&nbsp;</strong>You agree to indemnify, defend, and hold harmless IIN, its subsidiaries, and its affiliates, as well as their respective directors, officers, employees, agents, shareholders, partners, members, and owners, against any and all claims, actions, demands, liabilities, losses, damages, judgments, settlements, costs, and expenses, including reasonable attorneys’ fees and costs, (collectively or individually, “Losses”) insofar as such Losses arise out of or are based upon: your performance of, or failure to perform under, the Enrollment Agreement, Student Catalog, or any other agreement with IIN; your breach of any representation, warranty, or obligation under the Agreements; your violation of the Student IP License or any other misuse of IIN’s intellectual property; bodily injury, death of any person, or damage to any personal property resulting from your acts or omissions; and/or your violation of any copyright, patent, trade secret, trademark, and/or other intellectual property right of any person.&nbsp; IIN shall have the option of assuming control over the defense and/or settlement of such claim, and you will reimburse IIN for all costs of defending the matter, including, without limitation, reasonable attorneys’ fees and costs; and (ii) you shall not settle any claim or action on behalf of IIN without first notifying IIN of all details related to such settlement, and receiving IIN’s prior written consent.</p>\n<p><strong style=\"background-color: transparent;\">Limitation of Liability</strong><span style=\"background-color: transparent;\">. In no event shall IIN’s liability arising out of or related to the Course or the Agreements, whether in contract, tort, or any other theory of liability, exceed the tuition and fees paid by you and received by IIN at the time of the first instance of the event giving rise to the liability. Notwithstanding and subject to the foregoing, in no event shall IIN have liability to you for any indirect, incidental, punitive, consequential, exemplary, or special damages of any kind or nature however caused, whether in contract, tort, or any other theory of liability.</span></p>\n<p><strong style=\"background-color: transparent;\">Term and Termination</strong><span style=\"background-color: transparent;\">.&nbsp;</span></p>\n<ol>\n<li style=\"list-style-type: none;\">\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">This Enrollment Agreement shall become effective upon your acceptance of same and shall remain in effect until:\n<ol style=\"list-style-type: upper-roman;\">\n<li aria-level=\"3\">you have paid all tuition and fees for the Course in which you are enrolled;&nbsp;</li>\n<li aria-level=\"3\">you withdraw or are withdrawn from the Course, in which case all of your rights under this Enrollment Agreement shall immediately terminate, subject to the Survivability paragraph below; or&nbsp;</li>\n<li aria-level=\"3\">your participation in the Course is suspended, in which case all of your rights under this Enrollment Agreement shall be immediately suspended. If your participation in the Course is restored, you shall continue to enjoy your rights under this Enrollment Agreement.&nbsp;&nbsp;</li>\n<li aria-level=\"3\">If you are withdrawn or suspended from the Course because you are not in Good Academic or Financial Standing or because you have otherwise violated the Agreements, you may also be withdrawn or suspended from any other course offered by IIN, in IIN’s sole discretion.</li>\n</ol>\n</li>\n<li aria-level=\"2\">IIN may terminate the Course at any time, for any reason. If a Course is terminated following your enrollment, but prior to your graduation, you shall be entitled to a prorated refund of the tuition and fee amounts you have paid at the time of termination in accordance with your Enrollment Agreement.</li>\n</ol>\n</li>\n</ol>\n<p><strong>Representations, Warranties, and Disclaimers.</strong>&nbsp;&nbsp;</p>\n<ol>\n<li style=\"list-style-type: none;\">\n<ol style=\"list-style-type: lower-alpha;\">\n<li aria-level=\"2\">You represent and warrant that:&nbsp;\n<ol>\n<li aria-level=\"3\">you have the legal power to enter in to the Agreements;&nbsp;</li>\n<li aria-level=\"3\">at the time of enrollment in the Course, you meet the admission requirements set forth in the Student Catalog;&nbsp;</li>\n<li aria-level=\"3\">you have reviewed and evaluated the Course;&nbsp;</li>\n<li aria-level=\"3\">you have read and understand the Agreements;&nbsp;</li>\n</ol>\n</li>\n<li aria-level=\"2\">you acknowledge, and understand that:\n<ol>\n<li aria-level=\"3\">the Course will not train you to become a medical doctor, nutritionist, or dietician;&nbsp;</li>\n<li aria-level=\"3\">each jurisdiction has its own laws and regulations regarding the provision of services by medical doctors, nutritionists, and dieticians and you are solely responsible for ensuring that your practice as a health coach does not violate any jurisdiction’s laws or regulations;</li>\n<li aria-level=\"3\">during the Course, you may receive the services of a health coach retained by IIN or its affiliate. You understand and acknowledge that health coaches are not doctors, nutritionists, or dieticians and that neither health coaches nor IIN can or will prescribe the use or discontinuance of any medication;</li>\n<li aria-level=\"3\">during the Course, you may encounter dietary theories or other information regarding the consumption of certain foods, supplements, or medications. You assume all risks of injury or illness relating to your use of any such dietary theories or information and acknowledge that the adoption of such dietary theories or information is not a requirement of the Course; and</li>\n<li aria-level=\"3\">IIN neither guarantees nor represents that your participation in the Course will result in career success or improvement to your health.</li>\n</ol>\n</li>\n<li aria-level=\"2\"><strong>EXCEPT AS OTHERWISE SPECIFICALLY PROVIDED HEREIN AND TO THE MAXIMUM EXTENT PERMITTED BY LAW, IIN EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES, CONDITIONS, REPRESENTATIONS, AND GUARANTEES WITH RESPECT TO THE COURSE, WHETHER EXPRESS OR IMPLIED, ARISING BY LAW, USAGE OF TRADE, COURSE OF DEALING OR COURSE OF PERFORMANCE, PRIOR ORAL OR WRITTEN STATEMENTS, OR OTHERWISE, INCLUDING, WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IIN DOES NOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY PARTICIPATING IN THE COURSE. NO REPRESENTATION OR OTHER AFFIRMATION OF FACT, NOT CONTAINED IN THIS ENROLLMENT AGREEMENT SHALL BE DEEMED TO BE A WARRANTY BY IIN.</strong></li>\n</ol>\n</li>\n</ol>\n<p><strong>Relationship of the Parties</strong>. None of the Agreements create a partnership, franchise, joint venture, agency, fiduciary, or employment relationship between you and IIN. You do not have the authority (and shall not hold yourself out as having the authority) to bind IIN to any agreements.</p>\n<p><strong>Force Majeure</strong>. IIN is not responsible for delays or failures to perform its responsibilities under the Agreements due to causes beyond IIN’s control, including but not limited to acts of God, acts of government, flood, fire, earthquakes, tornadoes, civil unrest, acts of terror, strikes or other labor problems, computer, telecommunications, internet service provider or hosting facility failures or delays involving hardware, software or power systems, Malicious Code, denial of service attacks, and inability to obtain energy.</p>\n<p><strong style=\"background-color: transparent;\">Waiver and Cumulative Remedies</strong><span style=\"background-color: transparent;\">. No failure or delay by IIN in exercising any right under the Agreements shall constitute a waiver of that right. Other than as expressly stated, the remedies available to IIN are in addition to, and not exclusive of, any other remedies available to IIN at law or in equity.</span></p>\n<p><strong style=\"background-color: transparent;\">Severability</strong><span style=\"background-color: transparent;\">. Any provision of the Enrollment Agreement that is prohibited or unenforceable in any jurisdiction shall, as to such jurisdiction, be ineffective only to the extent of such prohibition or unenforceability without invalidating or otherwise affecting the remaining provisions of the Enrollment Agreement in that or any other jurisdiction.</span></p>\n<p><strong style=\"background-color: transparent;\">Assignment</strong><span style=\"background-color: transparent;\">. You may not assign the Enrollment Agreement or any rights or obligations thereunder, whether by operation of law or otherwise, without the prior written consent of IIN, and any such unauthorized assignment by you shall be void. IIN may freely assign the Enrollment Agreement.</span></p>\n<p><strong style=\"background-color: transparent;\">Potential Harm to IIN</strong><span style=\"background-color: transparent;\">. You acknowledge that your violation of paragraphs 5-9 and 12 would likely cause IIN to suffer irreparable harm. Therefore, in the event of a breach or threatened breach of the aforementioned paragraphs, IIN shall, in addition to damages and/or any other remedies available at law, be entitled to a temporary restraining order, preliminary and/or permanent injunction, specific performance, other equivalent relief (without the necessity of posting a bond with respect thereto), and the recovery of reasonable attorneys’ fees and costs.</span></p>\n<p><strong style=\"background-color: transparent;\">Attorneys’ Fees</strong><span style=\"background-color: transparent;\">. If either party to the Agreements files a legal proceeding arising out of or relating to the Agreements or the Course, the prevailing party (as adjudged by a court, arbitrator(s), or other fact-finder) shall be entitled to an award of all costs and expenses incurred in connection with such proceeding, including but not limited to, reasonable attorneys’ fees and costs and expert witness fees.</span></p>\n<p><strong style=\"background-color: transparent;\">Entire Agreement</strong><span style=\"background-color: transparent;\">. The Agreements constitute the entire agreement between you and IIN regarding the Course and supersede all prior and contemporaneous agreements, proposals or representations, written or oral, concerning the Course. No modification, amendment, or waiver of any provision of the Agreements shall be effective unless in writing and signed by you and IIN. With respect to the Course, in the event of a conflict between the provisions of the Enrollment Agreement and any of the other Agreements, the Enrollment Agreement shall control.</span></p>\n<p><strong style=\"background-color: transparent;\">Survivability</strong><span style=\"background-color: transparent;\">. Paragraphs 1, 3, 5-9, 11, and 14-29 of this Enrollment Agreement shall survive termination.</span></p>\n<p><strong>Counterparts</strong>. This Enrollment Agreement and any other Agreements may be executed in counterparts, which taken together shall form one legal instrument.</p>",
@@ -129,6 +131,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "content" : "<p>By clicking this agreement acknowledgement via the website, I agree to the conditions of this Enrollment Agreement. I also verify that I have read and received a copy of this Enrollment Agreement, the <strong>Academic Catalog</strong>, and the website’s Terms of Service.</p>",
@@ -162,6 +165,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Student Address",
@@ -195,6 +199,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "<div>\n<div><span>Books and Materials<em> (non-refundable once received)</em></span></div>\n</div>",
@@ -228,6 +233,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "content" : "<div class=\"p\">\n<h2>Complaint or Grievance Procedure.</h2>\n<p>All student complaints should be first directed to the school personnel involved. If no resolution is forthcoming, a written complaint shall be submitted to the director of the school. Whether or not the problem or complaint has been resolved to his/her satisfaction by the school, the student may direct any problem or complaint to the Executive Director, State Board of Career Colleges and Schools, 30 East Broad Street, Suite 2481, Columbus, Ohio, 43215, Phone 614-466-2752; toll free 877-275-4219.</p>\n</div>\n<h2>Arbitration, Class-Action Waiver, Venue, and Governing Law.</h2>\n<p>THE FOLLOWING TERMS TO WHICH YOU ARE CONSENTING CONSIST OF A BINDING ARBITRATION PROVISION AND A CLASS-ACTION WAIVER.</p>\n<ol>\n<li>Except with respect to any equitable remedies available to IIN, in the event a dispute arises between the Parties, either arising from the Agreements or otherwise relating to the Course(s), <strong>THE PARTIES SHALL SUBMIT TO BINDING ARBITRATION ADMINISTERED BY THE AMERICAN ARBITRATION ASSOCIATION. ANY ARBITRATION COMMENCED BETWEEN THE PARTIES MUST BE HELD IN HAMILTON COUNTY, OHIO OR NEW YORK COUNTY, NEW YORK.</strong></li>\n<li><strong>YOU UNDERSTAND THAT CERTAIN LEGAL RIGHTS WILL BE FORFEITED, INCLUDING THE RIGHT TO SUE IN COURT, THE RIGHT TO A JURY TRIAL, AND THE RIGHT TO BRING, OR BE PART OF, A CLASS ACTION CASE. ARBITRATION MUST BE ON AN INDIVIDUAL BASIS. THIS MEANS NEITHER YOU NOR IIN MAY JOIN OR CONSOLIDATE CLAIMS IN ARBITRATION WITH OR AGAINST OTHER STUDENTS OR LITIGATE IN COURT OR ARBITRATE ANY CLAIMS AS A REPRESENTATIVE OR MEMBER OF A CLASS.</strong></li>\n<li>You further understand and agree that: (i) the arbitrator shall not be empowered to award punitive, incidental, consequential, indirect, exemplary, or special damages; (2) under no circumstances will you be permitted to obtain awards for, and you hereby waive all rights to claim, punitive, incidental, consequential, indirect, exemplary, special, or any other damages other than the amount of tuition and fees previously paid by you to IIN for the Course at issue; and (3) any and all claims, judgments, and awards shall be limited to, and shall not exceed, the tuition and fees previously paid by you to IIN for the Course at issue.</li>\n<li>Except as may be required by law, neither a party nor an arbitrator may disclose the existence, content, or results of any arbitration hereunder without the prior written consent of all Parties.</li>\n<li>All issues and questions concerning the construction, validity, interpretation, and enforceability of the Agreements, or the rights and obligations of any student in connection with the Course(s), shall be governed by, enforced under, and construed in accordance with, the laws of the State of New York, without giving effect to any choice of law or conflict of law rules which would cause the application of the laws of any jurisdiction other than the State of New York.</li>\n<li>If you need to initiate an arbitration claim, you must serve notice to IIN by regular and certified mail (return receipt requested) at the following address: Legal Department, Institute for Integrative Nutrition, 201 East Fifth Street, 19th Floor, Cincinnati, OH 45202. If IIN needs to initiate an arbitration claim, it shall notify you at the address provided by you at the time of enrollment in the Course or such other address that you have provided in writing to IIN.</li>\n<li>Rules for the <strong>AMERICAN ARBITRATION ASSOCIATION</strong> are available at: <a href=\"https://www.adr.org\">https://www.adr.org</a>.</li>\n</ol>\n<p><strong>YOU HEREBY ACKNOWLEDGE THAT YOU HAVE READ AND UNDERSTAND THE FOREGOING ARBITRATION PROVISION AND CLASS-ACTION WAIVE</strong></p>",
@@ -303,6 +309,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "intro" : "This program is normally completed in",
@@ -340,6 +347,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "The Course, Tuition, and Fees",
@@ -373,6 +381,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Date",
@@ -430,6 +439,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Program length",
@@ -465,6 +475,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Student Email",
@@ -498,6 +509,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Net Tuition",
@@ -531,6 +543,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Enrollment Agreement",
@@ -564,6 +577,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Student Phone",
@@ -597,6 +611,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Total cost",
@@ -630,6 +645,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Promo",
@@ -663,6 +679,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Publication Date",
@@ -696,6 +713,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Last Revision Date",
@@ -747,6 +765,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Received by",
@@ -782,6 +801,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Registration <em>(non-refundable)</em>",
@@ -836,6 +856,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Signature of Licensed School Director",
@@ -879,6 +900,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Student Name",
@@ -912,6 +934,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Start Date",
@@ -945,6 +968,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Account Summary",
@@ -978,6 +1002,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Tax",
@@ -1011,6 +1036,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Tuition",
@@ -1044,6 +1070,7 @@
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
     "default" : {
       "heading" : "Session",
@@ -1052,6 +1079,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
   "default" : {
     "logo" : {
