@@ -1,0 +1,28 @@
+/* These variables can NOT be used with media or container queries according to the spec. */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+:root {
+  /* Style Guide */
+  --container--xl: 80rem; /* ≈ 1280px */
+  --container--lg: 64rem; /* ≈ 1024px */
+  --container--md: 48rem; /* ≈ 768px */
+  --container--sm: 40rem; /* ≈ 640px */
+
+  /* Legacy. These values reflect media queries currently in use. */
+  --container--legacy--xl--min-1: 1280px;
+  --container--legacy--xl--min-2: 1240px;
+  --container--legacy--lg--max--1: 1199.98px;
+  --container--legacy--lg--max--2: 1140px;
+  --container--legacy--lg--max--3: 1139px;
+  --container--legacy--lg--min: 1024px;
+  --container--legacy--md--max-1: 1023px;
+  --container--legacy--md--max-2: 1000px;
+  --container--legacy--md--min--1: 998px;
+  --container--legacy--md--min--2: 993px;
+  --container--legacy--md--min--3: 992px;
+  --container--legacy--md--min--4: 768px;
+  --container--legacy--sm--max: 767px;
+  --container--legacy--sm--min-1: 640px;
+  --container--legacy--sm--min-2: 601px;
+  --container--legacy--xs: 360px;
+}
