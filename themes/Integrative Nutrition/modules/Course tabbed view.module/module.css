@@ -3,10 +3,6 @@
 }
 
 .hub-view-courses .hub-views-row {
-  flex-grow: 0 !important;
-}
-
-.hub-view-courses .hub-view-content .hub-views-row {
   flex-grow: 0;
 }
 
@@ -477,24 +473,17 @@
   height: 1em;
 }
 
-/* 
-  legacy svg Drupal 7 not in use
-  
-  .icon.icon-color-red::before {
-    background-image: url(https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-red.svg?v=710655)
-  }
+.icon.icon-color-red::before {
+  background-image: url('../../../svg/sprite-red.svg');
+}
 
-  .icon.icon-color-gray::before {
-    background-image: url(https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-gray.svg?v=758278)
-  }
+.icon.icon-color-gray::before {
+  background-image: url('../../../svg/sprite-gray.svg');
+}
 
-  .icon.icon-color-white::before {
-    background-image: url(https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-white.svg?v=641267)
-  }
-
-  .icon.icon-color-white::before {
-    background-image: url(https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-white.svg?v=641267)
-  } */
+.icon.icon-color-white::before {
+  background-image: url('../../../svg/sprite-white.svg');
+}
 
 .card-badge {
   position: relative;
