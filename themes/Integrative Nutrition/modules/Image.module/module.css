@@ -1,2 +1,8 @@
-.mb-img-wrapper { overflow: hidden; }
-.shape-circle { padding-top: 0; border-radius: 50% !important; }
+.mb-img-wrapper {
+  overflow: hidden;
+}
+
+.shape-circle {
+  border-radius: 50% !important;
+  padding-top: 0;
+}

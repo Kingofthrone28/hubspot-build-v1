@@ -1,2 +1,8 @@
-.hs-button.custom-btn { box-shadow: var(--tooltip-background) 0 0 10px -10px inset !important; }
-.hs-button.custom-btn:hover { box-shadow: var(--tooltip-background) 450px 0 10px -10px inset !important;color: var(--tooltip-color) !important; }
+.hs-button.custom-btn {
+  box-shadow: var(--tooltip-background) 0 0 10px -10px inset !important;
+}
+
+.hs-button.custom-btn:hover {
+  box-shadow: var(--tooltip-background) 450px 0 10px -10px inset !important;
+  color: var(--tooltip-color) !important;
+}

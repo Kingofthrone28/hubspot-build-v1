@@ -1,13 +1,12 @@
 .social-sharing {
+  display: -webkit-box;
+  display: flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 .social-sharing a {
@@ -18,14 +17,14 @@
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex !important;
-  margin: 0 0.5rem 0rem 0;
   transition: all 0.3s;
+  margin: 0 0.5rem 0 0;
 }
 
 .social-sharing__icon svg {
-  fill: var(--color--white);
-  height: 15px;
   width: 15px;
+  height: 15px;
+  fill: var(--color--white);
 }
 
 .social-sharing__icon:hover svg,
@@ -35,6 +34,6 @@
 }
 
 .social-sharing__text {
-  font-size: var(--font-size--legacy--3);
   margin-right: 15px;
+  font-size: var(--font-size--legacy--3);
 }

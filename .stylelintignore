@@ -44,6 +44,3 @@ node_modules
 /themes/Integrative Nutrition/css*/inspirationgallery.css
 /themes/Integrative Nutrition/css*/magnific-popup.css
 /themes/Integrative Nutrition/css*/slick.css
-
-# TODO: Remove after module CSS files have been evaluated
-/themes/Integrative Nutrition/**/*.module/*.css

@@ -1,3 +1,11 @@
-.stagger-img.size-portrait { padding-top: 130%; }
-.stagger-img.size-landscape { padding-top: 60%; }
-.stagger-img.size-square { padding-top: 100%; }
+.stagger-img.size-portrait {
+  padding-top: 130%;
+}
+
+.stagger-img.size-landscape {
+  padding-top: 60%;
+}
+
+.stagger-img.size-square {
+  padding-top: 100%;
+}
