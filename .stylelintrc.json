@@ -13,6 +13,9 @@
     "no-descending-specificity": [true, {
       "severity": "warning"
     }],
+    "no-duplicate-selectors": [true, {
+      "severity": "warning"
+    }],
     "number-max-precision": null,
     "plugin/no-unsupported-browser-features": [true, {
       "ignore": [],
