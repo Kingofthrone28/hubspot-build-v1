@@ -8,6 +8,7 @@ IIN.cookies = {
   trackingKeyMap: Object.freeze({
     sldiscountcode: 'promo_code',
     source: 'partner_lead_source',
+    url: 'adwords_initial_url_new__c'
   }),
 
   /**
