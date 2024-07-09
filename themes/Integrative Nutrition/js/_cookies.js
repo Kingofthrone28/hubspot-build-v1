@@ -8,7 +8,7 @@ IIN.cookies = {
   trackingKeyMap: Object.freeze({
     sldiscountcode: 'promo_code',
     source: 'partner_lead_source',
-    url: 'adwords_initial_url_new__c'
+    url: 'adwords_initial_url_new__c',
   }),
 
   /**
@@ -83,7 +83,7 @@ IIN.cookies = {
     const cookies = document.cookie.split(`; `);
 
     const existingCookie = cookies.find((cookie) =>
-      cookie.startsWith(`${name}=`)
+      cookie.startsWith(`${name}=`),
     );
 
     return existingCookie || '';
