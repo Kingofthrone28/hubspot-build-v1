@@ -15,27 +15,83 @@
 @keyframes spinnerRotation {
   0%,
   100% {
-    box-shadow: 0 -2.6em 0 0 var(--color--black), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-20), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-20), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-50), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-70);
+    box-shadow: 0 -2.6em 0 0 var(--color--black),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-50),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-70);
   }
   12.5% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-70), 1.8em -1.8em 0 0 var(--color--black), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-20), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-20), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-50);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-70),
+      1.8em -1.8em 0 0 var(--color--black),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-50);
   }
   25% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-50), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-70), 2.5em 0 0 0 var(--color--black), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-20), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-50),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-70),
+      2.5em 0 0 0 var(--color--black),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
   }
   37.5% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-50), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-70), 1.75em 1.75em 0 0 var(--color--black), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-20), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-50),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-70),
+      1.75em 1.75em 0 0 var(--color--black),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
   }
   50% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-50), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-70), 0 2.5em 0 0 var(--color--black), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-50),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-70),
+      0 2.5em 0 0 var(--color--black),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
   }
   62.5% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-20), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-50), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-70), -1.8em 1.8em 0 0 var(--color--black), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-50),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-70),
+      -1.8em 1.8em 0 0 var(--color--black),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
   }
   75% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-20), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-50), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-70), -2.6em 0 0 0 var(--color--black), -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-50),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-70),
+      -2.6em 0 0 0 var(--color--black),
+      -1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20);
   }
   87.5% {
-    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20), 1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20), 2.5em 0 0 0 var(--color--legacy--black--black--alpha-20), 1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20), 0 2.5em 0 0 var(--color--legacy--black--black--alpha-20), -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-50), -2.6em 0 0 0 var(--color--legacy--black--black--alpha-70), -1.8em -1.8em 0 0 var(--color--black);
+    box-shadow: 0 -2.6em 0 0 var(--color--legacy--black--black--alpha-20),
+      1.8em -1.8em 0 0 var(--color--legacy--black--black--alpha-20),
+      2.5em 0 0 0 var(--color--legacy--black--black--alpha-20),
+      1.75em 1.75em 0 0 var(--color--legacy--black--black--alpha-20),
+      0 2.5em 0 0 var(--color--legacy--black--black--alpha-20),
+      -1.8em 1.8em 0 0 var(--color--legacy--black--black--alpha-50),
+      -2.6em 0 0 0 var(--color--legacy--black--black--alpha-70),
+      -1.8em -1.8em 0 0 var(--color--black);
   }
-} 
+}
