@@ -29,6 +29,7 @@
 {% include './components/_footer.css' %}
 {% include './components/_default-modules.css' %}
 {% include './components/_circle-of-life.css' %}
+{% include './components/_spinner.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './objects/tabs.css' %}
