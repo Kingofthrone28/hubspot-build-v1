@@ -170,7 +170,7 @@
   .m-row * { display: inline-block;vertical-align: text-top; }
   .m-label, .m-label * { font-weight: bold; }
   {% if module.add_column_headers %}
-  #{{name}} > table > tbody > tr:first-child > td { padding: 10px;font-size: 18px; }
+  #{{name}} > table > tbody > tr:first-child > td { padding: 10px;font-size: var(--font-size--legacy--8); }
   .m-column .header { display: block;padding: 5px 10px; }
   {% endif %}
   #{{name}} > table > tbody > tr:nth-child(even) { background: {{ module.style_1.even_bar_color.color }}; }

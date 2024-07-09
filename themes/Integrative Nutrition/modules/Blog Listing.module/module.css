@@ -7,14 +7,14 @@ a.post-link:hover { text-decoration: none; }
 .blog-item-content { align-self: center; }
 .flex-blog-section .topics { margin: 5px 0; }
 .blog-item.mb-resource-wrapper { flex-direction: column;padding-bottom: 20px; }
-.author-date { font-size: 14px; }
+.author-date { font-size: var(--font-size--legacy--4); }
 .auth-img { display: inline-block;width: 50px;height: 50px;float: left;margin-right: 10px;border-radius: 50%; }
 .flex-blog-section .mb-resource .more-link i { color: unset; }
 .post-footer { display: flex;align-items: flex-end; }
 .post-footer .more-link { margin-bottom: 5px;margin-left: auto;padding: 0 0 0 50px; }
 
 .drop-true .mb-resource { -webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out }
-.drop-true .mb-resource:hover { box-shadow: 0 0 15px rgba(0,0,0, .15); }
+.drop-true .mb-resource:hover { box-shadow: 0 0 15px var(--color--legacy--black--black--alpha-15); }
 
 .flex-blog-section .blog-item.column-1 { width: 100%; }
 .flex-blog-section .blog-item.column-2 { width: 50%; }

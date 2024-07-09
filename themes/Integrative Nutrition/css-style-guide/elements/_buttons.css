@@ -1,0 +1,11 @@
+.hs-form__actions__submit {
+  display: inline-block;
+  border: 0 solid var(--color--white);
+  border-radius: 100px;
+  background: var(--color--cherry);
+  padding: 13px 55px;
+  max-width: 350px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color--white);
+}

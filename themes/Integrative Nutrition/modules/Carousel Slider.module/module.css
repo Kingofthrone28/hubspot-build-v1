@@ -15,19 +15,19 @@
 }
 
 .blog-item h4 a {
-  color: #494a52;
+  color: var(--color--legacy--violet--gun-powder);
 }
 
 .blog-item .item-meta {
   font-weight: bold;
-  color: #456caa;
-  font-size: 16px;
+  color: var(--color--legacy--blue--mariner-2);
+  font-size: var(--font-size--legacy--7);
   margin-bottom: 15px;
 }
 
 .blog-item .item-meta .topic-link {
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: var(--font-size--legacy--7);
 }
 
 .blog-item .item-inner {
@@ -135,14 +135,14 @@
 .quote-mark:before {
     content: '“';
     position: absolute;
-    font-size: 120px;
+    font-size: var(--font-size--legacy--29);
     opacity: .4;
     left: 18px;
-    line-height: 1;
+    line-height: var(--line--height--0);
     top: 5px;
-    color: #818a5c;
+    color: var(--color--legacy--green--highland);
     z-index: 0;
-    font-family: 'JuniusX', Cardo, Arial;
+    font-family: var(--font-family--legacy--heading);
 }
 
 
@@ -155,13 +155,13 @@
     content: '“';
     position: absolute;
     height: 120px;
-    line-height: 120px;
-    font-family: JuniusX,serif;
-    font-size: 120px;
+    line-height: var(--line--height--0);
+    font-family: var(--font-family--legacy--heading);
+    font-size: var(--font-size--legacy--29);
     opacity: .4;
     left: calc(-.1 * 120px);
     top: calc(-.2 * 120px);
-    color: #ffbb95;
+    color: var(--color--legacy--orange--peach);
     z-index: -1
 }
 
