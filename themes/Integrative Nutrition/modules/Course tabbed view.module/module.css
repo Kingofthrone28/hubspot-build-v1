@@ -474,15 +474,15 @@
 }
 
 .icon.icon-color-red::before {
-  background-image: url('../../../svg/sprite-red.svg');
+  background-image: url('../../sprites/sprite-red.svg');
 }
 
 .icon.icon-color-gray::before {
-  background-image: url('../../../svg/sprite-gray.svg');
+  background-image: url('../../sprites/sprite-gray.svg');
 }
 
 .icon.icon-color-white::before {
-  background-image: url('../../../svg/sprite-white.svg');
+  background-image: url('../../sprites/sprite-white.svg');
 }
 
 .card-badge {
