@@ -1,49 +1,49 @@
 (function () {
   /* Sticky nav */
-  $(".pdp-sticky-wrap").appendTo("body");
+  $('.pdp-sticky-wrap').appendTo('body');
 
   function showHideStickyNav() {
-    const bottomOfPdpTop = $(".pdp-top").offset().top + $(".pdp-top").height();
+    const bottomOfPdpTop = $('.pdp-top').offset().top + $('.pdp-top').height();
     if ($(window).scrollTop() > bottomOfPdpTop) {
-      $(".pdp-sticky-wrap").addClass("pdp-sticky-show");
+      $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
     } else {
-      $(".pdp-sticky-wrap").removeClass("pdp-sticky-show");
+      $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
     }
   }
 
-  $(window).on("scroll", showHideStickyNav);
+  $(window).on('scroll', showHideStickyNav);
 
-  $("#pdp-sticky-enroll-btn").click(function (e) {
+  $('#pdp-sticky-enroll-btn').click((e) => {
     e.preventDefault();
-    $(".pdp-sticky-wrap").toggleClass("pdp-sticky-enroll-show");
+    $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
   });
 
   /* Slides */
   function changeSlide(index) {
-    $(".pdp-top-slide-btn").removeClass("pdp-top-slide-btn-active");
-    $(".pdp-top-slide-slide").removeClass("pdp-top-slide-slide-active");
-    $(".pdp-top-slide-dot").removeClass("pdp-top-slide-dot-active");
-    $("#pdp-top-slide-btn-" + index).addClass("pdp-top-slide-btn-active");
-    $("#pdp-top-slide-slide-" + index).addClass("pdp-top-slide-slide-active");
-    $("#pdp-top-slide-dot-" + index).addClass("pdp-top-slide-dot-active");
+    $('.pdp-top-slide-btn').removeClass('pdp-top-slide-btn-active');
+    $('.pdp-top-slide-slide').removeClass('pdp-top-slide-slide-active');
+    $('.pdp-top-slide-dot').removeClass('pdp-top-slide-dot-active');
+    $(`#pdp-top-slide-btn-${index}`).addClass('pdp-top-slide-btn-active');
+    $(`#pdp-top-slide-slide-${index}`).addClass('pdp-top-slide-slide-active');
+    $(`#pdp-top-slide-dot-${index}`).addClass('pdp-top-slide-dot-active');
   }
 
-  $(".pdp-top-slide-btn").click(function () {
-    if (!$(this).hasClass("pdp-top-slide-btn-active")) {
-      changeSlide($(this).data("index"));
+  $('.pdp-top-slide-btn').click(function () {
+    if (!$(this).hasClass('pdp-top-slide-btn-active')) {
+      changeSlide($(this).data('index'));
     }
   });
 
-  $(".pdp-top-slide-dot").click(function () {
-    if (!$(this).hasClass("pdp-top-slide-dot-active")) {
-      changeSlide($(this).data("index"));
+  $('.pdp-top-slide-dot').click(function () {
+    if (!$(this).hasClass('pdp-top-slide-dot-active')) {
+      changeSlide($(this).data('index'));
     }
   });
 
   let moduleData = {};
 
   try {
-    const rawData = window.sessionStorage.getItem("course_shopify_add_to_cart");
+    const rawData = window.sessionStorage.getItem('course_shopify_add_to_cart');
 
     moduleData = JSON.parse(rawData);
   } catch (e) {
@@ -157,7 +157,7 @@
     const firstVariantTitle = options[optionKeys[0]]?.[0];
 
     // Not showing options if there is only 1 default field
-    if (firstVariantTitle !== "Default Title") {
+    if (firstVariantTitle !== 'Default Title') {
       optionKeys.forEach((optionKey) => {
         html += `
           <div>
@@ -177,7 +177,7 @@
                 id="${inputID}"
                 value="${value}"
                 name="${optionKey}"
-                ${value === selectedOptions[optionKey] ? 'checked="true"' : ""}
+                ${value === selectedOptions[optionKey] ? 'checked="true"' : ''}
                 type="radio"
               />
               <label for="${inputID}">${value}</label>
@@ -185,19 +185,19 @@
           `;
         });
 
-        html += "</div></div>";
+        html += '</div></div>';
       });
     }
 
-    html += "</form>";
+    html += '</form>';
 
     // Adding options to bottom middle section
-    $(".pdp-bottom-options").html(html);
+    $('.pdp-bottom-options').html(html);
 
-    let priceHTML = "";
+    let priceHTML = '';
     if (displayPrice) {
-      let slashHTML = "";
-      let fullPriceHTML = "";
+      let slashHTML = '';
+      let fullPriceHTML = '';
       if (displayDiscount) {
         fullPriceHTML = `
           <div class="pdp-price">
@@ -244,7 +244,7 @@
         This course is already in your cart
       </div>
     `;
-    $(".pdp-bottom-price").html(bottomRightHTML);
+    $('.pdp-bottom-price').html(bottomRightHTML);
 
     html += `
       <div class="pdp-div"></div>
@@ -269,24 +269,24 @@
     // Option click checkbox
     $(`.jd-shopify-option-wrap input[type=radio]`).change(function (e) {
       e.preventDefault();
-      const type = $(this).attr("name");
+      const type = $(this).attr('name');
       const val = $(this).val();
-      const parent = $(this).data("parent");
+      const parent = $(this).data('parent');
 
       selectedOptions[type] = val;
       checkSelectedOptions();
 
       const $checkedInputs = $(
-        `.${parent} .jd-shopify-option-wrap input[name="${type}"]:checked`
+        `.${parent} .jd-shopify-option-wrap input[name="${type}"]:checked`,
       );
 
       $checkedInputs.first().focus();
     });
 
-    $(".jd-shopify-option-wrap label").click(function (e) {
+    $('.jd-shopify-option-wrap label').click(function (e) {
       e.preventDefault();
-      const checkbox = $(this).attr("for");
-      $("#" + checkbox).first().trigger("click");
+      const checkbox = $(this).attr('for');
+      $(`#${checkbox}`).first().trigger('click');
     });
 
     /**
@@ -299,13 +299,13 @@
 
       if (!selectedVariant) {
         // TODO: replace "alert" with alternative UX choice, pop-up, or message.
-        alert("This combination of options is invalid");
+        alert('This combination of options is invalid');
       } else {
-        const cartCookie = IIN.cookies.getCookieString("shopifyCart");
+        const cartCookie = IIN.cookies.getCookieString('shopifyCart');
         const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
 
         const alreadyInCart = checkout.lineItems.some(
-          ({ variant }) => variant.product.id === productData.id
+          ({ variant }) => variant.product.id === productData.id,
         );
 
         if (alreadyInCart) {
@@ -325,21 +325,21 @@
         try {
           const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
             cartCookie,
-            lineItemsToAdd
+            lineItemsToAdd,
           );
 
           updateCartTotal(updatedCheckout);
 
-          $(".jd-header-wrap").addClass("jd-scrolled").removeClass("ishidden");
-          $(".jd-blackout").addClass("jd-blackout-show");
-          $(".jd-add-pop .jd-add-pop-cat").text(`${moduleData.category}`);
-          $(".jd-add-pop .jd-add-pop-name").text(`${moduleData.courseName}`);
-          $(".jd-add-pop .jd-add-pop-img > div").attr(
-            "style",
-            `background: url(${selectedVariant.image.src})`
+          $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
+          $('.jd-blackout').addClass('jd-blackout-show');
+          $('.jd-add-pop .jd-add-pop-cat').text(`${moduleData.category}`);
+          $('.jd-add-pop .jd-add-pop-name').text(`${moduleData.courseName}`);
+          $('.jd-add-pop .jd-add-pop-img > div').attr(
+            'style',
+            `background: url(${selectedVariant.image.src})`,
           );
 
-          let optionsHTML = "";
+          let optionsHTML = '';
 
           Object.entries(selectedOptions).forEach(([key, value]) => {
             if (value) {
@@ -347,25 +347,25 @@
             }
           });
 
-          $(".jd-add-pop .jd-add-pop-options").html(optionsHTML);
+          $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
 
           const amount = parseFloat(selectedVariant.price?.amount) || 0;
-          const currencyCode = selectedVariant.price?.currencyCode || "USD";
+          const currencyCode = selectedVariant.price?.currencyCode || 'USD';
 
           if (amount || amount === 0) {
-            $(".jd-add-pop .jd-add-pop-price").text(
-              `$${amount.toLocaleString()}`
+            $('.jd-add-pop .jd-add-pop-price').text(
+              `$${amount.toLocaleString()}`,
             );
           }
 
-          const headerHeight = $(".jd-header-wrap").outerHeight();
+          const headerHeight = $('.jd-header-wrap').outerHeight();
 
-          $(".jd-add-pop").css("top", `${headerHeight}px`);
-          $(".jd-add-pop").addClass("jd-add-pop-show");
+          $('.jd-add-pop').css('top', `${headerHeight}px`);
+          $('.jd-add-pop').addClass('jd-add-pop-show');
 
           setTimeout(() => {
-            $(".jd-blackout").removeClass("jd-blackout-show");
-            $(".jd-add-pop").removeClass("jd-add-pop-show");
+            $('.jd-blackout').removeClass('jd-blackout-show');
+            $('.jd-add-pop').removeClass('jd-add-pop-show');
           }, msToCloseAddPopUp);
 
           let couponTitle = 0;
@@ -388,11 +388,11 @@
           }
 
           const addItemtoCart = {
-            event: "add_to_cart",
+            event: 'add_to_cart',
             ecommerce: {
               currency: currencyCode,
               value: parseFloat(product.variants[0].price.amount),
-              product_type: "Individual",
+              product_type: 'Individual',
               coupon: couponTitle,
               items: [
                 {
@@ -403,7 +403,7 @@
                   price: parseFloat(product.variants[0].price.amount),
                   discount: discountAmount,
                   quantity: 1,
-                  sku: product.variants[0].sku || "NA",
+                  sku: product.variants[0].sku || 'NA',
                 },
               ],
             },
@@ -459,7 +459,7 @@
       ];
       await IINShopifyClient.checkout.addLineItems(checkout.id, lineItems);
       const updatedCheckout = await IINShopifyClient.checkout.fetch(
-        checkout.id
+        checkout.id,
       );
       const applications = updatedCheckout?.discountApplications;
       const discounts = Array.isArray(applications) ? applications : [];
@@ -471,14 +471,14 @@
         total += amount;
       });
 
-      displayPrice = "$" + totalAfterDiscount.toLocaleString();
+      displayPrice = `$${totalAfterDiscount.toLocaleString()}`;
 
       if (totalAfterDiscount < total) {
-        displaySlashPrice = "$" + total.toLocaleString();
+        displaySlashPrice = `$${total.toLocaleString()}`;
         const percentageOff = Math.round(
-          ((total - totalAfterDiscount) / total) * 100
+          ((total - totalAfterDiscount) / total) * 100,
         );
-        displayDiscount = "-" + percentageOff + "%";
+        displayDiscount = `-${percentageOff}%`;
       }
 
       checkSelectedOptions();
