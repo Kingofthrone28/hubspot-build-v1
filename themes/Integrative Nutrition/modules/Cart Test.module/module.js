@@ -24,6 +24,7 @@
   const gidPath = 'gid://shopify/Product/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
+  const $spinner = $('.spinner');
 
   const agreementTags = [
     {
@@ -147,6 +148,7 @@
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
 
     try {
+      $spinner?.show();
       let existingCheckout;
 
       if (cartCookie) {
@@ -163,6 +165,8 @@
     } catch (e) {
       console.error(e);
     }
+    
+    $spinner?.hide();
   }
 
   /**
