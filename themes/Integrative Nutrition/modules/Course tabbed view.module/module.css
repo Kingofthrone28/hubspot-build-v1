@@ -1,3 +1,18 @@
+.hub-view-courses {
+  position: relative;
+}
+
+.hub-view-courses .hub-views-row {
+  flex-grow: 0;
+}
+
+.hub-view-courses .hub-view-content {
+  display: none;
+  flex-flow: column wrap;
+  gap: 1.5rem;
+  margin-top: 16px;
+}
+
 .hub-card {
   display: flex;
   position: relative;
@@ -10,10 +25,6 @@
   min-width: 0;
   word-wrap: break-word;
   color: var(--color--legacy--blue--oxford-blue);
-}
-
-.hub-view-courses {
-  position: relative;
 }
 
 .hub-view-courses .hub-card {
@@ -43,8 +54,184 @@
 
 @media (max-width: 767.98px) {
   .hub-view-courses .hub-view-header .tab-items {
+    display: inline-flex;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hub-view-courses .hub-view-header .tab-items .tab-item {
+    flex: 1 0 20%;
+  }
+
+  .hub-view-courses .hub-view-header .tab-items .tab-item a {
+    display: block;
+    border-radius: 24px;
+    background: var(--color--legacy--blue--link-water-1);
+    padding: 0 1.5em;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    white-space: nowrap;
+    color: var(--color--legacy--blue--oxford-blue);
+    font-weight: 700;
+  }
+
+  .hub-view-courses .hub-view-header .tab-items .tab-item a.active {
+    background: var(--color--legacy--blue--oxford-blue);
+    text-align: center;
+    color: var(--color--white);
+  }
+
+  .hub-view-courses .hub-view-content {
+    display: none;
+    flex-flow: column wrap;
+    gap: 1.5rem;
+  }
+
+  .hub-view-courses .hub-view-content .h3,
+  .hub-view-courses .hub-view-content h3 {
+    flex: 1 0 100%;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row {
+    flex: 1 1 calc((100% - 2 * 1.5rem) / 3);
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .hub-card {
+    cursor: pointer;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .hub-card > a {
+    color: currentcolor;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .hub-card:hover {
+    background-color: var(--color--chalk);
+  }
+
+  .hub-view-courses
+    .hub-view-content
+    .hub-views-row
+    .hub-card:hover
+    .card-title {
+    text-decoration: underline;
+  }
+
+  .hub-card-body {
+    flex: 1 1 auto;
+    padding: 2rem;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .hub-card-body {
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .card-img-group {
+    position: relative;
+  }
+
+  .hub-view-courses
+    .hub-view-content
+    .hub-views-row
+    .card-img-group
+    .paragraphs-item-image
+    img {
+    width: 100%;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .circle-img {
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-left: calc(2rem / 2);
+    border-radius: 50%;
+    background: var(--color--legacy--blue--solitude-2);
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .circle-img img {
+    border: 2px solid var(--color--white);
+    border-radius: 50%;
+    background: var(--color--white);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo {
     display: flex;
-    flex-wrap: wrap;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span {
+    line-height: var(--line--height--0);
+  }
+
+  .hub-view-courses
+    .hub-view-content
+    .hub-views-row
+    .course-badge-logo
+    span:nth-child(2) {
+    padding-right: 10px;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo img {
+    margin-top: -5px;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .card-subtitle {
+    font-size: var(--font-size--legacy--4);
+  }
+
+  .hub-view-courses .hub-view-content .hub-views-row .card-title {
+    display: flex;
+    align-items: end;
+    line-height: var(--line-height--legacy--heading);
+    font-family: var(--font-family--legacy--heading);
+    font-size: var(--font-size--legacy--13);
+    font-weight: 600;
+  }
+
+  @media (max-width: 767.98px) {
+    .hub-view-courses .hub-view-header .tab-items {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .hub-view-courses .hub-view-content {
+      gap: calc(1.5rem / 2);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .hub-view-courses .hub-view-content {
+      flex-direction: row;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .hub-view-courses .hub-view-content .hub-views-row.views-row-last {
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .hub-view-courses .hub-view-content .hub-views-row .circle-img {
+      width: 80px;
+      height: 80px;
+    }
   }
 }
 
@@ -72,41 +259,9 @@
   color: var(--color--white);
 }
 
-.hub-view-courses .hub-views-row {
-  flex-grow: 0 !important;
-}
-
-.hub-view-courses .hub-view-content {
-  display: none;
-  flex-flow: column wrap;
-  gap: 1.5rem;
-  margin-top: 16px;
-}
-
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .hub-view-courses .hub-view-content {
     gap: calc(1.5rem / 2);
-  }
-}
-
-@media (min-width: 992px) {
-  .hub-view-courses .hub-view-content {
-    flex-direction: row;
-  }
-}
-
-.hub-view-courses .hub-view-content .h3,
-.hub-view-courses .hub-view-content h3 {
-  flex: 1 0 100%;
-}
-
-.hub-view-courses .hub-view-content .hub-views-row {
-  flex: 1 1 calc((100% - 2 * 1.5rem) / 3);
-}
-
-@media (max-width: 991.98px) {
-  .hub-view-courses .hub-view-content .hub-views-row.views-row-last {
-    margin-bottom: 4rem;
   }
 }
 
@@ -181,8 +336,11 @@
   height: auto;
 }
 
-.hub-view-courses .hub-view-content .hub-views-row .course-badge-logo {
-  display: flex;
+.hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer ul li {
+  display: block;
+  line-height: var(--line-height--legacy--11);
+  color: var(--color--grey-2);
+  font-size: var(--font-size--legacy--2);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span {
@@ -205,15 +363,15 @@
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .card-subtitle {
-  font-size: var(--font-size--legacy--4);
+  font-size: var(---font-size--2);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .card-title {
   display: flex;
   align-items: end;
-  line-height: var(--line-height--legacy--heading);
+  line-height: var(--line-height--legacy--4);
   font-family: var(--font-family--legacy--heading);
-  font-size: var(--font-size--legacy--13);
+  font-size: var(---font-size--7);
   font-weight: 600;
 }
 
@@ -223,12 +381,12 @@
 
 .hub-view-courses .hub-view-content .hub-views-row .hub-card-body p {
   color: var(--color--grey-2);
-  font-size: var(--font-size--legacy--4);
+  font-size: var(---font-size--2);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-teaser-price {
   display: none;
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--4);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer {
@@ -241,13 +399,6 @@
 .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer ul {
   margin: 0;
   padding: 0;
-}
-
-.hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer ul li {
-  display: block;
-  line-height: var(--line-height--legacy--11);
-  color: var(--color--grey-2);
-  font-size: var(--font-size--legacy--2);
 }
 
 .hub-view-courses
@@ -286,19 +437,16 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .icon.icon-lg {
     font-size: var(--font-size--legacy--18);
   }
 }
 
-.icon::before {
-  display: inline-block;
-  background-image: url('https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/sprite.svg?v=210243');
-  background-repeat: no-repeat;
-  background-size: 1em 11em;
-  vertical-align: middle;
-  content: ' ';
+@media (min-width: 992px) {
+  .icon.icon-lg {
+    font-size: var(--font-size--legacy--18);
+  }
 }
 
 .icon.icon-arr-right::before {
@@ -326,15 +474,15 @@
 }
 
 .icon.icon-color-red::before {
-  background-image: url('https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-red.svg?v=710655');
+  background-image: url('../../sprites/sprite-red.svg');
 }
 
 .icon.icon-color-gray::before {
-  background-image: url('https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-gray.svg?v=758278');
+  background-image: url('../../sprites/sprite-gray.svg');
 }
 
 .icon.icon-color-white::before {
-  background-image: url('https://www.integrativenutrition.com/sites/all/themes/custom/magneto/icons/colors/sprite-white.svg?v=641267');
+  background-image: url('../../sprites/sprite-white.svg');
 }
 
 .card-badge {
