@@ -1,4 +1,5 @@
 {% include './variables/_theme.css' %}
+{% include './variables/_assets.css' %}
 {% include './variables/_colors.css' %}
 {% include './variables/_containers.css' %}
 {% include './variables/_shadows.css' %}

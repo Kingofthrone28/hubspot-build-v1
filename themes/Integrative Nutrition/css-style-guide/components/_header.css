@@ -848,7 +848,7 @@ body.open .mb-custom-header .hs_cos_wrapper_widget:not(.widget-type-rich_text) {
 }
 
 .mb-custom-header.scroll {
-  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 5px var(--color--legacy--black--black--alpha-20);
 }
 
 .bottom-bar .container {

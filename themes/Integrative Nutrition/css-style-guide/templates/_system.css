@@ -23,7 +23,7 @@
 .error-page {
   position: relative;
   margin: -200px auto 0;
-  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-20);
   background: var(--color--white);
   padding: 5rem 50px;
   width: 900px;
@@ -57,7 +57,7 @@
 
 .systems-page {
   margin: -200px auto 0;
-  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  box-shadow: 0 0 10px var(--color--legacy--black--black--alpha-20);
   background: var(--color--white);
   padding: 5rem 50px;
   max-width: 900px;

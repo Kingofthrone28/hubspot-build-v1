@@ -1,11 +1,38 @@
-.border-overlap .overlap-img { margin: -20px;position: relative;z-index: -1; }
-.border-text { flex: 1 auto; }
-.border-overlap.left .border-text { margin-left: 40px; }
-.border-overlap.right .border-text { margin-right: 40px; }
+.border-overlap .overlap-img {
+  position: relative;
+  z-index: -1;
+  margin: -20px;
+}
 
-@media(max-width: 767px) {
-  .border-overlap { display: block !important; }
-  .border-overlap .overlap-img { max-width: calc(100% + 20px) !important;margin: -10px; }
-  .border-overlap.left .border-text { margin-left: 0px;margin-top: 30px; }
-  .border-overlap.right .border-text { margin-right: 0px;margin-top: 30px; }
+.border-text {
+  flex: 1 auto;
+}
+
+.border-overlap.left .border-text {
+  margin-left: 40px;
+}
+
+.border-overlap.right .border-text {
+  margin-right: 40px;
+}
+
+@media (max-width: 767px) {
+  .border-overlap {
+    display: block !important;
+  }
+
+  .border-overlap .overlap-img {
+    margin: -10px;
+    max-width: calc(100% + 20px) !important;
+  }
+
+  .border-overlap.left .border-text {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
+  .border-overlap.right .border-text {
+    margin-top: 30px;
+    margin-right: 0;
+  }
 }

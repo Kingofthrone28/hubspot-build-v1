@@ -50,7 +50,7 @@
 .hs-button.jd-request-btn.jd-trans-btn {
   margin: 5px 0 0;
   margin-right: 10px;
-  box-shadow: 2px 2px 2px rgb(0 0 0 / 20%);
+  box-shadow: 2px 2px 2px var(--color--legacy--black--black--alpha-20);
   background: hsl(0deg 0% 100% / 48%);
   padding: 15px 2.5em;
   max-width: 270px;

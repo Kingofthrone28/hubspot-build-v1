@@ -43,6 +43,5 @@ node_modules
 /themes/Integrative Nutrition/js/translation.js
 
 # TODO: Remove after module CSS and JS files have been evaluated
-/themes/Integrative Nutrition/**/*.module/*.css
 /themes/Integrative Nutrition/**/*.module/*.js
 /themes/Integrative Nutrition/**/*.module/*.json

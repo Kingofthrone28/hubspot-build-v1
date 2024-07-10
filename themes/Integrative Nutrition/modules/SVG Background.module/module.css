@@ -1,19 +1,80 @@
-.dnd-section-custom-bg.svg-bg { overflow: hidden;pointer-events: none; }
-.swoop-cover { position: absolute;top: 40vw;bottom:0;left:0;right:0;z-index: -1; }
-.dnd-section-custom-bg.svg-bg svg { position: static;width: 100%; }
-.dnd-section-custom-bg.svg-bg .golden-swoop { position: absolute;bottom: unset;top: -25.5vw; }
+.svg-chevron {
+  top: -10vw !important;
+  transform: skewY(11deg);
+}
 
-.dnd-section-custom-bg.bg-bend { left: -40px;right: -40px;background: var(--tooltip-start);background: linear-gradient(135deg, var(--tooltip-start) 30%, var(--tooltip-end) 100%); }
-.dnd-section-custom-bg.bend-top { border-top-right-radius: 50% 7vw;border-top-left-radius: 50% 7vw;top: -7vw !important; }
-.dnd-section-custom-bg.bend-bottom { border-bottom-right-radius: 50% 7vw;border-bottom-left-radius: 50% 7vw;bottom: -7vw !important; }
+.svg-diagonal {
+  transform: skewY(11deg);
+}
 
-.svg-chevron svg, .svg-diagonal svg { height: 100%; }
+.svg-chevron svg,
+.svg-diagonal svg {
+  height: 100%;
+}
 
-.svg-diagonal, .svg-chevron { transform: skewY(11deg); }
-.diagonal-img { position: absolute;top: -10vw;bottom: -10vw;left: 0;right: 0;transform: skewY(-11deg); }
+.diagonal-img {
+  position: absolute;
+  inset: -10vw 0;
+  transform: skewY(-11deg);
+}
 
-.svg-chevron { top: -10vw !important; }
-.chev-wrapper { transform: skewY(-21.3deg);height: 100%;overflow: hidden; }
-.chev-img { position: absolute;top: 10vw;bottom: 0;left: 0;right: 0;transform: skewY(11.1deg); }
+.chev-wrapper {
+  transform: skewY(-21.3deg);
+  height: 100%;
+  overflow: hidden;
+}
 
-.dnd-section-custom-bg .overlay { height: 100%; }
+.chev-img {
+  position: absolute;
+  inset: 10vw 0 0;
+  transform: skewY(11.1deg);
+}
+
+.swoop-cover {
+  position: absolute;
+  inset: 40vw 0 0;
+  z-index: -1;
+}
+
+.dnd-section-custom-bg.svg-bg {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dnd-section-custom-bg.svg-bg svg {
+  position: static;
+  width: 100%;
+}
+
+.dnd-section-custom-bg.svg-bg .golden-swoop {
+  position: absolute;
+  top: -25.5vw;
+  bottom: unset;
+}
+
+.dnd-section-custom-bg.bg-bend {
+  right: -40px;
+  left: -40px;
+  background: var(--tooltip-start);
+  background: linear-gradient(
+    135deg,
+    var(--tooltip-start) 30%,
+    var(--tooltip-end) 100%
+  );
+}
+
+.dnd-section-custom-bg.bend-top {
+  top: -7vw !important;
+  border-top-left-radius: 50% 7vw;
+  border-top-right-radius: 50% 7vw;
+}
+
+.dnd-section-custom-bg.bend-bottom {
+  bottom: -7vw !important;
+  border-bottom-left-radius: 50% 7vw;
+  border-bottom-right-radius: 50% 7vw;
+}
+
+.dnd-section-custom-bg .overlay {
+  height: 100%;
+}

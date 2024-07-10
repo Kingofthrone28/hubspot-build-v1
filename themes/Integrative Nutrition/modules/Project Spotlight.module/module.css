@@ -1,8 +1,21 @@
-.video-slider.non-slider { display: flex;flex-wrap: wrap; }
-.video-slider.non-slider .video-card-wrap { width: var(--tooltip-width);padding: 10px; }
-@media(max-width: 991px) {
-  .video-slider.non-slider .video-card-wrap { width: var(--tooltip-tablet); }
+.video-slider.non-slider {
+  display: flex;
+  flex-wrap: wrap;
 }
-@media(max-width: 767px) {
-  .video-slider.non-slider .video-card-wrap { width: 100%; }
+
+.video-slider.non-slider .video-card-wrap {
+  padding: 10px;
+  width: var(--tooltip-width);
+}
+
+@media (max-width: 991px) {
+  .video-slider.non-slider .video-card-wrap {
+    width: var(--tooltip-tablet);
+  }
+}
+
+@media (max-width: 767px) {
+  .video-slider.non-slider .video-card-wrap {
+    width: 100%;
+  }
 }
