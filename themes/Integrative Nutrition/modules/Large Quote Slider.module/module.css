@@ -3,22 +3,22 @@
   z-index: 2;
   background: none !important;
   padding: 0 !important;
-  color: #003d4b !important;
+  color: var(--color--water) !important;
 }
 
 .large-quote-slider .slick-arrow:hover,
 .large-quote-slider .slick-arrow:focus {
-  color: #003d4b !important;
+  color: var(--color--water) !important;
 }
 
 .large-quote-slider .slick-dots button {
-  background: #bdbdbd;
+  background: var(--color--grey-4);
   width: 8px;
   height: 8px;
 }
 
 .large-quote-slider .slick-dots .slick-active button {
-  background: #142023;
+  background: var(--color--slate);
 }
 
 .large-quote-slide {
@@ -40,18 +40,18 @@
 
 .large-quote-quote > div:nth-child(2) {
   margin-top: 10px;
-  font-size: 24px;
+  font-size: var(--font-size--7);
   font-style: italic;
 }
 
 .large-quote-quote > div:nth-child(3) {
   margin-top: 15px;
-  font-size: 16px;
+  font-size: var(--font-size--3);
   font-weight: bold;
 }
 
 .large-quote-quote > div:nth-child(4) {
-  font-size: 16px;
+  font-size: var(--font-size--3);
   font-style: italic;
 }
 

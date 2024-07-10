@@ -9,22 +9,22 @@
   margin-left: 20px;
   background: none !important;
   padding: 0 !important;
-  color: #003d4b !important;
+  color: var(--color--water) !important;
 }
 
 .quote-video-slider-arrows .slick-arrow:hover,
 .quote-video-slider-arrows .slick-arrow:focus {
-  color: #003d4b !important;
+  color: var(--color--water) !important;
 }
 
 .quote-video-slider-arrows .slick-dots button {
-  background: #bdbdbd;
+  background: var(--color--grey-4);
   width: 8px;
   height: 8px;
 }
 
 .quote-video-slider-arrows .slick-dots .slick-active button {
-  background: #142023;
+  background: var(--color--slate);
 }
 
 .quote-video-card-wrap {
@@ -89,16 +89,16 @@
 
 .quote-video-lightbox-close i {
   cursor: pointer;
-  color: white;
+  color: var(--color--white);
   font-size: 24px;
 }
 
 .quote-video-slider-arrows .slick-arrow i {
-  color: #142023;
+  color: var(--color--slate);
 }
 
 .quote-video-slider-arrows .slick-arrow.slick-disabled i {
-  color: #bdbdbd;
+  color: var(--color--grey-4);
 }
 
 .quote-video-lightbox-content-wrap {
