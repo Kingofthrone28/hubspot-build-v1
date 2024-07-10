@@ -1,11 +1,11 @@
-$(document).ready(function () {
-  $(".floating-text-content").each(function () {
-    const topSpace = parseInt($(this).data("top-space"));
+$(() => {
+  $('.floating-text-content').each(function () {
+    const topSpace = parseInt($(this).data('top-space'));
     const element = $(this);
-    const container = element.closest(".dnd-column");
-    container.css("position", "relative");
+    const container = element.closest('.dnd-column');
+    container.css('position', 'relative');
 
-    $(window).on("scroll", function () {
+    $(window).on('scroll', () => {
       const windowTop = $(window).scrollTop();
       const containerTop = container.offset().top;
       const containerHeight = container.outerHeight();
@@ -16,9 +16,9 @@ $(document).ready(function () {
         if (newTop > maxTop) {
           newTop = maxTop;
         }
-        element.css("top", newTop + "px");
+        element.css('top', `${newTop}px`);
       } else {
-        element.css("top", "0px");
+        element.css('top', '0');
       }
     });
   });
