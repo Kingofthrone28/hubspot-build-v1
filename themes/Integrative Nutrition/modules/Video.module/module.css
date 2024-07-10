@@ -229,6 +229,7 @@ p.hs-video-placeholder__description {
 .oembed_modal_container .oembed_custom-thumbnail {
   padding: 0 !important;
 }
+
 .dnd-column.video-open {
   position: relative;
   z-index: 9;
