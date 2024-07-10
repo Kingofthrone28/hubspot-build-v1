@@ -5,11 +5,11 @@
 }
 
 .quote-video-slider-arrows .slick-arrow {
+  position: relative !important;
   margin-left: 20px;
   background: none !important;
   padding: 0 !important;
   color: #003d4b !important;
-  position: relative !important;
 }
 
 .quote-video-slider-arrows .slick-arrow:hover,
@@ -18,9 +18,9 @@
 }
 
 .quote-video-slider-arrows .slick-dots button {
+  background: #bdbdbd;
   width: 8px;
   height: 8px;
-  background: #bdbdbd;
 }
 
 .quote-video-slider-arrows .slick-dots .slick-active button {
@@ -32,17 +32,17 @@
 }
 
 .quote-video-card {
-  overflow: hidden;
-  position: relative;
-  padding: 32px 24px;
-  font-style: italic;
-  min-height: 300px;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   border-radius: 8px;
   background-position: center !important;
   background-size: cover !important;
+  padding: 32px 24px;
+  min-height: 300px;
+  overflow: hidden;
+  font-style: italic;
 }
 
 .quote-video-card-video > * {
@@ -58,21 +58,21 @@
 }
 
 .quote-video-card-name {
-  font-weight: bold;
   margin: 15px 0 5px;
+  font-weight: bold;
 }
 
 .quote-video-lightbox {
-  z-index: 9999;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  background: rgba(0 0 0 / 70%);
+  display: flex;
   position: fixed;
   inset: 0;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 9999;
+  background: rgba(0 0 0 / 70%);
+  padding: 20px;
+  pointer-events: none;
 }
 
 .quote-video-lightbox-show {
@@ -81,16 +81,16 @@
 }
 
 .quote-video-lightbox-close {
-  z-index: 99999;
   position: absolute;
   top: 15px;
   right: 25px;
+  z-index: 99999;
 }
 
 .quote-video-lightbox-close i {
   cursor: pointer;
-  font-size: 24px;
   color: white;
+  font-size: 24px;
 }
 
 .quote-video-slider-arrows .slick-arrow i {
@@ -102,13 +102,13 @@
 }
 
 .quote-video-lightbox-content-wrap {
-  max-width: 100%;
   width: 1000px;
+  max-width: 100%;
 }
 
 .quote-video-lightbox-content {
-  padding-top: 56.25%;
   position: relative;
+  padding-top: 56.25%;
   width: 100%;
 }
 

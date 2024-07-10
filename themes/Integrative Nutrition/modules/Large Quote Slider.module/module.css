@@ -1,9 +1,9 @@
 .large-quote-slider .slick-arrow {
+  top: 85px !important;
+  z-index: 2;
   background: none !important;
   padding: 0 !important;
   color: #003d4b !important;
-  z-index: 2;
-  top: 85px !important;
 }
 
 .large-quote-slider .slick-arrow:hover,
@@ -12,9 +12,9 @@
 }
 
 .large-quote-slider .slick-dots button {
+  background: #bdbdbd;
   width: 8px;
   height: 8px;
-  background: #bdbdbd;
 }
 
 .large-quote-slider .slick-dots .slick-active button {
@@ -28,38 +28,38 @@
 }
 
 .large-quote-img {
-  border-radius: 50%;
   margin: 0 50px 0 0;
+  border-radius: 50%;
+  background-position: center !important;
+  background-size: cover !important;
   width: 220px;
   min-width: 220px;
   height: 220px;
   min-height: 220px;
-  background-position: center !important;
-  background-size: cover !important;
 }
 
 .large-quote-quote > div:nth-child(2) {
-  font-style: italic;
   margin-top: 10px;
   font-size: 24px;
+  font-style: italic;
 }
 
 .large-quote-quote > div:nth-child(3) {
   margin-top: 15px;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .large-quote-quote > div:nth-child(4) {
-  font-style: italic;
   font-size: 16px;
+  font-style: italic;
 }
 
 @media (width <= 991px) {
   .large-quote-slide {
     display: block;
   }
-  
+
   .large-quote-img {
     margin: 0 auto;
   }

@@ -1,6 +1,6 @@
 .pdp-bottom .jd-add-cart-wrap {
-  width: 100%;
   display: flex;
+  width: 100%;
 }
 
 .pdp-bottom .jd-shopify-options {
@@ -17,8 +17,8 @@
 }
 
 .pdp-bottom .jd-shopify-add-btn {
-  padding: 12px !important;
   margin-top: 0;
+  padding: 12px !important;
   width: 240px !important;
   min-width: 150px !important;
   max-width: 100% !important;
@@ -64,28 +64,28 @@
 }
 
 .pdp-bottom > div:nth-child(1) {
+  padding: 0 20px 0 0;
   width: 33.33%;
   min-width: 33.33%;
-  padding: 0 20px 0 0;
 }
 
 .pdp-bottom > div:nth-child(2) {
   display: flex;
+  padding: 0 10px 0 50px;
   width: 33.33%;
   min-width: 33.33%;
-  padding: 0 10px 0 50px;
 }
 
 .pdp-bottom > div:nth-child(3) {
+  padding: 0 0 0 20px;
   width: 33.33%;
   min-width: 33.33%;
-  padding: 0 0 0 20px;
 }
 
 .pdp-bottom-middle-head {
-  font-size: 24px;
   margin-bottom: 10px;
   max-width: 250px;
+  font-size: 24px;
 }
 
 .pdp-bottom .pdp-div {
@@ -98,26 +98,26 @@
 
 @media (width <= 1000px) {
   .pdp-bottom > div:nth-child(1) {
+    margin-bottom: 50px;
+    padding: 0;
     width: 100%;
     min-width: 100%;
-    padding: 0;
-    margin-bottom: 50px;
   }
 
   .pdp-bottom > div:nth-child(2) {
     display: block;
+    padding: 0 20px 0 0;
     width: 50%;
     min-width: 50%;
-    padding: 0 20px 0 0;
   }
 
   .pdp-bottom > div:nth-child(3) {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding: 0 0 0 20px;
     width: 50%;
     min-width: 50%;
-    padding: 0 0 0 20px;
   }
 }
 
@@ -128,14 +128,14 @@
 
   .pdp-bottom > div:nth-child(2) {
     margin-bottom: 25px;
+    padding: 0;
     width: 100%;
     min-width: 100%;
-    padding: 0;
   }
-  
+
   .pdp-bottom > div:nth-child(3) {
+    padding: 0;
     width: 100%;
     min-width: 100%;
-    padding: 0;
   }
 }
