@@ -34,47 +34,47 @@
 }
 
 #col-canvas .slice:nth-child(4) {
-	 transform: rotate(calc(30deg * 11.3));
+  transform: rotate(calc(30deg * 11.3));
 }
 
 #col-canvas .slice:nth-child(5) {
-	 transform: rotate(calc(30deg * 10.3));
+  transform: rotate(calc(30deg * 10.3));
 }
 
 #col-canvas .slice:nth-child(6) {
-	 transform: rotate(calc(30deg * 9.3));
+  transform: rotate(calc(30deg * 9.3));
 }
 
 #col-canvas .slice:nth-child(7) {
-	 transform: rotate(calc(30deg * 8.3));
+  transform: rotate(calc(30deg * 8.3));
 }
 
 #col-canvas .slice:nth-child(8) {
-	 transform: rotate(calc(30deg * 7.3));
+  transform: rotate(calc(30deg * 7.3));
 }
 
 #col-canvas .slice:nth-child(9) {
-	 transform: rotate(calc(30deg * 6.3));
+  transform: rotate(calc(30deg * 6.3));
 }
 
 #col-canvas .slice:nth-child(10) {
-	 transform: rotate(calc(30deg * 5.3));
+  transform: rotate(calc(30deg * 5.3));
 }
 
 #col-canvas .slice:nth-child(11) {
-	 transform: rotate(calc(30deg * 4.3));
+  transform: rotate(calc(30deg * 4.3));
 }
 
 #col-canvas .slice:nth-child(12) {
-	 transform: rotate(calc(30deg * 3.3));
+  transform: rotate(calc(30deg * 3.3));
 }
 
 #col-canvas .slice:nth-child(n + 7) .inner {
-	 transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 #col-canvas .svg-wrapper {
-	 position: relative;
+  position: relative;
 }
 
 #col-canvas path[data-name='Career'] {

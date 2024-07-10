@@ -57,10 +57,6 @@ html .hs-button.jd-request-btn.jd-trans-btn:hover {
   width: 250px;
 }
 
-div#bg_widget_1691090785466 {
-  background: var(--color--chalk) !important;
-}
-
 @media screen and (min-width: 767px) {
   .dnd_area-row-0-background-image {
     display: none !important;
@@ -99,20 +95,6 @@ div#bg_widget_1691090785466 {
 
   html .hs-button.jd-request-btn.jd-trans-btn {
     position: relative;
-  }
-  
- .button-wrapper .jd-request-btn.hs-button.jd-arrow-link {
-   margin-bottom: 15px !important;
-   box-shadow: 2px 2px 2px var(--color--legacy--black--black--alpha-20)!important;
-   max-width: 100% !important;
-  } 
-  
-  #bg_widget_1691090785466.dnd-section-custom-bg{
-    background: none !important;
-  }
-  
-  .dnd_area-row-1-padding {
-    padding-top: 0!important;
   }
 
   .jd-request-btn {
