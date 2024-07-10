@@ -1,73 +1,73 @@
 .oembed_container {
   display: block;
-  height: 100%;
   position: relative;
   width: 100% !important;
   max-width: 100% !important;
+  height: 100%;
 }
 
 .iframe_wrapper {
-  height: 0;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
   position: relative;
+  padding-top: 25px;
+  padding-bottom: 56.25%;
+  height: 0;
 }
 
 .oembed_container_iframe {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
   left: 0;
   margin: 0 auto;
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 100%;
+  height: 100%;
 }
 
 .oembed_custom-thumbnail,
 .oembed_custom-thumbnail:hover,
 .oembed_custom-thumbnail:focus,
 .oembed_custom-thumbnail:active {
-  align-items: center;
   appearance: none;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  margin: 0;
+  border: none;
+  border-radius: 0;
   background-color: transparent;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 0;
-  border: none;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  left: 0;
-  margin: 0;
   padding: 0;
-  position: absolute;
-  top: 0;
   width: 100%;
   max-width: 100% !important;
-  z-index: 1;
+  height: 100%;
 }
 
 .oembed_custom-thumbnail_icon {
-  align-items: center;
-  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
   width: 48px;
   height: 48px;
-  margin: 0 auto;
-  padding: 0;
-  border-radius: 50%;
 }
 
 .oembed_custom-thumbnail_icon svg {
   display: block;
-  height: auto;
   width: 40%;
+  height: auto;
 }
 
 /* SVGs in IE11 require the max-width to be set to non in order to display scaling properly */
-_:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
+:root .oembed_custom-thumbnail_icon svg {
   max-width: none;
 }
 
@@ -77,27 +77,27 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 
 .embed_container {
   display: inline-block;
-  height: 100%;
   position: relative;
   width: 100%;
+  height: 100%;
 }
 
 .embed_container iframe {
-  left: 0;
-  max-height: 100%;
-  max-width: 100%;
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .oembed-info {
-  height:1px;
-  left:-10000px;
-  overflow:hidden;
-  position:absolute;
-  top:auto;
-  width:1px;
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 /* Placeholder styles */
@@ -106,13 +106,13 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
 }
 
 .hs-inline-edit .hs-video-placeholder {
-  background-color: var(--color--legacy--blue--solitude-6) !important;
-  border: 1px dashed #516f90 !important;
   display: block !important;
-  font-size: var(--font-size--legacy--4) !important;
   margin: 2px 1px !important;
   outline: 1px dashed var(--color--white) !important;
+  border: 1px dashed #516f90 !important;
+  background-color: var(--color--legacy--blue--solitude-6) !important;
   text-align: center !important;
+  font-size: var(--font-size--legacy--4) !important;
 }
 
 .hs-video-placeholder > * {
@@ -120,117 +120,126 @@ _:-ms-fullscreen, :root .oembed_custom-thumbnail_icon svg {
   display: block !important;
   margin: 1px !important;
   padding: 12px !important;
-  width: calc(100% - 2px) !important;  
+  width: calc(100% - 2px) !important;
 }
 
 p.hs-video-placeholder__title {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+  padding: 0 !important;
+  text-shadow: 0 -1px 0 hsl(0deg 0% 100% / 50%) !important;
+  line-height: initial !important;
   color: var(--color--legacy--blue--wild-blue-yonder) !important;
   font-family: var(--font-family--legacy--video) !important;
   font-size: var(--font-size--legacy--4) !important;
-  font-style: italic !important;
   font-weight: 700 !important;
-  line-height: initial !important;
-  margin-bottom: 10px !important;
-  margin-top: 0 !important;
-  padding: 0 !important;  
-  text-shadow: 0 -1px 0 hsla(0,0%,100%,.5) !important;
+  font-style: italic !important;
 }
 
 p.hs-video-placeholder__description {
+  margin: 0 !important;
+  text-shadow: 0 -1px 0 hsl(0deg 0% 100% / 50%) !important;
+  line-height: var(--line-height--legacy--9) !important;
   color: var(--color--legacy--blue--wild-blue-yonder) !important;
   font-family: var(--font-family--legacy--video) !important;
-  font-style: italic !important;
   font-weight: 400 !important;
-  line-height: var(--line-height--legacy--9) !important;
-  margin: 0 !important;  
-  text-shadow: 0 -1px 0 hsla(0,0%,100%,.5) !important;
+  font-style: italic !important;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  z-index: 999;
+  width: 0;
+  height: 0;
+  overflow: hidden auto;
+}
+
+.video-modal.modal-open {
+  opacity: 1;
+  width: auto;
+  height: auto;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  background-color: var(--color--legacy--black--black--alpha-70);
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.video-modal.modal-open .modal-overlay {
+  opacity: 1;
+  width: auto;
+  height: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 2;
+  margin: 10% auto;
+  border-radius: 6px;
+  box-shadow:
+    0 11px 15px -7px var(--color--legacy--black--black--alpha-20),
+    0 24px 38px 3px var(--color--legacy--black--black--alpha-14),
+    0 9px 46px 8px var(--color--legacy--black--black--alpha-12);
+  width: 90%;
+  max-height: 70%;
+}
+
+.modal-dialog iframe {
+  position: static;
+  width: 100% !important;
+  height: 520px !important;
+}
+
+.modal-dialog .modal-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 999;
+  border-radius: 50%;
+  background-color: var(--color--white);
+  cursor: pointer;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.modal-dialog .modal-close svg {
+  vertical-align: middle;
 }
 
 .oembed_modal_container {
   transform: none !important;
 }
+
 .oembed_modal_container .oembed_container .iframe_wrapper {
   opacity: 0;
 }
+
 .oembed_modal_container .oembed_container .iframe_wrapper iframe {
   display: none;
 }
+
 .oembed_modal_container .oembed_custom-thumbnail {
   padding: 0 !important;
 }
-.video-modal {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  z-index: 999;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-.video-modal.modal-open {
-  width: auto;
-  height: auto;
-  opacity: 1;
-}
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  cursor: pointer;
-  background-color: var(--color--black);
-  background-color: var(--color--legacy--black--black--alpha-70);
-  z-index: 1;
-  height: 0;
-  width: 0;
-  opacity: 0;
-}
-.video-modal.modal-open .modal-overlay {
-  width: auto;
-  height: auto;
-  opacity: 1;
-}
-.modal-dialog {
-  border-radius: 6px;
-  box-shadow: 0 11px 15px -7px var(--color--legacy--black--black--alpha-20), 0 24px 38px 3px var(--color--legacy--black--black--alpha-14), 0 9px 46px 8px var(--color--legacy--black--black--alpha-12);
-  position: relative;
-  width: 90%;
-  max-height: 70%;
-  margin: 10% auto;
-  z-index: 2;
-}
-.modal-dialog iframe {
-  width: 100% !important;
-  position: static;
-  height: 520px !important;
-}
-.modal-dialog .modal-close {
-  position: absolute;
-  right: -20px;
-  z-index: 999;
-  background-color: var(--color--white);
-  vertical-align: middle;
-  border-radius: 50%;
-  padding: 5px;
-  top: -20px;
-  cursor: pointer;
-}
-.modal-dialog .modal-close svg {
-  vertical-align: middle;
-}
+
 .dnd-column.video-open {
   position: relative;
   z-index: 9;
 }
+
 .dnd-column.video-open > div.dnd-row:first-child {
   position: relative;
   z-index: 2;
 }
+
 .dnd-column.video-open > div.dnd-row:last-child {
   position: relative;
   z-index: 1;

@@ -3,11 +3,13 @@
   flex-wrap: wrap;
   gap: 16px;
 }
+
 .related-courses .course-card {
   flex: 0 0 32%;
 }
+
 @media screen and (max-width: 767px) {
- .related-courses {
-   flex-direction: column;
+  .related-courses {
+    flex-direction: column;
   }
 }

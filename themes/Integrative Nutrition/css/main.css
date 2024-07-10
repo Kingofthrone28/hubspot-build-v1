@@ -10,6 +10,7 @@
 {% set flexwrap = 'display: -webkit-flex; display: flex;-webkit-flex-wrap: wrap; flex-wrap: wrap;' %}
 
 {% include './variables/_theme.css' %}
+{% include './variables/_assets.css' %}
 {% include './variables/_colors.css' %}
 {% include './variables/_containers.css' %}
 {% include './variables/_shadows.css' %}
@@ -29,6 +30,7 @@
 {% include './components/_footer.css' %}
 {% include './components/_default-modules.css' %}
 {% include './components/_circle-of-life.css' %}
+{% include './components/_spinner.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './objects/tabs.css' %}

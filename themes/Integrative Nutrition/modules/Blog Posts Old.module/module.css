@@ -1,11 +1,11 @@
 .blog-posts .mb-resource {
-  box-shadow: 0 0 2px rgb(0 0 0 / 30%);
   border-radius: 6px;
+  box-shadow: 0 0 2px rgb(0 0 0 / 30%);
 }
 
 .blog-posts .mb-resource .content {
-  padding-left: 30px;
   padding-right: 30px;
+  padding-left: 30px;
 }
 
 .blog-posts .mb-resource h4 {
@@ -13,6 +13,6 @@
 }
 
 .blog-posts .mb-resource .more-link {
-  padding-bottom: 0;
   border-bottom: 0;
+  padding-bottom: 0;
 }

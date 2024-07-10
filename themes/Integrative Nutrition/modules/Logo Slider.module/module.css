@@ -1,6 +1,29 @@
-.logo-slider { width: 100%;overflow: hidden; }
-.logo-slider .slider-inside { width: 8000px;display: -webkit-flex; display: flex;-webkit-align-items: center; align-items: center;position: relative;left:0; }
-.logo-slider .logo-item { padding: 0 20px;text-align: center; }
-.logo-slider .logo-item img { display: block; }
-.logo-slider.semi-t .logo-item { opacity: .6; }
-.logo-slider.semi-t .logo-item:hover { opacity: 1; }
+.logo-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-slider .slider-inside {
+  display: flex;
+  position: relative;
+  left: 0;
+  align-items: center;
+  width: 8000px;
+}
+
+.logo-slider .logo-item {
+  padding: 0 20px;
+  text-align: center;
+}
+
+.logo-slider .logo-item img {
+  display: block;
+}
+
+.logo-slider.semi-t .logo-item {
+  opacity: 0.6;
+}
+
+.logo-slider.semi-t .logo-item:hover {
+  opacity: 1;
+}
