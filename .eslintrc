@@ -1,13 +1,17 @@
 {
   "env": {
-    "browser": true,
-    "es2021": true
+    "browser": true
   },
-  "extends": ["airbnb-base", "eslint:recommended", "prettier"],
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:compat/recommended",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "plugins": ["eslint-plugin-html"],
+  "plugins": ["compat", "eslint-plugin-html"],
   "root": true,
   "rules": {
     "class-methods-use-this": 0,

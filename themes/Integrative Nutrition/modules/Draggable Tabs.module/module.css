@@ -3,7 +3,7 @@
 .ball { display: inline-block;height: 40px;width: 40px; }
 .ui-widget-header { flex: 1 auto;text-align: center;padding-bottom: 30px; }
 .ui-widget-header h5 { color: gray;font-weight: 400;cursor: pointer; }
-.ui-widget-header.ui-state-highlight h5 { color: #173753;font-weight: 700; }
+.ui-widget-header.ui-state-highlight h5 { color: var(--color--legacy--blue--regal-blue-1);font-weight: 700; }
 
 @media(max-width: 950px) {
   .nav-containment-wrapper { display: none; }

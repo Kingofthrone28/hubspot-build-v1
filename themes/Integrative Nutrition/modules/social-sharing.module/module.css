@@ -11,7 +11,7 @@
 }
 
 .social-sharing a {
-  line-height: 1;
+  line-height: var(--line--height--0);
 }
 
 .social-sharing__icon {
@@ -23,7 +23,7 @@
 }
 
 .social-sharing__icon svg {
-  fill: #FFF;
+  fill: var(--color--white);
   height: 15px;
   width: 15px;
 }
@@ -31,10 +31,10 @@
 .social-sharing__icon:hover svg,
 .social-sharing__icon:focus svg,
 .social-sharing__icon:active svg {
-  fill: #FFF;
+  fill: var(--color--white);
 }
 
 .social-sharing__text {
-  font-size: 13px;
+  font-size: var(--font-size--legacy--3);
   margin-right: 15px;
 }

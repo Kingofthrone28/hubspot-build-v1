@@ -9,6 +9,13 @@
 {% set flexcenter = 'display: -webkit-flex; display: flex;-webkit-align-items: center; align-items: center;' %}
 {% set flexwrap = 'display: -webkit-flex; display: flex;-webkit-flex-wrap: wrap; flex-wrap: wrap;' %}
 
+{% include './variables/_theme.css' %}
+{% include './variables/_colors.css' %}
+{% include './variables/_containers.css' %}
+{% include './variables/_shadows.css' %}
+{% include './variables/_spacing.css' %}
+{% include './variables/_transitions.css' %}
+{% include './variables/_typography.css' %}
 {% include './generic/_reset.css' %}
 {% include './generic/_normalize.css' %}
 {% include './objects/_layout.css' %}
@@ -21,6 +28,7 @@
 {% include './components/_header.css' %}
 {% include './components/_footer.css' %}
 {% include './components/_default-modules.css' %}
+{% include './components/_circle-of-life.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './objects/tabs.css' %}

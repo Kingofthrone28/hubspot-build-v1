@@ -1,4 +1,4 @@
 .shopify-buy__btn:before {
-	font-family: 'Font Awesome\ 6 Sharp';
+	font-family: var(--font-family--icons--alt);
 	content: '\f290';
 }
