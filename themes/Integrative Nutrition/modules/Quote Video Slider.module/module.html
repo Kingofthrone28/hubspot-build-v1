@@ -61,11 +61,18 @@
 <style>
   {% scope_css %}
   
-  .quote-video-card { min-height: {{ module.min_card_height }}; }
+  .quote-video-card {
+    min-height: {{ module.min_card_height }};
+  }
   
   {% if module.show_overflow  %}
-    .slick-slider .slick-list { overflow: visible !important; }
-    .slick-slide[aria-hidden="true"] { opacity: .5 !important; }
+    .slick-slider .slick-list {
+      overflow: visible !important;
+    }
+    
+    .slick-slide[aria-hidden="true"] {
+      opacity: 0.5 !important;
+    }
   {% endif %}
   
   {% end_scope_css %}
@@ -74,7 +81,7 @@
 {% end_require_css %}
 
 <script>
-$(document).ready(function() {
+$(function() {
   $('#{{name}}-quote-video-lightbox').appendTo('body');
   $('#{{name}}-quote-video-lightbox .quote-video-lightbox-close').click(function() {
     $('#{{name}}-quote-video-lightbox').removeClass('quote-video-lightbox-show');
