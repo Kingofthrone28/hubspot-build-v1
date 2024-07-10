@@ -1,10 +1,36 @@
-.team-grid.team-single { height: 100%;padding: 10px 0; }
-.team-grid .team-card-wrap.single-card { width: 100%;margin: 0; }
-.single-card .team-bio-link, .single-card .team-bio-card-link { cursor: unset; }
-.team-single:hover .single-card { transform: rotateY(180deg); }
-.team-single:hover .team-card { box-shadow: none !important; }
-.team-card-back { width: 100%; }
-.single-card .mobile-only { margin-top: 10px; }
-@media(max-width: 991px) {
-  .team-single:hover .single-card { transform: none; }
+.team-grid.team-single {
+  padding: 10px 0;
+  height: 100%;
+}
+
+.team-grid .team-card-wrap.single-card {
+  margin: 0;
+  width: 100%;
+}
+
+.single-card .team-bio-link,
+.single-card .team-bio-card-link {
+  cursor: unset;
+}
+
+.team-single:hover .single-card {
+  transform: rotateY(180deg);
+}
+
+.team-single:hover .team-card {
+  box-shadow: none !important;
+}
+
+.team-card-back {
+  width: 100%;
+}
+
+.single-card .mobile-only {
+  margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+  .team-single:hover .single-card {
+    transform: none;
+  }
 }

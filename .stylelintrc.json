@@ -9,10 +9,11 @@
   "rules": {
     "custom-property-pattern": null,
     "media-feature-range-notation": null,
-    "no-empty-source": [true, {
+    "no-empty-source": null,
+    "no-descending-specificity": [true, {
       "severity": "warning"
     }],
-    "no-descending-specificity": [true, {
+    "no-duplicate-selectors": [true, {
       "severity": "warning"
     }],
     "number-max-precision": null,

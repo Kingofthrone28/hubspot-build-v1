@@ -1,28 +1,35 @@
 .course-catalog > div {
-    padding: 10px;
-    width: 33%;
+  padding: 10px;
+  width: 33%;
 }
+
 .course-card-price {
   display: block;
 }
+
 .add-to-cart-text {
   vertical-align: super;
 }
-.course-card-category, .course-offer-text {
-  colorvar(--color--cherry)
+
+.course-card-category,
+.course-offer-text {
+  color: var(--color--cherry);
 }
+
 .price-container {
   display: flex;
   align-items: center;
 }
+
 .actual-price-strike {
-  text-decoration: line-through;
   margin-left: 13px;
-  font-size: var(--font-size--legacy--4)
+  text-decoration: line-through;
+  font-size: var(--font-size--legacy--4);
 }
+
 @media (max-width: 767px) {
   .course-catalog > div {
-      padding: 10px;
-      width: 100%;
+    padding: 10px;
+    width: 100%;
   }
 }

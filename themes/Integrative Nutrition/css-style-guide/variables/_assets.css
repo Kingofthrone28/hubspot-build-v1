@@ -1,0 +1,3 @@
+:root {
+  --asset--sprite: url({{ get_asset_url('/Integrative Nutrition/images/sprite.svg') }});
+}

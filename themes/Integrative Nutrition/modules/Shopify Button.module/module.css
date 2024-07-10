@@ -1,4 +1,4 @@
-.shopify-buy__btn:before {
-	font-family: var(--font-family--icons--alt);
-	content: '\f290';
+.shopify-buy__btn::before {
+  font-family: var(--font-family--icons--alt);
+  content: '\f290';
 }

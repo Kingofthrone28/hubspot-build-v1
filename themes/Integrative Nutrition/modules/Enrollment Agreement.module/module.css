@@ -54,11 +54,11 @@
 
 .enrollment-agreement table.data {
   margin-bottom: 1.4rem;
-  border-spacing: 0;
-  border-collapse: collapse;
   border-radius: 0;
   background: none;
   width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .enrollment-agreement table.data:last-child {
@@ -70,7 +70,7 @@
   border: 1px solid;
 }
 
-.enrollment-agreement table.data th[scope="row"] {
+.enrollment-agreement table.data th[scope='row'] {
   text-align: left;
 }
 
