@@ -428,7 +428,7 @@
 }
 
 .icon.icon-lg {
-  font-size: 32px;
+  font-size: var(--font-size--legacy--18);
 }
 
 @media (min-width: 768px) {
