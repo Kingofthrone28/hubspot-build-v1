@@ -96,7 +96,7 @@
   font-size: var(--font-size--10);
 }
 
-@media (width <= 1000px) {
+@media (max-width: 1000px) {
   .pdp-bottom > div:nth-child(1) {
     margin-bottom: 50px;
     padding: 0;
@@ -121,7 +121,7 @@
   }
 }
 
-@media (width <= 767px) {
+@media (max-width: 767px) {
   .pdp-bottom > div:nth-child(1) {
     margin-bottom: 25px;
   }

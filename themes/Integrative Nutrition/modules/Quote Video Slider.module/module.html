@@ -11,17 +11,14 @@
             {% if card.lightbox_video %}
             <script>
               $('#{{name}} #quote-video-card-{{ loop.index }}').click(function() {
+                {% if card.lightbox_video %}
                 $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(`{{ card.video_embed }}`);
                 $('#{{name}}-quote-video-lightbox').addClass('quote-video-lightbox-show');
-              });
-            </script>
-            {% else %}
-            <script>
-              $('#{{name}} #quote-video-card-{{ loop.index }}').click(function() {
+                {% else %}
                 $('#{{name}} #quote-video-card-{{ loop.index }} .quote-video-card-video-placeholder').replaceWith(`{{ card.video_embed }}`);
+                {% endif %}
               });
             </script>
-            {% endif %}
           </div>
           <div style="flex: 1"></div>
           <div>
@@ -88,8 +85,9 @@ $(function() {
     $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(``);
   });
   $('#{{name}}-quote-video-lightbox').on('click', function(e) {
-    if (e.target !== this)
+    if (e.target !== this) {
       return;
+    }
     $('#{{name}}-quote-video-lightbox').removeClass('quote-video-lightbox-show');
     $('#{{name}}-quote-video-lightbox .quote-video-lightbox-content').html(``);
   });

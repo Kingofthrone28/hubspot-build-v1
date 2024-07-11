@@ -49,7 +49,7 @@
   font-style: italic;
 }
 
-@media (width <= 991px) {
+@media (max-width: 991px) {
   .circle-image-banner-inner {
     flex-direction: column;
     padding: 40px 0;

@@ -109,7 +109,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   background: var(--color--grey-4);
 }
 
-@media (width <= 1000px) {
+@media (max-width: 1000px) {
   .pdp-sticky-inner {
     display: block;
   }
@@ -144,7 +144,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   }
 }
 
-@media (width <= 767px) {
+@media (max-width: 767px) {
   .pdp-sticky-btns {
     display: block;
   }
@@ -163,6 +163,13 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 }
 
 /* Add to cart section overrides */
+.pdp-top {
+  display: flex;
+  border-radius: 16px;
+  background: var(--color--white);
+  padding: 50px;
+}
+
 .pdp-top .jd-add-cart-wrap {
   width: 100%;
 }
@@ -191,13 +198,6 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-top .jd-shopify-option-wrap label {
   display: inline-block;
-}
-
-.pdp-top {
-  display: flex;
-  border-radius: 16px;
-  background: var(--color--white);
-  padding: 50px;
 }
 
 .pdp-top-slide-wrap {
@@ -453,7 +453,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   }
 }
 
-@media (width <= 1000px) {
+@media (max-width: 1000px) {
   .pdp-top {
     flex-direction: column;
     padding: 20px 25px 40px;
@@ -469,7 +469,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   }
 }
 
-@media (width <= 767px) {
+@media (max-width: 767px) {
   .pdp-top-content h1 {
     font-size: var(--font-size--9);
   }
