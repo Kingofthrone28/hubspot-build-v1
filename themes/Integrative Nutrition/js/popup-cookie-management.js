@@ -22,11 +22,11 @@
 
     if (!cookieObject || !Object.keys(cookieObject).length) {
       return Promise.reject(
-        new Error(`No cookie data in cookie: ${trackingCookie}`)
+        new Error(`No cookie data in cookie: ${trackingCookie}`),
       );
     }
 
-    const taxonomyOverrides = JSON.parse(sessionStorage['taxonomy_overrides'])
+    const taxonomyOverrides = JSON.parse(sessionStorage['taxonomy_overrides']);
 
     const intervalDelay = 100;
     let formPollsRemaining = 20;
@@ -77,13 +77,12 @@
             let data = cookieObject[cookieKey];
 
             if (!data) {
-              data = taxonomyOverrides[field]
+              data = taxonomyOverrides[field];
             }
 
             if (!data) {
               return;
             }
-
 
             const mappedKey = IIN.cookies.getTrackingFormKey(field);
             const input = frameDocument.createElement('input');
@@ -110,7 +109,7 @@
     try {
       await modifyFrameForm(frame);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 

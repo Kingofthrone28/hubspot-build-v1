@@ -5,30 +5,44 @@
 <!-- Begin partial -->
 
 <!-- OneTrust Cookies Consent Notice Production start for integrativenutrition.com -->
-{# <script src="https://cdn.cookielaw.org/consent/35891308-db48-4b8d-91ad-a2cef2155e39/OtAutoBlock.js" ></script>
-<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-domain-script="35891308-db48-4b8d-91ad-a2cef2155e39" ></script>
+{#
+<script src="https://cdn.cookielaw.org/consent/35891308-db48-4b8d-91ad-a2cef2155e39/OtAutoBlock.js"></script>
+<script
+  src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+  charset="UTF-8"
+  data-domain-script="35891308-db48-4b8d-91ad-a2cef2155e39"
+></script>
 <script>
-    function OptanonWrapper() { /*callback code for Onetrust activation goes here*/ }
-</script> #}
+  function OptanonWrapper() {
+    /*callback code for Onetrust activation goes here*/
+  }
+</script>
+#}
 <!-- OneTrust Cookies Consent Notice Production end for integrativenutrition.com -->
 
 <!-- OneTrust Cookies Consent Notice Test start for integrativenutrition.com -->
-<script src="https://cdn.cookielaw.org/consent/35891308-db48-4b8d-91ad-a2cef2155e39-test/OtAutoBlock.js" ></script>
-<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-domain-script="35891308-db48-4b8d-91ad-a2cef2155e39-test" ></script>
+<script src="https://cdn.cookielaw.org/consent/35891308-db48-4b8d-91ad-a2cef2155e39-test/OtAutoBlock.js"></script>
+<script
+  src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+  charset="UTF-8"
+  data-domain-script="35891308-db48-4b8d-91ad-a2cef2155e39-test"
+></script>
 <script type="text/javascript">
-    function OptanonWrapper() { /*callback code for Onetrust activation goes here*/ }
+  function OptanonWrapper() {
+    /*callback code for Onetrust activation goes here*/
+  }
 </script>
 <!-- OneTrust Cookies Consent Notice Test end for integrativenutrition.com -->
 
 <!-- Save taxonomy override values to session storage -->
 <script>
-    {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&limit=1') %}
-    window.sessionStorage.setItem('taxonomy_overrides', JSON.stringify({
-        leadsource: '{{ rows[0].page_lead_source }}', 
-        campaign_idnum__c: '{{ rows[0].page_campaignid }}', 
-        vertical__c: '{{ rows[0].vertical}}', 
-        product_type_c: '{{ rows[0].product_type}}'
-    }));
+  {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&limit=1') %}
+  window.sessionStorage.setItem('taxonomy_overrides', JSON.stringify({
+      leadsource: '{{ rows[0].page_lead_source }}',
+      campaign_idnum__c: '{{ rows[0].page_campaignid }}',
+      vertical__c: '{{ rows[0].vertical}}',
+      product_type_c: '{{ rows[0].product_type}}'
+  }));
 </script>
 
 <!-- End partial -->
