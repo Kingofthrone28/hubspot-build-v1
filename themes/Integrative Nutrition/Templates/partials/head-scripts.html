@@ -38,10 +38,10 @@
 <script>
   {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&limit=1') %}
   window.sessionStorage.setItem('taxonomy_overrides', JSON.stringify({
-      leadsource: '{{ rows[0].page_lead_source }}',
-      campaign_idnum__c: '{{ rows[0].page_campaignid }}',
-      vertical__c: '{{ rows[0].vertical}}',
-      product_type_c: '{{ rows[0].product_type}}'
+    leadsource: '{{ rows[0].page_lead_source }}',
+    campaign_idnum__c: '{{ rows[0].page_campaignid }}',
+    vertical__c: '{{ rows[0].vertical}}',
+    product_type_c: '{{ rows[0].product_type}}'
   }));
 </script>
 

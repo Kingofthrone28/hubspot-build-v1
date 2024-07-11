@@ -74,11 +74,7 @@
           // Create, append, and fill hidden fields
           fieldsToAdd.forEach((field) => {
             const cookieKey = IIN.cookies.getTrackingCookieKey(field);
-            let data = cookieObject[cookieKey];
-
-            if (!data) {
-              data = taxonomyOverrides[field];
-            }
+            let data = cookieObject[cookieKey] || taxonomyOverrides[field];
 
             if (!data) {
               return;
