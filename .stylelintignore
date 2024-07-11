@@ -23,6 +23,7 @@ modules_to_move
 /themes/Integrative Nutrition/css*/objects/_containers-dnd.css
 /themes/Integrative Nutrition/css*/templates/_blog.css
 /themes/Integrative Nutrition/css*/tools/_macros.css
+/themes/Integrative Nutrition/css*/variables/_assets.css
 /themes/Integrative Nutrition/css*/variables/_theme.css
 
 # TODO: Remove before branch "style-guide-lint" is merged to "develop"
