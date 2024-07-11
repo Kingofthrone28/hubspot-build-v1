@@ -26,6 +26,8 @@
       );
     }
 
+    const taxonomyOverrides = JSON.parse(sessionStorage['taxonomy_overrides'])
+
     const intervalDelay = 100;
     let formPollsRemaining = 20;
 
@@ -72,11 +74,16 @@
           // Create, append, and fill hidden fields
           fieldsToAdd.forEach((field) => {
             const cookieKey = IIN.cookies.getTrackingCookieKey(field);
-            const data = cookieObject[cookieKey];
+            let data = cookieObject[cookieKey];
+
+            if (!data) {
+              data = taxonomyOverrides[field]
+            }
 
             if (!data) {
               return;
             }
+
 
             const mappedKey = IIN.cookies.getTrackingFormKey(field);
             const input = frameDocument.createElement('input');
