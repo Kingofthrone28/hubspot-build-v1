@@ -1,0 +1,16 @@
+defaultPortal: staging
+portals:
+  - name: staging
+    portalId: ${{ secrets.portal_id }}
+    authType: personalaccesskey
+    personalAccessKey: >-
+      ${{ secrets.personal_access_key }}
+
+
+    auth:
+      tokenInfo:
+        accessToken: >-
+          ${{ secrets.personal_access_key }}
+
+
+        expiresAt: '2024-07-12T15:54:24.944Z'
