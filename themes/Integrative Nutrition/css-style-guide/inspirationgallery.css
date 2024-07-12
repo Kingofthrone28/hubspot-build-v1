@@ -14,7 +14,7 @@
     padding: 15px 45px 15px 45px; 
   border: none;
   outline: none;
-  color: var(--color--white); cursor: pointer; border-radius: 2px; line-height: var(--line--height--0); white-space: nowrap; text-decoration: none; display: inline-block;
+  color: var(--color--white); cursor: pointer; border-radius: 2px; line-height: var(--line-height--0); white-space: nowrap; text-decoration: none; display: inline-block;
 }
 .btn-main:hover { background-color: var(--color--legacy--green--blue-stone); color: var(--color--white) !important; }
 

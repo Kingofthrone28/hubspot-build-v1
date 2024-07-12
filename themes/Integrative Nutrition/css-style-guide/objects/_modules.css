@@ -599,12 +599,12 @@ a.jd-cat-block:hover {
   color: var(--theme--typography--body-text--color);
 }
 
-.num-label {
+.bundle-course .num-label {
   display: inline-block;
   margin-top: -2px;
   margin-right: 10px;
   border-radius: 50%;
-  background: var(--color--cherry);
+  background: var(--color--legacy--blue--oxford-blue);
   padding-top: 2px;
   width: 20px;
   height: 20px;
@@ -867,7 +867,7 @@ a.jd-cat-block:hover {
   left: 18px;
   opacity: 0.4;
   z-index: 0;
-  line-height: var(--line--height--0);
+  line-height: var(--line-height--0);
   color: var(--color--legacy--orange--peach);
   font-family: var(--font-family--legacy--heading);
   font-size: var(--font-size--legacy--29);
@@ -4040,8 +4040,6 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
 }
 
 .homepage-section #section-widget_1698416835892 .item-inner .card-body {
-  display: -webkit-box;
-  display: flexbox;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -4358,8 +4356,6 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   #hs_cos_wrapper_widget_1701881797907
   .item-inner
   .card-body {
-  display: -webkit-box;
-  display: flexbox;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;

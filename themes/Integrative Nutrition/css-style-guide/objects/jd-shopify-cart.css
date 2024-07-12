@@ -90,7 +90,7 @@ select.jd-cart-rec-select {
 .jd-cart-rec-item {
   margin-bottom: 20px;
   position: relative;
-  line-height: var(--line--height--0);
+  line-height: var(--line-height--0);
   overflow: hidden;
   display: flex;
   border-radius: 20px;
@@ -223,7 +223,7 @@ select.jd-cart-rec-select {
   margin-top: 10px;
   text-align: right;
   font-size: var(--font-size--legacy--2);
-  line-height: var(--line--height--0);
+  line-height: var(--line-height--0);
   font-style: italic;
 }
 

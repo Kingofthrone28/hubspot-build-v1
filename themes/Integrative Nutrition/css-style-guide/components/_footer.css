@@ -1,5 +1,9 @@
+.footer-container {
+  color: var(--color--white);
+}
+
 .footer-container .hs-menu-wrapper ul {
-  padding: 0;
+  padding: 0 0 1.5rem;
 }
 
 .footer-container .hs-menu-wrapper li {
