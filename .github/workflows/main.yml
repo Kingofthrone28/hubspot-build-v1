@@ -4,6 +4,7 @@ on:
     - develop
 jobs:
   deploy:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,5 +14,5 @@ jobs:
         with:
           src_dir: themes
           dest_dir: .
-          portal_id: ${{ secrets.portal_id }}
-          personal_access_key: ${{ secrets.personal_access_key }}
+          portal_id: ${{ secrets.hubspot_portal_id }}
+          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
