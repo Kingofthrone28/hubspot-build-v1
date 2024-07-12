@@ -26,7 +26,7 @@
       );
     }
 
-    const taxonomyOverrides = JSON.parse(sessionStorage['taxonomy_overrides']);
+    const taxonomyOverrides = sessionStorage['taxonomy_overrides'] ? JSON.parse(sessionStorage['taxonomy_overrides']): null;
 
     const intervalDelay = 100;
     let formPollsRemaining = 20;
