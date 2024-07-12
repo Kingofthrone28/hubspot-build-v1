@@ -198,7 +198,7 @@
 
         if (alreadyInCart) {
           $(`#${moduleData.name} .jd-shopify-add-exists-msg`).show();
-          return;
+          return null;
         }
 
         $(`#${moduleData.name} .jd-shopify-add-exists-msg`).hide();
@@ -254,15 +254,62 @@
             $('.jd-blackout').removeClass('jd-blackout-show');
             $('.jd-add-pop').removeClass('jd-add-pop-show');
           }, msToCloseAddPopUp);
+
+          return selectedVariant;
         } catch (e) {
           console.error(e);
         }
       }
+      return null;
     };
 
+    const trackAddToCart = (addedVariant) => {
+      const currencyCode = addedVariant.price?.currencyCode || 'USD';
+      const addedVariantPrice = parseFloat(addedVariant.price?.amount || 0.0);
+      const varientGidPath = 'gid://shopify/ProductVariant/';
+
+      let couponTitle = 'NA';
+      let discountAmount = 0;
+
+      if (Array.isArray(addedVariant.discountAllocations) &&
+        addedVariant.discountAllocations.length) {
+        addedVariant.discountAllocations.forEach(discountAllocation => {
+          couponTitle = discountAllocation?.discountApplication?.title;
+          discountAmount = discountAllocation?.allocatedAmount?.amount;
+        });
+      }
+
+      const addItemtoCart = {
+        event: 'add_to_cart',
+        ecommerce: {
+          currency: currencyCode,
+          value: addedVariantPrice,
+          product_type: 'Individual',
+          coupon: couponTitle,
+          items: [
+            {
+              item_id: moduleData.productID,
+              item_name: product.title,
+              item_type: product.productType,
+              variant_id: addedVariant.id.replace(varientGidPath, ''),
+              price: addedVariantPrice,
+              discount: discountAmount,
+              quantity: 1,
+              sku: addedVariant.sku || 'NA'
+            }
+          ]
+        }
+      };
+      // Trigger Add to cart tracking event
+      triggerECommEvent(addItemtoCart);
+    }
     // Add to cart button click.
     $(`#${moduleData.name} .jd-shopify-add-btn`).click(() => {
-      addToCart(product);
+      addToCart(product).then((addedVariant) => {
+        if (addedVariant) {
+          trackAddToCart(addedVariant);
+        }
+      });
     });
   };
 
