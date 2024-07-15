@@ -11,7 +11,7 @@
     "sorting_label_field" : null,
     "default" : 1
   },
-  "table_name_or_id" : "course_catalog",
+  "table_name_or_id" : 'course_catalog',
   "columns_to_fetch" : [ "duration", "inside_page_link", "languages", "product_id", "name", "description", "course_topics", "tag", "category", "location_description", "featured_image", "levels" ],
   "display_columns" : [ "name" ],
   "type" : "hubdbrow",
