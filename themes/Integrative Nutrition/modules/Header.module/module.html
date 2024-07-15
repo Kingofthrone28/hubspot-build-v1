@@ -149,7 +149,7 @@
           (function() {
             var now = new Date().getTime();
             var row;
-            {% for row in hubdb_table_rows(7048537, 'default=false&page_slug=' + request.path) %}
+            {% for row in hubdb_table_rows('top_bar_schedule', 'default=false&page_slug=' + request.path) %}
               var start = new Date('{{row.start_time_iso}}').getTime();
               var end = new Date('{{row.end_time_iso}}').getTime();
               if(now >= start && now <= end) {
@@ -167,7 +167,7 @@
               }
             {% endfor %}
             if(!row) {
-              {% for row in hubdb_table_rows(7048537, 'default=true') %}
+              {% for row in hubdb_table_rows('top_bar_schedule', 'default=true') %}
                 var start = new Date('{{row.start_time_iso}}').getTime();
                 var end = new Date('{{row.end_time_iso}}').getTime();
                 if(now >= start && now <= end) {

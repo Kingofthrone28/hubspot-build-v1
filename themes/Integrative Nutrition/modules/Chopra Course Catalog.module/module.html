@@ -33,7 +33,7 @@
         <div id="course-pop-Topics" class="course-pop-filter-choice-section" style="display:block">
           <div class="course-pop-filter-selected">Topics</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'course_topics') %}
+            {% set topicInfo = hubdb_table_column('course_catalog'_chopra', 'course_topics') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="topics_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Topics" value="{{option.name}}" {% if request.query_dict.topic && request.query_dict.topic|regex_replace("[^A-Za-z]", '') == option.name|regex_replace("[^A-Za-z]", '') %}checked{% endif %} />
@@ -45,7 +45,7 @@
         <div id="course-pop-Levels" class="course-pop-filter-choice-section">
           <div class="course-pop-filter-selected">Levels</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'levels') %}
+            {% set topicInfo = hubdb_table_column('course_catalog'_chopra', 'levels') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="levels_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Levels" value="{{option.name}}" />
@@ -57,7 +57,7 @@
         <div id="course-pop-Type" class="course-pop-filter-choice-section">
           <div class="course-pop-filter-selected">Type</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'type') %}
+            {% set topicInfo = hubdb_table_column('course_catalog'_chopra', 'type') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="type_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Type" value="{{option.name}}" checked />
@@ -87,9 +87,9 @@
     {% do rows.append(row.columns) %}
   {% endfor %}
 {% elif module.category_filter %}
-  {% set rows = hubdb_table_rows(7593814, 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
+  {% set rows = hubdb_table_rows('course_catalog'_chopra', 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
 {% else %}
-  {% set rows = hubdb_table_rows(7593814) %}
+  {% set rows = hubdb_table_rows('course_catalog'_chopra') %}
 {% endif %}
   
 {% for row in rows %}
