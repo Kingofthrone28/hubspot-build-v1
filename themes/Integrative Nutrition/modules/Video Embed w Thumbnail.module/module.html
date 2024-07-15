@@ -1,0 +1,23 @@
+<div id="{{name}}" class="video-thumb-embed">
+  <div class="video-thumb-embed-thumb"></div>
+  <div class="video-thumb-embed-placeholder"></div>
+</div>
+
+<script>
+  $('#{{name}} .video-thumb-embed-thumb').click(function() {
+    $('#{{name}} .video-thumb-embed-placeholder').replaceWith(`{{ module.video_embed }}`);
+    $('#{{name}} .video-thumb-embed-thumb').hide();
+  });
+</script>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .video-thumb-embed { padding-top: {{ module.container_height }}; }
+  .video-thumb-embed-thumb { background-image: url({{ module.thumb.src }}); }
+  
+  {% end_scope_css %}
+  
+</style>
+{% end_require_css %}

@@ -1,0 +1,20 @@
+.video-thumb-embed {
+  position: relative;
+}
+
+.video-thumb-embed-thumb {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 8px;
+  background-position: center !important;
+  background-size: cover !important;
+  cursor: pointer;
+}
+
+.video-thumb-embed > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,341 @@
+[ {
+  "id" : "972d2f87-4cab-4c56-a310-acc5a7f2ee18",
+  "name" : "category_image",
+  "display_width" : null,
+  "label" : "Category Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/IIN%20Favicon.png",
+    "alt" : "IIN Favicon",
+    "loading" : "lazy",
+    "width" : 103,
+    "height" : 112,
+    "max_width" : 103,
+    "max_height" : 112
+  }
+}, {
+  "id" : "09a82784-d76b-e1eb-0c5d-758443f73a38",
+  "name" : "category_text",
+  "display_width" : null,
+  "label" : "Category Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "IIN Category Program"
+}, {
+  "id" : "ec8ddff2-896f-3488-79d5-1420fffadecf",
+  "name" : "provider_image",
+  "display_width" : null,
+  "label" : "Provider Image",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 2
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : [ {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/NASM%20Logo%20sm.png",
+    "alt" : "NASM Logo sm",
+    "loading" : "lazy",
+    "width" : 200,
+    "height" : 128,
+    "max_width" : 200,
+    "max_height" : 128
+  }, {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/NASM%20Logo%20sm.png",
+    "alt" : "NASM Logo sm",
+    "loading" : "lazy",
+    "width" : 200,
+    "height" : 128,
+    "max_width" : 200,
+    "max_height" : 128
+  } ]
+}, {
+  "id" : "d9dcbd78-f79a-dd6d-37d3-aec52494041d",
+  "name" : "course_name",
+  "display_width" : null,
+  "label" : "Course Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The Health Coach Training Program"
+}, {
+  "id" : "f0b65a18-c741-3174-ea26-19f046511a3a",
+  "name" : "sub_head",
+  "display_width" : null,
+  "label" : "Sub Head",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "The program that started the health coaching industry."
+}, {
+  "id" : "49559a74-7ba4-03c0-f4ca-46ad744091e2",
+  "name" : "product_id",
+  "display_width" : null,
+  "label" : "Product ID",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "7485891150013"
+}, {
+  "id" : "650e1edf-eebe-ed82-6114-1928a4494fe7",
+  "name" : "affirm_line",
+  "display_width" : null,
+  "label" : "Affirm Line",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Or as low as $150/month with Affirm. 0% APR financing for up to 24 months."
+}, {
+  "id" : "18cbd383-ac3d-c6fc-c011-09dcb48eaaa5",
+  "name" : "code_offers",
+  "display_width" : null,
+  "label" : "Code Offers",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "68254efc-e6d5-b77b-7a0c-e6a7dba8a88a",
+    "name" : "text_field",
+    "display_width" : null,
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "8e0e8235-767a-a804-e174-96ab1ae79761",
+    "name" : "start_time",
+    "display_width" : null,
+    "label" : "Start Time UTC",
+    "required" : false,
+    "locked" : false,
+    "step" : 60,
+    "type" : "datetime",
+    "default" : 1718856000000
+  }, {
+    "id" : "59a0d348-3794-cb7b-038c-02b816a628fb",
+    "name" : "end_time",
+    "display_width" : null,
+    "label" : "End Time UTC",
+    "required" : false,
+    "locked" : false,
+    "step" : 60,
+    "type" : "datetime",
+    "default" : 1718942400000
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ ]
+}, {
+  "id" : "a62fcd8e-5074-47dd-a440-7de1a2876d79",
+  "name" : "image_slides",
+  "display_width" : null,
+  "label" : "Image Slides",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "fdd2ecfb-b0de-2751-304e-156a871c7980",
+    "name" : "label_field",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Overview"
+  }, {
+    "id" : "529bc04e-48cf-b035-14f2-3f1643764825",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/14%20DSGN-3431%20%5BPDP%20Pages%5D%20Preview%20Images%20Sized.png",
+      "alt" : "14 DSGN-3431 [PDP Pages] Preview Images Sized",
+      "loading" : "lazy",
+      "width" : 300,
+      "height" : 175,
+      "max_width" : 300,
+      "max_height" : 175
+    }
+  }, {
+    "id" : "74846764-4c40-3fc6-ab54-a3bd232bbe55",
+    "name" : "lower_text",
+    "display_width" : null,
+    "label" : "Lower Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Reframe what you know about health and wellness to live a fulfilling life in this comprehensive, integrated and dynamic program. Life time access."
+  }, {
+    "id" : "e8ac987a-9aa1-e408-5fbf-63b308eb1d3c",
+    "name" : "video_embed",
+    "display_width" : null,
+    "label" : "Video Embed",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ {
+    "label_field" : "Overview",
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/14%20DSGN-3431%20%5BPDP%20Pages%5D%20Preview%20Images%20Sized.png",
+      "alt" : "14 DSGN-3431 [PDP Pages] Preview Images Sized",
+      "loading" : "lazy",
+      "width" : 300,
+      "height" : 175,
+      "max_width" : 300,
+      "max_height" : 175
+    },
+    "lower_text" : "Reframe what you know about health and wellness to live a fulfilling life in this comprehensive, integrated and dynamic program. Life time access."
+  } ]
+}, {
+  "id" : "2514c996-185d-650d-774b-fc3557438a14",
+  "name" : "slide_image_height",
+  "display_width" : null,
+  "label" : "Slide Image Height",
+  "inline_help_text" : "Use 56.25% for correct embedded video ratio",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "56.25%"
+}, {
+  "id" : "86533fb3-393b-da75-657c-ac60a5d2cf32",
+  "name" : "sticky_nav",
+  "display_width" : null,
+  "label" : "Sticky Nav",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c1840ee2-42e8-4069-b4b5-17cd0aede83d",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subhead",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "The Health Coach Training Program was designed to fit into a busy lifestyle."
+  }, {
+    "id" : "0dba2265-18b6-8b41-9e54-78a0101cb923",
+    "name" : "left_button_link",
+    "display_width" : null,
+    "label" : "Left Button Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+    "type" : "url",
+    "default" : {
+      "content_id" : null,
+      "href" : "",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "id" : "d37d573b-6e56-a79b-deb2-c436663cf11a",
+    "name" : "left_button_text",
+    "display_width" : null,
+    "label" : "Left Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Speak with an Advisor"
+  }, {
+    "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
+    "name" : "dropdown_left_text",
+    "display_width" : null,
+    "label" : "Dropdown Left Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Just a few quick questions and you’ll be ready to enroll."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : {
+    "subhead" : "The Health Coach Training Program was designed to fit into a busy lifestyle.",
+    "left_button_link" : {
+      "content_id" : null,
+      "href" : "",
+      "type" : "EXTERNAL"
+    },
+    "left_button_text" : "Speak with an Advisor",
+    "dropdown_left_text" : "Just a few quick questions and you’ll be ready to enroll."
+  }
+} ]

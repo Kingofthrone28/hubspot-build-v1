@@ -1,0 +1,21 @@
+[ {
+  "id" : "e2a100ed-713a-8e0f-ba03-7722f0665747",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<h2 style=\"text-align: left;\">Frequently asked questions</h2>"
+}, {
+  "id" : "3af89e0e-69c8-1a9c-91f0-d0060b6d08f7",
+  "name" : "top_space_pixels",
+  "display_width" : null,
+  "label" : "Top Space Pixels",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "default" : 180
+} ]

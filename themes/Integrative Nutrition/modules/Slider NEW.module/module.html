@@ -1,0 +1,273 @@
+{% macro playBtn() %}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94.738" height="94.737" viewBox="0 0 94.738 94.737">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1146" data-name="Rectangle 1146" width="94.738" height="94.737" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_3263" data-name="Group 3263" transform="translate(0 0.002)">
+    <g id="Group_3262" data-name="Group 3262" transform="translate(0 -0.002)" clip-path="url(#clip-path)">
+      <path id="Path_4796" data-name="Path 4796" d="M47.369,94.735A47.369,47.369,0,1,1,94.738,47.367,47.422,47.422,0,0,1,47.369,94.735m0-92.251A44.882,44.882,0,1,0,92.251,47.367,44.933,44.933,0,0,0,47.369,2.485" transform="translate(0 0.002)" fill="#fff"/>
+      <path id="Path_4797" data-name="Path 4797" d="M507.355,448.792a3.269,3.269,0,0,1-3.268-3.266l-.005-29.281a3.274,3.274,0,0,1,1.633-2.83,3.32,3.32,0,0,1,3.269,0l25.36,14.635a3.267,3.267,0,0,1,0,5.659l-25.355,14.646a3.271,3.271,0,0,1-1.635.438m-.006-33.329a.781.781,0,0,0-.78.781l.005,29.281a.782.782,0,0,0,.391.675.794.794,0,0,0,.781,0L533.1,431.555a.781.781,0,0,0,0-1.352l-25.361-14.635a.786.786,0,0,0-.39-.1" transform="translate(-468.121 -383.522)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
+{% endmacro %}
+{% macro arrowIcon() %}
+{% if theme.spacing.arrow_type == 'chevron' %}<i class="fal fa-chevron-right"></i>{% elif theme.spacing.arrow_type == 'caret' %}<i class="fas fa-caret-right"></i>{% else %}<i class="fal fa-long-arrow-right"></i>{% endif %}
+{% endmacro %}
+{% macro sliderNav() %}
+<div class="slider-nav-wrap">
+  {% if module.optional_header %}
+  <h3>{{ module.optional_header }}</h3>
+  {% endif %}
+  <div class="slider-nav" style="{{ module.option.navigation.arrow_field.css }};{{ module.option.navigation.spacing_field_1.css }}"></div>
+</div>
+
+{% endmacro %}
+<div id="section-{{ parent_custom_widget_name }}" class="slider-wrap {% if module.item|length < 3 %}center-cards{% endif %} {% if module.option.navigation.dots_on_side %}slider-dots-side{% elif module.option.previews_with_full_view %}slider-preview-vids{% endif %}{% if module.option.animation.apply_animation_to == 'this' %} {{ module.option.animation.animation }}{% else %} load-parent{% endif %}{% if module.custom_css_class %} {{ module.custom_css_class }}{% endif %}"{% if module.option.animation.apply_animation_to != 'this' %} data-load="{{ module.option.animation.animation }}" data-target="{{ module.option.animation.apply_animation_to }}"{% endif %}>
+  {% if module.option.previews_with_full_view %}
+  <div class="slider-full-vid-title" id="title-{{name}}">{{module.item[0].content|striptags}}</div>
+  <div class="slider-full-vid-wrap">
+    <div class="slider-full-vid">
+      <video src="{{module.item[0].video_embed}}" frameborder="0" allowfullscreen controls></video>
+      {# <iframe width="560" height="315" src="{{module.item[0].video_embed}}" frameborder="0" allowfullscreen></iframe> #}
+    </div>
+  </div>
+  {% endif %}
+    <div class="mb-scroller-outer {% if module.option.gallery_style %}mb-scroller-gallery{% endif %} {% if module.option.border.box_shadow %}slider-box-shadow{% endif %}" style="{{ module.option.outer_spacing.css }}">    
+      {% if module.option.navigation.nav_location == 'before' %}{{ sliderNav() }}{% endif %}
+      <div class="content-item-wrapper mb-scroller-wrapper {% if module.option.navigation.navigation_arrows %} arrow-{{ module.option.navigation.align_arrows }}{% endif %}"{% if module.option.navigation.navigation_arrows %} style="padding-bottom: 30px;"{% endif %}>
+        {% if module.content_type == "hubdb" %}
+          {% for row in hubdb_table_rows(module.hubdbtable_field) %}
+          <{% if row.url %}a href="{{ row.url }}"{% else %}div{% endif %} class="item db-item">
+            <div class="item-inner box" style="background: rgba({{ module.option.background_color.color|convert_rgb }}, {{ module.option.background_color.opacity / 100 }});{{ module.option.spacing_field.css }}">
+              {% if row.image.src %}
+              <a class="item-img custom-img shadow" style="padding-top: 60%;background: rgba({{ module.option.image_background_color.color|convert_rgb }}, {{ module.option.image_background_color.opacity / 100 }}) url({{ row.image.src }}) center no-repeat;background-size: {{ module.option.image.image_size }};{% if !row.text %}margin: 0 !important;{% endif %}border-radius: {{ module.option.border.border_radius_image }}px;">
+              
+              </a>
+              {% endif %}
+              {% if row.text %}
+              <div class="content">
+                {{ row.text }}
+              </div>
+              {% endif %}
+            </div>
+          </{% if row.url %}a{% else %}div{% endif %}>
+          {% endfor %}
+        {% elif module.content_type == "blog" %}
+          {% set posts = blog_recent_posts( module.blog_field, module.number_of_posts ) %}
+          {% for row in posts %}
+          <div class="item blog-item">
+            <div class="item-inner box" style="background: rgba({{ module.option.background_color.color|convert_rgb }}, {{ module.option.background_color.opacity / 100 }});{{ module.option.spacing_field.css }}">
+              <div>
+                <a href="{{ row.absolute_url }}" class="item-img custom-img" style="padding-top: 60%;background: rgba({{ module.option.image_background_color.color|convert_rgb }}, {{ module.option.image_background_color.opacity / 100 }}) url({{ row.featured_image }}) center no-repeat;background-size: {{ module.option.image.image_size }};border-radius: {{ module.option.border.border_radius_image }}px;">         
+                </a>
+                <div style="padding:25px">
+                  <div class="jd-post-published"><strong>{{ row.publish_date|format_date('long') }}</strong></div>
+                  <h3 style="margin-bottom: 15px"><a class="jd-post-name" href="{{row.absolute_url}}">{{ row.name }}</a></h3>
+                  {% set post_content = row.post_body|striptags %}
+                  <div>{{ post_content|truncate(module.character_count_for_summary) }}</div>
+                  <div class="jd-listing-read-more">
+                    <a href="{{row.absolute_url}}" class="jd-request-btn hs-button">{{module.read_more_button_text}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% elif module.content_type == "resources" %}
+        {% set my_content = content_by_id(22810839600) %}
+          {% for row in my_content.widget_containers.module_157193204707895.widgets %}
+          {% if loop.index < 7 %}
+            {% if row.body.gate %}
+              {% if contact.email %}
+                {% set this_content = content_by_id(row.body.form_field.redirect_id) %}
+              {% else %}
+                {% set this_content = content_by_id(row.body.url_field.content_id) %}
+              {% endif %}
+            {% else %} 
+              {% set this_content = content_by_id(row.body.url_field.content_id) %}
+            {% endif %}
+
+            <div class="item blog-item">
+              <div class="item-inner box" style="background: rgba({{ module.option.background_color.color|convert_rgb }}, {{ module.option.background_color.opacity / 100 }});{{ module.option.spacing_field.css }}">
+                <div class="content">
+                  {% if row.body.image_field.src %}
+                  <a href="{{ this_content.absolute_url }}" class="item-img custom-img shadow" style="padding-top: 60%;background: rgba({{ module.option.image_background_color.color|convert_rgb }}, {{ module.option.image_background_color.opacity / 100 }}) url({{ row.body.image_field.src }}) center no-repeat;background-size: {{ module.option.image.image_size }};{% if !row.text %}margin: 0 !important;{% endif %}border-radius: {{ module.option.border.border_radius_image }}px;">
+                  
+                  </a>
+                  {% endif %}
+                  <span class="topic-list">
+                    {{ row.body.content_type }} | {{ row.body.topic }}
+                  </span>
+
+                  {% set title_size = row.body.resource_name|wordcount %}
+                  <h4 class="size-{% if title_size <= 5 %}large{% elif title_size <= 10 %}med{% else %}small{% endif %}">
+                    <a href="{{ this_content.absolute_url }}">{{ row.body.resource_name }}</a>
+                  </h4>
+                  <p>
+                    {{ row.body.about_resource }}
+                  </p>
+                  <a class="more-link" href="{{ this_content.absolute_url }}"><strong>Download Now</strong> <i class="far fa-chevron-right"></i></a>
+                </div>
+                
+              </div>
+            </div>
+        {% endif %}
+            {% endfor %}
+        
+        {% else %}
+          {% for item in module.item %}
+          <{% if item.url.add_section_link %}a href="{{ item.url.box_url.href }}"{% if item.url.open_in_new_tab %} target="blank"{% endif %}{% else %}div{% endif %} class="item" data-video="{{item.video_embed}}">
+            <div class="item-inner box {% if item.add_quote_mark %}quote-mark{% endif %}" style="background: rgba({{ module.option.background_color.color|convert_rgb }}, {{ module.option.background_color.opacity / 100 }});{{ module.option.spacing_field.css }}">
+              {% if item.image_field.src %}
+              <div class="box-image-wrapper align-{{ module.option.image.alignment.text_align|lower }}" style="width: {% if module.option.image.full_width %}100%{% else %}{{ module.option.image.image_width }}px{% endif %};">
+                <{% if item.image_url.href && !item.url.add_section_link %}a{% if item.open_in_new_tab %} target="blank"{% endif %}{% else %}span{% endif %} class="item-img custom-img shape-{{'landscape' if !module.option.image.image_shape else module.option.image.image_shape}}" {% if item.image_url.href %}href="{{ item.image_url.href }}" {% if item.image_url.type == "EXTERNAL" %}target="blank" {% endif %}{% endif %}style="{% if item.image_options == 'dont_restrict' %}padding-top: {{ item.image_field.height * 100 / item.image_field.width }}%;{% endif %}background: rgba({{ module.option.image_background_color.color|convert_rgb }}, {{ module.option.image_background_color.opacity / 100 }}) url({{ item.image_field.src }}) center no-repeat;background-size: {% if module.option.image.image_size == 'contain' %}contain{% else %}cover{% endif %};{% if !item.content %}margin: 0 !important;{% endif %}border-radius: {{ module.option.border.border_radius_image }}px;">
+                {% if item.video_icon %}<div class="vid-icon">{{playBtn()}}</div>{% endif %}
+                </{% if item.image_url.href %}a{% else %}span{% endif %}>
+              </div>
+              {% endif %}
+              <div{% if item.image_field.src %} class="content"{% endif %}>
+                {% for text_item in item.content %}
+                  {% if text_item.type == 'arrow_link' %}
+                  <div class="slider-link-wrap">
+                    <a href="{{ text_item.link_url.href }}" {% if text_item.link_url.href %} target="blank"{% endif %} 
+                      style="color: {{text_item.text_color.color }}; {% if text_item.text_style == 'italic' %}font-style:italic{% elif text_item.text_style == 'bold' %}font-weight:bold{% endif %}">
+                      {{ text_item.text_field }}
+                      {{ text_item.link_svg }}
+                    </a>
+                  </div>
+                  {% else %}
+                  <{{ text_item.type }} style="color: {{text_item.text_color.color }}; {% if text_item.text_style == 'italic' %}font-style:italic{% elif text_item.text_style == 'bold' %}font-weight:bold{% endif %}">{{ text_item.text_field }}</{{ text_item.type }}>
+                  {% endif %}
+                {% endfor %}
+                {% if item.testimonial_footer %}
+                <div class="slide-testimonial">
+                  {% if item.testimonial_image %}<div><img src="{{item.testimonial_image.src}}" /></div>{% endif %}
+                  <div>
+                    {{item.testimonial_text}}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              
+            </div>
+          </{% if item.url.add_section_link %}a{% else %}div{% endif %}>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% if module.option.navigation.nav_location == 'after' %}{{ sliderNav() }}{% endif %}
+    </div>
+</div>
+
+<style>
+  #section-{{ parent_custom_widget_name }} .content { text-align: {{ module.option.text_alignment }}; {{ module.option.content_padding.css }} }
+  {% if module.option.text_alignment == 'left' %}
+  #section-{{ parent_custom_widget_name }} .slider-link-wrap { justify-content: flex-start; }
+  {% elif module.option.text_alignment == 'right' %}
+  #section-{{ parent_custom_widget_name }} .slider-link-wrap { justify-content: flex-end; }
+  {% else %}
+  #section-{{ parent_custom_widget_name }} .slider-link-wrap { justify-content: center; }
+  {% endif %}
+  #section-{{ parent_custom_widget_name }} .slick-prev svg path, #section-{{ parent_custom_widget_name }} .slick-next svg path,
+  #section-{{ parent_custom_widget_name }} .slick-prev svg line, #section-{{ parent_custom_widget_name }} .slick-next svg line{ stroke: {{ module.option.navigation.arrow_color.color }}; opacity: {{ module.option.navigation.arrow_color.opacity / 100 }}; }
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item-inner { border-radius: {{ module.option.border.border_radius_all }}px; border: {{ module.option.border.border_width }}px solid {{ module.option.border.border_color.color }}; }
+  #section-{{ parent_custom_widget_name }} .slick-prev i, #section-{{ parent_custom_widget_name }} .slick-next i { color: {{ module.option.navigation.arrow_color.color }}; opacity: {{ module.option.navigation.arrow_color.opacity / 100 }};  }
+  #section-{{ parent_custom_widget_name }} .nav-item { background-color: {{ module.option.navigation.dots_color.color }}; opacity: {{ module.option.navigation.dots_color.opacity / 100 }}; }
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item.slick-current, #section-{{ parent_custom_widget_name }}  .more-slider-nav .nav-item:hover { background: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; }
+  #section-{{ parent_custom_widget_name }}  .more-slider-nav button:hover i { color: {{ module.option.navigation.dot_arrow_hover_active_color.color }}; opacity: {{ module.option.navigation.dot_arrow_hover_active_color.opacity / 100 }}; }
+  {% if module.option.border.border_width > 0 %}
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .content { padding: 30px 30px !important; }
+  {% endif %}
+  {% if module.option.previews_with_full_view %}
+  #section-{{ parent_custom_widget_name }} .item-img { cursor: pointer; }
+  {% endif %}
+  {% if module.option.navigation.dots_on_side %}
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper, 
+    #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .slick-track,
+    #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper>.item { display: block !important; }
+  #section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item { padding: 5px 0; display: flex; align-items: center; }
+  {% endif %}
+  {% if !module.optional_header %}
+  #section-{{ parent_custom_widget_name }} .slider-nav-wrap .slider-nav { flex: 1; }
+  {% endif %}
+  {% if module.option.display.show_overflow  %}
+    #section-{{ parent_custom_widget_name }} .slick-slider .slick-list { overflow: visible !important; }
+    #section-{{ parent_custom_widget_name }} .slick-slide[aria-hidden="true"] { opacity: .5 !important; }
+  {% endif %}
+</style>
+
+<script>
+$( document ).ready(function() {
+  {% if module.option.navigation.dots_on_side %}
+    var minHeight = 0;
+    $('#section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item').each(function() {
+      if($(this).outerHeight(false) > minHeight) {
+        minHeight = $(this).outerHeight(false);
+      }
+    });
+    $('#section-{{ parent_custom_widget_name }} .mb-scroller-wrapper .item').css('min-height', minHeight + 'px');
+    $('#section-{{ parent_custom_widget_name }} .mb-scroller-wrapper').slick({
+      autoplay: false,
+      dots: false,
+      arrows: false,
+      vertical: true,
+      verticalSwiping: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    });
+  {% else %}
+  $('#section-{{ parent_custom_widget_name }} .mb-scroller-wrapper').slick({
+      dots: {{ module.option.navigation.dots }},
+      infinite: {{ module.option.scrolling.scrolling_infinite }},
+      speed: {{ module.option.scrolling.scroll_speed }},
+      slidesToShow: {% if module.option.scrolling.center_focused_slide %}1{% else %}{{ module.option.display.desktop }}{% endif %},
+      slidesToScroll: {% if module.option.scrolling.number_of_slides_to_scroll == "all" %}{{ module.option.display.desktop }}{% else %}1{% endif %},
+      autoplay: {{ module.option.scrolling.auto_play }},
+      {% if module.option.scrolling.auto_play %}autoplaySpeed: {{ module.option.scrolling.auto_play_speed }},{% endif %}
+      arrows: {{ module.option.navigation.navigation_arrows }},
+      {% if module.option.navigation.navigation_arrows %}
+      appendArrows: $('#section-{{ parent_custom_widget_name }} .slider-nav'),
+      {% endif %}
+      prevArrow: '<button type="button" class="slick-prev">{% if module.option.navigation.arrow_style == 'chevron' %}<i class="fal fa-chevron-left"></i>{% elif module.option.navigation.arrow_style == 'caret' %}<i class="fas fa-caret-circle-left"></i>{% else %}<i class="fa-regular fa-arrow-left-long"></i>{% endif %}</button>',
+      nextArrow: '<button type="button" class="slick-next">{% if module.option.navigation.arrow_style == 'chevron' %}<i class="fal fa-chevron-right"></i>{% elif module.option.navigation.arrow_style == 'caret' %}<i class="fas fa-caret-circle-right"></i>{% else %}<i class="fa-regular fa-arrow-right-long"></i>{% endif %}</button>',
+      {% endif %}
+      pauseOnHover: {{ module.option.scrolling.pause_on_hover }},
+      centerMode: {{ module.option.scrolling.center_focused_slide }},
+      {% if module.option.scrolling.center_focused_slide %}centerPadding: '{{ (100 - (100 / module.option.display.desktop))/2 }}%',{% endif %}
+      responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: {% if module.option.scrolling.center_focused_slide %}1{% else %}{{ module.option.display.tablet }}{% endif %},
+        {% if module.option.scrolling.center_focused_slide %}centerPadding: '{{ (100 - (100 / module.option.display.tablet))/2 }}%',{% endif %}
+        slidesToScroll: {% if module.option.scrolling.number_of_slides_to_scroll == "all" %}{% if module.option.scrolling.center_focused_slide %}1{% else %}{{ module.option.display.tablet }}{% endif %}{% else %}1{% endif %}
+      }
+    },
+    {
+      breakpoint: 764,
+      settings: {
+        slidesToShow: {% if module.option.scrolling.center_focused_slide %}1{% else %}{{ module.option.display.mobile }}{% endif %},
+        {% if module.option.scrolling.center_focused_slide %}centerPadding: '{{ (100 - (100 / module.option.display.mobile))/2 }}%',{% endif %}
+        slidesToScroll: {% if module.option.scrolling.number_of_slides_to_scroll == "all" %}{% if module.option.scrolling.center_focused_slide %}1{% else %}{{ module.option.display.mobile }}{% endif %}{% else %}1{% endif %}
+      }
+    }
+  ]
+    });
+  {% endif %}
+  
+  {% if module.option.previews_with_full_view %}
+  
+    $('#section-{{ parent_custom_widget_name }} .mb-scroller-wrapper').on('afterChange', function() {
+      $('#section-{{ parent_custom_widget_name }} .slider-full-vid video').attr('src', $(this).find('.slick-current').data("video"));
+      $('#title-{{name}}').text($(this).find('.slick-current').find('.content').text());
+    });
+
+    $('#section-{{ parent_custom_widget_name }} .slick-slide').click(function() {
+      $('#section-{{ parent_custom_widget_name }}  .mb-scroller-wrapper').slick('slickGoTo', $(this).data('slick-index'));
+    });
+  {% endif %}
+});
+  
+</script>
