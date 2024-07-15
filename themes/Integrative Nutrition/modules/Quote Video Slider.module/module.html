@@ -8,7 +8,6 @@
         <div class="quote-video-card-wrap">
           <div id="quote-video-card-{{ loop.index }}" class="quote-video-card quote-video-card-video" style="background:url({{card.image_field.src}})">
             <div class="quote-video-card-video-placeholder"></div>
-            {% if card.lightbox_video %}
             <script>
               $('#{{name}} #quote-video-card-{{ loop.index }}').click(function() {
                 {% if card.lightbox_video %}
@@ -57,7 +56,6 @@
 {% require_css %}
 <style>
   {% scope_css %}
-  
   .quote-video-card {
     min-height: {{ module.min_card_height }};
   }
@@ -73,7 +71,6 @@
   {% endif %}
   
   {% end_scope_css %}
-  
 </style>
 {% end_require_css %}
 
