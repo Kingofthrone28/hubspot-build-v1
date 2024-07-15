@@ -15,11 +15,13 @@
 {% require_css %}
 <style>
   {% scope_css %}
-  
-  .circle-image-banner { background: {{ module.bg_color.color }}; }
-  .circle-image-banner-image { background: url({{ module.image_field.src }}); }
-  
+  .circle-image-banner {
+    background: {{ module.bg_color.color }};
+  }
+
+  .circle-image-banner-image {
+    background: url({{ module.image_field.src }});
+  }
   {% end_scope_css %}
-  
 </style>
 {% end_require_css %}

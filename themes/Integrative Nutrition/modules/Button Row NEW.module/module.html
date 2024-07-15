@@ -1,7 +1,7 @@
-<div style="display:flex;flex-wrap:wrap;position:relative; justify-content:{{ module.alignment }};">
+<div style="display: flex; flex-wrap: wrap; position: relative; justify-content: {{ module.alignment }};">
 {% for item in module.buttons %}
   {% if item.jump_link %}
-    <span id="{{name}}_btn_{{loop.index}}" data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button" data-track-label="{{ item.dl_label }}">
+    <span id="{{ name }}_btn_{{ loop.index }}" data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button" data-track-label="{{ item.dl_label }}">
       {{ item.text_field }}
       {% if item.show_arrow %}
         <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
@@ -12,35 +12,35 @@
     {% if item.link_field.url.type is equalto "EMAIL_ADDRESS" %}
       {% set href = "mailto:" + href %}
     {% endif %}
-    <a id="{{name}}_btn_{{loop.index}}" href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link" data-track-label="{{ item.dl_label }}"
+    <a id="{{ name }}_btn_{{ loop.index }}" href="{{ href }}" class="jd-request-btn hs-button jd-arrow-link" data-track-label="{{ item.dl_label }}"
        {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
        {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
       > 
-    {{ item.text_field }}
+      {{ item.text_field }}
       {% if item.show_arrow %}
         <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
       {% endif %}
     </a>
   {% endif %}
   <style>
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button { 
-      background: {{item.bg_color.color}} !important; 
-      border: 2px solid {{item.border_color.color}} !important; 
-      color: {{ item.text_color.color}} !important; 
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button { 
+      border: 2px solid {{ item.border_color.color }} !important; 
+      background: {{ item.bg_color.color }} !important; 
+      color: {{ item.text_color.color }} !important; 
     }
 
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button:hover { 
-      background: {{item.hover_bg_color.color}} !important; 
-      border: 2px solid {{item.hover_border_color.color}} !important; 
-      color: {{ item.hover_text_color.color}} !important; 
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button i { 
+      color: {{ item.arrow_color.color }} !important; 
     }
 
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button i { 
-      color: {{ item.arrow_color.color}} !important; 
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button:hover { 
+      border: 2px solid {{ item.hover_border_color.color }} !important; 
+      background: {{ item.hover_bg_color.color }} !important; 
+      color: {{ item.hover_text_color.color }} !important; 
     }
 
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button:hover i { 
-      color: {{ item.hover_arrow_color.color}} !important; 
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button:hover i { 
+      color: {{ item.hover_arrow_color.color }} !important; 
     }
   </style>
 {% endfor %}
@@ -49,21 +49,22 @@
 {% require_css %}
 <style>
   {% scope_css %}
+  svg { 
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+    width: 20px; 
+    height: 20px;
+  }
+
   .jd-request-btn { 
-    width: auto; 
     margin-right: 10px; 
+    width: auto; 
     {{ module.style.spacing_field.css }} 
   }
 
   .jd-subitems a {
     color: var(--color--black);
-  }
-  svg { 
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 6px;
-    height: 20px;
-    width: 20px; 
   }
   {% end_scope_css %} 
 </style>
