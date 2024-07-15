@@ -11,7 +11,7 @@
     "sorting_label_field" : null,
     "default" : 0
   },
-  "table_name_or_id" : 'course_catalog',
+  "table_name_or_id" : "course_catalog",
   "columns_to_fetch" : [ "tag" ],
   "type" : "hubdbrow",
   "default" : {
@@ -30,7 +30,7 @@
     "sorting_label_field" : null,
     "default" : null
   },
-  "table_name_or_id" : 'course_catalog',
+  "table_name_or_id" : "course_catalog",
   "type" : "hubdbrow",
   "default" : {
     "id" : null
@@ -48,7 +48,7 @@
     "sorting_label_field" : null,
     "default" : 0
   },
-  "table_name_or_id" : 'course_catalog',
+  "table_name_or_id" : "course_catalog",
   "columns_to_fetch" : [ ],
   "type" : "hubdbrow",
   "default" : {
@@ -67,7 +67,7 @@
     "sorting_label_field" : null,
     "default" : 0
   },
-  "table_name_or_id" : 'course_catalog',
+  "table_name_or_id" : "course_catalog",
   "columns_to_fetch" : [ ],
   "type" : "hubdbrow",
   "default" : {
