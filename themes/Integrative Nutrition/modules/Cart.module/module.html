@@ -106,7 +106,7 @@
 
 <script>
   {%- set bundles = [] -%}
-  {%- for row in hubdb_table_rows(15087905) -%}
+  {%- for row in hubdb_table_rows(shopify_bundle_product_recommendations) -%}
     {%- do bundles.append(row) -%}
   {%- endfor -%}
   {%- set form_id = module.enrollment_form.form_id -%}

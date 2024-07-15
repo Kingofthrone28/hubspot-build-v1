@@ -1,4 +1,4 @@
-{% set table_id = '6975747' %}
+{% set table_id = 'coursebundle' %}
 {% if module.category_vertical %}
     {% set rows = hubdb_table_rows(table_id, 'orderBy=-createdAt&limit=' + module.limit + '&category_vertical__in=' + module.category_vertical) %}
   {% else %}
