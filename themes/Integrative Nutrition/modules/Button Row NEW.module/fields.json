@@ -94,6 +94,18 @@
     "default" : 3
   },
   "children" : [ {
+    "id" : "d830e88c-b06f-edda-1db0-0a999e9cbdd5",
+    "name" : "text_field",
+    "display_width" : null,
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Button"
+  }, {
     "id" : "4e253796-1adf-73b1-5af4-75dfc331ebb5",
     "name" : "dl_label",
     "display_width" : null,
@@ -136,18 +148,6 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text"
-  }, {
-    "id" : "d830e88c-b06f-edda-1db0-0a999e9cbdd5",
-    "name" : "text_field",
-    "display_width" : null,
-    "label" : "Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Button"
   }, {
     "id" : "b0851e6c-8c7d-9203-2051-609ac3d717ab",
     "name" : "show_arrow",
