@@ -1,5 +1,8 @@
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
+{% include './libphonenumber.js' %}
+{% include '.form-phone-validation.js' %}
+
 $(function(){
   $('.load-parent').each(function() {
     var load_type = $(this).data('load'),
