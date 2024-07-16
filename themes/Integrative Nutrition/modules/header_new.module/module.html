@@ -3,7 +3,7 @@
   {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" + href %}
   {% endif %}
-  <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
+  <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" data-track-label="{{ module.dl_label }}"
     {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
     {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
   >
@@ -112,7 +112,6 @@
       {% set start_timestamp = start_date|unixtimestamp %}
     {% endif %}
   {% endif %}
-
   {% if current_timestamp >= start_timestamp and current_timestamp <= end_timestamp %}
     {% unless excluded_pages is containing content.slug %}
       {% do top_bar.update(row) %}
@@ -181,6 +180,7 @@
 </div>
 
 <div class="jd-header-wrap">
+  <!-- Start Deal Bar/Promo Banner/Top Bar -->
   {% if top_bar %}
   <div class="deal-bar">
     <svg class="deal-bar-close"></svg>
@@ -191,15 +191,23 @@
     {% if top_bar.deal_bar_text %}  
       <span>{{ top_bar.deal_bar_text }}</span>
     {% endif %}
-    {% if top_bar.promo_code %}
-      {% set promo_code = top_bar.promo_code %}  
-      <span hidden id="deal-bar-promo-data" data-promo-code="{{ promo_code }}"></span>
-    {% endif %}  
+    {% if top_bar.promo_code or top_bar.product_ids %}
+      <span
+        hidden
+        id="deal-bar-promo-data"
+        {% if top_bar.promo_code %} data-promo-code="{{ top_bar.promo_code }}"{% endif %}
+        {% if top_bar.product_ids %} data-product-ids="{{ top_bar.product_ids }}"{% endif %}
+      ></span>
+    {% endif %}
     {% if top_bar.deal_ends_time_iso %}  
       <span class="deal-bar-time-text"></span>
     {% endif %}
-    {% if top_bar.claim_link and top_bar.claim_text %}  
-      <a href="{{ top_bar.claim_link }}" class="deal-bar-btn desktop" target="_blank">{{ top_bar.claim_text }}</a>
+    {% if top_bar.claim_text %}
+      {% if top_bar.claim_link %}
+      <a href="{{ top_bar.claim_link }}" class="deal-bar-btn desktop">{{ top_bar.claim_text }}</a>
+      {% elif top_bar.product_ids %}
+        <button class="deal-bar-btn desktop">{{ top_bar.claim_text }}</button>
+      {% endif %}
     {% endif %}
     {% if top_bar.claim_tel_mobile %}  
       {% set claim_text_mobile = top_bar.claim_text_mobile ? top_bar.claim_text_mobile : top_bar.claim_tel_mobile %}
@@ -208,7 +216,8 @@
     </div>
   </div>
   {% endif %}
-
+  <!-- End Deal Bar/Promo Banner/Top Bar -->
+  
   <div class="container" style="padding-top: 5px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
