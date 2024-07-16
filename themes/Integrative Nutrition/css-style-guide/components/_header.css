@@ -1356,52 +1356,28 @@ a svg {
 
 @keyframes menu-pop {
   0% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
 
   100% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
 
 @keyframes menu-out {
   0% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
 
   100% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
