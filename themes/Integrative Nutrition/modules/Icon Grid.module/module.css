@@ -1,0 +1,9 @@
+.icon-grid { display: flex; flex-wrap: wrap; justify-content: space-around; }
+.icon-grid-item { padding: 0 20px 50px; }
+.icon-grid-image { display: block; margin: 0 auto 15px; background-size: cover !important; background-position: center !important; }
+.icon-grid-item-header { margin-bottom: 10px; }
+
+@media(max-width: 767px) {
+  .icon-grid-item-header { font-size: 24px; }
+  .icon-grid-item { padding: 0 5px 50px !important; }
+}

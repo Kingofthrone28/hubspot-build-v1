@@ -1,0 +1,140 @@
+[ {
+  "id" : "7df314dc-affd-274a-9b6d-7ab412bb3f62",
+  "name" : "image_height",
+  "display_width" : null,
+  "label" : "Image Height",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "67%"
+}, {
+  "id" : "22087bc7-1eb6-3a2c-7484-cadcd822686c",
+  "name" : "sections",
+  "display_width" : null,
+  "label" : "Sections",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 3,
+    "max" : 3,
+    "sorting_label_field" : null,
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "592cf537-4c03-19b7-89cc-034c8babf00b",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto_custom_max",
+      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/c966cef5bf76909e355ccd641932a3a9.jfif",
+      "alt" : "c966cef5bf76909e355ccd641932a3a9",
+      "loading" : "lazy",
+      "width" : 2121,
+      "height" : 1414,
+      "max_width" : 2000,
+      "max_height" : 1333.3333333333333
+    }
+  }, {
+    "id" : "92f667c8-f342-e206-c712-0ca01ea76468",
+    "name" : "label_field",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "You Enroll"
+  }, {
+    "id" : "381d5b2d-dddf-bc49-9f8e-269331b2bbd3",
+    "name" : "body_field",
+    "display_width" : null,
+    "label" : "Body",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Discover the most comprehensive health coach training program that encompasses a wide array"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ {
+    "image_field" : {
+      "size_type" : "auto_custom_max",
+      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/c966cef5bf76909e355ccd641932a3a9.jfif",
+      "alt" : "c966cef5bf76909e355ccd641932a3a9",
+      "loading" : "lazy",
+      "width" : 2121,
+      "height" : 1414,
+      "max_width" : 2000,
+      "max_height" : 1333.3333333333333
+    },
+    "label_field" : "You Enroll",
+    "body_field" : "Discover the most comprehensive health coach training program that encompasses a wide array"
+  }, {
+    "image_field" : {
+      "size_type" : "auto_custom_max",
+      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/c966cef5bf76909e355ccd641932a3a9.jfif",
+      "alt" : "c966cef5bf76909e355ccd641932a3a9",
+      "loading" : "lazy",
+      "width" : 2121,
+      "height" : 1414,
+      "max_width" : 2000,
+      "max_height" : 1333.3333333333333
+    },
+    "label_field" : "You Enroll",
+    "body_field" : "Discover the most comprehensive health coach training program that encompasses a wide array"
+  }, {
+    "image_field" : {
+      "size_type" : "auto_custom_max",
+      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/c966cef5bf76909e355ccd641932a3a9.jfif",
+      "alt" : "c966cef5bf76909e355ccd641932a3a9",
+      "loading" : "lazy",
+      "width" : 2121,
+      "height" : 1414,
+      "max_width" : 2000,
+      "max_height" : 1333.3333333333333
+    },
+    "label_field" : "You Enroll",
+    "body_field" : "Discover the most comprehensive health coach training program that encompasses a wide array"
+  } ]
+}, {
+  "id" : "81cd1af4-e7e4-5dfc-1f60-cd579ca26878",
+  "name" : "first_arrow",
+  "display_width" : null,
+  "label" : "First Arrow",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "<svg width=\"100\" height=\"56\" viewBox=\"0 0 100 56\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1.76142 21.8098C16.0426 16.5986 53.1978 17.7573 80.1504 30.4453C80.5591 30.6346 80.9802 30.8119 81.3767 31.0132L84.3098 26.2333L87.9231 34.1906L93.9788 47.5211L80.1188 48.1069L70.5831 48.5179L73.7734 43.3461C73.7053 43.3065 73.6276 43.2472 73.5621 43.2003C54.5075 29.9699 37.3015 24.2695 8.36882 21.6951\" fill=\"#ED8A72\"/></svg>"
+}, {
+  "id" : "d079b5cc-abe2-a976-6f1c-fc67a5175fdd",
+  "name" : "second_arrow",
+  "display_width" : null,
+  "label" : "Second Arrow",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "<svg width=\"100\" height=\"56\" viewBox=\"0 0 100 56\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1.44062 34.1903C15.7218 39.4015 52.877 38.2428 79.8296 25.5548C80.2383 25.3655 80.6594 25.1882 81.0559 24.9869L83.989 29.7668L87.6023 21.8096L93.658 8.479L79.798 7.89322L70.2623 7.4822L73.4526 12.654C73.3845 12.6936 73.3068 12.7529 73.2413 12.7998C54.1867 26.0302 36.9807 31.7306 8.04802 34.305\" fill=\"#ED8A72\"/></svg>"
+} ]

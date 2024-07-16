@@ -1,0 +1,33 @@
+<div class="arrow-cards">
+  {% for item in module.sections %}
+  <div class="arrow-card">
+    <div class="arrow-card-img" style="background: url({{ item.image_field.src }})">
+      <div>{{ loop.index }}</div>
+    </div>
+    <div class="arrow-card-text">
+      <div class="arrow-card-title">{{ item.label_field }}</div>
+      <div>{{ item.body_field }}</div>
+    </div>
+  </div>
+  {% if loop.index == 1 %}
+    <div class="arrow-card-sep">
+      {{ module.first_arrow }}
+    </div>
+  {% elif loop.index == 2 %}
+    <div class="arrow-card-sep">
+      {{ module.second_arrow }}
+    </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  
+  .arrow-card-img { padding-top: {{ module.image_height }}; }
+  
+  {% end_scope_css %}
+  
+</style>
+{% end_require_css %}
