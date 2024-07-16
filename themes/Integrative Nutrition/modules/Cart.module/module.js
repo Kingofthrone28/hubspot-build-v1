@@ -22,6 +22,7 @@
     'the-institute-for-integrative-nutrition.myshopify.com';
   const imagePath = `https://course.${rootDomain}/hubfs/Course%20Page%20Images`;
   const gidPath = 'gid://shopify/Product/';
+  const variantGidPath = 'gid://shopify/ProductVariant/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
   const $spinner = $('.spinner');
@@ -40,6 +41,10 @@
   let agreementProducts = [];
   let checkoutURL = '';
   let currentWidth = window.innerWidth;
+
+  const cartTrackingPayload = {};
+  const coupons = new Set();
+  const currencyCode = 'USD';
 
   /**
    * Gets the value of a metafield.
@@ -338,6 +343,9 @@
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
     let checkout;
 
+    cartTrackingPayload.ecommerce = {};
+    cartTrackingPayload.ecommerce.items = [];
+
     if (cartCookie) {
       try {
         checkout = await IINShopifyClient.checkout.fetch(cartCookie);
@@ -590,6 +598,24 @@
           $${total.toLocaleString()}
         </div>
       `;
+
+      if (Array.isArray(lineItem.discountAllocations) && lineItem.discountAllocations.length) {
+        lineItem.discountAllocations.forEach((discount) => {
+          coupons.add(discount?.discountApplication?.title);
+        })
+      }
+
+      cartTrackingPayload.ecommerce.items.push({
+        'item_id': lineItem.variant.product.id.replace(gidPath, ''),
+        'item_name': lineItem.title,
+        'item_type': lineItem.productType || 'NA',
+        'variant_id': lineItem.variant.id.replace(variantGidPath, ''),
+        'discount': totalPreDiscount - total,
+        'price': totalPreDiscount,
+        'quantity': lineItem.quantity,
+        'sku': lineItem.variant.sku || 'NA',
+      })
+      
     }
 
     if (itemCount > 1) {
@@ -641,24 +667,78 @@
       const refreshedCheckout = await refreshCheckout();
 
       if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
-        return;
+        return null;
       }
 
       const updatedCheckout = await IINShopifyClient.checkout.removeLineItems(
         cartCookie,
         [lineID]
       );
-
+      
+      const deletedItem = refreshedCheckout.lineItems.find(item => item.id === lineID);
       await loadCart();
       updateCartTotal(updatedCheckout);
+      
+      return deletedItem;
     };
+
+    const trackDeleteItem = (deletedItem) =>{
+      try {
+        const deleteItemTrackingPayload = {};
+        deleteItemTrackingPayload.ecommerce = {};
+        deleteItemTrackingPayload.event = "remove_from_cart";
+        deleteItemTrackingPayload.ecommerce.items = [];
+
+        let deletedItemCouponTitle = 'NA';
+
+        const priceAmount = parseFloat(deletedItem.variant?.price?.amount || 0);
+        const totalPreDiscount = priceAmount * deletedItem.quantity;
+        let total = totalPreDiscount;
+
+        if (deletedItem.discountAllocations.length) {
+          deletedItem.discountAllocations.forEach((discount) => {
+            const discountAmount = parseFloat(
+              discount.allocatedAmount?.amount || 0
+            );
+
+            if (total > 0) {
+              total -= discountAmount * deletedItem.quantity;
+            }
+
+            deletedItemCouponTitle = discount?.discountApplication?.title;
+          });
+        }
+
+        deleteItemTrackingPayload.ecommerce.currency = currencyCode;
+        deleteItemTrackingPayload.ecommerce.value = total;
+        deleteItemTrackingPayload.ecommerce.coupon = deletedItemCouponTitle;
+        deleteItemTrackingPayload.ecommerce.items.push({
+          'item_id': deletedItem.variant.product.id.replace(gidPath, ''),
+          'item_name': deletedItem.title,
+          'item_type': deletedItem.productType || "NA",
+          'variant_id': deletedItem.variant.id.replace(variantGidPath, ''),
+          'discount': totalPreDiscount - total,
+          'price': total,
+          'quantity': deletedItem.quantity,
+          'sku': deletedItem.variant.sku || "NA"
+        });
+
+        triggerECommEvent(deleteItemTrackingPayload);
+      } catch (exception) {
+        console.error(exception);
+      }
+    }
 
     $('.jd-cart-item-delete').click(function (e) {
       e.preventDefault();
 
       const lineID = $(this).data('line');
 
-      deleteFromCart(lineID);
+      deleteFromCart(lineID).then((deletedItem) => {
+        if (deletedItem) {
+          trackDeleteItem(deletedItem);
+        }
+      });
     });
 
     /**
@@ -754,6 +834,16 @@
 
       editCart(lineID, target);
     });
+
+    try {
+      cartTrackingPayload.ecommerce.currency = currencyCode;
+      cartTrackingPayload.ecommerce.coupon = Array.from(coupons).join(';') || 'NA';
+      cartTrackingPayload.ecommerce.value = parseFloat(checkout.totalPrice.amount, 10);
+      cartTrackingPayload.event = "view_cart";
+      triggerECommEvent(cartTrackingPayload);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   /**
