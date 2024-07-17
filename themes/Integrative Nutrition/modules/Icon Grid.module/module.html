@@ -22,8 +22,8 @@
 </div>
 
 {% require_css %}
-<style>
-  {% scope_css %}  
+  <style>
+  {% scope_css %}
   .icon-grid-item {
     padding: {{ module.item_outer_padding }};
     width: {{ 100 / module.number_of_columns }}%;
@@ -39,18 +39,22 @@
   .icon-grid-item-header {
     font-size: {{ module.header_font_size }};
   }
+  {% end_scope_css %}  
 
   @media (max-width: {{ module.two_column_break }}) {
+    {% scope_css %}
     .icon-grid-item {
       width: 50%;
     }
+    {% end_scope_css %}  
   }
 
   @media (max-width: {{ module.one_column_break }}) {
+    {% scope_css %}
     .icon-grid-item {
       width: 100%;
     }
+    {% end_scope_css %}  
   }
-  {% end_scope_css %}  
 </style>
 {% end_require_css %}
