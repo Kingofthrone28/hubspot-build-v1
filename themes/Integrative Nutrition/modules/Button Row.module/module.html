@@ -34,13 +34,27 @@
 {% require_css %}
 <style>
   {% scope_css %}
-  .jd-request-btn { width: auto; margin-right: 10px; {{ module.style.spacing_field.css }} }
-  .jd-subitems a {color: var(--color--black)}
-   svg { display: inline-block;
+  svg { 
+    display: inline-block;
     vertical-align: middle;
     margin-left: 6px;
+    width: 20px; 
     height: 20px;
-    width: 20px; }
-  {% end_scope_css %} 
+  }
+
+  .jd-arrow-link::after {
+    display: none;
+  }
+
+  .jd-request-btn { 
+    margin-right: 10px; 
+    width: auto; 
+    {{ module.style.spacing_field.css }}
+  }
+
+  .jd-subitems a {
+    color: var(--color--black);
+  }
+  {% end_scope_css %}
 </style>
 {% end_require_css %}
