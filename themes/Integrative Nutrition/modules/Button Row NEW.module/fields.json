@@ -254,12 +254,26 @@
       "color" : "#FFFFFF",
       "opacity" : 100
     }
+  }, {
+    "id" : "40034c57-a1d6-55c4-dd7c-aeff5ac48bc4",
+    "name" : "button_style",
+    "display_width" : null,
+    "label" : "button_style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "hero", "Hero" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
+    "text_field" : "Button",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -270,7 +284,6 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
     "show_arrow" : true,
     "border_color" : {
       "color" : "#2d3841",
@@ -284,6 +297,10 @@
       "color" : "#2d3841",
       "opacity" : 100
     },
+    "arrow_color" : {
+      "color" : "#d72a25",
+      "opacity" : 100
+    },
     "hover_border_color" : {
       "color" : "#d72a25",
       "opacity" : 100
@@ -294,10 +311,6 @@
     },
     "hover_text_color" : {
       "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
       "opacity" : 100
     },
     "hover_arrow_color" : {
@@ -305,6 +318,7 @@
       "opacity" : 100
     }
   }, {
+    "text_field" : "Button",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -315,7 +329,6 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
     "show_arrow" : true,
     "border_color" : {
       "color" : "#2d3841",
@@ -329,6 +342,10 @@
       "color" : "#2d3841",
       "opacity" : 100
     },
+    "arrow_color" : {
+      "color" : "#d72a25",
+      "opacity" : 100
+    },
     "hover_border_color" : {
       "color" : "#d72a25",
       "opacity" : 100
@@ -339,10 +356,6 @@
     },
     "hover_text_color" : {
       "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
       "opacity" : 100
     },
     "hover_arrow_color" : {
@@ -350,6 +363,7 @@
       "opacity" : 100
     }
   }, {
+    "text_field" : "Button",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -360,7 +374,6 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
     "show_arrow" : true,
     "border_color" : {
       "color" : "#2d3841",
@@ -374,6 +387,10 @@
       "color" : "#2d3841",
       "opacity" : 100
     },
+    "arrow_color" : {
+      "color" : "#d72a25",
+      "opacity" : 100
+    },
     "hover_border_color" : {
       "color" : "#d72a25",
       "opacity" : 100
@@ -384,10 +401,6 @@
     },
     "hover_text_color" : {
       "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
       "opacity" : 100
     },
     "hover_arrow_color" : {
