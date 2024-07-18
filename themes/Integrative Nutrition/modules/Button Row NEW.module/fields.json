@@ -258,7 +258,7 @@
     "id" : "40034c57-a1d6-55c4-dd7c-aeff5ac48bc4",
     "name" : "button_style",
     "display_width" : null,
-    "label" : "button_style",
+    "label" : "Button Style",
     "required" : false,
     "locked" : false,
     "display" : "select",
@@ -273,7 +273,7 @@
   "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
-    "text_field" : "Button",
+    "text_field" : "Button Text",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
