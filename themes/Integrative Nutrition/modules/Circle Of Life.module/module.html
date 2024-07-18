@@ -1,5 +1,5 @@
 
-<form id="circle_life" class="circle_life">
+<form id="circle-life" class="circle-life">
   <div id="col-canvas" class="col-results"></div>  
    {% set topics = module.slider_options  %}
    {% for topic in topics %}
@@ -43,70 +43,75 @@
    </div>
   {# end mobile sliders #}
   {% endfor %}
-  <button type="submit" form="circle_life">Show Me My Circle</button>
+  <button type="submit" form="circle-life">Show Me My Circle</button>
 </form>
+
 <script>
-$(function(){
-  const getCategories = () => { 
-    const categoriesArray = [];
-    const $categoryElements = $('#col-canvas span');
+  $(() => {
+    const getCategories = () => {
+      const categoriesArray = [];
+      const $categoryElements = $('#col-canvas span');
 
-    if ($categoryElements.length) {
-      $categoryElements.each(function() {
-        const field = $(this).data('field');
-        const name = $(this).data('name');
-        categoriesArray.push({field: field, name: name});
-      });
-      return categoriesArray.reverse();
-    }
-  }
+      if ($categoryElements.length) {
+        $categoryElements.each(function () {
+          const field = $(this).data('field');
+          const name = $(this).data('name');
 
-   const setCopyOnSubmit = () => {
-     //switch text copy on submit
-    const submittedCopy = $('.col-text-submitted');
+          categoriesArray.push({ field, name });
+        });
 
-    const textCopy = $('.col-text');
-     
-      if (textCopy || submittedCopy) {
-          textCopy.hide();
-          submittedCopy.show();
+        return categoriesArray.reverse();
       }
-   }
-   
-   const drawLinesOnSubmit = () => {
+
+      return undefined;
+    };
+
+    const setCopyOnSubmit = () => {
+      // switch text copy on submit
+      const submittedCopy = $('.col-text-submitted');
+      const textCopy = $('.col-text');
+
+      if (textCopy || submittedCopy) {
+        textCopy.hide();
+        submittedCopy.show();
+      }
+    };
+
+    const drawLinesOnSubmit = () => {
       const baseRadius = 100;
       const scale = 2.5;
       const radius = baseRadius * scale;
       const diameter = radius * 2;
-     
-      // set ID point to draw lines from radar 
+
+      // set ID point to draw lines from radar
       const linesToDraw = $('#col-lines');
 
-      // check against category field, if key matched in session storage 
+      // check against category field, if key matched in session storage
       // display our values
       if (linesToDraw.length) {
-        const paper = Raphael("col-lines", diameter, diameter);
-        const matchedPairs = {}; 
+        const paper = Raphael('col-lines', diameter, diameter);
+        const matchedPairs = {};
         const categoryArray = getCategories();
 
         for (const topic of categoryArray) {
           const key = topic.field;
+
           if (sessionStorage.hasOwnProperty(key)) {
             matchedPairs[key] = sessionStorage.getItem(key);
           }
         }
 
-        const circleData =  [matchedPairs];
+        const circleData = [matchedPairs];
         const colValues = Object.values(circleData[0]);
 
         // we need to convert the object into an array and display the values as an integer
         // from session storage
-        const cleanColValues = colValues.map(value => parseInt(value)); 
+        const cleanColValues = colValues.map((value) => parseInt(value));
 
-        //disable click handler to prevent change of values
+        // disable click handler to prevent change of values
         $('#col-canvas').click(() => false);
-        
-        if (cleanColValues.length){
+
+        if (cleanColValues.length) {
           const radar = paper.radar(radius, radius, radius, cleanColValues, {
             armFill: 'none', // color of arm fill
             armStroke: 'none', // color of arm stroke
@@ -129,27 +134,30 @@ $(function(){
             pathFill: 'none', // color of data path fill
             pathStroke: 'black', // color of data path stroke
             pathStrokeWidth: 3, // data path stroke width
-          })
+          });
         }
       }
 
       // manipulate DOM to inject to svg path
       // remove original circles pre-submit to prevent duplicate dots.
       const $outerSvgPath = $('.svg-wrapper > svg > path');
-      const $outerCircle = $('.svg-wrapper > svg > circle'); 
+      const $outerCircle = $('.svg-wrapper > svg > circle');
 
       if ($outerSvgPath.length) {
         const $svgPath = $('#col-lines > svg').clone();
+
         $('#col-lines').replaceWith($svgPath);
-        if($outerCircle.length){
+
+        if ($outerCircle.length) {
           $($outerCircle).hide();
-        } 
+        }
       }
-      // switch text copy on submit 
+
+      // switch text copy on submit
       setCopyOnSubmit();
-     
+
       $('form > button, .sliderfield').hide();
-     
+
       // Create a media query that targets viewports less than 768px wide
       const mediaQuery = window.matchMedia('(max-width: 767px)');
 
@@ -157,39 +165,40 @@ $(function(){
       const handleViewportChange = (e) => {
         if (e.matches) {
           $('#col-canvas').addClass('show-mobile');
-        } 
-      }
+        }
+      };
+
       // Add listener for changes in the viewport using jQuery
       $(mediaQuery).on('change', handleViewportChange);
       handleViewportChange(mediaQuery);
-   
-    } 
-   
-   const storeLinesOnRefresh = () => {
-     if (sessionStorage.length) {
-       const categoryName = $('#col-canvas span');
-       const sessionKeys = Object.keys(sessionStorage);
+    };
+
+    const storeLinesOnRefresh = () => {
+      if (sessionStorage.length) {
+        const categoryName = $('#col-canvas span');
+        const sessionKeys = Object.keys(sessionStorage);
 
         sessionKeys.forEach((sessionKey) => {
-          categoryName.each(function() {
+          categoryName.each(function () {
             const topic = $(this).data('field');
+
             if (sessionKey === topic) {
               drawLinesOnSubmit();
             }
           });
         });
       }
-    }
-   
-   $('#circle-life').on('submit', function(e) {
-     e.preventDefault(); 
-     drawLinesOnSubmit();
-   })   
+    };
 
-   // Check if the page is reloaded and session storage is set
-   // we keep our lines 
-   window.onload = () => {
-    storeLinesOnRefresh();
-   };
-});  
+    $('#circle-life').on('submit', (event) => {
+      event.preventDefault();
+      drawLinesOnSubmit();
+    });
+
+    // Check if the page is reloaded and session storage is set
+    // we keep our lines
+    window.onload = () => {
+      storeLinesOnRefresh();
+    };
+  });
 </script>
