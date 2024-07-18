@@ -29,11 +29,11 @@
 </a>
 
 <style>
-  .button-{{name}} .overlay {
+  .button-{{ name }} .overlay {
     background: rgba({{ module.style.overlay_color.color|convert_rgb }}, {{ module.style.overlay_color.opacity / 100 }});
   }
   
-  .button-{{name}}:hover .overlay {
+  .button-{{ name }}:hover .overlay {
     background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});
     {% if module.style.hover_overlay_color.opacity >= 20 %}
       backdrop-filter: blur(2px);
@@ -41,7 +41,7 @@
   }
 
   @media (max-width: 992px) {
-    .button-{{name}} .overlay {
+    .button-{{ name }} .overlay {
       background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});
       {% if module.style.hover_overlay_color.opacity >= 20 %}
         backdrop-filter: blur(2px);

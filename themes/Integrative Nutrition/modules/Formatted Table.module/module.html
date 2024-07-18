@@ -205,7 +205,7 @@
   }
   
   {% if module.add_column_headers %}
-    #{{name}} > table > tbody > tr:first-child > td {
+    #{{ name }} > table > tbody > tr:first-child > td {
       padding: 10px;
       font-size: var(--font-size--legacy--8);
     }
@@ -216,16 +216,16 @@
     }
   {% endif %}
 
-  #{{name}} > table > tbody > tr:nth-child(even) {
+  #{{ name }} > table > tbody > tr:nth-child(even) {
     background: {{ module.style_1.even_bar_color.color }};
   }
   
-  #{{name}} > table > tbody > tr:nth-child(odd) {
+  #{{ name }} > table > tbody > tr:nth-child(odd) {
     background: {{ module.style_1.odd_bar_color.color }};
   }
   
-  #{{name}} td,
-  #{{name}} tr {
+  #{{ name }} td,
+  #{{ name }} tr {
     {% if module.style_1.border_style != 'full' %}
       border: none !important;
     {% else %}
@@ -237,7 +237,7 @@
   }
 
   .m-row table,
-  #{{name}} table table {
+  #{{ name }} table table {
     border: none !important;
   }
   
@@ -246,7 +246,7 @@
   }
   
   .m-row table td,
-  #{{name}} table table td {
+  #{{ name }} table table td {
     padding: 1px !important;
   }
   

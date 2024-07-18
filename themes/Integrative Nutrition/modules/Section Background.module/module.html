@@ -45,19 +45,24 @@
         top: {{ module.mobile.distance_from_top * -1 }}px !important;
         bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
         background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
-        background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
       }
       
       .hs-content-id-137558861388 #bg_{{ name }} {
         top: {{ module.mobile.distance_from_top * -1 }}px !important;
         bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
-        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
       }
 
       .hs-content-id-151881679191 #bg_{{ name }} {
         top: {{ module.mobile.distance_from_top * -1 }}px !important;
         bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
-        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
       }
       
       .homepage-section #bg_{{ name }} {

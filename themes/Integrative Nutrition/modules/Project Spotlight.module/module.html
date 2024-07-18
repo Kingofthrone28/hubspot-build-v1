@@ -117,35 +117,35 @@
 <style>
   {% if module.show_content_on_side %}
     {% if module.content_side == 'right' %}
-      #rm-{{name}} .rm-slider .slick-list {
+      #rm-{{ name }} .rm-slider .slick-list {
         padding: 0 0 0 20% !important;
       }
     {% else %}
-      #rm-{{name}} .rm-slider .slick-list {
+      #rm-{{ name }} .rm-slider .slick-list {
         padding: 0 20% 0 0 !important;
       }
     {% endif %}
   {% endif %}
 
   @media (max-width: 1000px) {
-    #rm-{{name}} .rm-slider .slick-list {
+    #rm-{{ n ame}} .rm-slider .slick-list {
       padding: 0 10% !important;
     }
   }
 </style>
 {% if module.style.slider %}
 <script>
-$(document).ready(function() {
+$(function () {
   {% if module.show_content_on_side %}
-  $('#{{name}} .video-slider').slick({
-      infinite: true,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      centerPadding: '10%',
-      centerMode: false,
-      arrows: false,
+  $('#{{ name }} .video-slider').slick({
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    centerPadding: '10%',
+    centerMode: false,
+    arrows: false,
     dots: true,
-    appendDots: $('#{{name}}-dots'),
+    appendDots: $('#{{ name }}-dots'),
     responsive: [
       {
         breakpoint: 767,
@@ -156,13 +156,13 @@ $(document).ready(function() {
     ]
     });
   {% else %}
-  $('#{{name}} .video-slider').slick({
-      infinite: true,
-      slidesToShow: {{ module.style.slider_options.slides_to_show }},
-      slidesToScroll: 1,
-      {% if module.style.slider_options.center_focus_slide %}centerPadding: '10%',
-      centerMode: true,{% endif %}
-      arrows: false,
+  $('#{{ name }} .video-slider').slick({
+    infinite: true,
+    slidesToShow: {{ module.style.slider_options.slides_to_show }},
+    slidesToScroll: 1,
+    {% if module.style.slider_options.center_focus_slide %}centerPadding: '10%',
+    centerMode: true,{% endif %}
+    arrows: false,
     dots: true,
     responsive: [
       {
