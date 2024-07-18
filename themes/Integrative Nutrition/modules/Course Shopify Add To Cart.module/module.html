@@ -10,7 +10,6 @@
   } %}
   (function () {
     const jsonData = JSON.stringify({{ raw_data|tojson }});
-
-    window.sessionStorage.setItem('course_shopify_add_to_cart', jsonData);
+    IIN.shopify.setAddToCartSessionData(jsonData)
   })();
 </script>

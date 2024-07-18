@@ -1,5 +1,6 @@
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
+
 $(function(){
   $('.load-parent').each(function() {
     var load_type = $(this).data('load'),
@@ -8,12 +9,13 @@ $(function(){
   });
   {% include './_animation.js' %}
 });
+
 /* Set inferred time zone */
-$(document).ready(function() {
+$(function() {
   setInferredTimeZone();
 });
 
-$(document).ready(function() {
+$(function() {
   var currentDomain = window.location.hostname;
   var language = 'preferred_language__c';
   // Check if the current domain includes the string "example"
@@ -30,7 +32,7 @@ $(document).ready(function() {
 
  // Populate adwords field with Full before for submission 
   // Get the current host domain
- $(document).ready(function() {
+ $(function() {
   const getCurrentHost = window.location.href;
   const hostDomain = getCurrentHost;
    setTimeout(function() {
@@ -43,7 +45,7 @@ $(document).ready(function() {
    }, 2000);
   });
 
-$(document).ready(function() {
+$(function() {
   let previousScrollTop = 0;
   $(window).on('scroll', function() {
       const currentScrollTop = $(this).scrollTop();
@@ -65,7 +67,7 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function() {
+$(function() {
   /* Team Card */
   $('.team-bio-pop-wrap').each(function() {
     $(this).appendTo($('body'));
@@ -714,5 +716,3 @@ $(window).scroll(function(){
 //   });
 
 });
-
-

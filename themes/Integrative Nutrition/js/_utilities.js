@@ -22,6 +22,15 @@ IIN.utilities = {
   },
 
   /**
+   * Utility function to check for a non-empty string
+   * @param {*} value 
+   * @returns {boolean}
+   */
+  isStringWithLength(value) {
+    return typeof value === 'string' && Boolean(value.length);
+  },
+
+  /**
    * Makes a key/value string from an object.
    * @param {Object} data
    * @param {string} [separator]

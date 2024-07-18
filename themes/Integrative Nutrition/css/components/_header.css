@@ -742,16 +742,26 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
   margin-right: 20px;
 }
 
-a.deal-bar-btn {
-  color: #fff;
-  border: 1px solid #fff;
+a.deal-bar-btn,
+button.deal-bar-btn {
+  color: var(--color--white);
+  border: 1px solid var(--color--white);
   padding: 0 4px;
   border-radius: 5px;
 }
 
-a.deal-bar-btn:hover {
-  color: #fff;
+a.deal-bar-btn:hover,
+a.deal-bar-btn:focus,
+button.deal-bar-btn:hover,
+button.deal-bar-btn:focus {
+  color: var(--color--white);
   text-decoration: none;
+}
+
+/* Mimic styling for the anchor tag we effectively replace */
+button.deal-bar-btn {
+  background: transparent;
+  line-height: var(--line-height--legacy--7);
 }
 
 svg.deal-bar-close {

@@ -1,0 +1,331 @@
+/**
+ * SM-1155: Promo Banner: (jira) aka .deal-bar (html) aka top bar (hubdb)
+ * Utilities for interacting with the shopify graphql admin api
+ * Shopify client lib docs: https://shopify.github.io/js-buy-sdk/
+ * Github source: https://github.com/Shopify/js-buy-sdk
+ */
+
+(() => {
+  const addToCartKey = 'course_shopify_add_to_cart';
+  const { isStringWithLength } = IIN.utilities;
+
+  /**
+   * Get Shopify module data from storage
+   * @returns {Object|undefined}
+   */
+  const getAddToCartSessionData = () =>
+    window.sessionStorage.getItem(addToCartKey);
+
+  /**
+   * Set shopify add to cart session data
+   * @param {Object} data
+   */
+  const setAddToCartSessionData = (data) => {
+    window.sessionStorage.setItem(addToCartKey, data);
+  };
+
+  /** Go to the cart page on the current domain */
+  const goToCart = () => {
+    window.location.href = `${window.location.origin}/cart`;
+  };
+
+  /**
+   * Get the shopify cart cookie as a string
+   * NB: We use || undefined to return undefined instead of an empty string
+   * in order to take advantage of default parameters.
+   * @returns {string|undefined}
+   */
+  const getCheckoutCookie = () =>
+    IIN.cookies.getCookieString('shopifyCart') || undefined;
+
+  /**
+   * Get the shopify checkout object from our cookie
+   * @returns {Promise<object|undefined>} checkout object from shopify client
+   */
+  const getCheckoutById = async (checkoutId = getCheckoutCookie()) => {
+    if (!isStringWithLength(checkoutId)) {
+      return undefined;
+    }
+
+    return IINShopifyClient.checkout.fetch(checkoutId);
+  };
+
+  /**
+   * Search html document for the promo checkout button
+   * @param {Document} context
+   * @returns {HTMLButtonElement|null}
+   */
+  const getPromoCheckoutButton = (context = window.document) =>
+    context.querySelector('.deal-bar .deal-bar-inner button.deal-bar-btn');
+
+  /**
+   * Examine line items in a checkout to find a product id
+   * @param {Object} checkout
+   * @param {string} id
+   * @returns {boolean}
+   */
+  const isProductInCheckout = (checkout, id) => {
+    if (!checkout) {
+      throw new Error('checkout is required');
+    }
+
+    if (!isStringWithLength(id)) {
+      throw new Error('id is a required string');
+    }
+
+    const hasProduct = checkout.lineItems?.some(
+      ({ variant }) => variant?.product?.id === id,
+    );
+
+    return Boolean(hasProduct);
+  };
+
+  /**
+   * Call shopify to update the cart with a new line item
+   * @param {Object[]} lineItems
+   * @param {string} checkoutId cart as string
+   * @returns {Promise<object|undefined>}
+   */
+  const addLineItemsToCheckout = async (
+    lineItems,
+    checkoutId = getCheckoutCookie(),
+  ) => {
+    if (!Array.isArray(lineItems)) {
+      throw new Error(`lineItems must be an array`);
+    }
+
+    if (!lineItems.length) {
+      throw new Error('No line items passed to add');
+    }
+
+    if (!isStringWithLength(checkoutId)) {
+      return undefined;
+    }
+
+    return IINShopifyClient.checkout.addLineItems(checkoutId, lineItems);
+  };
+
+  /**
+   * Create a variant line item for checkout
+   * @param {string} id shopify id, e.g. gid://shopify/ProductVariant/1234
+   * @returns {Object}
+   */
+  const createCheckoutLineItem = (id) => {
+    if (!isStringWithLength(id)) {
+      throw new Error('id is a required string');
+    }
+
+    return {
+      variantId: id,
+      quantity: 1,
+    };
+  };
+
+  /**
+   * Attempt to get the promo data node from the DOM
+   * @param {Document} context
+   * @returns {HTMLElement|null}
+   */
+  const getPromoElement = (context = window.document) =>
+    context.getElementById('deal-bar-promo-data');
+
+  /**
+   * Attempt to read the promo code from promo data
+   * @param {HTMLElement} context
+   * @returns {string[]|undefined}
+   */
+  const getPromoCodes = (dataElement = getPromoElement()) => {
+    const codeString = dataElement?.getAttribute('data-promo-code');
+
+    if (!isStringWithLength(codeString)) {
+      return undefined;
+    }
+
+    return codeString.split(',').filter(Boolean);
+  };
+
+  /**
+   * Attempt to read the promo product ids from promo data
+   * @param {HTMLElement} context
+   * @returns {string[]|undefined}
+   */
+  const getPromoProductIds = (dataElement = getPromoElement()) => {
+    const idString = dataElement?.getAttribute('data-product-ids');
+
+    if (!isStringWithLength(idString)) {
+      return undefined;
+    }
+
+    return idString.split(',').filter(Boolean);
+  };
+
+  /**
+   * Add a discount to a checkout
+   * @param {string} checkoutId
+   * @param {string} discountCode
+   * @returns {Promise<object>}
+   */
+  const addDiscountToCheckout = async (checkoutId, discountCode) => {
+    if (!isStringWithLength(discountCode)) {
+      throw new Error('Discount code string is required');
+    }
+
+    if (!isStringWithLength(checkoutId)) {
+      throw new Error('Checkout id is a required string');
+    }
+
+    return IINShopifyClient.checkout.addDiscount(checkoutId, discountCode);
+  };
+
+  /**
+   *
+   * @param {string} id
+   * @returns {string}
+   */
+  const buildGlobalProductId = (id) => {
+    if (!isStringWithLength(id)) {
+      throw new Error('id is a required string');
+    }
+
+    return `gid://shopify/Product/${id}`;
+  };
+
+  /**
+   * Get a shopify product with a global id
+   * @param {string} globalId Shopify product id
+   * @returns {Promise<object>}
+   */
+  const fetchProduct = async (globalId) => {
+    if (!isStringWithLength(globalId)) {
+      throw new Error('globalId is a required string');
+    }
+
+    return IINShopifyClient.product.fetch(globalId);
+  };
+
+  /**
+   *
+   * @param {Object} product
+   * @returns {Object|undefined}
+   */
+  const getFirstAvailableVariant = (product) =>
+    product?.variants?.find(({ available }) => available);
+
+  /**
+   * Check if a shopify cart has a particular promotion applied
+   * @param {Object} checkout Shopify checkout
+   * @param {string} promoCode promo code
+   * @returns {boolean}
+   */
+  const checkoutHasPromo = (checkout, promoCode) => {
+    if (!isStringWithLength(promoCode)) {
+      throw new Error('promoCode is a required string');
+    }
+
+    const hasPromo = checkout?.discountApplications.some(
+      ({ code }) => code === promoCode,
+    );
+
+    return Boolean(hasPromo);
+  };
+
+  /**
+   * Create async function to do the add to cart logic
+   * @param {Object[]} lineItems
+   * @param {string[]} promoCodes
+   */
+  const updateAndGoToCart = async (promoProducts, promoCodes) => {
+    try {
+      // Fetch the current checkout
+      const cartId = getCheckoutCookie();
+      const checkout = await getCheckoutById(cartId);
+      const checkoutId = checkout.id;
+      const codesToAdd = promoCodes.reduce((codes, code) => {
+        if (!checkoutHasPromo(checkout, code)) {
+          codes.push(code);
+        }
+
+        return codes;
+      }, []);
+
+      const lineItemsToAdd = promoProducts.reduce((products, product) => {
+        if (!isProductInCheckout(checkout, product.id)) {
+          const variant = getFirstAvailableVariant(product);
+
+          if (variant) {
+            const lineItem = createCheckoutLineItem(variant.id);
+            products.push(lineItem);
+          }
+        }
+
+        return products;
+      }, []);
+
+      if (lineItemsToAdd.length) {
+        await addLineItemsToCheckout(lineItemsToAdd, checkoutId);
+      }
+
+      if (codesToAdd.length) {
+        await addDiscountToCheckout(checkoutId, promoCodes[0]);
+      }
+
+      goToCart();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  /**
+   *
+   * @param {HTMLButtonElement} button the promo banner checkout button
+   */
+  const updatePromoCheckoutButton = async () => {
+    const button = getPromoCheckoutButton();
+
+    if (!button) {
+      return;
+    }
+
+    try {
+      // Grab promo data from the DOM
+      const promoElement = getPromoElement();
+      const promoCodes = getPromoCodes(promoElement);
+      const productIds = getPromoProductIds(promoElement);
+
+      // If we have the deal bar button, we expect product ids
+      if (!productIds.length) {
+        throw new Error('Failed to find product Ids');
+      }
+
+      const globalIds = productIds.map(buildGlobalProductId);
+
+      // Fetch product data
+      const productPromises = globalIds.reduce((array, globalId) => {
+        array.push(fetchProduct(globalId));
+        return array;
+      }, []);
+
+      const promoProducts = await Promise.all(productPromises);
+
+      // Add click listener
+      button.addEventListener('click', () => {
+        updateAndGoToCart(promoProducts, promoCodes);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  IIN.shopify = {
+    addLineItemsToCheckout,
+    buildGlobalProductId,
+    createCheckoutLineItem,
+    getAddToCartSessionData,
+    getCheckoutCookie,
+    getFirstAvailableVariant,
+    getPromoCheckoutButton,
+    isProductInCheckout,
+    setAddToCartSessionData,
+    updatePromoCheckoutButton,
+  };
+})();

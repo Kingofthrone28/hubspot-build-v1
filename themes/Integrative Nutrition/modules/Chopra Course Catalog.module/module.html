@@ -33,7 +33,7 @@
         <div id="course-pop-Topics" class="course-pop-filter-choice-section" style="display:block">
           <div class="course-pop-filter-selected">Topics</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'course_topics') %}
+            {% set topicInfo = hubdb_table_column('course_catalog_chopra', 'course_topics') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="topics_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Topics" value="{{option.name}}" {% if request.query_dict.topic && request.query_dict.topic|regex_replace("[^A-Za-z]", '') == option.name|regex_replace("[^A-Za-z]", '') %}checked{% endif %} />
@@ -45,7 +45,7 @@
         <div id="course-pop-Levels" class="course-pop-filter-choice-section">
           <div class="course-pop-filter-selected">Levels</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'levels') %}
+            {% set topicInfo = hubdb_table_column('course_catalog_chopra', 'levels') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="levels_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Levels" value="{{option.name}}" />
@@ -57,7 +57,7 @@
         <div id="course-pop-Type" class="course-pop-filter-choice-section">
           <div class="course-pop-filter-selected">Type</div>
           <div class="course-pop-filter-choices">
-            {% set topicInfo = hubdb_table_column(7593814, 'type') %}
+            {% set topicInfo = hubdb_table_column('course_catalog_chopra', 'type') %}
             {% for option in topicInfo.options %}
             <div>
               <input id="type_{{option.name|regex_replace("[^A-Za-z]", '')}}" type="checkbox" name="Type" value="{{option.name}}" checked />
@@ -87,9 +87,9 @@
     {% do rows.append(row.columns) %}
   {% endfor %}
 {% elif module.category_filter %}
-  {% set rows = hubdb_table_rows(7593814, 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
+  {% set rows = hubdb_table_rows('course_catalog_chopra', 'limit=' + module.limit + '&category__in=' + module.category_filter) %}
 {% else %}
-  {% set rows = hubdb_table_rows(7593814) %}
+  {% set rows = hubdb_table_rows('course_catalog_chopra') %}
 {% endif %}
   
 {% for row in rows %}
@@ -205,8 +205,10 @@
 {% require_css %}
 <style>
   {% scope_css %}
-  @media(max-width: 1024px) and (min-width: 768px) {
-    .course-card-wrap { width: 33.33%; }
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .course-card-wrap {
+      width: 33.33%;
+    }
   }
   {% end_scope_css %}
 </style>
@@ -216,68 +218,79 @@
 {% require_js %}
 <script>
   $('.course-filter-pop-wrap').appendTo('body');
-  
+
   function filterResults(topicInit) {
     $('.course-catalog-no-results').hide();
     const checked = $('.course-filter-pop-wrap input[type=checkbox]:checked');
-    if(checked.length == 0) {
-      $('.course-card-wrap').show();
-    } else {
-      $('.course-card-wrap').show();
+    $('.course-card-wrap').show();
+    if (checked.length !== 0) {
       const filters = {};
-      checked.each(function() {
-        if(!filters[$(this).attr('name')]) {
+      checked.each(function () {
+        if (!filters[$(this).attr('name')]) {
           filters[$(this).attr('name')] = [];
         }
         filters[$(this).attr('name')].push($(this).val());
       });
-      for(const filter in filters) {
-        $('.course-card-wrap').each(function() {
+      for (const filter in filters) {
+        $('.course-card-wrap').each(function () {
           let show = false;
-          for(const c of filters[filter]) {
-            if($(this).data(filter.toLowerCase()).includes(c)) {
+          for (const c of filters[filter]) {
+            if ($(this).data(filter.toLowerCase()).includes(c)) {
               show = true;
             }
           }
-          if(!show) {
+          if (!show) {
             $(this).hide();
           }
         });
       }
-      if(!topicInit && !$('.course-card:visible').length) {
+      if (!topicInit && !$('.course-card:visible').length) {
         $('.course-catalog-no-results').show();
       }
     }
     $('.course-filter-pop-wrap').hide();
-    if(!topicInit) {
-      $("html, body").animate({ scrollTop: $('.course-catalog').offset().top - 240 }, 300);
+    if (!topicInit) {
+      $('html, body').animate(
+        { scrollTop: $('.course-catalog').offset().top - 240 },
+        300,
+      );
     }
   }
-  
-  $(document).ready(function() {
+
+  $(() => {
     {% if request.query_dict.topic %}
       filterResults(true);
     {% endif %}
+
     $('.course-catalog').show();
-    
-    $('.course-catalog-filter').click(function() {
+
+    $('.course-catalog-filter').click(() => {
       $('.course-filter-pop-wrap').css('display', 'flex');
     });
-    $('.course-filter-pop-close').click(function() {
+
+    $('.course-filter-pop-close').click(() => {
       $('.course-filter-pop-wrap').hide();
     });
-    $('.course-pop-filter-label').click(function() {
+
+    $('.course-pop-filter-label').click(function () {
       $('.course-pop-filter-label').removeClass('course-pop-filter-active');
       $(this).addClass('course-pop-filter-active');
       $('.course-pop-filter-choice-section').hide();
-      $('#course-pop-' + $(this).text()).show();
+      $(`#course-pop-${$(this).text()}`).show();
     });
-    $('#course-filter-save').click(function() { filterResults(false) });
-    $('#course-filter-clear').click(function() {
-      $('.course-filter-pop-wrap input[type=checkbox]').prop( "checked", false );
+
+    $('#course-filter-save').click(() => {
+      filterResults(false);
+    });
+
+    $('#course-filter-clear').click(() => {
+      $('.course-filter-pop-wrap input[type=checkbox]').prop('checked', false);
       $('.course-card-wrap').show();
       $('.course-filter-pop-wrap').hide();
-      $("html, body").animate({ scrollTop: $('.course-catalog').offset().top - 240 }, 300);
+      $('html, body').animate(
+        { scrollTop: $('.course-catalog').offset().top - 240 },
+        300,
+      );
     });
   });
 </script>

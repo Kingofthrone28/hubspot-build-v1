@@ -55,10 +55,14 @@
   {% scope_css %}
   svg { 
     display: inline-block;
-    vertical-align: middle;
     margin-left: 6px;
     width: 20px; 
     height: 20px;
+    vertical-align: middle;
+  }
+
+  .jd-arrow-link::after {
+    display: none;
   }
 
   .jd-request-btn { 
@@ -70,6 +74,6 @@
   .jd-subitems a {
     color: var(--color--black);
   }
-  {% end_scope_css %} 
+{% end_scope_css %} 
 </style>
 {% end_require_css %}

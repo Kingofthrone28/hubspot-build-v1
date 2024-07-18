@@ -13,11 +13,13 @@
 {% require_css %}
 <style>
   {% scope_css %}
+  .video-thumb-embed {
+    padding-top: {{ module.container_height }};
+  }
   
-  .video-thumb-embed { padding-top: {{ module.container_height }}; }
-  .video-thumb-embed-thumb { background-image: url({{ module.thumb.src }}); }
-  
+  .video-thumb-embed-thumb {
+    background-image: url({{ module.thumb.src }});
+  }
   {% end_scope_css %}
-  
 </style>
 {% end_require_css %}

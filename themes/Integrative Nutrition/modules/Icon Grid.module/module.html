@@ -1,0 +1,60 @@
+<div class="icon-grid">
+  {% for item in module.items %}
+  <div class="icon-grid-item">
+    {% if item.image_link.url.href %}
+    <a
+      href="{{ item.image_link.url.href }}"
+      {% if item.image_link.open_in_new_tab %}target="_blank"{% endif %}
+      class="icon-grid-image"
+      style="background:url({{ item.image_field.src }})"
+    ></a>
+    {% else %}
+    <div class="icon-grid-image" style="background:url({{ item.image_field.src }})"></div>
+    {% endif %}
+    {% if item.header %}
+      <div class="icon-grid-item-header">{{ item.header }}</div>
+    {% endif %}
+    {% if item.sub_header %}
+      <div>{{ item.sub_header }}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% require_css %}
+  <style>
+  {% scope_css %}
+  .icon-grid-item {
+    padding: {{ module.item_outer_padding }};
+    width: {{ 100 / module.number_of_columns }}%;
+    text-align: {{ module.text_align }};
+  }
+
+  .icon-grid-image {
+    padding-top: {{ module.image_height }};
+    border-radius: {{ module.border_radius }};
+    width: {{ module.image_width }};
+  }
+  
+  .icon-grid-item-header {
+    font-size: {{ module.header_font_size }};
+  }
+  {% end_scope_css %}  
+
+  @media (max-width: {{ module.two_column_break }}) {
+    {% scope_css %}
+    .icon-grid-item {
+      width: 50%;
+    }
+    {% end_scope_css %}  
+  }
+
+  @media (max-width: {{ module.one_column_break }}) {
+    {% scope_css %}
+    .icon-grid-item {
+      width: 100%;
+    }
+    {% end_scope_css %}  
+  }
+</style>
+{% end_require_css %}

@@ -79,16 +79,16 @@
     </div>
   </div>
 {% endif %}
+
 {% require_css %}
   <style>
     #oembed_container-{{ name }} .oembed_custom-thumbnail_icon {
       border: 2px solid {{ module.style_options.oembed_thumbnail_play_button_color.color }};
     }
+
     #oembed_container-{{ name }} .oembed_custom-thumbnail_icon svg {
       fill: {{ module.style_options.oembed_thumbnail_play_button_color.color }};
     }
   </style>
-
 {% end_require_css %}
-
 </div>
