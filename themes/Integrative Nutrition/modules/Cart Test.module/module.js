@@ -61,7 +61,7 @@
 
     return value;
   };
-
+  
   /**
    * Gets the URL to the Shopify store, potentially with a redirect.
    * @returns {string} A URL.
@@ -586,7 +586,7 @@
       `;
 
       itemSummaryHTML += `
-        <div style="font-size: 20px;">
+        <div style="font-size: var(--font-size--legacy--11);">
           $${total.toLocaleString()}
         </div>
       `;
@@ -594,7 +594,7 @@
 
     if (itemCount > 1) {
       itemSummaryHTML += `
-        <div style="font-size: 20px; border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px">
+        <div style="font-size: var(--font-size--legacy--11); border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px">
           $${parseFloat(checkout.totalPrice.amount).toLocaleString()}
         </div>
       `;

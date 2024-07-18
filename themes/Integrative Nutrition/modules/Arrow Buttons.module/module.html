@@ -39,13 +39,18 @@
 {% endfor %}
 </div>
 
-
 {% require_css %}
 <style>
   {% scope_css %}
-  .jd-request-btn { width: auto; margin-right: 10px; {{ module.style.spacing_field.css }} }
-  .jd-subitems a {color: var(--color--black)}
+  .jd-request-btn {
+    margin-right: 10px;
+    width: auto;
+    {{ module.style.spacing_field.css }}
+  }
+
+  .jd-subitems a {
+    color: var(--color--black);
+  }
   {% end_scope_css %} 
 </style>
 {% end_require_css %}
-

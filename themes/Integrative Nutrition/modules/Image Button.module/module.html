@@ -27,10 +27,25 @@
   </div>
   {% endif %}
 </a>
+
 <style>
-  .button-{{name}} .overlay { background: rgba({{ module.style.overlay_color.color|convert_rgb }}, {{ module.style.overlay_color.opacity / 100 }}); }
-  .button-{{name}}:hover .overlay { background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});{% if module.style.hover_overlay_color.opacity >= 20 %}backdrop-filter: blur(2px);{% endif %} }
+  .button-{{ name }} .overlay {
+    background: rgba({{ module.style.overlay_color.color|convert_rgb }}, {{ module.style.overlay_color.opacity / 100 }});
+  }
+  
+  .button-{{ name }}:hover .overlay {
+    background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});
+    {% if module.style.hover_overlay_color.opacity >= 20 %}
+      backdrop-filter: blur(2px);
+    {% endif %}
+  }
+
   @media (max-width: 992px) {
-    .button-{{name}} .overlay { background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});{% if module.style.hover_overlay_color.opacity >= 20 %}backdrop-filter: blur(2px);{% endif %} }
+    .button-{{ name }} .overlay {
+      background: rgba({{ module.style.hover_overlay_color.color|convert_rgb }}, {{ module.style.hover_overlay_color.opacity / 100 }});
+      {% if module.style.hover_overlay_color.opacity >= 20 %}
+        backdrop-filter: blur(2px);
+      {% endif %}
+    }
   }
 </style>
