@@ -23,7 +23,7 @@ IIN.utilities = {
 
   /**
    * Utility function to check for a non-empty string
-   * @param {*} value 
+   * @param {*} value
    * @returns {boolean}
    */
   isStringWithLength(value) {

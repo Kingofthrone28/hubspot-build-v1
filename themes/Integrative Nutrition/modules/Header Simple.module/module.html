@@ -125,7 +125,7 @@
     }
     dealTimeDif();
     setInterval(dealTimeDif, 1000);
-    $(document).ready(function() {
+    $(function() {
       $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
       $(window).on('resize', function() {
         $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
@@ -254,7 +254,7 @@
 
 {% require_js %}
 <script>
-$(document).ready(function() {
+$(function() {
   $(document).click(function(e) {
     if(e.target.className != 'jd-nav-item-title') {
       $('.jd-nav-item').removeClass('jd-nav-show');

@@ -69,12 +69,12 @@ const setShopifyCartCookie = async (checkout, skipHubSpotEmail) => {
 
     const updatedCheckout = await IINShopifyClient.checkout.updateEmail(
       cartCookie,
-      email
+      email,
     );
 
     const updatedCheckoutURL = updatedCheckout.webUrl.replace(
       clientDomain,
-      storeDomain
+      storeDomain,
     );
 
     const updatedEncodedID = encodeURIComponent(updatedCheckout.id);
@@ -169,7 +169,7 @@ const updateCartAttributes = async () => {
   try {
     await IINShopifyClient.checkout.updateAttributes(
       cartCookie,
-      cartAttributes
+      cartAttributes,
     );
   } catch (e) {
     console.error(e);
@@ -248,7 +248,7 @@ $(() => {
  * use a cached version of the page without re-executing the JavaScript. When
  * these types of navigations occur, the checkout should be refreshed and the
  * DOM should be updated.
- */ 
+ */
 window.addEventListener('pageshow', (event) => {
   const navigationType = performance.getEntriesByType('navigation')[0].type;
 

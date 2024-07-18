@@ -54,7 +54,7 @@
    */
   const getMetafield = (data, fieldName) => {
     const matchedField = data?.metafields.find(
-      (metafield) => metafield?.key && metafield.key === fieldName
+      (metafield) => metafield?.key && metafield.key === fieldName,
     );
 
     const matchedValue = matchedField?.value;
@@ -232,7 +232,7 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
           product.addConnection(
             'variants',
@@ -254,24 +254,23 @@
                 (metafield) => {
                   metafield.add('key');
                   metafield.add('value');
-                }
+                },
               );
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         for (const tag of product.tags) {
           if (
             agreementTags.some(
-              (agreementTag) => tag.value === agreementTag.name
+              (agreementTag) => tag.value === agreementTag.name,
             )
           ) {
             const adjustedProduct = { ...product };
@@ -286,7 +285,7 @@
               if (lineItem.discountAllocations.length) {
                 lineItem.discountAllocations.forEach((allocation) => {
                   const discountAmount = parseFloat(
-                    allocation?.allocatedAmount?.amount || 0
+                    allocation?.allocatedAmount?.amount || 0,
                   );
 
                   totalDiscount -= discountAmount * lineItem.quantity;
@@ -294,13 +293,13 @@
               }
 
               adjustedProduct.price = parseFloat(
-                lineItem.variant?.price?.amount || 0
+                lineItem.variant?.price?.amount || 0,
               );
 
               adjustedProduct.totalDiscount = totalDiscount;
 
               const selectedVariant = product.variants.find(
-                (productVariant) => productVariant.id === lineItem.variant.id
+                (productVariant) => productVariant.id === lineItem.variant.id,
               );
 
               if (selectedVariant) {
@@ -315,7 +314,7 @@
       });
 
       const agreementCookie = IIN.cookies.getCookieString(
-        'enrollmentAgreementQuery'
+        'enrollmentAgreementQuery',
       );
 
       if (agreementProducts.length && !agreementCookie) {
@@ -426,20 +425,19 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         const matchedItem = checkout.lineItems.find(
-          (lineItem) => lineItem.variant.product.id === product.id
+          (lineItem) => lineItem.variant.product.id === product.id,
         );
 
         if (!matchedItem) {
@@ -493,7 +491,7 @@
       if (lineItem.discountAllocations.length) {
         lineItem.discountAllocations.forEach((discount) => {
           const discountAmount = parseFloat(
-            discount.allocatedAmount?.amount || 0
+            discount.allocatedAmount?.amount || 0,
           );
 
           if (total > 0) {
