@@ -23,10 +23,25 @@
     </a>
   {% endif %}
   <style>
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button { background: {{item.bg_color.color}} !important; border: 2px solid {{item.border_color.color}} !important; color: {{ item.text_color.color}} !important; }
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button:hover { background: {{item.hover_bg_color.color}} !important; border: 2px solid {{item.hover_border_color.color}} !important; color: {{ item.hover_text_color.color}} !important; }
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button svg path { fill: {{ item.text_color.color}} !important; }
-    #{{name}}_btn_{{loop.index}}.jd-request-btn.hs-button:hover svg path { fill: {{ item.hover_text_color.color}} !important; }
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button {
+      background: {{ item.bg_color.color }} !important;
+      border: 2px solid {{ item.border_color.color }} !important;
+      color: {{ item.text_color.color }} !important;
+    }
+    
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button:hover {
+      background: {{ item.hover_bg_color.color }} !important;
+      border: 2px solid {{ item.hover_border_color.color }} !important;
+      color: {{ item.hover_text_color.color }} !important;
+    }
+    
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button svg path {
+      fill: {{ item.text_color.color }} !important;
+    }
+    
+    #{{ name }}_btn_{{ loop.index }}.jd-request-btn.hs-button:hover svg path {
+      fill: {{ item.hover_text_color.color }} !important;
+    }
   </style>
 {% endfor %}
 </div>
@@ -34,13 +49,27 @@
 {% require_css %}
 <style>
   {% scope_css %}
-  .jd-request-btn { width: auto; margin-right: 10px; {{ module.style.spacing_field.css }} }
-  .jd-subitems a {color: var(--color--black)}
-   svg { display: inline-block;
-    vertical-align: middle;
+  svg { 
+    display: inline-block;
     margin-left: 6px;
+    width: 20px; 
     height: 20px;
-    width: 20px; }
-  {% end_scope_css %} 
+    vertical-align: middle;
+  }
+
+  .jd-arrow-link::after {
+    display: none;
+  }
+
+  .jd-request-btn { 
+    margin-right: 10px; 
+    width: auto; 
+    {{ module.style.spacing_field.css }}
+  }
+
+  .jd-subitems a {
+    color: var(--color--black);
+  }
+  {% end_scope_css %}
 </style>
 {% end_require_css %}

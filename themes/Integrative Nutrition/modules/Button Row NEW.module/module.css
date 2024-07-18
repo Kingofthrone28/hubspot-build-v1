@@ -1,7 +1,3 @@
-.jd-arrow-link::after {
-  display: none;
-}
-
 .jd-request-btn i {
   transition: 0.2s all ease-in-out;
 }

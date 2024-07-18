@@ -116,14 +116,21 @@
 
 <style>
   {% if module.show_content_on_side %}
-  {% if module.content_side == 'right' %}
-  #rm-{{name}} .rm-slider .slick-list{padding:0 0 0 20% !important;}
-  {% else %}
-  #rm-{{name}} .rm-slider .slick-list{padding:0 20% 0 0 !important;}
+    {% if module.content_side == 'right' %}
+      #rm-{{name}} .rm-slider .slick-list {
+        padding: 0 0 0 20% !important;
+      }
+    {% else %}
+      #rm-{{name}} .rm-slider .slick-list {
+        padding: 0 20% 0 0 !important;
+      }
+    {% endif %}
   {% endif %}
-  {% endif %}
-  @media(max-width: 1000px) {
-    #rm-{{name}} .rm-slider .slick-list{padding:0 10% !important;}
+
+  @media (max-width: 1000px) {
+    #rm-{{name}} .rm-slider .slick-list {
+      padding: 0 10% !important;
+    }
   }
 </style>
 {% if module.style.slider %}
