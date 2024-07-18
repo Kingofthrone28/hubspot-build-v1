@@ -55,9 +55,8 @@
    * @param {Document} context
    * @returns {HTMLButtonElement|null}
    */
-  const getPromoCheckoutButton = (context = window.document) => context.querySelector(
-      '.deal-bar .deal-bar-inner button.deal-bar-btn',
-    );
+  const getPromoCheckoutButton = (context = window.document) =>
+    context.querySelector('.deal-bar .deal-bar-inner button.deal-bar-btn');
 
   /**
    * Examine line items in a checkout to find a product id
@@ -133,15 +132,22 @@
   /**
    * Attempt to read the promo code from promo data
    * @param {HTMLElement} context
-   * @returns {string|undefined|null}
+   * @returns {string[]|undefined}
    */
-  const getPromoCode = (dataElement = getPromoElement()) =>
-    dataElement?.getAttribute('data-promo-code');
+  const getPromoCodes = (dataElement = getPromoElement()) => {
+    const codeString = dataElement?.getAttribute('data-promo-code');
+
+    if (!isStringWithLength(codeString)) {
+      return undefined;
+    }
+
+    return codeString.split(',').filter(Boolean);
+  };
 
   /**
    * Attempt to read the promo product ids from promo data
    * @param {HTMLElement} context
-   * @returns {string|undefined|null}
+   * @returns {string[]|undefined}
    */
   const getPromoProductIds = (dataElement = getPromoElement()) => {
     const idString = dataElement?.getAttribute('data-product-ids');
@@ -225,17 +231,41 @@
 
   /**
    * Create async function to do the add to cart logic
-   * @param {string} checkoutId
    * @param {Object[]} lineItems
    * @param {string[]} promoCodes
    */
-  const updateAndGoToCart = async (checkoutId, lineItems, promoCodes) => {
+  const updateAndGoToCart = async (promoProducts, promoCodes) => {
     try {
-      if (lineItems.length) {
-        await addLineItemsToCheckout(lineItems, checkoutId);
+      // Fetch the current checkout
+      const cartId = getCheckoutCookie();
+      const checkout = await getCheckoutById(cartId);
+      const checkoutId = checkout.id;
+      const codesToAdd = promoCodes.reduce((codes, code) => {
+        if (!checkoutHasPromo(checkout, code)) {
+          codes.push(code);
+        }
+
+        return codes;
+      }, []);
+
+      const lineItemsToAdd = promoProducts.reduce((products, product) => {
+        if (!isProductInCheckout(checkout, product.id)) {
+          const variant = getFirstAvailableVariant(product);
+
+          if (variant) {
+            const lineItem = createCheckoutLineItem(variant.id);
+            products.push(lineItem);
+          }
+        }
+
+        return products;
+      }, []);
+
+      if (lineItemsToAdd.length) {
+        await addLineItemsToCheckout(lineItemsToAdd, checkoutId);
       }
 
-      if (promoCodes.length) {
+      if (codesToAdd.length) {
         await addDiscountToCheckout(checkoutId, promoCodes[0]);
       }
 
@@ -259,7 +289,7 @@
     try {
       // Grab promo data from the DOM
       const promoElement = getPromoElement();
-      const promoCode = getPromoCode(promoElement);
+      const promoCodes = getPromoCodes(promoElement);
       const productIds = getPromoProductIds(promoElement);
 
       // If we have the deal bar button, we expect product ids
@@ -267,41 +297,19 @@
         throw new Error('Failed to find product Ids');
       }
 
-      // Fetch the current checkout
-      const cartId = getCheckoutCookie();
-      const checkout = await getCheckoutById(cartId);
       const globalIds = productIds.map(buildGlobalProductId);
-      const promoCodesToAdd = [];
-
-      // Examine cart to determine required checkout additions
-      if (promoCode && !checkoutHasPromo(checkout, promoCode)) {
-        promoCodesToAdd.push(promoCode);
-      }
 
       // Fetch product data
       const productPromises = globalIds.reduce((array, globalId) => {
-        if (!isProductInCheckout(checkout, globalId)) {
-          array.push(fetchProduct(globalId));
-        }
-
+        array.push(fetchProduct(globalId));
         return array;
       }, []);
 
-      const results = await Promise.all(productPromises);
-      const lineItemsToAdd = [];
-
-      results.forEach((result) => {
-        const variant = getFirstAvailableVariant(result);
-
-        if (variant) {
-          const lineItem = createCheckoutLineItem(variant.id);
-          lineItemsToAdd.push(lineItem);
-        }
-      });
+      const promoProducts = await Promise.all(productPromises);
 
       // Add click listener
       button.addEventListener('click', () => {
-        updateAndGoToCart(checkout.id, lineItemsToAdd, promoCodesToAdd);
+        updateAndGoToCart(promoProducts, promoCodes);
       });
     } catch (error) {
       console.error(error);
