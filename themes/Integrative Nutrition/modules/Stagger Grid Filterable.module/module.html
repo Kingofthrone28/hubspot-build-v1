@@ -85,7 +85,7 @@
             {% if item.image_size == 'natural' %}
               <div><img src="{{item.image_field.src}}" />
             {% else %}
-              <div class="stagger-img size-{{ module.style.image_size }}" style="{{ module.style.image_border.css }}background: {{module.style.image_background_color.color}} url({{item.image_field.src}}) center no-repeat {{item.image_position}};background-size: {{item.image_size}}">
+              <div class="stagger-img size-{{ module.style.image_size }}" style="{{ module.style.image_border.css }}background: {{ module.style.image_background_color.color}} url({{item.image_field.src}}) center no-repeat {{item.image_position}};background-size: {{item.image_size}}">
             {% endif %}
             {% if item.overlay_content %}<div class="stagger-img-overlay" style="background: rgba({{module.style.image_background_color.color|convert_rgb}}, {{module.style.image_background_color.opacity / 100}})"><div>{{item.overlay_content}}</div></div>{% endif %}
             </div>
@@ -126,9 +126,9 @@
             {% if item.image_size == 'natural' %}
               <div><img src="{{item.image_field.src}}" />
             {% else %}
-              <div class="stagger-img size-{{ module.style.image_size }}" style="background: {{module.style.image_background_color.color}} url({{item.image_field.src}}) no-repeat {{item.image_position}};background-size: {{item.image_size}}">
+              <div class="stagger-img size-{{ module.style.image_size }}" style="background: {{ module.style.image_background_color.color }} url({{ item.image_field.src }}) no-repeat {{ item.image_position }}; background-size: {{ item.image_size }}">
             {% endif %}
-            {% if item.overlay_content %}<div class="stagger-img-overlay" style="background: rgba({{module.style.image_background_color.color|convert_rgb}}, {{module.style.image_background_color.opacity / 100}})"><div>{{item.overlay_content}}</div></div>{% endif %}
+            {% if item.overlay_content %}<div class="stagger-img-overlay" style="background: rgba({{ module.style.image_background_color.color|convert_rgb }}, {{ module.style.image_background_color.opacity / 100 }})"><div>{{ item.overlay_content }}</div></div>{% endif %}
             </div>
             <div class="stagger-header">
               {% if item.name_field %}<div>{{ item.name_field }}</div>{% endif %}
@@ -181,24 +181,47 @@
   </div>
 </div>
 
-
-
 <style>
   {% if module.style.image_size == 'stagger' %}
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 1) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .35}}px }
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 2) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .65}}px }
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 3) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .5}}px }
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 4) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .5}}px }
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n + 5) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .65}}px }
-  #stagger-grid-{{name}} .stagger-item:nth-child(6n) .stagger-item-inner { min-height: {{module.style.height_of_2_items_in_px * .35}}px }
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n + 1) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .35 }}px;
+    }
+    
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n + 2) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .65 }}px;
+    }
+    
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n + 3) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .5 }}px;
+    }
+    
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n + 4) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .5 }}px;
+    }
+    
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n + 5) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .65 }}px;
+    }
+    
+    #stagger-grid-{{ name }} .stagger-item:nth-child(6n) .stagger-item-inner {
+      min-height: {{ module.style.height_of_2_items_in_px * .35 }}px;
+    }
   {% endif  %}
-  #stagger-grid-{{name}} .stagger-grid { column-count: {{ module.style.number_of_columns_for_desktop }}; }
-  @media(max-width: 991px) {
-    #stagger-grid-{{name}} .stagger-grid { column-count: {{ module.style.number_of_columns_for_desktop - 1 }}; }
+
+  #stagger-grid-{{ name }} .stagger-grid {
+    column-count: {{ module.style.number_of_columns_for_desktop }};
   }
 
-  @media(max-width: 767px) {
-    #stagger-grid-{{name}} .stagger-grid { column-count: 1; }
+  @media (max-width: 991px) {
+    #stagger-grid-{{ name }} .stagger-grid {
+      column-count: {{ module.style.number_of_columns_for_desktop - 1 }};
+    }
+  }
+
+  @media (max-width: 767px) {
+    #stagger-grid-{{ name }} .stagger-grid {
+      column-count: 1;
+    }
   }
 </style>
 

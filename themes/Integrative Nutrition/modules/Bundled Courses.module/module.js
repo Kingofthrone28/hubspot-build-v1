@@ -171,7 +171,7 @@
 
     $(`#${moduleData.name} .bp-${productID} .bp-bundled-course-card-img`).css(
       'background',
-      `url('${updatedProduct.images[0].src}')`
+      `url('${updatedProduct.images[0].src}')`,
     );
 
     $(`#${moduleData.name} .bp-${productID} .bp-card-options`).html(html);

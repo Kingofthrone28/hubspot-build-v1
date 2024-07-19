@@ -6,110 +6,101 @@
 <div class="edit-icon"><i class="fas fa-image"></i> Edit</div>
 
 <style>
-  
-  #hs_cos_wrapper_{{ name }}.inpage-editor-active-field, #hs_cos_wrapper_{{ name }}.inpage-editor-highlight-field { position: static !important; }
-  
-  #bg_{{ name }} .overlay {
-   
-   {% if module.desktop.overlay == 'hg' %}
-   background: -moz-linear-gradient(left,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(left,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(to right,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 */
-
-   {% elif module.desktop.overlay == 'vg' %}
-
-   background: -moz-linear-gradient(top,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(top,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(to bottom,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.secondary_overlay_color.color }}',GradientType=0 ); /* IE6-9 */
-
-   {% elif module.desktop.overlay == 'tg' %}
-
-   background: -moz-linear-gradient(135deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(135deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(135deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-   {% elif module.desktop.overlay == 'bg' %}
-   
-   background: -moz-linear-gradient(45deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(45deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(45deg,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-   
-   {% elif module.desktop.overlay == 'rg' %}
-   
-   background: -moz-radial-gradient(center, ellipse cover,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
-   background: -webkit-radial-gradient(center, ellipse cover,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
-   background: radial-gradient(ellipse at center,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-   
-   {% elif module.desktop.overlay == 'pg' %}
-   
-   background: -moz-linear-gradient(left,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(left,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(to right,  rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.desktop.overlay_color.color }}', endColorstr='{{ module.desktop.overlay_color.color }}',GradientType=1 ); /* IE6-9 */
-
-   {% endif %}
-   
+  #hs_cos_wrapper_{{ name }}.inpage-editor-active-field,
+  #hs_cos_wrapper_{{ name }}.inpage-editor-highlight-field {
+    position: static !important;
   }
+  
+  #bg_{{ name }} .overlay { 
+    {% if module.desktop.overlay == 'hg' %}
+      background: -moz-linear-gradient(left, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ 
+    {% elif module.desktop.overlay == 'vg' %}
+      background: -moz-linear-gradient(top, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    {% elif module.desktop.overlay == 'tg' %}
+      background: -moz-linear-gradient(135deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(135deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    {% elif module.desktop.overlay == 'bg' %}
+      background: -moz-linear-gradient(45deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(45deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(45deg, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 10%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    {% elif module.desktop.overlay == 'rg' %}
+      background: -moz-radial-gradient(center, ellipse cover, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+      background: -webkit-radial-gradient(center, ellipse cover, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: radial-gradient(ellipse at center, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    {% elif module.desktop.overlay == 'pg' %}
+      background: -moz-linear-gradient(left, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%, rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 0%,rgba({{ module.desktop.secondary_overlay_color.color|convert_rgb }}, {{ module.desktop.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.desktop.overlay_color.color|convert_rgb }}, {{ module.desktop.overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    {% endif %}  
+  }
+
   {% if module.add_mobile_options %}
-	@media (max-width: 767px) {
-    #bg_{{ name }} { top: {{ module.mobile.distance_from_top * -1 }}px !important;bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important; }
-    .hs-content-id-137558861388 #bg_{{ name }} { top: {{ module.mobile.distance_from_top * -1 }}px !important;bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important; }
-    .hs-content-id-151881679191 #bg_{{ name }} { top: {{ module.mobile.distance_from_top * -1 }}px !important;bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;background-size: cover !important;background-blend-mode: {{ module.mobile.background_blend_mode }} !important; }
-    .homepage-section #bg_{{ name }} { background-position: center !important}
-    {% if module.mobile.overlay == 'none' || module.mobile.overlay == 'solid' %}
-    #bg_{{ name }} .overlay {  }
-    {% else %}
-    #bg_{{ name }} .overlay { 
-       {% if module.mobile.overlay == 'hg' %}
-       background: -moz-linear-gradient(left,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-       background: -webkit-linear-gradient(left,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-       background: linear-gradient(to right,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 20%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 */
+    @media (max-width: 767px) {
+      #bg_{{ name }} {
+        top: {{ module.mobile.distance_from_top * -1 }}px !important;
+        bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
+        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+      }
+      
+      .hs-content-id-137558861388 #bg_{{ name }} {
+        top: {{ module.mobile.distance_from_top * -1 }}px !important;
+        bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
+        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+      }
 
-       {% elif module.mobile.overlay == 'vg' %}
+      .hs-content-id-151881679191 #bg_{{ name }} {
+        top: {{ module.mobile.distance_from_top * -1 }}px !important;
+        bottom: {{ module.mobile.distance_from_bottom * -1 }}px !important;
+        background: {% if module.mobile.background_color.opacity > 0 %}{{ module.mobile.background_color.color }} {% endif %}url({% if module.mobile.image_field.src %}{{ module.mobile.image_field.src }}{% else %}{{ module.desktop.image_field.src }}{% endif %}) {{ module.mobile.vertical_alignment }} {{ module.mobile.horizontal_alignment }} !important;
+        background-size: cover !important;
+        background-blend-mode: {{ module.mobile.background_blend_mode }} !important;
+      }
+      
+      .homepage-section #bg_{{ name }} {
+        background-position: center !important;
+      }
 
-       background: -moz-linear-gradient(top,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-       background: -webkit-linear-gradient(top,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-       background: linear-gradient(to bottom,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.secondary_overlay_color.color }}',GradientType=0 ); /* IE6-9 */
-
-       {% elif module.mobile.overlay == 'tg' %}
-
-       background: -moz-linear-gradient(135deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-       background: -webkit-linear-gradient(135deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-       background: linear-gradient(135deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-       {% elif module.mobile.overlay == 'bg' %}
-
-       background: -moz-linear-gradient(45deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
-       background: -webkit-linear-gradient(45deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
-       background: linear-gradient(45deg,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-       {% elif module.mobile.overlay == 'rg' %}
-
-       background: -moz-radial-gradient(center, ellipse cover,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
-       background: -webkit-radial-gradient(center, ellipse cover,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
-       background: radial-gradient(ellipse at center,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.secondary_overlay_color.color }}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-       {% elif module.mobile.overlay == 'pg' %}
-
-       background: -moz-linear-gradient(left,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
-       background: -webkit-linear-gradient(left,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
-       background: linear-gradient(to right,  rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ module.mobile.overlay_color.color }}', endColorstr='{{ module.mobile.overlay_color.color }}',GradientType=1 ); /* IE6-9 */
-
-       {% endif %}
+      {% if module.mobile.overlay == 'none' || module.mobile.overlay == 'solid' %}
+        #bg_{{ name }} .overlay {}
+      {% else %}
+        #bg_{{ name }} .overlay { 
+          {% if module.mobile.overlay == 'hg' %}
+            background: -moz-linear-gradient(left, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 20%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% elif module.mobile.overlay == 'vg' %}
+            background: -moz-linear-gradient(top, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% elif module.mobile.overlay == 'tg' %}
+            background: -moz-linear-gradient(135deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(135deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(135deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% elif module.mobile.overlay == 'bg' %}
+            background: -moz-linear-gradient(45deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(45deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(45deg, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 10%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% elif module.mobile.overlay == 'rg' %}
+            background: -moz-radial-gradient(center, ellipse cover, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+            background: -webkit-radial-gradient(center, ellipse cover, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: radial-gradient(ellipse at center, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% elif module.mobile.overlay == 'pg' %}
+            background: -moz-linear-gradient(left, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%, rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 0%,rgba({{ module.mobile.secondary_overlay_color.color|convert_rgb }}, {{ module.mobile.secondary_overlay_color.opacity / 100 }}) 50%,rgba({{ module.mobile.overlay_color.color|convert_rgb }}, {{ module.mobile.overlay_color.opacity / 100 }}) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          {% endif %}
+        }
+      {% endif %}
     }
-    {% endif %}
-  }
   {% endif %}
 </style>
 

@@ -331,26 +331,101 @@
   </div>
 </div>
 <style>
-  .mb-main-nav .hs-menu-depth-1 > a { color:{{ module.style.nav.main_link.color }};opacity: {{ module.style.nav.main_link.opacity / 100 }}; }
-  .menu__link--active-link { border-bottom: 2px solid rgba({{ module.style.nav.active_link_highlight.color|convert_rgb }}, {{ module.style.nav.active_link_highlight.opacity / 100 }}); }
-  .mb-main-nav .hs-menu-depth-1:hover > a { color:{{ module.style.nav.main_link_hover.color }};opacity: {{ module.style.nav.main_link_hover.opacity / 100 }}; }
-  .mb-main-nav .dropdown-menu ul { {% if module.style.nav.dropdown_background.color %}background: rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});{% endif %} }
-  .mb-main-nav .dropdown-menu ul:before { {% if module.style.nav.dropdown_background.color %}border-bottom: 8px solid rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});{% endif %} }
-  .mb-main-nav .dropdown-menu a { color:{{ module.style.nav.dropdown_link_color.color }};opacity: {{ module.style.nav.dropdown_link_color.opacity / 100 }}; }
-  .mb-main-nav .dropdown-menu a:hover { color:{{ module.style.nav.dropdown_link_hover.color }};opacity: {{ module.style.nav.dropdown_link_hover.opacity / 100 }}; }
-  .ham-text { color:{{ module.style.nav.main_link.color }}; }
-  .ham-wrap > span { background:{{ module.style.nav.main_link.color }};opacity: {{ module.style.nav.main_link.opacity / 100 }}; }
-  .open .ham-wrap > span { background:{{ module.style.nav.main_link_hover.color }};opacity: {{ module.style.nav.main_link_hover.opacity / 100 }}; }
-  .hs-search-field { {{ module.style.site_search.border_field_1.css }} }
-  .hs-search-field__input { {% if module.style.site_search.input_background.color %}background: rgba({{ module.style.site_search.input_background.color|convert_rgb }}, {{ module.style.site_search.input_background.opacity / 100 }});{% endif %} }
+  .mb-main-nav .hs-menu-depth-1 > a {
+    opacity: {{ module.style.nav.main_link.opacity / 100 }};
+    color:{{ module.style.nav.main_link.color }};
+  }
+
+  .menu__link--active-link {
+    border-bottom: 2px solid rgba({{ module.style.nav.active_link_highlight.color|convert_rgb }}, {{ module.style.nav.active_link_highlight.opacity / 100 }});
+  }
+
+  .mb-main-nav .hs-menu-depth-1:hover > a {
+    opacity: {{ module.style.nav.main_link_hover.opacity / 100 }};
+    color:{{ module.style.nav.main_link_hover.color }};
+  }
+
+  {% if module.style.nav.dropdown_background.color %}
+    .mb-main-nav .dropdown-menu ul {
+      background: rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});
+    }
+
+    .mb-main-nav .dropdown-menu ul::before {
+      border-bottom: 8px solid rgba({{ module.style.nav.dropdown_background.color|convert_rgb }}, {{ module.style.nav.dropdown_background.opacity / 100 }});
+    }
+  {% endif %}
+
+  .mb-main-nav .dropdown-menu a {
+    opacity: {{ module.style.nav.dropdown_link_color.opacity / 100 }};
+    color:{{ module.style.nav.dropdown_link_color.color }};
+  }
+
+  .mb-main-nav .dropdown-menu a:hover {
+    opacity: {{ module.style.nav.dropdown_link_hover.opacity / 100 }};
+    color: {{ module.style.nav.dropdown_link_hover.color }};
+  }
+
+  .ham-text {
+    color: {{ module.style.nav.main_link.color }};
+  }
+
+  .ham-wrap > span {
+    opacity: {{ module.style.nav.main_link.opacity / 100 }};
+    background: {{ module.style.nav.main_link.color }};
+  }
+
+  .open .ham-wrap > span {
+    opacity: {{ module.style.nav.main_link_hover.opacity / 100 }};
+    background: {{ module.style.nav.main_link_hover.color }};
+  }
+
+  .hs-search-field {
+    {{ module.style.site_search.border_field_1.css }}
+  }
+
+  {% if module.style.site_search.input_background.color %}
+    .hs-search-field__input {
+      background: rgba({{ module.style.site_search.input_background.color|convert_rgb }}, {{ module.style.site_search.input_background.opacity / 100 }});
+    }
+  {% endif %}
+  
   {% for item in module.social %}
-  #{{name}}-{{loop.index}} { color: {{ item.icon_color.color }};opacity: {{ item.icon_color.opacity / 100 }}; }
-  #{{name}}-{{loop.index}} svg { fill: {{ item.icon_color.color }}; }
-  #{{name}}-{{loop.index}}:hover { color: {{ item.hover_color.color }};opacity: {{ item.hover_color.opacity / 100 }}; }
-  #{{name}}-{{loop.index}}:hover svg { fill: {{ item.hover_color.color }}; }
+    #{{ name }}-{{ loop.index }} {
+      opacity: {{ item.icon_color.opacity / 100 }};
+      color: {{ item.icon_color.color }};
+    }
+
+    #{{ name }}-{{ loop.index }} svg {
+      fill: {{ item.icon_color.color }};
+    }
+
+    #{{ name }}-{{ loop.index }}:hover {
+      opacity: {{ item.hover_color.opacity / 100 }};
+      color: {{ item.hover_color.color }};
+    }
+
+    #{{ name }}-{{ loop.index }}:hover svg {
+      fill: {{ item.hover_color.color }};
+    }
   {% endfor %}
-  .mb-custom-header-wrapper #mobile-menu { {% if theme.global_colors.secondary_color.color || module.style.mobile_menu.mobile_background.color %}background: rgba({{ module.style.mobile_menu.mobile_background.color|convert_rgb if module.style.mobile_menu.mobile_background.color else theme.global_colors.secondary_color.color|convert_rgb }}, {{ module.style.mobile_menu.mobile_background.opacity / 100 || 1 }});{% endif %} }
-  .mb-custom-header-wrapper #mobile-menu a { color: {{ module.style.mobile_menu.link_color.color }}; }
-  #mobile-menu .plus .bar { background: {{ module.style.mobile_menu.link_color.color }}; }
-  .mb-mobile-nav .sub-menu { {% if module.style.mobile_menu.sub_menu_background.color %}background: rgba({{ module.style.mobile_menu.sub_menu_background.color|convert_rgb }}, {{ module.style.mobile_menu.sub_menu_background.opacity / 100 }});{% endif %} }
+
+  {% if theme.global_colors.secondary_color.color || module.style.mobile_menu.mobile_background.color %}
+    .mb-custom-header-wrapper #mobile-menu {
+      background: rgba({{ module.style.mobile_menu.mobile_background.color|convert_rgb if module.style.mobile_menu.mobile_background.color else theme.global_colors.secondary_color.color|convert_rgb }}, {{ module.style.mobile_menu.mobile_background.opacity / 100 || 1 }});
+    }
+  {% endif %}
+
+  .mb-custom-header-wrapper #mobile-menu a {
+    color: {{ module.style.mobile_menu.link_color.color }};
+  }
+
+  #mobile-menu .plus .bar {
+    background: {{ module.style.mobile_menu.link_color.color }};
+  }
+
+  {% if module.style.mobile_menu.sub_menu_background.color %}
+    .mb-mobile-nav .sub-menu {
+      background: rgba({{ module.style.mobile_menu.sub_menu_background.color|convert_rgb }}, {{ module.style.mobile_menu.sub_menu_background.opacity / 100 }});
+    }
+  {% endif %}
 </style>

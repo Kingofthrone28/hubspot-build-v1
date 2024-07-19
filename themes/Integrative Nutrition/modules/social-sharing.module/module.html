@@ -20,7 +20,7 @@
         title='Twitter'
       %}
     </a>
-    <a href="javascript:;" class="ssocial-sharing__link" title="email" target="popup"
+    <a href="javascript:;" class="social-sharing__link" title="email" target="popup"
       onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url }}','Linkedin Share','width=600,height=600')"><span class="hidden">email</span>
       {% icon
         extra_classes='social-sharing__icon',
@@ -34,15 +34,17 @@
 {% require_css %}
 <style>
   #hs_cos_wrapper_{{ name }} .social-sharing__icon svg {
-    fill: {{ module.style.color.color }};
-    height: {{ module.style.size ~ 'px' }};
     width: {{ module.style.size ~ 'px' }};
+    height: {{ module.style.size ~ 'px' }};
+    fill: {{ module.style.color.color }};
   }
+
   #hs_cos_wrapper_{{ name }} .social-sharing__icon:hover svg,
   #hs_cos_wrapper_{{ name }} .social-sharing__icon:focus svg,
-  #hs_cos_wrapper_{{ name }} .ssocial-sharing__icon:active svg {
+  #hs_cos_wrapper_{{ name }} .social-sharing__icon:active svg {
     fill: {{ module.style.hover_color.color }};
   }
+
   #hs_cos_wrapper_{{ name }} .social-sharing__text {
     color: {{ module.style.color.color }};
   }

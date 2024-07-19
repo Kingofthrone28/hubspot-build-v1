@@ -28,12 +28,24 @@
 {% require_css %}
 <style>
 {% scope_css %}
-  .tab-content-main { display: flex; }
-  .tab-content-head { margin-bottom: 35px; margin-top: 35px; }
+  .tab-content-main {
+    display: flex;
+  }
   
-  @media(max-width: 991px) {
-    .tab-content-main { flex-direction: column;  }
-    .tab-body { order: 3; margin-top: 15px; }
+  .tab-content-head {
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+  
+  @media (max-width: 991px) {
+    .tab-content-main {
+      flex-direction: column;
+    }
+    
+    .tab-body {
+      margin-top: 15px;
+      order: 3;
+    }
   }
 {% end_scope_css %}
 </style>

@@ -22,6 +22,7 @@
     'the-institute-for-integrative-nutrition.myshopify.com';
   const imagePath = `https://course.${rootDomain}/hubfs/Course%20Page%20Images`;
   const gidPath = 'gid://shopify/Product/';
+  const variantGidPath = 'gid://shopify/ProductVariant/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
   const $spinner = $('.spinner');
@@ -41,6 +42,10 @@
   let checkoutURL = '';
   let currentWidth = window.innerWidth;
 
+  const cartTrackingPayload = {};
+  const coupons = new Set();
+  const currencyCode = 'USD';
+
   /**
    * Gets the value of a metafield.
    * @param {Object} data
@@ -49,7 +54,7 @@
    */
   const getMetafield = (data, fieldName) => {
     const matchedField = data?.metafields.find(
-      (metafield) => metafield?.key && metafield.key === fieldName
+      (metafield) => metafield?.key && metafield.key === fieldName,
     );
 
     const matchedValue = matchedField?.value;
@@ -227,7 +232,7 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
           product.addConnection(
             'variants',
@@ -249,24 +254,23 @@
                 (metafield) => {
                   metafield.add('key');
                   metafield.add('value');
-                }
+                },
               );
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         for (const tag of product.tags) {
           if (
             agreementTags.some(
-              (agreementTag) => tag.value === agreementTag.name
+              (agreementTag) => tag.value === agreementTag.name,
             )
           ) {
             const adjustedProduct = { ...product };
@@ -281,7 +285,7 @@
               if (lineItem.discountAllocations.length) {
                 lineItem.discountAllocations.forEach((allocation) => {
                   const discountAmount = parseFloat(
-                    allocation?.allocatedAmount?.amount || 0
+                    allocation?.allocatedAmount?.amount || 0,
                   );
 
                   totalDiscount -= discountAmount * lineItem.quantity;
@@ -289,13 +293,13 @@
               }
 
               adjustedProduct.price = parseFloat(
-                lineItem.variant?.price?.amount || 0
+                lineItem.variant?.price?.amount || 0,
               );
 
               adjustedProduct.totalDiscount = totalDiscount;
 
               const selectedVariant = product.variants.find(
-                (productVariant) => productVariant.id === lineItem.variant.id
+                (productVariant) => productVariant.id === lineItem.variant.id,
               );
 
               if (selectedVariant) {
@@ -310,7 +314,7 @@
       });
 
       const agreementCookie = IIN.cookies.getCookieString(
-        'enrollmentAgreementQuery'
+        'enrollmentAgreementQuery',
       );
 
       if (agreementProducts.length && !agreementCookie) {
@@ -337,6 +341,9 @@
   async function loadCart(noProductChange) {
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
     let checkout;
+
+    cartTrackingPayload.ecommerce = {};
+    cartTrackingPayload.ecommerce.items = [];
 
     if (cartCookie) {
       try {
@@ -418,20 +425,19 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         const matchedItem = checkout.lineItems.find(
-          (lineItem) => lineItem.variant.product.id === product.id
+          (lineItem) => lineItem.variant.product.id === product.id,
         );
 
         if (!matchedItem) {
@@ -485,7 +491,7 @@
       if (lineItem.discountAllocations.length) {
         lineItem.discountAllocations.forEach((discount) => {
           const discountAmount = parseFloat(
-            discount.allocatedAmount?.amount || 0
+            discount.allocatedAmount?.amount || 0,
           );
 
           if (total > 0) {
@@ -586,15 +592,33 @@
       `;
 
       itemSummaryHTML += `
-        <div style="font-size: 20px;">
+        <div style="font-size: var(--font-size--legacy--11);">
           $${total.toLocaleString()}
         </div>
       `;
+
+      if (Array.isArray(lineItem.discountAllocations) && lineItem.discountAllocations.length) {
+        lineItem.discountAllocations.forEach((discount) => {
+          coupons.add(discount?.discountApplication?.title);
+        })
+      }
+
+      cartTrackingPayload.ecommerce.items.push({
+        'item_id': lineItem.variant.product.id.replace(gidPath, ''),
+        'item_name': lineItem.title,
+        'item_type': lineItem.productType || 'NA',
+        'variant_id': lineItem.variant.id.replace(variantGidPath, ''),
+        'discount': totalPreDiscount - total,
+        'price': totalPreDiscount,
+        'quantity': lineItem.quantity,
+        'sku': lineItem.variant.sku || 'NA',
+      })
+      
     }
 
     if (itemCount > 1) {
       itemSummaryHTML += `
-        <div style="font-size: 20px; border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px">
+        <div style="font-size: var(--font-size--legacy--11); border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px">
           $${parseFloat(checkout.totalPrice.amount).toLocaleString()}
         </div>
       `;
@@ -641,24 +665,78 @@
       const refreshedCheckout = await refreshCheckout();
 
       if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
-        return;
+        return null;
       }
 
       const updatedCheckout = await IINShopifyClient.checkout.removeLineItems(
         cartCookie,
         [lineID]
       );
-
+      
+      const deletedItem = refreshedCheckout.lineItems.find(item => item.id === lineID);
       await loadCart();
       updateCartTotal(updatedCheckout);
+      
+      return deletedItem;
     };
+
+    const trackDeleteItem = (deletedItem) =>{
+      try {
+        const deleteItemTrackingPayload = {};
+        deleteItemTrackingPayload.ecommerce = {};
+        deleteItemTrackingPayload.event = "remove_from_cart";
+        deleteItemTrackingPayload.ecommerce.items = [];
+
+        let deletedItemCouponTitle = 'NA';
+
+        const priceAmount = parseFloat(deletedItem.variant?.price?.amount || 0);
+        const totalPreDiscount = priceAmount * deletedItem.quantity;
+        let total = totalPreDiscount;
+
+        if (deletedItem.discountAllocations.length) {
+          deletedItem.discountAllocations.forEach((discount) => {
+            const discountAmount = parseFloat(
+              discount.allocatedAmount?.amount || 0
+            );
+
+            if (total > 0) {
+              total -= discountAmount * deletedItem.quantity;
+            }
+
+            deletedItemCouponTitle = discount?.discountApplication?.title;
+          });
+        }
+
+        deleteItemTrackingPayload.ecommerce.currency = currencyCode;
+        deleteItemTrackingPayload.ecommerce.value = total;
+        deleteItemTrackingPayload.ecommerce.coupon = deletedItemCouponTitle;
+        deleteItemTrackingPayload.ecommerce.items.push({
+          'item_id': deletedItem.variant.product.id.replace(gidPath, ''),
+          'item_name': deletedItem.title,
+          'item_type': deletedItem.productType || "NA",
+          'variant_id': deletedItem.variant.id.replace(variantGidPath, ''),
+          'discount': totalPreDiscount - total,
+          'price': total,
+          'quantity': deletedItem.quantity,
+          'sku': deletedItem.variant.sku || "NA"
+        });
+
+        triggerECommEvent(deleteItemTrackingPayload);
+      } catch (exception) {
+        console.error(exception);
+      }
+    }
 
     $('.jd-cart-item-delete').click(function (e) {
       e.preventDefault();
 
       const lineID = $(this).data('line');
 
-      deleteFromCart(lineID);
+      deleteFromCart(lineID).then((deletedItem) => {
+        if (deletedItem) {
+          trackDeleteItem(deletedItem);
+        }
+      });
     });
 
     /**
@@ -754,6 +832,16 @@
 
       editCart(lineID, target);
     });
+
+    try {
+      cartTrackingPayload.ecommerce.currency = currencyCode;
+      cartTrackingPayload.ecommerce.coupon = Array.from(coupons).join(';') || 'NA';
+      cartTrackingPayload.ecommerce.value = parseFloat(checkout.totalPrice.amount, 10);
+      cartTrackingPayload.event = "view_cart";
+      triggerECommEvent(cartTrackingPayload);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   /**

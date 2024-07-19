@@ -27,12 +27,12 @@
       const matchedPrice = matchedVariant.price.amount;
 
       $('#course-shopify-price').text(
-        `$${parseInt(matchedPrice).toLocaleString()}`
+        `$${parseInt(matchedPrice).toLocaleString()}`,
       );
 
       if (matchedCompareAtPrice && matchedCompareAtPrice !== matchedPrice) {
         $('#course-shopify-compare').text(
-          `$${parseInt(matchedVariant.compareAtPrice.amount).toLocaleString()}`
+          `$${parseInt(matchedVariant.compareAtPrice.amount).toLocaleString()}`,
         );
       }
       return [product, matchedVariant];
@@ -42,7 +42,6 @@
   };
 
   setPrice().then(([product, matchedVariant]) => {
-
     const variantID = matchedVariant.id;
     const itemPrice = matchedVariant.price.amount;
     const viewItemPayLoad = {

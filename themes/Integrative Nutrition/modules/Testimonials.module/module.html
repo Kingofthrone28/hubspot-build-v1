@@ -21,12 +21,19 @@
     </div>    
   </div>
 </div>
+
 <style>
-  #{{name}} .q-text p { {% if module.style.quote.quote.font %}font-family: {{ module.style.quote.quote.font }};{% endif %} color: {{ module.style.quote.quote.color }}; font-size: {{ module.style.quote.quote.size }}{{module.style.quote.quote.size_unit }};{{ module.style.quote.quote.style }} }
+  #{{ name }} .q-text p {
+    color: {{ module.style.quote.quote.color }};
+    {% if module.style.quote.quote.font %}
+      font-family: {{ module.style.quote.quote.font }};
+    {% endif %}
+    font-size: {{ module.style.quote.quote.size }}{{module.style.quote.quote.size_unit }};
+    {{ module.style.quote.quote.style }} }
 </style>
 
 <script>
-$(document).ready(function() {
+$(function () {
   $('#{{name}} .testimonial-slider').slick({
     infinite: true,
       slidesToShow: 1,

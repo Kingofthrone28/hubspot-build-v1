@@ -672,16 +672,26 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
   color: var(--theme--global-colors--primary-color);
 }
 
-a.deal-bar-btn {
+a.deal-bar-btn,
+button.deal-bar-btn {
   border: 1px solid var(--color--white);
   border-radius: 5px;
   padding: 0 4px;
   color: var(--color--white);
 }
 
-a.deal-bar-btn:hover {
-  text-decoration: none;
+a.deal-bar-btn:hover,
+a.deal-bar-btn:focus,
+button.deal-bar-btn:hover,
+button.deal-bar-btn:focus {
   color: var(--color--white);
+  text-decoration: none;
+}
+
+/* Mimic styling for the anchor tag we effectively replace */
+button.deal-bar-btn {
+  background: transparent;
+  line-height: var(--line-height--legacy--7);
 }
 
 svg.deal-bar-close {
@@ -1346,52 +1356,28 @@ a svg {
 
 @keyframes menu-pop {
   0% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
 
   100% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
 
 @keyframes menu-out {
   0% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
 
   100% {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }

@@ -2,8 +2,7 @@
   let moduleData = {};
 
   try {
-    const rawData = window.sessionStorage.getItem('course_shopify_add_to_cart');
-
+    const rawData = IIN.shopify.getAddToCartSessionData();
     moduleData = JSON.parse(rawData);
   } catch (e) {
     console.error(e);
@@ -170,11 +169,11 @@
         checkSelectedOptions();
 
         const $checkedInputs = $(
-          `#${moduleData.name} .jd-shopify-option-wrap input[name="${type}"]:checked`
+          `#${moduleData.name} .jd-shopify-option-wrap input[name="${type}"]:checked`,
         );
 
         $checkedInputs.first().focus();
-      }
+      },
     );
 
     /**
@@ -189,11 +188,11 @@
         // TODO: replace "alert" with alternative UX choice, pop-up, or message.
         alert('This combination of options is invalid');
       } else {
-        const cartCookie = IIN.cookies.getCookieString('shopifyCart');
+        const cartCookie = IIN.shopify.getCheckoutCookie();
         const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
-
-        const alreadyInCart = checkout.lineItems.some(
-          ({ variant }) => variant.product.id === productData.id
+        const alreadyInCart = IIN.shopify.isProductInCheckout(
+          checkout,
+          productData.id,
         );
 
         if (alreadyInCart) {
@@ -203,17 +202,15 @@
 
         $(`#${moduleData.name} .jd-shopify-add-exists-msg`).hide();
 
-        const lineItemsToAdd = [
-          {
-            variantId: selectedVariant.id,
-            quantity: 1,
-          },
-        ];
+        const newLineItem = IIN.shopify.createCheckoutLineItem(
+          selectedVariant.id,
+        );
+        const lineItemsToAdd = [newLineItem];
 
         try {
           const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
             cartCookie,
-            lineItemsToAdd
+            lineItemsToAdd,
           );
 
           updateCartTotal(updatedCheckout);
@@ -224,7 +221,7 @@
           $('.jd-add-pop .jd-add-pop-name').text(`${moduleData.courseName}`);
           $('.jd-add-pop .jd-add-pop-img > div').attr(
             'style',
-            `background: url(${selectedVariant.image.src})`
+            `background: url(${selectedVariant.image.src})`,
           );
 
           let optionsHTML = '';
@@ -241,7 +238,7 @@
 
           if (amount || amount === 0) {
             $('.jd-add-pop .jd-add-pop-price').text(
-              `$${amount.toLocaleString()}`
+              `$${amount.toLocaleString()}`,
             );
           }
 
@@ -271,9 +268,11 @@
       let couponTitle = 'NA';
       let discountAmount = 0;
 
-      if (Array.isArray(addedVariant.discountAllocations) &&
-        addedVariant.discountAllocations.length) {
-        addedVariant.discountAllocations.forEach(discountAllocation => {
+      if (
+        Array.isArray(addedVariant.discountAllocations) &&
+        addedVariant.discountAllocations.length
+      ) {
+        addedVariant.discountAllocations.forEach((discountAllocation) => {
           couponTitle = discountAllocation?.discountApplication?.title;
           discountAmount = discountAllocation?.allocatedAmount?.amount;
         });
@@ -295,14 +294,14 @@
               price: addedVariantPrice,
               discount: discountAmount,
               quantity: 1,
-              sku: addedVariant.sku || 'NA'
-            }
-          ]
-        }
+              sku: addedVariant.sku || 'NA',
+            },
+          ],
+        },
       };
       // Trigger Add to cart tracking event
       triggerECommEvent(addItemtoCart);
-    }
+    };
     // Add to cart button click.
     $(`#${moduleData.name} .jd-shopify-add-btn`).click(() => {
       addToCart(product).then((addedVariant) => {
@@ -319,18 +318,11 @@
    */
   const getProductData = async () => {
     try {
-      const gidPath = `gid://shopify/Product/${moduleData.productID}`;
+      const gidPath = IIN.shopify.buildGlobalProductId(moduleData.productID);
 
       product = await IINShopifyClient.product.fetch(gidPath);
 
-      const variant = product.variants?.find(({ available }) => {
-        if (available) {
-          return true;
-        }
-
-        return false;
-      });
-
+      const variant = IIN.shopify.getFirstAvailableVariant(product);
       const options = variant?.selectedOptions;
 
       if (Array.isArray(options) && options.length) {
