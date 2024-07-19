@@ -62,7 +62,11 @@
        {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
        {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
        >
-      Request Info
+      {% if module.update_request_text %}
+        {{ module.request_info_text }}
+      {% else %}
+        Request Info
+      {% endif %}
     </a>
     <nav class="jd-header-dds">
       <ul>
@@ -206,7 +210,11 @@
         {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
         >
-        Request Info
+        {% if module.update_request_text %}
+          {{ module.request_info_text }}
+        {% else %}
+          Request Info
+        {% endif %}
       </a>
     </div>
     
