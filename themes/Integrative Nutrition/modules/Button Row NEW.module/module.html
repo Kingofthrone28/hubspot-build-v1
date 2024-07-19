@@ -2,16 +2,16 @@
 {% for item in module.buttons %}
   {% set classes = 'jump-button jd-request-btn hs-button jd-arrow-link' %}
   {% set button_opts = '' %}
-    {% if item.button_style == 'primary' %}
-      {% set button_opts = ' light-button' %}
-    {% elif item.button_style == 'secondary' %}
-      {% set button_opts = ' jd-request-btn-inverse' %}
-    {% elif item.button_style == 'hero' %}
-      {% set button_opts = ' jd-trans-btn' %}
-    {% elif item.button_style == 'tertiary' %}
-      {% set button_opts = ' jd-request-btn-tertiary' %}
-    {% elif item.button_style == 'link' %}
-      {% set button_opts = ' jd-request-btn-link' %}
+  {% if item.button_style == 'primary' %}
+    {% set button_opts = ' light-button' %}
+  {% elif item.button_style == 'secondary' %}
+    {% set button_opts = ' jd-request-btn-inverse' %}
+  {% elif item.button_style == 'hero' %}
+    {% set button_opts = ' jd-trans-btn' %}
+  {% elif item.button_style == 'tertiary' %}
+    {% set button_opts = ' jd-request-btn-tertiary' %}
+  {% elif item.button_style == 'link' %}
+    {% set button_opts = ' jd-request-btn-link' %}
   {% endif %}
   {% if button_opts %}
    {% set classes = classes ~ button_opts %}
