@@ -4,10 +4,10 @@
   label: Blog Post New
   screenshotPath: ../../images/con_post.png
 -->
-{% extends '../layouts/base.html' %}
+{% extends '../layouts/base-style-guide.html' %}
 {% block body %}
 
-<main class="dnd-section" style="padding:0">
+<main class="dnd-section" style="padding: 0">
   <div class="jd-blog-post">
     <div class="jd-blog-post-left">
       <div class="jd-blog-nav">
@@ -19,9 +19,9 @@
         <a href="{{ blog_all_posts_url("default")|replace('/all', '') }}/tag/{{content.topic_list[0].name|replace(' ', '-')|replace(',', '')|lower}}">{{ content.topic_list[0].name }}</a>
         <div class="jd-breadcrumb"></div>
         {% endif %}
-        <div style="color:#bd3c4b">{{ content.name|striptags|truncate(13) }}</div>
+        <div style="color: var(--color--legacy--red--sunset)">{{ content.name|striptags|truncate(13) }}</div>
       </div>
-      <div style="color:#707372">Published: <strong>{{ content.publish_date|format_date('long') }}</strong></div>
+      <div style="color: var(--color--legacy--green--rolling-stone)">Published: <strong>{{ content.publish_date|format_date('long') }}</strong></div>
       <div class="jd-post-published">Last Updated: <strong>{{ content.updated|format_date('long') }}</strong></div>
       <h1 class="jd-post-title">{{ content.name }}</h1>
       <div class="jd-post-share">
@@ -65,10 +65,10 @@
         </div>
         {% endmacro %}
         {% related_blog_posts
-              limit=3,
-              no_wrapper=True,
-              post_formatter="recent_post"
-          %}
+          limit=3,
+          no_wrapper=True,
+          post_formatter="recent_post"
+        %}
       </div>
     </div>
   </div>  
