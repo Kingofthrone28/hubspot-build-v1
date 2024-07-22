@@ -84,7 +84,7 @@
   display: inline-block;
   transition: 0.2s all;
   margin-left: 0.5em;
-  background-image: url('data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='002020'%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='%23D72A25' fill-rule='evenodd' d='M103.125a6.8756.875010013.756.8756.8750000-13.75M1.87510a8.1258.12501116.2508.1258.125001-16.250' clip-rule='evenodd'/%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='%23D72A25' fill-rule='evenodd' d='M6.778.598a.625.6250010.882.046L1011.254l2.348-2.61a.625.6250010.93.837l-2.8133.125a.625.625001-0.930L6.7239.48a.625.6250010.046-.883' clip-rule='evenodd'/%3E%3C/svg%3E');
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="002020"%3E%3Cpath xmlns="http://www.w3.org/2000/svg" fill="%23D72A25" fill-rule="evenodd" d="M103.125a6.8756.875010013.756.8756.8750000-13.75M1.87510a8.1258.12501116.2508.1258.125001-16.250" clip-rule="evenodd"/%3E%3Cpath xmlns="http://www.w3.org/2000/svg" fill="%23D72A25" fill-rule="evenodd" d="M6.778.598a.625.6250010.882.046L1011.254l2.348-2.61a.625.6250010.93.837l-2.8133.125a.625.625001-0.930L6.7239.48a.625.6250010.046-.883" clip-rule="evenodd"/%3E%3C/svg%3E');
   width: 20px;
   min-width: 20px;
   height: 20px;
