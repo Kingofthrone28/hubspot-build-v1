@@ -240,8 +240,7 @@ li.jd-nav-item > a {
   padding: 10px;
 }
 
-li.jd-nav-item > a::after,
-.ex-label::after {
+li.jd-nav-item > a::after {
   display: inline-block;
   transition: 0.2s all;
   margin-left: 0.5em;
@@ -254,8 +253,7 @@ li.jd-nav-item > a::after,
   content: '';
 }
 
-li.jd-nav-item.jd-nav-show > a::after,
-.ex-item.open .ex-label::after {
+li.jd-nav-item.jd-nav-show > a::after {
   transform: rotate(-360deg);
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 1.875C5.51269 1.875 1.875 5.51269 1.875 10C1.875 14.4873 5.51269 18.125 10 18.125C14.4873 18.125 18.125 14.4873 18.125 10C18.125 5.51269 14.4873 1.875 10 1.875ZM10.4646 7.7069C10.346 7.5752 10.1772 7.5 10 7.5C9.82283 7.5 9.65397 7.5752 9.53545 7.7069L6.72295 10.8319C6.49203 11.0885 6.51283 11.4836 6.7694 11.7146C7.02597 11.9455 7.42115 11.9247 7.65206 11.6681L10 9.05928L12.3479 11.6681C12.5789 11.9247 12.974 11.9455 13.2306 11.7146C13.4872 11.4836 13.508 11.0885 13.2771 10.8319L10.4646 7.7069Z" fill="%23001432"/></svg>');
 }
