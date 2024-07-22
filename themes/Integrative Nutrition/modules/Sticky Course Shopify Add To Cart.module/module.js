@@ -191,7 +191,7 @@
         ${priceHTML}
         <div class="pdp-price-button">
           <button
-            class="jd-shopify-add-btn jd-request-btn hs-button light-button jd-arrow-link"
+            class="jd-shopify-add-btn jd-request-btn hs-button light-button"
             type="button"
           >
             Add to Cart

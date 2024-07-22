@@ -167,7 +167,7 @@ select.jd-cart-rec-select {
   right: 0;
   padding: 6px 20px;
   font-size: var(--font-size--legacy--4);
-  background: var(--color-sky);
+  background: var(--color--legacy--blue--mabel);
   border-radius: 12px 0 0 12px;
 }
 
