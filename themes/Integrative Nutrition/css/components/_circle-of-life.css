@@ -78,7 +78,7 @@
 }
 
 #col-canvas path[data-name='Career'] {
-  fill: var(--color-sky);
+  fill: var(--color--legacy--blue--mabel);
   fill-opacity: 0.5;
 }
 
@@ -103,7 +103,7 @@
 }
 
 #col-canvas path[data-name='Home Cooking'] {
-  fill: var(--color-sky);
+  fill: var(--color--legacy--blue--mabel);
   fill-opacity: 0.7;
 }
 
@@ -113,7 +113,7 @@
 }
 
 #col-canvas path[data-name='Joy'] {
-  fill: var(--color-sky);
+  fill: var(--color--legacy--blue--mabel);
   fill-opacity: 0.9;
 }
 
@@ -257,7 +257,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-career label::before {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-career .slider-selection {
@@ -265,7 +265,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-career .ui-slider-handle {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-education label::before {
@@ -305,7 +305,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking label::before {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .slider-selection {
@@ -313,7 +313,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-home-cooking .ui-slider-handle {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-home-environment label::before {
@@ -353,7 +353,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-joy label::before {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .slider-selection {
@@ -361,7 +361,7 @@
 }
 
 .circle-life .form-item---sliderfield-submitted-joy .ui-slider-handle {
-  background-color: var(--color-sky);
+  background-color: var(--color--legacy--blue--mabel);
 }
 
 .circle-life .form-item---sliderfield-submitted-spirituality label::before {
