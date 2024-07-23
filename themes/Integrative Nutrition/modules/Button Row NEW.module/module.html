@@ -14,7 +14,7 @@
     {% set button_opts = ' jd-request-btn-link' %}
   {% endif %}
   {% if button_opts %}
-   {% set classes = classes ~ button_opts %}
+    {% set classes = classes ~ button_opts %}
   {% endif %}
   {% if item.jump_link %}
     <span 
@@ -38,9 +38,9 @@
       href="{{ href }}" 
       class="{{ classes }}"      
       data-track-label="{{ item.dl_label }}"
-       {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
-       {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
-      > 
+      {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
+      {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
+    > 
       {{ item.text_field }}
       {% if item.show_arrow %}
         <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
@@ -67,8 +67,8 @@
 
   .jd-request-btn { 
     margin-right: 10px; 
-    width: auto; 
     {{ module.style.spacing_field.css }} 
+    width: auto; 
   }
 
   .jd-subitems a {
