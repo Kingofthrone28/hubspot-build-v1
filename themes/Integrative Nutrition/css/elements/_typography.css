@@ -58,7 +58,7 @@ a:hover, a:focus {
 @media (max-width: 767px) {
   .entity-paragraphs-item.paragraphs-item-headline {
    font-size: 40px;
-   line-height: auto!important;
+   line-height: normal !important;
   }
 }
 

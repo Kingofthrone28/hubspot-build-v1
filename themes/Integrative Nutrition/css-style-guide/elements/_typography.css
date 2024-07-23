@@ -39,7 +39,7 @@ a:focus {
 /* Headings */
 @media (max-width: 767px) {
   .entity-paragraphs-item.paragraphs-item-headline {
-    line-height: auto !important;
+    line-height: normal !important;
     font-size: var(--font-size--legacy--23);
   }
 }

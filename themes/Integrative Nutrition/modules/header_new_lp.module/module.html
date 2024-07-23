@@ -58,11 +58,15 @@
     {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" + href %}
     {% endif %}
-    <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
+    <a href="{{ href }}" class="jd-request-btn hs-button light-button" 
        {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
        {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
        >
-      Request Info
+      {% if module.update_request_text %}
+        {{ module.request_info_text }}
+      {% else %}
+        Request Info
+      {% endif %}
     </a>
     <nav class="jd-header-dds">
       <ul>
@@ -132,7 +136,7 @@
     }
     dealTimeDif();
     setInterval(dealTimeDif, 1000);
-    $(document).ready(function() {
+    $(function() {
       $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
       $(window).on('resize', function() {
         $('.static-body').css('padding-top', $('.deal-bar').height() + 'px');
@@ -202,11 +206,15 @@
       {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
         {% set href = "mailto:" + href %}
       {% endif %}
-      <a href="{{ href }}" class="jd-request-btn hs-button light-button jd-arrow-link" 
+      <a href="{{ href }}" class="jd-request-btn hs-button light-button" 
         {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
         >
-        Request Info
+        {% if module.update_request_text %}
+          {{ module.request_info_text }}
+        {% else %}
+          Request Info
+        {% endif %}
       </a>
     </div>
     
@@ -262,7 +270,7 @@
 
 {% require_js %}
 <script>
-$(document).ready(function() {
+$(function() {
   $(document).click(function(e) {
     if(e.target.className != 'jd-nav-item-title') {
       $('.jd-nav-item').removeClass('jd-nav-show');

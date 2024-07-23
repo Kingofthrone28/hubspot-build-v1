@@ -49,7 +49,7 @@
    */
   const getMetafield = (data, fieldName) => {
     const matchedField = data?.metafields.find(
-      (metafield) => metafield?.key && metafield.key === fieldName
+      (metafield) => metafield?.key && metafield.key === fieldName,
     );
 
     const matchedValue = matchedField?.value;
@@ -61,7 +61,7 @@
 
     return value;
   };
-  
+
   /**
    * Gets the URL to the Shopify store, potentially with a redirect.
    * @returns {string} A URL.
@@ -165,7 +165,7 @@
     } catch (e) {
       console.error(e);
     }
-    
+
     $spinner?.hide();
   }
 
@@ -227,7 +227,7 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
           product.addConnection(
             'variants',
@@ -249,24 +249,23 @@
                 (metafield) => {
                   metafield.add('key');
                   metafield.add('value');
-                }
+                },
               );
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         for (const tag of product.tags) {
           if (
             agreementTags.some(
-              (agreementTag) => tag.value === agreementTag.name
+              (agreementTag) => tag.value === agreementTag.name,
             )
           ) {
             const adjustedProduct = { ...product };
@@ -281,7 +280,7 @@
               if (lineItem.discountAllocations.length) {
                 lineItem.discountAllocations.forEach((allocation) => {
                   const discountAmount = parseFloat(
-                    allocation?.allocatedAmount?.amount || 0
+                    allocation?.allocatedAmount?.amount || 0,
                   );
 
                   totalDiscount -= discountAmount * lineItem.quantity;
@@ -289,13 +288,13 @@
               }
 
               adjustedProduct.price = parseFloat(
-                lineItem.variant?.price?.amount || 0
+                lineItem.variant?.price?.amount || 0,
               );
 
               adjustedProduct.totalDiscount = totalDiscount;
 
               const selectedVariant = product.variants.find(
-                (productVariant) => productVariant.id === lineItem.variant.id
+                (productVariant) => productVariant.id === lineItem.variant.id,
               );
 
               if (selectedVariant) {
@@ -310,7 +309,7 @@
       });
 
       const agreementCookie = IIN.cookies.getCookieString(
-        'enrollmentAgreementQuery'
+        'enrollmentAgreementQuery',
       );
 
       if (agreementProducts.length && !agreementCookie) {
@@ -418,20 +417,19 @@
             (metafield) => {
               metafield.add('key');
               metafield.add('value');
-            }
+            },
           );
-        }
+        },
       );
     });
 
     try {
-      const { model } = await IINShopifyClient.graphQLClient.send(
-        productsQuery
-      );
+      const { model } =
+        await IINShopifyClient.graphQLClient.send(productsQuery);
 
       model.products.forEach((product) => {
         const matchedItem = checkout.lineItems.find(
-          (lineItem) => lineItem.variant.product.id === product.id
+          (lineItem) => lineItem.variant.product.id === product.id,
         );
 
         if (!matchedItem) {
@@ -485,7 +483,7 @@
       if (lineItem.discountAllocations.length) {
         lineItem.discountAllocations.forEach((discount) => {
           const discountAmount = parseFloat(
-            discount.allocatedAmount?.amount || 0
+            discount.allocatedAmount?.amount || 0,
           );
 
           if (total > 0) {
@@ -594,7 +592,7 @@
 
     if (itemCount > 1) {
       itemSummaryHTML += `
-        <div style="font-size: var(--font-size--legacy--11); border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px">
+        <div style="border-top: 1px solid var(--color--legacy--very-light-grey-1); padding-top: 5px; font-size: var(--font-size--legacy--11);">
           $${parseFloat(checkout.totalPrice.amount).toLocaleString()}
         </div>
       `;
@@ -646,7 +644,7 @@
 
       const updatedCheckout = await IINShopifyClient.checkout.removeLineItems(
         cartCookie,
-        [lineID]
+        [lineID],
       );
 
       await loadCart();
@@ -733,7 +731,7 @@
 
         await IINShopifyClient.checkout.updateLineItems(
           cartCookie,
-          lineItemUpdate
+          lineItemUpdate,
         );
 
         loadCart(true);
@@ -789,7 +787,7 @@
     for (const lineItem of sortedItems) {
       for (const bundle of bundleData) {
         const existingBundle = matchedBundles.find(
-          (matchedBundle) => matchedBundle.name === bundle.name
+          (matchedBundle) => matchedBundle.name === bundle.name,
         );
 
         if (!existingBundle || bundle.shopify_product_ids) {
@@ -802,7 +800,7 @@
 
             for (const bundleID of bundleIDs) {
               const existingLineItem = sortedItems.find(
-                (li) => li.variant.product.id === `${gidPath}${bundleID}`
+                (li) => li.variant.product.id === `${gidPath}${bundleID}`,
               );
 
               if (!existingLineItem) {
@@ -840,7 +838,7 @@
     if (matchedBundles.length < maximumCount) {
       for (const bundle of bundleData) {
         const existingBundle = matchedBundles.find(
-          (matchedBundle) => matchedBundle.name === bundle.name
+          (matchedBundle) => matchedBundle.name === bundle.name,
         );
 
         if (
@@ -905,7 +903,7 @@
               },
               (image) => {
                 image.add('src');
-              }
+              },
             );
             product.addConnection(
               'variants',
@@ -921,7 +919,7 @@
 
                 variant.add('availableForSale');
                 variant.add('title');
-              }
+              },
             );
             product.add(
               'metafields',
@@ -938,16 +936,15 @@
               (metafield) => {
                 metafield.add('key');
                 metafield.add('value');
-              }
+              },
             );
-          }
+          },
         );
       });
 
       try {
-        const { model } = await IINShopifyClient.graphQLClient.send(
-          productsQuery
-        );
+        const { model } =
+          await IINShopifyClient.graphQLClient.send(productsQuery);
 
         bundleProducts = model.products;
       } catch (e) {
@@ -1013,14 +1010,14 @@
           <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
           <div>$${totalAfterDiscount.toLocaleString(
             undefined,
-            localeOptions
+            localeOptions,
           )} USD</div>
         `;
       }
 
       bundleProducts.forEach((bundleProduct) => {
         const existingLineItem = sortedItems.find(
-          (li) => li.variant.product.id === bundleProduct.id
+          (li) => li.variant.product.id === bundleProduct.id,
         );
 
         if (existingLineItem) {
@@ -1096,7 +1093,7 @@
               </div>
               <div>$${parseFloat(price).toLocaleString(
                 undefined,
-                localeOptions
+                localeOptions,
               )} USD</div>
             </div>
           </div>
@@ -1170,8 +1167,8 @@
           if (variant.availableForSale) {
             optionHTML += `
               <option value="${variant.id}"${
-              variantIndex === 0 ? ' selected' : ''
-            }>
+                variantIndex === 0 ? ' selected' : ''
+              }>
                 ${variant.title}
               </option>
             `;
@@ -1205,7 +1202,7 @@
                 <div>
                   $${parseFloat(price).toLocaleString(
                     undefined,
-                    localeOptions
+                    localeOptions,
                   )} USD
                 </div>
               </div>
@@ -1258,7 +1255,7 @@
                   savings
                     ? `<div>and save $${savings.toLocaleString(
                         undefined,
-                        localeOptions
+                        localeOptions,
                       )}</div>`
                     : ''
                 }
@@ -1408,7 +1405,7 @@
       const agreementData = {};
 
       const books = parseFloat(
-        getMetafield(product, 'books_and_materials')?.replace('$', '')
+        getMetafield(product, 'books_and_materials')?.replace('$', ''),
       );
 
       if (books) {
@@ -1450,7 +1447,7 @@
 
       const publicationDate = getMetafield(
         product,
-        'agreement_publication_date'
+        'agreement_publication_date',
       );
 
       if (publicationDate) {
@@ -1458,7 +1455,7 @@
       }
 
       const registrationCost = parseFloat(
-        getMetafield(product, 'registration_cost')?.replace('$', '')
+        getMetafield(product, 'registration_cost')?.replace('$', ''),
       );
 
       if (registrationCost) {
@@ -1491,7 +1488,7 @@
       }
 
       const agreementCookie = IIN.cookies.getCookieString(
-        'enrollmentAgreementQuery'
+        'enrollmentAgreementQuery',
       );
 
       if (agreementCookie) {
@@ -1500,7 +1497,7 @@
 
           const cookieParams = IIN.utilities.makeObjectFromKeyValueString(
             agreementCookie,
-            separator
+            separator,
           );
 
           Object.entries(cookieParams).forEach(([key, value]) => {
@@ -1542,7 +1539,7 @@
     try {
       await IINShopifyClient.checkout.updateAttributes(
         cartCookie,
-        cartAttributes
+        cartAttributes,
       );
     } catch (e) {
       console.error(e);
@@ -1581,14 +1578,14 @@
 
           const updatedCheckout = await IINShopifyClient.checkout.updateEmail(
             cartCookie,
-            value
+            value,
           );
 
           await setShopifyCartCookie(updatedCheckout, true);
 
           checkoutURL = updatedCheckout.webUrl.replace(
             internalDomain,
-            externalDomain
+            externalDomain,
           );
         };
 
@@ -1687,7 +1684,7 @@
 
           const agreementCookie = IIN.utilities.makeKeyValueStringFromObject(
             agreementCookieData,
-            cookieSeparator
+            cookieSeparator,
           );
 
           document.cookie = agreementCookie;
@@ -1741,7 +1738,7 @@
 
           const checkoutCookie = IIN.utilities.makeKeyValueStringFromObject(
             checkoutCookieData,
-            cookieSeparator
+            cookieSeparator,
           );
 
           document.cookie = checkoutCookie;

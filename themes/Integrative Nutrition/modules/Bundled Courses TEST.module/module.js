@@ -171,7 +171,7 @@
 
     $(`#${moduleData.name} .bp-${productID} .bp-bundled-course-card-img`).css(
       'background',
-      `url('${updatedProduct.images[0].src}')`
+      `url('${updatedProduct.images[0].src}')`,
     );
 
     $(`#${moduleData.name} .bp-${productID} .bp-card-options`).html(html);
@@ -205,7 +205,7 @@
         const variantOptions = variant.selectedOptions;
 
         return Boolean(
-          available && Array.isArray(variantOptions) && variantOptions.length
+          available && Array.isArray(variantOptions) && variantOptions.length,
         );
       });
 
@@ -272,7 +272,7 @@
         }
 
         const existingLineItem = cart.lineItems.find(
-          (lineItem) => lineItem.variant.product.id === bundleProduct.id
+          (lineItem) => lineItem.variant.product.id === bundleProduct.id,
         );
 
         if (existingLineItem) {
@@ -295,7 +295,7 @@
     try {
       const checkout = await IINShopifyClient.checkout.addLineItems(
         cartCookie,
-        lineItemsToAdd
+        lineItemsToAdd,
       );
 
       updateCartTotal(checkout);
@@ -436,11 +436,11 @@
       const difference = total - totalAfterDiscount;
 
       $('#bundle-shopify-price-savings').html(
-        `Savings of <span>$${difference.toLocaleString()}</span> by bundling together`
+        `Savings of <span>$${difference.toLocaleString()}</span> by bundling together`,
       );
 
       $('#course-shopify-price').text(
-        `$${totalAfterDiscount.toLocaleString()}`
+        `$${totalAfterDiscount.toLocaleString()}`,
       );
 
       $('#course-shopify-compare').text(`$${total.toLocaleString()}`);

@@ -518,6 +518,7 @@ a.jd-cat-block:hover {
   align-items: center;
   justify-content: space-between;
   margin: 10px 0 5px;
+  font-size: var(--font-size--5);
 }
 
 .course-catalog-no-results {
@@ -3919,7 +3920,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
 .hs-content-id-137558861388 .jd-header-wrap.jd-scrolled .jd-nav-item > a,
 .hs-content-id-151881679191 .jd-header-wrap.jd-scrolled .jd-nav-item > a,
 .hs-content-id-156853830932 .jd-header-wrap.jd-scrolled .jd-nav-item > a {
-  color: var(--color--cherry);
+  color: var(--color--legacy--blue--oxford-blue);
 }
 
 .hs-content-id-137558861388 .jd-header-wrap.jd-scrolled .jd-nav-show > a,
@@ -3946,7 +3947,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
 .hs-content-id-137558861388 .jd-header-wrap.jd-scrolled .jd-header-top ul li a,
 .hs-content-id-151881679191 .jd-header-wrap.jd-scrolled .jd-header-top ul li a,
 .hs-content-id-156853830932 .jd-header-wrap.jd-scrolled .jd-header-top ul li a {
-  color: var(--color--cherry);
+  color: var(--color--legacy--blue--oxford-blue);
 }
 
 .hs-content-id-137558861388 .jd-header-wrap.jd-scrolled #jd-contact::before,
@@ -4072,10 +4073,10 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
     .slick-arrow {
     top: 16%;
   }
+}
 
-  .basic-page-without-nav .row-fluid-wrapper.row-depth-1.row-number-2.dnd-row {
-    margin-bottom: 36px;
-  }
+.basic-page-without-nav .row-fluid-wrapper.row-depth-1.row-number-2.dnd-row {
+  margin-bottom: 36px;
 }
 
 @media (max-width: 767px) {
@@ -4369,10 +4370,6 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   .item-inner
   .paragraphs-item-button {
   margin-top: auto;
-}
-
-.homepage-section .hub-view-courses .hub-view-content {
-  flex-wrap: nowrap;
 }
 
 .homepage-section .hs-content-id-137558861388 #bg_widget_1691086464332,

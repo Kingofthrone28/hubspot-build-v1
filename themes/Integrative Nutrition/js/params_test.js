@@ -59,7 +59,7 @@
     hostnameParts.length > 2 ? hostnameParts[hostnameParts.length - 3] : '';
 
   const isSourceSubdomain = Object.entries(sourceMappings).some(
-    ([key]) => key === subdomain
+    ([key]) => key === subdomain,
   );
 
   const cookieSettings = settings.custom_cookie_settings;
@@ -256,7 +256,7 @@
       JSON.stringify({
         ...data,
         source: sourceMappings[subdomain],
-      })
+      }),
     );
 
     IIN.cookies.deleteCookie(name);

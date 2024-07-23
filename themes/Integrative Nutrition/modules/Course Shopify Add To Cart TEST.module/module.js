@@ -170,11 +170,11 @@
         checkSelectedOptions();
 
         const $checkedInputs = $(
-          `#${moduleData.name} .jd-shopify-option-wrap input[name="${type}"]:checked`
+          `#${moduleData.name} .jd-shopify-option-wrap input[name="${type}"]:checked`,
         );
 
         $checkedInputs.first().focus();
-      }
+      },
     );
 
     /**
@@ -193,7 +193,7 @@
         const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
 
         const alreadyInCart = checkout.lineItems.some(
-          ({ variant }) => variant.product.id === productData.id
+          ({ variant }) => variant.product.id === productData.id,
         );
 
         if (alreadyInCart) {
@@ -213,7 +213,7 @@
         try {
           const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
             cartCookie,
-            lineItemsToAdd
+            lineItemsToAdd,
           );
 
           updateCartTotal(updatedCheckout);
@@ -224,7 +224,7 @@
           $('.jd-add-pop .jd-add-pop-name').text(`${moduleData.courseName}`);
           $('.jd-add-pop .jd-add-pop-img > div').attr(
             'style',
-            `background: url(${selectedVariant.image.src})`
+            `background: url(${selectedVariant.image.src})`,
           );
 
           let optionsHTML = '';
@@ -241,7 +241,7 @@
 
           if (amount || amount === 0) {
             $('.jd-add-pop .jd-add-pop-price').text(
-              `$${amount.toLocaleString()}`
+              `$${amount.toLocaleString()}`,
             );
           }
 

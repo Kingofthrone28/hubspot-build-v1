@@ -4,7 +4,7 @@
  */
 (() => {
   const weglotApiKeys = {
-    www: 'wg_22f91c0430456d0d120ff3f524319edf0'
+    www: 'wg_22f91c0430456d0d120ff3f524319edf0',
   };
 
   const { hostname } = window.location;
