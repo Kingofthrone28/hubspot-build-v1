@@ -3,7 +3,7 @@
  * Captures form submit event for sample class form and redirects based upon HTML lang
  */
 
-const addSampleFormSubmitListener = () => {
+const addSampleClassFormSubmitListener = () => {
   const SAMPLE_CLASS_FORM_ID = '';
   const ENGLISH_SAMPLE_CLASS_URL = '';
   const SPANISH_SAMPLE_CLASS_URL = '';
@@ -23,4 +23,4 @@ const addSampleFormSubmitListener = () => {
   });
 };
 
-addSampleFormSubmitListener();
+addSampleClassFormSubmitListener();
