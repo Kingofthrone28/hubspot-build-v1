@@ -1,6 +1,7 @@
 /**
  * JS Snippet to be added to a page with a Sample Class Form
  * Captures form submit event for sample class form and redirects based upon HTML lang
+ * Temporary solution, to be removed once Spanish Sample Class exists on Hubspot
  */
 
 const addSampleClassFormSubmitListener = () => {
