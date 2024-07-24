@@ -1,0 +1,18 @@
+.relative-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: var(--spacing-32);
+}
+
+.relative-nav-container > * {
+  height: var(--spacing-12);
+}
+
+.relative-nav-container > :not(:first-of-type) {
+  margin-left: var(--spacing-6);
+}
+
+.relative-nav-container > :last-of-type {
+  margin-right: var(--spacing-16);
+}
