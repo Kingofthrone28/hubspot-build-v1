@@ -1,25 +1,43 @@
 /* Form */
-select { -webkit-appearance: none; appearance: none; position: relative; background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat, linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important; background-position: right 15px top 17px !important; }
-/* select { -webkit-appearance: none; appearance: none; position: relative; background: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+') no-repeat !important; background-position: right 15px top 17px !important; } */
+select {
+  appearance: none;
+  position: relative;
+  background:
+    url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZDcyYTI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+')
+      no-repeat,
+    linear-gradient(
+      var(--color--legacy--white--white--alpha-100),
+      var(--color--legacy--white--white--alpha-100)
+    ) !important;
+  background-position: right 15px top 17px !important;
+}
 
-{% set form_label_font_color = theme.forms.label_color.color %}
-{% set form_help_text_font_color = theme.forms.help_text_color.color %}
+.dnd-section h3.form-title {
+  margin: 0;
+  padding-bottom: 30px;
+  {% if theme.forms.header_background_color.opacity > 0 %}
+  padding: 7%;
+  {% endif %}
+  color: var(--theme--forms--header-text-color);
+  font-family: var(--theme--global-fonts--secondary-font);
+}
 
-{% set form_input_border_color = theme.forms.field_border_color.color %}
-{% set form_input_focus_border_color = theme.forms.field_focus_border_color.color %}
-
-{% set button_bg_color = theme.buttons.background_color.color %}
-{% set button_font_color = theme.buttons.text_color.color %}
-{% set button_border = theme.buttons.border_width ~ 'px solid ' ~ theme.buttons.border_color.color %}
-{% set button_corner_radius = theme.buttons.border_radius ~ 'px' %}
-{% set button_spacing = theme.buttons.vertical_padding ~ 'px' ~ ' ' ~ theme.buttons.horizontal_padding ~ 'px' %}
-
-.dnd-section h3.form-title { padding-bottom: 30px; font-family: {{theme.global_fonts.secondary_font.font}};color: {{ theme.forms.header_text_color.color }};margin: 0;{% if theme.forms.header_background_color.opacity > 0 %}padding: 7%;{% endif %} }
 {% if theme.forms.form_background_color.opacity > 0 %}
-.dnd-section .widget-type-form { background: {{ theme.forms.form_background_color.color }};border-radius: {{ theme.spacing.border_radius }}px;overflow: hidden; }
-.dnd-section .widget-type-form form { padding: 7%; }
-.dnd-section .dnd-column[class*="background-color"] .widget-type-form { box-shadow: 0 0 15px rgba(0,0,0, .15); }
+.dnd-section .widget-type-form {
+  border-radius: var(--theme--spacing--border-radius);
+  background: var(--theme--forms--form-background-color);
+  overflow: hidden;
+}
+
+.dnd-section .widget-type-form form {
+  padding: 7%;
+}
+
+.dnd-section .dnd-column[class*='background-color'] .widget-type-form {
+  box-shadow: 0 0 15px var(--color--legacy--black--black--alpha-15);
+}
 {% endif %}
+
 .dnd-section .hs-form-field {
   margin-bottom: 1rem;
 }
@@ -27,20 +45,20 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
 /* Labels */
 
 .dnd-section form label {
-  color: #33475B;
   display: block;
-  font-size: 1rem;
-  padding-top: 0;
   margin-bottom: 0;
-  text-align: left;
+  padding-top: 0;
   width: auto;
+  text-align: left;
+  color: var(--color--legacy--blue--gulf-blue);
+  font-size: var(--font-size--3);
 }
 
 /* Help text - legends */
 
 .dnd-section form legend {
-  color: #33475B;
-  font-size: 1rem;
+  color: var(--color--legacy--blue--gulf-blue);
+  font-size: var(--font-size--3);
 }
 
 /* Inputs */
@@ -49,72 +67,87 @@ select { -webkit-appearance: none; appearance: none; position: relative; backgro
   position: relative;
 }
 
-.dnd-section input[type=text],
-.dnd-section input[type=email],
-.dnd-section input[type=password],
-.dnd-section input[type=tel],
-.dnd-section input[type=number],
-.dnd-section input[type=file],
+.dnd-section input[type='email'],
+.dnd-section input[type='file'],
+.dnd-section input[type='number'],
+.dnd-section input[type='password'],
+.dnd-section input[type='tel'],
+.dnd-section input[type='text'],
 .dnd-section select,
 .dnd-section textarea {
-  color: #33475B;
   display: inline-block;
-  font-size: 1rem;
-  padding: 0 20px 16px 20px;
+  padding: 0 20px 16px;
   width: 100%;
+  color: var(--color--legacy--blue--gulf-blue);
+  font-size: var(--font-size--3);
 }
+
 .dnd-section select,
 .dnd-section textarea {
   padding: 16px 20px;
 }
+
 .filter-form.direction-hori .tp-main {
-  border: 1px solid #D1D6DC;
-  border-color: {{ form_input_border_color }};
-  color: {{ theme.typography.body_text.color }};
-  background: #f3f3f3;
-  font-size: 1rem;
-  padding: 12px 20px;
+  border: 1px solid var(--color--legacy--blue--link-water-2);
   border-radius: 3px;
+  border-color: var(--theme--forms--field-border-color);
+  background: var(--color--legacy--white--white-smoke-4);
+  padding: 12px 20px;
+  color: var(--theme--typography--body-text--color);
+  font-size: var(--font-size--3);
 }
 
-.dnd-section form fieldset.form-columns-1 .hs-input { width: 100%; }
-
-.systems-page input[type=text],
-.systems-page input[type=email],
-.systems-page input[type=password],
-.systems-page input[type=tel],
-.systems-page input[type=number],
-.systems-page input[type=file],
-.systems-page select,
-.systems-page textarea {
-  background-color: #FFF;
-  border: 1px solid #D1D6DC;
-  border-radius: 3px;
-  color: #33475B;
-  display: inline-block;
-  font-size: 1rem;
-  padding: 0.7rem;
+.dnd-section form fieldset.form-columns-1 .hs-input {
   width: 100%;
 }
 
-.systems-page .actions { padding-top: 20px; }
+.systems-page input[type='email'],
+.systems-page input[type='file'],
+.systems-page input[type='number'],
+.systems-page input[type='password'],
+.systems-page input[type='tel'],
+.systems-page input[type='text'],
+.systems-page select,
+.systems-page textarea {
+  display: inline-block;
+  border: 1px solid var(--color--legacy--blue--link-water-2);
+  border-radius: 3px;
+  background-color: var(--color--white);
+  padding: 0.7rem;
+  width: 100%;
+  color: var(--color--legacy--blue--gulf-blue);
+  font-size: var(--font-size--3);
+}
 
-.dnd-section input[type=text]:focus,
-.dnd-section input[type=email]:focus,
-.dnd-section input[type=password]:focus,
-.dnd-section input[type=tel]:focus,
-.dnd-section input[type=number]:focus,
-.dnd-section input[type=file]:focus,
+.systems-page .actions {
+  padding-top: 20px;
+}
+
+/* Inputs - file picker */
+
+input[type='file'] {
+  border: initial;
+  box-shadow: none;
+  background-color: transparent;
+  padding: initial;
+  line-height: initial;
+}
+
+.dnd-section input[type='email']:focus,
+.dnd-section input[type='file']:focus,
+.dnd-section input[type='number']:focus,
+.dnd-section input[type='password']:focus,
+.dnd-section input[type='tel']:focus,
+.dnd-section input[type='text']:focus,
 .dnd-section select:focus,
 .dnd-section textarea:focus {
-  outline-color: rgba(82, 168, 236, 0.8);
+  outline-color: var(--color--legacy--blue--cornflower-blue--alpha-80);
 }
 
 .dnd-section fieldset {
-  max-width: 110% !important;
   margin-right: -8px !important;
+  max-width: 110% !important;
 }
-
 
 /* Inputs - checkbox/radio */
 
@@ -133,80 +166,68 @@ form .inputs-list {
 
 .inputs-list input,
 .inputs-list span {
-  font-size: 1rem;
   vertical-align: middle;
+  font-size: var(--font-size--3);
 }
 
-.hs-input[type=checkbox],
-.hs-input[type=radio] {
+.hs-input[type='checkbox'],
+.hs-input[type='radio'] {
+  margin-right: 0.35rem;
   border: none;
   cursor: pointer;
-  height: auto;
-  line-height: normal;
-  margin-right: 0.35rem;
   padding: 0;
   width: auto;
+  height: auto;
+  line-height: normal;
 }
 
 /* .hs-fieldtype-intl-phone.hs-input select {
- color: white!important;
+ color: var(--color--white) !important;
 } */
 
 @media (max-width: 765px) {
   .form-columns-2 .hs-form-field .hs-input {
-    width: 100%!important;
+    width: 100% !important;
   }
 }
 
 /* Inputs - datepicker */
 
-.hs-fieldtype-date .input .hs-dateinput:before {
-  color: #33475B;
-  content:'\01F4C5';
+.hs-fieldtype-date .input .hs-dateinput::before {
   position: absolute;
-  right: 10px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
+  right: 10px;
   transform: translateY(-50%);
+  color: var(--color--legacy--blue--gulf-blue);
+  content: '\01F4C5';
 }
 
 .fn-date-picker .pika-table thead th {
-  color: #FFF;
+  color: var(--color--white);
 }
 
 .fn-date-picker td.is-today .pika-button {
-  color: #343A40;
+  color: var(--color--legacy--blue--mirage);
 }
 
 .fn-date-picker td.is-selected .pika-button {
-  background: #343A40;
   border-radius: 0;
   box-shadow: none;
+  background: var(--color--legacy--blue--mirage);
 }
 
 .fn-date-picker td .pika-button:hover {
-  background-color: #343A40 !important;
   border-radius: 0 !important;
-  color: #FFF;
-}
-
-/* Inputs - file picker */
-
-input[type=file] {
-  background-color: transparent;
-  border: initial;
-  box-shadow: none;
-  line-height: initial;
-  padding: initial;
+  background-color: var(--color--legacy--blue--mirage) !important;
+  color: var(--color--white);
 }
 
 /* Headings and text */
 
 form .hs-richtext,
 form .hs-richtext p {
-  font-size: 0.875rem;
   margin: 0 0 1.4rem;
+  font-size: var(--font-size--2);
 }
 
 form .hs-richtext img {
@@ -214,243 +235,338 @@ form .hs-richtext img {
 }
 
 form .header {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
 }
 
 /* GDPR */
 
 .legal-consent-container .hs-form-booleancheckbox-display > span,
 .legal-consent-container .hs-form-booleancheckbox-display > span p {
-  font-size: 0.875rem;
   margin-left: 1rem !important;
+  font-size: var(--font-size--2);
 }
 
 /* Validation */
 
 .hs-form-required {
-  color: red;
+  color: var(--color--cherry);
 }
 
 .hs-input.invalid.error {
-  border-color: #EF6B51;
+  border-color: var(--color--legacy--brown--burnt-sienna);
 }
 
 .hs-error-msg {
-  color: #EF6B51;
   margin-top: 0.35rem;
+  color: var(--color--legacy--brown--burnt-sienna);
 }
 
 /* Submit button */
 
-.dnd-section form input[type=submit],
+.dnd-section form input[type='submit'],
 .dnd-section form .hs-button {
-  background-color: #494A52;
-  border: 1px solid #494A52;
-  border-radius: 6px;
-  color: #FFF;
-  cursor: pointer;
   display: inline-block;
-  font-size: 0.92rem;
-  font-weight: normal;
-  height: auto;
-  line-height: 1.1;
-  margin: 0;
-  padding: 15px 53px;
   position: relative;
-  text-align: center;
-{# default "Get Free Widget" form (renders when no form is passed to the form HubL tag) is an anchor (a.hs-button) rather than a real input, so it needs explcit css to avoid link styling #}
-  text-decoration: none;
   transition: all 0.15s linear;
-  white-space: normal;
+  margin: 0;
+  border: 1px solid var(--color--legacy--violet--gun-powder);
+  border-radius: 6px;
+  background-color: var(--color--legacy--violet--gun-powder);
+  cursor: pointer;
+  padding: 15px 53px;
   width: auto;
+  height: auto;
+  text-align: center;
+
+  /* default "Get Free Widget" form (renders when no form is passed to the form
+  HubL tag) is an anchor (a.hs-button) rather than a real input, so it needs
+  explicit CSS to avoid link styling */
+  text-decoration: none;
+  line-height: var(--line-height--1);
+  white-space: normal;
   word-break: break-word;
+  color: var(--color--white);
+  font-size: var(--font-size--legacy--6);
+  font-weight: normal;
 }
 
-
-.dnd-section form input[type=submit]:active,
+.dnd-section form input[type='submit']:active,
 .dnd-section form .hs-button:active {
-  background-color: #71727A;
-  border-color: #71727A;
-{# see "no form selected" note above #}
-  color: #FFF;
+  border-color: var(--color--legacy--blue--storm-grey);
+  background-color: var(--color--legacy--blue--storm-grey);
+
+  /* see "no form selected" note above */
+  color: var(--color--white);
 }
 
 /* Captcha */
 
-.grecaptcha-badge {
-  
+form {
+  {{ body_font.style }};
 }
 
-{###########################################################################}
-{##############################   5. Forms   ###############################}
-{###########################################################################}
-
-form,
 .submitted-message {
   {{ body_font.style }};
 }
 
-
 /* Form label */
 
 .dnd-section form label {
-  color: {{ form_label_font_color }};
+  color: var(--theme--forms--label-color);
 }
 
 /* Form help text */
 
 .dnd-section form legend {
-  color: {{ form_help_text_font_color }};
+  color: var(--theme--forms--help-text-color);
 }
 
 /* Form inputs */
 
-#form-module_166872823299214 label span{color:white!important}
+#form-module_166872823299214 label span {
+  color: var(--color--white) !important;
+}
 
-.dnd-section input[type=text],
-.dnd-section input[type=email],
-.dnd-section input[type=password],
-.dnd-section input[type=tel],
-.dnd-section input[type=number],
-.dnd-section input[type=file],
+.dnd-section input[type='email'],
+.dnd-section input[type='file'],
+.dnd-section input[type='number'],
+.dnd-section input[type='password'],
+.dnd-section input[type='tel'],
+.dnd-section input[type='text'],
 .dnd-section select,
 .dnd-section textarea {
-  {% if theme.forms.border_style == 'full' %}border: 1px solid {{ theme.forms.field_border_color.color }};{% else %}border: none;{% endif %}
-  {% if theme.forms.border_style == 'underline' %}border-bottom: 1px solid {{ theme.forms.field_border_color.color }};{% endif %}
-  border-radius: {{ theme.forms.border_radius }}px;
-  background: rgba({{ theme.forms.field_background_color.color|convert_rgb }}, {{ theme.forms.field_background_color.opacity / 100 }});
-  padding: {{ theme.forms.vertical_padding }}px {{ theme.forms.horizontal_padding }}px;
+  border: {% if theme.forms.border_style == 'full' %}1px solid var(--theme--forms--field-border-color){% else %}none{% endif %};
+  {% if theme.forms.border_style == 'underline' %}
+  border-bottom: 1px solid var(--theme--forms--field-border-color);
+  {% endif %}
+  border-radius: var(--theme--forms--border-radius);
+  background: var(--theme--forms--field-background-color);
+  padding: var(--theme--forms--padding);
 }
+
 .dnd-section select,
 .dnd-section textarea {
-  border: 1px solid {{ theme.forms.field_border_color.color }};
-  color: {{ theme.typography.body_text.color }};
-  background: rgba({{ theme.forms.field_background_color.color|convert_rgb }}, {{ theme.forms.field_background_color.opacity / 100 }});
+  border: 1px solid var(--theme--forms--field-border-color);
+  background: var(--theme--forms--field-background-color);
+  color: var(--theme--typography--body-text--color);
 }
-.dnd-section input::-webkit-input-placeholder { color: {{ theme.typography.body_text.color }}; }
-.dnd-section input:-ms-input-placeholder { color: {{ theme.typography.body_text.color }}; }
-.dnd-section input::placeholder { color: {{ theme.typography.body_text.color }}; }
 
-.dnd-section input[type=text]:focus,
-.dnd-section input[type=email]:focus,
-.dnd-section input[type=password]:focus,
-.dnd-section input[type=tel]:focus,
-.dnd-section input[type=number]:focus,
-.dnd-section input[type=file]:focus,
+.dnd-section input::placeholder {
+  color: var(--theme--typography--body-text--color);
+}
+
+.dnd-section input[type='email']:focus,
+.dnd-section input[type='file']:focus,
+.dnd-section input[type='number']:focus,
+.dnd-section input[type='password']:focus,
+.dnd-section input[type='tel']:focus,
+.dnd-section input[type='text']:focus,
 .dnd-section select:focus,
 .dnd-section textarea:focus {
-  border-color: {{ theme.forms.field_focus_border_color.color }};
+  border-color: var(--theme--forms--field-focus-border-color);
 }
 
 /* Form placeholder text */
 
-::-webkit-input-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder,
-:-moz-placeholder,
-::placeholder,
-.hs-fieldtype-date .input .hs-dateinput:before {
-  color: {{ body_font.color }};
+::placeholder {
+  color: var(--theme--typography--body-text--color);
+}
+
+.hs-fieldtype-date .input .hs-dateinput::before {
+  color: var(--theme--typography--body-text--color);
 }
 
 /* Date picker */
 
 .fn-date-picker td.is-selected .pika-button {
-  background: {{ primary_color }};
+  background: var(--theme--global-colors--primary-color);
 }
 
 .fn-date-picker td .pika-button:hover {
-  background-color: {{ primary_color }} !important;
+  background-color: var(--theme--global-colors--primary-color) !important;
 }
 
 .fn-date-picker td.is-today .pika-button {
-  color: {{ primary_color }};
+  color: var(--theme--global-colors--primary-color);
 }
 
 /* Submit button */
 
-.dnd-section form input[type=submit],
-.dnd-section form .hs-button {
-  background-color: {{ button_bg_color }};
-  border: {{ button_border }};
-  border-radius: {{ button_corner_radius }};
-  color: {{ button_font_color }};
-  padding: {{ button_spacing }};
+.dnd-section form .hs-button,
+.dnd-section form input[type='submit'] {
   display: inline-block;
+  border: var(--theme--buttons--border);
+  border-radius: var(--theme--buttons--border-radius);
+  background-color: var(--theme--buttons--background-color);
+  padding: var(--theme--buttons--padding);
+  color: var(--theme--buttons--text-color);
 }
 
-.dnd-section form input[type=submit]:hover,
-.dnd-section form input[type=submit]:focus,
+.dnd-section form input[type='submit']:hover,
+.dnd-section form input[type='submit']:focus,
 .dnd-section form .hs-button:hover,
 .dnd-section form .hs-button:focus {
-  border: {{ button_border }};
-  color: {{ button_font_color }};
+  border: var(--theme--buttons--border);
+  color: var(--theme--buttons--text-color);
 }
 
-.dnd-section form input[type=submit]:active,
-.dnd-section form .hs-button:active {
-  background-color: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
-  border-color: {{ color_variant(theme.buttons.border_color.color, 40) }};
-  color: {{ button_font_color }};
+.dnd-section form .hs-button:active,
+.dnd-section form input[type='submit']:active {
+  border-color: var(--theme--buttons--border-color--lightened);
+  background-color: var(--theme--buttons--background-color--lightened);
+  color: var(--theme--buttons--text-color);
 }
 
-.dnd-section .span6 form input[type=submit], .dnd-section .span6 form .hs-button, .dnd-section .span5 form input[type=submit], .dnd-section .span5 form .hs-button, .dnd-section .span4 form input[type=submit], .dnd-section .span4 form .hs-button, .dnd-section .span3 form input[type=submit], .dnd-section .span3 form .hs-button { width: 100%;padding: 12px; }
-.dnd-section .span6 form input[type=submit]:hover, .dnd-section .span6 form .hs-button:hover, .dnd-section .span5 form input[type=submit]:hover, .dnd-section .span5 form .hs-button:hover, .dnd-section .span4 form input[type=submit]:hover, .dnd-section .span4 form .hs-button:hover, .dnd-section .span3 form input[type=submit]:hover, .dnd-section .span3 form .hs-button:hover { box-shadow: 3px 3px 10px rgba(0,0,0, .2){% if theme.buttons.gr_color.color %}, rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 600px 0 10px -10px inset{% endif %}; }
+.dnd-section .span6 form input[type='submit'],
+.dnd-section .span6 form .hs-button,
+.dnd-section .span5 form input[type='submit'],
+.dnd-section .span5 form .hs-button,
+.dnd-section .span4 form input[type='submit'],
+.dnd-section .span4 form .hs-button,
+.dnd-section .span3 form input[type='submit'],
+.dnd-section .span3 form .hs-button {
+  padding: 12px;
+  width: 100%;
+}
 
-.color-section, .color-section form label, .color-section h2, .color-section h3, .color-section h4, .color-section h5 { color: white; }
-.color-section div[class*="background-color"], .color-section div[class*="background-color"] form label, .color-section div[class*="background-color"] h2, .color-section div[class*="background-color"] h3, .color-section div[class*="background-color"] h4, .color-section div[class*="background-color"] h5 { color: {{ theme.typography.body_text.color }}; }
-.color-section form input[type=text], .color-section form input[type=email], .color-section form input[type=password], .color-section form input[type=tel], .color-section form input[type=number], .color-section form input[type=file], .color-section form select, .color-section form textarea { border-color: white; }
-.color-section div[class*="background-color"] form input[type=text], .color-section div[class*="background-color"] form input[type=email], .color-section div[class*="background-color"] form input[type=password], .color-section div[class*="background-color"] form input[type=tel], .color-section div[class*="background-color"] form input[type=number], .color-section div[class*="background-color"] form input[type=file], .color-section div[class*="background-color"] form select, .color-section div[class*="background-color"] form textarea  { border-color: {{ theme.forms.field_border_color.color }}; }
-.color-section form input[type=submit], .color-section form .hs-button {
-  text-align: center;
+.dnd-section .span6 form input[type='submit']:hover,
+.dnd-section .span6 form .hs-button:hover,
+.dnd-section .span5 form input[type='submit']:hover,
+.dnd-section .span5 form .hs-button:hover,
+.dnd-section .span4 form input[type='submit']:hover,
+.dnd-section .span4 form .hs-button:hover,
+.dnd-section .span3 form input[type='submit']:hover,
+.dnd-section .span3 form .hs-button:hover {
+  box-shadow: 3px 3px 10px var(--color--legacy--black--black--alpha-20)
+  {% if theme.buttons.gr_color.color %}, var(--theme--buttons--hover-color) 600px 0 10px -10px inset{% endif %};
+}
+
+.color-section,
+.color-section form label,
+.color-section h2,
+.color-section h3,
+.color-section h4,
+.color-section h5 {
+  color: var(--color--white);
+}
+
+.color-section div[class*='background-color'],
+.color-section div[class*='background-color'] form label,
+.color-section div[class*='background-color'] h2,
+.color-section div[class*='background-color'] h3,
+.color-section div[class*='background-color'] h4,
+.color-section div[class*='background-color'] h5 {
+  color: var(--theme--typography--body-text--color);
+}
+
+.color-section form input[type='text'],
+.color-section form input[type='email'],
+.color-section form input[type='password'],
+.color-section form input[type='tel'],
+.color-section form input[type='number'],
+.color-section form input[type='file'],
+.color-section form select,
+.color-section form textarea {
+  border-color: var(--color--white);
+}
+
+.color-section div[class*='background-color'] form input[type='text'],
+.color-section div[class*='background-color'] form input[type='email'],
+.color-section div[class*='background-color'] form input[type='password'],
+.color-section div[class*='background-color'] form input[type='tel'],
+.color-section div[class*='background-color'] form input[type='number'],
+.color-section div[class*='background-color'] form input[type='file'],
+.color-section div[class*='background-color'] form select,
+.color-section div[class*='background-color'] form textarea {
+  border-color: var(--theme--forms--field-border-color);
+}
+
+.color-section form input[type='submit'],
+.color-section form .hs-button {
+  border: var(--theme--buttons--light-button--border);
+  border-radius: var(--theme--buttons--light-button--border-radius);
+  {% if theme.buttons.light_buttons.gr_color.color %}
+  box-shadow: var(--theme--buttons--light-button--hover-color--lightened) 0 0 10px -10px inset;
+  {% endif %}
+  background: var(--theme--buttons--light-button--background-color);
   max-width: 250px;
-  text-decoration: none;
-  background:  {{ theme.buttons.light_buttons.background_color.color }};
-  border: {{ theme.buttons.light_buttons.border_width ~ 'px solid ' ~ theme.buttons.light_buttons.border_color.color }};
-  border-radius: {{ theme.buttons.light_buttons.border_radius ~ 'px' }};
-  color: {{ theme.buttons.light_buttons.text_color.color }};
-  font-family: {{ secondary_font.font }};
-  box-shadow: {% if theme.buttons.light_buttons.gr_color.color %}rgba({{ theme.buttons.light_buttons.gr_color.color|convert_rgb }},1) 0 0 10px -10px inset{% endif %};
-}
-.color-section div[class*="background-color"] form input[type=submit], .color-section div[class*="background-color"] form .hs-button {
   text-align: center;
-  max-width: 250px;
   text-decoration: none;
-  background: {{ button_bg_color }};
-  border: {{ button_border }};
-  border-radius: {{ button_corner_radius }};
-  color: {{ button_font_color }};
-  font-family: {{ secondary_font.font }};
-  box-shadow: {% if theme.buttons.gr_color.color %}rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 0 0 10px -10px inset{% endif %};
+  color: var(--theme--buttons--light-button--text-color);
+  font-family: var(--theme--global-fonts--secondary-font);
+}
+
+.color-section div[class*='background-color'] form input[type='submit'],
+.color-section div[class*='background-color'] form .hs-button {
+  border: var(--theme--buttons--border);
+  border-radius: var(--theme--buttons--border-radius);
+  {% if theme.buttons.gr_color.color %}
+  box-shadow: var(--theme--buttons--hover-color) 0 0 10px -10px inset;
+  {% endif %}
+  background: var(--theme--buttons--background-color);
+  max-width: 250px;
+  text-align: center;
+  text-decoration: none;
   text-shadow: none;
+  color: var(--theme--buttons--text-color);
+  font-family: var(--theme--global-fonts--secondary-font);
 }
-html .color-section form input[type=submit]:hover,
-html .color-section form input[type=submit]:focus,
+
+html .color-section form input[type='submit']:hover,
+html .color-section form input[type='submit']:focus,
 html .color-section form .hs-button:hover,
-html .color-section form .hs-button:focus { color: {{ theme.buttons.light_buttons.h_text_color.color }} !important;box-shadow: {% if theme.buttons.light_buttons.gr_color.color %}rgba({{ theme.buttons.light_buttons.gr_color.color|convert_rgb }},1) 300px 0 10px -10px inset{% endif %} !important; }
-html .color-section div[class*="background-color"] form input[type=submit]:hover,
-html .color-section div[class*="background-color"] form input[type=submit]:focus,
-html .color-section div[class*="background-color"] form .hs-button:hover,
-html .color-section div[class*="background-color"] form .hs-button:focus { color: {{ theme.buttons.h_text_color.color }} !important;box-shadow: {% if theme.buttons.gr_color.color %}rgba({{ theme.buttons.gr_color.color|convert_rgb }},1) 300px 0 10px -10px inset{% endif %} !important; }
-html .color-section select { background: white; }
-html .color-section input::placeholder { color: white; }
-html .color-section input::-ms-input-placeholder { color: white; }
-html .color-section input:-ms-input-placeholder{ color: white; }
-html .color-section div[class*="background-color"] input::placeholder { color: {{ body_font.color }}; }
-html .color-section div[class*="background-color"] input::-ms-input-placeholder { color: {{ body_font.color }}; }
-html .color-section div[class*="background-color"] input:-ms-input-placeholder{ color: {{ body_font.color }}; }
+html .color-section form .hs-button:focus {
+  {% if theme.buttons.light_buttons.gr_color.color %}
+  box-shadow: var(--theme--buttons--light-button--hover-color--lightened) 300px 0 10px -10px inset !important;
+  {% endif %}
+  color: var(--theme--buttons--light-button--hover-text-color) !important;
+}
+
+html
+  .color-section
+  div[class*='background-color']
+  form
+  input[type='submit']:hover,
+html
+  .color-section
+  div[class*='background-color']
+  form
+  input[type='submit']:focus,
+html .color-section div[class*='background-color'] form .hs-button:hover,
+html .color-section div[class*='background-color'] form .hs-button:focus {
+  {% if theme.buttons.gr_color.color %}
+  box-shadow: var(--theme--buttons--hover-color) 300px 0 10px -10px inset !important;
+  {% endif %}
+  color: var(--theme--buttons--hover-text-color) !important;
+}
+
+html .color-section select {
+  background: var(--color--white);
+}
+
+html .color-section input::placeholder {
+  color: var(--color--white);
+}
+
+html .color-section div[class*='background-color'] input::placeholder {
+  color: var(--theme--typography--body-text--color);
+}
 
 .hs-form__legal-consent * {
-  line-height: 14px;
-  font-size: 12px;
+  line-height: var(--line-height--legacy--3);
+  font-size: var(--font-size--legacy--2);
 }
-/* @media (max-width: 765px) {
-  .hs-fieldtype-intl-phone.hs-input select {
-      width: 100%!important;
-   }
-   .hs-fieldtype-intl-phone.hs-input input {
-     width: 100%!important;
-     margin-top: 15px !important;
+
+/*
+@media (max-width: 765px) {
+  .hs-fieldtype-intl-phone.hs-input input {
+    margin-top: 15px !important;
+    width: 100% !important;
   }
-} */
+
+  .hs-fieldtype-intl-phone.hs-input select {
+    width: 100% !important;
+  }
+}
+*/

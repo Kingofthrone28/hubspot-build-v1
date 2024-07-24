@@ -1,16 +1,12 @@
-{###########################################################################}
-{########################   Menu and simple menu   #########################}
-{###########################################################################}
+/* Menu and simple menu */
 
 .hs-menu-wrapper ul {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  list-style: none;
   margin: 0;
   padding-left: 0;
+  list-style: none;
 }
 
 /* Horizontal menu */
@@ -18,7 +14,6 @@
 .hs-menu-wrapper.hs-menu-flow-horizontal .hs-menu-children-wrapper {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -26,7 +21,6 @@
   .hs-menu-wrapper.hs-menu-flow-horizontal ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
@@ -36,7 +30,6 @@
 .hs-menu-wrapper.hs-menu-flow-vertical ul {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -51,7 +44,6 @@
 @media (max-width: 767px) {
   .hs-menu-wrapper.hs-menu-flow-vertical ul {
     display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
   }
 }
@@ -61,9 +53,9 @@
 }
 
 .hs-menu-wrapper.flyouts .hs-menu-children-wrapper {
+  position: absolute;
   left: -9999px;
   opacity: 0;
-  position: absolute;
 }
 
 .hs-menu-wrapper.flyouts .hs-menu-children-wrapper a {
@@ -71,25 +63,28 @@
   white-space: nowrap;
 }
 
+/* prettier-ignore */
 .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts .hs-item-has-children:hover > .hs-menu-children-wrapper {
+  top: 100%;
   left: 0;
   opacity: 1;
-  top: 100%;
 }
 
+/* prettier-ignore */
 .hs-menu-wrapper.hs-menu-flow-vertical.flyouts .hs-item-has-children:hover > .hs-menu-children-wrapper {
+  top: 0;
   left: 100%;
   opacity: 1;
-  top: 0;
 }
 
 @media (max-width: 767px) {
+  /* prettier-ignore */
   .hs-menu-wrapper.flyouts .hs-menu-children-wrapper,
   .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts .hs-item-has-children:hover > .hs-menu-children-wrapper,
   .hs-menu-wrapper.hs-menu-flow-vertical.flyouts .hs-item-has-children:hover > .hs-menu-children-wrapper {
-    left: 0;
-    opacity: 1;
     position: relative;
     top: auto;
+    left: 0;
+    opacity: 1;
   }
 }
