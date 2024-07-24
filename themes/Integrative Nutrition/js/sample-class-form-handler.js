@@ -14,7 +14,7 @@
  * Temporary solution, to be removed once Spanish Sample Class exists on Hubspot
  */
 
-const addSampleClassFormSubmitListener = (sampleClassId, englishUrl, spanishURl) => {
+const addSampleClassFormSubmitListener = (sampleClassId, englishUrl, spanishUrl) => {
 
   window.addEventListener('message', (event) => {
     if (
@@ -25,7 +25,7 @@ const addSampleClassFormSubmitListener = (sampleClassId, englishUrl, spanishURl)
       if (document.documentElement.lang === 'en') {
         window.location.href = englishUrl;
       } else if (document.documentElement.lang === 'es') {
-        window.location.href = spanishURl;
+        window.location.href = spanishUrl;
       }
     }
   });
