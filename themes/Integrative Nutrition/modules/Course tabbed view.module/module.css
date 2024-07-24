@@ -9,6 +9,7 @@
 
 .hub-view-courses .hub-view-content {
   display: none;
+
   /* display: flex is applied through JS */
   gap: 1.5rem;
   margin-top: 16px;
@@ -86,6 +87,7 @@
 
   .hub-view-courses .hub-view-content {
     display: none;
+
     /* display: flex is applied through JS */
     flex-direction: column;
     gap: 1.5rem;
