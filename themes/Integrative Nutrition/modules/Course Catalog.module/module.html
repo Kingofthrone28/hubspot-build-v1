@@ -99,13 +99,10 @@
   {% set rows = hubdb_table_rows('course_catalog') %}
 {% endif %}
 <script>
-  const rowsData = {{ rows|tojson }}.objects;
+  // using var here so that it can be redeclared if course catalog module is used multiple times on a page
+  // let does not allow redeclaration in this way.
+  var rowsData = {{ rows|tojson }}.objects || {{ rows|tojson }}; // Taking fixed top 3 records in case no dynamic records from hubdb. eg: Catalog from home  screen
 
-  if (rowsData?.length) {
-    for (let index = 0; index < rowsData.length; ++index){
-      rowsData[index].is_visiable = true;
-    }
-  }
 </script>
 {% for row in rows %}
   {% set valid_row = { val: true } %}
@@ -179,6 +176,11 @@
               (function () {
                 IINShopifyClient.product.fetch('gid://shopify/Product/{{ row.product_id }}').then(function(product) {
                   $('.cc-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].price.amount).toLocaleString());
+                  
+                  // Updating the price from shopify response
+                  if(rowsData){
+                    rowsData.find(item=>item.product_id=={{ row.product_id }}).price = parseInt(product.variants[0].price.amount).toLocaleString();
+                  }
 
                   if (
                     product.variants[0].compareAtPrice &&

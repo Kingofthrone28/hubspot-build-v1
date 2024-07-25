@@ -1,11 +1,70 @@
 .hs-form__actions__submit {
-  background: #d72a25;
-  border: 0 solid #fff;
-  border-radius: 100px;
-  color: #fff;
   display: inline-block;
-  max-width: 350px;
+  border: 0 solid var(--color--white);
+  border-radius: 100px;
+  background: var(--color--cherry);
   padding: 13px 55px;
+  max-width: 350px;
   text-align: center;
   text-decoration: none;
+  color: var(--color--white);
+}
+
+/* Set colors for secondary buttons as well as any attached arrows */
+.secondary-button,
+.secondary-button.arrow-link {
+  --accent--color: var(--color--water);
+  --fill--color: var(--color--white);
+}
+
+/* Set colors for tertiary attached arrows */
+.tertiary-button.arrow-link {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--water);
+}
+
+.hs-button.secondary-button {
+  border: 1px solid var(--accent--color);
+  background-color: var(--fill--color);
+  color: var(--accent--color);
+}
+
+/* Change colors on hover and focus using the css variables */
+.hs-button.secondary-button:hover,
+.hs-button.secondary-button.arrow-link:hover::before,
+.hs-button.secondary-button.arrow-link:focus::before,
+.hs-button.secondary-button.arrow-link:hover::after,
+.hs-button.secondary-button.arrow-link:focus::after {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--water);
+}
+
+/* Arrow properties */
+.arrow-link {
+  --icon--gap: var(--spacing-2);
+}
+
+.arrow-link::after,
+.arrow-link::before {
+  display: inline-block;
+  transition: var(--transition--default);
+  background-color: var(--accent--color);
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+  mask-image: var(--asset--arrow--right);
+}
+
+/* Forward arrow content */
+.arrow-link.arrow-link-forward::after {
+  margin-left: var(--icon--gap);
+  content: '';
+}
+
+/* Backward arrow content */
+.arrow-link.arrow-link-back::before {
+  transform: rotate(180deg);
+  margin-right: var(--icon--gap);
+  content: '';
 }

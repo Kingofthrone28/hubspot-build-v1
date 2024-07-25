@@ -217,6 +217,18 @@
       "opacity" : 100
     }
   }, {
+    "allow_new_line": false,
+    "default": "",
+    "display_width": null,
+    "id": "d7047659-b5bf-68ce-b69b-ef239e873b7f",
+    "label": "Data Tracking",
+    "locked": false,
+    "name": "dl_label",
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   }, {
     "id" : "efe11813-56ca-5ae0-d31d-47055e6938ef",
     "name" : "buttons_sub_row",
     "display_width" : null,
