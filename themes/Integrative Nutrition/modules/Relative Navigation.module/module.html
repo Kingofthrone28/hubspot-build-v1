@@ -9,14 +9,14 @@
     {% if have_previous %}
       {% set previous_index = current_index - 1 %}
       <a 
-        class="hs-button secondary-button arrow-link arrow-link-back"
+        class="styled-button secondary-button arrow-link arrow-link-back"
         href="{{ nav_links[previous_index] }}"
       >{{ module.previous_text }}</a>
     {% endif %}
     {% if have_next %}
       {% set next_index = current_index + 1 %}
       <a
-        class="hs-button tertiary-button arrow-link arrow-link-forward"
+        class="styled-button tertiary-button arrow-link arrow-link-forward"
         href="{{ nav_links[next_index] }}"
       >{{ module.next_text }}</a>
     {% endif %}

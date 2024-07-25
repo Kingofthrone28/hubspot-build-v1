@@ -10,33 +10,58 @@
   color: var(--color--white);
 }
 
-/* Set colors for secondary buttons as well as any attached arrows */
-.secondary-button,
-.secondary-button.arrow-link {
+.styled-button {
+  display: inline-block;
+  border-radius: var(--theme--buttons--border-radius);
+  border-color: var(--accent--color);
+  background-color: var(--fill--color);
+  padding: var(--theme--buttons--padding);
+  height: var(--spacing-12);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--accent--color);
+  font-family: var(--theme--global-fonts--primary-font);
+}
+
+.styled-button:hover,
+.styled-button:focus {
+  text-decoration: none;
+}
+
+.secondary-button {
   --accent--color: var(--color--water);
   --fill--color: var(--color--white);
-}
 
-/* Set colors for tertiary attached arrows */
-.tertiary-button.arrow-link {
-  --accent--color: var(--color--white);
-  --fill--color: var(--color--water);
-}
-
-.hs-button.secondary-button {
   border: 1px solid var(--accent--color);
-  background-color: var(--fill--color);
+
+  /* re-assert to prevent override */
   color: var(--accent--color);
 }
 
-/* Change colors on hover and focus using the css variables */
-.hs-button.secondary-button:hover,
-.hs-button.secondary-button.arrow-link:hover::before,
-.hs-button.secondary-button.arrow-link:focus::before,
-.hs-button.secondary-button.arrow-link:hover::after,
-.hs-button.secondary-button.arrow-link:focus::after {
+.secondary-button:hover,
+.secondary-button:focus {
   --accent--color: var(--color--white);
   --fill--color: var(--color--water);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+.tertiary-button {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--water);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+.tertiary-button:hover,
+.tertiary-button:focus {
+  background-color: var(--color--legacy--green--mosque);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
 }
 
 /* Arrow properties */
