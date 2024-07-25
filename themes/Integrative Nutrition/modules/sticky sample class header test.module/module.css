@@ -617,7 +617,6 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   }
 }
 
-
 .custom-button {
   display: inline-block;
   text-align: center;
@@ -631,5 +630,4 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   font-family: var(--theme--global-fonts--primary-font);
   text-shadow: none;
   height: 3rem;
-  
 }
