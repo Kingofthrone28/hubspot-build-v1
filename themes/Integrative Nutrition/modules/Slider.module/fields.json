@@ -98,7 +98,18 @@
     "locked" : false,
     "type" : "richtext",
     "default" : "<span style=\"color: #157ea5; font-size: 14px;\"><strong>Content Type</strong></span>\n<h4><span style=\"color: #274c77;\">Item Header</span></h4>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna&nbsp;</span></p>"
-  }, {
+  },{
+    "allow_new_line": false,
+    "display_width": null,
+    "id": "c5dd4ab0-85c3-147f-0906-8192ff251b9a",
+    "label": "DL Header Text",
+    "locked": false,
+    "name": "dl_header_text",
+    "required": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "validation_regex": ""
+   }, {
     "id" : "232880ac-af1e-03c4-f300-51dd0609cb86",
     "name" : "additional_label",
     "display_width" : null,

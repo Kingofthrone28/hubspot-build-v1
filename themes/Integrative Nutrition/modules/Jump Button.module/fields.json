@@ -158,4 +158,16 @@
   "locked" : false,
   "type" : "richtext",
   "default" : "<p>Jump Button</p>"
-} ]
+},{
+  "allow_new_line": false,
+  "default": "",
+  "display_width": null,
+  "id": "76d4f2f7-bd33-d2b0-efe9-8c72a417c6cf",
+  "label": "Data Tracking",
+  "locked": false,
+  "name": "dl_label",
+  "required": false,
+  "show_emoji_picker": false,
+  "type": "text",
+  "validation_regex": ""
+ } ]

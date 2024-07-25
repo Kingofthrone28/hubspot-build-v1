@@ -1,7 +1,7 @@
 <div class="button-wrapper" style="display:flex;flex-wrap:wrap;position:relative">
 {% for item in module.buttons %}
   {% if item.jump_link %}
-    <span data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button {% if item.show_arrow %}jd-arrow-link{% endif %} {% if item.inverse_button_style %}jd-request-btn-inverse{% elif item.gray_button_style %}jd-gray-btn{% elif item.transparent_button_style %}jd-trans-btn{% else %}light-button{% endif %}"
+    <span data-tracking-id="{{ item.dl_label }}" data-target="#{{ item.jump_link }}" class="jump-button jd-request-btn hs-button {% if item.show_arrow %}jd-arrow-link{% endif %} {% if item.inverse_button_style %}jd-request-btn-inverse{% elif item.gray_button_style %}jd-gray-btn{% elif item.transparent_button_style %}jd-trans-btn{% else %}light-button{% endif %}"
           style="{% if item.add_border %}border:2px solid {{item.border_color.color }}{% endif %}">
       {{ item.text_field }}
     </span>
@@ -11,7 +11,7 @@
         {% set href = subitem.link_field.url.href %}
        <div>  
          {% if subitem.text_field %}
-          <a href="{{ href }}" class="jd-arrow-link {% if subitem.show_arrow_sub %}jd-arrow-link{% endif %}"
+          <a data-tracking-id="{{ item.dl_label }}" href="{{ href }}" class="jd-arrow-link {% if subitem.show_arrow_sub %}jd-arrow-link{% endif %}"
            style="{% if subitem.add_border %}border:2px solid {{subitem.border_color.color }}{% endif %}"
           {% if subitem.link_field.open_in_new_tab %}target="_blank"{% endif %}
           {% if subitem.link_field.rel %}rel="{{ subitem.link_field.rel }}"{% endif %}
