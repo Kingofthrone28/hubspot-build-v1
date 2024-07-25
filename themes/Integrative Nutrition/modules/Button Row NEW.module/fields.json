@@ -149,6 +149,19 @@
     "show_emoji_picker" : false,
     "type" : "text"
   }, {
+    "id" : "92007980-88bd-5685-0e2b-ed00482a5e90",
+    "name" : "button_style",
+    "display_width" : null,
+    "label" : "Button Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "hero", "Hero" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice"
+  }, {
     "id" : "b0851e6c-8c7d-9203-2051-609ac3d717ab",
     "name" : "show_arrow",
     "display_width" : null,
@@ -158,108 +171,13 @@
     "display" : "checkbox",
     "type" : "boolean",
     "default" : true
-  }, {
-    "id" : "0833e925-4cb5-0e6c-1fda-f8f964fd79e4",
-    "name" : "border_color",
-    "display_width" : null,
-    "label" : "Border Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "6a74abe5-ab11-add3-f36f-43da0d05855f",
-    "name" : "bg_color",
-    "display_width" : null,
-    "label" : "BG Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "8db7a167-b50a-675c-2f59-5061b1887fb6",
-    "name" : "text_color",
-    "display_width" : null,
-    "label" : "Text Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "8eadad1a-3ee4-35db-0aae-a2aac5736236",
-    "name" : "arrow_color",
-    "display_width" : null,
-    "label" : "Arrow Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "59ef6a61-55e7-e985-0a28-a15410ecc3e5",
-    "name" : "hover_border_color",
-    "display_width" : null,
-    "label" : "Hover Border Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "dbde359c-6152-164e-242a-11d8974865c1",
-    "name" : "hover_bg_color",
-    "display_width" : null,
-    "label" : "Hover BG Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "4d35d814-1209-dc06-80d0-3eed97c50251",
-    "name" : "hover_text_color",
-    "display_width" : null,
-    "label" : "Hover Text Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "24377c36-1e79-94a8-a870-a2b18f378410",
-    "name" : "hover_arrow_color",
-    "display_width" : null,
-    "label" : "Hover Arrow Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
   "type" : "group",
   "default" : [ {
+    "text_field" : "Button Text",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -270,41 +188,9 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
-    "show_arrow" : true,
-    "border_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "bg_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "text_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "hover_border_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_bg_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_text_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_arrow_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
+    "show_arrow" : true
   }, {
+    "text_field" : "Button Text",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -315,41 +201,9 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
-    "show_arrow" : true,
-    "border_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "bg_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "text_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "hover_border_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_bg_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_text_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_arrow_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
+    "show_arrow" : true
   }, {
+    "text_field" : "Button Text",
     "dl_label" : "tracking not set yet",
     "link_field" : {
       "url" : {
@@ -360,40 +214,7 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     },
-    "text_field" : "Button",
-    "show_arrow" : true,
-    "border_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "bg_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "text_color" : {
-      "color" : "#2d3841",
-      "opacity" : 100
-    },
-    "hover_border_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_bg_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_text_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    },
-    "arrow_color" : {
-      "color" : "#d72a25",
-      "opacity" : 100
-    },
-    "hover_arrow_color" : {
-      "color" : "#FFFFFF",
-      "opacity" : 100
-    }
+    "show_arrow" : true
   } ]
 }, {
   "id" : "7e08394b-2afb-fa55-4d33-1c3566b9509d",
