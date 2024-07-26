@@ -597,23 +597,25 @@
         </div>
       `;
 
-      if (Array.isArray(lineItem.discountAllocations) && lineItem.discountAllocations.length) {
+      if (
+        Array.isArray(lineItem.discountAllocations) &&
+        lineItem.discountAllocations.length
+      ) {
         lineItem.discountAllocations.forEach((discount) => {
           coupons.add(discount?.discountApplication?.title);
-        })
+        });
       }
 
       cartTrackingPayload.ecommerce.items.push({
-        'item_id': lineItem.variant.product.id.replace(gidPath, ''),
-        'item_name': lineItem.title,
-        'item_type': lineItem.productType || 'NA',
-        'variant_id': lineItem.variant.id.replace(variantGidPath, ''),
-        'discount': totalPreDiscount - total,
-        'price': totalPreDiscount,
-        'quantity': lineItem.quantity,
-        'sku': lineItem.variant.sku || 'NA',
-      })
-      
+        item_id: lineItem.variant.product.id.replace(gidPath, ''),
+        item_name: lineItem.title,
+        item_type: lineItem.productType || 'NA',
+        variant_id: lineItem.variant.id.replace(variantGidPath, ''),
+        discount: totalPreDiscount - total,
+        price: totalPreDiscount,
+        quantity: lineItem.quantity,
+        sku: lineItem.variant.sku || 'NA',
+      });
     }
 
     if (itemCount > 1) {
@@ -670,21 +672,23 @@
 
       const updatedCheckout = await IINShopifyClient.checkout.removeLineItems(
         cartCookie,
-        [lineID]
+        [lineID],
       );
-      
-      const deletedItem = refreshedCheckout.lineItems.find(item => item.id === lineID);
+
+      const deletedItem = refreshedCheckout.lineItems.find(
+        (item) => item.id === lineID,
+      );
       await loadCart();
       updateCartTotal(updatedCheckout);
-      
+
       return deletedItem;
     };
 
-    const trackDeleteItem = (deletedItem) =>{
+    const trackDeleteItem = (deletedItem) => {
       try {
         const deleteItemTrackingPayload = {};
         deleteItemTrackingPayload.ecommerce = {};
-        deleteItemTrackingPayload.event = "remove_from_cart";
+        deleteItemTrackingPayload.event = 'remove_from_cart';
         deleteItemTrackingPayload.ecommerce.items = [];
 
         let deletedItemCouponTitle = 'NA';
@@ -696,7 +700,7 @@
         if (deletedItem.discountAllocations.length) {
           deletedItem.discountAllocations.forEach((discount) => {
             const discountAmount = parseFloat(
-              discount.allocatedAmount?.amount || 0
+              discount.allocatedAmount?.amount || 0,
             );
 
             if (total > 0) {
@@ -711,21 +715,21 @@
         deleteItemTrackingPayload.ecommerce.value = total;
         deleteItemTrackingPayload.ecommerce.coupon = deletedItemCouponTitle;
         deleteItemTrackingPayload.ecommerce.items.push({
-          'item_id': deletedItem.variant.product.id.replace(gidPath, ''),
-          'item_name': deletedItem.title,
-          'item_type': deletedItem.productType || "NA",
-          'variant_id': deletedItem.variant.id.replace(variantGidPath, ''),
-          'discount': totalPreDiscount - total,
-          'price': total,
-          'quantity': deletedItem.quantity,
-          'sku': deletedItem.variant.sku || "NA"
+          item_id: deletedItem.variant.product.id.replace(gidPath, ''),
+          item_name: deletedItem.title,
+          item_type: deletedItem.productType || 'NA',
+          variant_id: deletedItem.variant.id.replace(variantGidPath, ''),
+          discount: totalPreDiscount - total,
+          price: total,
+          quantity: deletedItem.quantity,
+          sku: deletedItem.variant.sku || 'NA',
         });
 
         triggerECommEvent(deleteItemTrackingPayload);
       } catch (exception) {
         console.error(exception);
       }
-    }
+    };
 
     $('.jd-cart-item-delete').click(function (e) {
       e.preventDefault();
@@ -811,7 +815,7 @@
 
         await IINShopifyClient.checkout.updateLineItems(
           cartCookie,
-          lineItemUpdate
+          lineItemUpdate,
         );
 
         loadCart(true);
@@ -835,9 +839,13 @@
 
     try {
       cartTrackingPayload.ecommerce.currency = currencyCode;
-      cartTrackingPayload.ecommerce.coupon = Array.from(coupons).join(';') || 'NA';
-      cartTrackingPayload.ecommerce.value = parseFloat(checkout.totalPrice.amount, 10);
-      cartTrackingPayload.event = "view_cart";
+      cartTrackingPayload.ecommerce.coupon =
+        Array.from(coupons).join(';') || 'NA';
+      cartTrackingPayload.ecommerce.value = parseFloat(
+        checkout.totalPrice.amount,
+        10,
+      );
+      cartTrackingPayload.event = 'view_cart';
       triggerECommEvent(cartTrackingPayload);
     } catch (e) {
       console.error(e);
@@ -877,7 +885,7 @@
     for (const lineItem of sortedItems) {
       for (const bundle of bundleData) {
         const existingBundle = matchedBundles.find(
-          (matchedBundle) => matchedBundle.name === bundle.name
+          (matchedBundle) => matchedBundle.name === bundle.name,
         );
 
         if (!existingBundle || bundle.shopify_product_ids) {
@@ -890,7 +898,7 @@
 
             for (const bundleID of bundleIDs) {
               const existingLineItem = sortedItems.find(
-                (li) => li.variant.product.id === `${gidPath}${bundleID}`
+                (li) => li.variant.product.id === `${gidPath}${bundleID}`,
               );
 
               if (!existingLineItem) {
@@ -928,7 +936,7 @@
     if (matchedBundles.length < maximumCount) {
       for (const bundle of bundleData) {
         const existingBundle = matchedBundles.find(
-          (matchedBundle) => matchedBundle.name === bundle.name
+          (matchedBundle) => matchedBundle.name === bundle.name,
         );
 
         if (
@@ -993,7 +1001,7 @@
               },
               (image) => {
                 image.add('src');
-              }
+              },
             );
             product.addConnection(
               'variants',
@@ -1009,7 +1017,7 @@
 
                 variant.add('availableForSale');
                 variant.add('title');
-              }
+              },
             );
             product.add(
               'metafields',
@@ -1026,16 +1034,15 @@
               (metafield) => {
                 metafield.add('key');
                 metafield.add('value');
-              }
+              },
             );
-          }
+          },
         );
       });
 
       try {
-        const { model } = await IINShopifyClient.graphQLClient.send(
-          productsQuery
-        );
+        const { model } =
+          await IINShopifyClient.graphQLClient.send(productsQuery);
 
         bundleProducts = model.products;
       } catch (e) {
@@ -1101,14 +1108,14 @@
           <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
           <div>$${totalAfterDiscount.toLocaleString(
             undefined,
-            localeOptions
+            localeOptions,
           )} USD</div>
         `;
       }
 
       bundleProducts.forEach((bundleProduct) => {
         const existingLineItem = sortedItems.find(
-          (li) => li.variant.product.id === bundleProduct.id
+          (li) => li.variant.product.id === bundleProduct.id,
         );
 
         if (existingLineItem) {
@@ -1184,7 +1191,7 @@
               </div>
               <div>$${parseFloat(price).toLocaleString(
                 undefined,
-                localeOptions
+                localeOptions,
               )} USD</div>
             </div>
           </div>
@@ -1258,8 +1265,8 @@
           if (variant.availableForSale) {
             optionHTML += `
               <option value="${variant.id}"${
-              variantIndex === 0 ? ' selected' : ''
-            }>
+                variantIndex === 0 ? ' selected' : ''
+              }>
                 ${variant.title}
               </option>
             `;
@@ -1293,7 +1300,7 @@
                 <div>
                   $${parseFloat(price).toLocaleString(
                     undefined,
-                    localeOptions
+                    localeOptions,
                   )} USD
                 </div>
               </div>
@@ -1346,7 +1353,7 @@
                   savings
                     ? `<div>and save $${savings.toLocaleString(
                         undefined,
-                        localeOptions
+                        localeOptions,
                       )}</div>`
                     : ''
                 }
@@ -1496,7 +1503,7 @@
       const agreementData = {};
 
       const books = parseFloat(
-        getMetafield(product, 'books_and_materials')?.replace('$', '')
+        getMetafield(product, 'books_and_materials')?.replace('$', ''),
       );
 
       if (books) {
@@ -1538,7 +1545,7 @@
 
       const publicationDate = getMetafield(
         product,
-        'agreement_publication_date'
+        'agreement_publication_date',
       );
 
       if (publicationDate) {
@@ -1546,7 +1553,7 @@
       }
 
       const registrationCost = parseFloat(
-        getMetafield(product, 'registration_cost')?.replace('$', '')
+        getMetafield(product, 'registration_cost')?.replace('$', ''),
       );
 
       if (registrationCost) {
@@ -1579,7 +1586,7 @@
       }
 
       const agreementCookie = IIN.cookies.getCookieString(
-        'enrollmentAgreementQuery'
+        'enrollmentAgreementQuery',
       );
 
       if (agreementCookie) {
@@ -1588,7 +1595,7 @@
 
           const cookieParams = IIN.utilities.makeObjectFromKeyValueString(
             agreementCookie,
-            separator
+            separator,
           );
 
           Object.entries(cookieParams).forEach(([key, value]) => {
@@ -1630,7 +1637,7 @@
     try {
       await IINShopifyClient.checkout.updateAttributes(
         cartCookie,
-        cartAttributes
+        cartAttributes,
       );
     } catch (e) {
       console.error(e);
@@ -1669,14 +1676,14 @@
 
           const updatedCheckout = await IINShopifyClient.checkout.updateEmail(
             cartCookie,
-            value
+            value,
           );
 
           await setShopifyCartCookie(updatedCheckout, true);
 
           checkoutURL = updatedCheckout.webUrl.replace(
             internalDomain,
-            externalDomain
+            externalDomain,
           );
         };
 
@@ -1775,7 +1782,7 @@
 
           const agreementCookie = IIN.utilities.makeKeyValueStringFromObject(
             agreementCookieData,
-            cookieSeparator
+            cookieSeparator,
           );
 
           document.cookie = agreementCookie;
@@ -1829,7 +1836,7 @@
 
           const checkoutCookie = IIN.utilities.makeKeyValueStringFromObject(
             checkoutCookieData,
-            cookieSeparator
+            cookieSeparator,
           );
 
           document.cookie = checkoutCookie;

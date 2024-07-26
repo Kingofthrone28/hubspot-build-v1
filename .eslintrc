@@ -26,6 +26,10 @@
     ],
     "no-console": 0,
     "no-empty": 1,
+    "no-param-reassign": [
+      2,
+      { "props": false }
+    ],
     "no-plusplus": 0,
     // TODO: revisit?
     "no-restricted-syntax": 0,
@@ -43,4 +47,3 @@
     "spaced-comment": 1
   }
 }
-
