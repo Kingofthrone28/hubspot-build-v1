@@ -112,7 +112,7 @@
   width: 20px;
   height: 20px;
   vertical-align: text-bottom;
-  mask-image: var(--caret--down);
+  mask-image: var(--asset--caret--down);
 }
 
 /* caret content */
