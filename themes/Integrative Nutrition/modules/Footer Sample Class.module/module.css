@@ -27,7 +27,7 @@
   }
 
   .footer-title {
-    font-size: var(--font-size--3);
     padding: var(--spacing-4) 0;
+    font-size: var(--font-size--3);
   }
 }
