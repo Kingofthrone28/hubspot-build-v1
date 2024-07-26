@@ -1,5 +1,10 @@
+.table-of-contents-container {
+  padding-top: var(--spacing-20);
+  padding-bottom: var(--spacing-20);
+}
+
 .table-of-contents {
-  line-height: var(--spacing-16);
+  line-height: var(--line-height--legacy--10);
   color: var(--color--slate);
   font-size: var(--font-size--h3--desktop);
   font-weight: 600;
@@ -7,6 +12,8 @@
 
 /* override global styles */
 .table-of-contents a {
+  /* remove default transition to prevent mismatch with underline */
+  transition: unset;
   color: var(--color--slate);
 }
 
@@ -29,4 +36,11 @@
 .table-of-contents-centered {
   display: flex;
   justify-content: center;
+}
+
+/* --container--lg */
+@media (max-width: 64rem) {
+  .table-of-contents-container {
+    padding-left: var(--spacing-10);
+  }
 }

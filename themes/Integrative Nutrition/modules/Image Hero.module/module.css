@@ -1,0 +1,33 @@
+.image-hero-container {
+  --image--border-radius: 11px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--image--border-radius);
+  background-color: var(--color--legacy--blue--light-blue);
+  padding: var(--spacing-56) var(--spacing-40);
+  min-height: var(--spacing-160);
+}
+
+.image-hero-container h3 {
+  line-height: var(--line-height--legacy--6);
+  color: var(--color--white);
+  font-family: var(--font-family--heading);
+  font-size: var(--font-size--h2--desktop);
+}
+
+.image-hero-container p {
+  line-height: var(--line-height--legacy--9);
+  color: var(--color--white);
+  font-family: var(--font-family--body);
+  font-size: var(--font-size--h4--desktop);
+}
+
+/* --container--lg */
+@media (max-width: 64rem) {
+  .image-hero-container {
+    padding: var(--spacing-56) var(--spacing-16) var(--spacing-24);
+  }
+}

@@ -10,6 +10,7 @@
   color: var(--color--white);
 }
 
+/* Generic button style */
 .styled-button {
   display: inline-block;
   border-radius: var(--theme--buttons--border-radius);
@@ -29,6 +30,22 @@
   text-decoration: none;
 }
 
+/* White text on red background */
+.primary-button {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--cherry);
+}
+
+.primary-button:hover,
+.primary-button:focus {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--legacy--red--cinnabar-2);
+
+  /* re-assert to prevent override */
+  color: var(--color--white);
+}
+
+/* Green text on white background */
 .secondary-button {
   --accent--color: var(--color--water);
   --fill--color: var(--color--white);
@@ -48,6 +65,7 @@
   color: var(--accent--color);
 }
 
+/* White text on green background */
 .tertiary-button {
   --accent--color: var(--color--white);
   --fill--color: var(--color--water);
@@ -65,18 +83,14 @@
 }
 
 /* Arrow properties */
-.arrow-link {
-  --icon--gap: var(--spacing-2);
-}
-
 .arrow-link::after,
 .arrow-link::before {
   display: inline-block;
   transition: var(--transition--default);
   background-color: var(--accent--color);
   background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
+  width: var(--icon--square--size);
+  height: var(--icon--square--size);
   vertical-align: text-bottom;
   mask-image: var(--asset--arrow--right);
 }
@@ -100,17 +114,13 @@
 }
 
 /* caret properties */
-.caret {
-  --icon--gap: var(--spacing-2);
-}
-
 .caret::after {
   display: inline-block;
   transition: var(--transition--default);
   background-color: var(--accent--color);
   background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
+  width: var(--icon--square--size);
+  height: var(--icon--square--size);
   vertical-align: text-bottom;
   mask-image: var(--asset--caret--down);
 }

@@ -14,8 +14,11 @@
  * Temporary solution, to be removed once Spanish Sample Class exists on Hubspot
  */
 
-const addSampleClassFormSubmitListener = (sampleClassId, englishUrl, spanishUrl) => {
-
+const addSampleClassFormSubmitListener = (
+  sampleClassId,
+  englishUrl,
+  spanishUrl,
+) => {
   window.addEventListener('message', (event) => {
     if (
       event.data.type === 'hsFormCallback' &&

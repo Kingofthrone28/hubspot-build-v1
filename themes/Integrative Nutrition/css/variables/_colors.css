@@ -97,6 +97,7 @@
   --color--legacy--blue--endeavour: #2c5b9b;
   --color--legacy--blue--gulf-blue: #33475b;
   --color--legacy--blue--hawkes-blue: #cfd9e8;
+  --color--legacy--blue--light-blue: #add8e6;
   --color--legacy--blue--link-water-1: #ced4da;
   --color--legacy--blue--link-water-2: #d1d6dc;
   --color--legacy--blue--mabel: #c4e1e5;
@@ -106,7 +107,7 @@
   --color--legacy--blue--navy-blue: #0270e0;
   --color--legacy--blue--oxford-blue: #2d3841; /* Midnight */
   --color--legacy--blue--pattens-blue: #f8fafc;
-  --color--legacy--blue--persian-blue: #1A1AA6;
+  --color--legacy--blue--persian-blue: #1a1aa6;
   --color--legacy--blue--raven: #6c757d;
   --color--legacy--blue--regal-blue-1: #173753;
   --color--legacy--blue--regal-blue-2: #193047;
@@ -137,13 +138,14 @@
   --color--legacy--green--de-york: #7fbd74;
   --color--legacy--green--emerald: #61ce70;
   --color--legacy--green--highland: #818a5c; /* Olives */
-  --color--legacy--green--mosque: #004F61; /* 5% Lightened water */
+  --color--legacy--green--mosque: #004f61; /* 5% lightened water */
   --color--legacy--green--peppermint: #cde3cc;
   --color--legacy--green--rolling-stone: #707372;
   --color--legacy--orange--peach: #ffbb95;
   --color--legacy--orange--peach--alpha-30: rgb(255 187 149 / 30%);
   --color--legacy--red--cardinal: #cb2027;
   --color--legacy--red--cinnabar: #f04b45;
+  --color--legacy--red--cinnabar-2: #db332e; /* 5% lightened cherry */
   --color--legacy--red--persian-red: #cf3c32;
   --color--legacy--red--sunset: #bd3c4b;
   --color--legacy--violet--gun-powder: #494a52;
