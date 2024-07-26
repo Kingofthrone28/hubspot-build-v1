@@ -93,3 +93,36 @@
   margin-right: var(--icon--gap);
   content: '';
 }
+
+/* Set colors for light-button attached carets */
+.light-button.caret {
+  --accent--color: var(--color--white);
+}
+
+/* caret properties */
+.caret {
+  --icon--gap: var(--spacing-2);
+}
+
+.caret::after {
+  display: inline-block;
+  transition: var(--transition--default);
+  background-color: var(--accent--color);
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+  mask-image: var(--asset--caret--down);
+}
+
+/* caret content */
+.caret.caret-down::after {
+  margin-left: var(--icon--gap);
+  content: '';
+}
+
+.caret.caret-up::after {
+  transform: rotate(180deg);
+  margin-left: var(--icon--gap);
+  content: '';
+}
