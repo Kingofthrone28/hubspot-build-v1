@@ -9,3 +9,87 @@
   text-decoration: none;
   color: var(--color--white);
 }
+
+.styled-button {
+  display: inline-block;
+  border-radius: var(--theme--buttons--border-radius);
+  border-color: var(--accent--color);
+  background-color: var(--fill--color);
+  padding: var(--theme--buttons--padding);
+  height: var(--spacing-12);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--accent--color);
+  font-family: var(--theme--global-fonts--primary-font);
+}
+
+.styled-button:hover,
+.styled-button:focus {
+  text-decoration: none;
+}
+
+.secondary-button {
+  --accent--color: var(--color--water);
+  --fill--color: var(--color--white);
+
+  border: 1px solid var(--accent--color);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+.secondary-button:hover,
+.secondary-button:focus {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--water);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+.tertiary-button {
+  --accent--color: var(--color--white);
+  --fill--color: var(--color--water);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+.tertiary-button:hover,
+.tertiary-button:focus {
+  background-color: var(--color--legacy--green--mosque);
+
+  /* re-assert to prevent override */
+  color: var(--accent--color);
+}
+
+/* Arrow properties */
+.arrow-link {
+  --icon--gap: var(--spacing-2);
+}
+
+.arrow-link::after,
+.arrow-link::before {
+  display: inline-block;
+  transition: var(--transition--default);
+  background-color: var(--accent--color);
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+  mask-image: var(--asset--arrow--right);
+}
+
+/* Forward arrow content */
+.arrow-link.arrow-link-forward::after {
+  margin-left: var(--icon--gap);
+  content: '';
+}
+
+/* Backward arrow content */
+.arrow-link.arrow-link-back::before {
+  transform: rotate(180deg);
+  margin-right: var(--icon--gap);
+  content: '';
+}

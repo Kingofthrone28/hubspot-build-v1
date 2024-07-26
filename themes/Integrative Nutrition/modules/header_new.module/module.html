@@ -3,7 +3,7 @@
   {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" + href %}
   {% endif %}
-  <a href="{{ href }}" class="jd-request-btn hs-button light-button" data-track-label="{{ module.dl_label }}"
+  <a href="{{ href }}" class="jd-request-btn hs-button light-button" data-tracking-id="{{ module.dl_label }}"
     {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
     {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
   >

@@ -1,0 +1,32 @@
+<!-- Start module html  -->
+{% set menu_nodes = menu(module.navigation_menu).children %}
+{% set classes = 'table-of-contents-container' %}
+{% if module.is_centered %}
+  {% set classes = classes ~ ' table-of-contents-centered' %}
+{% endif %}
+<div class="{{ classes }}">
+  <ol 
+    class="table-of-contents"
+    {% if module.is_reversed %}
+      {% do menu_nodes.reverse() %}
+      reversed
+    {% endif %}
+  >
+    {% for node in menu_nodes %}
+      <li>
+        <a href="{{ node.url }}">{{ node.label }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+</div>
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .table-of-contents {
+        list-style-type: {{ module.bullet_selector }};
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+<!-- End module html -->

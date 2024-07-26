@@ -1,0 +1,25 @@
+<!-- Start Relative Nav html  -->
+{% if module.navigation_menu %}
+  {% set nav_links = menu(module.navigation_menu).children|map("url") %}
+  {% set link_count = nav_links|length %}
+  {% set current_index = nav_links.index(page_meta.canonical_url) %}
+  {% set have_previous =  current_index > 0 %}
+  {% set have_next = current_index + 1 < link_count %}
+  <div class="relative-nav-container">
+    {% if have_previous %}
+      {% set previous_index = current_index - 1 %}
+      <a 
+        class="styled-button secondary-button arrow-link arrow-link-back"
+        href="{{ nav_links[previous_index] }}"
+      >{{ module.previous_text }}</a>
+    {% endif %}
+    {% if have_next %}
+      {% set next_index = current_index + 1 %}
+      <a
+        class="styled-button tertiary-button arrow-link arrow-link-forward"
+        href="{{ nav_links[next_index] }}"
+      >{{ module.next_text }}</a>
+    {% endif %}
+  </div>
+{% endif %}
+<!-- End Relative Nav html  -->

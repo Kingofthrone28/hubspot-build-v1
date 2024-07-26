@@ -6,26 +6,26 @@ function trackAccordionClick(element) {
     action = 'close';
   }
   window.dataLayer.push({
-    'event': 'accordion_click',
-    'click_text': element.firstChild.innerText,
-    'action': action
+    event: 'accordion_click',
+    click_text: element.firstChild.innerText,
+    action,
   });
   element.classList.toggle('active');
 }
 
 function trackBioView(element) {
   window.dataLayer.push({
-    'event': 'accordion_click',
-    'click_text': element.innerText,
-    'action': 'open'
+    event: 'accordion_click',
+    click_text: element.innerText,
+    action: 'open',
   });
 }
 
 function trackBioClose(element) {
   window.dataLayer.push({
-    'event': 'accordion_click',
-    'click_text': element.innerText,
-    'action': 'close'
+    event: 'accordion_click',
+    click_text: element.innerText,
+    action: 'close',
   });
 }
 
@@ -44,27 +44,26 @@ function trackSocialShare(element) {
     shareType = 'mail';
   }
   window.dataLayer.push({
-    'event': 'social_share',
-    'blog_title': blogTitle,
-    'share_type': shareType
+    event: 'social_share',
+    blog_title: blogTitle,
+    share_type: shareType,
   });
 }
 
 function trackOpenChat() {
   window.dataLayer.push({
-    'event': 'chat_click',
-    'chat_action': 'open'
+    event: 'chat_click',
+    chat_action: 'open',
   });
 }
 function trackCloseChat() {
   window.dataLayer.push({
-    'event': 'chat_click',
-    'chat_action': 'close'
+    event: 'chat_click',
+    chat_action: 'close',
   });
 }
 
 function initializeEvents() {
-
   const accordions = document.querySelectorAll('div.ex-label');
   accordions.forEach((link) => {
     link.addEventListener('click', () => {
@@ -72,22 +71,23 @@ function initializeEvents() {
     });
   });
 
-
-  const viewBioButtons = document.querySelectorAll('.bio-label .bio-closed strong');
+  const viewBioButtons = document.querySelectorAll(
+    '.bio-label .bio-closed strong',
+  );
   viewBioButtons.forEach((button) => {
     button.addEventListener('click', () => {
       trackBioView(button);
     });
   });
 
-
-  const closeBioButtons = document.querySelectorAll('.bio-label .bio-open strong');
+  const closeBioButtons = document.querySelectorAll(
+    '.bio-label .bio-open strong',
+  );
   closeBioButtons.forEach((button) => {
     button.addEventListener('click', () => {
       trackBioClose(button);
     });
   });
-
 
   const socialShareLogos = document.querySelectorAll('.jd-post-share a');
   socialShareLogos.forEach((logo) => {
@@ -112,7 +112,6 @@ function initializeEvents() {
       });
     }
   }
-
 }
 
 window.addEventListener('load', () => {
