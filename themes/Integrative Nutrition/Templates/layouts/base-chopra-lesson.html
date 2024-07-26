@@ -10,10 +10,9 @@
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
 
-    {% global_partial path='../partials/head-scripts.html' %}
-
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ standard_header_includes }}
+
     <title>Chopra Coaching [IIN Sample Lesson]</title>
 
     <link type="text/css" rel="stylesheet" href="https://course.integrativenutrition.com/hubfs/rise-360-libraries/coaching-sample-lesson/lib/icomoon.css">

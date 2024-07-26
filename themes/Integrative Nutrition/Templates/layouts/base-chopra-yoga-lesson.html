@@ -13,8 +13,6 @@
     {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
 
-    {% global_partial path='../partials/head-scripts.html' %}
-
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../../css/slick.css')) }}
     {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
