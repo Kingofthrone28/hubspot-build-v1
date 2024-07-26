@@ -26,21 +26,11 @@ node_modules
 /themes/Integrative Nutrition/js/ui.js
 
 # TODO: Remove after refactoring
-/themes/Integrative Nutrition/css*/slider-overrides.css
-/themes/Integrative Nutrition/js/_animation.js
-/themes/Integrative Nutrition/js/_marketing.js
 /themes/Integrative Nutrition/js/_plugins.js
-/themes/Integrative Nutrition/js/_utilities.js
-/themes/Integrative Nutrition/js/cart.js
-/themes/Integrative Nutrition/js/cart_test.js
-/themes/Integrative Nutrition/js/circle_of_life.js
 /themes/Integrative Nutrition/js/datalayer.js
 /themes/Integrative Nutrition/js/datalayertoggle.js
 /themes/Integrative Nutrition/js/inspirationgallery.js
 /themes/Integrative Nutrition/js/main.js
-/themes/Integrative Nutrition/js/params.js
-/themes/Integrative Nutrition/js/params_test.js
-/themes/Integrative Nutrition/js/translation.js
 
 # TODO: Remove after module CSS and JS files have been evaluated
 /themes/Integrative Nutrition/**/*.module/*.js

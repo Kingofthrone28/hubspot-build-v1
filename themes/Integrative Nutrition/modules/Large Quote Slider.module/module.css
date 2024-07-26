@@ -55,7 +55,7 @@
   font-style: italic;
 }
 
-@media (width <= 991px) {
+@media (max-width: 991px) {
   .large-quote-slide {
     display: block;
   }
