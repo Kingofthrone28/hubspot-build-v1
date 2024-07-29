@@ -4,7 +4,7 @@
   text-align: center;
 }
 
-.sample-class-hero-wrapper .dnd-column .dnd-column[class*='background-color'] {
+.sample-class-hero-wrapper .row-fluid-wrapper .dnd-column {
   transform: translate(0, 200px);
   border-radius: 0 !important;
   box-shadow: none !important;
