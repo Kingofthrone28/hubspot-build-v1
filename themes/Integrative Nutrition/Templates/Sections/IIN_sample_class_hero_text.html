@@ -1,0 +1,90 @@
+<!--
+ templateType: section
+ label: Sample Class - Hero & Text
+ description: "Sample Class Sections with Hero & Text"
+ isAvailableForNewContent: true
+ screenshotPath: ../../images/sample_class_core.png
+-->
+
+{% dnd_section
+ class="sample-class-hero-wrapper"
+ background_image={
+   "background_position" : "MIDDLE_CENTER",
+   "background_size" : "cover",
+   "image_url" : "https://23273748.fs1.hubspotusercontent-na1.net/hub/23273748/hubfs/Group%202424.jpg?width=2000&height=833.3333333333334"
+ },
+ padding={
+   "default" : {
+     "bottom" : "200px",
+     "top" : "340px"
+   }
+ },
+ margin={
+   "default" : {
+     "top" : "50px"
+   }
+ },
+ max_width=900,
+ full_width=false
+%}
+ {% dnd_column
+   offset=0,
+   width=12,
+   padding={
+     "mobile" : {
+       "left" : "0px",
+       "right" : "0px"
+     }
+   }
+ %}
+   {% dnd_row %}
+     {% dnd_column
+       offset=0,
+       width=12,
+       background_color="rgba(255, 255, 255, 1)",
+       padding={
+         "default" : {
+           "bottom" : "25px",
+           "left" : "50px",
+           "right" : "50px",
+           "top" : "25px"
+         },
+         "mobile" : {
+           "bottom" : "40px",
+           "left" : "20px",
+           "right" : "20px",
+           "top" : "40px"
+         }
+       },
+       margin={
+         "default" : {
+           "bottom" : "0px",
+           "top" : "0px"
+         }
+       }
+     %}
+       {% dnd_row %}
+         {% dnd_module
+           path="@hubspot/text",
+           offset=0,
+           width=12,
+           value="Module 1"
+         %}
+         {% end_dnd_module %}
+       {% end_dnd_row %}
+       {% dnd_row %}
+         {% dnd_module
+           path="@hubspot/rich_text",
+           offset=0,
+           width=12
+         %}
+           {% module_attribute "html" %}
+             <h2 style="font-weight: normal;">Reframing Health</h2>
+             <p><span>Welcome to the Health Coach Training Program! As the saying goes, “Each step you take in life broadens your horizons.” In this module, you’ll define your unique version of well-being and explore what Integrative Nutrition Health Coaches do. By the end, you’ll understand your own definition of health, and you’ll have discovered your reason for beginning this journey. <br></span></p>
+           {% end_module_attribute %}
+         {% end_dnd_module %}
+       {% end_dnd_row %}
+     {% end_dnd_column %}
+   {% end_dnd_row %}
+ {% end_dnd_column %}
+{% end_dnd_section %}
