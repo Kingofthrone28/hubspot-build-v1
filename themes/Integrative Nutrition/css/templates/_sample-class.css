@@ -1,20 +1,18 @@
-.sample-class-video-wrapper 
-.section-header {
-  padding-bottom: 25px;
+.sample-class-video-wrapper .section-header {
   padding-top: 25px;
-  text-align: center 
+  padding-bottom: 25px;
+  text-align: center;
 }
 
-.sample-class-hero-wrapper 
-.dnd-column .dnd-column[class*=background-color] {
-  box-shadow: none !important;
-  border-radius: 0 !important;
+.sample-class-hero-wrapper .dnd-column .dnd-column[class*='background-color'] {
   transform: translate(0, 200px);
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
-@media (max-width:768px){
- .sample-class-hero-wrapper.dnd-section {
-   background-position: 90% center !important;
-   background-size: auto !important;
- }
-}  
+@media (max-width: 768px) {
+  .sample-class-hero-wrapper.dnd-section {
+    background-position: 90% center !important;
+    background-size: auto !important;
+  }
+}
