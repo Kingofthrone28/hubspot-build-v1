@@ -36,3 +36,4 @@ node_modules
 # TODO: Remove after refactoring
 /themes/Integrative Nutrition/css/magnific-popup.css
 /themes/Integrative Nutrition/css/slick.css
+/themes/Integrative Nutrition/css/components/_circle-of-life.css

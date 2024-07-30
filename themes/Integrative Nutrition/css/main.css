@@ -2,6 +2,7 @@
 {% include './variables/_assets.css' %}
 {% include './variables/_colors.css' %}
 {% include './variables/_containers.css' %}
+{% include './variables/_icons.css' %}
 {% include './variables/_shadows.css' %}
 {% include './variables/_spacing.css' %}
 {% include './variables/_transitions.css' %}
