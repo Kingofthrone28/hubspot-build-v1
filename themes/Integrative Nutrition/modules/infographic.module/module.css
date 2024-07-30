@@ -1,68 +1,67 @@
 .infographic-module h3 {
-    color: var(--color--slate);
-    font-family: var(--font-family--heading);
-    font-size: var(--font-size--9);
-    line-height: var(--spacing-12);
-    text-align: center;
-    margin-bottom: var(--spacing-12);
-    padding: 0 var(--spacing-2);
+  color: var(--color--slate);
+  font-family: var(--font-family--heading);
+  font-size: var(--font-size--9);
+  line-height: var(--spacing-12);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  padding: 0 var(--spacing-2);
 }
 
 .infographic-module .column-container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .infographic-module__left {
-    flex: 2;
-    text-align: center;
-    margin-right: var(--spacing-8);
+  flex: 2;
+  text-align: center;
+  margin-right: var(--spacing-8);
 }
 
 .infographic-module__left img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .infographic-module__right {
-    padding: 0.625rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  padding: 0.625rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .infographic-module__text-section {
-    margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
 }
 
 .infographic-module__text-section h4 {
-    color: var(--color--slate);
-    text-align: left;
-    margin-bottom: var(--spacing-4);
+  color: var(--color--slate);
+  text-align: left;
+  margin-bottom: var(--spacing-4);
 }
 
 @media (max-width: 768px) {
+  .infographic-module h3 {
+    padding: var(--spacing-5) 0;
+    font-size: var(--font-size--8);
+    line-height: var(--spacing-10);
+    margin-bottom: var(--spacing-8);
+    text-align: left;
+  }
 
-    .infographic-module h3 {
-        padding: var(--spacing-5) 0;
-        font-size: var(--font-size--8);
-        line-height: var(--spacing-10);
-        margin-bottom: var(--spacing-8);
-        text-align: left;
-    }
+  .infographic-module__left {
+    padding: 30px 0;
+    margin-right: 0;
+  }
 
-    .infographic-module__left {
-        padding: 30px 0;
-        margin-right: 0;
-    }
+  .infographic-module .column-container {
+    flex-direction: column;
+  }
 
-    .infographic-module .column-container {
-        flex-direction: column;
-    }
-
-    .infographic-module_left,
-    .infographic-module__right {
-        flex: none;
-        width: 100%;
-    }
+  .infographic-module_left,
+  .infographic-module__right {
+    flex: none;
+    width: 100%;
+  }
 }

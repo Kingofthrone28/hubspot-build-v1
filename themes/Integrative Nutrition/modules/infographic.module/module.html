@@ -1,17 +1,17 @@
 <!-- module.html -->
 <div class="infographic-module container">
-    <h3>{{module.header}}</h3>
-    <div class="column-container">
-        <div class="infographic-module__left">
-            <img src="{{ module.image.src }}" alt="{{ module.image.alt }}">
-        </div>
-        <div class="infographic-module__right">
-            {% for section in module.text_sections %}
-            <div class="infographic-module__text-section">
-                <h4>{{ section.subheader }}</h4>
-                <p>{{ section.paragraph }}</p>
-            </div>
-            {% endfor %}
-        </div>
+  <h3>{{module.header}}</h3>
+  <div class="column-container">
+    <div class="infographic-module__left">
+      <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" />
     </div>
+    <div class="infographic-module__right">
+      {% for section in module.text_sections %}
+      <div class="infographic-module__text-section">
+        <h4>{{ section.subheader }}</h4>
+        <p>{{ section.paragraph }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
