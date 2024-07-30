@@ -2,6 +2,9 @@
   background: var(--color--water);
   padding: var(--spacing-12);
   color: var(--color--white);
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-content-wrapper {
@@ -27,7 +30,7 @@
   }
 
   .footer-title {
-    padding: var(--spacing-4) 0;
     font-size: var(--font-size--3);
+    padding: var(--spacing-4) 0;
   }
 }

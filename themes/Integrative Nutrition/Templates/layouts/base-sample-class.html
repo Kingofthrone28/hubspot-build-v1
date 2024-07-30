@@ -27,15 +27,18 @@
     <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
       <div>
         {% block header %}
-          {% module "theme_header" path="../../modules/sticky sample class header test.module", label="Header" %}
+          {% module "theme_header" path="../../modules/Sample Class Sticky Header.module", label="Header" %}
         {% endblock header %}
       </div>
       <div class="static-body responsive">
         {% block body %}
         {% endblock body %}
       </div>
+      {% block relative_nav %}
+        {% module "relative_nav" path="../../modules/Relative Navigation.module", label="Relative Navigation" %}
+      {% endblock %}
       {% block footer %}
-        {% module "theme_header" path="../../modules/Footer Sample Class.module", label="Header" %}
+        {% module "theme_header" path="../../modules/Sample Class Footer.module", label="Footer" %}
       {% endblock footer %}
     </div>
     {{ standard_footer_includes }}

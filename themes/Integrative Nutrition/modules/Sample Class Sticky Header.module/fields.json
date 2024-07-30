@@ -310,7 +310,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Speak with an Advisor"
+    "default" : "Back to Menu"
   }, {
     "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
     "name" : "dropdown_left_text",
@@ -334,7 +334,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Enroll"
+    "default" : "Buy Now"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -347,9 +347,9 @@
       "href" : "",
       "type" : "EXTERNAL"
     },
-    "left_button_text" : "Speak with an Advisor",
+    "left_button_text" : "Back to Menu",
     "dropdown_left_text" : "Just a few quick questions and you’ll be ready to enroll.",
-    "right_button_text" : "Enroll"
+    "right_button_text" : "Buy Now"
   }
 }, {
   "id" : "76ca5a05-19c5-cf65-b3ae-128f48adde8d",
