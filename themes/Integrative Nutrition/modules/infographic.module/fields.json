@@ -1,0 +1,81 @@
+[
+    {
+     "type": "text",
+     "validation_regex": "",
+     "label": "Header",
+     "name": "header",
+     "default": "Header",
+     "required": true
+    },
+    {
+     "default": {
+      "src": "",
+      "alt": null,
+      "size_type": null,
+      "width": null,
+      "height": null,
+      "max_width": null,
+      "max_height": null,
+      "loading": "disabled"
+     },
+     "display_width": null,
+     "id": "image",
+     "label": "Image",
+     "locked": false,
+     "name": "image",
+     "required": false,
+     "resizable": true,
+     "responsive": false,
+     "show_loading": false,
+     "type": "image"
+    },
+    {
+     "children": [
+      {
+       "type": "text",
+       "validation_regex": "",
+       "label": "Subheader",
+       "name": "subheader",
+       "default": "Subheader",
+       "required": true
+      },
+      {
+       "type": "text",
+       "validation_regex": "",
+       "label": "Paragraph",
+       "name": "paragraph",
+       "default": "Paragraph",
+       "required": true
+      }
+     ],
+     "display_width": null,
+     "expanded": false,
+     "group_occurrence_meta": null,
+     "id": "text_sections",
+     "label": "Text Sections",
+     "locked": false,
+     "name": "text_sections",
+     "required": false,
+     "tab": "CONTENT",
+     "type": "group",
+     "occurrence": {
+      "min": 1,
+      "max": 5,
+      "default": 3
+     },
+     "default": [
+      {
+       "subheader": "Subheader",
+       "paragraph": "Paragraph"
+      },
+      {
+       "subheader": "Subheader",
+       "paragraph": "Paragraph"
+      },
+      {
+       "subheader": "Subheader",
+       "paragraph": "Paragraph"
+      }
+     ]
+    }
+   ]
