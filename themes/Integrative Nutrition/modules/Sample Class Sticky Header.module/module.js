@@ -496,8 +496,7 @@
     const bodySpacing = document.querySelector('.sticky-header-body-spacing');
     const height = stickyHeader.offsetHeight;
     
-    bodySpacing.style.height = `${height  }px`;
-    console.log('Current height:', `${height  }px`);
+    bodySpacing.style.height = `${height}px`;
     return height;
   }
 
