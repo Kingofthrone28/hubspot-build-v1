@@ -51,6 +51,8 @@
   }
 
   .infographic__image-column {
+    flex: none;
+    width: 100%;
     margin-right: 0;
     padding: 1.875rem 0;
   }
@@ -59,7 +61,6 @@
     flex-direction: column;
   }
 
-  .infographic__image-column,
   .infographic__description-column {
     flex: none;
     width: 100%;
