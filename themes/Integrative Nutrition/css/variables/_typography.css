@@ -14,8 +14,8 @@
   --font-size--3: 1rem; /*     ≈ 16px */
   --font-size--4: 1.125rem; /* ≈ 18px */
   --font-size--5: 1.25rem; /*  ≈ 20px */
-  --font-size--6: 1.375rem; /* ≈ 22px */
-  --font-size--7: 1.5rem; /*   ≈ 24px */
+  --font-size--6: 1.5rem; /*   ≈ 24px */
+  --font-size--7: 1.75rem; /*  ≈ 28px */
   --font-size--8: 2rem; /*     ≈ 32px */
   --font-size--9: 2.5rem; /*   ≈ 40px */
   --font-size--10: 3rem; /*    ≈ 48px */
@@ -24,15 +24,15 @@
   --font-size--h1--mobile: var(--font-size--9);
   --font-size--h2--desktop: var(--font-size--10);
   --font-size--h2--mobile: var(--font-size--8);
-  --font-size--h3--desktop: var(--font-size--8);
-  --font-size--h3--mobile: var(--font-size--7);
-  --font-size--h4--desktop: var(--font-size--7);
+  --font-size--h3--desktop: var(--font-size--9);
+  --font-size--h3--mobile: var(--font-size--6);
+  --font-size--h4--desktop: var(--font-size--8);
   --font-size--h4--mobile: var(--font-size--5);
-  --font-size--h5--desktop: var(--font-size--6);
+  --font-size--h5--desktop: var(--font-size--7);
   --font-size--h5--mobile: var(--font-size--4);
   --font-size--h6--desktop: var(--font-size--5);
   --font-size--h6--mobile: var(--font-size--3);
-  --font-size--extra-large-paragraph: var(--font-size--7);
+  --font-size--extra-large-paragraph: var(--font-size--6);
   --font-size--large-paragraph--desktop: var(--font-size--4);
   --font-size--large-paragraph--mobile: var(--font-size--3);
   --font-size--paragraph--desktop: var(--font-size--3);
