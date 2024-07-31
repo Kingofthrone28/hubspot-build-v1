@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 768px) {
-  .infographic__header{
+  .infographic__header {
     margin-bottom: var(--spacing-8);
     padding: var(--spacing-5) 0;
     text-align: left;
@@ -52,9 +52,9 @@
 
   .infographic__image-column {
     flex: none;
-    width: 100%;
     margin-right: 0;
     padding: 1.875rem 0;
+    width: 100%;
   }
 
   .infographic__column-container {
