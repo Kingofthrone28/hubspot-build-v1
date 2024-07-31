@@ -30,7 +30,7 @@
   }
 
   .footer-title {
-    font-size: var(--font-size--3);
+    font-size: var(--font-size--extra-large-paragraph);
     padding: var(--spacing-4) 0;
   }
 }
