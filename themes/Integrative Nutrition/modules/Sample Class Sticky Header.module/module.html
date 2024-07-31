@@ -146,6 +146,19 @@
 {% end_require_css %}
 
 <script>
+  {% if not is_sample_class_base_template %}
+    const showHideStickyNav = () => {
+      const bottomOfPdpTop = $('.pdp-top').offset()?.top + $('.pdp-top')?.height();
+      if ($(window).scrollTop() > bottomOfPdpTop) {
+        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
+      } else {
+        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+      }
+    };
+
+    $(window).on('scroll', showHideStickyNav);
+  {% endif %}
+
   {%- set raw_data = {
     category: module.category_text,
     courseName: module.course_name,
