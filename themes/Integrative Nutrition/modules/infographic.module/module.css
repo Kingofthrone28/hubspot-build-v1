@@ -47,7 +47,7 @@
     padding: var(--spacing-5) 0;
     text-align: left;
     line-height: var(--line-height--legacy--4);
-    font-size: var(--font-size--h3--mobile);
+    font-size: var(--font-size--h2--mobile);
   }
 
   .infographic__image-column {
