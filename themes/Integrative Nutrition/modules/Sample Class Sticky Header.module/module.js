@@ -490,4 +490,36 @@
       changeSlide($(this).data('index'));
     }
   });
+  
+  function getCurrentHeight() {
+    const stickyHeader = document.querySelector('.pdp-sticky');
+    const bodySpacing = document.querySelector('.sticky-header-body-spacing');
+    const height = stickyHeader.offsetHeight;
+    
+    bodySpacing.style.height = `${height}px`;
+    return height;
+  }
+
+  // Call the function on load to get the current height
+  window.addEventListener('load', getCurrentHeight);
+
+  // Call the function on resize (to handle responsive changes)
+  window.addEventListener('resize', getCurrentHeight);
+
+  // MutationObserver to watch for changes in the dynamic sticky header div
+  const observer = new MutationObserver(() => {
+      getCurrentHeight();
+  });
+
+  const stickyHeader = document.querySelector('.pdp-sticky');
+
+  // Configuration for the observer (which mutations to observe)
+  const config = {
+      childList: true, // Observe direct children
+      subtree: true,   // and lower descendants too
+      characterData: true // and text content changes
+  };
+
+  // Start observing the target node for configured mutations
+  observer.observe(stickyHeader, config);
 })();

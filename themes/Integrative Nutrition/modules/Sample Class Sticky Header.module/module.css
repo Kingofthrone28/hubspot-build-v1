@@ -103,6 +103,7 @@ html .hs-button.jd-request-btn.pdp-sticky-btn-left:hover {
 
 html .hs-button.jd-request-btn.pdp-sticky-btn-right {
   padding: 10px 30px !important;
+  max-width: none;
 }
 
 html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
@@ -615,19 +616,4 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   .pdp-top-content h1 {
     font-size: var(--font-size--9);
   }
-}
-
-.custom-button {
-  display: inline-block;
-  text-align: center;
-  max-width: 350px;
-  text-decoration: none;
-  background: var(--theme--buttons--background-color);
-  border: var(--theme--buttons--border);
-  border-radius: var(--theme--buttons--border-radius);
-  color: var(--theme--buttons--text-color);
-  padding: var(--theme--buttons--padding);
-  font-family: var(--theme--global-fonts--primary-font);
-  text-shadow: none;
-  height: 3rem;
 }
