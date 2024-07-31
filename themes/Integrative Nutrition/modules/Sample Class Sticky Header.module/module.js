@@ -482,13 +482,13 @@
   });
   
   let stickyHeader;
-  let bodySpacer;
+  let body;
   function getCurrentHeight() {
     if (!stickyHeader) stickyHeader = document.querySelector('.pdp-sticky');
-    if (!bodySpacer) bodySpacer = document.querySelector('.sticky-header-body-spacing');
+    if (!body) body = document.body;
     const height = stickyHeader.offsetHeight;
     
-    bodySpacer.style.height = `${height}px`;
+    body.style.paddingTop = `${height}px`;
     return height;
   }
 
