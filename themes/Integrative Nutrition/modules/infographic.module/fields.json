@@ -40,7 +40,7 @@
        "required": true
       },
       {
-       "type": "text",
+       "type": "richtext",
        "validation_regex": "",
        "label": "Paragraph",
        "name": "paragraph",
@@ -78,4 +78,4 @@
       }
      ]
     }
-   ]
+]
