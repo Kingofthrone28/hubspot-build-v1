@@ -92,7 +92,7 @@
   width: var(--icon--square--size);
   height: var(--icon--square--size);
   vertical-align: text-bottom;
-  mask-image: var(--asset--arrow--right);
+  mask-image: var(--icon--arrow--right);
 }
 
 /* Forward arrow content */
@@ -106,6 +106,21 @@
   transform: rotate(180deg);
   margin-right: var(--icon--gap);
   content: '';
+}
+
+/* PDF links */
+.pdf-link::before {
+  --icon--size: 15px;
+
+  display: inline-block;
+  transition: var(--transition--default);
+  margin-right: var(--spacing-1);
+  background-color: var(--color--water);
+  background-repeat: no-repeat;
+  width: var(--icon--size);
+  height: var(--icon--size);
+  content: '';
+  mask-image: var(--icon--pdf);
 }
 
 /* Set colors for light-button attached carets */
