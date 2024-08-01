@@ -359,4 +359,42 @@
   "display" : "checkbox",
   "type" : "boolean",
   "default" : false
+}, {
+  "id" : "0312f94d-3c50-a8e0-d44e-9492a680ec05",
+  "name" : "cart_link",
+  "display_width" : null,
+  "label" : "Cart Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : 156289019138,
+      "href" : null,
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "1c79aa3e-ba5a-b132-e145-75ee8ea2cab6",
+  "name" : "continue_shopping_link",
+  "display_width" : null,
+  "label" : "Continue Shopping Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : 128190697855,
+      "href" : null,
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
 } ]
