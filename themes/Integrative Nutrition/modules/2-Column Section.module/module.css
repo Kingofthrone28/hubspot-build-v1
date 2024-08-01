@@ -1,19 +1,24 @@
-.two-column-section {
-  color: var(--color--slate);
-}
-
 .two-column-section__header {
   padding: 10px;
 }
 
+.two-column-section__description {
+  color: var(--color--legacy--blue--oxford-blue);
+}
+
 .two-column-section__heading {
   margin-bottom: var(--spacing-8);
+  color: var(--color--slate);
+}
+
+.two-column-section__subsection__description {
+  color: var(--color--legacy--blue--oxford-blue);
 }
 
 .two-column-section__subsection__heading {
   margin-bottom: var(--spacing-4);
   line-height: var(--line-height--legacy--8);
-  color: inherit;
+  color: var(--color--slate);
   font-family: var(--font-family--body);
   font-weight: 600;
 }
