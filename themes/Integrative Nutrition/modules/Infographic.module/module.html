@@ -1,0 +1,17 @@
+<!-- module.html -->
+<div class="infographic container">
+  <h3 class="infographic__header">{{ module.header }}</h3>
+  <div class="infographic__column-container">
+    <div class="infographic__image-column">
+      <img class="infographic__image" src="{{ module.image.src }}" alt="{{ module.image.alt }}" />
+    </div>
+    <div class="infographic__description-column">
+      {% for section in module.text_sections %}
+      <div class="infographic__text-section">
+        <h4 class="infographic__subheader">{{ section.subheader }}</h4>
+        <div>{{ section.paragraph }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
