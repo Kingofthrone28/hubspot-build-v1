@@ -27,6 +27,9 @@
         <a
           class="two-column-section__subsection__link{% if href is string_containing ".pdf" %} pdf-link{% endif %}"
           href="{{ href }}"
+          {% if subsection.link_field.open_in_new_tab %}
+            target="_blank"
+          {% endif %}
         >
           {{ subsection.link_label }}
         </a>

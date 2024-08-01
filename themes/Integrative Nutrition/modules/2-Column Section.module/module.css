@@ -31,6 +31,10 @@
   font-weight: 600;
 }
 
+.two-column-section__subsection__link:hover {
+  color: var(--color--legacy--blue);
+}
+
 .two-column-section__subsections {
   margin-top: var(--spacing-6);
 }
