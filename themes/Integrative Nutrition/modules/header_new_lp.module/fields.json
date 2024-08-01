@@ -384,24 +384,27 @@
     "no_follow" : false
   }
 }, {
-  "type": "boolean",
-  "id": "a8cda8ae-1a38-0924-e505-37327a887c90",
-  "default": false,
-  "display": "checkbox",
-  "label": "Update Request Text",
-  "name": "update_request_text"
- }, {
-  "allow_new_line": false,
-  "display_width": null,
-  "id": "c8a64e58-98d5-c9a6-214d-23d2e2fbb3b5",
-  "label": "Request Info Text",
-  "locked": false,
-  "name": "request_info_text",
-  "required": false,
-  "show_emoji_picker": false,
-  "type": "text",
-  "validation_regex": ""
- }, {
+  "id" : "a8cda8ae-1a38-0924-e505-37327a887c90",
+  "name" : "update_request_text",
+  "display_width" : null,
+  "label" : "Update Request Text",
+  "required" : false,
+  "locked" : true,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "c8a64e58-98d5-c9a6-214d-23d2e2fbb3b5",
+  "name" : "request_info_text",
+  "display_width" : null,
+  "label" : "Request Info Text",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
   "id" : "108afd08-b273-e0ba-789a-1e33f9ff0585",
   "name" : "student_login_link",
   "display_width" : null,

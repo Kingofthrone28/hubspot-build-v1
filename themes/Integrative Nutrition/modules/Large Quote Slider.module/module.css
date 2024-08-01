@@ -40,7 +40,7 @@
 
 .large-quote-quote > div:nth-child(2) {
   margin-top: 10px;
-  font-size: var(--font-size--7);
+  font-size: var(--font-size--6);
   font-style: italic;
 }
 
