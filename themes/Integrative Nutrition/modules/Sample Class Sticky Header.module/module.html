@@ -143,8 +143,10 @@
 
 <script>
   {% if not is_sample_class_base_template %}
+    let pdpTop;
     const showHideStickyNav = () => {
-      const bottomOfPdpTop = $('.pdp-top').offset()?.top + $('.pdp-top')?.height();
+      if (!pdpTop) pdpTop = $('.pdp-top');
+      const bottomOfPdpTop = pdpTop.offset()?.top + $('.pdp-top')?.height();
       if ($(window).scrollTop() > bottomOfPdpTop) {
         $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
       } else {
