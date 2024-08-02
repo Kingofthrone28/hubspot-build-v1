@@ -199,17 +199,16 @@ function createBlogObject(data, contentGroupId) {
 async function main(prodKey, devKey, contentGroupId) {
   try {
     //console.log('pagesp', pages)
-    // const pages = await getListPages(prodKey);
-    // await postAllPages(pages, devKey)
+    const pages = await getListPages(prodKey);
+    await postAllPages(pages, devKey)
     const landingPages = await getListLandingPages(prodKey);
-    postAllLandingPages(landingPages, devKey);
+    await postAllLandingPages(landingPages, devKey);
     const blogPages = await getListBlogs(prodKey, contentGroupId);
-    postAllBlogs(blogPages, devKey);
+    await postAllBlogs(blogPages, devKey);
   } catch (error) {
     console.error(error)
   }
 }
-
 
 async function getListPages(prodKey) {
   const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
@@ -230,7 +229,6 @@ async function getListPages(prodKey) {
     e.message === 'HTTP request failed'
       ? console.error(JSON.stringify(e.response, null, 2))
       : console.error(e)
-    throw e;
   }
 }
 
@@ -293,6 +291,7 @@ async function postAllLandingPages(pages, devKey) {
   }
   catch (error) {
     console.error('Failed to create page: ${error}', error);
+    throw error;
   }
 }
 
