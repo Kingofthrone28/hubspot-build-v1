@@ -144,6 +144,7 @@
 <script>
   {% if not is_sample_class_base_template %}
     let pdpTop;
+  
     const showHideStickyNav = () => {
       if (!pdpTop) pdpTop = $('.pdp-top');
       const bottomOfPdpTop = pdpTop.offset()?.top + $('.pdp-top')?.height();
