@@ -14,9 +14,7 @@
     "stylelint": "^16.6.1",
     "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-standard": "^36.0.0",
-    "stylelint-no-unsupported-browser-features": "^8.0.1",
-    "hubspot": "^2.3.14",
-    "inquirer": "^10.1.2"
+    "stylelint-no-unsupported-browser-features": "^8.0.1"
   },
   "scripts": {
     "build": "npm run js:build && npm run css:build",
@@ -28,6 +26,12 @@
     "js:lint": "eslint './themes/Integrative Nutrition/js/**/*.js'",
     "js:fix": "npm run js:lint -- --fix",
     "js:format": "prettier './themes/Integrative Nutrition/js/**/*.js' --write",
-    "sync": "hs fetch --account=iin-production / --overwrite"
+    "sync": "hs fetch --account=iin-production / --overwrite",
+    "hs-page-sync": "npx i inquirer hubspot && ./scripts/importPages.mjs"
+  },
+  "dependencies": {
+    "@hubspot/api-client": "^11.1.0",
+    "hubspot": "^2.3.14",
+    "inquirer": "^10.1.2"
   }
 }

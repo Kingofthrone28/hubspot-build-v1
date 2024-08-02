@@ -1,29 +1,59 @@
-import { lstat, readFileSync } from 'fs';
+import {readFileSync} from 'fs';
 import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
 
-// const questions = [
-//   {
-//     type: 'input',
-//     name: 'key',
-//     message: "What's your development api key?",
-//   },
-// ];
+const data = readFileSync('./file-map.json', 'utf8')
+// console.log('after', data)
+const pageMap = JSON.parse(data)
+const landingPagesIds = Object.values(pageMap.landingPages);
+const sitePagesIds = Object.values(pageMap.webpages);
+const blogPagesIds = Object.values(pageMap.blogPosts);
 
-// inquirer
-//   .prompt(questions)
-//   .then((answers) => {
-//     const accessToken = answers.key;
-//     postAllPages(accessToken); // Call the function here
-//     postAllLandingPages(accessToken);
-//   })
-//   .catch((error) => {
-//     if (error.isTtyError) {
-//       console.error("Prompt couldn't be rendered in the current environment");
-//     } else {
-//       console.error('Something else went wrong', error);
-//     }
-//   });
+if (process.argv[2] && process.argv[3] && process.argv[4]) {
+  const prodKey = process.argv[2]
+  const devKey = process.argv[3]
+  const contentGroupId = process.argv[4]
+  main(prodKey, devKey, contentGroupId)
+} else {
+  getKeys();
+}
+
+function getKeys() {
+  const questions = [
+    {
+      type: 'input',
+      name: 'prodKey',
+      message: "What's your prod api key?",
+    },
+    {
+      type: 'input',
+      name: 'devKey',
+      message: "What's your dev api key?",
+    },
+    {
+      type: 'input',
+      name: 'contentGroupId',
+      message: "What's your contentGroupId?",
+    },
+  ];
+
+  inquirer
+  .prompt(questions)
+  .then((answers) => {
+    const {prodKey} = answers;
+    const {devKey} = answers;
+    const {contentGroupId} = answers;
+    main(prodKey, devKey, contentGroupId)
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      console.error("Prompt couldn't be rendered in the current environment");
+    } else {
+      console.error('Something else went wrong', error);
+    }
+  });
+}
+
 
 function createPageObject(data) {
   const pageObject = {};
@@ -82,181 +112,228 @@ function createPageObject(data) {
   return pageObject;
 }
 
+function createBlogObject(data, contentGroupId) {
+  const blogObject = {};
+
+  blogObject.contentGroupId = contentGroupId;
+  
+  if (data.name) {
+    blogObject.name = data.name;
+  }
+  if (data.metaDescription) {
+    blogObject.metaDescription = data.metaDescription;
+  }
+  if (data.categoryId) {
+    blogObject.categoryId = data.categoryId;
+  }
+  if (data.contentTypeCategory) {
+    blogObject.contentTypeCategory = data.contentTypeCategory;
+  }
+  if (data.templatePath) {
+    blogObject.templatePath = data.templatePath;
+  }
+  if (data.postBody) {
+    blogObject.postBody = data.postBody;
+  }
+  if (data.postBody) {
+    blogObject.postBody = data.postBody;
+  }
+  if (Object.keys(data.layoutSections).length > 0) {
+    blogObject.layoutSections = data.layoutSections;
+  }
+  if (Object.keys(data.widgetContainers).length > 0) {
+    blogObject.widgetContainers = data.widgetContainers;
+  }
+  if (Object.keys(data.widgets).length > 0) {
+    blogObject.widgets = data.widgets;
+  }
+  if (data.attachedStylesheets.length > 1) {
+    blogObject.attachedStylesheets = data.attachedStylesheets;
+  }
+  if (data.subcategory) {
+    blogObject.subcategory = data.subcategory;
+  }
+  if (data.featuredImage) {
+    blogObject.featuredImage = data.featuredImage;
+  }
+  if (data.featuredImageAltText) {
+    blogObject.featuredImageAltText = data.featuredImageAltText;
+  }
+  if (data.useFeaturedImage) {
+    blogObject.useFeaturedImage = data.useFeaturedImage;
+  }
+  if (data.htmlTitle) {
+    blogObject.htmlTitle = data.htmlTitle;
+  }
+  if (data.id) {
+    blogObject.id = data.id;
+  }
+  return blogObject
+  // blogs are not published becuase author does not exist
+  //  if (data.authorName) {
+  //   blogObject.authorName = data.authorName;
+  // }
+  // if (data.blogAuthorId) {
+  //   blogObject.blogAuthorId = data.blogAuthorId;
+  // }
+
+  // if (data.createdById) {
+  //   blogObject.createdById = data.createdById;
+  // }
+
+  // if (data.slug) {
+  //   blogObject.slug = data.slug;
+  // }
+  // if (data.state) {
+  //   blogObject.state = data.state;
+  // }
+  // if (data.currentState) {
+  //   blogObject.currentState = data.currentState;
+  // }
+  // if (data.published) {
+  //   blogObject.published = data.published;
+  // }
+  // return blogObject;
+   }
+
+async function main(prodKey, devKey, contentGroupId) {
+  try {
+    //console.log('pagesp', pages)
+    // const pages = await getListPages(prodKey);
+    // await postAllPages(pages, devKey)
+    const landingPages = await getListLandingPages(prodKey);
+    postAllLandingPages(landingPages, devKey);
+    const blogPages = await getListBlogs(prodKey, contentGroupId);
+    postAllBlogs(blogPages, devKey);
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 
-// async function postAllLandingPages(accessToken) {
-//   const data = readFileSync('landingPageData.json', 'utf8');
-//   const response = JSON.parse(data);
-//   const pages = response.map(createPageObject);
-//   const hubspotClientDev = new hubspot.Client({ accessToken });
-//   for (const page of pages) {
-//     console.log(page.name, ' successfully imported');
-//     try {
-//       postLandingPage(page);
-//     } catch (error) {
-//       console.error('Failed to create page: ${error}', error);
-//     }
-//   }
-// }
-
-// async function postLandingPage(page) {
-//   await hubspotClientDev.cms.pages.sitePagesApi.create(page);
-// }
-
-
-//landing pages
-// const landingPages = [
-
-// "Kaveh LP_Sample Class form Test (A) (Clone)",
-// "Health Coaching Guide",
-// "test-sam-LP_Sample Class form Test (A)",
-// "Thank You Intent Form",
-// "Cristina Cuomo Scholarship Thank You",
-// "Cristina Cuomo HCTP Scholarship",
-// "Stef Jung Mindful Eating Scholarship",
-// "Stef Jung Mindful Eating Scholarship Thank You",
-// "Learning Center - Module O - Summary (Option 2)",
-// "Victoria Repa HCTP Scholarship",
-// "Victoria Repa HCTP Scholarship Thank You",
-// "Giselle Orentas Scholarship Thank You",
-// "Giselle Orentas Scholarship",
-// "Melissa Ambrosini 5 Secrets to Grow Your Business",
-// "Healthy Skincare Guide",
-// "Sample the IIN student experience accreditation",
-// "Sample the IIN student experience nutrition",
-// "IIN’s Ultimate Wellness Gift Guide",
-// "Free Sample Class",
-// "Sample the IIN student experience health coaching",
-// "Mark's LP_Sample Class form Test (A)",
-// "Sample Class",
-// "Healthy Halloween Guide",
-// "Mental Wellness Sale",
-// "Abundance Guide",
-// ]
-const landingPagesIds = [
-"166095729283",
-"172834539413",
-"171407084655",
-"172422406456",
-"172038762617",
-"172021452085",
-"171698873485",
-"171699094188",
-"167407951995",
-"169905341795",
-"169905341962",
-"164773338288",
-"164772232834",
-"167525067141",
-"159679753218",
-"137036642959",
-"137036647319",
-"164170478098",
-"137036646485",
-"137036647076",
-"156704991788",
-"130357386505",
-"159711671122",
-"139705417637",
-"159963522472"
-]
-
-//site pages"
-// const sitePages = [
-// "Webinars (Main)",
-// "The Health Coach Training Program",
-// "Chopra Coaching Certification",
-// "What is a Health Coach",
-// "Nutrition for Life",
-// "Mindful Eating Course",
-// "Gut Health Course",
-// "Hormone Health",
-// "Whole Person Health Course",
-// "Detox Your Life",
-// "Chopra Ayurvedic Health Certification",
-// "Chopra Yoga 200-Hour Certification",
-// "Chopra Yoga Foundations",
-// "Deepening Your Practice: Chopra Meditation Enrichment",
-// "Chopra Meditation Foundations",
-// "Ayurveda for Balance: Chopra Health Enrichment",
-// "Chopra Ayurvedic Health Foundations",
-// "Launch Your Dream Book",
-// "Coaching Intensive Practicum",
-// "Shopify Enrollment Agreement",
-// "Bundle course test",
-// "Contact Us",
-// "Chopra Coaching, IIN Sample Lesson",
-// "Step Form",
-// "Chopra Meditation Certification Download Syllabus Thank You"
-// ]
-
-const sitePagesIds = [
-"131374501698",
-"126932344965",
-"127858949636",
-"131416922172",
-"128454847823",
-"128048488316",
-"128001646913",
-"129063785734",
-"128770284598",
-"128866095380",
-"128145895073",
-"128371454887",
-"128868704151",
-"128360917654",
-"128872775059",
-"129238224813",
-"128877446795",
-"128907592067",
-"128173611345",
-"121320042302",
-"132227331613",
-"92103162004",
-"134124428915",
-"128048146031",
-"135110345768"
-]
-
-
-async function getListPages(){
-  let sitePagesList = [];
-  let promises = [];
-  const accessToken = 'pat-na1-682d2280-801e-4168-b990-15bee3ac9238'
-  const hubspotClientProd = new hubspot.Client({ accessToken });
+async function getListPages(prodKey) {
+  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+  const promises = [];
   const archived = undefined;
   const property = undefined;
-  for (let id of sitePagesIds){
-    let objectId = id;
-    let promise = hubspotClientProd.cms.pages.sitePagesApi.getById(objectId, archived, property);
+  for (const id of sitePagesIds) {
+    const objectId = id;
+    const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(objectId, archived, property);
     promises.push(promise)
   }
   try {
-    sitePagesList = await Promise.all(promises)
+    const sitePagesList = await Promise.all(promises);
+    console.info('GET all site pages complete')
+    const pages = sitePagesList.map(createPageObject);
+    return pages
+  } catch (e) {
+    e.message === 'HTTP request failed'
+      ? console.error(JSON.stringify(e.response, null, 2))
+      : console.error(e)
+    throw e;
+  }
+}
+
+async function postAllPages(pages, devKey) {
+  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+  const formRequest = []
+
+  for (const page of pages) {
+    const promise = hubspotClientDev.cms.pages.sitePagesApi.create(page)
+    formRequest.push(promise)
+  }
+  
+  try {
+    await Promise.all(formRequest)
+    console.info('POST all site pages complete')
+  }
+  catch (error) {
+    console.error('Failed to create page: ${error}', error);
+    throw error;
+  }
+}
+
+async function getListLandingPages(prodKey) {
+  // const func = getSitePages 
+  //   ? hubspotClientProd.cms.pages.sitePagesApi.getById
+  //   : hubspotClientProd.cms.pages.landingPagesApi.getById;
+  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+  const promises = [];
+  const archived = undefined;
+  const property = undefined;
+  for (const id of landingPagesIds) {
+    const objectId = id;
+    const promise = hubspotClientProd.cms.pages.landingPagesApi.getById(objectId, archived, property);
+    promises.push(promise)
+  }
+  try {
+    const landingPagesList = await Promise.all(promises);
+    console.info('GET all landing pages complete')
+    const pages = landingPagesList.map(createPageObject);
+    return pages
   } catch (e) {
     e.message === 'HTTP request failed'
       ? console.error(JSON.stringify(e.response, null, 2))
       : console.error(e)
   }
+}
 
-  let formRequest = []
-  const pages = sitePagesList.map(createPageObject);
-  const hubspotClientDev = new hubspot.Client({"accessToken":"pat-na1-c9e94014-e8f0-4670-b660-ac0bc7cb3a7d"});
+async function postAllLandingPages(pages, devKey) {
+  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+  const formRequest = []
+
   for (const page of pages) {
-    let promise = hubspotClientDev.cms.pages.sitePagesApi.create(page)
+    const promise = hubspotClientDev.cms.pages.landingPagesApi.create(page)
     formRequest.push(promise)
   }
+  
   try {
     await Promise.all(formRequest)
-  } 
+    console.info('POST all landing pages complete')
+  }
   catch (error) {
     console.error('Failed to create page: ${error}', error);
   }
 }
 
-getListPages();
-//postAllPages();
+async function getListBlogs(prodKey, contentGroupId) {
+  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+  const promises = [];
+  const archived = undefined;
+  const property = undefined;
+  for (const id of blogPagesIds) {
+    const objectId = id;
+    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(objectId, archived, property);
+    promises.push(promise)
+  }
+  try {
+    const blogPagesList = await Promise.all(promises);
+    console.info('GET all blog pages complete')
+    const pages = blogPagesList.map( (blog) =>createBlogObject(blog, contentGroupId)
+    );
+    return pages
+  } catch (e) {
+    e.message === 'HTTP request failed'
+      ? console.error(JSON.stringify(e.response, null, 2))
+      : console.error(e)
+    throw e;
+  }
+}
 
-// async function postAllPages() {
-
-// }
+async function postAllBlogs(blogs, devKey) {
+  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+  const formRequest = []
+  for (const blog of blogs) {
+    const promise = hubspotClientDev.cms.blogs.blogPosts.blogPostsApi.create(blog)
+    formRequest.push(promise)
+  }
+  
+  try {
+    await Promise.all(formRequest)
+    console.info('POST all blog pages complete')
+  }
+  catch (error) {
+    console.error('Failed to create page: ${error}', error);
+    throw error;
+  }
+}
