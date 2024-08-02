@@ -86,6 +86,7 @@
   --color--legacy--white--white-smoke-5: #f5f5f5;
 
   /* Legacy Colors */
+  --color--legacy--blue: #00f;
   --color--legacy--blue--allports-1: #186286;
   --color--legacy--blue--allports-2: #196b91;
   --color--legacy--blue--big-stone: #333f48;
@@ -126,7 +127,6 @@
   --color--legacy--blue--tangaroa--alpha-10: rgb(16 24 40 / 10%);
   --color--legacy--blue--tangaroa--alpha-18: rgb(16 24 40 / 18%);
   --color--legacy--blue--wild-blue-yonder: #7c98b6;
-  --color--legacy--blue: #00f;
   --color--legacy--brown--burnt-sienna: #ef6b51;
   --color--legacy--brown--thatch--alpha-20: rgb(173 144 144 / 20%);
   --color--legacy--green--apple--alpha-100: rgb(104 170 69 / 100%);

@@ -21,7 +21,7 @@
 }
 
 .footer-title {
-  font-size: var(--font-size--extra-large-paragraph);
+  font-size: var(--font-size--extra-large-paragraph--desktop);
 }
 
 @media (max-width: 48em) {

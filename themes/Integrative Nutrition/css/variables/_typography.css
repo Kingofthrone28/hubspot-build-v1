@@ -33,6 +33,8 @@
   --font-size--h6--desktop: var(--font-size--5);
   --font-size--h6--mobile: var(--font-size--3);
   --font-size--extra-large-paragraph: var(--font-size--6);
+  --font-size--extra-large-paragraph--desktop: var(--font-size--6);
+  --font-size--extra-large-paragraph--mobile: var(--font-size--4);
   --font-size--large-paragraph--desktop: var(--font-size--4);
   --font-size--large-paragraph--mobile: var(--font-size--3);
   --font-size--paragraph--desktop: var(--font-size--3);
@@ -105,4 +107,18 @@
   --line-height--legacy--11: 2.5;
   --line-height--legacy--heading: var(--line-height--legacy--4);
   --line-height--legacy--body: var(--line-height--legacy--7);
+
+  /* Font Shorthands: size / line-height family */
+  --font--h1--mobile: var(--font-size--h1--mobile) /
+    var(--line-height--legacy--4) var(--font-family--heading);
+  --font--h3--desktop: var(--font-size--h3--desktop) /
+    var(--line-height--legacy--4) var(--font-family--heading);
+  --font--h3--mobile: var(--font-size--h3--mobile) /
+    var(--line-height--legacy--6) var(--font-family--heading);
+  --font--h4--desktop: var(--font-size--h4--desktop) /
+    var(--line-height--legacy--5) var(--font-family--heading);
+  --font--large-paragraph--desktop: var(--font-size--large-paragraph--desktop) /
+    var(--line-height--legacy--9) var(--font-family--body);
+  --font--paragraph--desktop: var(--font-size--paragraph--desktop) /
+    var(--line-height--legacy--8) var(--font-family--body);
 }

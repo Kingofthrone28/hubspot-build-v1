@@ -39,6 +39,7 @@
   margin-bottom: var(--spacing-4);
   text-align: left;
   color: var(--color--slate);
+  font-family: var(--font-family--body);
 }
 
 @media (max-width: 768px) {

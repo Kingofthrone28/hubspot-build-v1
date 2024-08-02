@@ -104,7 +104,6 @@ html .hs-button.jd-request-btn.pdp-sticky-btn-left:hover {
 
 html .hs-button.jd-request-btn.pdp-sticky-btn-right {
   padding: 10px 30px !important;
-  max-width: none;
 }
 
 html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
@@ -274,7 +273,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-price-total {
   margin-right: 10px;
-  font-size: var(--font-size--extra-large-paragraph);
+  font-size: var(--font-size--extra-large-paragraph--desktop);
 }
 
 .pdp-price-discount {
@@ -558,7 +557,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 .pdp-bottom-middle-head {
   margin-bottom: 10px;
   max-width: 250px;
-  font-size: var(--font-size--extra-large-paragraph);
+  font-size: var(--font-size--extra-large-paragraph--desktop);
 }
 
 .pdp-bottom .pdp-div {
@@ -628,4 +627,19 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   .pdp-top-content h1 {
     font-size: var(--font-size--9);
   }
+}
+
+.custom-button {
+  display: inline-block;
+  border: var(--theme--buttons--border);
+  border-radius: var(--theme--buttons--border-radius);
+  background: var(--theme--buttons--background-color);
+  padding: var(--theme--buttons--padding);
+  max-width: 350px;
+  height: 3rem;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--theme--buttons--text-color);
+  font-family: var(--theme--global-fonts--primary-font);
 }

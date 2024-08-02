@@ -1,0 +1,40 @@
+<div class="two-column-section">
+  <div class="two-column-section__header">
+    <h2 class="two-column-section__heading">
+      {{ module.heading }}
+    </h2>
+    {% if module.description %}
+      <p class="two-column-section__description">
+        {{ module.description }}
+      </p>
+    {% endif %}
+  </div>
+  <div class="two-column-section__subsections">
+  {% for subsection in module.subsections %}
+    <div class="two-column-section__subsection">
+      {% if subsection.heading %}
+        <h3 class="two-column-section__subsection__heading">
+          {{ subsection.heading }}
+        </h3>
+      {% endif %}
+      {% if subsection.description %}
+        <div class="two-column-section__subsection__description">
+          {{ subsection.description }}
+        </div>
+      {% endif %}
+      {% set href = subsection.link_field.url.href %}
+      {% if href and subsection.link_label %}
+        <a
+          class="two-column-section__subsection__link{% if href is string_containing ".pdf" %} pdf-link{% endif %}"
+          href="{{ href }}"
+          {% if subsection.link_field.open_in_new_tab %}
+            target="_blank"
+          {% endif %}
+        >
+          {{ subsection.link_label }}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</div>
