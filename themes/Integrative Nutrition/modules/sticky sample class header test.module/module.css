@@ -619,15 +619,15 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .custom-button {
   display: inline-block;
-  text-align: center;
-  max-width: 350px;
-  text-decoration: none;
-  background: var(--theme--buttons--background-color);
   border: var(--theme--buttons--border);
   border-radius: var(--theme--buttons--border-radius);
-  color: var(--theme--buttons--text-color);
+  background: var(--theme--buttons--background-color);
   padding: var(--theme--buttons--padding);
-  font-family: var(--theme--global-fonts--primary-font);
-  text-shadow: none;
+  max-width: 350px;
   height: 3rem;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--theme--buttons--text-color);
+  font-family: var(--theme--global-fonts--primary-font);
 }
