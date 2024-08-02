@@ -485,8 +485,8 @@
   let body;
   
   function getCurrentHeight() {
-    if (!stickyHeader) stickyHeader = document.querySelector('.pdp-sticky');
-    if (!body) body = document.body;
+    if (!stickyHeader) { stickyHeader = document.querySelector('.pdp-sticky') };
+    if (!body) { body = document.body };
     const height = stickyHeader.offsetHeight;
     
     body.style.paddingTop = `${height}px`;
