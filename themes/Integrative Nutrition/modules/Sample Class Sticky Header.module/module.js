@@ -483,6 +483,7 @@
   
   let stickyHeader;
   let body;
+  
   function getCurrentHeight() {
     if (!stickyHeader) stickyHeader = document.querySelector('.pdp-sticky');
     if (!body) body = document.body;
