@@ -67,6 +67,7 @@
 
 .pdp-sticky-head > div:first-child h3 {
   font-size: var(--font-size--5);
+  color: var(--color--slate);
 }
 
 .pdp-sticky-enroll-chev-up {
@@ -594,6 +595,17 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 }
 
 @media (max-width: 767px) {
+  .pdp-sticky-head {
+    text-align: center;
+    color: var(--color--grey-1);
+    font-size: var(--font-size--legal);
+  }
+
+  .pdp-sticky-head > div:first-child {
+    display: flex;
+    justify-content: center;
+  }
+
   .pdp-bottom > div:nth-child(1) {
     margin-bottom: 25px;
   }
