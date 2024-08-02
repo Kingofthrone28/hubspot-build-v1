@@ -146,7 +146,7 @@
     let pdpTop;
   
     const showHideStickyNav = () => {
-      if (!pdpTop) pdpTop = $('.pdp-top');
+      if (!pdpTop) { pdpTop = $('.pdp-top') };
       const bottomOfPdpTop = pdpTop.offset()?.top + $('.pdp-top')?.height();
       if ($(window).scrollTop() > bottomOfPdpTop) {
         $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
