@@ -499,7 +499,7 @@
   }
 
   // Call the function on load to get the current height
-  window.addEventListener('load', getCurrentHeight);
+  window.addEventListener('DOMContentLoaded', getCurrentHeight);
 
   // Call the function on resize (to handle responsive changes)
   window.addEventListener('resize', getCurrentHeight);
