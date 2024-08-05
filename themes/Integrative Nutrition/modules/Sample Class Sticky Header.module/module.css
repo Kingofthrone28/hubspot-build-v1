@@ -605,7 +605,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
     justify-content: center;
   }
 
-  .pdp-bottom > div:nth-child(1) {
+  .pdp-bottom > div:first-child {
     margin-bottom: 25px;
   }
 
