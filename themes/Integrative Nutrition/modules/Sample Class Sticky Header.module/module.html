@@ -147,9 +147,12 @@
 
     const showHideStickyNav = () => {
       if (!pdpTop) {
-        pdpTop = $('.pdp-top') 
+        pdpTop = $('.pdp-top');
       }
-      const bottomOfPdpTop = (pdpTop.offset()?.top || 0) + ($('.pdp-top')?.height() || 0);
+    
+      const bottomOfPdpTop =
+        (pdpTop.offset()?.top || 0) + ($('.pdp-top')?.height() || 0);
+    
       if ($(window).scrollTop() > bottomOfPdpTop) {
         $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
       } else {
@@ -157,7 +160,7 @@
       }
     };
     
-    $(window).on('scroll', showHideStickyNav);
+    $(window).on('scroll', showHideStickyNav);    
   {% endif %}
 
   {%- set raw_data = {
