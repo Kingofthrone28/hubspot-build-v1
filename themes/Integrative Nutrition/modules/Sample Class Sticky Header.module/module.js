@@ -451,7 +451,6 @@
   /* Sticky nav */
   $('.pdp-sticky-wrap').appendTo('body');
 
-
   $('#pdp-sticky-enroll-btn').click((e) => {
     e.preventDefault();
     $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
@@ -480,15 +479,21 @@
       changeSlide($(this).data('index'));
     }
   });
-  
+
   let stickyHeader;
   let body;
-  
+
   function getCurrentHeight() {
-    if (!stickyHeader) { stickyHeader = document.querySelector('.pdp-sticky') };
-    if (!body) { body = document.body };
+    if (!stickyHeader) {
+      stickyHeader = document.querySelector('.pdp-sticky');
+    }
+
+    if (!body) {
+      body = document.body;
+    }
+
     const height = stickyHeader.offsetHeight;
-    
+
     body.style.paddingTop = `${height}px`;
     return height;
   }
