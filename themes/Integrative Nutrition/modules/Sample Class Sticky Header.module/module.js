@@ -451,17 +451,6 @@
   /* Sticky nav */
   $('.pdp-sticky-wrap').appendTo('body');
 
-  const showHideStickyNav = () => {
-    const bottomOfPdpTop = $('.pdp-top').offset().top + $('.pdp-top').height();
-    if ($(window).scrollTop() > bottomOfPdpTop) {
-      $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
-    } else {
-      $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
-    }
-  };
-
-  $(window).on('scroll', showHideStickyNav);
-
   $('#pdp-sticky-enroll-btn').click((e) => {
     e.preventDefault();
     $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
@@ -490,4 +479,28 @@
       changeSlide($(this).data('index'));
     }
   });
+
+  let stickyHeader;
+  let body;
+
+  function getCurrentHeight() {
+    if (!stickyHeader) {
+      stickyHeader = document.querySelector('.pdp-sticky');
+    }
+
+    if (!body) {
+      body = document.body;
+    }
+
+    const height = stickyHeader.offsetHeight;
+
+    body.style.paddingTop = `${height}px`;
+    return height;
+  }
+
+  // Call the function on load to get the current height
+  window.addEventListener('load', getCurrentHeight);
+
+  // Call the function on resize (to handle responsive changes)
+  window.addEventListener('resize', getCurrentHeight);
 })();

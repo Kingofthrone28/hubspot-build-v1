@@ -95,9 +95,8 @@
       <div class="pdp-sticky-btns">
         {% if module.sticky_nav.left_button_link %}
         <div>
-          <a href="{{ module.sticky_nav.left_button_link.href }}" 
-             class="jd-request-btn hs-button secondary-button pdp-sticky-btn-left arrow-link {{ arrow_link_direction }}"
-             target="_blank">
+          <a href="{{ module.sticky_nav.left_button_link.href }}"
+             class="jd-request-btn hs-button secondary-button pdp-sticky-btn-left arrow-link {{ arrow_link_direction }}">
             {{ module.sticky_nav.left_button_text }}
           </a>
         </div>
@@ -143,6 +142,27 @@
 {% end_require_css %}
 
 <script>
+  {% if not is_sample_class_base_template %}
+    let pdpTop;
+
+    const showHideStickyNav = () => {
+      if (!pdpTop) {
+        pdpTop = $('.pdp-top');
+      }
+    
+      const bottomOfPdpTop =
+        (pdpTop.offset()?.top || 0) + ($('.pdp-top')?.height() || 0);
+    
+      if ($(window).scrollTop() > bottomOfPdpTop) {
+        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
+      } else {
+        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+      }
+    };
+    
+    $(window).on('scroll', showHideStickyNav);
+  {% endif %}
+
   {%- set raw_data = {
     category: module.category_text,
     courseName: module.course_name,
