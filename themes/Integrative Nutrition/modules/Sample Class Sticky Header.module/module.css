@@ -61,13 +61,17 @@
   max-width: 95%;
 }
 
+.pdp-bottom h3 {
+  font-size: var(--font-size--10);
+}
+
 .pdp-sticky-enroll .pdp-bottom h3 {
   font-size: var(--font-size--h3--desktop);
 }
 
 .pdp-sticky-head > div:first-child h3 {
-  font-size: var(--font-size--5);
   color: var(--color--slate);
+  font-size: var(--font-size--5);
 }
 
 .pdp-sticky-enroll-chev-up {
@@ -562,10 +566,6 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-bottom .pdp-div {
   display: none;
-}
-
-.pdp-bottom h3 {
-  font-size: var(--font-size--10);
 }
 
 @media (max-width: 1000px) {
