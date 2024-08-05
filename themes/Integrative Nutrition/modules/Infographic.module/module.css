@@ -42,28 +42,38 @@
   font-family: var(--font-family--body);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .infographic__header {
-    margin-bottom: var(--spacing-8);
-    padding: var(--spacing-5) 0;
+    margin-bottom: var(--spacing-10);
     text-align: left;
-    line-height: var(--line-height--legacy--4);
-    font-size: var(--font-size--h2--mobile);
-  }
-
-  .infographic__image-column {
-    flex: none;
-    margin-right: 0;
-    padding: 1.875rem 0;
-    width: 100%;
   }
 
   .infographic__column-container {
     flex-direction: column;
   }
 
+  .infographic__image-column {
+    flex: none;
+    padding: 0 2.625rem var(--spacing-8) 2.625rem;
+    width: 100%;
+  }
+
   .infographic__description-column {
     flex: none;
     width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .infographic__header {
+    margin-bottom: var(--spacing-8);
+    padding: var(--spacing-5) 0;
+    line-height: var(--line-height--legacy--4);
+    font-size: var(--font-size--h2--mobile);
+  }
+
+  .infographic__image-column {
+    padding: 1.875rem 0;
   }
 }
