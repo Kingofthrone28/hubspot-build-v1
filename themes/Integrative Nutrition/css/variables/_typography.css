@@ -111,7 +111,7 @@
     var(--font-family--heading);
 
   --font--h1--mobile: var(--font-style--heading) var(--font-weight--heading)
-    var(--font-size--h1--mobile) / var(--line-height-h1--mobile-)
+    var(--font-size--h1--mobile) / var(--line-height-h1--mobile)
     var(--font-family--heading);
 
   --font--h2--desktop: var(--font-style--heading) var(--font-weight--heading)
@@ -186,7 +186,7 @@
 
   --font--paragraph--desktop: var(--font-style--body) var(--font-weight--body)
     var(--font-size--paragraph--desktop) /
-    var(--line-height-paragraph--desktop-) var(--font-family--body);
+    var(--line-height-paragraph--desktop) var(--font-family--body);
 
   --font--paragraph--mobile: var(--font-style--body) var(--font-weight--body)
     var(--font-size--paragraph--mobile) / var(--line-height--paragraph--mobile)
