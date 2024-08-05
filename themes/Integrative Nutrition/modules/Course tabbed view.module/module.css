@@ -175,7 +175,7 @@
   }
 
   .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span {
-    line-height: var(--line-height--0);
+    line-height: var(--line-height--100);
   }
 
   .hub-view-courses
@@ -348,7 +348,7 @@
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-badge-logo span {
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
 }
 
 .hub-view-courses

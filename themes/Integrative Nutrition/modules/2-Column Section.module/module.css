@@ -23,7 +23,7 @@
   display: inline-block;
   text-decoration: underline;
   color: var(--color--water);
-  font-size: var(--font-size--paragraph--desktop);
+  font-size: var(--font-size--paragraph);
   font-weight: 600;
 }
 
@@ -55,7 +55,7 @@
   }
 
   .two-column-section__subsection__heading {
-    font-size: var(--font-size--testimonial-name);
+    font-size: var(--font-size--testimonial-name--desktop);
   }
 
   .two-column-section__subsection__link {
@@ -69,7 +69,7 @@
 
 @media (min-width: 768px) {
   .two-column-section__description {
-    font-size: var(--font-size--paragraph--desktop);
+    font-size: var(--font-size--paragraph);
   }
 
   .two-column-section__heading {

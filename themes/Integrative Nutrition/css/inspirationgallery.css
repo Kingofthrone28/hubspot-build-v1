@@ -23,7 +23,7 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   white-space: nowrap;
   color: var(--color--white);
   font-family: var(--font-family--legacy--gallery);

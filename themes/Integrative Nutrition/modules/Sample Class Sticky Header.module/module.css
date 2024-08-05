@@ -282,7 +282,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-price-total {
   margin-right: 10px;
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 .pdp-price-discount {
@@ -566,7 +566,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 .pdp-bottom-middle-head {
   margin-bottom: 10px;
   max-width: 250px;
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 .pdp-bottom .pdp-div {

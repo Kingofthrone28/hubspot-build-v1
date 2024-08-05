@@ -276,7 +276,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-price-total {
   margin-right: 10px;
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 .pdp-price-discount {

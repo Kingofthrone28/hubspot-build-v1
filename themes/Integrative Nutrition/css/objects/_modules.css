@@ -18,7 +18,7 @@
 }
 
 .bundle-shopify-price-page {
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
 }
 
 #bundle-shopify-price-savings {
@@ -737,7 +737,7 @@ a.jd-cat-block:hover {
 
 .full-step-form .hs-form-field label,
 .full-step-form .hs-form-field label span {
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
   font-size: var(--font-size--legacy--13) !important;
 }
 
@@ -869,7 +869,7 @@ a.jd-cat-block:hover {
   left: 18px;
   opacity: 0.4;
   z-index: 0;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   color: var(--color--legacy--orange--peach);
   font-family: var(--font-family--legacy--heading);
   font-size: var(--font-size--legacy--29);
@@ -3263,7 +3263,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   display: block;
   cursor: pointer;
   padding: 4px 10px;
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
 }
 
 .mb-resource-filter .topic-list .topic.selected {
@@ -3308,7 +3308,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
 
 .port-list .port-item .title {
   margin-top: 10px;
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
   font-size: var(--font-size--legacy--4);
 }
 
@@ -3462,7 +3462,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   padding: 2px 0 6px;
   width: 28px;
   text-align: center;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   color: var(--color--white);
   font-size: var(--font-size--legacy--11);
   content: '‹ ›';

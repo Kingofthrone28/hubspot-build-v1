@@ -94,7 +94,7 @@ select.jd-cart-rec-select {
   border-radius: 20px;
   box-shadow: 0 4px 40px 0 var(--color--legacy--black--black--alpha-10);
   overflow: hidden;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
 }
 
 .jd-cart-rec-item-img {
@@ -220,7 +220,7 @@ select.jd-cart-rec-select {
 .jd-cart-summary-bottom {
   margin-top: 10px;
   text-align: right;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   font-size: var(--font-size--legacy--2);
   font-style: italic;
 }

@@ -71,7 +71,7 @@
 
 .jd-add-pop-name {
   margin-bottom: 5px;
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
   font-family: var(--font-family--legacy--heading);
   font-size: var(--font-size--legacy--13);
   font-weight: bold;
@@ -826,7 +826,7 @@ body.open .mb-custom-header .hs_cos_wrapper_widget:not(.widget-type-rich_text) {
 
 .abv-nav {
   padding: 3px 0;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   font-size: var(--font-size--legacy--4);
 }
 
@@ -1008,7 +1008,7 @@ body.open .mb-custom-header .hs_cos_wrapper_widget:not(.widget-type-rich_text) {
 }
 
 .social {
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
 }
 
 .social a {
@@ -1392,7 +1392,7 @@ a svg {
 .ham-text {
   display: block;
   text-transform: uppercase;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   font-size: var(--font-size--legacy--3);
 }
 
