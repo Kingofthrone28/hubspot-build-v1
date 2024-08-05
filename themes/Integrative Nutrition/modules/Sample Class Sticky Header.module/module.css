@@ -596,7 +596,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 @media (max-width: 767px) {
   .pdp-sticky-head {
     text-align: center;
-    color: var(--color--grey-1);
+    color: var(--color--grey-2);
     font-size: var(--font-size--legal);
   }
 
