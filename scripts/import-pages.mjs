@@ -18,7 +18,7 @@ if (process.argv[2] && process.argv[3] && process.argv[4]) {
   getKeys();
 }
 
-function getKeys() {
+async function getKeys() {
   const questions = [
     {
       type: 'input',
@@ -60,7 +60,7 @@ function createPageObject(data) {
   if (data.name) {
     pageObject.name = data.name;
   }
-  if (data.attachedStylesheets.length > 1) {
+  if (data.attachedStylesheets) {
     pageObject.attachedStylesheets = data.attachedStylesheets;
   }
   if (data.slug) {
@@ -99,13 +99,13 @@ function createPageObject(data) {
   if (data.templatePath) {
     pageObject.templatePath = data.templatePath;
   }
-  if (Object.keys(data.layoutSections).length > 0) {
+  if (Object.keys(data.layoutSections)) {
     pageObject.layoutSections = data.layoutSections;
   }
-  if (Object.keys(data.widgetContainers).length > 0) {
+  if (Object.keys(data.widgetContainers)) {
     pageObject.widgetContainers = data.widgetContainers;
   }
-  if (Object.keys(data.widgets).length > 0) {
+  if (Object.keys(data.widgets)) {
     pageObject.widgets = data.widgets;
   }
 
@@ -138,16 +138,16 @@ function createBlogObject(data, contentGroupId) {
   if (data.postBody) {
     blogObject.postBody = data.postBody;
   }
-  if (Object.keys(data.layoutSections).length > 0) {
+  if (Object.keys(data.layoutSections)) {
     blogObject.layoutSections = data.layoutSections;
   }
-  if (Object.keys(data.widgetContainers).length > 0) {
+  if (Object.keys(data.widgetContainers)) {
     blogObject.widgetContainers = data.widgetContainers;
   }
-  if (Object.keys(data.widgets).length > 0) {
+  if (Object.keys(data.widgets)) {
     blogObject.widgets = data.widgets;
   }
-  if (data.attachedStylesheets.length > 1) {
+  if (data.attachedStylesheets) {
     blogObject.attachedStylesheets = data.attachedStylesheets;
   }
   if (data.subcategory) {
@@ -169,36 +169,11 @@ function createBlogObject(data, contentGroupId) {
     blogObject.id = data.id;
   }
   return blogObject
-  // blogs are not published becuase author does not exist
-  //  if (data.authorName) {
-  //   blogObject.authorName = data.authorName;
-  // }
-  // if (data.blogAuthorId) {
-  //   blogObject.blogAuthorId = data.blogAuthorId;
-  // }
-
-  // if (data.createdById) {
-  //   blogObject.createdById = data.createdById;
-  // }
-
-  // if (data.slug) {
-  //   blogObject.slug = data.slug;
-  // }
-  // if (data.state) {
-  //   blogObject.state = data.state;
-  // }
-  // if (data.currentState) {
-  //   blogObject.currentState = data.currentState;
-  // }
-  // if (data.published) {
-  //   blogObject.published = data.published;
-  // }
-  // return blogObject;
    }
 
 async function main(prodKey, devKey, contentGroupId) {
   try {
-    //console.log('pagesp', pages)
+    console.log('pagesp', pages)
     const pages = await getListPages(prodKey);
     await postAllPages(pages, devKey)
     const landingPages = await getListLandingPages(prodKey);
