@@ -465,6 +465,7 @@
   $('#pdp-sticky-enroll-btn').click((e) => {
     e.preventDefault();
     $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
+    $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
   });
 
   /* Slides */
