@@ -11,5 +11,5 @@
     0 8px 8px -4px var(--color--legacy--blue--tangaroa--alpha-3);
   --shadow--2xl: 0 24px 48px -12px var(--color--legacy--blue--tangaroa--alpha-18);
   --shadow--button: 0px 4px 20px 0px var(--color--legacy--black--black--alpha-8);
-  --shadow--sticky-header: 0px 50px 100px 0px var(--color--legacy--grey--tundora-25);
+  --shadow--sticky-header: 0px 50px 100px 0px var(--color--legacy--grey--tundora--alpha-25);
 }
