@@ -32,7 +32,7 @@
 }
 
 .sticky-header-shadow {
-  box-shadow: var(--sticky--header--shadow);
+  box-shadow: var(--shadow--sticky-header);
 }
 
 .pdp-sticky {
