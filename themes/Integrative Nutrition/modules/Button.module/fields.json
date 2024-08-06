@@ -17,7 +17,7 @@
   "label" : "Link",
   "required" : false,
   "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG", "CALL_TO_ACTION" ],
   "show_advanced_rel_options" : false,
   "type" : "link",
   "default" : {

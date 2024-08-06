@@ -5,7 +5,7 @@
   {% set current_index = nav_links.index(page_meta.canonical_url) %}
   {% set have_previous =  current_index > 0 %}
   {% set have_next = current_index + 1 < link_count %}
-  <div class="relative-nav-container">
+  <div class="relative-nav">
     {% if have_previous %}
       {% set previous_index = current_index - 1 %}
       <a 

@@ -457,11 +457,11 @@
   "type" : "link",
   "default" : {
     "url" : {
-      "content_id" : null,
-      "href" : "https://store.integrativenutrition.com/cart?_gl=1*n0nm8j*_ga*MTQyNDY5ODQ0MC4xNjkwMjE4MDU1*_ga_4XRZQ05ZKR*MTY5MDMwOTc1NS41LjAuMTY5MDMwOTc1NS42MC4wLjA.",
-      "type" : "EXTERNAL"
+      "content_id" : 156289019138,
+      "href" : null,
+      "type" : "CONTENT"
     },
-    "open_in_new_tab" : true,
+    "open_in_new_tab" : false,
     "no_follow" : false
   }
 }, {

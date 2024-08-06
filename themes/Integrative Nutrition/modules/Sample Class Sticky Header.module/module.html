@@ -167,16 +167,22 @@
 <script>
   {% if not is_sample_class_base_template %}
     let pdpTop;
+
     const showHideStickyNav = () => {
-      if (!pdpTop) pdpTop = $('.pdp-top');
-      const bottomOfPdpTop = pdpTop.offset()?.top + $('.pdp-top')?.height();
+      if (!pdpTop) {
+        pdpTop = $('.pdp-top');
+      }
+    
+      const bottomOfPdpTop =
+        (pdpTop.offset()?.top || 0) + ($('.pdp-top')?.height() || 0);
+    
       if ($(window).scrollTop() > bottomOfPdpTop) {
         $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
       } else {
         $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
       }
     };
-
+    
     $(window).on('scroll', showHideStickyNav);
   {% endif %}
 
