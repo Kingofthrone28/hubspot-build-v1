@@ -54,7 +54,6 @@ async function getKeys() {
   });
 }
 
-
 function createPageObject(data) {
   const pageObject = {};
   if (data.name) {
