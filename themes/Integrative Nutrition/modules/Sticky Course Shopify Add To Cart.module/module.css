@@ -31,6 +31,10 @@
   opacity: 1;
 }
 
+.sticky-header-shadow {
+  box-shadow: var(--shadow--sticky-header);
+}
+
 .pdp-sticky {
   background: var(--color--white);
 }

@@ -453,9 +453,10 @@
 
   $('#pdp-sticky-enroll-btn').click((e) => {
     e.preventDefault();
-    $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
     $('.caret').toggleClass('caret-down');
     $('.caret').toggleClass('caret-up');
+    $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
+    $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
   });
 
   /* Slides */
