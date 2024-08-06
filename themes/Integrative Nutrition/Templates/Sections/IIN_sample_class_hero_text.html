@@ -5,7 +5,6 @@
  isAvailableForNewContent: true
  screenshotPath: ../../images/sample-class-hero-text-default.png
 -->
-
 {% dnd_section
  class="sample-class-hero-wrapper"
  background_image={
@@ -16,7 +15,7 @@
  padding={
    "default" : {
      "bottom" : "200px",
-     "top" : "340px"
+     "top" : "275px"
    }
  },
  margin={
@@ -32,8 +31,8 @@
    width=12,
    padding={
      "mobile" : {
-       "left" : "0px",
-       "right" : "0px"
+       "left" : "0",
+       "right" : "0"
      }
    }
  %}
@@ -58,27 +57,31 @@
        },
        margin={
          "default" : {
-           "bottom" : "0px",
-           "top" : "0px"
+           "bottom" : "0",
+           "top" : "0"
          }
        }
      %}
        {% dnd_row %}
          {% dnd_module
-           path="@hubspot/text",
+           path="@hubspot/rich_text",
            offset=0,
            width=12,
-           value="Module Number"
          %}
+          {% module_attribute "html" %}
+            <div class="p-xl sample-class-hero__module-name">Lorem Ipsum</div>
+          {% end_module_attribute %}
          {% end_dnd_module %}
        {% end_dnd_row %}
        {% dnd_row %}
          {% dnd_module
-           path="@hubspot/header",
+           path="@hubspot/rich_text",
            offset=0,
-           width=12,
-           value="Module Header"
+           width=12
          %}
+          {% module_attribute "html" %}
+            <h1>Lorem Ipsum Dolor</h1>
+          {% end_module_attribute %}
          {% end_dnd_module %}
        {% end_dnd_row %}
        {% dnd_row %}
@@ -88,7 +91,7 @@
            width=12
          %}
            {% module_attribute "html" %}
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna et libero placerat tincidunt at a mauris. Donec in accumsan massa, id porttitor sem. Duis a interdum odio. Nunc sed feugiat nunc. Mauris ut nibh sed enim semper efficitur eget ultricies felis. In finibus cursus lectus, vel feugiat metus egestas eget. Mauris pellentesque euismod massa, ac egestas lorem congue id.</p>
+             <div class="p-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna et libero placerat tincidunt at a mauris. Donec in accumsan massa, id porttitor sem. Duis a interdum odio. Nunc sed feugiat nunc. Mauris ut nibh sed enim semper efficitur eget ultricies felis. In finibus cursus lectus, vel feugiat metus egestas eget. Mauris pellentesque euismod massa, ac egestas lorem congue id.</div>
            {% end_module_attribute %}
          {% end_dnd_module %}
        {% end_dnd_row %}

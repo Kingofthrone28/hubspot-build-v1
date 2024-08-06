@@ -83,47 +83,49 @@
 {% endif %}
 
 <div class="pdp-sticky-wrap {{ sticky_show }}">
-  <div class="pdp-sticky">
-    <div class="pdp-sticky-inner">
-      <div class="pdp-sticky-head">
-        <div>
-          <div><img src="{{ module.category_image.src }}" /></div>
-          <h3>{{ module.course_name }}</h3>
+  <div class="pdp-sticky-header-wrap">
+    <div class="pdp-sticky">
+      <div class="pdp-sticky-inner">
+        <div class="pdp-sticky-head">
+          <div>
+            <div><img src="{{ module.category_image.src }}" /></div>
+            <h3>{{ module.course_name }}</h3>
+          </div>
+          <div>{{ module.sticky_nav.subhead }}</div>
         </div>
-        <div>{{ module.sticky_nav.subhead }}</div>
-      </div>
-      <div class="pdp-sticky-btns">
-        {% if module.sticky_nav.left_button_link %}
-        <div>
-          <a href="{{ module.sticky_nav.left_button_link.href }}"
-             class="jd-request-btn hs-button secondary-button pdp-sticky-btn-left arrow-link {{ arrow_link_direction }}">
-            {{ module.sticky_nav.left_button_text }}
-          </a>
-        </div>
-        {% endif %}
-        <div>
-          <a id="pdp-sticky-enroll-btn" href="#" 
-             class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"> 
-            {{ module.sticky_nav.right_button_text }}
-          </a>
+        <div class="pdp-sticky-btns">
+          {% if module.sticky_nav.left_button_link %}
+          <div>
+            <a href="{{ module.sticky_nav.left_button_link.href }}"
+               class="jd-request-btn hs-button secondary-button pdp-sticky-btn-left arrow-link {{ arrow_link_direction }}">
+              {{ module.sticky_nav.left_button_text }}
+            </a>
+          </div>
+          {% endif %}
+          <div>
+            <a id="pdp-sticky-enroll-btn" href="#" 
+               class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"> 
+              {{ module.sticky_nav.right_button_text }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="pdp-sticky-enroll">
-    <div class="pdp-sticky-enroll-inner">
-      <div class="pdp-bottom">
-        <div>
-          <h3>{{ module.sticky_nav.dropdown_left_text }}</h3>
-        </div>
-        <div>
+    <div class="pdp-sticky-enroll">
+      <div class="pdp-sticky-enroll-inner">
+        <div class="pdp-bottom">
           <div>
-            <div class="pdp-bottom-options"></div>
+            <h3>{{ module.sticky_nav.dropdown_left_text }}</h3>
           </div>
-        </div>
-        <div>
-          <div class="pdp-bottom-price"></div>
-          <div class="pdp-bottom-3-bottom"></div>
+          <div>
+            <div>
+              <div class="pdp-bottom-options"></div>
+            </div>
+          </div>
+          <div>
+            <div class="pdp-bottom-price"></div>
+            <div class="pdp-bottom-3-bottom"></div>
+          </div>
         </div>
       </div>
     </div>

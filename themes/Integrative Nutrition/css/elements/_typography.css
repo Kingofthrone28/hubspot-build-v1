@@ -25,6 +25,32 @@ strong {
   font-weight: 700;
 }
 
+.p-xl {
+  font: var(--font--extra-large-paragraph--desktop);
+}
+
+.p-lg {
+  font: var(--font--large-paragraph--desktop);
+}
+
+.p-md {
+  font: var(--font--paragraph--desktop);
+}
+
+@media (max-width: 767px) {
+  .p-xl {
+    font: var(--font--extra-large-paragraph--mobile);
+  }
+
+  .p-lg {
+    font: var(--font--large-paragraph--mobile);
+  }
+
+  .p-md {
+    font: var(--font--paragraph--mobile);
+  }
+}
+
 /* Anchors */
 
 a {

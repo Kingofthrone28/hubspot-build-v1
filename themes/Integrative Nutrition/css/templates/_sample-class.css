@@ -1,7 +1,15 @@
+.sample-class-hero-wrapper.dnd-section {
+  background-position: top !important;
+  background-size: 100% !important;
+}
+
+.sample-class-hero__module-name {
+  line-height: var(--line-height--116);
+}
+
 .sample-class-module-text-wrapper h1,
 .sample-class-hero-wrapper h1 {
-  padding: 30px 0 20px;
-  font-weight: normal;
+  padding: 24px 0;
 }
 
 .sample-class-video-wrapper .section-header {
