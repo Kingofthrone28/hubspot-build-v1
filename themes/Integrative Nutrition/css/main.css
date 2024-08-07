@@ -30,6 +30,7 @@
 {% include './objects/tabs.css' %}
 {% include './slider-overrides.css' %}
 {% include './objects/jd-shopify-cart.css' %}
+{% include './objects/_add-to-cart.css' %}
   
 html {
   max-width: 100%;
