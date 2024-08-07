@@ -26,7 +26,7 @@ strong {
 }
 
 .p-xl {
-  font: var(--font--extra-large-paragraph--desktop);
+  font: var(--font--extra-large-paragraph);
 }
 
 .p-lg {
@@ -39,7 +39,7 @@ strong {
 
 @media (max-width: 767px) {
   .p-xl {
-    font: var(--font--extra-large-paragraph--mobile);
+    font: var(--font--large-paragraph--mobile);
   }
 
   .p-lg {
