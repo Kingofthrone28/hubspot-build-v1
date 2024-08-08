@@ -46,17 +46,5 @@
       "lists",
       "standard_emphasis"
     ]
-  },
-  {
-    "name": "background_image",
-    "label": "Background Image field",
-    "required": false,
-    "locked": false,
-    "type": "backgroundimage",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": {
-      "src": ""
-    }
   }
 ]
