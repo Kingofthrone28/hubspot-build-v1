@@ -57,6 +57,7 @@ function getKeys() {
 */
 
 async function main(prodKey, devKey) {
+
     try {
         // 1
         const databaseTables = await getHubdbTables(prodKey)
@@ -69,7 +70,7 @@ async function main(prodKey, devKey) {
         //await postHubdbRows(existingTables);
 
         setTimeout(async () => {
-        //     // 4
+            //     // 4
             const newTables = existingTables.map(table => {
                 return {
                     inputs: table
@@ -99,7 +100,7 @@ async function getHubdbTables(prodKey) {
     //   const isGetLocalizedSchema = undefined;
     //   const archived = undefined;
     //   const includeForeignIds = undefined;
-    hubdb_names.forEach(function(name){
+    hubdb_names.forEach(function (name) {
         const promise = hubspotClientProd.cms.hubdb.tablesApi.getTableDetails(name);
         promises.push(promise)
     });
@@ -180,8 +181,8 @@ async function getHubdbRows(prodKey) {
 // }
 
 async function publishTables(devKey) {
-    const promises = [];
     const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+    const promises = [];
     for (let i = 0; i < hubdb_names.length; i++) {
         const promise = hubspotClientDev.cms.hubdb.tablesApi.publishDraftTable(hubdb_names[i]);
         promises.push(promise)
@@ -194,17 +195,20 @@ async function publishTables(devKey) {
             ? console.error(JSON.stringify(e.response, null, 2))
             : console.error(e)
     }
-
 }
 
-async function checkHubdbTableCreation(tables, devKey){
+async function checkHubdbTableCreation(tables, devKey) {
     const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-    tables.forEach(async function(table){
-        try{
-            await hubspotClientDev.cms.hubdb.tablesApi.getTableDetails(table.name);
+
+    const promises = tables.map(({ name }) => hubspotClientDev.cms.hubdb.tablesApi.getTableDetails(name))
+    const getTableResponses = await Promise.allSettled(promises);
+    const createResponses = getTableResponses.map((response, index) => {
+        if (response.status === 'rejected') {
+            const table = tables[index]
+            return hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
         }
-        catch(error){
-            await hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
-        }
-    });
+    })
+
+    await Promise.all(createResponses)
+    console.info('create in checkHubdbTableCreation complete')
 }
