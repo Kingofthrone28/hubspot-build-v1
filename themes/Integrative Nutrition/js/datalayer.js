@@ -165,7 +165,9 @@ topBarNavigationElements.forEach((element) => {
 });
 
 // Navigation CTA tracking
-const navCTAElement = document.querySelector('div.jd-header-main.jd-mobile-hide a[data-tracking-id]');
+const navCTAElement = document.querySelector(
+  'div.jd-header-main.jd-mobile-hide a[data-tracking-id]',
+);
 if (navCTAElement) {
   navCTAElement.addEventListener('click', () => {
     window.dataLayer.push({
@@ -275,7 +277,9 @@ homePageTabElements.forEach((element) => {
   });
 });
 
-const productDetailsPageTabElements = document.querySelectorAll('[data-tracking-id*="tab"]');
+const productDetailsPageTabElements = document.querySelectorAll(
+  '[data-tracking-id*="tab"]',
+);
 productDetailsPageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackTabClickEvent(element);
