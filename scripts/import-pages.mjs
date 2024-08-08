@@ -3,12 +3,10 @@ import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
 
 const data = readFileSync('./file-map.json', 'utf8')
-// console.log('after', data)
 const pageMap = JSON.parse(data)
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 const blogPagesIds = Object.values(pageMap.blogPosts);
-
 if (process.argv[2] && process.argv[3] && process.argv[4]) {
   const prodKey = process.argv[2]
   const devKey = process.argv[3]
@@ -71,11 +69,17 @@ function createPageObject(data) {
   if (data.currentState) {
     pageObject.currentState = data.currentState;
   }
+  if (data.includeDefaultCustomCss) {
+    pageObject.includeDefaultCustomCss = data.includeDefaultCustomCss;
+  }
   if (data.published) {
     pageObject.published = data.published;
   }
   if (data.subcategory) {
     pageObject.subcategory = data.subcategory;
+  }
+  if (data.themeSettingsValues) {
+    pageObject.themeSettingsValues = data.themeSettingsValues;
   }
   if (data.metaDescription) {
     pageObject.metaDescription = data.metaDescription;
@@ -97,6 +101,9 @@ function createPageObject(data) {
   }
   if (data.templatePath) {
     pageObject.templatePath = data.templatePath;
+  }
+  if (data.publishDate) {
+    pageObject.publishDate = data.publishDate;
   }
   if (Object.keys(data.layoutSections)) {
     pageObject.layoutSections = data.layoutSections;
@@ -172,7 +179,8 @@ function createBlogObject(data, contentGroupId) {
 
 async function main(prodKey, devKey, contentGroupId) {
   try {
-    console.log('pagesp', pages)
+    //console.log('pagesp', pages)
+
     const pages = await getListPages(prodKey);
     await postAllPages(pages, devKey)
     const landingPages = await getListLandingPages(prodKey);

@@ -27,7 +27,7 @@
     "js:fix": "npm run js:lint -- --fix",
     "js:format": "prettier './themes/Integrative Nutrition/js/**/*.js' --write",
     "sync": "hs fetch --account=iin-production / --overwrite",
-    "hs-page-sync": "npx i inquirer hubspot && ./scripts/importPages.mjs"
+    "hs-page-sync": "npx i inquirer hubspot && ./scripts/import-pages.mjs && ./scripts/import-hubdb.mjs"
   },
   "dependencies": {
     "@hubspot/api-client": "^11.1.0",
