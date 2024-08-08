@@ -49,54 +49,59 @@
 
   /**
    * Return a list of possible variants given a selection of options.
-   */  
-  const getPossibleVariants = (variants, selection) => variants.filter((variant) => {
+   */
+  const getPossibleVariants = (variants, selection) =>
+    variants.filter((variant) => {
       if (!variant.available) {
         return false;
       }
-      for(let i=0; i<variant.selectedOptions.length; i++){
-        const variantOption = variant.selectedOptions[i]
-        if(selection[variantOption.name] !== undefined && selection[variantOption.name] !== variantOption.value){
+      for (let i = 0; i < variant.selectedOptions.length; i++) {
+        const variantOption = variant.selectedOptions[i];
+        if (
+          selection[variantOption.name] !== undefined &&
+          selection[variantOption.name] !== variantOption.value
+        ) {
           return false;
         }
       }
       return true;
-    })
+    });
 
   /**
    * Returns a list of possible values given a list of variants and an option key.
-   */  
+   */
   const getPossibleValues = (variants, optionName) => {
     const possibleValues = [];
-    variants.forEach(variant => {
-      variant.selectedOptions.forEach(variantOption => {
-        if(variantOption.name === optionName && !possibleValues.includes(variantOption.value)){
-          possibleValues.push(variantOption.value)
+    variants.forEach((variant) => {
+      variant.selectedOptions.forEach((variantOption) => {
+        if (
+          variantOption.name === optionName &&
+          !possibleValues.includes(variantOption.value)
+        ) {
+          possibleValues.push(variantOption.value);
         }
       });
     });
     return possibleValues;
-  }
+  };
 
   /**
    * Return an options object given the current selection, a list of option names,
    * and a list of variants.
-   */  
+   */
   const getOptions = (selection, optionNames, variants) => {
-
     const options = {};
     const newSelection = {};
-    let filteredVariants = [...variants]
+    let filteredVariants = [...variants];
 
     // Iterate through option names
-    optionNames.forEach(optionName => {
-
+    optionNames.forEach((optionName) => {
       // Get all possible values for each name from a list of variants
       options[optionName] = getPossibleValues(filteredVariants, optionName);
 
       // If currently selected value is no longer possible
       // set the new selection to a default (first value).
-      if (!options[optionName].includes(selection[optionName])){
+      if (!options[optionName].includes(selection[optionName])) {
         newSelection[optionName] = options[optionName][0];
       } else {
         newSelection[optionName] = selection[optionName];
@@ -106,18 +111,21 @@
       filteredVariants = getPossibleVariants(filteredVariants, newSelection);
     });
 
-    return [options, newSelection]
-  }
+    return [options, newSelection];
+  };
 
   /**
    * Updates selectedOptions and show/hide buttons when an attribute is changed.
    */
   const checkSelectedOptions = () => {
-
     const variants = Array.isArray(product?.variants) ? product.variants : [];
-    const [options, newSelection] = getOptions(selectedOptions, optionKeys, variants);
-    optionKeys.forEach(optionKey => {
-      selectedOptions[optionKey] = newSelection[optionKey]
+    const [options, newSelection] = getOptions(
+      selectedOptions,
+      optionKeys,
+      variants,
+    );
+    optionKeys.forEach((optionKey) => {
+      selectedOptions[optionKey] = newSelection[optionKey];
     });
 
     // Checkboxes
