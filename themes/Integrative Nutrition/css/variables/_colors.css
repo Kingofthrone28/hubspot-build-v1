@@ -58,7 +58,7 @@
   --color--legacy--grey--grey-1: #777;
   --color--legacy--grey--grey-2: #7d7d7d;
   --color--legacy--grey--grey-3: #808080;
-  --color--legacy--grey--light-grey: #d3d3d3;
+  --color--legacy--grey--light-grey: #d3d3d3; /* html lightgray */
   --color--legacy--grey--nero: #1d1d1d; /* rgb(29 29 29) */
   --color--legacy--grey--nero--alpha-18: rgb(29 29 29 / 18%);
   --color--legacy--grey--nero--alpha-20: rgb(29 29 29 / 20%);

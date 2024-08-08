@@ -1,0 +1,58 @@
+{% set loadingAttr = module.loading != 'disabled' ? 'loading="{{ module.loading|escape_attr }}"' : '' %}
+{% set count = module.group_logos|length %}
+{% set column_count_percentage = ((1 / count) * 100) ~ "%" %}
+{% set row_gap = '32' %}
+{% set mobile_row_gap =  '4' %}
+{% set row_basis_spacing = row_gap - (row_gap / count) %}
+{% set mobile_row_basis_spacing = mobile_row_gap - (mobile_row_gap / count) %}
+
+<div class="logo-row">
+  {% if module.heading %}
+    <div class="logo-row__heading-wrapper">
+      <h3 class="logo-row__heading">{{ module.heading }}</h3>
+    </div>
+  {% endif %}
+  <div class="logo-row__logos">
+    {% for item in module.group_logos %}
+      {% set image = item.logo %}
+      {% if image.src %}
+        {% set sizeAttrs = 'width="{{ image.width|escape_attr }}" height="{{ image.height|escape_attr }}"' %}
+        <div class="logo-row__image-wrapper">
+          <img
+            class="logo-row__image" 
+            src="{{ image.src|escape_url }}"
+            alt="{{ image.alt|escape_attr }}"
+            {{ loadingAttr }}
+            {{ sizeAttrs }}
+          >
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .logo-row__logos :not(:last-of-type) {
+        margin-right: {{ row_gap ~ "px" }};
+      }
+
+      .logo-row__image-wrapper {
+        flex: 0 1 calc({{ column_count_percentage }} - {{ row_basis_spacing ~ "px" }});
+        max-width: calc({{ column_count_percentage }} - {{ row_basis_spacing ~ "px" }});
+      }
+
+      @media (max-width: 767px) {
+        .logo-row__logos :not(:last-of-type) {
+          margin-right: {{ mobile_row_gap ~ "px" }};
+        }
+
+        .logo-row__image-wrapper {
+          flex: 0 1 calc({{ column_count_percentage }} - {{ mobile_row_basis_spacing ~ "px" }});
+          max-width: calc({{ column_count_percentage }} - {{ mobile_row_basis_spacing ~ "px" }});
+        }
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}

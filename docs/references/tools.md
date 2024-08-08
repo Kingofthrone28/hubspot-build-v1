@@ -49,3 +49,7 @@ A list of useful developer tools, local and web based.
 
 - [DevDocs](https://devdocs.io/)
 - [Diátaxis](https://diataxis.fr/)
+
+### Font Awesome
+
+- [Icon Search - V5 Free](https://fontawesome.com/v5/search?o=r&m=free)
