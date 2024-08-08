@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 {% include './variables/_theme.css' %}
 {% include './variables/_assets.css' %}
 {% include './variables/_colors.css' %}
@@ -31,7 +32,8 @@
 {% include './slider-overrides.css' %}
 {% include './objects/jd-shopify-cart.css' %}
 {% include './objects/_add-to-cart.css' %}
-  
+/* stylelint-enable no-duplicate-selectors */
+
 html {
   max-width: 100%;
   overflow: hidden scroll;
