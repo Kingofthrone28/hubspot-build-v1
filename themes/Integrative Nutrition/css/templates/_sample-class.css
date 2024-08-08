@@ -7,7 +7,6 @@
   line-height: var(--line-height--116);
 }
 
-.sample-class-module-text-wrapper h1,
 .sample-class-hero-wrapper h1 {
   padding: 24px 0;
 }
@@ -18,8 +17,7 @@
   text-align: center;
 }
 
-.sample-class-hero-wrapper .row-fluid-wrapper .dnd-column,
-.sample-class-module-text-wrapper {
+.sample-class-hero-wrapper .row-fluid-wrapper .dnd-column {
   border-radius: 0 !important;
   box-shadow: none !important;
 }

@@ -10,52 +10,52 @@ body h6 {
   color: var(--color--slate);
 }
 
-h1 {
+body h1 {
   font: var(--font--h1--desktop);
 }
 
-h2 {
+body h2 {
   font: var(--font--h2--desktop);
 }
 
-h3 {
+body h3 {
   font: var(--font--h3--desktop);
 }
 
-h4 {
+body h4 {
   font: var(--font--h4--desktop);
 }
 
-h5 {
+body h5 {
   font: var(--font--h5--desktop);
 }
 
-h6 {
+body h6 {
   font: var(--font--h6--desktop);
 }
 
 @media (max-width: 767px) {
-  h1 {
+  body h1 {
     font: var(--font--h1--mobile);
   }
 
-  h2 {
+  body h2 {
     font: var(--font--h2--mobile);
   }
 
-  h3 {
+  body h3 {
     font: var(--font--h3--mobile);
   }
 
-  h4 {
+  body h4 {
     font: var(--font--h4--mobile);
   }
 
-  h5 {
+  body h5 {
     font: var(--font--h5--mobile);
   }
 
-  h6 {
+  body h6 {
     font: var(--font--h6--mobile);
   }
 }

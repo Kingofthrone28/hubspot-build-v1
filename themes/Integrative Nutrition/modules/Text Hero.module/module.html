@@ -1,0 +1,21 @@
+<!-- Begin Text Hero module html  -->
+<div class="text-hero">
+  <div class="text-hero__wrapper">
+    <p class="p-xl text-hero__module-name">{{ module.module_name }}</p>
+    <h1 class="text-hero__page-heading">{{ module.page_heading }}</h1>
+    <div class="p-lg text-hero__paragraphs">{{ module.paragraphs }}</div>
+  </div>
+</div>
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .text-hero {
+        background: url({{ module.background_image.src }}) lightgray 50% / cover no-repeat;
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+{% if module.background_image %}
+  <div> background image src: {{ module.background_image.src }}</div>
+{% endif %}
+<!-- End Text Hero module html  -->

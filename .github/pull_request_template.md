@@ -42,6 +42,7 @@ Screenshots:
 
 ## Completion Checklist
 
+- [ ] Restrict `enabled_features` for rich text fields in hubspot modules (see the [README](../README.md) for more info).
 - [ ] Documentation or typings
 - [ ] Linted and formatted
 - [ ] Tested
