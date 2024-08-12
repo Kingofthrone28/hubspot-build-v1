@@ -55,30 +55,24 @@
       if (!variant.available) {
         return false;
       }
-      for (let i = 0; i < variant.selectedOptions.length; i++) {
-        const variantOption = variant.selectedOptions[i];
-        if (
+
+      return !variant.selectedOptions.some((variantOption) => {
+        return (
           selection[variantOption.name] !== undefined &&
           selection[variantOption.name] !== variantOption.value
-        ) {
-          return false;
-        }
-      }
-      return true;
+        );
+      });
     });
 
   /**
-   * Returns a list of possible values given a list of variants and an option key.
+   * Returns a Set of possible values given a list of variants and an option key.
    */
   const getPossibleValues = (variants, optionName) => {
-    const possibleValues = [];
+    const possibleValues = new Set();
     variants.forEach((variant) => {
       variant.selectedOptions.forEach((variantOption) => {
-        if (
-          variantOption.name === optionName &&
-          !possibleValues.includes(variantOption.value)
-        ) {
-          possibleValues.push(variantOption.value);
+        if (variantOption.name === optionName) {
+          possibleValues.add(variantOption.value);
         }
       });
     });
@@ -101,8 +95,8 @@
 
       // If currently selected value is no longer possible
       // set the new selection to a default (first value).
-      if (!options[optionName].includes(selection[optionName])) {
-        newSelection[optionName] = options[optionName][0];
+      if (!options[optionName].has(selection[optionName])) {
+        newSelection[optionName] = [...options[optionName]][0];
       } else {
         newSelection[optionName] = selection[optionName];
       }
@@ -111,7 +105,7 @@
       filteredVariants = getPossibleVariants(filteredVariants, newSelection);
     });
 
-    return [options, newSelection];
+    return { options, newSelection };
   };
 
   /**
@@ -119,7 +113,7 @@
    */
   const checkSelectedOptions = () => {
     const variants = Array.isArray(product?.variants) ? product.variants : [];
-    const [options, newSelection] = getOptions(
+    const { options, newSelection } = getOptions(
       selectedOptions,
       optionKeys,
       variants,
