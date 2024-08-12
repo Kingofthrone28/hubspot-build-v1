@@ -64,18 +64,18 @@
   --font-weight--heading: var(--font-weight--regular);
 
   /* Line Height */
-  --line-height--100: 100%;
-  --line-height--110: 110%;
-  --line-height--116: 116.667%;
-  --line-height--120: 120%;
-  --line-height--125: 125%;
-  --line-height--133: 133.333%;
-  --line-height--140: 140%;
-  --line-height--148: 148.257%;
-  --line-height--150: 150%;
-  --line-height--155: 155.556%;
-  --line-height--157: 157.143%;
-  --line-height--166: 166.667%;
+  --line-height--100: 1;
+  --line-height--110: 1.1;
+  --line-height--116: 1.16667;
+  --line-height--120: 1.2;
+  --line-height--125: 1.25;
+  --line-height--133: 1.33333;
+  --line-height--140: 1.4;
+  --line-height--148: 1.48257;
+  --line-height--150: 1.5;
+  --line-height--155: 1.55556;
+  --line-height--157: 1.57143;
+  --line-height--166: 1.66667;
   --line-height--h1--desktop: var(--line-height--110);
   --line-height--h1--mobile: var(--line-height--120);
   --line-height--h2--desktop: var(--line-height--166);
