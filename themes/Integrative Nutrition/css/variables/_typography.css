@@ -7,6 +7,8 @@
     serif;
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
+  --font-family--playfair: 'Playfair Display', Georgia, 'Times New Roman', Times,
+    serif;
 
   /* Style Guide Font Size */
   --font-size--1: 0.75rem; /*  ≈ 12px */
