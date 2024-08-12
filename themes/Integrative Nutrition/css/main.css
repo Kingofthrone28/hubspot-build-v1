@@ -21,6 +21,7 @@
 {% include './components/_buttons.css' %}
 {% include './components/_cards.css' %}
 {% include './components/_promo-banner.css' %}
+{% include './components/_slider.css' %}
 {% include './components/_footer.css' %}
 {% include './components/_header.css' %}
 {% include './components/_default-modules.css' %}
