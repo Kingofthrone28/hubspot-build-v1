@@ -86,7 +86,7 @@
   const getOptions = (selection, optionNames, variants) => {
     const options = {};
     const newSelection = {};
-    let filteredVariants = [...variants];
+    let filteredVariants = getPossibleVariants(variants, newSelection);
 
     // Iterate through option names
     optionNames.forEach((optionName) => {
