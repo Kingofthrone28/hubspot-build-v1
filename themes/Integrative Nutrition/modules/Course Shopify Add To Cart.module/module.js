@@ -48,63 +48,78 @@
   };
 
   /**
+   * Return a list of possible variants given a selection of options.
+   */
+  const getPossibleVariants = (variants, selection) =>
+    variants.filter((variant) => {
+      if (!variant.available) {
+        return false;
+      }
+
+      return !variant.selectedOptions.some((variantOption) => {
+        return (
+          selection[variantOption.name] !== undefined &&
+          selection[variantOption.name] !== variantOption.value
+        );
+      });
+    });
+
+  /**
+   * Returns a Set of possible values given a list of variants and an option key.
+   */
+  const getPossibleValues = (variants, optionName) => {
+    const possibleValues = new Set();
+    variants.forEach((variant) => {
+      variant.selectedOptions.forEach((variantOption) => {
+        if (variantOption.name === optionName) {
+          possibleValues.add(variantOption.value);
+        }
+      });
+    });
+    return possibleValues;
+  };
+
+  /**
+   * Return an options object given the current selection, a list of option names,
+   * and a list of variants.
+   */
+  const getOptions = (selection, optionNames, variants) => {
+    const options = {};
+    const newSelection = {};
+    let filteredVariants = [...variants];
+
+    // Iterate through option names
+    optionNames.forEach((optionName) => {
+      // Get all possible values for each name from a list of variants
+      options[optionName] = getPossibleValues(filteredVariants, optionName);
+
+      // If currently selected value is no longer possible
+      // set the new selection to a default (first value).
+      if (!options[optionName].has(selection[optionName])) {
+        newSelection[optionName] = [...options[optionName]][0];
+      } else {
+        newSelection[optionName] = selection[optionName];
+      }
+
+      // Filter the list of variants to match the current selection.
+      filteredVariants = getPossibleVariants(filteredVariants, newSelection);
+    });
+
+    return { options, newSelection };
+  };
+
+  /**
    * Updates selectedOptions and show/hide buttons when an attribute is changed.
    */
   const checkSelectedOptions = () => {
-    const options = {};
     const variants = Array.isArray(product?.variants) ? product.variants : [];
-
-    variants.forEach((variant) => {
-      if (!variant.available) {
-        return;
-      }
-
-      let variantOptions = [];
-
-      if (Array.isArray(variant.selectedOptions)) {
-        variantOptions = variant.selectedOptions;
-      }
-
-      // First field all options are available.
-      if (!options[optionKeys[0]]) {
-        options[optionKeys[0]] = [variantOptions[0].value];
-      } else if (!options[optionKeys[0]].includes(variantOptions[0].value)) {
-        options[optionKeys[0]].push(variantOptions[0].value);
-      }
-
-      if (optionKeys.length < 2) {
-        return;
-      }
-
-      /*
-        Each field after first checks every field before it in order adding
-        options for that field if the variant matches the previous selections.
-      */
-      for (let i = 1; i < optionKeys.length; i++) {
-        let isValid = true;
-
-        for (let j = 0; j < i; j++) {
-          if (selectedOptions[optionKeys[j]] !== variantOptions[j].value) {
-            isValid = false;
-          }
-        }
-
-        if (isValid) {
-          if (!options[optionKeys[i]]) {
-            options[optionKeys[i]] = [variantOptions[i].value];
-          } else if (
-            !options[optionKeys[i]].includes(variantOptions[i].value)
-          ) {
-            options[optionKeys[i]].push(variantOptions[i].value);
-          }
-        }
-      }
-    });
-
-    Object.entries(options).forEach(([key, value]) => {
-      if (!value.includes(selectedOptions[key])) {
-        [selectedOptions[key]] = value;
-      }
+    const { options, newSelection } = getOptions(
+      selectedOptions,
+      optionKeys,
+      variants,
+    );
+    optionKeys.forEach((optionKey) => {
+      selectedOptions[optionKey] = newSelection[optionKey];
     });
 
     // Checkboxes
