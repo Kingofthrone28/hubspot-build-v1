@@ -183,10 +183,10 @@ async function main(prodKey, devKey, contentGroupId) {
 
     const pages = await getListPages(prodKey);
     await postAllPages(pages, devKey)
-    const landingPages = await getListLandingPages(prodKey);
-    await postAllLandingPages(landingPages, devKey);
-    const blogPages = await getListBlogs(prodKey, contentGroupId);
-    await postAllBlogs(blogPages, devKey);
+    // const landingPages = await getListLandingPages(prodKey);
+    // await postAllLandingPages(landingPages, devKey);
+    // const blogPages = await getListBlogs(prodKey, contentGroupId);
+    // await postAllBlogs(blogPages, devKey);
   } catch (error) {
     console.error(error)
   }
@@ -224,7 +224,7 @@ async function postAllPages(pages, devKey) {
   }
   
   try {
-    await Promise.all(formRequest)
+    await Promise.allSettled(formRequest)
     console.info('POST all site pages complete')
   }
   catch (error) {
