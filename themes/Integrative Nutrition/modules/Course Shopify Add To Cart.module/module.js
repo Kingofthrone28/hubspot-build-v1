@@ -125,7 +125,7 @@
     // Checkboxes
     let html = '<div class="jd-shopify-options">';
 
-    const firstVariantTitle = options[optionKeys[0]]?.[0];
+    const firstVariantTitle = [...options[optionKeys[0]]]?.[0];
 
     // Not showing options if there is only 1 default field
     if (firstVariantTitle !== 'Default Title') {
