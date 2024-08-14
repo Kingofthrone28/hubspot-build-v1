@@ -1,5 +1,9 @@
 import { readFileSync } from 'fs';
+
+// eslint-disable-next-line
 import hubspot from '@hubspot/api-client';
+
+// eslint-disable-next-line
 import inquirer from 'inquirer';
 
 const data = readFileSync('./file-map.json', 'utf8');
@@ -177,7 +181,7 @@ function createBlogObject(data, contentGroupId) {
 
 async function main(prodKey, devKey, contentGroupId) {
   try {
-    //console.log('pagesp', pages)
+    // console.log('pagesp', pages)
 
     const pages = await getListPages(prodKey);
     await postAllPages(pages, devKey);
@@ -204,16 +208,9 @@ async function getListPages(prodKey) {
     );
     promises.push(promise);
   }
-  try {
-    const sitePagesList = await Promise.all(promises);
-    console.info('GET all site pages complete');
-    const pages = sitePagesList.map(createPageObject);
-    return pages;
-  } catch (e) {
-    e.message === 'HTTP request failed'
-      ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e);
-  }
+  const sitePagesList = await Promise.all(promises);
+  console.info('GET all site pages complete');
+  return sitePagesList.map(createPageObject);
 }
 
 async function postAllPages(pages, devKey) {
@@ -225,13 +222,9 @@ async function postAllPages(pages, devKey) {
     formRequest.push(promise);
   }
 
-  try {
-    await Promise.allSettled(formRequest);
-    console.info('POST all site pages complete');
-  } catch (error) {
-    console.error('Failed to create page: ${error}', error);
-    throw error;
-  }
+  // eslint-disable-next-line
+  await Promise.allSettled(formRequest);
+  console.info('POST all site pages complete');
 }
 
 async function getListLandingPages(prodKey) {
@@ -251,16 +244,10 @@ async function getListLandingPages(prodKey) {
     );
     promises.push(promise);
   }
-  try {
-    const landingPagesList = await Promise.all(promises);
-    console.info('GET all landing pages complete');
-    const pages = landingPagesList.map(createPageObject);
-    return pages;
-  } catch (e) {
-    e.message === 'HTTP request failed'
-      ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e);
-  }
+  const landingPagesList = await Promise.all(promises);
+  console.info('GET all landing pages complete');
+  const pages = landingPagesList.map(createPageObject);
+  return pages;
 }
 
 async function postAllLandingPages(pages, devKey) {
@@ -272,13 +259,8 @@ async function postAllLandingPages(pages, devKey) {
     formRequest.push(promise);
   }
 
-  try {
-    await Promise.all(formRequest);
-    console.info('POST all landing pages complete');
-  } catch (error) {
-    console.error('Failed to create page: ${error}', error);
-    throw error;
-  }
+  await Promise.all(formRequest);
+  console.info('POST all landing pages complete');
 }
 
 async function getListBlogs(prodKey, contentGroupId) {
@@ -295,19 +277,12 @@ async function getListBlogs(prodKey, contentGroupId) {
     );
     promises.push(promise);
   }
-  try {
-    const blogPagesList = await Promise.all(promises);
-    console.info('GET all blog pages complete');
-    const pages = blogPagesList.map((blog) =>
-      createBlogObject(blog, contentGroupId),
-    );
-    return pages;
-  } catch (e) {
-    e.message === 'HTTP request failed'
-      ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e);
-    throw e;
-  }
+  const blogPagesList = await Promise.all(promises);
+  console.info('GET all blog pages complete');
+  const pages = blogPagesList.map((blog) =>
+    createBlogObject(blog, contentGroupId),
+  );
+  return pages;
 }
 
 async function postAllBlogs(blogs, devKey) {
@@ -319,11 +294,6 @@ async function postAllBlogs(blogs, devKey) {
     formRequest.push(promise);
   }
 
-  try {
-    await Promise.all(formRequest);
-    console.info('POST all blog pages complete');
-  } catch (error) {
-    console.error('Failed to create page: ${error}', error);
-    throw error;
-  }
+  await Promise.all(formRequest);
+  console.info('POST all blog pages complete');
 }
