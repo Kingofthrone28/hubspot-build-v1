@@ -1,17 +1,17 @@
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
 import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
 
-const data = readFileSync('./file-map.json', 'utf8')
-const pageMap = JSON.parse(data)
+const data = readFileSync('./file-map.json', 'utf8');
+const pageMap = JSON.parse(data);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 const blogPagesIds = Object.values(pageMap.blogPosts);
 if (process.argv[2] && process.argv[3] && process.argv[4]) {
-  const prodKey = process.argv[2]
-  const devKey = process.argv[3]
-  const contentGroupId = process.argv[4]
-  main(prodKey, devKey, contentGroupId)
+  const prodKey = process.argv[2];
+  const devKey = process.argv[3];
+  const contentGroupId = process.argv[4];
+  main(prodKey, devKey, contentGroupId);
 } else {
   getKeys();
 }
@@ -35,21 +35,19 @@ async function getKeys() {
     },
   ];
 
-  inquirer
-  .prompt(questions)
-  .then((answers) => {
-    const {prodKey} = answers;
-    const {devKey} = answers;
-    const {contentGroupId} = answers;
-    main(prodKey, devKey, contentGroupId)
-  })
-  .catch((error) => {
+  try {
+    const answers = await inquirer.prompt(questions);
+    const { prodKey } = answers;
+    const { devKey } = answers;
+    const { contentGroupId } = answers;
+    main(prodKey, devKey, contentGroupId);
+  } catch (error) {
     if (error.isTtyError) {
       console.error("Prompt couldn't be rendered in the current environment");
     } else {
       console.error('Something else went wrong', error);
     }
-  });
+  }
 }
 
 function createPageObject(data) {
@@ -122,7 +120,7 @@ function createBlogObject(data, contentGroupId) {
   const blogObject = {};
 
   blogObject.contentGroupId = contentGroupId;
-  
+
   if (data.name) {
     blogObject.name = data.name;
   }
@@ -174,21 +172,21 @@ function createBlogObject(data, contentGroupId) {
   if (data.id) {
     blogObject.id = data.id;
   }
-  return blogObject
-   }
+  return blogObject;
+}
 
 async function main(prodKey, devKey, contentGroupId) {
   try {
     //console.log('pagesp', pages)
 
     const pages = await getListPages(prodKey);
-    await postAllPages(pages, devKey)
+    await postAllPages(pages, devKey);
     // const landingPages = await getListLandingPages(prodKey);
     // await postAllLandingPages(landingPages, devKey);
     // const blogPages = await getListBlogs(prodKey, contentGroupId);
     // await postAllBlogs(blogPages, devKey);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
@@ -199,42 +197,45 @@ async function getListPages(prodKey) {
   const property = undefined;
   for (const id of sitePagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(objectId, archived, property);
-    promises.push(promise)
+    const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(
+      objectId,
+      archived,
+      property,
+    );
+    promises.push(promise);
   }
   try {
     const sitePagesList = await Promise.all(promises);
-    console.info('GET all site pages complete')
+    console.info('GET all site pages complete');
     const pages = sitePagesList.map(createPageObject);
-    return pages
+    return pages;
   } catch (e) {
     e.message === 'HTTP request failed'
       ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e)
+      : console.error(e);
   }
 }
 
 async function postAllPages(pages, devKey) {
   const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = []
+  const formRequest = [];
 
   for (const page of pages) {
-    const promise = hubspotClientDev.cms.pages.sitePagesApi.create(page)
-    formRequest.push(promise)
+    const promise = hubspotClientDev.cms.pages.sitePagesApi.create(page);
+    formRequest.push(promise);
   }
-  
+
   try {
-    await Promise.allSettled(formRequest)
-    console.info('POST all site pages complete')
-  }
-  catch (error) {
+    await Promise.allSettled(formRequest);
+    console.info('POST all site pages complete');
+  } catch (error) {
     console.error('Failed to create page: ${error}', error);
     throw error;
   }
 }
 
 async function getListLandingPages(prodKey) {
-  // const func = getSitePages 
+  // const func = getSitePages
   //   ? hubspotClientProd.cms.pages.sitePagesApi.getById
   //   : hubspotClientProd.cms.pages.landingPagesApi.getById;
   const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
@@ -243,35 +244,38 @@ async function getListLandingPages(prodKey) {
   const property = undefined;
   for (const id of landingPagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.pages.landingPagesApi.getById(objectId, archived, property);
-    promises.push(promise)
+    const promise = hubspotClientProd.cms.pages.landingPagesApi.getById(
+      objectId,
+      archived,
+      property,
+    );
+    promises.push(promise);
   }
   try {
     const landingPagesList = await Promise.all(promises);
-    console.info('GET all landing pages complete')
+    console.info('GET all landing pages complete');
     const pages = landingPagesList.map(createPageObject);
-    return pages
+    return pages;
   } catch (e) {
     e.message === 'HTTP request failed'
       ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e)
+      : console.error(e);
   }
 }
 
 async function postAllLandingPages(pages, devKey) {
   const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = []
+  const formRequest = [];
 
   for (const page of pages) {
-    const promise = hubspotClientDev.cms.pages.landingPagesApi.create(page)
-    formRequest.push(promise)
+    const promise = hubspotClientDev.cms.pages.landingPagesApi.create(page);
+    formRequest.push(promise);
   }
-  
+
   try {
-    await Promise.all(formRequest)
-    console.info('POST all landing pages complete')
-  }
-  catch (error) {
+    await Promise.all(formRequest);
+    console.info('POST all landing pages complete');
+  } catch (error) {
     console.error('Failed to create page: ${error}', error);
     throw error;
   }
@@ -284,36 +288,41 @@ async function getListBlogs(prodKey, contentGroupId) {
   const property = undefined;
   for (const id of blogPagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(objectId, archived, property);
-    promises.push(promise)
+    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(
+      objectId,
+      archived,
+      property,
+    );
+    promises.push(promise);
   }
   try {
     const blogPagesList = await Promise.all(promises);
-    console.info('GET all blog pages complete')
-    const pages = blogPagesList.map( (blog) =>createBlogObject(blog, contentGroupId)
+    console.info('GET all blog pages complete');
+    const pages = blogPagesList.map((blog) =>
+      createBlogObject(blog, contentGroupId),
     );
-    return pages
+    return pages;
   } catch (e) {
     e.message === 'HTTP request failed'
       ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e)
+      : console.error(e);
     throw e;
   }
 }
 
 async function postAllBlogs(blogs, devKey) {
   const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = []
+  const formRequest = [];
   for (const blog of blogs) {
-    const promise = hubspotClientDev.cms.blogs.blogPosts.blogPostsApi.create(blog)
-    formRequest.push(promise)
+    const promise =
+      hubspotClientDev.cms.blogs.blogPosts.blogPostsApi.create(blog);
+    formRequest.push(promise);
   }
-  
+
   try {
-    await Promise.all(formRequest)
-    console.info('POST all blog pages complete')
-  }
-  catch (error) {
+    await Promise.all(formRequest);
+    console.info('POST all blog pages complete');
+  } catch (error) {
     console.error('Failed to create page: ${error}', error);
     throw error;
   }
