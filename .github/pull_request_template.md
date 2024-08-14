@@ -1,3 +1,6 @@
+<!-- 
+Please replace XXXX with the ticket number to link to the Sales and Marketing Jira board
+-->
 # SM-XXXX
 
 ## Types of Change
@@ -6,14 +9,8 @@
 - [ ] Enhancement (change which improves upon an existing feature)
 - [ ] New feature (change which adds new functionality)
 
+<!-- Add a description of the ticket here -->
 ## Overview
-
-<!--  
-Add a description of the ticket here, e.g.:
-
-Add widget to checkout to make it easier for users to manage cart
-Fix style bug that made some text invisible
--->
 
 A clear and concise description of what the pull request is solving.
 
@@ -21,25 +18,20 @@ A clear and concise description of what the pull request is solving.
 
 [Jira Ticket](https://redswirl.atlassian.net/browse/SM-XXXX)  
 
-## Summary of Changes
-
-<!-- Optional: List of specific changes -->
+<!-- List of specific changes (Optional) -->
+## List of Changes
 
 - Some JS change
 - Some CSS change
 - Some HTML change
 
+<!-- Screenshots, links, etc. (Optional) -->
 ## Relevant Material
 
-<!--
-Optional: Screenshots, links, e.g.:
-
 [Other Ticket](https://redswirl.atlassian.net/browse/SM-XXXX)
-[Other Pull Request](https://github.com/integrativenutrition/hubspot/pull/)
--->
+[Other Pull Request](https://github.com/integrativenutrition/hubspot/pull/XXX)
 
-Screenshots:
-
+<!-- Don't Forget! -->
 ## Completion Checklist
 
 - [ ] Restrict `enabled_features` for rich text fields in hubspot modules (see the [README](../README.md) for more info).
