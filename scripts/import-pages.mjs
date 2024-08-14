@@ -6,8 +6,8 @@ import hubspot from '@hubspot/api-client';
 // eslint-disable-next-line
 import inquirer from 'inquirer';
 
-const data = readFileSync('./file-map.json', 'utf8');
-const pageMap = JSON.parse(data);
+const fileData = readFileSync('./file-map.json', 'utf8');
+const pageMap = JSON.parse(fileData);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 const blogPagesIds = Object.values(pageMap.blogPosts);
@@ -181,14 +181,12 @@ function createBlogObject(data, contentGroupId) {
 
 async function main(prodKey, devKey, contentGroupId) {
   try {
-    // console.log('pagesp', pages)
-
     const pages = await getListPages(prodKey);
     await postAllPages(pages, devKey);
-    // const landingPages = await getListLandingPages(prodKey);
-    // await postAllLandingPages(landingPages, devKey);
-    // const blogPages = await getListBlogs(prodKey, contentGroupId);
-    // await postAllBlogs(blogPages, devKey);
+    const landingPages = await getListLandingPages(prodKey);
+    await postAllLandingPages(landingPages, devKey);
+    const blogPages = await getListBlogs(prodKey, contentGroupId);
+    await postAllBlogs(blogPages, devKey);
   } catch (error) {
     console.error(error);
   }
