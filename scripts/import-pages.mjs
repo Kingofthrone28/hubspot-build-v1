@@ -11,10 +11,16 @@ const pageMap = JSON.parse(fileData);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 const blogPagesIds = Object.values(pageMap.blogPosts);
-if (process.argv[2] && process.argv[3] && process.argv[4]) {
-  const prodKey = process.argv[2];
-  const devKey = process.argv[3];
-  const contentGroupId = process.argv[4];
+const sourceArg = process.argv[2];
+const destinationArg = process.argv[3];
+const contentGroupIdArg = process.argv[4];
+let hubspotClientProd;
+let hubspotClientDev;
+
+if (sourceArg && destinationArg && contentGroupIdArg) {
+  const prodKey = sourceArg;
+  const devKey = destinationArg;
+  const contentGroupId = contentGroupIdArg;
   main(prodKey, devKey, contentGroupId);
 } else {
   getKeys();
@@ -23,27 +29,25 @@ if (process.argv[2] && process.argv[3] && process.argv[4]) {
 async function getKeys() {
   const questions = [
     {
-      type: 'input',
-      name: 'prodKey',
       message: "What's your prod api key?",
+      name: 'prodKey',
+      type: 'input',
     },
     {
-      type: 'input',
-      name: 'devKey',
       message: "What's your dev api key?",
+      name: 'devKey',
+      type: 'input',
     },
     {
-      type: 'input',
-      name: 'contentGroupId',
       message: "What's your contentGroupId?",
+      name: 'contentGroupId',
+      type: 'input',
     },
   ];
 
   try {
-    const answers = await inquirer.prompt(questions);
-    const { prodKey } = answers;
-    const { devKey } = answers;
-    const { contentGroupId } = answers;
+    const { prodKey, devKey, contentGroupId } =
+      await inquirer.prompt(questions);
     main(prodKey, devKey, contentGroupId);
   } catch (error) {
     if (error.isTtyError) {
@@ -180,8 +184,13 @@ function createBlogObject(data, contentGroupId) {
 }
 
 async function main(prodKey, devKey, contentGroupId) {
+  hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+  hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+
   try {
     const pages = await getListPages(prodKey);
+
+    /** Due to rate limiting, we should do these sequentially */
     await postAllPages(pages, devKey);
     const landingPages = await getListLandingPages(prodKey);
     await postAllLandingPages(landingPages, devKey);
@@ -193,17 +202,10 @@ async function main(prodKey, devKey, contentGroupId) {
 }
 
 async function getListPages(prodKey) {
-  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   const promises = [];
-  const archived = undefined;
-  const property = undefined;
   for (const id of sitePagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(
-      objectId,
-      archived,
-      property,
-    );
+    const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(objectId);
     promises.push(promise);
   }
   const sitePagesList = await Promise.all(promises);
@@ -212,34 +214,24 @@ async function getListPages(prodKey) {
 }
 
 async function postAllPages(pages, devKey) {
-  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = [];
+  const formRequests = [];
 
   for (const page of pages) {
     const promise = hubspotClientDev.cms.pages.sitePagesApi.create(page);
-    formRequest.push(promise);
+    formRequests.push(promise);
   }
 
   // eslint-disable-next-line
-  await Promise.allSettled(formRequest);
+  await Promise.allSettled(formRequests);
   console.info('POST all site pages complete');
 }
 
 async function getListLandingPages(prodKey) {
-  // const func = getSitePages
-  //   ? hubspotClientProd.cms.pages.sitePagesApi.getById
-  //   : hubspotClientProd.cms.pages.landingPagesApi.getById;
-  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   const promises = [];
-  const archived = undefined;
-  const property = undefined;
   for (const id of landingPagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.pages.landingPagesApi.getById(
-      objectId,
-      archived,
-      property,
-    );
+    const promise =
+      hubspotClientProd.cms.pages.landingPagesApi.getById(objectId);
     promises.push(promise);
   }
   const landingPagesList = await Promise.all(promises);
@@ -249,20 +241,18 @@ async function getListLandingPages(prodKey) {
 }
 
 async function postAllLandingPages(pages, devKey) {
-  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = [];
+  const formRequests = [];
 
   for (const page of pages) {
     const promise = hubspotClientDev.cms.pages.landingPagesApi.create(page);
-    formRequest.push(promise);
+    formRequests.push(promise);
   }
 
-  await Promise.all(formRequest);
+  await Promise.all(formRequests);
   console.info('POST all landing pages complete');
 }
 
 async function getListBlogs(prodKey, contentGroupId) {
-  const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   const promises = [];
   const archived = undefined;
   const property = undefined;
@@ -284,14 +274,13 @@ async function getListBlogs(prodKey, contentGroupId) {
 }
 
 async function postAllBlogs(blogs, devKey) {
-  const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
-  const formRequest = [];
+  const formRequests = [];
   for (const blog of blogs) {
     const promise =
       hubspotClientDev.cms.blogs.blogPosts.blogPostsApi.create(blog);
-    formRequest.push(promise);
+    formRequests.push(promise);
   }
 
-  await Promise.all(formRequest);
+  await Promise.all(formRequests);
   console.info('POST all blog pages complete');
 }
