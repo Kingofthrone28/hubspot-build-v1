@@ -41,36 +41,6 @@
 
 /* Typography */
 
-@font-face {
-  font-family: JuniusX-Bold;
-  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Bold.ttf')
-    format('truetype');
-}
-
-@font-face {
-  font-family: JuniusX-Regular;
-  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Regular.ttf')
-    format('truetype');
-}
-
-@font-face {
-  font-family: JuniusX-Medium;
-  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Medium.ttf')
-    format('truetype');
-}
-
-@font-face {
-  font-family: JuniusX-Light;
-  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Light.ttf')
-    format('truetype');
-}
-
-@font-face {
-  font-family: JuniusX-Semibold;
-  src: url('https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Website%20Font%20%E2%80%93%20JuniusX/JuniusX-Semibold.ttf')
-    format('truetype');
-}
-
 html {
   font-size: var(--theme--typography--body-text--font-size);
 }
