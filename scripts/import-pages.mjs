@@ -6,7 +6,7 @@ import hubspot from '@hubspot/api-client';
 // eslint-disable-next-line
 import inquirer from 'inquirer';
 
-const fileData = readFileSync('./file-map.json', 'utf8');
+const fileData = readFileSync('./scripts/file-map.json', 'utf8');
 const pageMap = JSON.parse(fileData);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
@@ -188,20 +188,19 @@ async function main(prodKey, devKey, contentGroupId) {
   hubspotClientDev = new hubspot.Client({ accessToken: devKey });
 
   try {
-    const pages = await getListPages(prodKey);
-
     /** Due to rate limiting, we should do these sequentially */
+    const pages = await getListPages();
     await postAllPages(pages, devKey);
-    const landingPages = await getListLandingPages(prodKey);
+    const landingPages = await getListLandingPages();
     await postAllLandingPages(landingPages, devKey);
-    const blogPages = await getListBlogs(prodKey, contentGroupId);
+    const blogPages = await getListBlogs(contentGroupId);
     await postAllBlogs(blogPages, devKey);
   } catch (error) {
     console.error(error);
   }
 }
 
-async function getListPages(prodKey) {
+async function getListPages() {
   const promises = [];
   for (const id of sitePagesIds) {
     const objectId = id;
@@ -226,7 +225,7 @@ async function postAllPages(pages, devKey) {
   console.info('POST all site pages complete');
 }
 
-async function getListLandingPages(prodKey) {
+async function getListLandingPages() {
   const promises = [];
   for (const id of landingPagesIds) {
     const objectId = id;
@@ -240,7 +239,7 @@ async function getListLandingPages(prodKey) {
   return pages;
 }
 
-async function postAllLandingPages(pages, devKey) {
+async function postAllLandingPages(pages) {
   const formRequests = [];
 
   for (const page of pages) {
@@ -252,7 +251,7 @@ async function postAllLandingPages(pages, devKey) {
   console.info('POST all landing pages complete');
 }
 
-async function getListBlogs(prodKey, contentGroupId) {
+async function getListBlogs(contentGroupId) {
   const promises = [];
   const archived = undefined;
   const property = undefined;
@@ -273,7 +272,7 @@ async function getListBlogs(prodKey, contentGroupId) {
   return pages;
 }
 
-async function postAllBlogs(blogs, devKey) {
+async function postAllBlogs(blogs) {
   const formRequests = [];
   for (const blog of blogs) {
     const promise =
