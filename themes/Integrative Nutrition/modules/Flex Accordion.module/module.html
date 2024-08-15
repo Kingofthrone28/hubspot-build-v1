@@ -28,23 +28,25 @@
       </div>
     {% endif %}
     {% for item in module.accordion %}
-      {% if item.main_label %}
+      {% if item.main_label and item.content %}
         <div class="flex-accordion-item">
           <h3 class="flex-accordion-label">
-            <button type="button"
-                    aria-expanded="false"
-                    class="flex-accordion-trigger"
-                    aria-controls="panel{{ loop.index }}"
-                    id="accordion{{ loop.index }}">
-                <span class="flex-accordion-label-text">{{ item.main_label }}</span>
+            <button
+              type="button"
+              aria-expanded="false"
+              class="flex-accordion-trigger"
+              aria-controls="flex-accordion-panel-{{ loop.index }}"
+              id="flex-accordion-trigger-{{ loop.index }}"
+            >
+              <span class="flex-accordion-label-text">{{ item.main_label }}</span>
             </button>
           </h3>
-          <div id="panel{{ loop.index }}"
-               aria-labelledby="accordion{{ loop.index }}"
-               class="flex-accordion-content">
-            {% if item.content %}
-              {{ item.content }}
-            {% endif %}
+          <div
+            id="flex-accordion-panel-{{ loop.index }}"
+            aria-labelledby="flex-accordion-trigger-{{ loop.index }}"
+            class="flex-accordion-content"
+          >
+            {{ item.content }}
           </div>
         </div>
       {% endif %}
