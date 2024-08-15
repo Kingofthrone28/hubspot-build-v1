@@ -42,7 +42,7 @@
 }
 
 .hs-button.light-button:focus {
-  border: 2px solid var(--color--midnight);
+  outline: 2px solid var(--color--midnight);
 }
 
 .hs-button.light-button.jd-arrow-link::after {
@@ -72,7 +72,7 @@
 }
 
 .jd-request-btn.jd-trans-btn:focus {
-  border: 2px solid var(--color--midnight);
+  outline: 2px solid var(--color--midnight);
 }
 
 .jd-request-btn.jd-trans-btn.jd-arrow-link::after {
@@ -110,7 +110,7 @@ a.jd-request-btn-tertiary:hover {
 }
 
 a.jd-request-btn-tertiary:focus {
-  border: 2px solid var(--color--midnight);
+  outline: 2px solid var(--color--midnight);
   color: var(--color--midnight);
 }
 
