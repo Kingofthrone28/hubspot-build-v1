@@ -1,0 +1,124 @@
+.flex-accordion {
+  display: flex;
+  padding: var(--spacing-10);
+}
+
+.flex-accordion-container {
+  position: relative;
+}
+
+.flex-accordion-single-column {
+  flex-direction: column;
+  padding: 0 var(--spacing-48);
+}
+
+.flex-accordion-header-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: var(--spacing-5) 0;
+}
+
+.flex-accordion-single-column .flex-accordion-header-wrapper {
+  flex-direction: column;
+  justify-content: start;
+}
+
+.flex-accordion-header {
+  line-height: var(--spacing-12);
+}
+
+.flex-accordion-subheader {
+  margin: var(--spacing-8) 0;
+}
+
+.dnd-section .flex-accordion-trigger {
+  all: inherit;
+  display: block;
+  padding: 0;
+  width: 100%;
+}
+
+.dnd-section .flex-accordion-trigger:hover,
+.dnd-section .flex-accordion-trigger:focus {
+  background: none;
+}
+
+.dnd-section .flex-accordion-trigger:focus {
+  outline: 2px solid var(--color--slate);
+}
+
+.flex-accordion-group {
+  flex: 1;
+}
+
+.flex-accordion-floating-text {
+  position: absolute;
+}
+
+.flex-accordion-label {
+  align-items: center;
+  margin-bottom: 0;
+  padding: var(--spacing-6) 0;
+  line-height: var(--line-height--paragraph--desktop);
+  font-weight: var(--font-weight--semibold);
+}
+
+.flex-accordion-item .flex-accordion-label {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  line-height: var(--line-height--paragraph--desktop);
+}
+
+.flex-accordion-item {
+  border-bottom: 1px dashed var(--color--slate);
+}
+
+.flex-accordion-label-text {
+  color: var(--color--slate);
+}
+
+.flex-accordion-content {
+  display: none;
+  padding-bottom: var(--spacing-6);
+  line-height: var(--line-height--paragraph--desktop);
+}
+
+.flex-accordion-label::after {
+  display: inline-block;
+  transition:
+    background-image 0.2s,
+    transform 0.2s;
+  margin-left: 0.5em;
+  background-image: var(--icon--circle--arrow--down);
+  width: var(--spacing-5);
+  min-width: var(--spacing-5);
+  height: var(--icon--square--size);
+  vertical-align: middle;
+  content: '';
+}
+
+.flex-accordion-item.open .flex-accordion-label::after {
+  transform: rotate(-360deg);
+  background-image: var(--icon--circle-arrow--solid--down);
+}
+
+@media (max-width: 1024px) {
+  .flex-accordion-header-wrapper {
+    justify-content: start;
+  }
+
+  .flex-accordion {
+    flex-direction: column;
+    padding: var(--spacing-6);
+  }
+
+  .flex-accordion-floating-text {
+    position: static;
+  }
+
+  .flex-accordion-group {
+    padding: 0;
+  }
+}

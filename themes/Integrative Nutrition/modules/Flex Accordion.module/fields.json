@@ -1,0 +1,87 @@
+[ {
+  "id" : "8ca6b20c-6248-ff4f-aa12-d8683ee3ad7e",
+  "name" : "accordion",
+  "display_width" : null,
+  "label" : "Accordion",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "accordions.header",
+    "name" : "main_label",
+    "display_width" : null,
+    "label" : "Header",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "label"
+  }, {
+    "id" : "a52985cf-0421-108c-a6ad-3973042e3832",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : true,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "Content"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ ]
+}, {
+  "id" : "ae519b81-c1bb-f99c-d966-98645900fa1c",
+  "name" : "header",
+  "display_width" : null,
+  "label" : "Header",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Frequently asked questions"
+}, {
+  "id" : "47ba20fd-6148-bf47-27b8-06f3500a67b4",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : { }
+}, {
+  "id" : "f76d401a-29a1-3213-802c-89fa4694b26a",
+  "name" : "subheader",
+  "display_width" : null,
+  "label" : "Subheader",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "42c00e9c-54fd-5851-68aa-3a556da1d210",
+  "name" : "two_column",
+  "display_width" : null,
+  "label" : "Two Column",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+} ]
