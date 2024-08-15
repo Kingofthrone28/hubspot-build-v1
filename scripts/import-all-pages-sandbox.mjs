@@ -8,10 +8,14 @@ const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 let after = undefined;
 let count = 0;
+let hubspotClientProd;
+let hubspotClientDev;
+const sourceArg = process.argv[2];
+const destinationArg = process.argv[3];
 
-if (process.argv[2] && process.argv[3]) {
-  const prodKey = process.argv[2]
-  const stagingKey = process.argv[3]
+if (sourceArg  && destinationArg) {
+  const prodKey = sourceArg
+  const stagingKey = destinationArg
   main(prodKey, stagingKey)
 } else {
   getKeys();
@@ -31,20 +35,17 @@ async function getKeys() {
     },
   ];
 
-  inquirer
-  .prompt(questions)
-  .then((answers) => {
-    const {prodKey} = answers;
-    const {stagingKey} = answers;
-    main(prodKey, stagingKey)
-  })
-  .catch((error) => {
+  try {
+    const { prodKey, stagingKey} =
+      await inquirer.prompt(questions);
+    main(prodKey, stagingKey);
+  } catch (error) {
     if (error.isTtyError) {
       console.error("Prompt couldn't be rendered in the current environment");
     } else {
       console.error('Something else went wrong', error);
     }
-  });
+  }
 }
 
 function createPageObject(data) {
@@ -114,22 +115,17 @@ function createPageObject(data) {
 }
 
 async function main(prodKey, stagingKey) {
+    hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+    hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
   try {
-    //console.log('pagesp', pages)
-    // await getListPages(prodKey, stagingKey);
+    await temp(prodKey, stagingKey);
     await temp1(prodKey, stagingKey);
-    //await postAllPages(pages[0], stagingKey)
-    //await postAllPages(pages[1], stagingKey)
-    //await postAllPages(pages[2], stagingKey)
-    //await getListLandingPages(prodKey, stagingKey);
-    //await postAllLandingPages(Lpages, stagingKey)
   } catch (error) {
     console.error(error)
   }
 }
 
 async function temp(prodKey, stagingKey) {
-    const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
     const createdAt = undefined;
     const createdAfter = undefined;
     const createdBefore = undefined;
@@ -148,7 +144,6 @@ async function temp(prodKey, stagingKey) {
     const apiResponse = await hubspotClientProd.cms.pages.sitePagesApi.getPage(createdAt, createdAfter, createdBefore, updatedAt, updatedAfter, updatedBefore, sort, after, limit, archived, property);
     const pages = apiResponse.results.map(createPageObject);
     await postAllPages(pages, stagingKey);
-
     if (apiResponse.paging?.next) {
         console.info(`Additional page results...`, apiResponse.paging)
         after = apiResponse.paging.next.after;
@@ -161,7 +156,6 @@ async function temp(prodKey, stagingKey) {
 }
 
 async function temp1(prodKey, stagingKey) {
-    const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
     const createdAt = undefined;
     const createdAfter = undefined;
     const createdBefore = undefined;
@@ -195,11 +189,10 @@ async function temp1(prodKey, stagingKey) {
 
 
 
-async function postAllPages(pages, stagingKey) {
-  const hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
+async function postAllPages(pages) {
   const formRequest = []
   for (const page of pages) {
-    if (sitePagesId.includes(page.id)){
+    if (sitePagesIds.includes(page.id)){
         //console.log(page.name + " exists")
 
     }
@@ -222,12 +215,10 @@ async function postAllPages(pages, stagingKey) {
   
 
 
-async function postAllLandingPages(pages, stagingKey) {
-  const hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
+async function postAllLandingPages(pages) {
   const formRequest = []
   for (const page of pages) {
     if (landingPagesIds.includes(page.id)){
-        //console.log(page.name + " exists")
 
     }
     else {

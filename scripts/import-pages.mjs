@@ -190,11 +190,11 @@ async function main(prodKey, devKey, contentGroupId) {
   try {
     /** Due to rate limiting, we should do these sequentially */
     const pages = await getListPages();
-    await postAllPages(pages, devKey);
+    await postAllPages(pages);
     const landingPages = await getListLandingPages();
-    await postAllLandingPages(landingPages, devKey);
+    await postAllLandingPages(landingPages);
     const blogPages = await getListBlogs(contentGroupId);
-    await postAllBlogs(blogPages, devKey);
+    await postAllBlogs(blogPages);
   } catch (error) {
     console.error(error);
   }
@@ -212,7 +212,7 @@ async function getListPages() {
   return sitePagesList.map(createPageObject);
 }
 
-async function postAllPages(pages, devKey) {
+async function postAllPages(pages) {
   const formRequests = [];
 
   for (const page of pages) {
