@@ -1,13 +1,15 @@
-{% set single_column = '' %}
+{% set single_column_wrapper = 'flex-accordion-single-column' %}
+{% set single_column = true %}
 
-{% if !module.two_column %}
-  {% set single_column = 'flex-accordion-single-column' %}
+{% if module.two_column %}
+  {% set single_column_wrapper = '' %}
+  {% set single_column = false %}
 {% endif %}
 
-<div class="flex-accordion {{ single_column }}">
+<div class="flex-accordion {{ single_column_wrapper }}">
   {% if module.two_column %}
     <div class="flex-accordion-header-wrapper">
-      <div data-top-space="210" class="flex-accordion-floating-text">
+      <div class="flex-accordion-floating-text">
         <h2 class="flex-accordion-header">{{ module.header }}</h2>
         {% if module.subheader %}
           <p class="flex-accordion-subheader">{{ module.subheader }}</p>
@@ -17,7 +19,7 @@
   {% endif %}
   
   <div class='flex-accordion-group'>
-    {% if !module.two_column %}
+    {% if single_column %}
       <div class="flex-accordion-header-wrapper">
         <h2 class="flex-accordion-header">{{ module.header }}</h2>
         {% if module.subheader %}
@@ -26,26 +28,26 @@
       </div>
     {% endif %}
     {% for item in module.accordion %}
-      <div class="flex-accordion-item">
-        <p class="flex-accordion-label">
-          <button type="button"
-                  aria-expanded="false"
-                  class="flex-accordion-trigger"
-                  aria-controls="sect{{ loop.index }}"
-                  id="accordion{{ loop.index }}">
-            {% if item.main_label %}
-              <span class="flex-accordion-label-text">{{ item.main_label }}</span>
+      {% if item.main_label %}
+        <div class="flex-accordion-item">
+          <h3 class="flex-accordion-label">
+            <button type="button"
+                    aria-expanded="false"
+                    class="flex-accordion-trigger"
+                    aria-controls="panel{{ loop.index }}"
+                    id="accordion{{ loop.index }}">
+                <span class="flex-accordion-label-text">{{ item.main_label }}</span>
+            </button>
+          </h3>
+          <div id="panel{{ loop.index }}"
+               aria-labelledby="accordion{{ loop.index }}"
+               class="flex-accordion-content">
+            {% if item.content %}
+              {{ item.content }}
             {% endif %}
-          </button>
-        </p>
-        <div id="sect{{ loop.index }}"
-             aria-labelledby="accordion{{ loop.index }}"
-             class="flex-accordion-content">
-          {% if item.content %}
-            {{ item.content }}
-          {% endif %}
+          </div>
         </div>
-      </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>

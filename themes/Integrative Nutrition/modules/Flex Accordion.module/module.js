@@ -1,6 +1,5 @@
-document
-  .querySelectorAll('.flex-accordion-item .flex-accordion-label')
-  .forEach((label) => {
+(function () {
+  document.querySelectorAll('.flex-accordion-trigger').forEach((label) => {
     label.addEventListener('click', function () {
       const accordionItem = this.closest('.flex-accordion-item');
       const accordionContent = accordionItem.querySelector(
@@ -19,14 +18,17 @@ document
     });
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-  document
-    .querySelectorAll('.flex-accordion-floating-text')
-    .forEach((element) => {
-      const topSpace = parseInt(element.getAttribute('data-top-space'));
-      const container = element.closest('.dnd-column');
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .querySelectorAll('.flex-accordion-floating-text')
+      .forEach((element) => {
+        const topSpace = 210;
+        const container = element.closest('.dnd-column');
 
-      if (container) {
+        if (!container) {
+          return;
+        }
+
         container.classList.add('flex-accordion-container');
 
         window.addEventListener('scroll', () => {
@@ -49,29 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             element.style.top = '0';
           }
         });
-      }
-    });
-});
-
-/* only apply focus on tab */
-let isTabPressed = false;
-
-// Listen for keydown events on the whole document
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Tab') {
-    isTabPressed = true;
-  }
-});
-
-document.addEventListener('mousedown', () => {
-  isTabPressed = false;
-});
-
-document.querySelectorAll('.flex-accordion-trigger').forEach((element) => {
-  element.addEventListener('focus', () => {
-    // Only allow focus if it was triggered by the Tab key
-    if (!isTabPressed) {
-      element.blur(); // Remove focus if not from a Tab keypress
-    }
+      });
   });
-});
+})();
