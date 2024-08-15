@@ -20,7 +20,6 @@ if (sourceArg && destinationArg) {
     const prodKey = sourceArg;
     const devKey = destinationArg;
     main(prodKey, devKey)
-    const databaseTables = await getHubdbTables(prodKey)
 } else {
     getKeys();
 }

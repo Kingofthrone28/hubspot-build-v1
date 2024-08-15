@@ -223,6 +223,7 @@ async function postAllPages(pages, devKey) {
   // eslint-disable-next-line
   await Promise.allSettled(formRequests);
   console.info('POST all site pages complete');
+  //error handling
 }
 
 async function getListLandingPages() {
@@ -247,7 +248,8 @@ async function postAllLandingPages(pages) {
     formRequests.push(promise);
   }
 
-  await Promise.all(formRequests);
+  await Promise.allSettled(formRequests);
+  //error handling
   console.info('POST all landing pages complete');
 }
 
@@ -257,11 +259,7 @@ async function getListBlogs(contentGroupId) {
   const property = undefined;
   for (const id of blogPagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(
-      objectId,
-      archived,
-      property,
-    );
+    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(objectId);
     promises.push(promise);
   }
   const blogPagesList = await Promise.all(promises);
