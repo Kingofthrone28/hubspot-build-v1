@@ -1,8 +1,8 @@
 [ {
   "id" : "8ca6b20c-6248-ff4f-aa12-d8683ee3ad7e",
-  "name" : "accordion",
+  "name" : "Flex accordion",
   "display_width" : null,
-  "label" : "Accordion",
+  "label" : "Flex Accordion",
   "required" : false,
   "locked" : false,
   "occurrence" : {
