@@ -1,5 +1,11 @@
 import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
+import * as http from 'http';
+
+let hubspotClientProd;
+let hubspotClientDev;
+const sourceArg = process.argv[2];
+const destinationArg = process.argv[3];
 
 const hubdb_names = [
     "course_catalog",
@@ -10,15 +16,16 @@ const hubdb_names = [
     "taxonomy_overrides"
 ]
 
-if (process.argv[2] && process.argv[3]) {
-    const prodKey = process.argv[2]
-    const devKey = process.argv[3]
+if (sourceArg && destinationArg) {
+    const prodKey = sourceArg;
+    const devKey = destinationArg;
     main(prodKey, devKey)
+    const databaseTables = await getHubdbTables(prodKey)
 } else {
     getKeys();
 }
 
-function getKeys() {
+async function getKeys() {
     const questions = [
         {
             type: 'input',
@@ -32,28 +39,27 @@ function getKeys() {
         },
     ];
 
-    inquirer
-        .prompt(questions)
-        .then((answers) => {
-            const { prodKey } = answers;
-            const { devKey } = answers;
-            main(prodKey, devKey)
-        })
-        .catch((error) => {
-            if (error.isTtyError) {
-                console.error("Prompt couldn't be rendered in the current environment");
-            } else {
-                console.error('Something else went wrong', error);
-            }
-        });
+    try {
+      const { prodKey, devKey} =
+        await inquirer.prompt(questions);
+      main(prodKey, devKey);
+    } catch (error) {
+      if (error.isTtyError) {
+        console.error("Prompt couldn't be rendered in the current environment");
+      } else {
+        console.error('Something else went wrong', error);
+      }
+    }
 }
 
 async function main(prodKey, devKey) {
+    hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+    hubspotClientDev = new hubspot.Client({ accessToken: devKey });
     try {
-        const databaseTables = await getHubdbTables(prodKey)
-        await postAllHubdbTables(databaseTables, devKey)
-        await checkHubdbTableCreation(databaseTables, devKey)
-        const existingTables = await getHubdbRows(prodKey)
+        const databaseTables = await getHubdbTables()
+        await postAllHubdbTables(databaseTables)
+        await checkHubdbTableCreation(databaseTables)
+        const existingTables = await getHubdbRows()
         setTimeout(async () => {
             const newTables = existingTables.map(table => {
                 return {
@@ -73,8 +79,7 @@ async function main(prodKey, devKey) {
     }
 }
 
-async function getHubdbTables(prodKey) {
-    const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+async function getHubdbTables() {
     const promises = [];
     hubdb_names.forEach(function (name) {
         const promise = hubspotClientProd.cms.hubdb.tablesApi.getTableDetails(name);
@@ -85,8 +90,7 @@ async function getHubdbTables(prodKey) {
     return hubdbList
 }
 
-async function postAllHubdbTables(tables, devKey) {
-    const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+async function postAllHubdbTables(tables) {
     const formRequest = [];
     for (const table of tables) {
         const promise = hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
@@ -96,8 +100,7 @@ async function postAllHubdbTables(tables, devKey) {
     console.info('POST hubdb tables complete')
 }
 
-async function getHubdbRows(prodKey) {
-    const hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+async function getHubdbRows() {
     const promises = [];
     for (let i = 0; i < hubdb_names.length; i++) {
         const tableName = hubdb_names[i]
@@ -110,8 +113,7 @@ async function getHubdbRows(prodKey) {
     return tables
 }
 
-async function publishTables(devKey) {
-    const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+async function publishTables() {
     const promises = [];
     for (let i = 0; i < hubdb_names.length; i++) {
         const promise = hubspotClientDev.cms.hubdb.tablesApi.publishDraftTable(hubdb_names[i]);
@@ -127,8 +129,7 @@ async function publishTables(devKey) {
     }
 }
 
-async function checkHubdbTableCreation(tables, devKey) {
-    const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+async function checkHubdbTableCreation(tables) {
     const promises = tables.map(({ name }) => hubspotClientDev.cms.hubdb.tablesApi.getTableDetails(name))
     const getTableResponses = await Promise.allSettled(promises);
     const createResponses = getTableResponses.map((response, index) => {
@@ -140,3 +141,6 @@ async function checkHubdbTableCreation(tables, devKey) {
     await Promise.all(createResponses)
     console.info('create in checkHubdbTableCreation complete')
 }
+
+
+  
