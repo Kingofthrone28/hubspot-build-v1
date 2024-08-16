@@ -1,4 +1,5 @@
 :root {
   --asset--caret--down: url({{ get_asset_url('/Integrative Nutrition/images/CaretDown.svg') }});
+  --asset--caret--up: url({{ get_asset_url('/Integrative Nutrition/images/CaretUp.svg') }});
   --asset--sprite: url({{ get_asset_url('/Integrative Nutrition/images/sprite.svg') }});
 }

@@ -1,6 +1,9 @@
 .footer-container-wrapper {
+  position: relative;
+  bottom: 0;
   background: var(--color--water);
   padding: var(--spacing-12);
+  width: 100%;
   color: var(--color--white);
 }
 
@@ -18,7 +21,7 @@
 }
 
 .footer-title {
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 @media (max-width: 48em) {
@@ -28,6 +31,6 @@
 
   .footer-title {
     padding: var(--spacing-4) 0;
-    font-size: var(--font-size--3);
+    font-size: var(--font-size--extra-large-paragraph);
   }
 }

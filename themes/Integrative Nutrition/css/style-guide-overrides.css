@@ -1,1 +1,61 @@
 /* Override theme settings */
+
+html body,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  color: var(--color--slate);
+}
+
+body h1 {
+  font: var(--font--h1--desktop);
+}
+
+body h2 {
+  font: var(--font--h2--desktop);
+}
+
+body h3 {
+  font: var(--font--h3--desktop);
+}
+
+body h4 {
+  font: var(--font--h4--desktop);
+}
+
+body h5 {
+  font: var(--font--h5--desktop);
+}
+
+body h6 {
+  font: var(--font--h6--desktop);
+}
+
+@media (max-width: 767px) {
+  body h1 {
+    font: var(--font--h1--mobile);
+  }
+
+  body h2 {
+    font: var(--font--h2--mobile);
+  }
+
+  body h3 {
+    font: var(--font--h3--mobile);
+  }
+
+  body h4 {
+    font: var(--font--h4--mobile);
+  }
+
+  body h5 {
+    font: var(--font--h5--mobile);
+  }
+
+  body h6 {
+    font: var(--font--h6--mobile);
+  }
+}

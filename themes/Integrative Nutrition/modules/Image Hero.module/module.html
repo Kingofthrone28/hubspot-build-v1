@@ -5,11 +5,13 @@
   {% set page_link = content_by_id(module.button_target).absolute_url %}
 {% endif %}
 {% if page_link %}
-  <div class="image-hero-container">
+  <div class="image-hero">
     {# This div allows us to left align the content #}
     <div>
-      <h3>{{ module.title }}</h3>
-      <p>{{ module.subheading }}</p>
+      <h3 class="image-hero__heading">{{ module.title }}</h3>
+      {% if module.subheading %}
+        <p class="image-hero__subheading">{{ module.subheading }}</p>
+      {% endif %}
       <a 
         class="styled-button primary-button"
         href="{{ page_link }}"
@@ -21,13 +23,9 @@
   {% if module.image.src %}
     <style>
       {% scope_css %}
-        .image-hero-container {
+        .image-hero {
           --image--path: url({{ module.image.src }});
-          --gradient--color-1: rgba(0, 61, 75, 0.50);
-          --gradient--color-2: rgba(0, 61, 75, 0.00);
-          --gradient--color-3: var(--color--legacy--grey--light-grey);
           background: linear-gradient(0deg, var(--gradient--color-1) 0%, var(--gradient--color-1) 100%), linear-gradient(234deg, var(--gradient--color-2) -6.2%, var(--gradient--color-1) 67.75%), var(--image--path) var(--gradient--color-3) 50% / cover no-repeat;
-          background-blend-mode: normal, soft-light, normal;
         }
       {% end_scope_css%}
     </style>

@@ -1,18 +1,17 @@
-.relative-nav-container {
+.relative-nav {
   display: flex;
   align-items: center;
-  justify-content: end;
-  height: var(--spacing-32);
+  justify-content: flex-end;
+  padding: var(--spacing-6) var(--spacing-16);
 }
 
-.relative-nav-container > * {
-  height: var(--spacing-12);
-}
-
-.relative-nav-container > :not(:first-of-type) {
+.relative-nav :last-child {
   margin-left: var(--spacing-6);
 }
 
-.relative-nav-container > :last-of-type {
-  margin-right: var(--spacing-16);
+@media (max-width: 767px) {
+  .relative-nav {
+    padding: var(--spacing-10) var(--spacing-5);
+    justify-content: center;
+  }
 }

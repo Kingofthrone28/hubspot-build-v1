@@ -1,24 +1,10 @@
-/* Header override */
-.jd-header-wrap {
-  position: relative !important;
-  background: var(--color--white) !important;
-}
-
-.jd-header-wrap.ishidden {
-  transform: translateY(0) !important;
-}
-
-.jd-add-pop {
-  top: 0 !important;
-}
-
 /* Sticky nav */
 .pdp-sticky-wrap {
   position: fixed;
   inset: 0;
   transition: 0.6s opacity;
   opacity: 0;
-  z-index: 2;
+  z-index: 10;
   overflow: auto;
   pointer-events: none;
 }
@@ -61,11 +47,16 @@
   max-width: 95%;
 }
 
+.pdp-bottom h3 {
+  font-size: var(--font-size--10);
+}
+
 .pdp-sticky-enroll .pdp-bottom h3 {
   font-size: var(--font-size--h3--desktop);
 }
 
 .pdp-sticky-head > div:first-child h3 {
+  color: var(--color--slate);
   font-size: var(--font-size--5);
 }
 
@@ -85,6 +76,10 @@
   display: flex;
   justify-content: flex-end;
   margin-left: 25px;
+}
+
+.sticky-header-shadow {
+  box-shadow: var(--shadow--sticky-header);
 }
 
 html .hs-button.jd-request-btn.pdp-sticky-btn-left {
@@ -129,6 +124,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   html .hs-button.jd-request-btn.pdp-sticky-btn-left,
   html .hs-button.jd-request-btn.pdp-sticky-btn-right {
     width: 100% !important;
+    max-width: none;
   }
 
   .pdp-sticky-btns > div:first-child {
@@ -272,7 +268,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .pdp-price-total {
   margin-right: 10px;
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 .pdp-price-discount {
@@ -412,15 +408,15 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   background: none;
 }
 
-.pdp-top-slide-dot:last-child {
-  margin-right: 0;
-}
-
 .pdp-top-slide-dot.pdp-top-slide-dot-active {
   border: none !important;
   border-radius: 4px;
   background: var(--color--slate);
   width: 15px;
+}
+
+.pdp-top-slide-dot:last-child {
+  margin-right: 0;
 }
 
 .pdp-top-slide-slide {
@@ -556,15 +552,11 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 .pdp-bottom-middle-head {
   margin-bottom: 10px;
   max-width: 250px;
-  font-size: var(--font-size--extra-large-paragraph--desktop);
+  font-size: var(--font-size--extra-large-paragraph);
 }
 
 .pdp-bottom .pdp-div {
   display: none;
-}
-
-.pdp-bottom h3 {
-  font-size: var(--font-size--10);
 }
 
 @media (max-width: 1000px) {
@@ -593,7 +585,18 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 }
 
 @media (max-width: 767px) {
-  .pdp-bottom > div:nth-child(1) {
+  .pdp-sticky-head {
+    text-align: center;
+    color: var(--color--grey-2);
+    font-size: var(--font-size--legal);
+  }
+
+  .pdp-sticky-head > div:first-child {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pdp-bottom > div:first-child {
     margin-bottom: 25px;
   }
 
@@ -619,15 +622,15 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
 
 .custom-button {
   display: inline-block;
-  text-align: center;
-  max-width: 350px;
-  text-decoration: none;
-  background: var(--theme--buttons--background-color);
   border: var(--theme--buttons--border);
   border-radius: var(--theme--buttons--border-radius);
-  color: var(--theme--buttons--text-color);
+  background: var(--theme--buttons--background-color);
   padding: var(--theme--buttons--padding);
-  font-family: var(--theme--global-fonts--primary-font);
-  text-shadow: none;
+  max-width: 350px;
   height: 3rem;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--theme--buttons--text-color);
+  font-family: var(--theme--global-fonts--primary-font);
 }

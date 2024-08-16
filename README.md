@@ -20,6 +20,24 @@ Please use
 
 in the head of any pages you are actively developing in production, so they will not be indexed by search if they are found.
 
+### Hubspot Rich Text Fields
+
+Please limit the available options content creators have when adding a custom module by adding the follow key/value pair in the `fields.json`:
+```json
+{
+    "type": "richtext",
+    ...
+    "enabled_features": [
+      "advanced_emphasis",
+      "anchor",
+      "indents",
+      "link",
+      "lists",
+      "standard_emphasis"
+    ]
+}
+```
+
 ## CSS Code Style
 
 ### Custom Properties (Variables) 

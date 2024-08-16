@@ -310,7 +310,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Speak with an Advisor"
+    "default" : "Back to Menu"
   }, {
     "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
     "name" : "dropdown_left_text",
@@ -334,7 +334,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Enroll"
+    "default" : "Buy Now"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -347,9 +347,7 @@
       "href" : "",
       "type" : "EXTERNAL"
     },
-    "left_button_text" : "Speak with an Advisor",
-    "dropdown_left_text" : "Just a few quick questions and you’ll be ready to enroll.",
-    "right_button_text" : "Enroll"
+    "dropdown_left_text" : "Just a few quick questions and you’ll be ready to enroll."
   }
 }, {
   "id" : "76ca5a05-19c5-cf65-b3ae-128f48adde8d",
@@ -361,4 +359,42 @@
   "display" : "checkbox",
   "type" : "boolean",
   "default" : false
+}, {
+  "id" : "0312f94d-3c50-a8e0-d44e-9492a680ec05",
+  "name" : "cart_link",
+  "display_width" : null,
+  "label" : "Cart Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : 156289019138,
+      "href" : null,
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "1c79aa3e-ba5a-b132-e145-75ee8ea2cab6",
+  "name" : "continue_shopping_link",
+  "display_width" : null,
+  "label" : "Continue Shopping Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : 128190697855,
+      "href" : null,
+      "type" : "CONTENT"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
 } ]

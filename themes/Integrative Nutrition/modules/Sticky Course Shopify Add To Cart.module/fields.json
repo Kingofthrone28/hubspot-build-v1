@@ -322,7 +322,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Just a few quick questions and you’ll be ready to enroll."
+    "default" : "Just a few quick selections and you’ll be ready to enroll."
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -336,6 +336,6 @@
       "type" : "EXTERNAL"
     },
     "left_button_text" : "Speak with an Advisor",
-    "dropdown_left_text" : "Just a few quick questions and you’ll be ready to enroll."
+    "dropdown_left_text" : "Just a few quick selections and you’ll be ready to enroll."
   }
 } ]

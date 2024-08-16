@@ -261,7 +261,7 @@ html .dnd-section[class*='max-width-section-centering'] > .row-fluid {
   padding: 8px 5px 2px;
   width: 40px;
   text-align: center;
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
   color: var(--theme--global-colors--secondary-color);
   font-size: var(--font-size--legacy--4);
 }

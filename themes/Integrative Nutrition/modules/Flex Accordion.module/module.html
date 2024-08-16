@@ -1,0 +1,55 @@
+{% set single_column_wrapper = 'flex-accordion-single-column' %}
+{% set single_column = true %}
+
+{% if module.two_column %}
+  {% set single_column_wrapper = '' %}
+  {% set single_column = false %}
+{% endif %}
+
+<div class="flex-accordion {{ single_column_wrapper }}">
+  {% if module.two_column %}
+    <div class="flex-accordion-header-wrapper">
+      <div class="flex-accordion-floating-text">
+        <h2 class="flex-accordion-header">{{ module.header }}</h2>
+        {% if module.subheader %}
+          <p class="flex-accordion-subheader">{{ module.subheader }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  
+  <div class='flex-accordion-group'>
+    {% if single_column %}
+      <div class="flex-accordion-header-wrapper">
+        <h2 class="flex-accordion-header">{{ module.header }}</h2>
+        {% if module.subheader %}
+          <p class="flex-accordion-subheader">{{ module.subheader }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% for item in module.accordion %}
+      {% if item.main_label and item.content %}
+        <div class="flex-accordion-item">
+          <h3 class="flex-accordion-label">
+            <button
+              type="button"
+              aria-expanded="false"
+              class="flex-accordion-trigger"
+              aria-controls="flex-accordion-panel-{{ loop.index }}"
+              id="flex-accordion-trigger-{{ loop.index }}"
+            >
+              <span class="flex-accordion-label-text">{{ item.main_label }}</span>
+            </button>
+          </h3>
+          <div
+            id="flex-accordion-panel-{{ loop.index }}"
+            aria-labelledby="flex-accordion-trigger-{{ loop.index }}"
+            class="flex-accordion-content"
+          >
+            {{ item.content }}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
