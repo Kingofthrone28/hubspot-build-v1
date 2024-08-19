@@ -29,17 +29,17 @@ if (sourceArg && destinationArg && contentGroupIdArg) {
 async function getKeys() {
   const questions = [
     {
-      message: "What's your prod api key?",
+      message: "What's the Access Token: Production (Blogs)?",
       name: 'prodKey',
       type: 'input',
     },
     {
-      message: "What's your dev api key?",
+      message: "What's your Access Token: Developer Test Account?",
       name: 'devKey',
       type: 'input',
     },
     {
-      message: "What's your contentGroupId?",
+      message: "What's your contentGroupId: Developer Test Account?",
       name: 'contentGroupId',
       type: 'input',
     },

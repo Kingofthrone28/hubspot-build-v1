@@ -29,12 +29,12 @@ async function getKeys() {
         {
             type: 'input',
             name: 'prodKey',
-            message: "What's your prod api key?",
+            message: "What's the Access Token: Production (HubSpot Site Replicator)?",
         },
         {
             type: 'input',
             name: 'devKey',
-            message: "What's your dev api key?",
+            message: "What's your Access Token: Developer Test Account",
         },
     ];
 
