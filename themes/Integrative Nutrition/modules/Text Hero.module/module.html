@@ -1,9 +1,46 @@
 <!-- Begin Text Hero module html  -->
+{% set image_config = module.styles.background_image_desktop %}
+{% set has_mobile_image_config = module.styles.background_image_position_mobile or module.styles.background_image_size_mobile %}
 <div class="text-hero">
-  <div class="text-hero__wrapper">
+  {% if image_config.src %}
+    <div class="text-hero__image"></div>
+  {% endif %}
+  <div class="text-hero__text">
     <p class="p-xl text-hero__module-name">{{ module.module_name }}</p>
     <h1 class="text-hero__page-heading">{{ module.page_heading }}</h1>
     <div class="p-lg text-hero__paragraphs">{{ module.paragraphs }}</div>
   </div>
 </div>
+{% if image_config.src %}
+  {% require_css %}
+    <style>
+      {% scope_css %}
+        .text-hero__image {
+          {{ image_config.css }}
+        }
+
+        .text-hero__text {
+          margin-top: -7rem;
+        }
+  
+        @media (max-width: 767px) {
+          {% if has_mobile_image_config %}
+            .text-hero__image {
+              {% if module.styles.background_image_position_mobile %}
+                background-position: {{ module.styles.background_image_position_mobile }};
+              {% endif %}
+              {% if module.styles.background_image_size_mobile %}
+                background-size: {{ module.styles.background_image_size_mobile }};
+              {% endif %}
+            }
+          {% endif %}
+
+          .text-hero__text {
+            margin-top: -9rem;
+          }
+        }
+      {% end_scope_css %}
+    </style>
+  {% end_require_css %}
+{% endif %}
 <!-- End Text Hero module html  -->

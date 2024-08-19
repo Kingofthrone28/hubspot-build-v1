@@ -11,7 +11,7 @@
 
 @media (max-width: 767px) {
   .relative-nav {
-    padding: var(--spacing-10) var(--spacing-5);
     justify-content: center;
+    padding: var(--spacing-10) var(--spacing-5);
   }
 }
