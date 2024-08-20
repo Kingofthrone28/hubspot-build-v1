@@ -165,7 +165,7 @@ async function importPages(prodKey, stagingKey) {
   if (apiResponse.paging?.next) {
     console.info(`Additional page results...`, apiResponse.paging);
     after = apiResponse.paging.next.after;
-    await wait(delayMilliseconds)
+    await wait(delayMilliseconds);
     importPages(prodKey, stagingKey);
   } else {
     console.log('No more pages left to get');
@@ -207,7 +207,7 @@ async function importLandingPages(prodKey, stagingKey) {
   if (apiResponse.paging?.next) {
     console.info(`Additional page results...`, apiResponse.paging);
     after = apiResponse.paging.next.after;
-    await wait(delayMilliseconds)
+    await wait(delayMilliseconds);
     importPages(prodKey, stagingKey);
   } else {
     console.log('No more pages left to get');

@@ -78,9 +78,9 @@ function createPageObject(data) {
     'templatePath',
     'themeSettingsValues',
     'useFeaturedImage',
-  ].forEach(key => {
+  ].forEach((key) => {
     if (data[key]) {
-      pageObject[key] = data[key]
+      pageObject[key] = data[key];
     }
   });
 
@@ -116,9 +116,9 @@ function createBlogObject(data, contentGroupId) {
     'subcategory',
     'templatePath',
     'useFeaturedImage',
-  ].forEach(key => {
+  ].forEach((key) => {
     if (data[key]) {
-      blogObject[key] = data[key]
+      blogObject[key] = data[key];
     }
   });
 
@@ -211,7 +211,8 @@ async function getListBlogs(contentGroupId) {
   const property = undefined;
   for (const id of blogPagesIds) {
     const objectId = id;
-    const promise = hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(objectId);
+    const promise =
+      hubspotClientProd.cms.blogs.blogPosts.blogPostsApi.getById(objectId);
     promises.push(promise);
   }
   const blogPagesList = await Promise.all(promises);
