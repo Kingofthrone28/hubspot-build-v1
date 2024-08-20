@@ -1,0 +1,22 @@
+<!--
+    templateType: global_partial
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+
+<!-- Save taxonomy override values to session storage 
+  select first row from the collection of rows ordered by cta records first
+  with matching page_paths.  This will provide a fallback to 
+  non-cta values if there is no row with is_cta == 1
+-->
+<script>
+  {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&orderBy=-is_cta&limit=1') %}
+  window.sessionStorage.setItem('taxonomy_overrides', JSON.stringify({
+    leadsource: "{{ rows[0].page_lead_source }}",
+    campaign_idnum__c: "{{ rows[0].page_campaignid }}",
+    vertical__c: "{{ rows[0].vertical.name }}",
+    product_type_c: "{{ rows[0].product_type}}"
+  }));
+</script>
+
+<!-- End partial -->
