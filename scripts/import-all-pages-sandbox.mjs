@@ -1,22 +1,22 @@
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
 import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
 
-const data = readFileSync('./file-map.json', 'utf8')
-const pageMap = JSON.parse(data)
+const data = readFileSync('./file-map.json', 'utf8');
+const pageMap = JSON.parse(data);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
-let after = undefined;
+let after;
 let count = 0;
 let hubspotClientProd;
 let hubspotClientDev;
 const sourceArg = process.argv[2];
 const destinationArg = process.argv[3];
 
-if (sourceArg  && destinationArg) {
-  const prodKey = sourceArg
-  const stagingKey = destinationArg
-  main(prodKey, stagingKey)
+if (sourceArg && destinationArg) {
+  const prodKey = sourceArg;
+  const stagingKey = destinationArg;
+  main(prodKey, stagingKey);
 } else {
   getKeys();
 }
@@ -36,8 +36,7 @@ async function getKeys() {
   ];
 
   try {
-    const { prodKey, stagingKey} =
-      await inquirer.prompt(questions);
+    const { prodKey, stagingKey } = await inquirer.prompt(questions);
     main(prodKey, stagingKey);
   } catch (error) {
     if (error.isTtyError) {
@@ -115,125 +114,133 @@ function createPageObject(data) {
 }
 
 async function main(prodKey, stagingKey) {
-    hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
-    hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
+  hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
+  hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
   try {
     await temp(prodKey, stagingKey);
     await temp1(prodKey, stagingKey);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
 async function temp(prodKey, stagingKey) {
-    const createdAt = undefined;
-    const createdAfter = undefined;
-    const createdBefore = undefined;
-    const updatedAt = undefined;
-    const updatedAfter = undefined;
-    const updatedBefore = undefined;
-    const sort = undefined;
-    const limit = undefined
-    const archived = undefined;
-    const property = undefined;
-    const delaySeconds = 10000;
+  const createdAt = undefined;
+  const createdAfter = undefined;
+  const createdBefore = undefined;
+  const updatedAt = undefined;
+  const updatedAfter = undefined;
+  const updatedBefore = undefined;
+  const sort = undefined;
+  const limit = undefined;
+  const archived = undefined;
+  const property = undefined;
+  const delaySeconds = 10000;
 
-    count += 1;
-    console.log('count', count)
+  count += 1;
+  console.log('count', count);
 
-    const apiResponse = await hubspotClientProd.cms.pages.sitePagesApi.getPage(createdAt, createdAfter, createdBefore, updatedAt, updatedAfter, updatedBefore, sort, after, limit, archived, property);
-    const pages = apiResponse.results.map(createPageObject);
-    await postAllPages(pages, stagingKey);
-    if (apiResponse.paging?.next) {
-        console.info(`Additional page results...`, apiResponse.paging)
-        after = apiResponse.paging.next.after;
-        setTimeout(() => {
-            temp(prodKey, stagingKey);
-        }, delaySeconds);
-    } else {
-        console.log('No more pages left to get')
-    }
+  const apiResponse = await hubspotClientProd.cms.pages.sitePagesApi.getPage(
+    createdAt,
+    createdAfter,
+    createdBefore,
+    updatedAt,
+    updatedAfter,
+    updatedBefore,
+    sort,
+    after,
+    limit,
+    archived,
+    property,
+  );
+  const pages = apiResponse.results.map(createPageObject);
+  await postAllPages(pages, stagingKey);
+  if (apiResponse.paging?.next) {
+    console.info(`Additional page results...`, apiResponse.paging);
+    after = apiResponse.paging.next.after;
+    setTimeout(() => {
+      temp(prodKey, stagingKey);
+    }, delaySeconds);
+  } else {
+    console.log('No more pages left to get');
+  }
 }
 
 async function temp1(prodKey, stagingKey) {
-    const createdAt = undefined;
-    const createdAfter = undefined;
-    const createdBefore = undefined;
-    const updatedAt = undefined;
-    const updatedAfter = undefined;
-    const updatedBefore = undefined;
-    const sort = undefined;
-    const limit = undefined
-    const archived = undefined;
-    const property = undefined;
-    const delaySeconds = 10000;
+  const createdAt = undefined;
+  const createdAfter = undefined;
+  const createdBefore = undefined;
+  const updatedAt = undefined;
+  const updatedAfter = undefined;
+  const updatedBefore = undefined;
+  const sort = undefined;
+  const limit = undefined;
+  const archived = undefined;
+  const property = undefined;
+  const delaySeconds = 10000;
 
-    count += 1;
-    console.log('count', count)
+  count += 1;
+  console.log('count', count);
 
-    const apiResponse = await hubspotClientProd.cms.pages.landingPagesApi.getPage(createdAt, createdAfter, createdBefore, updatedAt, updatedAfter, updatedBefore, sort, after, limit, archived, property);
-    const pages = apiResponse.results.map(createPageObject);
-    await postAllLandingPages(pages, stagingKey);
+  const apiResponse = await hubspotClientProd.cms.pages.landingPagesApi.getPage(
+    createdAt,
+    createdAfter,
+    createdBefore,
+    updatedAt,
+    updatedAfter,
+    updatedBefore,
+    sort,
+    after,
+    limit,
+    archived,
+    property,
+  );
+  const pages = apiResponse.results.map(createPageObject);
+  await postAllLandingPages(pages, stagingKey);
 
-    if (apiResponse.paging?.next) {
-        console.info(`Additional page results...`, apiResponse.paging)
-        after = apiResponse.paging.next.after;
-        setTimeout(() => {
-            temp(prodKey, stagingKey);
-        }, delaySeconds);
-    } else {
-        console.log('No more pages left to get')
-    }
+  if (apiResponse.paging?.next) {
+    console.info(`Additional page results...`, apiResponse.paging);
+    after = apiResponse.paging.next.after;
+    setTimeout(() => {
+      temp(prodKey, stagingKey);
+    }, delaySeconds);
+  } else {
+    console.log('No more pages left to get');
+  }
 }
-
-
-
 
 async function postAllPages(pages) {
-  const formRequest = []
+  const formRequest = [];
   for (const page of pages) {
-    if (sitePagesIds.includes(page.id)){
-        //console.log(page.name + " exists")
+    if (!sitePagesIds.includes(page.id)) {
+      const promise = hubspotClientStaging.cms.pages.sitePagesApi.create(page);
+      formRequest.push(promise);
+    }
+  }
 
-    }
-    else {
-        const promise = hubspotClientStaging.cms.pages.sitePagesApi.create(page)
-        formRequest.push(promise)
-    }
-  }
-  
   try {
-    await Promise.all(formRequest)
-    console.info('POST site pages complete')
-  }
-  catch (error) {
-    console.error('Failed to create page: ${error}', error);
+    await Promise.all(formRequest);
+    console.info('POST site pages complete');
+  } catch (error) {
+    console.error('Failed to create page: ', error);
   }
 }
 
-
-  
-
-
 async function postAllLandingPages(pages) {
-  const formRequest = []
+  const formRequest = [];
   for (const page of pages) {
-    if (landingPagesIds.includes(page.id)){
+    if (!landingPagesIds.includes(page.id)) {
+      const promise =
+        hubspotClientStaging.cms.pages.landingPagesApi.create(page);
+      formRequest.push(promise);
+    }
+  }
 
-    }
-    else {
-        const promise = hubspotClientStaging.cms.pages.landingPagesApi.create(page)
-        formRequest.push(promise)
-    }
-  }
-  
   try {
-    await Promise.all(formRequest)
-    console.info('POST site pages complete')
-  }
-  catch (error) {
-    console.error('Failed to create page: ${error}', error);
+    await Promise.all(formRequest);
+    console.info('POST site pages complete');
+  } catch (error) {
+    console.error('Failed to create page: ', error);
     throw error;
   }
 }
-
