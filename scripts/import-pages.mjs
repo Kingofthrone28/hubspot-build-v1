@@ -102,27 +102,26 @@ function createBlogObject(data, contentGroupId) {
 
   blogObject.contentGroupId = contentGroupId;
 
-  if (data.name) {
-    blogObject.name = data.name;
-  }
-  if (data.metaDescription) {
-    blogObject.metaDescription = data.metaDescription;
-  }
-  if (data.categoryId) {
-    blogObject.categoryId = data.categoryId;
-  }
-  if (data.contentTypeCategory) {
-    blogObject.contentTypeCategory = data.contentTypeCategory;
-  }
-  if (data.templatePath) {
-    blogObject.templatePath = data.templatePath;
-  }
-  if (data.postBody) {
-    blogObject.postBody = data.postBody;
-  }
-  if (data.postBody) {
-    blogObject.postBody = data.postBody;
-  }
+  [
+    'attachedStylesheets',
+    'categoryId',
+    'contentTypeCategory',
+    'featuredImage',
+    'featuredImageAltText',
+    'htmlTitle',
+    'id',
+    'metaDescription',
+    'name',
+    'postBody',
+    'subcategory',
+    'templatePath',
+    'useFeaturedImage',
+  ].forEach(key => {
+    if (data[key]) {
+      blogObject[key] = data[key]
+    }
+  });
+
   if (Object.keys(data.layoutSections)) {
     blogObject.layoutSections = data.layoutSections;
   }
@@ -132,27 +131,7 @@ function createBlogObject(data, contentGroupId) {
   if (Object.keys(data.widgets)) {
     blogObject.widgets = data.widgets;
   }
-  if (data.attachedStylesheets) {
-    blogObject.attachedStylesheets = data.attachedStylesheets;
-  }
-  if (data.subcategory) {
-    blogObject.subcategory = data.subcategory;
-  }
-  if (data.featuredImage) {
-    blogObject.featuredImage = data.featuredImage;
-  }
-  if (data.featuredImageAltText) {
-    blogObject.featuredImageAltText = data.featuredImageAltText;
-  }
-  if (data.useFeaturedImage) {
-    blogObject.useFeaturedImage = data.useFeaturedImage;
-  }
-  if (data.htmlTitle) {
-    blogObject.htmlTitle = data.htmlTitle;
-  }
-  if (data.id) {
-    blogObject.id = data.id;
-  }
+
   return blogObject;
 }
 
