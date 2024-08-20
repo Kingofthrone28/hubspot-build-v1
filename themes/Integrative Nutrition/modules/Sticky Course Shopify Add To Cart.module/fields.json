@@ -1,4 +1,27 @@
-[ {
+[ 
+  {
+  "name": "configuration",
+  "label": "Configuration",
+  "required": true,
+  "locked": false,
+  "display": "select",
+  "inline_help_text": "",
+  "help_text": "",
+  "choices": [
+    [
+      "sample-class",
+      "Sample Class"
+    ],
+    [
+      "inline-and-header",
+      "Inline Section and Header"
+    ]
+  ],
+  "type": "choice",
+  "placeholder": "",
+  "default": "inline-and-header"
+},
+{
   "id" : "972d2f87-4cab-4c56-a310-acc5a7f2ee18",
   "name" : "category_image",
   "display_width" : null,
@@ -323,7 +346,19 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "Just a few quick selections and you’ll be ready to enroll."
-  } ],
+  }, {
+    "name" : "right_button_text",
+    "display_width" : null,
+    "label" : "Right Button Text (Sample Class)",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Buy Now"
+  } 
+],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
@@ -338,4 +373,54 @@
     "left_button_text" : "Speak with an Advisor",
     "dropdown_left_text" : "Just a few quick selections and you’ll be ready to enroll."
   }
-} ]
+},
+{
+"name": "added_to_cart_popup",
+"label": "Added to Cart Popup",
+"required": false,
+"locked": false,
+"children": [
+  {
+    "name" : "cart_link",
+    "display_width" : null,
+    "label" : "Cart Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : 156289019138,
+        "href" : null,
+        "type" : "CONTENT"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "name" : "continue_shopping_link",
+    "display_width" : null,
+    "label" : "Continue Shopping Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : 128190697855,
+        "href" : null,
+        "type" : "CONTENT"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+],
+  "type": "group",
+  "inline_help_text": "",
+  "help_text": "",
+  "default": {} 
+  }
+]

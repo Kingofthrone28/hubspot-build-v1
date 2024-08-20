@@ -56,12 +56,10 @@
         return false;
       }
 
-      return !variant.selectedOptions.some((variantOption) => {
-        return (
+      return !variant.selectedOptions.some((variantOption) => (
           selection[variantOption.name] !== undefined &&
           selection[variantOption.name] !== variantOption.value
-        );
-      });
+        ));
     });
 
   /**

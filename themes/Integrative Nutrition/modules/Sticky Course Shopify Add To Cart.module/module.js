@@ -59,12 +59,11 @@
         return false;
       }
 
-      return !variant.selectedOptions.some((variantOption) => {
-        return (
+      return !variant.selectedOptions.some(
+        (variantOption) =>
           selection[variantOption.name] !== undefined &&
-          selection[variantOption.name] !== variantOption.value
-        );
-      });
+          selection[variantOption.name] !== variantOption.value,
+      );
     });
 
   /**
@@ -466,22 +465,46 @@
   /* Sticky nav */
   $('.pdp-sticky-wrap').appendTo('body');
 
-  const showHideStickyNav = () => {
-    const bottomOfPdpTop = $('.pdp-top').offset().top + $('.pdp-top').height();
-    if ($(window).scrollTop() > bottomOfPdpTop) {
-      $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
-    } else {
-      $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
-    }
-  };
+  if (!moduleData.isSampleClass) {
+    let pdpTop;
 
-  $(window).on('scroll', showHideStickyNav);
+    const showHideStickyNav = () => {
+      if (!pdpTop) {
+        pdpTop = $('.pdp-top');
+      }
 
-  $('#pdp-sticky-enroll-btn').click((e) => {
-    e.preventDefault();
+      const bottomOfPdpTop =
+        (pdpTop.offset()?.top || 0) + (pdpTop?.height() || 0);
+
+      if ($(window).scrollTop() > bottomOfPdpTop) {
+        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
+      } else {
+        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+      }
+    };
+
+    $(window).on('scroll', showHideStickyNav);
+  }
+
+  const handleSampleClassEnrollButtonClick = (event) => {
+    event.preventDefault();
+    $('.caret').toggleClass('caret-down');
+    $('.caret').toggleClass('caret-up');
     $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
     $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
-  });
+  };
+
+  const handleEnrollButtonClick = (event) => {
+    event.preventDefault();
+    $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
+    $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
+  };
+
+  $('#pdp-sticky-enroll-btn').click(
+    moduleData.isSampleClass
+      ? handleSampleClassEnrollButtonClick
+      : handleEnrollButtonClick,
+  );
 
   /* Slides */
   const changeSlide = (index) => {
@@ -504,4 +527,36 @@
       changeSlide($(this).data('index'));
     }
   });
+
+  if (!moduleData.isSampleClass) {
+    return;
+  }
+
+  $('.jd-add-pop-close').click(() => {
+    $('.jd-add-pop').removeClass('jd-add-pop-show');
+  });
+
+  let stickyHeader;
+  let body;
+
+  function getCurrentHeight() {
+    if (!stickyHeader) {
+      stickyHeader = document.querySelector('.pdp-sticky');
+    }
+
+    if (!body) {
+      body = document.body;
+    }
+
+    const height = stickyHeader.offsetHeight;
+
+    body.style.paddingTop = `${height}px`;
+    return height;
+  }
+
+  // Call the function on load to get the current height
+  window.addEventListener('DOMContentLoaded', getCurrentHeight);
+
+  // Call the function on resize (to handle responsive changes)
+  window.addEventListener('resize', getCurrentHeight);
 })();
