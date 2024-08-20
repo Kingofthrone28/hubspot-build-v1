@@ -60,57 +60,30 @@ async function getKeys() {
 
 function createPageObject(data) {
   const pageObject = {};
-  if (data.name) {
-    pageObject.name = data.name;
-  }
-  if (data.attachedStylesheets) {
-    pageObject.attachedStylesheets = data.attachedStylesheets;
-  }
-  if (data.slug) {
-    pageObject.slug = data.slug;
-  }
-  if (data.state) {
-    pageObject.state = data.state;
-  }
-  if (data.currentState) {
-    pageObject.currentState = data.currentState;
-  }
-  if (data.includeDefaultCustomCss) {
-    pageObject.includeDefaultCustomCss = data.includeDefaultCustomCss;
-  }
-  if (data.published) {
-    pageObject.published = data.published;
-  }
-  if (data.subcategory) {
-    pageObject.subcategory = data.subcategory;
-  }
-  if (data.themeSettingsValues) {
-    pageObject.themeSettingsValues = data.themeSettingsValues;
-  }
-  if (data.metaDescription) {
-    pageObject.metaDescription = data.metaDescription;
-  }
-  if (data.featuredImage) {
-    pageObject.featuredImage = data.featuredImage;
-  }
-  if (data.featuredImageAltText) {
-    pageObject.featuredImageAltText = data.featuredImageAltText;
-  }
-  if (data.useFeaturedImage) {
-    pageObject.useFeaturedImage = data.useFeaturedImage;
-  }
-  if (data.id) {
-    pageObject.id = data.id;
-  }
-  if (data.htmlTitle) {
-    pageObject.htmlTitle = data.htmlTitle;
-  }
-  if (data.templatePath) {
-    pageObject.templatePath = data.templatePath;
-  }
-  if (data.publishDate) {
-    pageObject.publishDate = data.publishDate;
-  }
+  [
+    'attachedStylesheets',
+    'currentState',
+    'featuredImage',
+    'featuredImageAltText',
+    'htmlTitle',
+    'id',
+    'includeDefaultCustomCss',
+    'metaDescription',
+    'name',
+    'publishDate',
+    'published',
+    'slug',
+    'state',
+    'subcategory',
+    'templatePath',
+    'themeSettingsValues',
+    'useFeaturedImage',
+  ].forEach(key => {
+    if (data[key]) {
+      pageObject[key] = data[key]
+    }
+  });
+
   if (Object.keys(data.layoutSections)) {
     pageObject.layoutSections = data.layoutSections;
   }
