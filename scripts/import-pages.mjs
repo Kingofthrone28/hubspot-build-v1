@@ -21,7 +21,7 @@ if (sourceArg && destinationArg && contentGroupIdArg) {
   const prodKey = sourceArg;
   const devKey = destinationArg;
   const contentGroupId = contentGroupIdArg;
-  main(prodKey, devKey, contentGroupId);
+  run(prodKey, devKey, contentGroupId);
 } else {
   getKeys();
 }
@@ -48,7 +48,7 @@ async function getKeys() {
   try {
     const { prodKey, devKey, contentGroupId } =
       await inquirer.prompt(questions);
-    main(prodKey, devKey, contentGroupId);
+    run(prodKey, devKey, contentGroupId);
   } catch (error) {
     if (error.isTtyError) {
       console.error("Prompt couldn't be rendered in the current environment");
@@ -156,7 +156,7 @@ function createBlogObject(data, contentGroupId) {
   return blogObject;
 }
 
-async function main(prodKey, devKey, contentGroupId) {
+async function run(prodKey, devKey, contentGroupId) {
   hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   hubspotClientDev = new hubspot.Client({ accessToken: devKey });
 
