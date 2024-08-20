@@ -55,7 +55,7 @@ async function getKeys() {
 }
 
 async function runImport(prodKey, devKey) {
-  const duration = 2000;
+  const duration = 3000;
   hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   hubspotClientDev = new hubspot.Client({ accessToken: devKey });
 
@@ -97,9 +97,14 @@ async function getHubdbTables() {
 async function postAllHubdbTables(tables) {
   const formRequest = [];
   for (const table of tables) {
-    const promise = hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
-    formRequest.push(promise);
+    if (await hubspotClientProd.cms.hubdb.tablesApi.getTableDetails(table.name)) {
+      console.log(table.name + " already created");
+    } else {
+      const promise = hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
+      formRequest.push(promise);
+    }
   }
+
   const responses = await Promise.all(formRequest);
   console.info('POST hubdb tables complete');
 }
