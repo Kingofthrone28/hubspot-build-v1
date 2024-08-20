@@ -15,10 +15,15 @@ const hubdbNames = [
   'taxonomy_overrides',
 ];
 
+const wait = (duration) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, duration);
+  });
+
 if (sourceArg && destinationArg) {
   const prodKey = sourceArg;
   const devKey = destinationArg;
-  main(prodKey, devKey);
+  runImport(prodKey, devKey);
 } else {
   getKeys();
 }
@@ -39,7 +44,7 @@ async function getKeys() {
 
   try {
     const { prodKey, devKey } = await inquirer.prompt(questions);
-    main(prodKey, devKey);
+    runImport(prodKey, devKey);
   } catch (error) {
     if (error.isTtyError) {
       console.error("Prompt couldn't be rendered in the current environment");
@@ -49,24 +54,20 @@ async function getKeys() {
   }
 }
 
-const duration = 2000;
-const wait = (duration) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, duration);
-  });
-
-async function main(prodKey, devKey) {
+async function runImport(prodKey, devKey) {
+  const duration = 2000;
   hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   hubspotClientDev = new hubspot.Client({ accessToken: devKey });
+
   try {
     const databaseTables = await getHubdbTables();
     await postAllHubdbTables(databaseTables);
     await checkHubdbTableCreation(databaseTables);
     const existingTables = await getHubdbRows();
-    wait();
+    await wait(duration);
     const newTables = existingTables.map((table) => ({
-        inputs: table,
-      }));
+      inputs: table,
+    }));
     const hubspotClientDev = new hubspot.Client({ accessToken: devKey });
     const createPromises = newTables.map((table, index) => {
       const name = hubdbNames[index];

@@ -13,10 +13,15 @@ let hubspotClientDev;
 const sourceArg = process.argv[2];
 const destinationArg = process.argv[3];
 
+const wait = (duration) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, duration);
+  });
+
 if (sourceArg && destinationArg) {
   const prodKey = sourceArg;
   const stagingKey = destinationArg;
-  main(prodKey, stagingKey);
+  runImport(prodKey, stagingKey);
 } else {
   getKeys();
 }
@@ -37,7 +42,7 @@ async function getKeys() {
 
   try {
     const { prodKey, stagingKey } = await inquirer.prompt(questions);
-    main(prodKey, stagingKey);
+    runImport(prodKey, stagingKey);
   } catch (error) {
     if (error.isTtyError) {
       console.error("Prompt couldn't be rendered in the current environment");
@@ -113,18 +118,18 @@ function createPageObject(data) {
   return pageObject;
 }
 
-async function main(prodKey, stagingKey) {
+async function runImport(prodKey, stagingKey) {
   hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   hubspotClientStaging = new hubspot.Client({ accessToken: stagingKey });
   try {
-    await temp(prodKey, stagingKey);
-    await temp1(prodKey, stagingKey);
+    await importPages(prodKey, stagingKey);
+    await importLandingPages(prodKey, stagingKey);
   } catch (error) {
     console.error(error);
   }
 }
 
-async function temp(prodKey, stagingKey) {
+async function importPages(prodKey, stagingKey) {
   const createdAt = undefined;
   const createdAfter = undefined;
   const createdBefore = undefined;
@@ -135,7 +140,7 @@ async function temp(prodKey, stagingKey) {
   const limit = undefined;
   const archived = undefined;
   const property = undefined;
-  const delaySeconds = 10000;
+  const delayMilliseconds = 10000;
 
   count += 1;
   console.log('count', count);
@@ -153,20 +158,21 @@ async function temp(prodKey, stagingKey) {
     archived,
     property,
   );
+
   const pages = apiResponse.results.map(createPageObject);
   await postAllPages(pages, stagingKey);
+
   if (apiResponse.paging?.next) {
     console.info(`Additional page results...`, apiResponse.paging);
     after = apiResponse.paging.next.after;
-    setTimeout(() => {
-      temp(prodKey, stagingKey);
-    }, delaySeconds);
+    await wait(delayMilliseconds)
+    importPages(prodKey, stagingKey);
   } else {
     console.log('No more pages left to get');
   }
 }
 
-async function temp1(prodKey, stagingKey) {
+async function importLandingPages(prodKey, stagingKey) {
   const createdAt = undefined;
   const createdAfter = undefined;
   const createdBefore = undefined;
@@ -177,7 +183,7 @@ async function temp1(prodKey, stagingKey) {
   const limit = undefined;
   const archived = undefined;
   const property = undefined;
-  const delaySeconds = 10000;
+  const delayMilliseconds = 10000;
 
   count += 1;
   console.log('count', count);
@@ -201,9 +207,8 @@ async function temp1(prodKey, stagingKey) {
   if (apiResponse.paging?.next) {
     console.info(`Additional page results...`, apiResponse.paging);
     after = apiResponse.paging.next.after;
-    setTimeout(() => {
-      temp(prodKey, stagingKey);
-    }, delaySeconds);
+    await wait(delayMilliseconds)
+    importPages(prodKey, stagingKey);
   } else {
     console.log('No more pages left to get');
   }
