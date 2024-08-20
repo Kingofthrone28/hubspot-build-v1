@@ -130,9 +130,7 @@ async function publishTables() {
     await Promise.all(promises);
     console.info('PUBLISH hubdb tables complete');
   } catch (e) {
-    e.message === 'HTTP request failed'
-      ? console.error(JSON.stringify(e.response, null, 2))
-      : console.error(e);
+    console.error(e)
   }
 }
 
@@ -146,6 +144,8 @@ async function checkHubdbTableCreation(tables) {
       const table = tables[index];
       return hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
     }
+
+    return undefined;
   });
   await Promise.all(createResponses);
   console.info('create in checkHubdbTableCreation complete');
