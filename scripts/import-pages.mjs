@@ -175,7 +175,7 @@ async function postAllPages(pages) {
   // eslint-disable-next-line
   await Promise.allSettled(formRequests);
   console.info('POST all site pages complete');
-  //error handling
+  // error handling
 }
 
 async function getListLandingPages() {
@@ -201,7 +201,7 @@ async function postAllLandingPages(pages) {
   }
 
   await Promise.allSettled(formRequests);
-  //error handling
+  // error handling
   console.info('POST all landing pages complete');
 }
 
