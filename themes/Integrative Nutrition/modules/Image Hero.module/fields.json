@@ -1,0 +1,95 @@
+[
+  {
+    "name": "title",
+    "display_width": null,
+    "label": "Title Text",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "placeholder": "",
+    "allow_new_line": true,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Welcome to your sample class!"
+  },
+  {
+    "name": "subheading",
+    "display_width": null,
+    "label": "Subheading",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "placeholder": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  {
+    "name": "button_text",
+    "display_width": null,
+    "label": "Button Text",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "placeholder": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Start Course"
+  },
+  {
+    "name": "image",
+    "display_width": null,
+    "label": "Image field",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": null,
+      "loading": "disabled"
+    }
+  },
+  {
+    "name": "menu",
+    "label": "Menu for Dynamic Button Target",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "type": "menu",
+    "placeholder": "",
+    "default": null
+  },
+  {
+    "name": "button_target",
+    "display_width": null,
+    "label": "Manual Button Target",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "placeholder": "",
+    "type": "page",
+    "visibility": {
+      "controlling_field_path": "menu",
+      "operator": "EMPTY"
+    }
+  }
+]

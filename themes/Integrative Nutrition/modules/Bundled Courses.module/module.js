@@ -205,7 +205,7 @@
         const variantOptions = variant.selectedOptions;
 
         return Boolean(
-          available && Array.isArray(variantOptions) && variantOptions.length
+          available && Array.isArray(variantOptions) && variantOptions.length,
         );
       });
 
@@ -235,30 +235,46 @@
       addToCartPayload.ecommerce = {};
       addToCartPayload.ecommerce.product_type = 'Bundle';
       addToCartPayload.ecommerce.currency = moduleData.currencyCode || 'USD';
-      addToCartPayload.ecommerce.value = parseFloat(priceString.replace(/,/g, ''));
-      addToCartPayload.ecommerce.coupon = updatedCheckout?.discountApplications[0]?.title;
+      addToCartPayload.ecommerce.value = parseFloat(
+        priceString.replace(/,/g, ''),
+      );
+      addToCartPayload.ecommerce.coupon =
+        updatedCheckout?.discountApplications[0]?.title;
       addToCartPayload.ecommerce.items = [];
 
-      const filteredList = updatedCheckout.lineItems.filter(item =>
-        lineItemsToAdd.some(compareItem => compareItem.variantId === item.variant.id)
+      const filteredList = updatedCheckout.lineItems.filter((item) =>
+        lineItemsToAdd.some(
+          (compareItem) => compareItem.variantId === item.variant.id,
+        ),
       );
 
-      addToCartPayload.ecommerce.items.push(...filteredList.map(course => ({
-        'item_id': course.variant.product.id.replace('gid://shopify/Product/',''),
-        'item_name': course.title,
-        'item_type': course.productType || 'NA',
-        'variant_id': course.variant?.id?.replace('gid://shopify/ProductVariant/',''),
-        'discount': parseFloat(course.discountAllocations[0]?.allocatedAmount?.amount) || 'NA',
-        'price': parseFloat(course.variant?.price?.amount) || '',
-        'quantity': course.quantity,
-        'sku': course.variant?.sku || 'NA'
-      })));
+      addToCartPayload.ecommerce.items.push(
+        ...filteredList.map((course) => ({
+          item_id: course.variant.product.id.replace(
+            'gid://shopify/Product/',
+            '',
+          ),
+          item_name: course.title,
+          item_type: course.productType || 'NA',
+          variant_id: course.variant?.id?.replace(
+            'gid://shopify/ProductVariant/',
+            '',
+          ),
+          discount:
+            parseFloat(
+              course.discountAllocations[0]?.allocatedAmount?.amount,
+            ) || 'NA',
+          price: parseFloat(course.variant?.price?.amount) || '',
+          quantity: course.quantity,
+          sku: course.variant?.sku || 'NA',
+        })),
+      );
       // Sending add to cart bundle product
       triggerECommEvent(addToCartPayload);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   const addToCart = async (bundleName, courses) => {
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
@@ -304,7 +320,7 @@
         }
 
         const existingLineItem = cart.lineItems.find(
-          (lineItem) => lineItem.variant.product.id === bundleProduct.id
+          (lineItem) => lineItem.variant.product.id === bundleProduct.id,
         );
 
         if (existingLineItem) {
@@ -327,7 +343,7 @@
     try {
       const checkout = await IINShopifyClient.checkout.addLineItems(
         cartCookie,
-        lineItemsToAdd
+        lineItemsToAdd,
       );
 
       updateCartTotal(checkout);
@@ -457,27 +473,41 @@
       viewItemPayload.ecommerce = {};
       viewItemPayload.ecommerce.product_type = 'Bundle';
       viewItemPayload.ecommerce.currency = moduleData.currencyCode || 'USD';
-      viewItemPayload.ecommerce.value = parseFloat(priceString.replace(/,/g, ''));
-      viewItemPayload.ecommerce.coupon = updatedCheckout?.discountApplications[0]?.title;
-      viewItemPayload.ecommerce.bundle_name = updatedCheckout?.discountApplications[0]?.title;
+      viewItemPayload.ecommerce.value = parseFloat(
+        priceString.replace(/,/g, ''),
+      );
+      viewItemPayload.ecommerce.coupon =
+        updatedCheckout?.discountApplications[0]?.title;
+      viewItemPayload.ecommerce.bundle_name =
+        updatedCheckout?.discountApplications[0]?.title;
       viewItemPayload.ecommerce.items = [];
 
-      viewItemPayload.ecommerce.items.push(...updatedCheckout.lineItems.map(course => ({
-        'item_id': courses.find(item => course.title.includes(item.course_name)).product_id,
-        'item_name': course.title,
-        'item_type': course.productType || 'NA',
-        'variant_id': course.variant?.id?.replace('gid://shopify/ProductVariant/',''),
-        'discount': parseFloat(course?.discountAllocations[0]?.allocatedAmount?.amount) || 'NA',
-        'price': parseFloat(course.variant.price.amount) || '',
-        'quantity': course.quantity,
-        'sku': course.variant?.sku || 'NA'
-      })));
+      viewItemPayload.ecommerce.items.push(
+        ...updatedCheckout.lineItems.map((course) => ({
+          item_id: courses.find((item) =>
+            course.title.includes(item.course_name),
+          ).product_id,
+          item_name: course.title,
+          item_type: course.productType || 'NA',
+          variant_id: course.variant?.id?.replace(
+            'gid://shopify/ProductVariant/',
+            '',
+          ),
+          discount:
+            parseFloat(
+              course?.discountAllocations[0]?.allocatedAmount?.amount,
+            ) || 'NA',
+          price: parseFloat(course.variant.price.amount) || '',
+          quantity: course.quantity,
+          sku: course.variant?.sku || 'NA',
+        })),
+      );
       // Sending view item bundle product
       triggerECommEvent(viewItemPayload);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   const setPrice = (checkout) => {
     const applications = checkout?.discountApplications;
@@ -499,11 +529,11 @@
       const difference = total - totalAfterDiscount;
 
       $('#bundle-shopify-price-savings').html(
-        `Savings of <span>$${difference.toLocaleString()}</span> by bundling together`
+        `Savings of <span>$${difference.toLocaleString()}</span> by bundling together`,
       );
 
       $('#course-shopify-price').text(
-        `$${totalAfterDiscount.toLocaleString()}`
+        `$${totalAfterDiscount.toLocaleString()}`,
       );
 
       $('#course-shopify-compare').text(`$${total.toLocaleString()}`);

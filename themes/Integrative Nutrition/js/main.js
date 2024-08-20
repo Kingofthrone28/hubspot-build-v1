@@ -454,7 +454,9 @@ window.FontAwesomeKitConfig = {
     closeToggle.classList.remove('show')
   }
 
-
+  document.addEventListener('keyup', showFocusOutline);
+  document.addEventListener('mouseover', hideFocusOutline);
+  document.addEventListener('touchstart', hideFocusOutline);
 })();
 
 

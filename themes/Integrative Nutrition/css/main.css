@@ -1,7 +1,10 @@
+/* stylelint-disable */
+{% include './fonts.css' %}
 {% include './variables/_theme.css' %}
 {% include './variables/_assets.css' %}
 {% include './variables/_colors.css' %}
 {% include './variables/_containers.css' %}
+{% include './variables/_icons.css' %}
 {% include './variables/_shadows.css' %}
 {% include './variables/_spacing.css' %}
 {% include './variables/_transitions.css' %}
@@ -15,8 +18,11 @@
 {% include './elements/_buttons.css' %}
 {% include './elements/_forms.css' %}
 {% include './elements/_tables.css' %}
+{% include './components/_accordion.css' %}
+{% include './components/_buttons.css' %}
 {% include './components/_cards.css' %}
 {% include './components/_promo-banner.css' %}
+{% include './components/_slider.css' %}
 {% include './components/_footer.css' %}
 {% include './components/_header.css' %}
 {% include './components/_default-modules.css' %}
@@ -24,10 +30,13 @@
 {% include './components/_spinner.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
+{% include './templates/_sample-class.css' %}
 {% include './objects/tabs.css' %}
 {% include './slider-overrides.css' %}
 {% include './objects/jd-shopify-cart.css' %}
-  
+{% include './objects/_add-to-cart.css' %}
+/* stylelint-enable */
+
 html {
   max-width: 100%;
   overflow: hidden scroll;
@@ -65,7 +74,7 @@ button,
 }
 
 h1 {
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
 }
 
 h2,

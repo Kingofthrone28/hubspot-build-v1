@@ -26,7 +26,7 @@ $(() => {
   }
 
   const observer = new MutationObserver(callback);
-  const targetNode = document.body;
+  const targetNode = document.querySelector('body');
 
   observer.observe(targetNode, { childList: true, subtree: true });
 });

@@ -182,7 +182,7 @@
   left: 18px;
   opacity: 0.4;
   z-index: 0;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   color: var(--color--legacy--green--highland);
   font-family: var(--font-family--legacy--heading);
   font-size: var(--font-size--legacy--29);
@@ -201,7 +201,7 @@
   opacity: 0.4;
   z-index: -1;
   height: 120px;
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
   color: var(--color--legacy--orange--peach);
   font-family: var(--font-family--legacy--heading);
   font-size: var(--font-size--legacy--29);

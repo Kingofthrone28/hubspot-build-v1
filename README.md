@@ -8,7 +8,35 @@ Before your code is committed, several linting and formatting steps should take 
 - See scripts in package.json to run linting and formatting globally
 
 
-In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop`.
+In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop
+
+### Development in Production
+
+Please use 
+
+```html
+<meta name="robots" content="noindex">
+```
+
+in the head of any pages you are actively developing in production, so they will not be indexed by search if they are found.
+
+### Hubspot Rich Text Fields
+
+Please limit the available options content creators have when adding a custom module by adding the follow key/value pair in the `fields.json`:
+```json
+{
+    "type": "richtext",
+    ...
+    "enabled_features": [
+      "advanced_emphasis",
+      "anchor",
+      "indents",
+      "link",
+      "lists",
+      "standard_emphasis"
+    ]
+}
+```
 
 ## CSS Code Style
 

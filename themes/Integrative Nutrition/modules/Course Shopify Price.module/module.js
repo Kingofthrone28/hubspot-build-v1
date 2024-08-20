@@ -39,6 +39,8 @@
     } catch (e) {
       console.error(e);
     }
+
+    return undefined;
   };
 
   setPrice().then(([product, matchedVariant]) => {
@@ -50,17 +52,22 @@
         product_type: 'Individual',
         currency: matchedVariant.price.currencyCode,
         value: parseFloat(itemPrice),
-        items: [{
-          'item_id': moduleData.productID,
-          'item_name': product.title,
-          'item_type': product.productType || 'NA',
-          'variant_id': variantID.match(/\/(\d+)$/)[1],
-          'price': parseFloat(itemPrice),
-          'sku': matchedVariant.sku || 'NA',
-          'discount': parseFloat(product?.discountAllocations?.allocatedAmount?.amount) || 'NA',
-          'quantity': product?.quantity || 1
-        }]
-      }
+        items: [
+          {
+            item_id: moduleData.productID,
+            item_name: product.title,
+            item_type: product.productType || 'NA',
+            variant_id: variantID.match(/\/(\d+)$/)[1],
+            price: parseFloat(itemPrice),
+            sku: matchedVariant.sku || 'NA',
+            discount:
+              parseFloat(
+                product?.discountAllocations?.allocatedAmount?.amount,
+              ) || 'NA',
+            quantity: product?.quantity || 1,
+          },
+        ],
+      },
     };
     // Trigger View item tracking event
     triggerECommEvent(viewItemPayLoad);

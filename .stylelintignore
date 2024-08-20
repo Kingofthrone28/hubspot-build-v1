@@ -15,32 +15,22 @@ modules_to_move
 /themes/Marketplace
 
 # Files that have HubL syntax and can't be parsed
-# TODO: convert "css*" to "css" before branch "style-guide-lint" has been merged to "develop"
-/themes/Integrative Nutrition/css*/main.css
-/themes/Integrative Nutrition/css*/theme-overrides.css
-/themes/Integrative Nutrition/css*/components/_header.css
-/themes/Integrative Nutrition/css*/elements/_forms.css
-/themes/Integrative Nutrition/css*/objects/_containers-dnd.css
-/themes/Integrative Nutrition/css*/templates/_blog.css
-/themes/Integrative Nutrition/css*/tools/_macros.css
-/themes/Integrative Nutrition/css*/variables/_assets.css
-/themes/Integrative Nutrition/css*/variables/_theme.css
-
-# TODO: Remove before branch "style-guide-lint" is merged to "develop"
-/themes/Integrative Nutrition/css
+/themes/Integrative Nutrition/css/components/_header.css
+/themes/Integrative Nutrition/css/elements/_forms.css
+/themes/Integrative Nutrition/css/objects/_containers-dnd.css
+/themes/Integrative Nutrition/css/templates/_blog.css
+/themes/Integrative Nutrition/css/tools/_macros.css
+/themes/Integrative Nutrition/css/variables/_assets.css
 
 # Resets
-/themes/Integrative Nutrition/css*/generic/*.css
+/themes/Integrative Nutrition/css/generic/*.css
 
 # Third Party Files
 fontAwesome
 node_modules
-/themes/Integrative Nutrition/css*/ui.css
+/themes/Integrative Nutrition/css/ui.css
 
 # TODO: Remove after refactoring
-/themes/Integrative Nutrition/css*/components/_circle-of-life.css
-/themes/Integrative Nutrition/css*/objects/jd-shopify-cart.css
-/themes/Integrative Nutrition/css*/objects/tabs.css
-/themes/Integrative Nutrition/css*/inspirationgallery.css
-/themes/Integrative Nutrition/css*/magnific-popup.css
-/themes/Integrative Nutrition/css*/slick.css
+/themes/Integrative Nutrition/css/magnific-popup.css
+/themes/Integrative Nutrition/css/slick.css
+/themes/Integrative Nutrition/css/components/_circle-of-life.css

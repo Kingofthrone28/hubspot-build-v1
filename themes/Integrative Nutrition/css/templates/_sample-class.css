@@ -1,0 +1,36 @@
+.sample-class-hero-wrapper.dnd-section {
+  background-position: top !important;
+  background-size: 100% !important;
+}
+
+.sample-class-hero__module-name {
+  line-height: var(--line-height--116);
+}
+
+.sample-class-hero-wrapper h1 {
+  padding: 24px 0;
+}
+
+.sample-class-video-wrapper .section-header {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+.sample-class-hero-wrapper .row-fluid-wrapper .dnd-column {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.sample-class-hero-wrapper
+  .row-fluid-wrapper
+  .dnd-column:not(.sample-class-module-text-wrapper) {
+  transform: translate(0, 200px);
+}
+
+@media (max-width: 768px) {
+  .sample-class-hero-wrapper.dnd-section {
+    background-position: 90% center !important;
+    background-size: auto !important;
+  }
+}

@@ -1,113 +1,103 @@
-/* color_variant(): https://developers.hubspot.com/docs/cms/hubl/functions#color-variant */
-
+/* prettier-ignore */
 :root {
   /* Global colors */
   
-  --theme--global-colors--primary-color: {{ theme.global_colors.primary_color.color }};
-  --theme--global-colors--primary-color--darkened: {{ color_variant(theme.global_colors.primary_color.color, -10) }};
-  --theme--global-colors--secondary-color: {{ theme.global_colors.secondary_color.color }};
-  --theme--global-colors--secondary-color--darkened: {{ color_variant(theme.global_colors.secondary_color.color, -20) }};
-  --theme--global-colors--tertiary-color: {{ theme.global_colors.tertiary_color.color }};
-  --theme--global-colors--quaternary-color: {{ theme.global_colors.quat_color.color }};
+  --theme--global-colors--primary-color: var(--color--legacy--blue--oxford-blue);
+  --theme--global-colors--primary-color--darkened: var(--color--legacy--blue--oxford-blue-2);
+  --theme--global-colors--secondary-color: var(--color--cherry);
+  --theme--global-colors--secondary-color--darkened: var(--color--legacy--red--fire-engine-red);
+  --theme--global-colors--tertiary-color: var(--color--legacy--green--highland);
+  --theme--global-colors--quaternary-color: var(--color--melon);
   
   /* Global fonts */
   
-  --theme--global-fonts--primary-font: {{ theme.global_fonts.primary_font.font }};
-  --theme--global-fonts--primary-font--color: {{ theme.global_fonts.primary_font.color }};
-  --theme--global-fonts--secondary-font: {{ theme.global_fonts.secondary_font.font }};
+  --theme--global-fonts--primary-font: var(--font-family--body);
+  --theme--global-fonts--primary-font--color: var(--color--legacy--blue--oxford-blue);
+  --theme--global-fonts--secondary-font: var(--font-family--heading);
   
   /* Typography */
 
-  --theme--typography--body-text--font: {{ theme.typography.body_text.font }};
-  --theme--typography--body-text--color: {{ theme.typography.body_text.color }};
-  --theme--typography--body-text--color--lightened: {{ color_variant(theme.typography.body_text.color, 40) }};
-  --theme--typography--body-text--color--darkened: {{ color_variant(theme.typography.body_text.color, -40) }};
-  --theme--typography--body-text--font-size: {{ theme.typography.body_text.size ~ theme.typography.body_text.size_unit }};
-  --theme--typography--heading-1--color: {{ theme.typography.heading_one.color }};
-  --theme--typography--heading-1--font-size: {{ theme.typography.heading_one.size ~ theme.typography.heading_one.size_unit }};
-  --theme--typography--heading-1--small--font-size: {{ ((theme.typography.heading_one.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_one.size_unit }};
-  --theme--typography--heading-2--color: {{ theme.typography.heading_two.color }};
-  --theme--typography--heading-2--font-size: {{ theme.typography.heading_two.size ~ theme.typography.heading_two.size_unit }};
-  --theme--typography--heading-2--small--font-size: {{ ((theme.typography.heading_two.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_two.size_unit }};
-  --theme--typography--heading-3--color: {{ theme.typography.heading_three.color }};
-  --theme--typography--heading-3--font-size: {{ theme.typography.heading_three.size ~ theme.typography.heading_three.size_unit }};
-  --theme--typography--heading-3--small--font-size: {{ ((theme.typography.heading_three.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_three.size_unit }};
-  --theme--typography--heading-4--color: {{ theme.typography.heading_four.color }};
-  --theme--typography--heading-4--font-size: {{ theme.typography.heading_four.size ~ theme.typography.heading_four.size_unit }};
-  --theme--typography--heading-4--small--font-size: {{ ((theme.typography.heading_four.size / 2) + (theme.typography.body_text.size / 2)) ~ theme.typography.heading_four.size_unit }};
-  --theme--typography--heading-5--color: {{ theme.typography.heading_five.color }};
-  --theme--typography--heading-5--font-size: {{ theme.typography.heading_five.size ~ theme.typography.heading_five.size_unit }};
-  --theme--typography--heading-6--color: {{ theme.typography.heading_six.color }};
-  --theme--typography--heading-6--font-size: {{ theme.typography.heading_six.size ~ theme.typography.heading_size.size_unit }};
-  --theme--typography--link-color: {{ theme.typography.link_color.color }};
-  --theme--typography--link-color--lightened: {{ color_variant(theme.typography.link_color.color, 40) }};
-  --theme--typography--link-color--darkened: {{ color_variant(theme.typography.link_color.color, -40) }};
+  --theme--typography--body-text--font: var(--font-family--body);
+  --theme--typography--body-text--color: var(--color--grey-2);
+  --theme--typography--body-text--color--lightened: var(--color--legacy--grey--grey-1);
+  --theme--typography--body-text--color--darkened: var(--color--legacy--grey--nero-1);
+  --theme--typography--body-text--font-size: var(--font-size--legacy--7);
+  --theme--typography--heading-1--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-1--font-size: var(--font-size--legacy--28);
+  --theme--typography--heading-1--small--font-size: var(--font-size--legacy--24);
+  --theme--typography--heading-2--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-2--font-size: var(--font-size--legacy--25);
+  --theme--typography--heading-2--small--font-size: var(--font-size--legacy--18);
+  --theme--typography--heading-3--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-3--font-size: var(--font-size--legacy--18);
+  --theme--typography--heading-3--small--font-size: var(--font-size--legacy--13);
+  --theme--typography--heading-4--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-4--font-size: var(--font-size--legacy--13);
+  --theme--typography--heading-4--small--font-size: var(--font-size--legacy--11);
+  --theme--typography--heading-5--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-5--font-size: var(--font-size--legacy--11);
+  --theme--typography--heading-6--color: var(--color--legacy--blue--oxford-blue);
+  --theme--typography--heading-6--font-size: var(--font-size--legacy--7);
+  --theme--typography--link-color: var(--color--cherry);
+  --theme--typography--link-color--lightened: var(--color--legacy--orange--sunset-orange-2);
+  --theme--typography--link-color--darkened: var(--color--legacy--red--free-speech-red);
   
   /* Buttons */
   
-  --theme--buttons--border: {{ theme.buttons.border_width }}px solid {{ theme.buttons.border_color.color }};
-  --theme--buttons--border-color: {{ theme.buttons.border_color.color }};
-  --theme--buttons--border-color--lightened: {{ color_variant(theme.buttons.border_color.color, 40) }};
-  --theme--buttons--border-radius: {{ theme.buttons.border_radius }}px;
-  --theme--buttons--padding: {{ theme.buttons.vertical_padding }}px {{ theme.buttons.horizontal_padding }}px;
-  --theme--buttons--background-color: {{ theme.buttons.background_color.rgba }};
-  --theme--buttons--background-color--lightened: rgba({{ color_variant(theme.buttons.background_color.color, 40)|convert_rgb }}, {{ theme.buttons.background_color.opacity / 100 }});
-  --theme--buttons--hover-color: {{ theme.buttons.gr_color.rgba }};
-  --theme--buttons--text-color: {{ theme.buttons.text_color.color }};
-  --theme--buttons--hover-text-color: {{ theme.buttons.h_text_color.color }};
-  --theme--buttons--light-button--border: {{ theme.buttons.light_buttons.border_width }}px solid {{ theme.buttons.light_buttons.border_color.color }};
-  --theme--buttons--light-button--border-color: {{ theme.buttons.light_buttons.border_color.color }};
-  --theme--buttons--light-button--border-radius: {{ theme.buttons.light_buttons.border_radius }}px;
-  --theme--buttons--light-button--padding: {{ theme.buttons.light_buttons.vertical_padding }}px {{ theme.buttons.light_buttons.horizontal_padding }}px;
-  --theme--buttons--light-button--background-color: {{ theme.buttons.light_buttons.background_color.rgba }};
-  --theme--buttons--light-button--hover-color: {{ theme.buttons.light_buttons.gr_color.rgba }};
-  --theme--buttons--light-button--hover-color--lightened: rgba({{ color_variant(theme.buttons.light_buttons.gr_color.color, 1)|convert_rgb }}, {{ theme.buttons.light_buttons.gr_color.opacity / 100 }});
-  --theme--buttons--light-button--text-color: {{ theme.buttons.light_buttons.text_color.color }};
-  --theme--buttons--light-button--hover-text-color: {{ theme.buttons.light_buttons.h_text_color.color }};
+  --theme--buttons--border: 0 solid var(--color--legacy--blue--oxford-blue);
+  --theme--buttons--border-color: var(--color--legacy--blue--oxford-blue);
+  --theme--buttons--border-color--lightened: var(--color--legacy--blue--fiord);
+  --theme--buttons--border-radius: 100px;
+  --theme--buttons--padding: 13px 55px;
+  --theme--buttons--background-color: var(--color--legacy--blue--oxford-blue);
+  --theme--buttons--background-color--lightened: var(--color--legacy--blue--fiord);
+  --theme--buttons--hover-color: var(--color--legacy--blue--san-juan);
+  --theme--buttons--text-color: var(--color--white);
+  --theme--buttons--hover-text-color: var(--color--white);
+  --theme--buttons--light-button--border: 0 solid var(--color--white);
+  --theme--buttons--light-button--border-color: var(--color--white);
+  --theme--buttons--light-button--border-radius: 100px;
+  --theme--buttons--light-button--padding: 13px 55px;
+  --theme--buttons--light-button--background-color: var(--color--cherry);
+  --theme--buttons--light-button--hover-color: var(--color--legacy--red--cinnabar);
+  --theme--buttons--light-button--hover-color--lightened: var(--color--legacy--orange--sunset-orange-1);
+  --theme--buttons--light-button--text-color: var(--color--white);
+  --theme--buttons--light-button--hover-text-color: var(--color--white);
   
   /* Forms */
   
-  --theme--forms--border-radius: {{ theme.forms.border_radius }}px;
-  --theme--forms--field-background-color: {{ theme.forms.field_background_color.rgba }};
-  --theme--forms--field-border-color: {{ theme.forms.field_border_color.color }};
-  --theme--forms--field-focus-border-color: {{ theme.forms.field_focus_border_color.color }};
-  --theme--forms--form-background-color: {{ theme.forms.form_background_color.rgba }};
-  --theme--forms--header-background-color: {{ theme.forms.header_background_color.rgba }};
-  --theme--forms--help-text-color: {{ theme.forms.help_text_color.color }};
-  --theme--forms--header-text-color: {{ theme.forms.header_text_color.color }};
-  --theme--forms--label-color: {{ theme.forms.label_color.color }};
-  --theme--forms--padding: {{ theme.forms.vertical_padding }}px {{ theme.forms.horizontal_padding }}px;
+  --theme--forms--border-radius: 8px;
+  --theme--forms--field-background-color: var(--color--white);
+  --theme--forms--field-border-color: var(--color--grey-4);
+  --theme--forms--field-focus-border-color: var(--color--legacy--blue--oxford-blue);
+  --theme--forms--form-background-color: var(--color--legacy--blue--chambray);
+  --theme--forms--header-background-color: transparent;
+  --theme--forms--help-text-color: var(--color--legacy--blue--oxford-blue);
+  --theme--forms--header-text-color: var(--color--legacy--blue--oxford-blue);
+  --theme--forms--label-color: var(--color--grey-2);
+  --theme--forms--padding: 18px 16px;
   
   /* Tables */
   
-  --theme--tables--body-background-color: {{ theme.tables.body_background_color.rgba }};
-  --theme--tables--body-text-color: {{ theme.tables.body_text_color.color }};
-  --theme--tables--footer-background-color: {{ theme.tables.footer_background_color.rgba }};
-  --theme--tables--footer-text-color: {{ theme.tables.footer_text_color.color }};
-  --theme--tables--header-background-color: {{ theme.tables.header_background_color.rgba }};
-  --theme--tables--header-text-color: {{ theme.tables.header_text_color.color }};
-  --theme--tables--border-color: {{ theme.tables.border_color.color }};
+  --theme--tables--body-background-color: var(--color--white);
+  --theme--tables--body-text-color: var(--color--legacy--blue--oxford-blue);
+  --theme--tables--footer-background-color: var(--color--white);
+  --theme--tables--footer-text-color: var(--color--legacy--blue--oxford-blue);
+  --theme--tables--header-background-color: var(--color--legacy--blue--oxford-blue);
+  --theme--tables--header-text-color: var(--color--white);
+  --theme--tables--border-color: var(--color--legacy--blue--oxford-blue);
     
   /* Sections */
 
-  --theme--spacing--border-radius: {{ theme.spacing.border_radius }}px;
-  --theme--spacing--max-width: {{ theme.spacing.max_width }}px;
-  --theme--spacing--vertical-spacing: {{ theme.spacing.vertical_spacing }}px;
-  --theme--spacing--overlay-color: {{ theme.spacing.overlay_color.rgba }};
-  --theme--spacing--overlay-color--alpha-33: rgba({{ theme.spacing.overlay_color.color|convert_rgb }}, {{ theme.spacing.overlay_color.opacity / 300 }});
-  --theme--spacing--system-color: {{ theme.spacing.system_color.color }};
+  --theme--spacing--border-radius: 15px;
+  --theme--spacing--max-width: 1440px;
+  --theme--spacing--vertical-spacing: 37px;
+  --theme--spacing--overlay-color: var(--color--legacy--black--black--alpha-30);
+  --theme--spacing--overlay-color--alpha-33: var(--color--legacy--black--black--alpha-10);
+  --theme--spacing--system-color: var(--color--cherry);
 
-  /* Footer - TODO: field "background_color" does not exist in the theme footer settings. */
+  /* Footer */
 
-  --theme--footer--background-color: {{ theme.footer.background_color.rgba }};
-  --theme--footer--link-color: {{ theme.footer.link_color.color }};
-  --theme--footer--text-color: {{ theme.footer.text_color.color }};
-
-  /* Header - TODO: section "header" does not exist in the theme settings. */
-
-  --theme--header--background-color: {{ theme.header.background_color.rgba }};
-  --theme--header--menu-link-color: {{ theme.header.menu_link_color.color }};
-  --theme--header--menu-link-color--lightened: {{ color_variant(theme.header.menu_link_color.color, 40) }};
-  --theme--header--menu-link-color--darkened: {{ color_variant(theme.header.menu_link_color.color, -40) }};
-  --theme--header--child-menu-border-color: {{ theme.header.child_menu_border_color.color }};
+  --theme--footer--link-color: var(--color--white);
+  --theme--footer--text-color: var(--color--white);
 }

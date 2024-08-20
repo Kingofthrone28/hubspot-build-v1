@@ -1,0 +1,34 @@
+<!-- Start Image Hero module html  -->
+{% if module.menu %}
+  {% set page_link = menu(module.menu).children[0].url %}
+{% elif module.button_target %}
+  {% set page_link = content_by_id(module.button_target).absolute_url %}
+{% endif %}
+{% if page_link %}
+  <div class="image-hero">
+    {# This div allows us to left align the content #}
+    <div>
+      <h3 class="image-hero__heading">{{ module.title }}</h3>
+      {% if module.subheading %}
+        <p class="image-hero__subheading">{{ module.subheading }}</p>
+      {% endif %}
+      <a 
+        class="styled-button primary-button"
+        href="{{ page_link }}"
+      >{{ module.button_text }}</a>
+    </div>
+  </div>
+{% endif %}
+{% require_css %}
+  {% if module.image.src %}
+    <style>
+      {% scope_css %}
+        .image-hero {
+          --image--path: url({{ module.image.src }});
+          background: linear-gradient(0deg, var(--gradient--color-1) 0%, var(--gradient--color-1) 100%), linear-gradient(234deg, var(--gradient--color-2) -6.2%, var(--gradient--color-1) 67.75%), var(--image--path) var(--gradient--color-3) 50% / cover no-repeat;
+        }
+      {% end_scope_css%}
+    </style>
+  {% endif %}
+{% end_require_css %}
+<!-- End Image Hero module html  -->

@@ -4,6 +4,9 @@
   "screenshot_path" : "/Integrative Nutrition/images/IIN-Theme-Cover-Image.jpg",
   "enable_domain_stylesheets" : null,
   "is_available_for_new_content" : true,
+  "custom_fonts": [
+    "./fonts/Junicode"
+  ],
   "responsive_breakpoints" : [ {
     "name" : "mobile",
     "previewWidth" : {

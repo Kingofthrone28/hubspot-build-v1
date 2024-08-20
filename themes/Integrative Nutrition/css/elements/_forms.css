@@ -283,7 +283,7 @@ form .header {
   HubL tag) is an anchor (a.hs-button) rather than a real input, so it needs
   explicit CSS to avoid link styling */
   text-decoration: none;
-  line-height: var(--line-height--1);
+  line-height: var(--line-height--110);
   white-space: normal;
   word-break: break-word;
   color: var(--color--white);

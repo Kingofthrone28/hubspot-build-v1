@@ -10,7 +10,7 @@
 }
 
 .social-sharing a {
-  line-height: var(--line-height--0);
+  line-height: var(--line-height--100);
 }
 
 .social-sharing__icon {

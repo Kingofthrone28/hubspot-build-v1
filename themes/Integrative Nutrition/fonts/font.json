@@ -1,0 +1,57 @@
+{
+  "name": "Junicode",
+  "default": "Regular",
+  "fallback": "'Times New Roman', serif",
+  "variants": [
+    {
+      "name": "Regular",
+      "files": [
+        {
+          "file": "./junicode-regular-webfont.woff2",
+          "format": "woff2"
+        }
+      ],
+      "styles": {
+        "font-weight": 400
+      }
+    },
+    {
+      "name": "Regular Italic",
+      "files": [
+        {
+          "file": "./junicode-italic-webfont.woff2",
+          "format": "woff2"
+        }
+      ],
+      "styles": {
+        "font-style": "italic",
+        "font-weight": 400
+      }
+    },
+    {
+      "name": "Bold",
+      "files": [
+        {
+          "file": "./junicode-bold-webfont.woff2",
+          "format": "woff2"
+        }
+      ],
+      "styles": {
+        "font-weight": 700
+      }
+    },
+    {
+      "name": "Bold Italic",
+      "files": [
+        {
+          "file": "./junicode-bolditalic-webfont.woff2",
+          "format": "woff2"
+        }
+      ],
+      "styles": {
+        "font-style": "italic",
+        "font-weight": 700
+      }
+    }
+  ]
+}

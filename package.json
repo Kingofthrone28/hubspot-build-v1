@@ -26,9 +26,9 @@
     "css:format": "prettier './themes/Integrative Nutrition/**/*.css' --write --ignore-path=.stylelintignore --ignore-path=.prettierignore",
     "hs-sync-pages": "node ./scripts/import-pages.mjs",
     "js:build": "npm run js:fix && npm run js:format && npm run js:lint",
-    "js:lint": "eslint './themes/Integrative Nutrition/js/**/*.js'",
+    "js:lint": "eslint './themes/Integrative Nutrition/**/*.js'",
     "js:fix": "npm run js:lint -- --fix",
-    "js:format": "prettier './themes/Integrative Nutrition/js/**/*.js' --write",
+    "js:format": "prettier './themes/Integrative Nutrition/**/*.js' --write",
     "sync": "hs fetch --account=iin-production / --overwrite"
   }
 }
