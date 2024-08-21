@@ -16,7 +16,7 @@
       form.onFormReady((formElements) => {
         const input = document.createElement('input');
         input.setAttribute('type', 'hidden');
-        input.setAttribute('name', 'irclickid');
+        input.setAttribute('name', '_irclickid');
         input.setAttribute('value', irclickid);
         formElements[0].appendChild(input);
       });
