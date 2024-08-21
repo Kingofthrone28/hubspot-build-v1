@@ -28,5 +28,9 @@
     "js:fix": "npm run js:lint -- --fix",
     "js:format": "prettier './themes/Integrative Nutrition/**/*.js' --write",
     "sync": "hs fetch --account=iin-production / --overwrite"
+  },
+  "dependencies": {
+    "@hubspot/api-client": "^11.2.0",
+    "inquirer": "^10.1.8"
   }
 }
