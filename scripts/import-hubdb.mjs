@@ -98,17 +98,19 @@ async function getHubdbTables() {
 }
 
 async function postAllHubdbTables(tables) {
-  const formRequest = [];
-  for (const table of tables) {
-    if (await hubspotClientProd.cms.hubdb.tablesApi.getTableDetails(table.name)) {
-      console.log(table.name + " already created");
-    } else {
-      const promise = hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
-      formRequest.push(promise);
+  const promises = tables.map(({ name }) => hubspotClientProd.cms.hubdb.tablesApi.getTableDetails(name))
+  const responses = await Promise.allSettled(promises);
+  const postPromises = responses.map((response, index) => {
+    if (response.status === 'rejected') {
+      const table = tables[index]
+      console.log(`${ table.name } already created`);
+      return hubspotClientDev.cms.hubdb.tablesApi.createTable(table)
     }
-  }
 
-  const responses = await Promise.all(formRequest);
+    return Promise.resolve()
+  })
+
+  await Promise.all(postPromises)
   console.info('POST hubdb tables complete');
 }
 
@@ -153,7 +155,7 @@ async function checkHubdbTableCreation(tables) {
       return hubspotClientDev.cms.hubdb.tablesApi.createTable(table);
     }
 
-    return undefined;
+    return Promise.resolve();
   });
   await Promise.all(createResponses);
   console.info('create in checkHubdbTableCreation complete');
