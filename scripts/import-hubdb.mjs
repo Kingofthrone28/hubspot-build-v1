@@ -55,16 +55,19 @@ async function getKeys() {
 }
 
 async function runImport(prodKey, devKey) {
-  const duration = 3000;
+  const duration = 2000;
   hubspotClientProd = new hubspot.Client({ accessToken: prodKey });
   hubspotClientDev = new hubspot.Client({ accessToken: devKey });
 
   try {
     const databaseTables = await getHubdbTables();
-    await postAllHubdbTables(databaseTables);
+    await wait(duration);
     await checkHubdbTableCreation(databaseTables);
+    await postAllHubdbTables(databaseTables);
+    await wait(duration);
     const existingTables = await getHubdbRows();
     await wait(duration);
+    await checkHubdbTableCreation(databaseTables);
     const newTables = existingTables.map((table) => ({
       inputs: table,
     }));
