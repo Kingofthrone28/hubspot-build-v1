@@ -324,6 +324,10 @@
 
           const amount = parseFloat(selectedVariant.price?.amount) || 0;
           const currencyCode = selectedVariant.price?.currencyCode || 'USD';
+          const addedVariantPrice = parseFloat(
+            selectedVariant.price?.amount || 0.0,
+          );
+          const varientGidPath = 'gid://shopify/ProductVariant/';
 
           if (amount || amount === 0) {
             $('.jd-add-pop .jd-add-pop-price').text(
@@ -341,7 +345,7 @@
             $('.jd-add-pop').removeClass('jd-add-pop-show');
           }, msToCloseAddPopUp);
 
-          let couponTitle = 0;
+          let couponTitle = 'NA';
           let discountAmount = 0;
           const anyVariant = product.variants[0];
 
@@ -364,19 +368,19 @@
             event: 'add_to_cart',
             ecommerce: {
               currency: currencyCode,
-              value: parseFloat(product.variants[0].price.amount),
+              value: addedVariantPrice,
               product_type: 'Individual',
               coupon: couponTitle,
               items: [
                 {
-                  item_id: product.id.match(/\/(\d+)$/)[1],
+                  item_id: moduleData.productID,
                   item_name: product.title,
                   item_type: product.productType,
-                  variant_id: product.variants[0].id.match(/\/(\d+)$/)[1],
-                  price: parseFloat(product.variants[0].price.amount),
+                  variant_id: selectedVariant.id.replace(varientGidPath, ''),
+                  price: addedVariantPrice,
                   discount: discountAmount,
                   quantity: 1,
-                  sku: product.variants[0].sku || 'NA',
+                  sku: selectedVariant.sku || 'NA',
                 },
               ],
             },
@@ -455,12 +459,58 @@
       }
 
       checkSelectedOptions();
+      return { product, variant };
     } catch (e) {
       console.error(e);
     }
+    return undefined;
   };
 
-  getProductData();
+  const createViewItemEvent = (productData, matchedVariant) => {
+    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
+
+    let couponTitle = 'NA';
+    let discountAmount = 0;
+
+    if (
+      Array.isArray(matchedVariant.discountAllocations) &&
+      matchedVariant.discountAllocations.length
+    ) {
+      matchedVariant.discountAllocations.forEach((discountAllocation) => {
+        couponTitle = discountAllocation?.discountApplication?.title;
+        discountAmount = discountAllocation?.allocatedAmount?.amount;
+      });
+    }
+
+    const viewItemPayLoad = {
+      event: 'view_item',
+      ecommerce: {
+        product_type: 'Individual',
+        currency: matchedVariant.price.currencyCode,
+        value: parseFloat(itemPrice),
+        coupon: couponTitle,
+        items: [
+          {
+            item_id: moduleData.productID,
+            item_name: productData.title,
+            item_type: productData.productType || 'NA',
+            variant_id: matchedVariant.id.replace(varientGidPath, ''),
+            price: parseFloat(itemPrice),
+            sku: matchedVariant.sku || 'NA',
+            discount: discountAmount,
+            quantity: productData?.quantity || 1,
+          },
+        ],
+      },
+    };
+    // Trigger View item tracking event
+    triggerECommEvent(viewItemPayLoad);
+  };
+
+  getProductData().then((data) => {
+    createViewItemEvent(data.product, data.variant);
+  });
 
   /* Sticky nav */
   $('.pdp-sticky-wrap').appendTo('body');
