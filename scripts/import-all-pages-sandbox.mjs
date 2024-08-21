@@ -31,12 +31,12 @@ async function getKeys() {
     {
       type: 'input',
       name: 'prodKey',
-      message: "What's your prod api key?",
+      message: "What's the Access Token: Production (Blogs)?",
     },
     {
       type: 'input',
       name: 'stagingKey',
-      message: "What's your sandbox api key?",
+      message: "What's the Access Token: Sandbox?",
     },
   ];
 
