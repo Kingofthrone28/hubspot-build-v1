@@ -1,9 +1,5 @@
 import { readFileSync } from 'fs';
-
-// eslint-disable-next-line
 import hubspot from '@hubspot/api-client';
-
-// eslint-disable-next-line
 import inquirer from 'inquirer';
 
 const fileData = readFileSync('./scripts/file-map.json', 'utf8');
@@ -60,7 +56,7 @@ async function getKeys() {
 
 function createPageObject(data) {
   const pageObject = {};
-  [
+  const keys = [
     'attachedStylesheets',
     'currentState',
     'featuredImage',
@@ -78,7 +74,9 @@ function createPageObject(data) {
     'templatePath',
     'themeSettingsValues',
     'useFeaturedImage',
-  ].forEach((key) => {
+  ];
+
+  keys.forEach((key) => {
     if (data[key]) {
       pageObject[key] = data[key];
     }
@@ -102,7 +100,7 @@ function createBlogObject(data, contentGroupId) {
 
   blogObject.contentGroupId = contentGroupId;
 
-  [
+  const keys = [
     'attachedStylesheets',
     'categoryId',
     'contentTypeCategory',
@@ -116,7 +114,9 @@ function createBlogObject(data, contentGroupId) {
     'subcategory',
     'templatePath',
     'useFeaturedImage',
-  ].forEach((key) => {
+  ];
+
+  keys.forEach((key) => {
     if (data[key]) {
       blogObject[key] = data[key];
     }
@@ -172,7 +172,7 @@ async function postAllPages(pages) {
     formRequests.push(promise);
   }
 
-  // eslint-disable-next-line
+  // eslint-disable-next-line compat/compat
   await Promise.allSettled(formRequests);
   console.info('POST all site pages complete');
   // error handling
@@ -200,6 +200,7 @@ async function postAllLandingPages(pages) {
     formRequests.push(promise);
   }
 
+  // eslint-disable-next-line compat/compat
   await Promise.allSettled(formRequests);
   // error handling
   console.info('POST all landing pages complete');
@@ -207,8 +208,6 @@ async function postAllLandingPages(pages) {
 
 async function getListBlogs(contentGroupId) {
   const promises = [];
-  const archived = undefined;
-  const property = undefined;
   for (const id of blogPagesIds) {
     const objectId = id;
     const promise =

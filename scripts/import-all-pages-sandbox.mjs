@@ -2,8 +2,8 @@ import { readFileSync } from 'fs';
 import hubspot from '@hubspot/api-client';
 import inquirer from 'inquirer';
 
-const data = readFileSync('./file-map.json', 'utf8');
-const pageMap = JSON.parse(data);
+const fileData = readFileSync('./file-map.json', 'utf8');
+const pageMap = JSON.parse(fileData);
 const landingPagesIds = Object.values(pageMap.landingPages);
 const sitePagesIds = Object.values(pageMap.webpages);
 let after;

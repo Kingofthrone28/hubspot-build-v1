@@ -79,7 +79,7 @@ async function runImport(prodKey, devKey) {
         table,
       );
     });
-    const results = await Promise.all(createPromises);
+    await Promise.all(createPromises);
     await publishTables(devKey);
   } catch (error) {
     console.error(error);
@@ -150,6 +150,8 @@ async function checkHubdbTableCreation(tables) {
   const promises = tables.map(({ name }) =>
     hubspotClientDev.cms.hubdb.tablesApi.getTableDetails(name),
   );
+
+  // eslint-disable-next-line compat/compat
   const getTableResponses = await Promise.allSettled(promises);
   const createResponses = getTableResponses.map((response, index) => {
     if (response.status === 'rejected') {
