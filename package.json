@@ -22,15 +22,10 @@
     "css:lint": "stylelint 'themes/Integrative Nutrition/**/*.css'",
     "css:fix": "npm run css:lint -- --fix",
     "css:format": "prettier './themes/Integrative Nutrition/**/*.css' --write --ignore-path=.stylelintignore --ignore-path=.prettierignore",
-    "hs-sync-pages": "node ./scripts/import-pages.mjs",
     "js:build": "npm run js:fix && npm run js:format && npm run js:lint",
     "js:lint": "eslint './themes/Integrative Nutrition/**/*.js'",
     "js:fix": "npm run js:lint -- --fix",
     "js:format": "prettier './themes/Integrative Nutrition/**/*.js' --write",
     "sync": "hs fetch --account=iin-production / --overwrite"
-  },
-  "dependencies": {
-    "@hubspot/api-client": "^11.2.0",
-    "inquirer": "^10.1.8"
   }
 }
