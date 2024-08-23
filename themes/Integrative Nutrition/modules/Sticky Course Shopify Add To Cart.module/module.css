@@ -1,7 +1,6 @@
 /* Header override */
 .jd-header-wrap {
   position: relative !important;
-  background: var(--color--white) !important;
 }
 
 .jd-header-wrap.ishidden {

@@ -1,3 +1,7 @@
+.jd-header-wrap.chopra {
+  padding-bottom: 0;
+}
+
 .jd-header-wrap.chopra .deal-bar {
   background: var(--color--legacy--blue--oxford-blue);
 }
@@ -16,10 +20,6 @@
   width: 20px;
   height: 20px;
   content: '';
-}
-
-.jd-header-wrap.chopra {
-  padding-bottom: 0;
 }
 
 .split-logo {

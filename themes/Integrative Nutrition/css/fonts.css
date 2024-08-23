@@ -4,7 +4,7 @@
   font-family: Junicode;
   font-weight: 400;
   font-style: normal;
-  src: url({{ get_asset_url('/Integrative Nutrition/fonts/Junicode/junicode-regular-webfont.woff2') }})
+  src: url('{{ get_asset_url("/Integrative Nutrition/fonts/Junicode/junicode-regular-webfont.woff2") }}')
     format('woff2');
 }
 
@@ -12,7 +12,7 @@
   font-family: Junicode;
   font-weight: 400;
   font-style: italic;
-  src: url({{ get_asset_url('/Integrative Nutrition/fonts/Junicode/junicode-italic-webfont.woff2') }})
+  src: url('{{ get_asset_url("/Integrative Nutrition/fonts/Junicode/junicode-italic-webfont.woff2") }}')
     format('woff2');
 }
 
@@ -20,7 +20,7 @@
   font-family: Junicode;
   font-weight: 700;
   font-style: normal;
-  src: url({{ get_asset_url('/Integrative Nutrition/fonts/Junicode/junicode-bold-webfont.woff2') }})
+  src: url('{{ get_asset_url("/Integrative Nutrition/fonts/Junicode/junicode-bold-webfont.woff2") }}')
     format('woff2');
 }
 
@@ -28,7 +28,7 @@
   font-family: Junicode;
   font-weight: 700;
   font-style: italic;
-  src: url({{ get_asset_url('/Integrative Nutrition/fonts/Junicode/junicode-bolditalic-webfont.woff2') }})
+  src: url('{{ get_asset_url("/Integrative Nutrition/fonts/Junicode/junicode-bolditalic-webfont.woff2") }}')
     format('woff2');
 }
 
