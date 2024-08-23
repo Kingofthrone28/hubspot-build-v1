@@ -1,0 +1,158 @@
+{% macro get_markup(value) %}
+  {% set class = value ? 'value' : 'no-value' %}
+  <span class="{{ class }}">&nbsp;&nbsp;&nbsp;{{ value }}</span>
+{% endmacro %}
+
+<!-- Begin Test Variables module html  -->
+<div class="test-variables">
+  <h1>Test Hubspot Variables</h1>
+ 
+  <section>
+    <h2>All Templates</h2>
+    <p>
+      <span class="label">content.absolute_url:</span>
+      {{ get_markup(content.absolute_url) }}
+    </p>
+    <p>
+      <span class="label">content.archived:</span>
+      {{ get_markup(content.archived) }}
+    </p>
+    <p>
+      <span class="label">content.author_email:</span>
+      {{ get_markup(content.author_email) }}
+    </p>
+    <p>
+      <span class="label">content.author_name:</span>
+      {{ get_markup(content.author_name) }}
+    </p>
+    <p>
+      <span class="label">content.author_username:</span>
+      {{ get_markup(content.author_username) }}
+    </p>
+    <p>
+      <span class="label">content.campaign:</span>
+      {{ get_markup(content.campaign) }}
+    </p>
+    <p>
+      <span class="label">content.campaign_name:</span>
+      {{ get_markup(content.campaign_name) }}
+    </p>
+    <p>
+      <span class="label">content.created:</span>
+      {{ get_markup(content.created) }}
+    </p>
+    <p>
+      <span class="label">content.meta_description:</span>
+      {{ get_markup(content.meta_description) }}
+    </p>
+    <p>
+      <span class="label">content.name:</span>
+      {{ get_markup(content.name) }}
+    </p>
+    <p>
+      <span class="label">content.publish_date:</span>
+      {{ get_markup(content.publish_date) }}
+    </p>
+    <p>
+      <span class="label">content.publish_date_localized:</span>
+      {{ get_markup(content.publish_date_localized) }}
+    </p>
+    <p>
+      <span class="label">content.template_path:</span>
+      {{ get_markup(content.template_path) }}
+    </p>
+    <p>
+      <span class="label">content.slug:</span>
+      {{ get_markup(content.slug) }}
+    </p>
+    <p>
+      <span class="label">content.absolute_url:</span>
+      {{ get_markup(content.absolute_url) }}
+    </p>
+    <p>
+      <span class="label">content.updated:</span>
+      {{ get_markup(content.updated) }}
+    </p>
+    <p>
+      <span class="label">content.publish_date:</span>
+      {{ get_markup(content.publish_date) }}
+    </p>
+    <p>
+      <span class="label">content.name:</span>
+      {{ get_markup(content.name) }}
+    </p>
+  </section>
+  <section>
+    <h2>All Templates: Is In...</h2>
+    <!-- generics -->
+    <p>
+      <span class="label">is_in_editor:</span>
+      {{ get_markup(is_in_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_global_content_editor:</span>
+      {{ get_markup(is_in_global_content_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_hs_app:</span>
+      {{ get_markup(is_in_hs_app) }}
+    </p>
+    <p>
+      <span class="label">is_in_previewer:</span>
+      {{ get_markup(is_in_previewer) }}
+    </p>
+
+    {# Blog #}
+    <p>
+      <span class="label">is_in_blog_post_editor:</span>
+      {{ get_markup(is_in_blog_post_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_blog_post_previewer:</span>
+      {{ get_markup(is_in_blog_post_previewer) }}
+    </p>
+
+    {# Email #}
+    <p>
+      <span class="label">is_in_email_editor:</span>
+      {{ get_markup(is_in_email_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_email_previewer:</span>
+      {{ get_markup(is_in_email_previewer) }}
+    </p>
+
+    {# Module #}
+    <p>
+      <span class="label">is_in_module_previewer:</span>
+      {{ get_markup(is_in_module_previewer) }}
+    </p>
+
+    {# Page #}
+    <p>
+      <span class="label">is_in_page_editor:</span>
+      {{ get_markup(is_in_page_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_page_previewer:</span>
+      {{ get_markup(is_in_page_previewer) }}
+    </p>
+
+    {# Template #}
+    <p>
+      <span class="label">is_in_template_previewer:</span>
+      {{ get_markup(is_in_template_previewer) }}
+    </p>
+
+    {# Theme #}
+    <p>
+      <span class="label">is_in_theme_editor:</span>
+      {{ get_markup(is_in_theme_editor) }}
+    </p>
+    <p>
+      <span class="label">is_in_theme_previewer:</span>
+      {{ get_markup(is_in_theme_previewer) }}
+    </p>
+  </section>
+</div>
+<!-- End Test Variables module html  -->
