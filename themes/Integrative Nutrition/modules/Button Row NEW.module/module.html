@@ -21,7 +21,7 @@
       id="{{ name }}_btn_{{ loop.index }}" 
       data-target="#{{ item.jump_link }}" 
       class="{{ classes }}"
-      data-track-label="{{ item.dl_label }}"
+      data-tracking-id="{{ item.dl_label }}"
     >
       {{ item.text_field }}
       {% if item.show_arrow %}
@@ -36,8 +36,8 @@
     <a 
       id="{{ name }}_btn_{{ loop.index }}" 
       href="{{ href }}" 
-      class="{{ classes }}"      
-      data-track-label="{{ item.dl_label }}"
+      class="{{ classes }}"  
+      data-tracking-id="{{ item.dl_label }}"
       {% if item.link_field.open_in_new_tab %}target="_blank"{% endif %}
       {% if item.link_field.rel %}rel="{{ item.link_field.rel }}"{% endif %}
     > 

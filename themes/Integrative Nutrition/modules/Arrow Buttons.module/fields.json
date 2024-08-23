@@ -217,18 +217,6 @@
       "opacity" : 100
     }
   }, {
-    "allow_new_line": false,
-    "default": "",
-    "display_width": null,
-    "id": "d7047659-b5bf-68ce-b69b-ef239e873b7f",
-    "label": "Data Tracking",
-    "locked": false,
-    "name": "dl_label",
-    "required": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "validation_regex": ""
-   }, {
     "id" : "efe11813-56ca-5ae0-d31d-47055e6938ef",
     "name" : "buttons_sub_row",
     "display_width" : null,
@@ -325,6 +313,18 @@
       "text_field" : "Button",
       "show_arrow_sub" : true
     } ]
+  }, {
+    "id" : "d7047659-b5bf-68ce-b69b-ef239e873b7f",
+    "name" : "dl_label",
+    "display_width" : null,
+    "label" : "Data Tracking",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -411,7 +411,8 @@
         "color" : "#2d3841",
         "opacity" : 100
       }
-    } ]
+    } ],
+    "dl_label" : ""
   }, {
     "link_field" : {
       "url" : {
@@ -493,7 +494,8 @@
         "color" : "#2d3841",
         "opacity" : 100
       }
-    } ]
+    } ],
+    "dl_label" : ""
   }, {
     "link_field" : {
       "url" : {
@@ -575,7 +577,8 @@
         "color" : "#2d3841",
         "opacity" : 100
       }
-    } ]
+    } ],
+    "dl_label" : ""
   } ]
 }, {
   "id" : "4a69c66f-84c5-5ef4-2f16-80cab72009de",

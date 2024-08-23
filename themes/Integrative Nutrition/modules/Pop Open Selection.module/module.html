@@ -1,6 +1,6 @@
 {% if module.content_type == 'button' %}
 <div class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-tracking-id="{{ module.dl_label }}" data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="text-align: {{ module.style.alignment }};">
-  <span class="hs-button open-popup" data-open="pop-{{ module.pop_up_id }}" style="background: {{ module.style.button_color.color }};color: {{ module.style.text_color.color }};">{{ module.button_text }}</span>
+  <span class="hs-button open-popup" data-label="{{ module.button_text }}" data-open="pop-{{ module.pop_up_id }}" style="background: {{ module.style.button_color.color }};color: {{ module.style.text_color.color }};">{{ module.button_text }}</span>
 </div>
 {% else %}
 <div class="open-popup{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} data-open="pop-{{ module.pop_up_id }}">

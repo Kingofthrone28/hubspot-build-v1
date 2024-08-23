@@ -42,18 +42,6 @@
   "type" : "text",
   "default" : "Check out our blog for more information about what we do"
 }, {
-  "allow_new_line": false,
-  "default": "",
-  "display_width": null,
-  "id": "55db3110-762c-8495-e69d-0efd78da69e8",
-  "label": "Data Tracking",
-  "locked": false,
-  "name": "dl_label",
-  "required": false,
-  "show_emoji_picker": false,
-  "type": "text",
-  "validation_regex": ""
- },{
   "id" : "570d5f85-8072-dbba-7c7b-12539a109940",
   "name" : "style",
   "display_width" : null,
@@ -405,4 +393,16 @@
       "apply_animation_to" : "column"
     }
   }
+}, {
+  "id" : "55db3110-762c-8495-e69d-0efd78da69e8",
+  "name" : "dl_label",
+  "display_width" : null,
+  "label" : "Data Tracking",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
 } ]

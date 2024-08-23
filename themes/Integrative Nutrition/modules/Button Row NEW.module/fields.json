@@ -116,7 +116,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "tracking not set yet"
+    "default" : ""
   }, {
     "id" : "f45d3af8-34fb-60d7-2735-89bc12fe029e",
     "name" : "link_field",
@@ -178,7 +178,7 @@
   "type" : "group",
   "default" : [ {
     "text_field" : "Button Text",
-    "dl_label" : "tracking not set yet",
+    "dl_label" : "",
     "link_field" : {
       "url" : {
         "content_id" : null,
@@ -191,7 +191,7 @@
     "show_arrow" : true
   }, {
     "text_field" : "Button Text",
-    "dl_label" : "tracking not set yet",
+    "dl_label" : "",
     "link_field" : {
       "url" : {
         "content_id" : null,
@@ -204,7 +204,7 @@
     "show_arrow" : true
   }, {
     "text_field" : "Button Text",
-    "dl_label" : "tracking not set yet",
+    "dl_label" : "",
     "link_field" : {
       "url" : {
         "content_id" : null,

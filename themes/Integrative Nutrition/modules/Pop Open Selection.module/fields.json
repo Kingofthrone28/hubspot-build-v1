@@ -63,18 +63,6 @@
   "type" : "text",
   "default" : "Click Me"
 }, {
-  "allow_new_line": false,
-  "default": "",
-  "display_width": null,
-  "id": "21e02bd8-81a1-f258-07e0-9038ee961b00",
-  "label": "Data Tracking",
-  "locked": false,
-  "name": "dl_label",
-  "required": false,
-  "show_emoji_picker": false,
-  "type": "text",
-  "validation_regex": ""
- }, {
   "id" : "2dc0d7c6-df38-8212-e070-f04bdc64a242",
   "name" : "style",
   "display_width" : null,
@@ -207,4 +195,16 @@
       "apply_animation_to" : "column"
     }
   }
+}, {
+  "id" : "21e02bd8-81a1-f258-07e0-9038ee961b00",
+  "name" : "dl_label",
+  "display_width" : null,
+  "label" : "Data Tracking",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
 } ]
