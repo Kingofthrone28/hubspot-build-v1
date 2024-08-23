@@ -1,3 +1,8 @@
+{% set is_sample_class = module.configuration == 'sample-class' %}
+{% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
+{% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
+
+{% if not is_sample_class %}
 <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
     <div class="pdp-top-slide-btns">
@@ -71,33 +76,48 @@
     </div>
   </div>
 </div>
+{% endif %}
 
-<div class="pdp-sticky-wrap">
+<div class="pdp-sticky-wrap {{ sticky_show }}">
   <div class="pdp-sticky-header-wrap">
     <div class="pdp-sticky">
       <div class="pdp-sticky-inner">
         <div class="pdp-sticky-head">
           <div>
-            <div><img src="{{ module.category_image.src }}" /></div>
+            <div>
+              <img src="{{ module.category_image.src }}" />
+            </div>
             <h3>{{ module.course_name }}</h3>
           </div>
           <div>{{ module.sticky_nav.subhead }}</div>
         </div>
         <div class="pdp-sticky-btns">
-          {% if module.sticky_nav.left_button_link %}
+          {% if module.sticky_nav.left_button_link.href and module.sticky_nav.left_button_text %}
           <div>
-            <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button pdp-sticky-btn-left" target="_blank"> 
-              {{ module.sticky_nav.left_button_text }}
-              <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
-            </a>
+            {% if is_sample_class %}
+              <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button pdp-sticky-btn-left secondary-button arrow-link {{ arrow_link_direction }}">
+                {{ module.sticky_nav.left_button_text }}
+              </a>
+            {% else %}
+              <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button pdp-sticky-btn-left" target="_blank"> 
+                {{ module.sticky_nav.left_button_text }}
+                <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
+              </a>
+            {% endif %}
           </div>
           {% endif %}
           <div>
-            <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button light-button pdp-sticky-btn-right"> 
-              Enroll
-              <i class="pdp-sticky-enroll-chev-down fal fal fa-chevron-down" style="padding-left: 10px;"></i>
-              <i class="pdp-sticky-enroll-chev-up fal fal fa-chevron-up" style="padding-left: 10px;"></i>
-            </a>
+            {% if is_sample_class and module.sticky_nav.right_button_text %}
+              <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"> 
+                {{ module.sticky_nav.right_button_text }}
+              </a>
+            {% else %}
+              <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button light-button pdp-sticky-btn-right"> 
+                Enroll
+                <i class="pdp-sticky-enroll-chev-down fal fal fa-chevron-down" style="padding-left: 10px;"></i>
+                <i class="pdp-sticky-enroll-chev-up fal fal fa-chevron-up" style="padding-left: 10px;"></i>
+              </a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -123,6 +143,34 @@
   </div>
 </div>
 
+{% if is_sample_class %}
+  <!-- Added to cart pop up -->
+  <div class="jd-add-pop">
+  <div class="jd-add-pop-item-added">
+    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="m2.25 12.321 7.27 6.491c.143.127.321.19.499.19.206 0 .41-.084.559-.249l11.23-12.501c.129-.143.192-.321.192-.5 0-.419-.338-.75-.749-.75-.206 0-.411.084-.559.249l-10.731 11.945-6.711-5.994c-.144-.127-.322-.19-.5-.19-.417 0-.75.336-.75.749 0 .206.084.412.25.56" fill-rule="nonzero"/>
+    </svg>
+    <strong>Item added to cart</strong>
+    <svg class="jd-add-pop-close" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
+    </svg>
+  </div>
+  <div class="jd-add-pop-content">
+    <div class="jd-add-pop-img"><div></div></div>
+    <div class="jd-add-pop-content-main">
+      <div class="jd-add-pop-cat"></div>
+      <div class="jd-add-pop-name"></div>
+      <div class="jd-add-pop-options"></div>
+      <div class="jd-add-pop-price"></div>
+    </div>
+  </div>
+  <div class="jd-add-pop-btns">
+    <a href="{{ module.continue_shopping_link.url.href }}" class="jd-request-btn hs-button jd-request-btn-inverse">Continue Shopping</a>
+    <a href="{{ module.cart_link.url.href }}" class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link">View Cart</a>
+  </div>
+  </div>
+<!-- End added to cart pop up -->
+{% endif %}
 
 {% require_css %}
 <style>
@@ -139,12 +187,12 @@
   {%- set raw_data = {
     category: module.category_text,
     courseName: module.course_name,
+    isSampleClass: is_sample_class,
     name: 'pdp_options_' + name,
     productID: module.product_id
   } %}
   (function () {
     const jsonData = JSON.stringify({{ raw_data|tojson }});
-
     window.sessionStorage.setItem('course_shopify_add_to_cart', jsonData);
   })();
 </script>

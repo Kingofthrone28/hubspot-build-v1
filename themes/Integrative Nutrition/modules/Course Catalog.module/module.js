@@ -24,15 +24,18 @@ function startViewCatalog() {
       extractItemData(course, index),
     );
 
-    const viewItemsList = {
-      event: 'view_item_list',
-      ecommerce: {
-        item_list_name: 'view_catalog_name',
-        item_list_id: 'view_catalog_id',
-        items,
-      },
-    };
-    triggerECommEvent(viewItemsList);
+    if (items.length) {
+      // Sending event only in case catalog elements exists 
+      const viewItemsList = {
+        event: 'view_item_list',
+        ecommerce: {
+          item_list_name: 'view_catalog_name',
+          item_list_id: 'view_catalog_id',
+          items,
+        },
+      };
+      triggerECommEvent(viewItemsList);
+    }
   } catch (error) {
     console.error(error);
   }

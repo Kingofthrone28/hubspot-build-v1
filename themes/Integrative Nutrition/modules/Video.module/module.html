@@ -1,94 +1,135 @@
-{% if module.style.background.choice_field == 'color' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +');' %}{% elif module.style.background.choice_field == 'gradient' %}{% set background = 'background: radial-gradient(circle, rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') 0%, rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +') 100%)' if module.style.background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ module.style.background.gradient_direction +', rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +'), rgba('+ module.style.background.background_color_2.color|convert_rgb +', '+ module.style.background.background_color_2.opacity / 100 +'));' %}{% elif module.style.background.choice_field == 'image' %}{% set background = 'background: rgba('+ module.style.background.background_color.color|convert_rgb +', '+ module.style.background.background_color.opacity / 100 +') url('+ module.style.background.image_field.src +') center no-repeat;background-size: cover;' %}{% endif %}
-<div class="{% if module.style.animation.apply_animation_to == 'this' %} {{ module.style.animation.animation }}{% else %} load-parent{% endif %} {% if module.show_video_in_modal %} oembed_modal_container{% endif %}"{% if module.style.animation.apply_animation_to != 'this' %} data-load="{{ module.style.animation.animation }}" data-target="{{ module.style.animation.apply_animation_to }}"{% endif %} style="{{background}}{{ module.style.spacing_field.css }};{% for position in module.style.border_placement %}border-{{position}}: {{module.style.border_field.top.width.value}}{{module.style.border_field.top.width.units}} {{module.style.border_field.top.style}} rgba({{module.style.border_field.top.color|convert_rgb}}, {{module.style.border_field.top.opacity / 100}});{% endfor %}border-radius: {{ module.style.border_radius }}px;">
-  {% if module.embed_field.oembed_url || module.embed_field.embed_html || module.hubspot_video.player_id != null %}
-  {% if module.video_type == "embed" %}
-    {% if module.embed_field.source_type == "oembed" %}
+{% set style = module.style %}
+{% set animation = style.animation %}
+{% set background = style.background %}
+{% set background_color = background.background_color %}
+{% set background_color_2 = background.background_color_2 %}
+{% set border = style.border_field %}
+{% set embed = module.embed_field %}
+{% set play_button_color = module.style_options.oembed_thumbnail_play_button_color.color %}
+{% set video = module.hubspot_video %}
 
-      <div class="oembed_container {% if module.embed_field.size_type == 'auto_full_width' %} oembed_container--full-size{% endif %}" id="oembed_container-{{name}}">
+{% if background.choice_field == 'color' %}
+  {% set background = 'background: rgba('+ background_color.color|convert_rgb +', '+ background_color.opacity / 100 +');' %}
+{% elif background.choice_field == 'gradient' %}
+  {% set background = 'background: radial-gradient(circle, rgba('+ background_color.color|convert_rgb +', '+ background_color.opacity / 100 +') 0%, rgba('+ background_color_2.color|convert_rgb +', '+ background_color_2.opacity / 100 +') 100%)' if background.gradient_direction == 'circle' else 'background: linear-gradient' +'('+ background.gradient_direction +', rgba('+ background_color.color|convert_rgb +', '+ background_color.opacity / 100 +'), rgba('+ background_color_2.color|convert_rgb +', '+ background_color_2.opacity / 100 +'));' %}
+{% elif background.choice_field == 'image' %}
+  {% set background = 'background: rgba('+ background_color.color|convert_rgb +', '+ background_color.opacity / 100 +') url('+ background.image_field.src +') center no-repeat;background-size: cover;' %}
+{% endif %}
 
-        {% if module.oembed_thumbnail.src %}
-          <button class="oembed_custom-thumbnail" style="background-image:url({{module.oembed_thumbnail.src}})">
-            <span class="oembed-info">Video player - {{ module.oembed_thumbnail.alt }} - Click to play video</span>
-            <div class="oembed_custom-thumbnail_icon">
-              <svg viewBox="0 0 135.39 149.4"><path d="M371.2,398.69l-127.79,71c-1.47.83-2.74.93-3.8.28a3.69,3.69,0,0,1-1.59-3.46V324.88a3.73,3.73,0,0,1,1.59-3.47,3.66,3.66,0,0,1,3.8.29l127.79,71c1.47.84,2.21,1.82,2.21,3S372.67,397.85,371.2,398.69Z" transform="translate(-238.02 -321)"></path></svg>
-            </div>
-          </button>
-        {% endif %}
+<div
+  class="{% if animation.apply_animation_to == 'this' %} {{ animation.animation }}{% else %} load-parent{% endif %} {% if module.show_video_in_modal %} oembed_modal_container{% endif %}"
+  {% if animation.apply_animation_to != 'this' %}
+  data-load="{{ animation.animation }}"
+  data-target="{{ animation.apply_animation_to }}"
+  {% endif %}
+  style="{{ background }}{{ style.spacing_field.css }};{% for position in style.border_placement %}border-{{ position }}: {{ border.top.width.value }}{{ border.top.width.units }} {{ border.top.style }} rgba({{ border.top.color|convert_rgb }}, {{ border.top.opacity / 100 }});{% endfor %}border-radius: {{ style.border_radius }}px;"
+>
+  {% if embed.oembed_url || embed.embed_html || video.player_id != null %}
+    {% if module.video_type == "embed" %}
+      {% if embed.source_type == "oembed" %}
+        <div
+          class="oembed_container {% if embed.size_type == 'auto_full_width' %} oembed_container--full-size{% endif %}"
+          id="oembed_container-{{ name }}"
+        >
+          {% if module.oembed_thumbnail.src %}
+            <button
+              class="oembed_custom-thumbnail"
+              style="background-image: url({{ module.oembed_thumbnail.src }})"
+            >
+              <span class="oembed-info">Video player - {{ module.oembed_thumbnail.alt }} - Click to play video</span>
+              <div class="oembed_custom-thumbnail_icon">
+                <svg viewBox="0 0 135.39 149.4">
+                  <path d="M371.2,398.69l-127.79,71c-1.47.83-2.74.93-3.8.28a3.69,3.69,0,0,1-1.59-3.46V324.88a3.73,3.73,0,0,1,1.59-3.47,3.66,3.66,0,0,1,3.8.29l127.79,71c1.47.84,2.21,1.82,2.21,3S372.67,397.85,371.2,398.69Z" transform="translate(-238.02 -321)"></path>
+                </svg>
+              </div>
+            </button>
+          {% endif %}
 
-        {% set isVideo = module.embed_field.oembed_url %}
-        {% set isSupportedOEmbedType = module.embed_field.supported_oembed_types.index(module.embed_field.oembed_response.type) >= 0 %}
+          {% set isVideo = embed.oembed_url %}
+          {% set isSupportedOEmbedType = embed.supported_oembed_types.index(embed.oembed_response.type) >= 0 %}
 
-        {% if isVideo && isSupportedOEmbedType %}
+          {% if isVideo && isSupportedOEmbedType %}
             <div class="iframe_wrapper"
-                data-embed-url="{{ module.embed_field.oembed_url }}"
-                {% unless module.embed_field.size_type == "auto_full_width" || module.embed_field.size_type == "exact" %}
-                data-max-height="{% if module.embed_field.size_type == "auto_custom_max" %}{{ module.embed_field.max_height }}{% endif %}"
-                data-max-width="{% if module.embed_field.size_type == "auto_custom_max" %}{{ module.embed_field.max_width }}{% endif %}"
-                {% endunless %}
-                {% if module.embed_field.size_type == "exact" %}
-                data-height="{{ module.embed_field.height }}"
-                data-width="{{ module.embed_field.width }}"
-                {% endif %}
-                >
+              data-embed-url="{{ embed.oembed_url }}"
+              {% unless embed.size_type == "auto_full_width" || embed.size_type == "exact" %}
+              data-max-height="{% if embed.size_type == 'auto_custom_max' %}{{ embed.max_height }}{% endif %}"
+              data-max-width="{% if embed.size_type == 'auto_custom_max' %}{{ embed.max_width }}{% endif %}"
+              {% endunless %}
+              {% if embed.size_type == "exact" %}
+              data-height="{{ embed.height }}"
+              data-width="{{ embed.width }}"
+              {% endif %}
+            >
             </div>
-        {% endif %}
-      </div>
-
-    {% else %}
-      <div id="embed_container" class="embed_container">
-        <div class="iframe_wrapper">
-          {{ module.embed_field.embed_html }}
+          {% endif %}
         </div>
-      </div>
-    {% endif %}
-  {% else %}
-    {% if module.hubspot_video.player_id %}
-      {% set max_width = module.hubspot_video.size_type == 'auto_custom_max' ? module.hubspot_video.max_width : module.hubspot_video.width %}
-      {% set max_height = module.hubspot_video.size_type == 'auto_custom_max' ? module.hubspot_video.max_height : module.hubspot_video.height %}
+      {% else %}
+        <div id="embed_container-{{ name }}" class="embed_container">
+          <div class="iframe_wrapper">
+            {{ embed.embed_html }}
+          </div>
+        </div>
+      {% endif %}
+    {% else if video.player_id %}
+      {% set max_width = video.size_type == 'auto_custom_max' ? video.max_width : video.width %}
+      {% set max_height = video.size_type == 'auto_custom_max' ? video.max_height : video.height %}
       {% video_player "embed_player"
-        autoplay={{ module.hubspot_video.autoplay }},
-        conversion_asset={{ module.hubspot_video.conversion_asset|tojson|safe }},
-        full_width={{ module.hubspot_video.size_type == 'auto_full_width' }},
+        autoplay={{ video.autoplay }},
+        conversion_asset={{ video.conversion_asset|tojson|safe }},
+        full_width={{ video.size_type == 'auto_full_width' }},
         height={{ max_height }},
-        hidden_controls={{ module.hubspot_video.hide_controls }},
-        loop={{ module.hubspot_video.loop_video }},
-        muted={{ module.hubspot_video.mute_by_default }},
-        play_button_color={{ module.style_options.oembed_thumbnail_play_button_color.color }},
-        player_id={{ module.hubspot_video.player_id }},
-        type={{ module.hubspot_video.player_type || 'scriptV4' }},
+        hidden_controls={{ video.hide_controls }},
+        loop={{ video.loop_video }},
+        muted={{ video.mute_by_default }},
+        play_button_color={{ play_button_color }},
+        player_id={{ video.player_id }},
+        type={{ video.player_type || 'scriptV4' }},
         width={{ max_width }}
       %}
     {% endif %}
-  {% endif %}
-{% else %}
-  <div class="hs-video-placeholder">
-    <div class="hs-video-placeholder__inner">
-      <p class="hs-video-placeholder__title">{{ module.placeholder_fields.placeholder_title }}</p>
-      <p class="hs-video-placeholder__description">{{ module.placeholder_fields.placeholder_description }}</p>
-    </div>
-  </div>
-{% endif %}
-
-{% if module.show_video_in_modal %}
-  <div class="video-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-dialog">
-       <div class="modal-close">
-         <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"></path></svg>
+  {% else %}
+    <div class="hs-video-placeholder">
+      <div class="hs-video-placeholder__inner">
+        <p class="hs-video-placeholder__title">
+          {{ module.placeholder_fields.placeholder_title }}
+        </p>
+        <p class="hs-video-placeholder__description">
+          {{ module.placeholder_fields.placeholder_description }}
+        </p>
       </div>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
+
+  {% if module.show_video_in_modal %}
+    <div class="video-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-dialog">
+        <div class="modal-close">
+          <svg
+            clip-rule="evenodd"
+            width="24" height="24"
+            fill-rule="evenodd"
+            stroke-linejoin="round"
+            stroke-miterlimit="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
 
 {% require_css %}
   <style>
     #oembed_container-{{ name }} .oembed_custom-thumbnail_icon {
-      border: 2px solid {{ module.style_options.oembed_thumbnail_play_button_color.color }};
+      border: 2px solid {{ play_button_color }};
     }
 
     #oembed_container-{{ name }} .oembed_custom-thumbnail_icon svg {
-      fill: {{ module.style_options.oembed_thumbnail_play_button_color.color }};
+      fill: {{ play_button_color }};
     }
   </style>
 {% end_require_css %}
-</div>

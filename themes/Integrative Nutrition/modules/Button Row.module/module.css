@@ -47,13 +47,13 @@ html .hs-button.jd-request-btn.jd-trans-btn:hover {
 }
 
 .jd-request-btn {
-  box-shadow: var(--color--legacy--black--black--alpha-20) 2px 2px 2px !important;
+  box-shadow: var(--color--legacy--black--black--alpha-12) 0 2px 12px 0 !important;
   padding-right: 0;
   max-width: 100% !important;
 }
 
 #hs_cos_wrapper_module_1691081394813 .jd-request-btn {
-  box-shadow: var(--color--legacy--black--black--alpha-20) 2px 2px 2px !important;
+  box-shadow: var(--color--legacy--black--black--alpha-12) 0 2px 12px 0 !important;
   width: 250px;
 }
 

@@ -396,12 +396,6 @@
   }
 }
 
-/* Iframe */
-.iframe_wrapper {
-  padding-bottom: 25.5% !important;
-  min-height: 500px;
-}
-
 /* Clearfix */
 .clearfix {
   zoom: 1;
@@ -471,18 +465,6 @@
     margin-right: 0;
     margin-left: 0;
     width: 100%;
-  }
-
-  /* Iframe */
-  .iframe_wrapper {
-    padding-bottom: 25.5% !important;
-    min-height: 250px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .iframe_wrapper {
-    padding-bottom: 15.5% !important;
   }
 }
 

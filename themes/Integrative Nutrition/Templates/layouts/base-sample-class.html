@@ -7,6 +7,10 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_meta.html_title }}</title>
+    {% if site_settings.favicon_src %}
+      <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+
     <!-- Begin Styles -->
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../../css/slick.css')) }}
@@ -23,12 +27,14 @@
     {{ standard_header_includes }}
   </head>
   <body>
-    {% set is_sample_class_base_template = true %}
-    
     <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
       <div>
         {% block header %}
-          {% module "sample_class_sticky_header" path="../../modules/Sample Class Sticky Header.module", label="Sample Class Sticky Header" %}
+          {% module "sample_class_header" 
+            path="../../modules/Sticky Course Shopify Add To Cart.module",
+            label="Sample Class Header",
+            configuration='sample-class'
+          %}
         {% endblock header %}
       </div>
       <div class="static-body responsive">
@@ -36,10 +42,16 @@
         {% endblock body %}
       </div>
       {% block relative_nav %}
-        {% module "relative_navigation" path="../../modules/Relative Navigation.module", label="Relative Navigation" %}
+        {% module "relative_navigation" 
+          path="../../modules/Relative Navigation.module",
+          label="Relative Navigation" 
+        %}
       {% endblock %}
       {% block footer %}
-        {% module "sample_class_footer" path="../../modules/Sample Class Footer.module", label="Sample Class Footer" %}
+        {% module "sample_class_footer"
+          path="../../modules/Sample Class Footer.module",
+          label="Sample Class Footer"
+        %}
       {% endblock footer %}
     </div>
     {{ standard_footer_includes }}

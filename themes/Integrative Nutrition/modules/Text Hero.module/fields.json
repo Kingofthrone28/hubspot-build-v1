@@ -46,5 +46,103 @@
       "lists",
       "standard_emphasis"
     ]
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_image_desktop",
+        "label": "Background Image (Desktop)",
+        "required": false,
+        "locked": false,
+        "type": "backgroundimage",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "src": "",
+          "background_position": "MIDDLE_CENTER",
+          "background_size": "cover"
+        }
+      },
+      {
+        "name": "background_image_position_mobile",
+        "label": "Mobile Image Alignment (Optional)",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "inline_help_text": "",
+        "help_text": "",
+        "choices": [
+          [
+            "left top",
+            "Top Left"
+          ],
+          [
+            "center top",
+            "Top Center"
+          ],
+          [
+            "right top",
+            "Top Right"
+          ],
+          [
+            "center left",
+            "Middle Left"
+          ],
+          [
+            "center center",
+            "Middle Center"
+          ],
+          [
+            "right center",
+            "Middle Right"
+          ],
+          [
+            "left bottom",
+            "Bottom Left"
+          ],
+          [
+            "center bottom",
+            "Bottom Center"
+          ],
+          [
+            "right bottom",
+            "Bottom Right"
+          ]
+        ],
+        "type": "choice",
+        "placeholder": "",
+        "default": "center center"
+      },
+      {
+        "name": "background_image_size_mobile",
+        "label": "Mobile Image Size (Optional)",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "inline_help_text": "",
+        "help_text": "",
+        "choices": [
+          [
+            "auto",
+            "Full Size"
+          ],
+          [
+            "cover",
+            "Fill Container"
+          ],
+          [
+            "contain",
+            "Show Entire Image"
+          ]
+        ],
+        "type": "choice",
+        "placeholder": "",
+        "default": "cover"
+      }
+    ]
   }
 ]

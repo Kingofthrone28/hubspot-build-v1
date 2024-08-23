@@ -59,12 +59,11 @@
         return false;
       }
 
-      return !variant.selectedOptions.some((variantOption) => {
-        return (
+      return !variant.selectedOptions.some(
+        (variantOption) =>
           selection[variantOption.name] !== undefined &&
-          selection[variantOption.name] !== variantOption.value
-        );
-      });
+          selection[variantOption.name] !== variantOption.value,
+      );
     });
 
   /**
@@ -325,6 +324,10 @@
 
           const amount = parseFloat(selectedVariant.price?.amount) || 0;
           const currencyCode = selectedVariant.price?.currencyCode || 'USD';
+          const addedVariantPrice = parseFloat(
+            selectedVariant.price?.amount || 0.0,
+          );
+          const varientGidPath = 'gid://shopify/ProductVariant/';
 
           if (amount || amount === 0) {
             $('.jd-add-pop .jd-add-pop-price').text(
@@ -342,7 +345,7 @@
             $('.jd-add-pop').removeClass('jd-add-pop-show');
           }, msToCloseAddPopUp);
 
-          let couponTitle = 0;
+          let couponTitle = 'NA';
           let discountAmount = 0;
           const anyVariant = product.variants[0];
 
@@ -365,19 +368,19 @@
             event: 'add_to_cart',
             ecommerce: {
               currency: currencyCode,
-              value: parseFloat(product.variants[0].price.amount),
+              value: addedVariantPrice,
               product_type: 'Individual',
               coupon: couponTitle,
               items: [
                 {
-                  item_id: product.id.match(/\/(\d+)$/)[1],
+                  item_id: moduleData.productID,
                   item_name: product.title,
                   item_type: product.productType,
-                  variant_id: product.variants[0].id.match(/\/(\d+)$/)[1],
-                  price: parseFloat(product.variants[0].price.amount),
+                  variant_id: selectedVariant.id.replace(varientGidPath, ''),
+                  price: addedVariantPrice,
                   discount: discountAmount,
                   quantity: 1,
-                  sku: product.variants[0].sku || 'NA',
+                  sku: selectedVariant.sku || 'NA',
                 },
               ],
             },
@@ -456,32 +459,102 @@
       }
 
       checkSelectedOptions();
+      return { product, variant };
     } catch (e) {
       console.error(e);
     }
+    return undefined;
   };
 
-  getProductData();
+  const createViewItemEvent = (productData, matchedVariant) => {
+    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
+
+    let couponTitle = 'NA';
+    let discountAmount = 0;
+
+    if (
+      Array.isArray(matchedVariant.discountAllocations) &&
+      matchedVariant.discountAllocations.length
+    ) {
+      matchedVariant.discountAllocations.forEach((discountAllocation) => {
+        couponTitle = discountAllocation?.discountApplication?.title;
+        discountAmount = discountAllocation?.allocatedAmount?.amount;
+      });
+    }
+
+    const viewItemPayLoad = {
+      event: 'view_item',
+      ecommerce: {
+        product_type: 'Individual',
+        currency: matchedVariant.price.currencyCode,
+        value: parseFloat(itemPrice),
+        coupon: couponTitle,
+        items: [
+          {
+            item_id: moduleData.productID,
+            item_name: productData.title,
+            item_type: productData.productType || 'NA',
+            variant_id: matchedVariant.id.replace(varientGidPath, ''),
+            price: parseFloat(itemPrice),
+            sku: matchedVariant.sku || 'NA',
+            discount: discountAmount,
+            quantity: productData?.quantity || 1,
+          },
+        ],
+      },
+    };
+    // Trigger View item tracking event
+    triggerECommEvent(viewItemPayLoad);
+  };
+
+  getProductData().then((data) => {
+    createViewItemEvent(data.product, data.variant);
+  });
 
   /* Sticky nav */
   $('.pdp-sticky-wrap').appendTo('body');
 
-  const showHideStickyNav = () => {
-    const bottomOfPdpTop = $('.pdp-top').offset().top + $('.pdp-top').height();
-    if ($(window).scrollTop() > bottomOfPdpTop) {
-      $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
-    } else {
-      $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
-    }
-  };
+  if (!moduleData.isSampleClass) {
+    let pdpTop;
 
-  $(window).on('scroll', showHideStickyNav);
+    const showHideStickyNav = () => {
+      if (!pdpTop) {
+        pdpTop = $('.pdp-top');
+      }
 
-  $('#pdp-sticky-enroll-btn').click((e) => {
-    e.preventDefault();
+      const bottomOfPdpTop =
+        (pdpTop.offset()?.top || 0) + (pdpTop?.height() || 0);
+
+      if ($(window).scrollTop() > bottomOfPdpTop) {
+        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
+      } else {
+        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+      }
+    };
+
+    $(window).on('scroll', showHideStickyNav);
+  }
+
+  const handleSampleClassEnrollButtonClick = (event) => {
+    event.preventDefault();
+    $('.caret').toggleClass('caret-down');
+    $('.caret').toggleClass('caret-up');
     $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
     $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
-  });
+  };
+
+  const handleEnrollButtonClick = (event) => {
+    event.preventDefault();
+    $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
+    $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
+  };
+
+  $('#pdp-sticky-enroll-btn').click(
+    moduleData.isSampleClass
+      ? handleSampleClassEnrollButtonClick
+      : handleEnrollButtonClick,
+  );
 
   /* Slides */
   const changeSlide = (index) => {
@@ -504,4 +577,36 @@
       changeSlide($(this).data('index'));
     }
   });
+
+  if (!moduleData.isSampleClass) {
+    return;
+  }
+
+  $('.jd-add-pop-close').click(() => {
+    $('.jd-add-pop').removeClass('jd-add-pop-show');
+  });
+
+  let stickyHeader;
+  let body;
+
+  function getCurrentHeight() {
+    if (!stickyHeader) {
+      stickyHeader = document.querySelector('.pdp-sticky');
+    }
+
+    if (!body) {
+      body = document.body;
+    }
+
+    const height = stickyHeader.offsetHeight;
+
+    body.style.paddingTop = `${height}px`;
+    return height;
+  }
+
+  // Call the function on load to get the current height
+  window.addEventListener('DOMContentLoaded', getCurrentHeight);
+
+  // Call the function on resize (to handle responsive changes)
+  window.addEventListener('resize', getCurrentHeight);
 })();
