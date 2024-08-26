@@ -1,0 +1,36 @@
+[ {
+  "label": "Reorderable List",
+  "global": false,
+  "fields": [
+    {
+      "name": "items",
+      "label": "Items",
+      "type": "repeater",
+      "required": false,
+      "default": [],
+      "children": [
+        {
+          "name": "item_title",
+          "label": "Item Title",
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        {
+          "name": "item_description",
+          "label": "Item Description",
+          "type": "textarea",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "item_link",
+          "label": "Item Link",
+          "type": "url",
+          "required": false,
+          "default": ""
+        }
+      ]
+    }
+  ]
+}]

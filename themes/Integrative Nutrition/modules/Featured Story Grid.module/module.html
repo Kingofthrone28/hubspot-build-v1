@@ -1,0 +1,34 @@
+{% macro render_blog_posts(posts, layout) %}
+  <div class="row">
+    {% for content in posts %}
+      {% set author = content.blog_author.name %}
+      {% set isLargeCard = loop.index <= 1 %}
+      {% set initialPostWords = content.post_body|striptags|wordcount %}
+      {% set readTimePostWords = (initialPostWords / 200)|round(0, 'ceil') %}
+      {% set isReadTimeWords = readTimePostWords <=1 ? 'less than 1 minute read' : 'read time: {{ readTimePostWords }} mins'  %}
+      {% set cardType = isLargeCard ? 'large-card' : 'small-card' %}
+      <a href="{{ content.url }}" class="blog-teaser__{{ cardType }}">
+        <img src="{{ content.featured_image }}" alt="{{ content.name }}">
+        <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
+        <h4 class="blog-teaser__heading">{{ content.name }}</h4>
+        {% if author %}
+          <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro render_blog_posts_by_layout(tag) %}
+  {% set posts = blog_recent_tag_posts("default", ["featured"], 4, "AND") %}
+  {{ render_blog_posts(posts) }}
+{% endmacro %}
+
+<div class="blog-teaser__module">
+  <div class="blog-teaser__container">
+    <hr class="blog-teaser__line">
+    <div class="blog-teaser__tag">
+      {{ render_blog_posts_by_layout("featured") }}
+    </div>
+  </div>
+</div>
