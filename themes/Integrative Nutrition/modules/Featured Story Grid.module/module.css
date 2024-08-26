@@ -3,20 +3,12 @@
   background: var(--color--light-water);
 }
 
-.featured-story-grid__large-card-container {
+.featured-story-grid__large-card-container, .featured-story-grid__small-card-container {
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem;
-}
-
-.featured-story-grid__small-card-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-top: 1rem;
 }
 
 .featured-story-grid__small-card-content-container {
@@ -44,7 +36,7 @@
 .large-card-image {
   border-radius: 10px;
   width: 100%;
-  aspect-ratio: 1 / 0.8; /* This will maintain a 500x500 aspect ratio */
+  aspect-ratio: 5 / 4;
   object-fit: cover;
 }
 

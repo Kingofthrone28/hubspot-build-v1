@@ -29,7 +29,7 @@
   {% endif %}
 {% endmacro %}
 
-{% if blogPostId1 and blogPostId2 and blogPostId3 and blogPostId4 %}
+{% if blogPostId1 or blogPostId2 or blogPostId3 or blogPostId4 %}
   <div class="featured-story-grid">
     <div class="featured-story-grid__large-card-container">
       {{ render_blog_post(blogPostId1, largeCard) }}
