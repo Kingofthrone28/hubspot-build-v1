@@ -36,15 +36,13 @@
 
 .small-card-image {
   border-radius: 10px;
-  padding-left: 1rem;
-  width: 25rem;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  width: 25rem;
 }
 
 .large-card-image {
   border-radius: 10px;
-  padding-left: 1rem;
   width: 100%;
   aspect-ratio: 1 / 0.8; /* This will maintain a 500x500 aspect ratio */
   object-fit: cover;

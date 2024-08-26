@@ -42,4 +42,14 @@
   "allow_new_line" : false,
   "show_emoji_picker" : false,
   "type" : "text"
+}, {
+  "id" : "2dd58546-1851-f379-8556-b1f2a2b8032b",
+  "name" : "show_category_eyebrow",
+  "display_width" : null,
+  "label" : "Show Category Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
 } ]

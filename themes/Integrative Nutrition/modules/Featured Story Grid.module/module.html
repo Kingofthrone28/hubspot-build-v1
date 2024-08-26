@@ -14,7 +14,9 @@
     {% set isReadTimeWords = readTimePostWords <= 1 ? 'less than 1 minute read' : 'read time: {{ readTimePostWords }} mins'  %}
     <div class="featured-story-grid__{{ cardType }}-content-container">
       <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
-        <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
+        {% if module.show_category_eyebrow %}
+          <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
+        {% endif %}
         <h4 class="blog-teaser__heading">{{ content.name }}</h4>
         {% if author %}
           <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
