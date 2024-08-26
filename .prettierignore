@@ -28,8 +28,6 @@ node_modules
 
 # TODO: Remove after refactoring
 /themes/Integrative Nutrition/js/_plugins.js
-/themes/Integrative Nutrition/js/datalayer.js
-/themes/Integrative Nutrition/js/datalayertoggle.js
 /themes/Integrative Nutrition/js/inspirationgallery.js
 /themes/Integrative Nutrition/js/main.js
 
