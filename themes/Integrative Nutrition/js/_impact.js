@@ -6,7 +6,7 @@
   const urlParams = new URLSearchParams(window.location.search);
   let irclickid = urlParams.get('irclickid');
   if (irclickid) {
-    IIN.cookies.setCookie('_irclickid', irclickid, 30);
+    IIN.cookies.setCookie('_irclickid', irclickid, 90);
   } else {
     irclickid = IIN.cookies.getCookieString('_irclickid');
   }
