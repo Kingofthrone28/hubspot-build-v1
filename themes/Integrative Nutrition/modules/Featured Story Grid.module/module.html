@@ -12,29 +12,36 @@
     {% set initialPostWords = content.post_body|wordcount %}
     {% set readTimePostWords = (initialPostWords / 200)|round(0, 'ceil') %}
     {% set isReadTimeWords = readTimePostWords <= 1 ? 'less than 1 minute read' : 'read time: {{ readTimePostWords }} mins'  %}
-    <div class="featured-story-grid__{{ cardType }}-content-container">
-      <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
-        {% if module.show_category_eyebrow %}
-          <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
-        {% endif %}
-        <h4 class="blog-teaser__heading">{{ content.name }}</h4>
-        {% if author %}
-          <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
-        {% endif %}
+    <a href="{{ content.url }}">
+      <div class="featured-story-grid__{{ cardType }}-content-container">
+        <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
+          {% if module.show_category_eyebrow %}
+            <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
+          {% endif %}
+          {% if cardType == largeCard %}
+            <h4 class="blog-teaser__heading">{{ content.name }}</h4>
+          {% endif %}
+          {% if cardType == smallCard %}
+            <h6 class="blog-teaser__heading">{{ content.name }}</h6>
+          {% endif %}
+          {% if author %}
+            <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
+          {% endif %}
+        </div>
+        <div class="{{ cardType }}-image">
+          <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
+        </div>
       </div>
-      <a href="{{ content.url }}" class="{{ cardType }}-image">
-        <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
-      </a>
-    </div>
+    </a>
   {% endif %}
 {% endmacro %}
 
-{% if blogPostId1 or blogPostId2 or blogPostId3 or blogPostId4 %}
+{% if blogPostId1 %}
   <div class="featured-story-grid">
-    <div class="featured-story-grid__large-card-container">
+    <div class=" featured-story-grid__card-container featured-story-grid__large-card-container">
       {{ render_blog_post(blogPostId1, largeCard) }}
     </div>
-    <div class="featured-story-grid__small-card-container">
+    <div class="featured-story-grid__card-container featured-story-grid__small-card-container">
       {{ render_blog_post(blogPostId2, smallCard) }}
       {{ render_blog_post(blogPostId3, smallCard) }}
       {{ render_blog_post(blogPostId4, smallCard) }}
