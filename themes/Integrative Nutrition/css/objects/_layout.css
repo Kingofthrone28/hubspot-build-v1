@@ -75,10 +75,6 @@
   width: 6.382978723%;
 }
 
-.container-fluid {
-  zoom: 1;
-}
-
 .container-fluid::before,
 .container-fluid::after {
   display: table;
@@ -296,7 +292,6 @@
 @media (min-width: 1280px) {
   .row-fluid {
     width: 100%;
-    zoom: 1;
   }
 
   .row-fluid::before,
