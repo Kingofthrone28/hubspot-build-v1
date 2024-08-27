@@ -18,12 +18,7 @@
           {% if module.show_category_eyebrow %}
             <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
           {% endif %}
-          {% if cardType == largeCard %}
-            <h4 class="blog-teaser__heading">{{ content.name }}</h4>
-          {% endif %}
-          {% if cardType == smallCard %}
-            <h6 class="blog-teaser__heading">{{ content.name }}</h6>
-          {% endif %}
+          <h2 class="featured-story-grid__{{ cardType }}-heading">{{ content.name }}</h2>
           {% if author %}
             <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
           {% endif %}
@@ -41,10 +36,12 @@
     <div class=" featured-story-grid__card-container featured-story-grid__large-card-container">
       {{ render_blog_post(blogPostId1, largeCard) }}
     </div>
-    <div class="featured-story-grid__card-container featured-story-grid__small-card-container">
-      {{ render_blog_post(blogPostId2, smallCard) }}
-      {{ render_blog_post(blogPostId3, smallCard) }}
-      {{ render_blog_post(blogPostId4, smallCard) }}
-    </div>
+    {% if blogPostId2 or blogPostId3 or blogPostId4 %}
+      <div class="featured-story-grid__card-container featured-story-grid__small-card-container">
+        {{ render_blog_post(blogPostId2, smallCard) }}
+        {{ render_blog_post(blogPostId3, smallCard) }}
+        {{ render_blog_post(blogPostId4, smallCard) }}
+      </div>
+    {% endif %}
   </div>
 {% endif %}
