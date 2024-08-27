@@ -17,6 +17,7 @@ modules_to_move
 # Files that have HubL syntax and can't be parsed
 /themes/Integrative Nutrition/css/components/_header.css
 /themes/Integrative Nutrition/css/elements/_forms.css
+/themes/Integrative Nutrition/css/main.css
 /themes/Integrative Nutrition/css/objects/_containers-dnd.css
 /themes/Integrative Nutrition/css/templates/_blog.css
 /themes/Integrative Nutrition/css/tools/_macros.css
