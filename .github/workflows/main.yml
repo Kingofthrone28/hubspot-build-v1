@@ -12,7 +12,7 @@
 #       - name: HubSpot Deploy Action
 #         uses: HubSpot/hubspot-cms-deploy-action@v1.7
 #         with:
-#           src_dir: themes/Chopra/child.js
-#           dest_dir: /child.js
+#           src_dir: themes
+#           dest_dir: .
 #           portal_id: ${{ secrets.hubspot_portal_id }}
 #           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
