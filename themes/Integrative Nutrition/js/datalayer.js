@@ -360,26 +360,28 @@ allGenericCTAElements.forEach((element) => {
   });
 });
 
-const getFilterSelector = name => `#course-pop-${name} input[name="${name}"]:checked`
+const getFilterSelector = (name) =>
+  `#course-pop-${name} input[name="${name}"]:checked`;
 
 function getSelectedFilters() {
   const selectedTopics = [
-    ...document.querySelectorAll(getFilterSelector('Topics'))
+    ...document.querySelectorAll(getFilterSelector('Topics')),
   ].map(({ value }) => value);
 
   const selectedLevels = [
-    ...document.querySelectorAll(getFilterSelector('Levels'))
+    ...document.querySelectorAll(getFilterSelector('Levels')),
   ].map(({ value }) => value);
 
   const selectedTypes = [
-    ...document.querySelectorAll(getFilterSelector('Type'))
+    ...document.querySelectorAll(getFilterSelector('Type')),
   ].map(({ value }) => value);
 
   return { selectedTopics, selectedLevels, selectedTypes };
 }
 
 function trackFilterEvent() {
-  const { selectedTopics, selectedLevels, selectedTypes } = getSelectedFilters();
+  const { selectedTopics, selectedLevels, selectedTypes } =
+    getSelectedFilters();
   window.dataLayer.push({
     event: 'filter',
     filter_topics: selectedTopics,
@@ -416,7 +418,7 @@ function trackViewSearchResults(element) {
 const searchBoxElement = document.querySelector('#jd-blog-search-input');
 searchBoxElement?.addEventListener('keydown', (event) => {
   if (event.key !== 'Enter') {
-    return
+    return;
   }
   setTimeout(() => {
     trackSearchResults(searchBoxElement);
