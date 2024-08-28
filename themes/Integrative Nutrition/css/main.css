@@ -15,6 +15,7 @@
 {% include './objects/_modules.css' %}
 {% include './elements/_typography.css' %}
 {% include './elements/_buttons.css' %}
+{% include './elements/_svgs.css' %}
 {% include './elements/_forms.css' %}
 {% include './elements/_tables.css' %}
 {% include './components/_accordion.css' %}

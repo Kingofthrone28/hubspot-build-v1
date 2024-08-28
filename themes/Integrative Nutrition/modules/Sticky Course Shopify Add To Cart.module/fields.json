@@ -15,11 +15,30 @@
     [
       "inline-and-header",
       "Inline Section and Header"
+    ],
+    [
+      "inline-only",
+      "Inline Only"
     ]
   ],
   "type": "choice",
   "placeholder": "",
-  "default": "inline-and-header"
+  "default": "inline-and-header",
+  "visibility" : {
+    "controlling_field" : "lock_configuration",
+    "controlling_value_regex" : "true",
+    "operator" : "NOT_EQUAL"
+  }
+},
+{
+  "name": "lock_configuration",
+  "label": "Lock Configuration",
+  "required": false,
+  "locked": true,
+  "type": "boolean",
+  "inline_help_text": "",
+  "help_text": "Invisible to editors. Prevent any changes to the configuration setting by making it invisible.",
+  "default": false 
 },
 {
   "id" : "972d2f87-4cab-4c56-a310-acc5a7f2ee18",
@@ -296,6 +315,11 @@
   "label" : "Sticky Nav",
   "required" : false,
   "locked" : false,
+  "visibility" : {
+    "controlling_field_path" : "configuration",
+    "controlling_value_regex" : "inline-only",
+    "operator" : "NOT_EQUAL"
+  },
   "children" : [ {
     "id" : "c1840ee2-42e8-4069-b4b5-17cd0aede83d",
     "name" : "subhead",
@@ -308,6 +332,29 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "The Health Coach Training Program was designed to fit into a busy lifestyle."
+  }, {
+    "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
+    "name" : "dropdown_left_text",
+    "display_width" : null,
+    "label" : "Dropdown Left Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Just a few quick selections and you'll be ready to enroll."
+  }, {
+    "name" : "dropdown_left_text_singular",
+    "display_width" : null,
+    "label" : "Dropdown Left Text (Singular Choice)",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Just a quick selection and you'll be ready to enroll."
   }, {
     "id" : "0dba2265-18b6-8b41-9e54-78a0101cb923",
     "name" : "left_button_link",
@@ -335,18 +382,6 @@
     "type" : "text",
     "default" : "Speak with an Advisor"
   }, {
-    "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
-    "name" : "dropdown_left_text",
-    "display_width" : null,
-    "label" : "Dropdown Left Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Just a few quick selections and you’ll be ready to enroll."
-  }, {
     "name" : "right_button_text",
     "display_width" : null,
     "label" : "Right Button Text (Sample Class)",
@@ -371,7 +406,7 @@
       "type" : "EXTERNAL"
     },
     "left_button_text" : "Speak with an Advisor",
-    "dropdown_left_text" : "Just a few quick selections and you’ll be ready to enroll."
+    "dropdown_left_text" : "Just a few quick selections and you'll be ready to enroll."
   }
 },
 {
@@ -379,6 +414,11 @@
 "label": "Added to Cart Popup",
 "required": false,
 "locked": false,
+"visibility" : {
+  "controlling_field_path" : "configuration",
+  "controlling_value_regex" : "sample-class",
+  "operator" : "EQUAL"
+},
 "children": [
   {
     "name" : "cart_link",

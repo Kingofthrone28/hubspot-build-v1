@@ -1,0 +1,929 @@
+const getProductSelectionMethods = () => {
+  /**
+   * Returns the selected variant or null if one is not found.
+   * @param {string} productData
+   * @param {Object|null} productData
+   */
+  const getSelectedVariant = (productData, currentOptions) => {
+    const selectedVariant = productData.variants.find((variant) => {
+      const variantOptions = variant?.selectedOptions || [];
+
+      if (
+        !variant?.available ||
+        !Array.isArray(variantOptions) ||
+        !variantOptions.length
+      ) {
+        return false;
+      }
+
+      let isMatch = true;
+
+      variantOptions?.forEach(({ name, value }) => {
+        const selectedValue = currentOptions[name];
+
+        if (selectedValue !== value) {
+          isMatch = false;
+        }
+      });
+
+      return isMatch;
+    });
+
+    return selectedVariant || null;
+  };
+
+  /**
+   * Return a list of possible variants given a selection of options.
+   */
+  const getPossibleVariants = (variants, selection) =>
+    variants.filter((variant) => {
+      if (!variant.available) {
+        return false;
+      }
+
+      return !variant.selectedOptions.some(
+        (variantOption) =>
+          selection[variantOption.name] !== undefined &&
+          selection[variantOption.name] !== variantOption.value,
+      );
+    });
+
+  /**
+   * Returns a Set of possible values given a list of variants and an option key.
+   */
+  const getPossibleValues = (variants, optionName) => {
+    const possibleValues = new Set();
+    variants.forEach((variant) => {
+      variant?.selectedOptions.forEach((variantOption) => {
+        if (variantOption.name === optionName) {
+          possibleValues.add(variantOption.value);
+        }
+      });
+    });
+    return possibleValues;
+  };
+
+  /**
+   * Return an options object given the current selection, a list of option names,
+   * and a list of variants.
+   */
+  const getOptions = (selection, optionNames, variants) => {
+    const options = {};
+    const newSelection = {};
+    let filteredVariants = getPossibleVariants(variants, newSelection);
+
+    // Iterate through option names
+    optionNames.forEach((optionName) => {
+      // Get all possible values for each name from a list of variants
+      options[optionName] = getPossibleValues(filteredVariants, optionName);
+
+      // If currently selected value is no longer possible
+      // set the new selection to a default (first value).
+      if (!options[optionName].has(selection[optionName])) {
+        newSelection[optionName] = [...options[optionName]][0];
+      } else {
+        newSelection[optionName] = selection[optionName];
+      }
+
+      // Filter the list of variants to match the current selection.
+      filteredVariants = getPossibleVariants(filteredVariants, newSelection);
+    });
+
+    return { options, newSelection };
+  };
+
+  /**
+   * Gets data for a product from Shopify.
+   * @returns {Promise<Object>}
+   */
+  const getProductData = (productId) => {
+    const gidPath = IIN.shopify.buildGlobalProductId(productId);
+    return IIN.shopify.fetchProduct(gidPath);
+  };
+
+  /**
+   * Process a product and its variants for options and a default selection
+   * @param {Object} product
+   * @returns {Object}
+   */
+  const processProduct = (product) => {
+    const variant = IIN.shopify.getFirstAvailableVariant(product);
+    const options = variant?.selectedOptions;
+    const productOptions = [];
+    const variantSelections = {};
+
+    if (Array.isArray(options)) {
+      options.forEach(({ name, value }) => {
+        // Keeping keys in an array to preserve order.
+        productOptions.push(name);
+        variantSelections[name] = value;
+      });
+    }
+
+    return { productOptions, variantSelections };
+  };
+
+  const showAddedToCartPopUp = (info) => {
+    const msToCloseAddPopUp = 8000;
+    const { checkout, module, selectedOptions, variant, action } = info;
+    updateCartTotal(checkout);
+
+    $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
+    $('.jd-blackout').addClass('jd-blackout-show');
+    $('.jd-add-pop .jd-add-pop-cat').text(`${module.category}`);
+    $('.jd-add-pop .jd-add-pop-name').text(`${module.courseName}`);
+
+    if (action === 'already-in-cart') {
+      const message = document.querySelector('.jd-add-pop .js-add-pop-message');
+      message.classList.add('jd-shopify-add-exists-msg');
+      message.classList.remove('check-before');
+      const errorText = document.createTextNode(
+        'This course is already in your cart',
+      );
+      message.replaceChildren(errorText);
+    }
+
+    // this errors if the product doesn't have an image
+    try {
+      $('.jd-add-pop .jd-add-pop-img > div').attr(
+        'style',
+        `background: url(${variant.image.src})`,
+      );
+    } catch (error) {
+      console.error(error);
+    }
+
+    let optionsHTML = '';
+
+    Object.entries(selectedOptions).forEach(([key, value]) => {
+      if (value) {
+        optionsHTML += `<div><strong>${key}:</strong> ${value}</div>`;
+      }
+    });
+
+    $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
+
+    const amount = parseFloat(variant.price?.amount) || 0;
+
+    if (amount || amount === 0) {
+      $('.jd-add-pop .jd-add-pop-price').text(`$${amount.toLocaleString()}`);
+    }
+
+    const headerHeight = $('.jd-header-wrap').outerHeight();
+    const $popUp = $('.jd-add-pop');
+    $popUp.css('top', `${headerHeight}px`);
+    $popUp.addClass('jd-add-pop-show');
+
+    setTimeout(() => {
+      $('.jd-blackout').removeClass('jd-blackout-show');
+      $popUp.removeClass('jd-add-pop-show');
+    }, msToCloseAddPopUp);
+  };
+
+  /**
+   * Adds a product to the cart.
+   * @param {Object} productData
+   * @returns {Promise<void>}
+   */
+  const addToCart = async (productData, moduleInfo, selectedOptions) => {
+    const selectedVariant = getSelectedVariant(productData, selectedOptions);
+
+    if (!selectedVariant) {
+      // TODO: replace "alert" with alternative UX choice, pop-up, or message.
+      alert('This combination of options is invalid');
+      return undefined;
+    }
+
+    const cartCookie = IIN.shopify.getCheckoutCookie();
+    const checkout = await IINShopifyClient.checkout.fetch(cartCookie);
+    const alreadyInCart = IIN.shopify.isProductInCheckout(
+      checkout,
+      productData.id,
+    );
+
+    const alreadyInCartSelector = `.jd-shopify-add-exists-msg`;
+    const $errorMessages = $(alreadyInCartSelector);
+
+    if (alreadyInCart) {
+      const hasCohorts = IIN.shopify.getHasCohorts(productData);
+
+      if (hasCohorts) {
+        $errorMessages.show();
+      } else {
+        showAddedToCartPopUp({
+          checkout,
+          selectedOptions,
+          variant: selectedVariant,
+          module: moduleInfo,
+          action: 'already-in-cart',
+        });
+      }
+
+      return undefined;
+    }
+
+    $errorMessages.hide();
+
+    const newLineItem = IIN.shopify.createCheckoutLineItem(selectedVariant.id);
+    const lineItemsToAdd = [newLineItem];
+
+    try {
+      const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
+        cartCookie,
+        lineItemsToAdd,
+      );
+
+      showAddedToCartPopUp({
+        selectedOptions,
+        checkout: updatedCheckout,
+        module: moduleInfo,
+        variant: selectedVariant,
+      });
+
+      return selectedVariant;
+    } catch (e) {
+      console.error(e);
+      return undefined;
+    }
+  };
+
+  /** Data layer tracking */
+  const trackAddToCart = (variant, moduleInfo, productInfo) => {
+    const currencyCode = variant.price?.currencyCode || 'USD';
+    const addedVariantPrice = parseFloat(variant.price?.amount || 0.0);
+    const varientGidPath = 'gid://shopify/ProductVariant/';
+
+    let couponTitle = 'NA';
+    let discountAmount = 0;
+
+    if (Array.isArray(variant.discountAllocations)) {
+      variant.discountAllocations.forEach((discountAllocation) => {
+        couponTitle = discountAllocation?.discountApplication?.title;
+        discountAmount = discountAllocation?.allocatedAmount?.amount;
+      });
+    }
+
+    const addItemToCart = {
+      event: 'add_to_cart',
+      ecommerce: {
+        currency: currencyCode,
+        value: addedVariantPrice,
+        product_type: 'Individual',
+        coupon: couponTitle,
+        items: [
+          {
+            item_id: moduleInfo.productID,
+            item_name: productInfo.title,
+            item_type: productInfo.productType,
+            variant_id: variant.id.replace(varientGidPath, ''),
+            price: addedVariantPrice,
+            discount: discountAmount,
+            quantity: 1,
+            sku: variant.sku || 'NA',
+          },
+        ],
+      },
+    };
+
+    try {
+      triggerECommEvent(addItemToCart);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const createViewItemEvent = (productData, matchedVariant, moduleData) => {
+    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
+
+    let couponTitle = 'NA';
+    let discountAmount = 0;
+
+    if (Array.isArray(matchedVariant.discountAllocations)) {
+      matchedVariant.discountAllocations.forEach((discountAllocation) => {
+        couponTitle = discountAllocation?.discountApplication?.title;
+        discountAmount = discountAllocation?.allocatedAmount?.amount;
+      });
+    }
+
+    const viewItemPayLoad = {
+      event: 'view_item',
+      ecommerce: {
+        product_type: 'Individual',
+        currency: matchedVariant.price.currencyCode,
+        value: parseFloat(itemPrice),
+        coupon: couponTitle,
+        items: [
+          {
+            item_id: moduleData.productID,
+            item_name: productData.title,
+            item_type: productData.productType || 'NA',
+            variant_id: matchedVariant.id.replace(varientGidPath, ''),
+            price: parseFloat(itemPrice),
+            sku: matchedVariant.sku || 'NA',
+            discount: discountAmount,
+            quantity: productData?.quantity || 1,
+          },
+        ],
+      },
+    };
+
+    try {
+      triggerECommEvent(viewItemPayLoad);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  /**
+   * Calculate shopify discount info
+   * @param {Object} variant
+   * @returns
+   */
+  const calculateDiscounts = async (variant) => {
+    let displaySlashPrice;
+    let displayDiscount;
+
+    const checkout = await IINShopifyClient.checkout.create();
+    const lineItems = [
+      {
+        variantId: variant.id,
+        quantity: 1,
+      },
+    ];
+    const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
+      checkout.id,
+      lineItems,
+    );
+    const discounts = updatedCheckout?.discountApplications ?? [];
+    const totalAfterDiscount = parseFloat(updatedCheckout.totalPrice?.amount);
+    let total = totalAfterDiscount > -1 ? totalAfterDiscount : 0;
+
+    discounts.forEach(({ value }) => {
+      const amount = parseFloat(value?.amount) || 0;
+      total += amount;
+    });
+
+    const displayPrice = `$${totalAfterDiscount.toLocaleString()}`;
+
+    if (totalAfterDiscount < total) {
+      displaySlashPrice = `$${total.toLocaleString()}`;
+      const percentageOff = Math.round(
+        ((total - totalAfterDiscount) / total) * 100,
+      );
+
+      displayDiscount = `-${percentageOff}%`;
+    }
+
+    return { displaySlashPrice, displayPrice, displayDiscount };
+  };
+
+  /**
+   * Create the label for a group of options
+   * @param {string} text selectable product option
+   * @returns {HTMLDivElement}
+   */
+  const createOptionLabel = (text) => {
+    const div = document.createElement('div');
+    div.classList.add('jd-buy-option-label');
+    const labelText = document.createTextNode(text);
+    div.appendChild(labelText);
+    return div;
+  };
+
+  /**
+   * Create Input/Label pair for selecting an option
+   * @param {string} key option name
+   * @param {string} value option value
+   * @param {Object} selected selected options for comparison
+   * @param {boolean} normalize whether to normalize id strings
+   * @returns
+   */
+  const createInputPair = (key, value, selected, normalize = false) => {
+    const replaceSpaces = (string) => string.replaceAll(' ', '_');
+    const compositeKey = normalize
+      ? `${replaceSpaces(key)}_${replaceSpaces(value)}`
+      : `${key}_${value}`;
+    const div = document.createElement('div');
+    const input = document.createElement('input');
+    input.setAttribute('id', compositeKey);
+    input.setAttribute('value', value);
+    input.setAttribute('name', key);
+    input.setAttribute('type', 'radio');
+
+    if (value === selected[key]) {
+      input.setAttribute('checked', true);
+    }
+
+    const label = document.createElement('label');
+    label.setAttribute('for', compositeKey);
+    const labelTextNode = document.createTextNode(value);
+    label.appendChild(labelTextNode);
+    div.append(input, label);
+    return div;
+  };
+
+  /**
+   * Create DOM button for add to cart functionality
+   * @param {string} text Button text
+   * @returns {HTMLButtonElement}
+   */
+  const createAddToCartButton = (text = 'Add to Cart') => {
+    const button = document.createElement('button');
+    button.classList.add(
+      'jd-shopify-add-btn',
+      'jd-request-btn',
+      'hs-button',
+      'light-button',
+    );
+    button.setAttribute('type', 'button');
+    const textNode = document.createTextNode(text);
+    button.appendChild(textNode);
+    return button;
+  };
+
+  /**
+   * Create a DOM node to show error messages
+   * @returns {HTMLDivElement}
+   */
+  const createErrorBlock = () => {
+    const errorMessage = document.createElement('div');
+    errorMessage.classList.add('jd-shopify-add-exists-msg');
+    errorMessage.setAttribute('style', 'display: none;');
+    const errorText = document.createTextNode(
+      'This course is already in your cart',
+    );
+    errorMessage.appendChild(errorText);
+    return errorMessage;
+  };
+
+  /**
+   * Create DOM nodes to display discount info
+   * @param {Object} discountInfo discount info to display
+   * @returns {HTMLDivElement|DocumentFragment}
+   */
+  const createDiscountNodes = ({
+    displaySlashPrice,
+    displayPrice,
+    displayDiscount,
+  }) => {
+    if (!displayPrice) {
+      return document.createDocumentFragment();
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('pdp-price-wrap');
+
+    const priceDiv = document.createElement('div');
+    priceDiv.classList.add('pdp-price');
+
+    const total = document.createElement('div');
+    total.classList.add('pdp-price-total');
+    const priceText = document.createTextNode(displayPrice);
+    total.appendChild(priceText);
+    priceDiv.appendChild(total);
+
+    if (displayDiscount) {
+      const discount = document.createElement('div');
+      discount.classList.add('pdp-price-discount');
+      const discountText = document.createTextNode(displayDiscount);
+      discount.appendChild(discountText);
+      priceDiv.appendChild(discount);
+    }
+
+    if (displaySlashPrice) {
+      const slashPrice = document.createElement('div');
+      slashPrice.classList.add('pdp-slash');
+      const slashText = document.createTextNode(displaySlashPrice);
+      slashPrice.appendChild(slashText);
+      wrapper.appendChild(slashPrice);
+    }
+
+    wrapper.appendChild(total);
+    return wrapper;
+  };
+
+  /**
+   * Configure header behavior
+   * @param {boolean} isDefault configure header for default page or sample class
+   */
+  const configureStickyNav = (isDefault = true) => {
+    $('.pdp-sticky-wrap').appendTo('body');
+
+    const handleEnrollButtonClick = (event) => {
+      event.preventDefault();
+      $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
+      $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
+    };
+
+    const handleSampleClassEnrollButtonClick = (event) => {
+      event.preventDefault();
+      $('.caret').toggleClass('caret-down');
+      $('.caret').toggleClass('caret-up');
+      $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
+      $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
+    };
+
+    const handler = isDefault
+      ? handleEnrollButtonClick
+      : handleSampleClassEnrollButtonClick;
+
+    $('#pdp-sticky-enroll-btn').click(handler);
+  };
+
+  const configureStickyHeaderSampleClass = () => {
+    configureStickyNav(false);
+  };
+
+  /**
+   * Configure header toggle functionality
+   */
+  const configureHeaderToggle = () => {
+    const top = $('.pdp-top');
+
+    $(window).on('scroll', () => {
+      const bottomOfPdpTop = top.offset().top + top.height();
+
+      if ($(window).scrollTop() > bottomOfPdpTop) {
+        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
+      } else {
+        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+      }
+    });
+  };
+
+  /**
+   * Configure body offset to show avoid covering page with header
+   */
+  const configureHeaderOffset = () => {
+    let stickyHeader;
+
+    function getCurrentHeight() {
+      if (!stickyHeader) {
+        stickyHeader = document.querySelector('.pdp-sticky');
+      }
+
+      const height = stickyHeader.offsetHeight;
+      document.body.style.paddingTop = `${height}px`;
+    }
+
+    // Call the function on load to get the current height
+    window.addEventListener('DOMContentLoaded', getCurrentHeight);
+
+    // Call the function on resize to handle responsive changes
+    window.addEventListener('resize', getCurrentHeight);
+  };
+
+  /**
+   * Configure image slider
+   */
+  const configureImageSlider = () => {
+    const changeSlide = (index) => {
+      $('.pdp-top-slide-btn').removeClass('pdp-top-slide-btn-active');
+      $('.pdp-top-slide-slide').removeClass('pdp-top-slide-slide-active');
+      $('.pdp-top-slide-dot').removeClass('pdp-top-slide-dot-active');
+      $(`#pdp-top-slide-btn-${index}`).addClass('pdp-top-slide-btn-active');
+      $(`#pdp-top-slide-slide-${index}`).addClass('pdp-top-slide-slide-active');
+      $(`#pdp-top-slide-dot-${index}`).addClass('pdp-top-slide-dot-active');
+    };
+
+    $('.pdp-top-slide-btn').click(function () {
+      if (!$(this).hasClass('pdp-top-slide-btn-active')) {
+        changeSlide($(this).data('index'));
+      }
+    });
+
+    $('.pdp-top-slide-dot').click(function () {
+      if (!$(this).hasClass('pdp-top-slide-dot-active')) {
+        changeSlide($(this).data('index'));
+      }
+    });
+  };
+
+  const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
+    const fragment = document.createDocumentFragment();
+
+    optionKeys.forEach((key) => {
+      const emptyDiv = document.createElement('div');
+      const labelDiv = createOptionLabel(key);
+      emptyDiv.appendChild(labelDiv);
+      fragment.appendChild(emptyDiv);
+
+      const optionWrap = document.createElement('div');
+      optionWrap.classList.add('jd-shopify-option-wrap');
+      emptyDiv.appendChild(optionWrap);
+
+      const valuesSet = allOptions[key];
+      valuesSet.forEach((value) => {
+        const pair = createInputPair(key, value, selectedOptions, true);
+        optionWrap.appendChild(pair);
+      });
+    });
+
+    return fragment;
+  };
+
+  const parseMarkupData = () => {
+    const rawData = IIN.shopify.getAddToCartSessionData();
+    return JSON.parse(rawData);
+  };
+
+  const configureAddedToCartPopUp = () => {
+    $('.jd-add-pop-close').click(() => {
+      $('.jd-add-pop').removeClass('jd-add-pop-show');
+    });
+  };
+
+  const getBottomRight = (discountInfo) => {
+    const documentFragment = document.createDocumentFragment();
+
+    // top level element
+    const pdpDiv = document.createElement('div');
+    pdpDiv.classList.add('pdp-div');
+    documentFragment.appendChild(pdpDiv);
+
+    // top level element
+    const pdpButtonWrap = document.createElement('div');
+    pdpButtonWrap.classList.add('pdp-price-button-wrap');
+    const pdpPriceButtonDiv = document.createElement('div');
+    pdpPriceButtonDiv.classList.add('pdp-price-button');
+    const addToCartButton = createAddToCartButton();
+
+    const icon = document.createElement('i');
+    icon.classList.add('fa-regular', 'fa-circle-arrow-right');
+    icon.setAttribute('style', 'padding-left: 10px;');
+    addToCartButton.appendChild(icon);
+
+    pdpPriceButtonDiv.appendChild(addToCartButton);
+    const discountNodes = createDiscountNodes(discountInfo);
+    pdpButtonWrap.append(discountNodes, pdpPriceButtonDiv);
+    documentFragment.appendChild(pdpButtonWrap);
+
+    // top level element
+    const errorBlock = createErrorBlock();
+    documentFragment.appendChild(errorBlock);
+
+    return documentFragment;
+  };
+
+  const getPDPOptions = (discountInfo) => {
+    const documentFragment = document.createDocumentFragment();
+
+    // top level element
+    const pdpDiv = document.createElement('div');
+    pdpDiv.classList.add('pdp-div');
+    documentFragment.appendChild(pdpDiv);
+
+    // top level element
+    const pdpButtonWrap = document.createElement('div');
+    pdpButtonWrap.classList.add('pdp-price-button-wrap');
+    const pdpPriceButtonDiv = document.createElement('div');
+    pdpPriceButtonDiv.classList.add('pdp-price-button');
+    const addToCartButton = createAddToCartButton('Enroll');
+    pdpPriceButtonDiv.appendChild(addToCartButton);
+    const discountNodes = createDiscountNodes(discountInfo);
+    pdpButtonWrap.append(discountNodes, pdpPriceButtonDiv);
+    documentFragment.appendChild(pdpButtonWrap);
+
+    // top level element
+    const errorBlock = createErrorBlock();
+    documentFragment.appendChild(errorBlock);
+
+    return documentFragment;
+  };
+
+  const tryAddAndTrack = async (product, moduleData, selectedOptions) => {
+    try {
+      const variant = await addToCart(product, moduleData, selectedOptions);
+
+      if (variant) {
+        trackAddToCart(variant, moduleData, product);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  /**
+   * Determine and configure the primary button for the dropdown
+   */
+  const configureHeaderForNoCohorts = (
+    product,
+    moduleData,
+    selectedOptions,
+  ) => {
+    const enrollButtonWrapper = document.querySelector('.enroll-btn-wrapper');
+    const button = createAddToCartButton();
+    button.classList.add(
+      'pdp-sticky-btn-right',
+      'primary-button',
+      'arrow-link',
+      'arrow-link-forward',
+    );
+
+    button.addEventListener('click', () => {
+      tryAddAndTrack(product, moduleData, selectedOptions);
+    });
+
+    enrollButtonWrapper.replaceChildren(button);
+  };
+
+  /**
+   * Updates selectedOptions and show/hide buttons when an attribute is changed.
+   */
+  const handleSelectorChange = (
+    moduleData,
+    product,
+    selectedOptions,
+    optionKeys,
+    discountInfo,
+  ) => {
+    const { showStickyHeader } = moduleData;
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const availableVariants = IIN.shopify.getAvailableVariants(variants);
+    const hasCohorts = availableVariants.length > 1;
+
+    const { options, newSelection } = getOptions(
+      selectedOptions,
+      optionKeys,
+      variants,
+    );
+
+    optionKeys.forEach((optionKey) => {
+      selectedOptions[optionKey] = newSelection[optionKey];
+    });
+
+    // Configure options radio selections
+    const optionsForm = document.createElement('form');
+    const valueSet = options[optionKeys[0]];
+    const title = [...valueSet]?.[0];
+    const isDefaultTitle = title === 'Default Title';
+
+    if (showStickyHeader) {
+      optionsForm.classList.add('jd-shopify-options');
+
+      // Not showing options if there is only 1 default field
+      if (!isDefaultTitle) {
+        optionsForm.appendChild(
+          createOptionNodes(optionKeys, options, selectedOptions),
+        );
+      }
+
+      // Instead of converting node list to an array, we can use forEach to iterate
+      const { forEach } = Array.prototype;
+
+      // Adding options to header dropdown
+      const bottomBases = document.getElementsByClassName('pdp-bottom-options');
+      forEach.call(bottomBases, (element) => {
+        element.replaceChildren(optionsForm.cloneNode(true));
+      });
+
+      const bottomPrices = document.getElementsByClassName('pdp-bottom-price');
+      forEach.call(bottomPrices, (element) =>
+        element.replaceChildren(getBottomRight(discountInfo)),
+      );
+    } else if (moduleData.isInlineOnly) {
+      const optionsDiv = document.createElement('div');
+      optionsDiv.classList.add('jd-shopify-options');
+
+      if (!isDefaultTitle) {
+        optionsDiv.appendChild(
+          createOptionNodes(optionKeys, options, selectedOptions),
+        );
+      }
+
+      const button = createAddToCartButton();
+      const errorMessage = createErrorBlock();
+
+      // final composition
+      const base = document.querySelector(`#${moduleData.name}`);
+      base.replaceChildren(optionsDiv, button, errorMessage);
+    }
+
+    // Adding options to inline block
+    if (moduleData.isInlineAndHeader) {
+      const pdpOptions = document.querySelector('.pdp-options');
+      const parentDuplicate = optionsForm.cloneNode(true);
+      pdpOptions.replaceChildren(parentDuplicate, getPDPOptions(discountInfo));
+    }
+
+    // Option click checkbox
+    const radioSelector = showStickyHeader
+      ? `.jd-shopify-option-wrap input[type=radio]`
+      : `#${moduleData.name} .jd-shopify-option-wrap input[type=radio]`;
+
+    $(radioSelector).change(function (event) {
+      if (showStickyHeader) {
+        event.preventDefault();
+      }
+
+      const type = $(this).attr('name');
+      const val = $(this).val();
+      // This seems broken: parent, a special jquery data property, is always undefined?
+      const parent = $(this).data('parent');
+
+      selectedOptions[type] = val;
+      handleSelectorChange(
+        moduleData,
+        product,
+        selectedOptions,
+        optionKeys,
+        discountInfo,
+      );
+
+      const prefix = showStickyHeader ? `.${parent}` : `#${moduleData.name}`;
+      const checkedSelector = `${prefix} .jd-shopify-option-wrap input[name="${type}"]:checked`;
+      $(checkedSelector).first().focus();
+    });
+
+    // This has something to do with targeting the right set of inputs
+    if (showStickyHeader) {
+      $('.jd-shopify-option-wrap label').click(function (e) {
+        e.preventDefault();
+        const checkbox = $(this).attr('for');
+        $(`#${checkbox}`).first().trigger('click');
+      });
+    }
+
+    if (showStickyHeader && !hasCohorts) {
+      // Button is replaced without disabled attribute
+      configureHeaderForNoCohorts(product, moduleData, selectedOptions);
+    } else {
+      document
+        .querySelector('.pdp-sticky #pdp-sticky-enroll-btn')
+        ?.removeAttribute('disabled');
+    }
+
+    // Add to cart button click.
+    const prefix = showStickyHeader ? '' : `#${moduleData.name} `;
+    const addToCartSelector = `${prefix}.jd-shopify-add-btn`;
+    const $addToCartButtons = $(addToCartSelector);
+
+    $addToCartButtons.click(() => {
+      tryAddAndTrack(product, moduleData, selectedOptions);
+    });
+  };
+
+  /**
+   * Configure dropdown heading text
+   * @param {number} optionsCounts
+   */
+  const configureDropdownHeading = (optionsCount) => {
+    document
+      .querySelector(
+        optionsCount > 1
+          ? '.pdp-sticky__dropdown-heading .single-variant'
+          : '.pdp-sticky__dropdown-heading .multi-variant',
+      )
+      ?.remove();
+  };
+
+  /**
+   * Clear or replace text in PDP bottom section for no cohort products
+   * Not ideal, but there is already a dependency between the two modules:
+   * PDP Bottom Section module grabs html from this module
+   */
+  const matchPDPBottomSectionToTop = (optionsCount) => {
+    const pdpBottomOptionsHeading = document.querySelector(
+      '.pdp-bottom-middle-head',
+    );
+
+    if (pdpBottomOptionsHeading) {
+      const dropdownOptionsText = !optionsCount
+        ? document
+            .querySelector('.pdp-sticky__dropdown-heading')
+            .innerText?.trim()
+        : '';
+      pdpBottomOptionsHeading.innerText = dropdownOptionsText;
+    }
+  };
+
+  return {
+    addToCart,
+    calculateDiscounts,
+    configureAddedToCartPopUp,
+    configureDropdownHeading,
+    configureHeaderOffset,
+    configureHeaderToggle,
+    configureImageSlider,
+    configureStickyHeaderSampleClass,
+    configureStickyNav,
+    createAddToCartButton,
+    createDiscountNodes,
+    createErrorBlock,
+    createInputPair,
+    createOptionLabel,
+    createOptionNodes,
+    createViewItemEvent,
+    getBottomRight,
+    getOptions,
+    getPDPOptions,
+    getProductData,
+    handleSelectorChange,
+    matchPDPBottomSectionToTop,
+    parseMarkupData,
+    processProduct,
+    trackAddToCart,
+    tryAddAndTrack,
+  };
+};

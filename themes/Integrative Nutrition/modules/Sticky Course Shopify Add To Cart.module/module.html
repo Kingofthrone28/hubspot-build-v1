@@ -1,13 +1,26 @@
+{# Independent variables #}
 {% set is_sample_class = module.configuration == 'sample-class' %}
+{% set is_inline_only = module.configuration == 'inline-only' %}
+{% set is_inline_and_header = module.configuration == 'inline-and-header' %}
+
+{# Dependent variables #}
+{% set show_sticky_header = is_sample_class or is_inline_and_header %}
 {% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 {% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
 
-{% if not is_sample_class %}
+{# Markup #}
+
+{# Inline section: from Sticky Course Shopify Add To Cart #}
+{% if is_inline_and_header %}
 <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
     <div class="pdp-top-slide-btns">
       {% for slide in module.image_slides %}
-      <div id="pdp-top-slide-btn-{{loop.index}}" data-index="{{loop.index}}" class="pdp-top-slide-btn {% if loop.first %}pdp-top-slide-btn-active{% endif %}">
+      <div
+        id="pdp-top-slide-btn-{{loop.index}}"
+        data-index="{{loop.index}}"
+        class="pdp-top-slide-btn {% if loop.first %}pdp-top-slide-btn-active{% endif %}"
+      >
         {{ slide.label_field }}
       </div>
       {% endfor %}
@@ -17,14 +30,24 @@
         <div class="pdp-top-slide-dots-inner">
           <div class="pdp-top-slide-dots">
             {% for slide in module.image_slides %}
-            <div data-index="{{loop.index}}" id="pdp-top-slide-dot-{{loop.index}}" class="pdp-top-slide-dot {% if slide.video_embed %}pdp-top-slide-dot-video{% endif %} {% if loop.first %}pdp-top-slide-dot-active{% endif %}"></div>
+            <div 
+              data-index="{{loop.index}}"
+              id="pdp-top-slide-dot-{{loop.index}}"
+              class="pdp-top-slide-dot {% if slide.video_embed %}pdp-top-slide-dot-video{% endif %} {% if loop.first %}pdp-top-slide-dot-active{% endif %}"
+            ></div>
             {% endfor %}
           </div>
         </div>
       </div>
       {% for slide in module.image_slides %}
-      <div id="pdp-top-slide-slide-{{ loop.index }}" class="pdp-top-slide-slide {% if loop.first %}pdp-top-slide-slide-active{% endif %}">
-        <div class="pdp-top-slide-img {% if slide.video_embed %}pdp-top-slide-video-img{% endif %}" style="background:url({{ slide.image_field.src }})">
+      <div
+        id="pdp-top-slide-slide-{{ loop.index }}"
+        class="pdp-top-slide-slide {% if loop.first %}pdp-top-slide-slide-active{% endif %}"
+      >
+        <div
+          class="pdp-top-slide-img {% if slide.video_embed %}pdp-top-slide-video-img{% endif %}"
+          style="background:url({{ slide.image_field.src }})"
+        >
           {% if slide.video_embed %}
             <div class="pdp-top-slide-video-placeholder"></div>
             <script>
@@ -59,7 +82,9 @@
       <div class="pdp-affirm-line">{{ module.affirm_line }}</div>
       {% set codeObj = { val: '' } %}
       {% for code in module.code_offers %}
-        {% if unixtimestamp(local_dt) >= unixtimestamp(code.start_time) && unixtimestamp(local_dt) < unixtimestamp(code.end_time) %}
+        {% set is_after_start = unixtimestamp(local_dt) >= unixtimestamp(code.start_time) %}
+        {% set is_before_end = unixtimestamp(local_dt) < unixtimestamp(code.end_time) %}
+        {% if is_after_start && is_before_end %}
           {% do codeObj.update({ val: code.text_field }) %}
         {% endif %}
       {% endfor %}
@@ -78,98 +103,127 @@
 </div>
 {% endif %}
 
-<div class="pdp-sticky-wrap {{ sticky_show }}">
-  <div class="pdp-sticky-header-wrap">
-    <div class="pdp-sticky">
-      <div class="pdp-sticky-inner">
-        <div class="pdp-sticky-head">
-          <div>
+{# Sticky Header #}
+{% if show_sticky_header %}
+  <div class="pdp-sticky-wrap {{ sticky_show }}">
+    <div class="pdp-sticky-header-wrap">
+      <div class="pdp-sticky">
+        <div class="pdp-sticky-inner">
+          <div class="pdp-sticky-head">
             <div>
-              <img src="{{ module.category_image.src }}" />
+              <div>
+                <img src="{{ module.category_image.src }}" />
+              </div>
+              <h3>{{ module.course_name }}</h3>
             </div>
-            <h3>{{ module.course_name }}</h3>
+            <div>{{ module.sticky_nav.subhead }}</div>
           </div>
-          <div>{{ module.sticky_nav.subhead }}</div>
-        </div>
-        <div class="pdp-sticky-btns">
-          {% if module.sticky_nav.left_button_link.href and module.sticky_nav.left_button_text %}
-          <div>
-            {% if is_sample_class %}
-              <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button pdp-sticky-btn-left secondary-button arrow-link {{ arrow_link_direction }}">
-                {{ module.sticky_nav.left_button_text }}
-              </a>
-            {% else %}
-              <a href="{{ module.sticky_nav.left_button_link.href }}" class="jd-request-btn hs-button pdp-sticky-btn-left" target="_blank"> 
-                {{ module.sticky_nav.left_button_text }}
-                <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
-              </a>
+          <div class="pdp-sticky-btns">
+            {% if module.sticky_nav.left_button_link.href and module.sticky_nav.left_button_text %}
+            <div>
+              {% if is_sample_class %}
+                <a
+                  href="{{ module.sticky_nav.left_button_link.href }}"
+                  class="jd-request-btn hs-button pdp-sticky-btn-left secondary-button arrow-link {{ arrow_link_direction }}"
+                >
+                  {{ module.sticky_nav.left_button_text }}
+                </a>
+              {% else %}
+                <a 
+                  href="{{ module.sticky_nav.left_button_link.href }}" 
+                  class="jd-request-btn hs-button pdp-sticky-btn-left" target="_blank"
+                > 
+                  {{ module.sticky_nav.left_button_text }}
+                  <i class="fa-regular fa-circle-arrow-right" style="padding-left: 10px;"></i>
+                </a>
+              {% endif %}
+            </div>
             {% endif %}
-          </div>
-          {% endif %}
-          <div>
-            {% if is_sample_class and module.sticky_nav.right_button_text %}
-              <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"> 
-                {{ module.sticky_nav.right_button_text }}
-              </a>
-            {% else %}
-              <a id="pdp-sticky-enroll-btn" href="#" class="jd-request-btn hs-button light-button pdp-sticky-btn-right"> 
-                Enroll
-                <i class="pdp-sticky-enroll-chev-down fal fal fa-chevron-down" style="padding-left: 10px;"></i>
-                <i class="pdp-sticky-enroll-chev-up fal fal fa-chevron-up" style="padding-left: 10px;"></i>
-              </a>
-            {% endif %}
+            {# Right button #}
+            <div class="enroll-btn-wrapper">
+            {# Disabled this button until we parse product info. #}
+              <button
+                id="pdp-sticky-enroll-btn"
+                class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"
+                disabled
+              >
+                {% if is_sample_class and module.sticky_nav.right_button_text %}
+                  {{ module.sticky_nav.right_button_text }}
+                {% else %}
+                  Enroll
+                {% endif %}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="pdp-sticky-enroll">
-      <div class="pdp-sticky-enroll-inner">
-        <div class="pdp-bottom">
-          <div>
-            <h3>{{ module.sticky_nav.dropdown_left_text }}</h3>
-          </div>
-          <div>
+      <div class="pdp-sticky-enroll">
+        <div class="pdp-sticky-enroll-inner">
+          <div class="pdp-bottom">
             <div>
-              <div class="pdp-bottom-options"></div>
+              <h3 class="pdp-sticky__dropdown-heading">
+                <span class="multi-variant">{{ module.sticky_nav.dropdown_left_text }}</span>
+                <span class="single-variant">{{ module.sticky_nav.dropdown_left_text_singular }}</span>
+              </h3>
             </div>
-          </div>
-          <div>
-            <div class="pdp-bottom-price"></div>
-            <div class="pdp-bottom-3-bottom"></div>
+            <div>
+              <div>
+                <div class="pdp-bottom-options"></div>
+              </div>
+            </div>
+            <div>
+              <div class="pdp-bottom-price"></div>
+              <div class="pdp-bottom-3-bottom"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+{% endif %}
 
+{# Inline section: from Course Shopify Add To Cart #}
+{% if is_inline_only %}
+  <div id="{{ name }}" class="jd-add-cart-wrap"></div>
+{% endif %}
+
+{# Added to cart pop up: from Sample Class Sticky Header #}
 {% if is_sample_class %}
-  <!-- Added to cart pop up -->
   <div class="jd-add-pop">
-  <div class="jd-add-pop-item-added">
-    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="m2.25 12.321 7.27 6.491c.143.127.321.19.499.19.206 0 .41-.084.559-.249l11.23-12.501c.129-.143.192-.321.192-.5 0-.419-.338-.75-.749-.75-.206 0-.411.084-.559.249l-10.731 11.945-6.711-5.994c-.144-.127-.322-.19-.5-.19-.417 0-.75.336-.75.749 0 .206.084.412.25.56" fill-rule="nonzero"/>
-    </svg>
-    <strong>Item added to cart</strong>
-    <svg class="jd-add-pop-close" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
-    </svg>
-  </div>
-  <div class="jd-add-pop-content">
-    <div class="jd-add-pop-img"><div></div></div>
-    <div class="jd-add-pop-content-main">
-      <div class="jd-add-pop-cat"></div>
-      <div class="jd-add-pop-name"></div>
-      <div class="jd-add-pop-options"></div>
-      <div class="jd-add-pop-price"></div>
+    <div class="jd-add-pop-item-added">
+      <strong class="js-add-pop-message pseudo-svg check-before">Item added to cart</strong>
+      <svg
+        class="jd-add-pop-close"
+        clip-rule="evenodd"
+        fill-rule="evenodd"
+        stroke-linejoin="round"
+        stroke-miterlimit="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
+      </svg>
+    </div>
+    <div class="jd-add-pop-content">
+      <div class="jd-add-pop-img"><div></div></div>
+      <div class="jd-add-pop-content-main">
+        <div class="jd-add-pop-cat"></div>
+        <div class="jd-add-pop-name"></div>
+        <div class="jd-add-pop-options"></div>
+        <div class="jd-add-pop-price"></div>
+      </div>
+    </div>
+    <div class="jd-add-pop-btns">
+      <a
+        href="{{ module.continue_shopping_link.url.href }}"
+        class="jd-request-btn hs-button jd-request-btn-inverse"
+      >Continue Shopping</a>
+      <a
+        href="{{ module.cart_link.url.href }}"
+        class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link"
+      >View Cart</a>
     </div>
   </div>
-  <div class="jd-add-pop-btns">
-    <a href="{{ module.continue_shopping_link.url.href }}" class="jd-request-btn hs-button jd-request-btn-inverse">Continue Shopping</a>
-    <a href="{{ module.cart_link.url.href }}" class="jd-view-cart-link jd-request-btn hs-button light-button jd-arrow-link">View Cart</a>
-  </div>
-  </div>
-<!-- End added to cart pop up -->
 {% endif %}
 
 {% require_css %}
@@ -187,12 +241,15 @@
   {%- set raw_data = {
     category: module.category_text,
     courseName: module.course_name,
+    name: name,
+    isInlineAndHeader: is_inline_and_header,
+    isInlineOnly: is_inline_only,
     isSampleClass: is_sample_class,
-    name: 'pdp_options_' + name,
+    showStickyHeader: show_sticky_header,
     productID: module.product_id
   } %}
   (function () {
     const jsonData = JSON.stringify({{ raw_data|tojson }});
-    window.sessionStorage.setItem('course_shopify_add_to_cart', jsonData);
+    IIN.shopify.setAddToCartSessionData(jsonData);
   })();
 </script>

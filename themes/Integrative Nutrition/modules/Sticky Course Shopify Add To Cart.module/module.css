@@ -10,3 +10,7 @@
 .jd-add-pop {
   top: 0 !important;
 }
+
+.js-add-pop-message {
+  --accent--color: var(--color--slate);
+}
