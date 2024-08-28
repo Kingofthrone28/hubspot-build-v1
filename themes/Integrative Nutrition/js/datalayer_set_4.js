@@ -1,11 +1,13 @@
 window.dataLayer = window.dataLayer || [];
 
 function loadYoutubeIframeAPI() {
-  const y_api = document.createElement('script');
-  y_api.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(y_api);
+  const youTubeApi = document.createElement('script');
+  youTubeApi.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(youTubeApi);
 }
+
 loadYoutubeIframeAPI();
+
 const progressPercentPushed = {
   0: false,
   10: false,
@@ -13,30 +15,56 @@ const progressPercentPushed = {
   50: false,
   75: false,
 };
-function onYouTubeIframeAPIReady() {
-  const youtubeIframeElements = document.querySelectorAll(
-    'iframe[src*="youtube"]',
+
+function videoProgress(videoTitle, percent) {
+  window.dataLayer.push({
+    event: 'video_progress',
+    video_title: videoTitle,
+    video_percent: percent,
+  });
+  console.log(
+    'dataLayer Event:',
+    'video_progress',
+    ',',
+    'Video Title:',
+    videoTitle,
+    ',',
+    'Video Percent:',
+    percent,
   );
-  for (let i = 0; i < youtubeIframeElements.length; i++) {
-    let videoUrl = youtubeIframeElements[i].src;
-    if (videoUrl.includes('?')) {
-      videoUrl += '&enablejsapi=1';
-      youtubeIframeElements[i].src = videoUrl;
-    } else {
-      videoUrl += '?enablejsapi=1';
-      youtubeIframeElements[i].src = videoUrl;
-    }
-    new YT.Player(youtubeIframeElements[i], {
-      events: {
-        onStateChange: onPlayerStateChange,
-      },
-    });
-  }
 }
+
+function videoProgressEvent(event, title, percent) {
+  window.dataLayer.push({
+    event,
+    video_title: title,
+    video_percent: percent,
+  });
+  console.log(
+    'dataLayer Event:',
+    event,
+    ',',
+    'Video Title:',
+    title,
+    ',',
+    'Video Percent:',
+    percent,
+  );
+}
+
+function videoStartCompleteEvent(event, title) {
+  window.dataLayer.push({
+    event,
+    video_title: title,
+  });
+  console.log('dataLayer Event:', event, ',', 'Video Title:', title);
+}
+
 function onPlayerStateChange(event) {
   const player = event.target;
   const videoTitle = player.getVideoData().title;
-  if (event.data == YT.PlayerState.PLAYING) {
+
+  if (event.data === YT.PlayerState.PLAYING) {
     setInterval(() => {
       const currentTime = player.getCurrentTime();
       const totalDuration = player.getDuration();
@@ -68,7 +96,7 @@ function onPlayerStateChange(event) {
         videoProgress(videoTitle, 75);
       }
     }, 1000);
-  } else if (event.data == YT.PlayerState.ENDED) {
+  } else if (event.data === YT.PlayerState.ENDED) {
     window.dataLayer.push({
       event: 'video_complete',
       video_title: videoTitle,
@@ -82,32 +110,32 @@ function onPlayerStateChange(event) {
     );
   }
 }
-function videoProgress(videoTitle, percent) {
-  window.dataLayer.push({
-    event: 'video_progress',
-    video_title: videoTitle,
-    video_percent: percent,
-  });
-  console.log(
-    'dataLayer Event:',
-    'video_progress',
-    ',',
-    'Video Title:',
-    videoTitle,
-    ',',
-    'Video Percent:',
-    percent,
+
+function onYouTubeIframeAPIReady() {
+  const youTubeIframeElements = document.querySelectorAll(
+    'iframe[src*="youtube"]',
   );
+
+  for (let i = 0; i < youTubeIframeElements.length; i++) {
+    let videoUrl = youTubeIframeElements[i].src;
+    if (videoUrl.includes('?')) {
+      videoUrl += '&enablejsapi=1';
+    } else {
+      videoUrl += '?enablejsapi=1';
+    }
+    youTubeIframeElements[i].src = videoUrl;
+    new YT.Player(youTubeIframeElements[i], {
+      events: {
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  }
 }
 
-const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
-vimeoIframeElements.forEach((vimeoIframeElement) => {
-  trackVimeoVideo(vimeoIframeElement);
-});
 function trackVimeoVideo(videoElement) {
-  const vimeo_api = document.createElement('script');
-  vimeo_api.src = 'https://player.vimeo.com/api/player.js';
-  vimeo_api.onload = function () {
+  const vimeoApi = document.createElement('script');
+  vimeoApi.src = 'https://player.vimeo.com/api/player.js';
+  vimeoApi.onload = function () {
     const player = new Vimeo.Player(videoElement);
     player
       .getVideoTitle()
@@ -139,29 +167,10 @@ function trackVimeoVideo(videoElement) {
         console.error('Error getting video title:', error);
       });
   };
-  document.head.appendChild(vimeo_api);
+  document.head.appendChild(vimeoApi);
 }
-function videoStartCompleteEvent(event, title, percent) {
-  window.dataLayer.push({
-    event,
-    video_title: title,
-  });
-  console.log('dataLayer Event:', event, ',', 'Video Title:', title);
-}
-function videoProgressEvent(event, title, percent) {
-  window.dataLayer.push({
-    event,
-    video_title: title,
-    video_percent: percent,
-  });
-  console.log(
-    'dataLayer Event:',
-    event,
-    ',',
-    'Video Title:',
-    title,
-    ',',
-    'Video Percent:',
-    percent,
-  );
-}
+
+const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
+vimeoIframeElements.forEach((vimeoIframeElement) => {
+  trackVimeoVideo(vimeoIframeElement);
+});

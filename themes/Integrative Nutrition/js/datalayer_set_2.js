@@ -2,31 +2,29 @@ window.dataLayer = window.dataLayer || [];
 
 /* function ctaClicks(element){
   let position;
-  const tracking_id = element.getAttribute('data-tracking-id');
-  if (tracking_id.includes('header')){
+  const trackingId = element.getAttribute('data-tracking-id');
+  if (trackingId.includes('header')){
     position = 'header';
-  } else if (tracking_id.includes('body')) {
+  } else if (trackingId.includes('body')) {
     position = 'body';
-  } else if (tracking_id.includes('footer')) {
+  } else if (trackingId.includes('footer')) {
     position = 'footer';
   }
-  const clickUrl = element.href? element.href.split('?')[0] : 'NA';
+  const clickUrl = element.href ? element.href.split('?')[0] : 'NA';
   const clickText = element.innerText;
   window.dataLayer.push({
-    'event': 'cta_click',
-    'click_text': clickText,
-    'click_url': clickUrl,
-    'position': position
+    event: 'cta_click',
+    click_text: clickText,
+    click_url: clickUrl,
+    position,
   });
 }
 const ctas = document.querySelectorAll('[data-tracking-id]');
-if (ctas){
-  ctas.forEach(function(cta) {
-    cta.addEventListener('click',function() {
-      ctaClicks(cta);
-    });
+ctas.forEach((cta) => {
+  cta.addEventListener('click', () => {
+    ctaClicks(cta);
   });
-} */
+}); */
 
 function contactPop(element, position) {
   let event = 'contact_click';
@@ -63,8 +61,8 @@ function contactPop(element, position) {
     position,
   });
 }
-const header_contact = document.querySelectorAll('div.jd-contact-pop a');
-header_contact.forEach((link) => {
+const headerContact = document.querySelectorAll('div.jd-contact-pop a');
+headerContact.forEach((link) => {
   link.addEventListener('click', () => {
     contactPop(link, 'header');
   });
@@ -75,51 +73,47 @@ if (contact) {
     contactPop(contact, 'header');
   });
 }
-const entity_body_contact = document.querySelectorAll(
+const entityBodyContact = document.querySelectorAll(
   'div.entity-paragraphs-item span[style] a',
 );
-entity_body_contact.forEach((link) => {
+entityBodyContact.forEach((link) => {
   link.addEventListener('click', () => {
     contactPop(link, 'body');
   });
 });
-const course_catalog_body_contact = document.querySelectorAll(
+const courseCatalogBodyContact = document.querySelectorAll(
   'span[style="color: #2d3841;"] a',
 );
-course_catalog_body_contact.forEach((link) => {
+courseCatalogBodyContact.forEach((link) => {
   link.addEventListener('click', () => {
     contactPop(link, 'body');
   });
 });
-const body_contact_click = document.querySelectorAll('div.schedule-text a');
-if (body_contact_click) {
-  body_contact_click.forEach((link) => {
-    link.addEventListener('click', () => {
-      contactPop(link, 'body');
-    });
+const bodyContactClick = document.querySelectorAll('div.schedule-text a');
+bodyContactClick.forEach((link) => {
+  link.addEventListener('click', () => {
+    contactPop(link, 'body');
   });
-}
-const footer_contact = document.querySelectorAll(
+});
+const footerContact = document.querySelectorAll(
   'div.footer-main a[href^="tel"]',
 );
-footer_contact.forEach((link) => {
+footerContact.forEach((link) => {
   link.addEventListener('click', () => {
     contactPop(link, 'footer');
   });
 });
-const bottom_float_bar = document.querySelector('div.bottom-float-bar a');
-if (bottom_float_bar) {
-  bottom_float_bar.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'contact_click',
-      click_text: 'admission number',
-      position: 'footer',
-    });
+const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
+bottomFloatBar?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'contact_click',
+    click_text: 'admission number',
+    position: 'footer',
   });
-}
+});
 function registerWebinar(element) {
   const headerText = element.getAttribute('data-tracking-header-label');
-  const clickText = element.querySelector('a').innerText;
+  const clickText = element.querySelector('a')?.innerText;
   window.dataLayer.push({
     event: 'register_webinar_click',
     header_text: headerText,
@@ -127,13 +121,11 @@ function registerWebinar(element) {
   });
 }
 const webinars = document.querySelectorAll('div.item-inner.box');
-if (webinars) {
-  webinars.forEach((webinar) => {
-    webinar.addEventListener('click', () => {
-      registerWebinar(webinar);
-    });
+webinars.forEach((webinar) => {
+  webinar.addEventListener('click', () => {
+    registerWebinar(webinar);
   });
-}
+});
 // Promotion Clicks
 const promo = document.querySelector('a.deal-bar-btn');
 if (promo) {
@@ -174,7 +166,7 @@ function trackLinkClicks(element) {
   } else if (element.href === 'https://www.integrativenutrition.com/') {
     clickText = 'logo';
   } else if (
-    element.href === `${window.location.href  }#` ||
+    element.href === `${window.location.href}#` ||
     element.href === 'javascript:void(0);'
   ) {
     clickUrl = 'NA';

@@ -34,9 +34,8 @@ const observer = new IntersectionObserver(handleIntersection, {
 
 function debounce(fn, delay) {
   let timeout;
-  return function () {
+  return function (...args) {
     const context = this;
-      const args = arguments;
     clearTimeout(timeout);
     timeout = setTimeout(() => fn.apply(context, args), delay);
   };
@@ -80,7 +79,7 @@ function handleFormLastField(event) {
     event.target.type === 'email' ||
     event.target.type === 'tel'
   ) {
-    form.dataset.lastField = event.target.id.split('-')[0];
+    [form.dataset.lastField] = event.target.id.split('-');
   } else {
     form.dataset.lastField = event.target.value;
   }
@@ -144,7 +143,7 @@ listenerMutationObserver.observe(document.body, {
 
 const formCache = {};
 function cacheFormData(
-  data_form_id,
+  dataFormId,
   firstName,
   lastName,
   email,
@@ -155,13 +154,13 @@ function cacheFormData(
   streetAddress,
   postalCode,
 ) {
-  const selector = `form[data-form-id="${data_form_id}"]`;
-  const hs_form = document.querySelector(selector);
-  if (hs_form) {
+  const selector = `form[data-form-id="${dataFormId}"]`;
+  const hsForm = document.querySelector(selector);
+  if (hsForm) {
     const formName =
-      hs_form.querySelector('input[name="leadsource"]').getAttribute('value') ||
+      hsForm.querySelector('input[name="leadsource"]').getAttribute('value') ||
       '';
-    formCache[data_form_id] = {
+    formCache[dataFormId] = {
       formName,
       firstName,
       lastName,
@@ -180,7 +179,7 @@ document.addEventListener(
   (event) => {
     if (event.target.closest('form')) {
       const form = event.target.closest('form');
-      const data_form_id = form.getAttribute('data-form-id');
+      const dataFormId = form.getAttribute('data-form-id');
       const firstName =
         form.querySelector('input[id^="firstname"]')?.value || '';
       const lastName = form.querySelector('input[id^="lastname"]')?.value || '';
@@ -195,7 +194,7 @@ document.addEventListener(
         form.querySelector('input[id^="address"]')?.value || '';
       const postalCode = form.querySelector('input[id^="post"]')?.value || '';
       cacheFormData(
-        data_form_id,
+        dataFormId,
         firstName,
         lastName,
         email,
@@ -210,12 +209,12 @@ document.addEventListener(
   },
   true,
 );
-function formSubmit(data_form_id, refer_url) {
-  const cachedData = formCache[data_form_id];
+function formSubmit(dataFormId, referUrl) {
+  const cachedData = formCache[dataFormId];
   window.dataLayer.push({
     event: 'form_submit_DL',
     form_name: cachedData.formName,
-    form_referrer_url: refer_url,
+    form_referrer_url: referUrl,
     first_name: cachedData.firstName,
     last_name: cachedData.lastName,
     email: cachedData.email,
@@ -226,15 +225,15 @@ function formSubmit(data_form_id, refer_url) {
     street_address: cachedData.streetAddress,
     postal_code: cachedData.postalCode,
   });
-  delete formCache[data_form_id];
+  delete formCache[dataFormId];
 }
 window.addEventListener('message', (event) => {
   if (
     event.data.type === 'hsFormCallback' &&
     event.data.eventName === 'onFormSubmitted'
   ) {
-    const data_form_id = event.data.id;
-    const form_referrer_url = window.location.href;
-    formSubmit(data_form_id, form_referrer_url);
+    const dataFormId = event.data.id;
+    const formReferrerUrl = window.location.href;
+    formSubmit(dataFormId, formReferrerUrl);
   }
 });
