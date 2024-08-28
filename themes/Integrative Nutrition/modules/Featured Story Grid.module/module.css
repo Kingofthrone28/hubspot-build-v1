@@ -35,11 +35,11 @@
 }
 
 .featured-story-grid__large-card-heading {
-  font-size: var(--font-size--h4--desktop);
+  font: var(--font--h4--desktop);
 }
 
 .featured-story-grid__small-card-heading {
-  font-size: var(--font-size--h6--desktop);
+  font: var(--font--h6--desktop);
 }
 
 .small-card-image img {
@@ -83,7 +83,7 @@
 
   .featured-story-grid__large-card-heading,
   .featured-story-grid__small-card-heading {
-    font-size: var(--font-size--h4--mobile);
+    font: var(--font--h4--mobile);
   }
 }
 
