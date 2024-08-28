@@ -69,7 +69,8 @@ table:nth-last-child(1) {
   min-height: 1px;
 }
 
-.container html .row-fluid .container {
+.container,
+html .row-fluid .container {
   box-sizing: border-box;
   float: none !important;
   margin-right: auto !important;
