@@ -25,7 +25,7 @@
   const variantGidPath = 'gid://shopify/ProductVariant/';
   const sliderBreakMobile = 850;
   const sliderBreakSmDesk = 1240;
-  const $spinner = $('.spinner');
+  const spinner = document.querySelector('.spinner');
 
   const agreementTags = [
     {
@@ -153,7 +153,7 @@
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
 
     try {
-      $spinner?.show();
+      spinner.style.display = 'block';
       let existingCheckout;
 
       if (cartCookie) {
@@ -171,7 +171,7 @@
       console.error(e);
     }
 
-    $spinner?.hide();
+    spinner.style.display = 'none';
   }
 
   /**
@@ -680,6 +680,7 @@
       );
       await loadCart();
       updateCartTotal(updatedCheckout);
+      spinner.style.display = 'none';
 
       return deletedItem;
     };
@@ -733,7 +734,7 @@
 
     $('.jd-cart-item-delete').click(function (e) {
       e.preventDefault();
-
+      spinner.style.display = 'block';
       const lineID = $(this).data('line');
 
       deleteFromCart(lineID).then((deletedItem) => {
