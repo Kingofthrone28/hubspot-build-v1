@@ -359,3 +359,67 @@ allGenericCTAElements.forEach((element) => {
     trackGenericCTAClick(element);
   });
 });
+
+const getFilterSelector = name => `#course-pop-${name} input[name="${name}"]:checked`
+
+function getSelectedFilters() {
+  const selectedTopics = [
+    ...document.querySelectorAll(getFilterSelector('Topics'))
+  ].map(({ value }) => value);
+
+  const selectedLevels = [
+    ...document.querySelectorAll(getFilterSelector('Levels'))
+  ].map(({ value }) => value);
+
+  const selectedTypes = [
+    ...document.querySelectorAll(getFilterSelector('Type'))
+  ].map(({ value }) => value);
+
+  return { selectedTopics, selectedLevels, selectedTypes };
+}
+
+function trackFilterEvent() {
+  const { selectedTopics, selectedLevels, selectedTypes } = getSelectedFilters();
+  window.dataLayer.push({
+    event: 'filter',
+    filter_topics: selectedTopics,
+    filter_levels: selectedLevels,
+    filter_type: selectedTypes,
+  });
+}
+
+const saveButtonElement = document.getElementById('course-filter-save');
+
+saveButtonElement?.addEventListener('click', trackFilterEvent);
+
+function trackSearchResults(element) {
+  const articleCount = document.querySelectorAll('.jd-listing-item').length;
+  window.dataLayer.push({
+    event: 'search_results',
+    search_term: element.value,
+    search_result_count: articleCount,
+  });
+}
+
+function trackViewSearchResults(element) {
+  const articles = document.querySelectorAll(
+    'article.jd-listing-item div.jd-listing-content h3',
+  );
+  const titles = [...articles].map(({ innerText }) => innerText);
+  window.dataLayer.push({
+    event: 'view_search_results',
+    search_term: element.value,
+    result_title: titles,
+  });
+}
+
+const searchBoxElement = document.querySelector('#jd-blog-search-input');
+searchBoxElement?.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter') {
+    return
+  }
+  setTimeout(() => {
+    trackSearchResults(searchBoxElement);
+    trackViewSearchResults(searchBoxElement);
+  }, 5000); // grace period for search results to process.
+});

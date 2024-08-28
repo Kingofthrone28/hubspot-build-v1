@@ -2,8 +2,8 @@ const dataLayerUrl =
   '{{ get_asset_url("/Integrative Nutrition/js/datalayer.js") }}';
 const dataLayerUrl2 =
   '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_2.js") }}';
-const dataLayerUrl3 =
-  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_3.js") }}';
+const dataLayerUrl4 =
+  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_4.js") }}';
 const dataLayerUrl5 =
   '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_5.js") }}';
 
@@ -48,7 +48,7 @@ function renderAnalyticsDatalayerJS() {
 
     loadScript(dataLayerUrl);
     loadScript(dataLayerUrl2);
-    loadScript(dataLayerUrl3);
+    loadScript(dataLayerUrl4);
     loadScript(dataLayerUrl5);
     // DLTest - Successfully loaded datalayer JS...
   } else if (isTestingDisabled()) {
@@ -64,7 +64,7 @@ function renderAnalyticsDatalayerJS() {
     });
     loadScript(dataLayerUrl);
     loadScript(dataLayerUrl2);
-    loadScript(dataLayerUrl3);
+    loadScript(dataLayerUrl4);
     loadScript(dataLayerUrl5);
     // DLTest - Successfully loaded datalayer JS...
   }
