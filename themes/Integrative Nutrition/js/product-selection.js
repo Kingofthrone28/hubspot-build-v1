@@ -537,17 +537,43 @@ const getProductSelectionMethods = () => {
 
   /**
    * Configure header toggle functionality
+   * @param {boolean} useIdTrigger whether to use id as trigger
    */
-  const configureHeaderToggle = () => {
-    const top = $('.pdp-top');
+  const configureHeaderToggle = (useIdTrigger) => {
+    const defaultElementSelector = `.pdp-top`;
+    const headerOnlySelector = `#product-selector-trigger`;
+    const triggerSelector = useIdTrigger
+      ? headerOnlySelector
+      : defaultElementSelector;
+    const trigger = document.querySelector(triggerSelector);
 
-    $(window).on('scroll', () => {
-      const bottomOfPdpTop = top.offset().top + top.height();
+    if (!trigger) {
+      throw new Error(
+        `configureHeaderToggle: Failed to find trigger element using selector: ${triggerSelector}`,
+      );
+    }
 
-      if ($(window).scrollTop() > bottomOfPdpTop) {
-        $('.pdp-sticky-wrap').addClass('pdp-sticky-show');
-      } else {
-        $('.pdp-sticky-wrap').removeClass('pdp-sticky-show');
+    const stickySelector = '.pdp-sticky-wrap';
+    const stickyWrap = document.querySelector(stickySelector);
+
+    if (!stickyWrap) {
+      throw new Error(
+        `configureHeaderToggle: Failed to find sticky wrap with selector: ${stickySelector}`,
+      );
+    }
+
+    const showClass = 'pdp-sticky-show';
+
+    window.addEventListener('scroll', () => {
+      const { scrollY } = window;
+      const { height, top } = trigger.getBoundingClientRect();
+      const bottom = height + top + scrollY;
+      const hasShowClass = stickyWrap.classList.contains(showClass);
+
+      if (scrollY > bottom && !hasShowClass) {
+        stickyWrap.classList.add(showClass);
+      } else if (scrollY < bottom && hasShowClass) {
+        stickyWrap.classList.remove(showClass);
       }
     });
   };

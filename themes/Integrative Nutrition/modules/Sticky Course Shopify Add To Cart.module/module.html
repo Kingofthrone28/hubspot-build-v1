@@ -2,13 +2,23 @@
 {% set is_sample_class = module.configuration == 'sample-class' %}
 {% set is_inline_only = module.configuration == 'inline-only' %}
 {% set is_inline_and_header = module.configuration == 'inline-and-header' %}
+{% set is_header_only = module.configuration == 'header-only' %}
 
 {# Dependent variables #}
-{% set show_sticky_header = is_sample_class or is_inline_and_header %}
+{% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
 {% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 {% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
 
 {# Markup #}
+
+{# Invisible header trigger #}
+{% if is_header_only %}
+  <div id="product-selector-trigger">
+  {% if is_in_editor %}
+    <span class="editor-warning">&lt;PRODUCT SELECTION TRIGGER&gt;</span>
+  {% endif %}
+  </div>
+{% endif %}
 
 {# Inline section: from Sticky Course Shopify Add To Cart #}
 {% if is_inline_and_header %}
@@ -107,6 +117,7 @@
 {% if show_sticky_header %}
   <div class="pdp-sticky-wrap {{ sticky_show }}">
     <div class="pdp-sticky-header-wrap">
+      {# Header Portion #}
       <div class="pdp-sticky">
         <div class="pdp-sticky-inner">
           <div class="pdp-sticky-head">
@@ -119,6 +130,7 @@
             <div>{{ module.sticky_nav.subhead }}</div>
           </div>
           <div class="pdp-sticky-btns">
+            {# Left Button #}
             {% if module.sticky_nav.left_button_link.href and module.sticky_nav.left_button_text %}
             <div>
               {% if is_sample_class %}
@@ -157,6 +169,7 @@
           </div>
         </div>
       </div>
+      {# Dropdown portion #}
       <div class="pdp-sticky-enroll">
         <div class="pdp-sticky-enroll-inner">
           <div class="pdp-bottom">
@@ -242,6 +255,7 @@
     category: module.category_text,
     courseName: module.course_name,
     name: name,
+    isHeaderOnly: is_header_only,
     isInlineAndHeader: is_inline_and_header,
     isInlineOnly: is_inline_only,
     isSampleClass: is_sample_class,

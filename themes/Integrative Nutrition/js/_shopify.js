@@ -339,10 +339,7 @@
   /**
    * Get the number of product options
    */
-  const getOptionsCount = (product) => {
-    return product.options?.length ?? 0;
-  }
-  
+  const getOptionsCount = (product) => product.options?.length ?? 0;
 
   IIN.shopify = {
     addLineItemsToCheckout,

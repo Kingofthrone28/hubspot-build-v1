@@ -18,20 +18,30 @@
 
   try {
     const moduleData = parseMarkupData();
+    const {
+      isHeaderOnly,
+      isInlineAndHeader,
+      isSampleClass,
+      productID,
+      showStickyHeader,
+    } = moduleData;
 
-    if (moduleData.isInlineAndHeader) {
+    if (isInlineAndHeader || isHeaderOnly) {
       configureStickyNav();
-      configureImageSlider();
-      configureHeaderToggle();
+      configureHeaderToggle(isHeaderOnly);
     }
 
-    if (moduleData.isSampleClass) {
+    if (isInlineAndHeader) {
+      configureImageSlider();
+    }
+
+    if (isSampleClass) {
       configureStickyHeaderSampleClass();
       configureHeaderOffset();
       configureAddedToCartPopUp();
     }
 
-    const product = await getProductData(moduleData.productID);
+    const product = await getProductData(productID);
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
     matchPDPBottomSectionToTop(optionsCount);
@@ -39,7 +49,7 @@
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
     const discountInfo =
-      moduleData.showStickyHeader && firstVariant
+      showStickyHeader && firstVariant
         ? await calculateDiscounts(firstVariant)
         : undefined;
 
@@ -52,7 +62,7 @@
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 })();

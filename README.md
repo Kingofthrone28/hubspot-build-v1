@@ -22,7 +22,8 @@ in the head of any pages you are actively developing in production, so they will
 
 ### Hubspot Rich Text Fields
 
-Please limit the available options content creators have when adding a custom module by adding the follow key/value pair in the `fields.json`:
+Please limit the available options content creators have when adding a custom module by adding the follow key/value pair in the `fields.json`. For more information, see the [Hubspot documentation](https://developers.hubspot.com/docs/cms/building-blocks/module-theme-fields/rich-text-editor).
+
 ```json
 {
     "type": "richtext",

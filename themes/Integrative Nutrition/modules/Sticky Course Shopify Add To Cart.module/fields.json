@@ -19,6 +19,10 @@
     [
       "inline-only",
       "Inline Only"
+    ],
+    [
+      "header-only",
+      "Header Only"
     ]
   ],
   "type": "choice",
@@ -331,7 +335,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "The Health Coach Training Program was designed to fit into a busy lifestyle."
+    "default" : ""
   }, {
     "id" : "0b105d95-d2a6-137f-de73-27173fbd5b90",
     "name" : "dropdown_left_text",
@@ -365,9 +369,9 @@
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
     "type" : "url",
     "default" : {
-      "content_id" : null,
+      "content_id" : 174140796854,
       "href" : "",
-      "type" : "EXTERNAL"
+      "type" : "CONTENT"
     }
   }, {
     "id" : "d37d573b-6e56-a79b-deb2-c436663cf11a",
@@ -380,7 +384,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Speak with an Advisor"
+    "default" : "Back to Menu"
   }, {
     "name" : "right_button_text",
     "display_width" : null,
@@ -391,7 +395,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Buy Now"
+    "default" : "Get the full course"
   } 
 ],
   "tab" : "CONTENT",
