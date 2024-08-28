@@ -495,8 +495,9 @@ html .hs-button.jd-request-btn.pdp-sticky-btn-left:hover {
   color: var(--color--white) !important;
 }
 
-html a.hs-button.jd-request-btn.pdp-sticky-btn-right {
-  padding: 10px 30px !important;
+html .hs-button.jd-request-btn.pdp-sticky-btn-right {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
