@@ -153,7 +153,7 @@
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
 
     try {
-      spinner.style.display = 'block';
+      spinner.classList.remove('hidden');
       let existingCheckout;
 
       if (cartCookie) {
@@ -171,7 +171,7 @@
       console.error(e);
     }
 
-    spinner.style.display = 'none';
+    spinner.classList.add('hidden');
   }
 
   /**
@@ -680,7 +680,7 @@
       );
       await loadCart();
       updateCartTotal(updatedCheckout);
-      spinner.style.display = 'none';
+      spinner.classList.add('hidden');
 
       return deletedItem;
     };
@@ -734,7 +734,7 @@
 
     $('.jd-cart-item-delete').click(function (e) {
       e.preventDefault();
-      spinner.style.display = 'block';
+      spinner.classList.remove('hidden');
       const lineID = $(this).data('line');
 
       deleteFromCart(lineID).then((deletedItem) => {
