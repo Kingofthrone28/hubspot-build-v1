@@ -134,7 +134,7 @@ const getProductSelectionMethods = () => {
     $('.jd-add-pop .jd-add-pop-name').text(`${module.courseName}`);
 
     if (action === 'already-in-cart') {
-      const message = document.querySelector('.jd-add-pop .js-add-pop-message');
+      const message = document.querySelector('.jd-add-pop .jd-add-pop-message');
       message.classList.add('jd-shopify-add-exists-msg');
       message.classList.remove('check-before');
       const errorText = document.createTextNode(
