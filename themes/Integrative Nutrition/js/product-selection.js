@@ -201,23 +201,30 @@ const getProductSelectionMethods = () => {
       productData.id,
     );
 
-    const alreadyInCartSelector = `.jd-shopify-add-exists-msg`;
-    const $errorMessages = $(alreadyInCartSelector);
+    // We could use .body-wrapper as a filter, but that only works if we assume
+    // the header is appended directly to the body, as is currently the case.
+    const errorSelector = `.jd-shopify-add-exists-msg`;
+    const headerErrorMessage = document.querySelector(
+      `.pdp-sticky-enroll ${errorSelector}`,
+    );
+    const $errorMessages = $(errorSelector).filter(
+      (index, element) => element !== headerErrorMessage,
+    );
 
     if (alreadyInCart) {
       const hasCohorts = IIN.shopify.getHasCohorts(productData);
 
       if (hasCohorts) {
         $errorMessages.show();
-      } else {
-        showAddedToCartPopUp({
-          checkout,
-          selectedOptions,
-          variant: selectedVariant,
-          module: moduleInfo,
-          action: 'already-in-cart',
-        });
       }
+
+      showAddedToCartPopUp({
+        checkout,
+        selectedOptions,
+        variant: selectedVariant,
+        module: moduleInfo,
+        action: 'already-in-cart',
+      });
 
       return undefined;
     }
@@ -917,8 +924,8 @@ const getProductSelectionMethods = () => {
     if (pdpBottomOptionsHeading) {
       const dropdownOptionsText = !optionsCount
         ? document
-            .querySelector('.pdp-sticky__dropdown-heading')
-            .innerText?.trim()
+          .querySelector('.pdp-sticky__dropdown-heading')
+          .innerText?.trim()
         : '';
       pdpBottomOptionsHeading.innerText = dropdownOptionsText;
     }
