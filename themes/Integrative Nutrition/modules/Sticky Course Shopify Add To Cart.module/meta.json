@@ -4,11 +4,16 @@
   "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 170866726776,
   "is_available_for_new_content" : true,
-  "js_assets" : [ 
+  "js_assets" : [
+    {
+      "autoload" : true,
+      "path" : "../../js/datalayer_ecomm.js",
+      "name" : "datalayer_ecomm.js"
+    },
     {
       "autoload" : true,
       "path" : "../../js/product-selection.js",
       "name" : "product-selection.js"
-    } 
+    }
   ]
 }
