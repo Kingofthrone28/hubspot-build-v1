@@ -20,7 +20,7 @@
           {% endif %}
           <h2 class="featured-story-grid__heading featured-story-grid__{{ cardType }}-heading">{{ content.name }}</h2>
           {% if author %}
-            <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
+            <p class="blog-teaser__byline">By {{ author }} | {{ isReadTimeWords }}</p>
           {% endif %}
         </div>
         <div class="card-image {{ cardType }}-image">
