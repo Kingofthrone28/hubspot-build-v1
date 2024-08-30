@@ -11,20 +11,22 @@
     {% set author = content.blog_post_author.display_name %}
     {% set initialPostWords = content.post_body|wordcount %}
     {% set readTimePostWords = (initialPostWords / 200)|round(0, 'ceil') %}
-    {% set isReadTimeWords = readTimePostWords <= 1 ? 'less than 1 minute read' : 'read time: {{ readTimePostWords }} mins'  %}
+    {% set isReadTimeWords = readTimePostWords <= 1 ? 'Less than 1 minute read' : 'Read time: {{ readTimePostWords }} mins'  %}
     <a href="{{ content.url }}">
       <div class="featured-story-grid__{{ cardType }}-content-container">
         <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
           {% if module.show_category_eyebrow %}
             <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
           {% endif %}
-          <h2 class="featured-story-grid__{{ cardType }}-heading">{{ content.name }}</h2>
+          <h2 class="featured-story-grid__heading featured-story-grid__{{ cardType }}-heading">{{ content.name }}</h2>
           {% if author %}
             <p class="blog-teaser__byline">By: {{ author }} | {{ isReadTimeWords }}</p>
           {% endif %}
         </div>
-        <div class="{{ cardType }}-image">
+        <div class="card-image {{ cardType }}-image">
+        {% if content.featured_image %}
           <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
+        {% endif %}
         </div>
       </div>
     </a>
