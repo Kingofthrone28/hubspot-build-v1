@@ -87,11 +87,24 @@
   }
 
   .featured-story-grid__card-container {
-    margin-top: var(--spacing-6);
+    display: block;
     width: 100%;
   }
 
-  .featured-story-grid__card-container:first-child {
+  .featured-story-grid__small-card-container {
+    margin-top: var(--spacing-6);
+  }
+
+  .featured-story-grid__small-card-container:first-child {
+    margin-top: 0;
+  }
+
+  .featured-story-grid__small-card-container a {
+    display: block;
+    margin-top: var(--spacing-6);
+  }
+
+  .featured-story-grid__small-card-container a:first-child {
     margin-top: 0;
   }
 
