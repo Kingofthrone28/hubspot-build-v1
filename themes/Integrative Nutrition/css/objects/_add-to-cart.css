@@ -390,6 +390,7 @@
 /* Sticky nav */
 .pdp-sticky {
   background: var(--color--white);
+  border-bottom: 1px solid var(--color--grey-4);
 }
 
 .pdp-sticky-btns {
