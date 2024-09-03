@@ -1,158 +1,160 @@
-{% macro get_markup(value) %}
+{# Macros #}
+{% macro get_variable_markup(label, value) %}
   {% set class = value ? 'value' : 'no-value' %}
-  <span class="{{ class }}">&nbsp;&nbsp;&nbsp;{{ value }}</span>
+  <p>
+    <span class="label">{{ label }}:</span>
+    <span class="{{ class }}">{{ value or 'null' }}</span>
+  </p>
 {% endmacro %}
+
+{% macro get_section_markup(header, data, subheader) %}
+  <section class="variable-group">
+    <h2>{{ header }}</h2>
+    {% if subheader %}<h3>{{ subheader }}</h3>{% endif %}
+    {% for pair in data %}
+      {{ get_variable_markup(pair[0], pair[1]) }}
+    {% endfor %}
+  </section>
+{% endmacro %}
+
+{# Depends on .pseudo-svg #}
+{% macro get_icon_markup(class_name) %}
+  <p>
+    <span class="pseudo-svg {{ class_name }}">{{ class_name }}</span>
+  </p>
+{% endmacro %}
+
+{# Data #}
+{%
+  set content_pairs = [
+    ['content.absolute_url', content.absolute_url],
+    ['content.archived', content.archived],
+    ['content.author_email', content.author_email],
+    ['content.author_name', content.author_name],
+    ['content.author_username', content.author_username],
+    ['content.campaign', content.campaign],
+    ['content.campaign_name',content.campaign_name],
+    ['content.created', content.created],
+    ['content.meta_description', content.meta_description],
+    ['content.name', content.name],
+    ['content.publish_date', content.publish_date],
+    ['content.publish_date_localized', content.publish_date_localized],
+    ['content.template_path', content.template_path],
+    ['content.slug', content.slug],
+    ['content.absolute_url', content.absolute_url],
+    ['content.updated', content.updated],
+    ['content.publish_date', content.publish_date],
+    ['content.name', content.name]
+  ]
+%}
+{%
+  set is_in_pairs = [
+    ['is_in_editor', is_in_editor],
+    ['is_in_global_content_editor', is_in_global_content_editor],
+    ['is_in_hs_app', is_in_hs_app],
+    ['is_in_previewer', is_in_previewer],
+    ['is_in_blog_post_editor', is_in_blog_post_editor],
+    ['is_in_blog_post_previewer', is_in_blog_post_previewer],
+    ['is_in_email_editor', is_in_email_editor],
+    ['is_in_email_previewer', is_in_email_previewer],
+    ['is_in_module_previewer', is_in_module_previewer],
+    ['is_in_page_editor', is_in_page_editor],
+    ['is_in_page_previewer', is_in_page_previewer],
+    ['is_in_template_previewer', is_in_template_previewer],
+    ['is_in_theme_editor', is_in_theme_editor],
+    ['is_in_theme_previewer', is_in_theme_previewer]
+  ]
+%}
+{%
+  set miscellanious_pairs = [
+    ['page_meta.canonical_url', page_meta.canonical_url],
+    ['page_meta.html_title', page_meta.html_title],
+    ['page_meta.meta_description', page_meta.meta_description],
+    ['page_meta.name', page_meta.name],
+    ['content_id', content_id],
+    ['favicon_link', favicon_link],
+    ['hubspot_analytics_tracking_code', hubspot_analytics_tracking_code],
+    ['local_dt', local_dt],
+    ['local_time_zone', local_time_zone],
+    ['year', year],
+    ['company_domain', company_domain]
+  ]
+%}
+{%
+  set request_pairs = [
+    ["request.domain", request.domain],
+    ["request.full_url", request.full_url],
+    ["request.path", request.path],
+    ["request.path_and_query", request.path_and_query],
+    ["request.query", request.query],
+    ["request.query_dict", request.query_dict],
+    ["request.scheme", request.scheme],
+    ["request.search_engine", request.search_engine],
+    ["request.search_keyword", request.search_keyword]
+  ]
+%}
+{% 
+  set icon_classes = [
+    'check-before',
+    'arrow-link arrow-link-forward',
+    'arrow-link arrow-link-back'
+  ]
+%}
 
 <!-- Begin Test Variables module html  -->
 <div class="test-variables">
   <h1>Test Hubspot Variables</h1>
+  <a
+    class="docs-link"
+    href="https://developers.hubspot.com/beta-docs/reference/cms/hubl/variables"
+  >Hubspot variables doc</a>
  
-  <section>
-    <h2>All Templates</h2>
-    <p>
-      <span class="label">content.absolute_url:</span>
-      {{ get_markup(content.absolute_url) }}
-    </p>
-    <p>
-      <span class="label">content.archived:</span>
-      {{ get_markup(content.archived) }}
-    </p>
-    <p>
-      <span class="label">content.author_email:</span>
-      {{ get_markup(content.author_email) }}
-    </p>
-    <p>
-      <span class="label">content.author_name:</span>
-      {{ get_markup(content.author_name) }}
-    </p>
-    <p>
-      <span class="label">content.author_username:</span>
-      {{ get_markup(content.author_username) }}
-    </p>
-    <p>
-      <span class="label">content.campaign:</span>
-      {{ get_markup(content.campaign) }}
-    </p>
-    <p>
-      <span class="label">content.campaign_name:</span>
-      {{ get_markup(content.campaign_name) }}
-    </p>
-    <p>
-      <span class="label">content.created:</span>
-      {{ get_markup(content.created) }}
-    </p>
-    <p>
-      <span class="label">content.meta_description:</span>
-      {{ get_markup(content.meta_description) }}
-    </p>
-    <p>
-      <span class="label">content.name:</span>
-      {{ get_markup(content.name) }}
-    </p>
-    <p>
-      <span class="label">content.publish_date:</span>
-      {{ get_markup(content.publish_date) }}
-    </p>
-    <p>
-      <span class="label">content.publish_date_localized:</span>
-      {{ get_markup(content.publish_date_localized) }}
-    </p>
-    <p>
-      <span class="label">content.template_path:</span>
-      {{ get_markup(content.template_path) }}
-    </p>
-    <p>
-      <span class="label">content.slug:</span>
-      {{ get_markup(content.slug) }}
-    </p>
-    <p>
-      <span class="label">content.absolute_url:</span>
-      {{ get_markup(content.absolute_url) }}
-    </p>
-    <p>
-      <span class="label">content.updated:</span>
-      {{ get_markup(content.updated) }}
-    </p>
-    <p>
-      <span class="label">content.publish_date:</span>
-      {{ get_markup(content.publish_date) }}
-    </p>
-    <p>
-      <span class="label">content.name:</span>
-      {{ get_markup(content.name) }}
-    </p>
-  </section>
-  <section>
-    <h2>All Templates: Is In...</h2>
-    <!-- generics -->
-    <p>
-      <span class="label">is_in_editor:</span>
-      {{ get_markup(is_in_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_global_content_editor:</span>
-      {{ get_markup(is_in_global_content_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_hs_app:</span>
-      {{ get_markup(is_in_hs_app) }}
-    </p>
-    <p>
-      <span class="label">is_in_previewer:</span>
-      {{ get_markup(is_in_previewer) }}
-    </p>
+  <div class="variable-groups-wrapper">
+    {{ get_section_markup('All Templates', content_pairs, 'content') }}
+    {{ get_section_markup('All Templates', is_in_pairs, 'Is in...') }}
+    {{ get_section_markup('All Templates', miscellanious_pairs, 'Miscellanious') }}
+    {{ get_section_markup('Request', request_pairs) }}
 
-    {# Blog #}
-    <p>
-      <span class="label">is_in_blog_post_editor:</span>
-      {{ get_markup(is_in_blog_post_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_blog_post_previewer:</span>
-      {{ get_markup(is_in_blog_post_previewer) }}
-    </p>
-
-    {# Email #}
-    <p>
-      <span class="label">is_in_email_editor:</span>
-      {{ get_markup(is_in_email_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_email_previewer:</span>
-      {{ get_markup(is_in_email_previewer) }}
-    </p>
-
-    {# Module #}
-    <p>
-      <span class="label">is_in_module_previewer:</span>
-      {{ get_markup(is_in_module_previewer) }}
-    </p>
-
-    {# Page #}
-    <p>
-      <span class="label">is_in_page_editor:</span>
-      {{ get_markup(is_in_page_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_page_previewer:</span>
-      {{ get_markup(is_in_page_previewer) }}
-    </p>
-
-    {# Template #}
-    <p>
-      <span class="label">is_in_template_previewer:</span>
-      {{ get_markup(is_in_template_previewer) }}
-    </p>
-
-    {# Theme #}
-    <p>
-      <span class="label">is_in_theme_editor:</span>
-      {{ get_markup(is_in_theme_editor) }}
-    </p>
-    <p>
-      <span class="label">is_in_theme_previewer:</span>
-      {{ get_markup(is_in_theme_previewer) }}
-    </p>
-  </section>
+    {# Icons #}
+    <section class="variable-group icons">
+      <h2>CSS</h2>
+      <h3>Icons</h3>
+      {% for class in icon_classes %}
+        {{ get_icon_markup(class) }}
+      {% endfor %}
+    </section>
+  </div>
 </div>
+
+{# Hubl email templates don't allow separate stylesheets, but inline is ok #}
+{% require_css %}
+  <style>
+  .test-variables {
+    padding: 20px;
+  }
+
+  .test-variables .docs-link {
+    padding-bottom: 10px;
+  }
+
+  .variable-groups-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .test-variables .label {
+    margin-right: 10px;
+  }
+
+  .test-variables .no-value {
+    font-style: italic;
+  }
+
+  .test-variables .icons {
+    --accent--color: red;
+  }
+  </style>
+{% end_require_css %}
 <!-- End Test Variables module html  -->
