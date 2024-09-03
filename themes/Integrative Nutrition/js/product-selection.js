@@ -931,7 +931,7 @@ const getProductSelectionMethods = () => {
       return;
     }
 
-    const targetText =  optionsCount ? heading.innerText.trim() : '';
+    const targetText = optionsCount ? heading.innerText.trim() : '';
 
     targetHeading.innerText = targetText;
   };

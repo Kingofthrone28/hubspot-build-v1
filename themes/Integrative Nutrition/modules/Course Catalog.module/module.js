@@ -25,7 +25,7 @@ function startViewCatalog() {
     );
 
     if (items.length) {
-      // Sending event only in case catalog elements exists 
+      // Sending event only in case catalog elements exists
       const viewItemsList = {
         event: 'view_item_list',
         ecommerce: {
