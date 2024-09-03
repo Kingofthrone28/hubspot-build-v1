@@ -80,7 +80,7 @@ const getProductSelectionMethods = () => {
       // If currently selected value is no longer possible
       // set the new selection to a default (first value).
       if (!options[optionName].has(selection[optionName])) {
-        newSelection[optionName] = [...options[optionName]][0];
+        [newSelection[optionName]] = [...options[optionName]];
       } else {
         newSelection[optionName] = selection[optionName];
       }
@@ -156,7 +156,9 @@ const getProductSelectionMethods = () => {
     let optionsHTML = '';
 
     Object.entries(selectedOptions).forEach(([key, value]) => {
-      if (value) {
+      const isDefaultTitle = value === 'Default Title';
+
+      if (value && !isDefaultTitle) {
         optionsHTML += `<div><strong>${key}:</strong> ${value}</div>`;
       }
     });
@@ -917,18 +919,21 @@ const getProductSelectionMethods = () => {
    * PDP Bottom Section module grabs html from this module
    */
   const matchPDPBottomSectionToTop = (optionsCount) => {
-    const pdpBottomOptionsHeading = document.querySelector(
-      '.pdp-bottom-middle-head',
-    );
+    const heading = document.querySelector('.pdp-sticky__dropdown-heading');
 
-    if (pdpBottomOptionsHeading) {
-      const dropdownOptionsText = !optionsCount
-        ? document
-          .querySelector('.pdp-sticky__dropdown-heading')
-          .innerText?.trim()
-        : '';
-      pdpBottomOptionsHeading.innerText = dropdownOptionsText;
+    if (!heading) {
+      return;
     }
+
+    const targetHeading = document.querySelector('.pdp-bottom-middle-head');
+
+    if (!targetHeading) {
+      return;
+    }
+
+    const targetText =  optionsCount ? heading.innerText.trim() : '';
+
+    targetHeading.innerText = targetText;
   };
 
   return {
