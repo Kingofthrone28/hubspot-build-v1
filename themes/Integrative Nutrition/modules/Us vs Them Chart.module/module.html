@@ -1,0 +1,241 @@
+<div id="{{ name }}" class="us-vs-them-wrap">
+  <table class="us-vs-them">
+    <tbody>
+      <tr>
+        <td></td>
+        {% for item in module.first_row_image %}
+          {% if item.src %}
+            {% set sizeAttrs = 'width="{{ item.width|escape_attr }}" height="{{ item.height|escape_attr }}"' %}
+            {% if item.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ item.width|escape_attr }}" height="{{ item.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.max_width|escape_attr }}" height="{{ item.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading|escape_attr }}"' : '' %}
+             <td><img src="{{ item.src|escape_url }}" alt="{{ item.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }} style="min-width: {{ item.width|escape_attr }}px;"></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+      {% for row in module.rows %}
+      <tr>
+        <td>{{ row.label_text }}</td>
+        {% for check in row.check %}
+          <td>
+            {% if check %}
+              {{ module.check_svg }}
+            {% else %}
+              {{ module.not_checked_svg }}
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+      {% if loop.last %}
+      <tr>
+        <td></td>
+        {% for check in row.check %}
+          <td></td>
+        {% endfor %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $('#{{ name }}')
+    .parents('.dnd-section')
+    .first()
+    .find('.row-fluid')
+    .first()
+    .addClass('mobile-section-full');
+</script>
+
+{% require_css %}
+  <style>
+    @media (max-width: {{ module.mobile_break }}px) {
+      html body .dnd-section > .row-fluid.mobile-section-full {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+    
+    {% scope_css %}
+    table.us-vs-them {
+      border-radius: 0;
+      background: var(--color--white);
+      width: 100%;
+      border-spacing: 0;
+    }
+    
+    table.us-vs-them tr {
+      border: none;
+    }
+    
+    table.us-vs-them tr p {
+      margin-bottom: 0;
+    }
+    
+    table.us-vs-them tr td:first-child {
+      vertical-align: middle;
+      padding: {{ module.first_col_cell_padding_full }};
+    }
+    
+    table.us-vs-them tr td:nth-child(n+2) {
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    table.us-vs-them tr:nth-child(even) td {
+      background: {{ module.even_row_bg_color.color }};
+    }
+    
+    table.us-vs-them tr:nth-child(even):hover {
+      background: none;
+    }
+    
+    table.us-vs-them tr:nth-child(odd) td {
+      background: {{ module.odd_row_bg_color.color }};
+    }
+    
+    table.us-vs-them tr:nth-child(odd):hover {
+      background: none;
+    }
+    
+    table.us-vs-them tr:first-child td {
+      padding: {{ module.image_padding }};
+    }
+    
+    table.us-vs-them tr:last-child td:nth-child(n+3) {
+      background: none;
+    }
+    
+    table.us-vs-them tr:first-child td:first-child {
+      border-top: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-left: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-radius: {{ module.border_corner_radius }}px 0 0 0;
+    }
+    
+    table.us-vs-them tr:first-child td:nth-child(2) {
+      border-top: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-right: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-radius: 0 {{ module.border_corner_radius }}px 0 0;
+    }
+    
+    table.us-vs-them tr td:first-child {
+      border-left: {{ module.border_width }}px solid {{ module.border_color.color }};
+    }
+    
+    table.us-vs-them tr td:nth-child(2) {
+      border-right: {{ module.border_width }}px solid {{ module.border_color.color }};
+    }
+    
+    table.us-vs-them tr:last-child td:first-child {
+      border-bottom: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-left: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-radius: 0 0 0 {{ module.border_corner_radius }}px;
+      height: {{ module.bottom_col_height }}px;
+    }
+    
+    table.us-vs-them tr:last-child td:nth-child(2) {
+      border-right: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-bottom: {{ module.border_width }}px solid {{ module.border_color.color }};
+      border-radius: 0 0 {{ module.border_corner_radius }}px 0;
+      height: {{ module.bottom_col_height }}px;
+    }
+    
+    @media (max-width: {{ module.break_point_for_scrolling }}px) {
+      {% if module.scrollable_max_height %}
+      .us-vs-them-wrap {
+        max-height: {{ module.scrollable_max_height }};
+      }
+    
+      table.us-vs-them tr:first-child {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+      }
+    
+      table.us-vs-them tr:first-child td:first-child {
+        box-shadow: 2px -2px 0 2px {{ module.odd_row_bg_color.color }};
+      }
+    
+      table.us-vs-them tr:first-child td:nth-child(2) {
+        box-shadow: 2px -2px 0 2px {{ module.odd_row_bg_color.color }};
+      }
+      {% endif %}
+      
+      .us-vs-them-wrap {
+        position: relative;
+        overflow: auto;
+      }
+
+      table.us-vs-them {
+        min-width: {{ module.scrollable_table_width }}px;
+        overflow: auto;
+      }
+
+      table.us-vs-them tr td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        width: {{ module.first_col_scrollable_width }};
+        min-width: {{ module.first_col_scrollable_width }};
+      }
+
+      table.us-vs-them tr td:nth-child(2) {
+        position: sticky;
+        left: {{ module.first_col_scrollable_width }};
+        width: {{ module.second_col_scrollable_width }};
+        min-width: {{ module.second_col_scrollable_width }};
+        z-index: 2;
+      }
+
+      table.us-vs-them tr td:first-child {
+        padding: {{ module.first_col_cell_padding_scrollable }};
+      }
+
+      table.us-vs-them td,
+      table.us-vs-them td * {
+        font-size: {{ module.font_size_scrollable }} !important;
+      }
+    }
+    
+    @media (max-width: {{ module.mobile_break }}px) {
+      table.us-vs-them tr:first-child td:first-child {
+        border-radius: 0;
+      }
+
+      table.us-vs-them tr:first-child td {
+        padding: {{ module.image_padding_mobile }};
+      }
+
+      table.us-vs-them tr:first-child td img {
+        max-width: 100%;
+      }
+
+      table.us-vs-them tr td:first-child {
+        width: {{ module.first_col_mobile_width }};
+        min-width: {{ module.first_col_mobile_width }};
+      }
+
+      table.us-vs-them tr td:nth-child(2) {
+        left: {{ module.first_col_mobile_width }};
+        width: {{ module.second_col_mobile_width }};
+        min-width: {{ module.second_col_mobile_width }};
+      }
+
+      table.us-vs-them {
+        min-width: {{ module.scrollable_table_width_px_mobile }}px;
+        overflow: auto;
+      }
+
+      table.us-vs-them td,
+      table.us-vs-them td * {
+        font-size: {{ module.font_size_mobile }} !important;
+      }
+    }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}

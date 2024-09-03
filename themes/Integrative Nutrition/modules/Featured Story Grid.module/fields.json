@@ -1,0 +1,55 @@
+[ {
+  "id" : "e5f987a9-aede-fe89-5152-9f716e9138ea",
+  "name" : "blog_post_id_card_one",
+  "display_width" : null,
+  "label" : "Blog Post ID Card One",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "02e034fc-4d8f-b134-ac1b-2e5b3202af28",
+  "name" : "blog_post_id_card_two",
+  "display_width" : null,
+  "label" : "Blog Post ID Card Two",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "39aa277f-4bef-1516-0108-d06685c7b350",
+  "name" : "blog_post_id_card_three",
+  "display_width" : null,
+  "label" : "Blog Post ID Card Three",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "d3757b51-c906-d826-57c2-0be6cea2f757",
+  "name" : "blog_post_id_card_four",
+  "display_width" : null,
+  "label" : "Blog Post ID Card Four ",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "2dd58546-1851-f379-8556-b1f2a2b8032b",
+  "name" : "show_category_eyebrow",
+  "display_width" : null,
+  "label" : "Show Category Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+} ]

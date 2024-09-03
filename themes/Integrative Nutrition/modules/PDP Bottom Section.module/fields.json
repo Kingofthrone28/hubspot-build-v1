@@ -55,16 +55,4 @@
   "show_emoji_picker" : false,
   "type" : "text",
   "default" : "Reframe what you know about health and wellness to live a fulfilling life in this comprehensive, integrated and dynamic program that includes content and activities related to holistic nutrition and lifestyle."
-}, {
-  "id" : "623c37b0-aa8b-7825-5830-3479a902b45d",
-  "name" : "middle_head",
-  "display_width" : null,
-  "label" : "Middle Head",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Just a few questions before you enroll:"
-} ]
+}]

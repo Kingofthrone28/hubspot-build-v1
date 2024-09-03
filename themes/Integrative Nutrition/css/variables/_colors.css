@@ -4,6 +4,7 @@
   /* Style Guide Primary and Secondary Colors */
   --color--cherry: #d72a25;
   --color--gold: #e4ab00;
+  --color--light-water: #e6f2f3;
   --color--melon: #ed8a72;
   --color--water: #003d4b;
 
@@ -159,6 +160,7 @@
   --color--legacy--red--free-speech-red: #af0200; /* 40% darkened Cherry */
   --color--legacy--red--persian-red: #cf3c32;
   --color--legacy--red--sunset: #bd3c4b;
+  --color--legacy--red: #f00;
   --color--legacy--violet--gun-powder: #494a52;
   --color--legacy--yellow--amber: #ffbd00;
   --color--legacy--yellow--rob-roy: #dda858;

@@ -66,7 +66,7 @@
    */
   const isProductInCheckout = (checkout, id) => {
     if (!checkout) {
-      throw new Error('checkout is required');
+      return false;
     }
 
     if (!isStringWithLength(id)) {
@@ -195,7 +195,7 @@
    * @param {string} globalId Shopify product id
    * @returns {Promise<object>}
    */
-  const fetchProduct = async (globalId) => {
+  const fetchProduct = (globalId) => {
     if (!isStringWithLength(globalId)) {
       throw new Error('globalId is a required string');
     }
@@ -205,11 +205,13 @@
 
   /**
    *
-   * @param {Object} product
+   * @param {Object|Object[]} productOrVariants
    * @returns {Object|undefined}
    */
-  const getFirstAvailableVariant = (product) =>
-    product?.variants?.find(({ available }) => available);
+  const getFirstAvailableVariant = (productOrVariants) => {
+    const array = productOrVariants?.variants ?? productOrVariants;
+    return array?.find?.(({ available }) => available);
+  };
 
   /**
    * Check if a shopify cart has a particular promotion applied
@@ -316,13 +318,40 @@
     }
   };
 
+  /**
+   * Get all available variants of a product
+   * @param {Object|Object[]} productOrVariants
+   * @returns {Object[]}
+   */
+  const getAvailableVariants = (productOrVariants) => {
+    const array = productOrVariants?.variants ?? productOrVariants;
+    return array?.filter?.(({ available }) => available);
+  };
+
+  /**
+   * Check if a given product or it's variants have multiple cohorts
+   * @param {Object|Object[]} productOrVariants
+   * @returns {boolean}
+   */
+  const getHasCohorts = (productOrVariants) =>
+    IIN.shopify.getAvailableVariants(productOrVariants).length > 1;
+
+  /**
+   * Get the number of product options
+   */
+  const getOptionsCount = (product) => product.options?.length ?? 0;
+
   IIN.shopify = {
     addLineItemsToCheckout,
     buildGlobalProductId,
     createCheckoutLineItem,
+    fetchProduct,
     getAddToCartSessionData,
+    getAvailableVariants,
     getCheckoutCookie,
     getFirstAvailableVariant,
+    getHasCohorts,
+    getOptionsCount,
     getPromoCheckoutButton,
     isProductInCheckout,
     setAddToCartSessionData,

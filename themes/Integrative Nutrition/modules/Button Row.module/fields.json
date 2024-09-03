@@ -219,17 +219,18 @@
       "opacity" : 100
     }
   }, {
-    "allow_new_line": false,
-    "default": "tracking not set yet",
-    "display_width": null,
-    "id": "4e253796-1adf-73b1-5af4-75dfc331ebb5",
-    "label": "Data Tracking",
-    "locked": false,
-    "name": "dl_label",
-    "required": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "validation_regex": ""
+    "id" : "4e253796-1adf-73b1-5af4-75dfc331ebb5",
+    "name" : "dl_label",
+    "display_width" : null,
+    "label" : "Data Tracking",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -271,7 +272,7 @@
       "color" : "#FFFFFF",
       "opacity" : 100
     },
-    "dl_label": "tracking label not set"
+    "dl_label" : ""
   }, {
     "link_field" : {
       "url" : {
@@ -308,7 +309,7 @@
       "color" : "#FFFFFF",
       "opacity" : 100
     },
-    "dl_label": "tracking label not set"
+    "dl_label" : ""
   }, {
     "link_field" : {
       "url" : {
@@ -345,7 +346,7 @@
       "color" : "#FFFFFF",
       "opacity" : 100
     },
-    "dl_label": "tracking label not set"
+    "dl_label" : ""
   } ]
 }, {
   "id" : "7e08394b-2afb-fa55-4d33-1c3566b9509d",

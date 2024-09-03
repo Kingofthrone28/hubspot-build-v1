@@ -44,8 +44,8 @@
 
 <script>
   {% set rows = hubdb_table_rows('taxonomy_overrides', 'page_path=' ~ request.path ~ '&limit=1') %}
-  const leadSourceValue = '{{ rows[0].page_lead_source }}';
-  const campaignIDValue = '{{ rows[0].page_campaignid }}';
+  const leadSourceValue = '{{ rows[0].page_lead_source }}'.trim();
+  const campaignIDValue = '{{ rows[0].page_campaignid }}'.trim();
   const vertical = '{{ rows[0].vertical.name }}';
   const productType = '{{ rows[0].product_type.name }}';
 

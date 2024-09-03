@@ -53,3 +53,9 @@ A list of useful developer tools, local and web based.
 ### Font Awesome
 
 - [Icon Search - V5 Free](https://fontawesome.com/v5/search?o=r&m=free)
+
+### Lorem Ipsum Generators
+
+- [Standard Ipsum](https://www.lipsum.com/)
+- [Hipster Ipsum](https://hipsum.co/)
+- [Bacon Ipsum](https://baconipsum.com/)

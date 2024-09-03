@@ -4,5 +4,10 @@
   "icon" : "fontawesome-5.14.0:Shopify",
   "host_template_types" : [ "PAGE" ],
   "module_id" : 127865319248,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/datalayer_ecomm.js",
+    "name" : "datalayer_ecomm.js"
+  } ],
   "is_available_for_new_content" : true
 }

@@ -138,7 +138,9 @@ const updateCartAttributes = async () => {
 
   const { sldiscountcode, source } = paramsCookie;
 
-  if (!sldiscountcode && !source && !tracking) {
+  const irclickid = IIN.cookies.getCookieString('_irclickid');
+
+  if (!sldiscountcode && !source && !tracking && !irclickid) {
     return customAttributes;
   }
 
@@ -160,6 +162,13 @@ const updateCartAttributes = async () => {
     customAttributes.push({
       key: 'Tracking',
       value: tracking,
+    });
+  }
+
+  if (irclickid) {
+    customAttributes.push({
+      key: 'irclickid',
+      value: irclickid,
     });
   }
 

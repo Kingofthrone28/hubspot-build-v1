@@ -1,13 +1,13 @@
-/* Style Guide Typography */
-
 :root {
+  /* Style Guide Typography */
+
   /* Font Family */
   --font-family--body: 'Public Sans', 'Arial', sans-serif;
   --font-family--heading: 'Junicode', 'Times New Roman', serif;
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
-  --font-family--playfair: 'Playfair Display', 'Georgia', 'Times New Roman', 'Times',
-    serif;
+  --font-family--playfair: 'Playfair Display', 'Georgia', 'Times New Roman',
+    'Times', serif;
 
   /* Font Size (raw values) */
   --font-size--1: 0.75rem; /*  ≈ 12px */
@@ -79,7 +79,6 @@
   --line-height--155: 1.55556;
   --line-height--157: 1.57143;
   --line-height--166: 1.66667;
-
 
   /* Line Height (mapped to Figma text style) */
   --line-height--h1--desktop: var(--line-height--110);
@@ -210,9 +209,9 @@
     var(--font-size--legal) / var(--line-height--legal) var(--font-family--body);
 
   /* Figma text style: New/Paragraph */
-  --font--paragraph--desktop: var(--font-style--body) var(--font-weight--body)
-    var(--font-size--paragraph--desktop) /
-    var(--line-height--paragraph--desktop) var(--font-family--body);
+  --font--paragraph--desktop: var(--font-style--body) var(--font-weight--bold)
+    var(--font-size--paragraph) / var(--line-height--paragraph--desktop)
+    var(--font-family--body);
 
   /* Figma text style: New/Small Paragraph */
   --font--small-paragraph: var(--font-style--body) var(--font-weight--body)
@@ -248,12 +247,11 @@
   --font--testimonial-small: var(--font-style--body) var(--font-weight--body)
     var(--font-size--testimonial-small) / var(--line-height--testimonial-small)
     var(--font-family--body);
-}
 
-/* Legacy Typography */
+  /* Legacy Typography */
 
-/* Legacy variables should be renamed if they get moved into the guide. */
-:root {
+  /* Variables should be renamed if they get moved into the style guide. */
+
   /* Legacy Font Family */
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
   --font-family--legacy--blog: 'Lato', sans-serif;

@@ -1,0 +1,15 @@
+.pseudo-svg::before,
+.pseudo-svg::after {
+  display: inline-block;
+  background-color: var(--accent--color);
+  background-repeat: no-repeat;
+  width: var(--icon--square--size);
+  height: var(--icon--square--size);
+  vertical-align: text-bottom;
+}
+
+.check-before::before {
+  margin-right: 20px;
+  content: '';
+  mask-image: var(--icon--checkmark);
+}

@@ -1,15 +1,24 @@
-const dataLayerUrl = '{{ get_asset_url('/Integrative Nutrition/js/datalayer.js') }}'
+const dataLayerUrl =
+  '{{ get_asset_url("/Integrative Nutrition/js/datalayer.js") }}';
+const dataLayerUrl2 =
+  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_2.js") }}';
+const dataLayerUrl4 =
+  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_4.js") }}';
+const dataLayerUrl5 =
+  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_5.js") }}';
 
 // Function to check if the current environment is a testing enabled
 function isTestingEnabled() {
-  return window.location.href.includes('hs_preview=') && window.location.href.includes('analytics-test=true');
+  return (
+    window.location.href.includes('hs_preview=') &&
+    window.location.href.includes('analytics-test=true')
+  );
 }
 
 // Function to check if the current environment is a testing disabled
 function isTestingDisabled() {
   return window.location.href.includes('analytics-test=false');
 }
-
 
 // Function to check if a cookie exists
 function checkCookie(cookieName) {
@@ -34,22 +43,29 @@ function renderAnalyticsDatalayerJS() {
     window.dataLayer = window.dataLayer || [];
     // Requirement from GTM to indicate the preview mode to choose gtm bucket
     window.dataLayer.unshift({
-      'env_name': 'preview'
+      env_name: 'preview',
     });
 
     loadScript(dataLayerUrl);
+    loadScript(dataLayerUrl2);
+    loadScript(dataLayerUrl4);
+    loadScript(dataLayerUrl5);
     // DLTest - Successfully loaded datalayer JS...
   } else if (isTestingDisabled()) {
     // DLTest - Setting a cookie to disable datalayer
-    document.cookie = 'analyticstest=;Path=/;domain=.integrativenutrition.com;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie =
+      'analyticstest=;Path=/;domain=.integrativenutrition.com;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   } else if (checkCookie('analyticstest')) {
     // handles pages with no matching analytics-test param. example; prod or other preview urls.
     // DLTest - cookie already exists so loading datalayer JS...
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.unshift({
-      'env_name': 'preview'
+      env_name: 'preview',
     });
     loadScript(dataLayerUrl);
+    loadScript(dataLayerUrl2);
+    loadScript(dataLayerUrl4);
+    loadScript(dataLayerUrl5);
     // DLTest - Successfully loaded datalayer JS...
   }
 }

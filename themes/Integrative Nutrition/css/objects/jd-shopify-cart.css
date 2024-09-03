@@ -517,10 +517,6 @@ html
   color: var(--color--white) !important;
 }
 
-.jd-shopify-add-btn {
-  margin-top: 25px;
-}
-
 .jd-shopify-options {
   display: flex;
   flex-wrap: wrap;

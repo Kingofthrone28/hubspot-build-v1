@@ -98,18 +98,18 @@
     "locked" : false,
     "type" : "richtext",
     "default" : "<span style=\"color: #157ea5; font-size: 14px;\"><strong>Content Type</strong></span>\n<h4><span style=\"color: #274c77;\">Item Header</span></h4>\n<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna&nbsp;</span></p>"
-  },{
-    "allow_new_line": false,
-    "display_width": null,
-    "id": "c5dd4ab0-85c3-147f-0906-8192ff251b9a",
-    "label": "DL Header Text",
-    "locked": false,
-    "name": "dl_header_text",
-    "required": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "validation_regex": ""
-   }, {
+  }, {
+    "id" : "c5dd4ab0-85c3-147f-0906-8192ff251b9a",
+    "name" : "dl_header_text",
+    "display_width" : null,
+    "label" : "DL Header Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
     "id" : "232880ac-af1e-03c4-f300-51dd0609cb86",
     "name" : "additional_label",
     "display_width" : null,
@@ -705,6 +705,20 @@
           }
         }
       }
+    }, {
+      "id" : "eefcaede-cd31-a1b0-8b05-adb7a224cc94",
+      "name" : "arrow_style",
+      "display_width" : null,
+      "label" : "Arrow Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "chevron", "Chevron" ], [ "caret", "Caret" ], [ "arrow", "Arrow" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "arrow"
     } ],
     "tab" : "STYLE",
     "expanded" : false,
@@ -749,7 +763,8 @@
             "units" : "%"
           }
         }
-      }
+      },
+      "arrow_style" : "arrow"
     }
   }, {
     "id" : "8495a6f1-9a06-a828-f194-826b2f6ccbe2",
@@ -1173,7 +1188,8 @@
             "units" : "%"
           }
         }
-      }
+      },
+      "arrow_style" : "arrow"
     },
     "scrolling" : {
       "number_of_slides_to_scroll" : "one",
