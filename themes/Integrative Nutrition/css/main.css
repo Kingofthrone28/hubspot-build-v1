@@ -34,6 +34,7 @@
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './templates/_sample-class.css' %}
+{% include './objects/_backgrounds.css' %}
 {% include './objects/tabs.css' %}
 {% include './slider-overrides.css' %}
 {% include './objects/jd-shopify-cart.css' %}
