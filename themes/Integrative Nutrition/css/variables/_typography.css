@@ -20,6 +20,7 @@
   --font-size--9: 2.5rem; /*   ≈ 40px */
   --font-size--10: 3rem; /*    ≈ 48px */
   --font-size--11: 5rem; /*    ≈ 80px */
+  --font-size--12: 6rem; /*    ≈ 96px */
 
   /* Font Size (mapped to Figma text style) */
   --font-size--h1--desktop: var(--font-size--11);
@@ -34,6 +35,7 @@
   --font-size--h5--mobile: var(--font-size--4);
   --font-size--h6--desktop: var(--font-size--5);
   --font-size--h6--mobile: var(--font-size--3);
+  --font-size--big-number: var(--font-size--12);
   --font-size--extra-large-paragraph: var(--font-size--6);
   --font-size--icon-card-title--desktop: var(--font-size--8);
   --font-size--icon-card-title--mobile: var(--font-size--6);
@@ -92,6 +94,7 @@
   --line-height--h5--mobile: var(--line-height--133);
   --line-height--h6--desktop: var(--line-height--140);
   --line-height--h6--mobile: var(--line-height--150);
+  --line-height--big-number: var(--line-height--100);
   --line-height--extra-large-paragraph: var(--line-height--166);
   --line-height--icon-card-title--desktop: var(--line-height--125);
   --line-height--icon-card-title--mobile: var(--line-height--166);
@@ -172,6 +175,11 @@
   /* Figma text style: New/Mobile H6 */
   --font--h6--mobile: var(--font-style--heading) var(--font-weight--heading)
     var(--font-size--h6--mobile) / var(--line-height--h6--mobile)
+    var(--font-family--heading);
+
+  /* Figma text style: none */
+  --font--big-number: var(--font-style--heading) var(--font-weight--heading)
+    var(--font-size--big-number) / var(--line-height--big-number)
     var(--font-family--heading);
 
   /* Figma text style: New/Extra Large Paragraph */
