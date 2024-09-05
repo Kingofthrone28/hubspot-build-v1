@@ -3,11 +3,10 @@
 
   /* Font Family */
   --font-family--body: 'Public Sans', 'Arial', sans-serif;
-  --font-family--heading: 'Junicode', 'Times New Roman', serif;
+  --font-family--heading: 'Playfair Display', 'Georgia', 'Times New Roman',
+    'Times', serif;
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
-  --font-family--playfair: 'Playfair Display', 'Georgia', 'Times New Roman',
-    'Times', serif;
 
   /* Font Size (raw values) */
   --font-size--1: 0.75rem; /*  ≈ 12px */
@@ -256,9 +255,6 @@
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
   --font-family--legacy--blog: 'Lato', sans-serif;
   --font-family--legacy--gallery: 'Roboto', sans-serif;
-  --font-family--legacy--heading: 'Junicode', 'JuniusX-Regular', 'Cardo', serif;
-  --font-family--legacy--heading--bold: 'Junicode-Bold', 'JuniusX-Bold', 'Cardo',
-    serif;
   --font-family--legacy--timeline: 'Oxygen', sans-serif;
   --font-family--legacy--video: 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;

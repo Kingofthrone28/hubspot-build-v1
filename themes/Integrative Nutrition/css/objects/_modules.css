@@ -248,7 +248,7 @@ a.jd-cat-block:hover {
   display: flex;
   margin: 15px 0 0;
   line-height: var(--line-height--legacy--5);
-  font-family: var(--font-family--legacy--heading--bold);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
   font-weight: 600;
 }
@@ -563,7 +563,7 @@ a.jd-cat-block:hover {
 }
 
 .bundle-head {
-  font-family: var(--font-family--legacy--heading--bold);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
   font-weight: 600;
 }
@@ -642,7 +642,7 @@ a.jd-cat-block:hover {
   display: flex;
   align-items: center;
   line-height: var(--line-height--legacy--5);
-  font-family: var(--font-family--legacy--heading--bold);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
   font-weight: 600;
 }
@@ -726,7 +726,7 @@ a.jd-cat-block:hover {
 }
 
 .full-step-form fieldset label {
-  font-family: var(--font-family--legacy--heading--bold);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--21) !important;
   font-weight: bold;
 }
@@ -772,7 +772,7 @@ a.jd-cat-block:hover {
 
 .full-step-form-slide-count {
   margin-bottom: 15px;
-  font-family: var(--font-family--legacy--heading--bold);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--12);
   font-weight: 600;
 }
@@ -793,7 +793,7 @@ a.jd-cat-block:hover {
 
 .full-step-form .submitted-message,
 .full-step-form .submitted-message p {
-  font-family: var(--font-family--legacy--heading);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
 }
 
@@ -867,7 +867,7 @@ a.jd-cat-block:hover {
   z-index: 0;
   line-height: var(--line-height--100);
   color: var(--color--legacy--orange--peach);
-  font-family: var(--font-family--legacy--heading);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--29);
   content: '“';
 }
