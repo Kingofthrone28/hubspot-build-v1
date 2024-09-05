@@ -4,9 +4,9 @@
   /* Style Guide Primary and Secondary Colors */
   --color--cherry: #d72a25;
   --color--gold: #e4ab00;
-  --color--light-water: #e6f2f3;
   --color--melon: #ed8a72;
   --color--water: #003d4b;
+  --color--water--light: #e6f2f3;
 
   /* Style Guide Base Colors */
   --color--black: #000; /* rgb(0 0 0) */
