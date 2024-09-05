@@ -514,6 +514,7 @@ const getProductSelectionMethods = () => {
 
   /**
    * Configure header behavior
+   * Append the header to body to avoid interrupting screen reader content
    * @param {boolean} isDefault configure header for default page or sample class
    */
   const configureStickyNav = (isDefault = true) => {
@@ -585,28 +586,6 @@ const getProductSelectionMethods = () => {
         stickyWrap.classList.remove(showClass);
       }
     });
-  };
-
-  /**
-   * Configure body offset to show avoid covering page with header
-   */
-  const configureHeaderOffset = () => {
-    let stickyHeader;
-
-    function getCurrentHeight() {
-      if (!stickyHeader) {
-        stickyHeader = document.querySelector('.pdp-sticky');
-      }
-
-      const height = stickyHeader.offsetHeight;
-      document.body.style.paddingTop = `${height}px`;
-    }
-
-    // Call the function on load to get the current height
-    window.addEventListener('DOMContentLoaded', getCurrentHeight);
-
-    // Call the function on resize to handle responsive changes
-    window.addEventListener('resize', getCurrentHeight);
   };
 
   /**
@@ -937,31 +916,18 @@ const getProductSelectionMethods = () => {
   };
 
   return {
-    addToCart,
     calculateDiscounts,
     configureAddedToCartPopUp,
     configureDropdownHeading,
-    configureHeaderOffset,
     configureHeaderToggle,
     configureImageSlider,
     configureStickyHeaderSampleClass,
     configureStickyNav,
-    createAddToCartButton,
-    createDiscountNodes,
-    createErrorBlock,
-    createInputPair,
-    createOptionLabel,
-    createOptionNodes,
     createViewItemEvent,
-    getBottomRight,
-    getOptions,
-    getPDPOptions,
     getProductData,
     handleSelectorChange,
     matchPDPBottomSectionToTop,
     parseMarkupData,
     processProduct,
-    trackAddToCart,
-    tryAddAndTrack,
   };
 };

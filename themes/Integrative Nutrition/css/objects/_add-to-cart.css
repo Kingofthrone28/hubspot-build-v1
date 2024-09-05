@@ -461,13 +461,17 @@
 }
 
 .pdp-sticky-wrap {
-  position: fixed;
-  inset: 0;
   transition: 0.6s opacity;
   opacity: 0;
   z-index: 10;
   overflow: auto;
   pointer-events: none;
+}
+
+/* this controls the sticky behavior */
+.pdp-sticky-wrap-fixed {
+  position: fixed;
+  inset: 0;
 }
 
 .pdp-sticky-wrap.pdp-sticky-show {

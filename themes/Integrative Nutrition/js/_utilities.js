@@ -4,6 +4,28 @@
  */
 IIN.utilities = {
   /**
+   * Configure body offset to show avoid covering page with header
+   */
+  configureBodyOffsetForHeader(selector) {
+    let element;
+
+    const setBodyPadding = () => {
+      if (!element) {
+        element = document.querySelector(selector);
+      }
+
+      const height = element.offsetHeight;
+      document.body.style.paddingTop = `${height}px`;
+    };
+
+    // Call the function on load to get the current height
+    window.addEventListener('DOMContentLoaded', setBodyPadding);
+
+    // Call the function on resize to handle responsive changes
+    window.addEventListener('resize', setBodyPadding);
+  },
+
+  /**
    * Gets encoded params from cookie data.
    * @param {string} cookieName
    * @param {string} [separator]
