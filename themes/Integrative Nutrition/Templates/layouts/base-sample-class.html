@@ -24,7 +24,7 @@
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
-    
+
     {{ standard_header_includes }}
 
     <!-- 
@@ -35,10 +35,10 @@
     <script>
       const gateType = IIN?.sampleClassGate;
       const gateRedirect = IIN?.sampleClassRedirect;
-      if(gateType){
+      if (gateType) {
         const optIn = ("{{ contact.sample_class_opt_in }}").split(', ');
-        if(!optIn.includes(gateType)){
-          window.location.href = gateRedirect ? gateRedirect : '/';
+        if (!optIn.includes(gateType)) {
+          window.location.href = gateRedirect || '/';
         }
       }
     </script>
