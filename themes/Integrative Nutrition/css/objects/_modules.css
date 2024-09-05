@@ -250,7 +250,6 @@ a.jd-cat-block:hover {
   line-height: var(--line-height--legacy--5);
   font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
-  font-weight: 600;
 }
 
 .course-card-title > div:first-child {
