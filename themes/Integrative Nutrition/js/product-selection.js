@@ -517,8 +517,14 @@ const getProductSelectionMethods = () => {
    * Append the header to body to avoid interrupting screen reader content
    * @param {boolean} isDefault configure header for default page or sample class
    */
-  const configureStickyNav = (isDefault = true) => {
-    $('.pdp-sticky-wrap').appendTo('body');
+  const configureStickyNav = (isDefault = true, usePrepend = false) => {
+    const $target = $('.pdp-sticky-wrap');
+    
+    if (usePrepend) {
+      $target.prependTo('body');
+    } else {
+      $target.appendTo('body');
+    }
 
     const handleEnrollButtonClick = (event) => {
       event.preventDefault();
@@ -542,7 +548,7 @@ const getProductSelectionMethods = () => {
   };
 
   const configureStickyHeaderSampleClass = () => {
-    configureStickyNav(false);
+    configureStickyNav(false, true);
   };
 
   /**
