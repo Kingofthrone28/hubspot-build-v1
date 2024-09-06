@@ -16,7 +16,7 @@
 
 .text-hero__text {
   background-color: var(--color--white);
-  padding: var(--spacer) var(--spacing-12) 0;
+  padding: var(--spacer) 0;
   max-width: 900px;
 }
 
@@ -39,6 +39,12 @@
 
 .text-hero__paragraphs p:not(:last-of-type) {
   padding-bottom: var(--spacer);
+}
+
+@media screen and (max-width: 1024px) {
+  .text-hero__text {
+    padding: var(--spacer) var(--spacing-12) 0;
+  }
 }
 
 @media (max-width: 767px) {
