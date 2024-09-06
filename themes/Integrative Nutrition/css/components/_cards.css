@@ -35,7 +35,8 @@
 .blog-teasers__header {
   margin-bottom: 80px;
   background: var(--color--white);
-  max-width: 250px;
+  padding-left: var(--card--padding);
+  max-width: 200px;
   text-align: center;
   text-transform: capitalize;
   font: var(--font--extra-large-paragraph);
@@ -83,8 +84,8 @@
 }
 
 .blog-teasers__line {
-  position: absolute;
-  transform: translate(180px, -100px);
+  position: relative;
+  transform: translate(0, -100px);
   z-index: -999;
   border-bottom: 2px solid #eaeaea;
   width: 100%;
