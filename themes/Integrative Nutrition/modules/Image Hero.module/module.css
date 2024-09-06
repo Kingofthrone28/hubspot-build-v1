@@ -40,6 +40,6 @@
   }
 
   .image-hero__subheading {
-    font: var(--font--paragraph--desktop);
+    font: var(--font--paragraph);
   }
 }

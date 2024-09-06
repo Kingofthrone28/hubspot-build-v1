@@ -104,8 +104,7 @@
   --line-height--legal: var(--line-height--166);
   --line-height--large-paragraph--desktop: var(--line-height--155);
   --line-height--large-paragraph--mobile: var(--line-height--150);
-  --line-height--paragraph--desktop: var(--line-height--150);
-  --line-height--paragraph--mobile: var(--line-height--157);
+  --line-height--paragraph: var(--line-height--150);
   --line-height--small-paragraph: var(--line-height--157);
   --line-height--testimonial-content--desktop: var(--line-height--133);
   --line-height--testimonial-content--mobile: var(--line-height--140);
@@ -219,8 +218,8 @@
     var(--font-size--legal) / var(--line-height--legal) var(--font-family--body);
 
   /* Figma text style: New/Paragraph */
-  --font--paragraph--desktop: var(--font-style--body) var(--font-weight--bold)
-    var(--font-size--paragraph) / var(--line-height--paragraph--desktop)
+  --font--paragraph: var(--font-style--body) var(--font-weight--bold)
+    var(--font-size--paragraph) / var(--line-height--paragraph)
     var(--font-family--body);
 
   /* Figma text style: New/Small Paragraph */

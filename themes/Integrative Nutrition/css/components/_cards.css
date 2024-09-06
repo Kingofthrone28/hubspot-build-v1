@@ -25,7 +25,7 @@
   margin: 20px 0;
   text-transform: capitalize;
   color: var(--color--water);
-  font: var(--font--paragraph--desktop);
+  font: var(--font--paragraph);
 }
 
 .blog-teasers__byline {

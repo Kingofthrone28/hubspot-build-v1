@@ -156,7 +156,7 @@ sub {
 }
 
 .p-md {
-  font: var(--font--paragraph--desktop);
+  font: var(--font--paragraph);
 }
 
 @media (max-width: 767px) {
@@ -166,9 +166,5 @@ sub {
 
   .p-lg {
     font: var(--font--large-paragraph--mobile);
-  }
-
-  .p-md {
-    font: var(--font--paragraph--mobile);
   }
 }
