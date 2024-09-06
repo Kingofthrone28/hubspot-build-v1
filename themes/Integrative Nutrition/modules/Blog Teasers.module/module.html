@@ -8,9 +8,9 @@
       {% set is_read_time_words = read_time_post_words <=1 ? 'read time: less than 1 min' : 'read time: {{ read_time_post_words }} mins'  %}
       {% set card_type = is_large_card ? 'large' : 'small' %}
       <a 
-         href="{{ content.url }}" 
-         class="blog-teasers__card blog-teasers__{{ card_type }}-card"
-       >
+        href="{{ content.url }}" 
+        class="blog-teasers__card blog-teasers__{{ card_type }}-card"
+      >
         <img src="{{ content.featured_image }}" alt="{{ content.name }}">
         <span class="blog-teasers__category">{{ content.topic_list[0].name }}</span>
         <h4 class="blog-teasers__heading">{{ content.name }}</h4>
@@ -35,7 +35,7 @@
     <div class="blog-teasers__posts">
       {{ render_blog_posts_by_layout(module.layout, module.tag_field) }}
     </div>
-    <div class="view-more">
+    <div class="blog-teasers__view-more">
       <a 
         href="/blog/tag/{{ module.tag_field }}" 
         class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
