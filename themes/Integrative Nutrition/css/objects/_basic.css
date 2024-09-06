@@ -81,6 +81,15 @@ html .row-fluid .container {
   max-width: 95%;
 }
 
+/* Focus styles */
+
+.disable-focus-styles :focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Miscellaneous */
+
 #curriculum-guide-iframe {
   position: relative;
   padding-bottom: 56.25%; /* Aspect ratio for 16:9 */
