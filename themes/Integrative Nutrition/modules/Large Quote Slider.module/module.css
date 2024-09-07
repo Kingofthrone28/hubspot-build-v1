@@ -40,18 +40,18 @@
 
 .large-quote-quote > div:nth-child(2) {
   margin-top: 10px;
-  font-size: var(--font-size--6);
+  font-size: var(--font-size--24);
   font-style: italic;
 }
 
 .large-quote-quote > div:nth-child(3) {
   margin-top: 15px;
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
   font-weight: bold;
 }
 
 .large-quote-quote > div:nth-child(4) {
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
   font-style: italic;
 }
 

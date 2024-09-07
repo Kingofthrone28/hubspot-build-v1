@@ -762,7 +762,7 @@ h3.blog-filter-topics-label {
 }
 
 .blog-header__title {
-  font-size: var(--font-size--8);
+  font-size: var(--font-size--32);
 }
 
 .blog-header__subtitle {
@@ -921,7 +921,7 @@ h3.blog-filter-topics-label {
 }
 
 .blog-index__post-content--small h2 {
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--20);
 }
 
 .blog-index__post-content p {

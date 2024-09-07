@@ -10,46 +10,46 @@
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
 
   /* Font Size (raw values) */
-  --font-size--1: 0.75rem; /*  ≈ 12px */
-  --font-size--2: 0.875rem; /* ≈ 14px */
-  --font-size--3: 1rem; /*     ≈ 16px */
-  --font-size--4: 1.125rem; /* ≈ 18px */
-  --font-size--5: 1.25rem; /*  ≈ 20px */
-  --font-size--6: 1.5rem; /*   ≈ 24px */
-  --font-size--7: 1.75rem; /*  ≈ 28px */
-  --font-size--8: 2rem; /*     ≈ 32px */
-  --font-size--9: 2.5rem; /*   ≈ 40px */
-  --font-size--10: 3rem; /*    ≈ 48px */
-  --font-size--11: 5rem; /*    ≈ 80px */
-  --font-size--12: 6rem; /*    ≈ 96px */
+  --font-size--12: 0.75rem; /*  ≈ 12px */
+  --font-size--14: 0.875rem; /* ≈ 14px */
+  --font-size--16: 1rem; /*     ≈ 16px */
+  --font-size--18: 1.125rem; /* ≈ 18px */
+  --font-size--20: 1.25rem; /*  ≈ 20px */
+  --font-size--24: 1.5rem; /*   ≈ 24px */
+  --font-size--28: 1.75rem; /*  ≈ 28px */
+  --font-size--32: 2rem; /*     ≈ 32px */
+  --font-size--40: 2.5rem; /*   ≈ 40px */
+  --font-size--48: 3rem; /*     ≈ 48px */
+  --font-size--80: 5rem; /*     ≈ 80px */
+  --font-size--96: 6rem; /*     ≈ 96px */
 
   /* Font Size (mapped to Figma text style) */
-  --font-size--big-number: var(--font-size--12);
-  --font-size--extra-large-paragraph: var(--font-size--6);
-  --font-size--h1--desktop: var(--font-size--11);
-  --font-size--h1--mobile: var(--font-size--9);
-  --font-size--h2--desktop: var(--font-size--10);
-  --font-size--h2--mobile: var(--font-size--8);
-  --font-size--h3--desktop: var(--font-size--9);
-  --font-size--h3--mobile: var(--font-size--6);
-  --font-size--h4--desktop: var(--font-size--8);
-  --font-size--h4--mobile: var(--font-size--5);
-  --font-size--h5--desktop: var(--font-size--7);
-  --font-size--h5--mobile: var(--font-size--4);
-  --font-size--h6--desktop: var(--font-size--5);
-  --font-size--h6--mobile: var(--font-size--3);
-  --font-size--icon-card-title--desktop: var(--font-size--8);
-  --font-size--icon-card-title--mobile: var(--font-size--6);
-  --font-size--large-paragraph--desktop: var(--font-size--4);
-  --font-size--large-paragraph--mobile: var(--font-size--3);
-  --font-size--legal: var(--font-size--1);
-  --font-size--paragraph: var(--font-size--3);
-  --font-size--small-paragraph: var(--font-size--2);
-  --font-size--testimonial-content--desktop: var(--font-size--6);
-  --font-size--testimonial-content--mobile: var(--font-size--5);
-  --font-size--testimonial-name--desktop: var(--font-size--3);
-  --font-size--testimonial-name--mobile: var(--font-size--3);
-  --font-size--testimonial-small: var(--font-size--3);
+  --font-size--big-number: var(--font-size--96);
+  --font-size--extra-large-paragraph: var(--font-size--24);
+  --font-size--h1--desktop: var(--font-size--80);
+  --font-size--h1--mobile: var(--font-size--40);
+  --font-size--h2--desktop: var(--font-size--48);
+  --font-size--h2--mobile: var(--font-size--32);
+  --font-size--h3--desktop: var(--font-size--40);
+  --font-size--h3--mobile: var(--font-size--24);
+  --font-size--h4--desktop: var(--font-size--32);
+  --font-size--h4--mobile: var(--font-size--20);
+  --font-size--h5--desktop: var(--font-size--28);
+  --font-size--h5--mobile: var(--font-size--18);
+  --font-size--h6--desktop: var(--font-size--20);
+  --font-size--h6--mobile: var(--font-size--16);
+  --font-size--icon-card-title--desktop: var(--font-size--32);
+  --font-size--icon-card-title--mobile: var(--font-size--24);
+  --font-size--large-paragraph--desktop: var(--font-size--18);
+  --font-size--large-paragraph--mobile: var(--font-size--16);
+  --font-size--legal: var(--font-size--12);
+  --font-size--paragraph: var(--font-size--16);
+  --font-size--small-paragraph: var(--font-size--14);
+  --font-size--testimonial-content--desktop: var(--font-size--24);
+  --font-size--testimonial-content--mobile: var(--font-size--20);
+  --font-size--testimonial-name--desktop: var(--font-size--16);
+  --font-size--testimonial-name--mobile: var(--font-size--16);
+  --font-size--testimonial-small: var(--font-size--16);
 
   /* Font Style */
   --font-style--big-number: normal;

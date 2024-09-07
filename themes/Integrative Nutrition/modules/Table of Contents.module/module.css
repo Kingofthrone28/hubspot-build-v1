@@ -6,7 +6,7 @@
   flex-shrink: 0;
   margin: unset;
   color: var(--color--slate);
-  font: 600 var(--font-size--6) / var(--line-height--legacy--10)
+  font: 600 var(--font-size--24) / var(--line-height--legacy--10)
     var(--font-family--body);
 }
 
@@ -44,7 +44,7 @@
   }
 
   .table-of-contents {
-    font: 600 var(--font-size--4) / var(--line-height--legacy--11)
+    font: 600 var(--font-size--18) / var(--line-height--legacy--11)
       var(--font-family--body);
   }
 }

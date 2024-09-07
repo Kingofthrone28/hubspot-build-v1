@@ -13,7 +13,7 @@
 
 .pdp-bottom .jd-buy-option-label {
   color: var(--color--legacy--violet--gun-powder);
-  font-size: var(--font-size--1);
+  font-size: var(--font-size--12);
 }
 
 .pdp-bottom .jd-shopify-add-btn {
@@ -55,7 +55,7 @@
 }
 
 .pdp-bottom .pdp-price-total {
-  font-size: var(--font-size--4);
+  font-size: var(--font-size--18);
 }
 
 .pdp-bottom {
@@ -93,7 +93,7 @@
 }
 
 .pdp-bottom h3 {
-  font-size: var(--font-size--10);
+  font-size: var(--font-size--48);
 }
 
 @media (max-width: 1000px) {

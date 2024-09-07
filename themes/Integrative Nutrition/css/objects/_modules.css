@@ -514,7 +514,7 @@ a.jd-cat-block:hover {
   align-items: center;
   justify-content: space-between;
   margin: 10px 0 5px;
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--20);
 }
 
 .course-catalog-no-results {
@@ -3636,7 +3636,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
 .didYouknow h2 {
   padding: 0 15px;
   min-width: 200px;
-  font-size: var(--font-size--11);
+  font-size: var(--font-size--80);
 }
 
 #hs_cos_wrapper_widget_1696011607907 .course-catalog .course-card-wrap {

@@ -69,7 +69,7 @@
   justify-content: space-between;
   cursor: pointer;
   line-height: var(--line-height--paragraph);
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--20);
 }
 
 .flex-accordion-item {
