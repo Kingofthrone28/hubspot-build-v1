@@ -33,8 +33,9 @@
       the Hubspot page settings -> advanced -> Head HTML
     -->
     <script>
-      const gateType = IIN?.sampleClassGate;
-      const gateRedirect = IIN?.sampleClassRedirect;
+      {% set rows = hubdb_table_rows('sample_class_gating', 'page_path=' ~ request.path ~ '&limit=1') %}
+      const gateType = '{{ rows[0].sample_class.name }}';
+      const gateRedirect = '{{ rows[0].redirect_path }}';
       if (gateType) {
         const optIn = ("{{ contact.sample_class_opt_in }}").split(', ');
         if (!optIn.includes(gateType)) {
