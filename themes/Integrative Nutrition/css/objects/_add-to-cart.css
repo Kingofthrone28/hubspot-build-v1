@@ -589,7 +589,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   }
 
   .pdp-bottom .jd-shopify-options {
-    column-count: auto;
+    columns: auto;
   }
 
   .pdp-sticky-btns {
