@@ -152,7 +152,7 @@
 
 .pdp-bottom .jd-shopify-options {
   display: block;
-  column-count: 2;
+  columns: 310px 2;
 }
 
 .pdp-top .jd-buy-option {
