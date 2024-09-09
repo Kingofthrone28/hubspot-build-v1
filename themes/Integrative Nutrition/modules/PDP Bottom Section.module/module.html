@@ -1,5 +1,5 @@
 <div class="pdp-bottom">
-  <div>
+  <div class="pdp-bottom-heading-wrapper">
     <div class="pdp-top-content-top">
       <div>
         <img src="{{ module.category_image.src }}" />
@@ -9,14 +9,25 @@
     <h3>{{ module.course_name }}</h3>
     <div>{{ module.sub_head }}</div>
   </div>
-  <div>
-    <div>
+  <div class="pdp-bottom-content">
+    <div class="pdp-bottom-options-wrapper">
       <div class="pdp-bottom-middle-head"></div>
       <div class="pdp-bottom-options"></div>
     </div>
-  </div>
-  <div>
-    <div class="pdp-bottom-price"></div>
-    <div class="pdp-bottom-3-bottom"></div>
+    <div class="pdp-bottom-price-wrapper">
+      <div class="pdp-bottom-price"></div>
+      <div class="pdp-bottom-3-bottom"></div>
+    </div>
   </div>
 </div>
+
+<style>
+{% scope_css %}
+  @media (min-width: 1000px) {
+    .pdp-bottom-heading-wrapper {
+      width: 33.33%;
+      min-width: 33.33%;
+    }
+  }
+{% end_scope_css%}
+</style>

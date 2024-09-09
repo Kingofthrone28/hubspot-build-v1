@@ -414,6 +414,7 @@ const getProductSelectionMethods = () => {
       ? `${replaceSpaces(key)}_${replaceSpaces(value)}`
       : `${key}_${value}`;
     const div = document.createElement('div');
+    div.classList.add('jd-shopify-option');
     const input = document.createElement('input');
     input.setAttribute('id', compositeKey);
     input.setAttribute('value', value);
@@ -519,7 +520,7 @@ const getProductSelectionMethods = () => {
    */
   const configureStickyNav = (isDefault = true, usePrepend = false) => {
     const $target = $('.pdp-sticky-wrap');
-    
+
     if (usePrepend) {
       $target.prependTo('body');
     } else {
@@ -622,16 +623,19 @@ const getProductSelectionMethods = () => {
 
   const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
     const fragment = document.createDocumentFragment();
+    const hasMultipleOptions = optionKeys.length > 1;
 
-    optionKeys.forEach((key) => {
-      const emptyDiv = document.createElement('div');
-      const labelDiv = createOptionLabel(key);
-      emptyDiv.appendChild(labelDiv);
-      fragment.appendChild(emptyDiv);
+    optionKeys.forEach((key, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('jd-buy-option');
+      const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
+      const labelDiv = createOptionLabel(`${prefix}${key}`);
+      optionDiv.appendChild(labelDiv);
+      fragment.appendChild(optionDiv);
 
       const optionWrap = document.createElement('div');
       optionWrap.classList.add('jd-shopify-option-wrap');
-      emptyDiv.appendChild(optionWrap);
+      optionDiv.appendChild(optionWrap);
 
       const valuesSet = allOptions[key];
       valuesSet.forEach((value) => {
@@ -656,11 +660,6 @@ const getProductSelectionMethods = () => {
 
   const getBottomRight = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -688,11 +687,6 @@ const getProductSelectionMethods = () => {
 
   const getPDPOptions = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -843,6 +837,7 @@ const getProductSelectionMethods = () => {
       const parent = $(this).data('parent');
 
       selectedOptions[type] = val;
+
       handleSelectorChange(
         moduleData,
         product,

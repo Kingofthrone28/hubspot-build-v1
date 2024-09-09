@@ -488,8 +488,8 @@ select.jd-cart-rec-select {
 .jd-buy-option-label {
   margin-bottom: 10px;
   text-decoration: underline;
-  color: var(--theme--global-colors--secondary-color);
-  font-weight: 700;
+  color: var(--color--cherry);
+  font: var(--font--paragraph);
 }
 
 .jd-shopify-option-wrap {
@@ -520,17 +520,18 @@ html
 .jd-shopify-options {
   display: flex;
   flex-wrap: wrap;
-}
-
-.jd-shopify-options > div {
-  margin-bottom: 15px;
-  padding-right: 25px;
-  min-width: 50%;
+  margin-bottom: 0;
 }
 
 .jd-add-cart-wrap {
   width: 700px;
   max-width: 100%;
+}
+
+.jd-buy-option {
+  margin-bottom: 15px;
+  padding-right: 25px;
+  min-width: 50%;
 }
 
 .jd-shopify-add-exists-msg {
