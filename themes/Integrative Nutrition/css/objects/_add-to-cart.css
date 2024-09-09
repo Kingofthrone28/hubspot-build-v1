@@ -238,6 +238,7 @@
 
 .pdp-top-content-top > div {
   display: flex;
+  align-items: baseline;
   margin-bottom: 10px;
 }
 
