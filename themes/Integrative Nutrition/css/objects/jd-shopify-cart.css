@@ -492,6 +492,11 @@ select.jd-cart-rec-select {
   font: var(--font--paragraph);
 }
 
+.jd-shopify-option {
+  display: flex;
+  align-items: baseline;
+}
+
 .jd-shopify-option-wrap {
   display: flex;
   flex-wrap: wrap;
