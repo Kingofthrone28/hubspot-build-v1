@@ -6,7 +6,7 @@
   {% set last_index = link_count - 1 %}
   {% set is_last_page = current_index == last_index %}
   {% set have_previous = current_index > 0 %}
-  {% set show_previous = (is_last_page and show_previous_btn_on_last_page) or (!is_last_page and have_previous) %}
+  {% set show_previous = (is_last_page and module.show_previous_btn_on_last_page) or (!is_last_page and have_previous) %}
   {% set show_next = !is_last_page %}
   
   {% if show_previous or show_next %}
