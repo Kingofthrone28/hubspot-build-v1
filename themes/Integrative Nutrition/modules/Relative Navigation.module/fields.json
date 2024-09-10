@@ -33,5 +33,15 @@
     "inline_help_text": "",
     "help_text": "Text for the Next button",
     "default": "Next"
+  },
+  {
+    "name": "show_previous_btn_on_last_page",
+    "label": "Show Previous Button on the Last Page",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "(Only functional on the last page of the menu.)",
+    "help_text": "",
+    "default": true
   }
 ]
