@@ -1,0 +1,34 @@
+[ {
+  "id" : "4718cc1b-88bd-8822-7487-0e2a2732c03f",
+  "name" : "pop_tag_field",
+  "display_width" : null,
+  "label" : "Category Tag",
+  "required" : false,
+  "locked" : false,
+  "tag_value" : "SLUG",
+  "type" : "tag"
+}, {
+  "id" : "efd55743-5b57-3b40-df49-b9e35eaf3421",
+  "name" : "section_title",
+  "display_width" : null,
+  "label" : "Section Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "983133e0-838f-4222-8a53-c9b05cd88c1d",
+  "name" : "time_frame",
+  "display_width" : null,
+  "label" : "Time Frame",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "popular_all_time", "Popular All Time" ], [ "popular_past_year", "Popular Past Year" ], [ "popular_past_six_months", "Popular Past Six Months" ], [ "popular_past_month", "Popular Past Month" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+} ]
