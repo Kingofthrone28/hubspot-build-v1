@@ -228,7 +228,7 @@
     var(--font-size--legal) / var(--line-height--legal) var(--font-family--body);
 
   /* Figma text style: New/Paragraph */
-  --font--paragraph: var(--font-style--body) var(--font-weight--bold)
+  --font--paragraph: var(--font-style--body) var(--font-weight--body)
     var(--font-size--paragraph) / var(--line-height--paragraph)
     var(--font-family--body);
 
