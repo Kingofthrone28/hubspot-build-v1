@@ -76,7 +76,8 @@
     if (
       event.data.type === 'hsFormCallback' &&
       event.data.eventName === 'onFormSubmitted' &&
-      event.data.id === '{{ module.form_field.form_id }}'
+      event.data.id === '{{ module.form_field.form_id }}' &&
+      '{{ module.sample_class_gate }}'
     ) {
       IIN.cookies.setCookie('{{ module.sample_class_gate }}_sc_opt_in', true, 30);
     }

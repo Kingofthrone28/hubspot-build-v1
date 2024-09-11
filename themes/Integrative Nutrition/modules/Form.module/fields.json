@@ -618,9 +618,19 @@
     "type": "form"
   },
   {
-    "type": "text",
-    "id": "4f2505c2-f735-e8cd-5d86-5900dffe44fe",
-    "validation_regex": "",
+    "type": "choice",
+    "id": "26064e75-00db-2b56-221f-1ec61394434c",
+    "display": "select",
+    "choices": [
+      [
+        "hctp",
+        "HCTP"
+      ],
+      [
+        "placeholder",
+        "Placeholder"
+      ]
+    ],
     "label": "Sample Class Gate",
     "name": "sample_class_gate"
   }
