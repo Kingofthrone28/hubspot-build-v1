@@ -184,7 +184,7 @@
   z-index: 0;
   line-height: var(--line-height--100);
   color: var(--color--legacy--green--highland);
-  font-family: var(--font-family--legacy--heading);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--29);
   content: '“';
 }
@@ -203,7 +203,7 @@
   height: 120px;
   line-height: var(--line-height--100);
   color: var(--color--legacy--orange--peach);
-  font-family: var(--font-family--legacy--heading);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--29);
   content: '“';
 }

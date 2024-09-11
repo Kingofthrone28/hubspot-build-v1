@@ -60,7 +60,7 @@
   align-items: center;
   margin-bottom: 0;
   padding: var(--spacing-6) 0;
-  line-height: var(--line-height--paragraph--desktop);
+  line-height: var(--line-height--paragraph);
   font-weight: var(--font-weight--semibold);
 }
 
@@ -68,8 +68,8 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  line-height: var(--line-height--paragraph--desktop);
-  font-size: var(--font-size--5);
+  line-height: var(--line-height--paragraph);
+  font-size: var(--font-size--20);
 }
 
 .flex-accordion-item {
@@ -83,7 +83,7 @@
 .flex-accordion-content {
   display: none;
   padding-bottom: var(--spacing-6);
-  line-height: var(--line-height--paragraph--desktop);
+  line-height: var(--line-height--paragraph);
 }
 
 .flex-accordion-label::after {

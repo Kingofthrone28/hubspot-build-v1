@@ -36,7 +36,7 @@
 .slider-nav-wrap h3 {
   flex: 1;
   margin: 0;
-  font-size: var(--font-size--9);
+  font-size: var(--font-size--40);
 }
 
 .slider-wrap .slick-disabled {
@@ -51,7 +51,7 @@
 .slider-nav .slick-next {
   position: static;
   margin-top: 0;
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .blog-item .custom-img {
@@ -95,13 +95,13 @@
 .blog-item .item-meta {
   margin-bottom: 15px;
   color: var(--color--legacy--blue--mariner-2);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
   font-weight: bold;
 }
 
 .blog-item .item-meta .topic-link {
   text-transform: capitalize;
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .blog-item .item-inner {

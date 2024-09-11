@@ -414,6 +414,7 @@ const getProductSelectionMethods = () => {
       ? `${replaceSpaces(key)}_${replaceSpaces(value)}`
       : `${key}_${value}`;
     const div = document.createElement('div');
+    div.classList.add('jd-shopify-option');
     const input = document.createElement('input');
     input.setAttribute('id', compositeKey);
     input.setAttribute('value', value);
@@ -514,10 +515,17 @@ const getProductSelectionMethods = () => {
 
   /**
    * Configure header behavior
+   * Append the header to body to avoid interrupting screen reader content
    * @param {boolean} isDefault configure header for default page or sample class
    */
-  const configureStickyNav = (isDefault = true) => {
-    $('.pdp-sticky-wrap').appendTo('body');
+  const configureStickyNav = (isDefault = true, usePrepend = false) => {
+    const $target = $('.pdp-sticky-wrap');
+
+    if (usePrepend) {
+      $target.prependTo('body');
+    } else {
+      $target.appendTo('body');
+    }
 
     const handleEnrollButtonClick = (event) => {
       event.preventDefault();
@@ -541,7 +549,7 @@ const getProductSelectionMethods = () => {
   };
 
   const configureStickyHeaderSampleClass = () => {
-    configureStickyNav(false);
+    configureStickyNav(false, true);
   };
 
   /**
@@ -588,28 +596,6 @@ const getProductSelectionMethods = () => {
   };
 
   /**
-   * Configure body offset to show avoid covering page with header
-   */
-  const configureHeaderOffset = () => {
-    let stickyHeader;
-
-    function getCurrentHeight() {
-      if (!stickyHeader) {
-        stickyHeader = document.querySelector('.pdp-sticky');
-      }
-
-      const height = stickyHeader.offsetHeight;
-      document.body.style.paddingTop = `${height}px`;
-    }
-
-    // Call the function on load to get the current height
-    window.addEventListener('DOMContentLoaded', getCurrentHeight);
-
-    // Call the function on resize to handle responsive changes
-    window.addEventListener('resize', getCurrentHeight);
-  };
-
-  /**
    * Configure image slider
    */
   const configureImageSlider = () => {
@@ -637,16 +623,19 @@ const getProductSelectionMethods = () => {
 
   const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
     const fragment = document.createDocumentFragment();
+    const hasMultipleOptions = optionKeys.length > 1;
 
-    optionKeys.forEach((key) => {
-      const emptyDiv = document.createElement('div');
-      const labelDiv = createOptionLabel(key);
-      emptyDiv.appendChild(labelDiv);
-      fragment.appendChild(emptyDiv);
+    optionKeys.forEach((key, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('jd-buy-option');
+      const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
+      const labelDiv = createOptionLabel(`${prefix}${key}`);
+      optionDiv.appendChild(labelDiv);
+      fragment.appendChild(optionDiv);
 
       const optionWrap = document.createElement('div');
       optionWrap.classList.add('jd-shopify-option-wrap');
-      emptyDiv.appendChild(optionWrap);
+      optionDiv.appendChild(optionWrap);
 
       const valuesSet = allOptions[key];
       valuesSet.forEach((value) => {
@@ -671,11 +660,6 @@ const getProductSelectionMethods = () => {
 
   const getBottomRight = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -703,11 +687,6 @@ const getProductSelectionMethods = () => {
 
   const getPDPOptions = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -858,6 +837,7 @@ const getProductSelectionMethods = () => {
       const parent = $(this).data('parent');
 
       selectedOptions[type] = val;
+
       handleSelectorChange(
         moduleData,
         product,
@@ -937,31 +917,18 @@ const getProductSelectionMethods = () => {
   };
 
   return {
-    addToCart,
     calculateDiscounts,
     configureAddedToCartPopUp,
     configureDropdownHeading,
-    configureHeaderOffset,
     configureHeaderToggle,
     configureImageSlider,
     configureStickyHeaderSampleClass,
     configureStickyNav,
-    createAddToCartButton,
-    createDiscountNodes,
-    createErrorBlock,
-    createInputPair,
-    createOptionLabel,
-    createOptionNodes,
     createViewItemEvent,
-    getBottomRight,
-    getOptions,
-    getPDPOptions,
     getProductData,
     handleSelectorChange,
     matchPDPBottomSectionToTop,
     parseMarkupData,
     processProduct,
-    trackAddToCart,
-    tryAddAndTrack,
   };
 };

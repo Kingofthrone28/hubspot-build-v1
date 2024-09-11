@@ -82,13 +82,13 @@ function createPageObject(data) {
     }
   });
 
-  if (Object.keys(data.layoutSections)) {
+  if (data.layoutSections && Object.keys(data.layoutSections)) {
     pageObject.layoutSections = data.layoutSections;
   }
-  if (Object.keys(data.widgetContainers)) {
+  if (data.widgetContainers && Object.keys(data.widgetContainers)) {
     pageObject.widgetContainers = data.widgetContainers;
   }
-  if (Object.keys(data.widgets)) {
+  if (data.widgets && Object.keys(data.widgets)) {
     pageObject.widgets = data.widgets;
   }
 
@@ -122,13 +122,13 @@ function createBlogObject(data, contentGroupId) {
     }
   });
 
-  if (Object.keys(data.layoutSections)) {
+  if (data.layoutSections && Object.keys(data.layoutSections)) {
     blogObject.layoutSections = data.layoutSections;
   }
-  if (Object.keys(data.widgetContainers)) {
+  if (data.widgetContainers && Object.keys(data.widgetContainers)) {
     blogObject.widgetContainers = data.widgetContainers;
   }
-  if (Object.keys(data.widgets)) {
+  if (data.widget && Object.keys(data.widgets)) {
     blogObject.widgets = data.widgets;
   }
 
@@ -159,9 +159,10 @@ async function getListPages() {
     const promise = hubspotClientProd.cms.pages.sitePagesApi.getById(objectId);
     promises.push(promise);
   }
-  const sitePagesList = await Promise.all(promises);
+  const sitePagesList = await Promise.allSettled(promises);
+  const validPages = sitePagesList.filter(({ status }) => status === 'fulfilled').map(({ value }) => value);
   console.info('GET all site pages complete');
-  return sitePagesList.map(createPageObject);
+  return validPages.map(createPageObject);
 }
 
 async function postAllPages(pages) {
@@ -186,10 +187,10 @@ async function getListLandingPages() {
       hubspotClientProd.cms.pages.landingPagesApi.getById(objectId);
     promises.push(promise);
   }
-  const landingPagesList = await Promise.all(promises);
+  const landingPagesList = await Promise.allSettled(promises);
+  const validPages = landingPagesList.filter(({ status }) => status === 'fulfilled').map(({ value }) => value);
   console.info('GET all landing pages complete');
-  const pages = landingPagesList.map(createPageObject);
-  return pages;
+  return validPages.map(createPageObject);
 }
 
 async function postAllLandingPages(pages) {

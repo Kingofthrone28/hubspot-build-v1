@@ -3,7 +3,6 @@
     calculateDiscounts,
     configureAddedToCartPopUp,
     configureDropdownHeading,
-    configureHeaderOffset,
     configureHeaderToggle,
     configureImageSlider,
     configureStickyHeaderSampleClass,
@@ -15,6 +14,13 @@
     parseMarkupData,
     processProduct,
   } = getProductSelectionMethods();
+
+  /** Fix header to the top of the page */
+  const makeHeaderFixed = () => {
+    document
+      .querySelector('.pdp-sticky-wrap')
+      .classList.add('pdp-sticky-wrap-fixed');
+  };
 
   try {
     const moduleData = parseMarkupData();
@@ -29,6 +35,7 @@
     if (isInlineAndHeader || isHeaderOnly) {
       configureStickyNav();
       configureHeaderToggle(isHeaderOnly);
+      makeHeaderFixed();
     }
 
     if (isInlineAndHeader) {
@@ -37,7 +44,6 @@
 
     if (isSampleClass) {
       configureStickyHeaderSampleClass();
-      configureHeaderOffset();
       configureAddedToCartPopUp();
     }
 
