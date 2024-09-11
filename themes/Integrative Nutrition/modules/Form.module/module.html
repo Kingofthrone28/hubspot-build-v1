@@ -71,4 +71,15 @@
       productTypeLastTouchField.value = productType;
     }
   });
+
+  window.addEventListener('message', (event) => {
+    if (
+      event.data.type === 'hsFormCallback' &&
+      event.data.eventName === 'onFormSubmitted' &&
+      event.data.id === '{{ module.form_field.form_id }}'
+    ) {
+      IIN.cookies.setCookie('{{ module.sample_class_gate }}_sc_opt_in', true, 30);
+    }
+  });
+
 </script>
