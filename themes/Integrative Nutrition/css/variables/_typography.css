@@ -242,7 +242,7 @@
     var(--font-weight--semibold) var(--font-size--paragraph) /
     var(--line-height--paragraph) var(--font-family--body);
 
-  /* Figma text style: none */
+  /* Figma text style: Desktop/Paragraph */
   --font--paragraph--bold: var(--font-style--body) var(--font-weight--bold)
     var(--font-size--paragraph) / var(--line-height--paragraph)
     var(--font-family--body);
