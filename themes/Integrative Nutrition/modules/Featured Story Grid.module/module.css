@@ -7,7 +7,7 @@
 
 .featured-story-grid .blog-teaser__category {
   color: var(--color--water);
-  font: var(--font--paragraph);
+  font: var(--font--paragraph--bold);
 }
 
 .featured-story-grid .blog-teaser__byline {
