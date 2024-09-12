@@ -1,0 +1,15 @@
+<div id="{{ name }}" class="jd-add-cart-wrap"></div>
+
+<script>
+  {%- set raw_data = {
+    category: module.category,
+    courseName: module.course_name,
+    name: name,
+    productID: module.product_id
+  } %}
+  (function () {
+    const jsonData = JSON.stringify({{ raw_data|tojson }});
+
+    window.sessionStorage.setItem('course_shopify_add_to_cart', jsonData);
+  })();
+</script>
