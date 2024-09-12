@@ -101,7 +101,7 @@
 <script>
   // using var here so that it can be redeclared if course catalog module is used multiple times on a page
   // let does not allow redeclaration in this way.
-  var rowsData = {{ rows|tojson }}.objects || {{ rows|tojson }}; // Taking fixed top 3 records in case no dynamic records from hubdb. eg: Catalog from home  screen
+  var rowsData = {{ rows|tojson }}.objects || {{ rows|tojson }}; 
 
 </script>
 {% for row in rows %}

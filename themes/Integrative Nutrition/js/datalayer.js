@@ -425,3 +425,62 @@ searchBoxElement?.addEventListener('keydown', (event) => {
     trackViewSearchResults(searchBoxElement);
   }, 5000); // grace period for search results to process.
 });
+
+function trackVimeoVideo(videoElement) {
+  const vimeoScriptTag = document.createElement('script');
+  vimeoScriptTag.src = 'https://player.vimeo.com/api/player.js';
+  vimeoScriptTag.onload = function () {
+    const player = new Vimeo.Player(videoElement);
+    let previousTrackedPercentage = -1;
+    player
+      .getVideoTitle()
+      .then((videoTitle) => {
+        player.on('play', () => {
+          window.dataLayer.push({
+            event: 'video_start',
+            video_title: videoTitle,
+          });
+        });
+
+        player.on('ended', () => {
+          window.dataLayer.push({
+            event: 'video_complete',
+            video_title: videoTitle,
+          });
+        });
+
+        player.on('timeupdate', (data) => {
+          const percentagePlayed = parseInt((data.percent * 100).toFixed(2));
+          if (percentagePlayed === previousTrackedPercentage) {
+            return;
+          }
+          previousTrackedPercentage = percentagePlayed;
+
+          switch (percentagePlayed) {
+            case 10:
+            case 25:
+            case 50:
+            case 75:
+              window.dataLayer.push({
+                event: 'video_progress',
+                video_title: videoTitle,
+                video_percent: percentagePlayed,
+              });
+              break;
+            default:
+              break;
+          }
+        });
+      })
+      .catch((error) => {
+        console.error('Error getting video title:', error);
+      });
+  };
+
+  document.head.appendChild(vimeoScriptTag);
+}
+
+const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
+vimeoIframeElements.forEach((vimeoIframeElement) => {
+  trackVimeoVideo(vimeoIframeElement);
+});

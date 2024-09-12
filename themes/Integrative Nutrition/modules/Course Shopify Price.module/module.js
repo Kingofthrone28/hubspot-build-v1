@@ -69,12 +69,7 @@
         ],
       },
     };
-
     // Trigger View item tracking event
-    try {
-      triggerECommEvent(viewItemPayLoad);
-    } catch (error) {
-      console.error(error);
-    }
+    triggerECommEvent(viewItemPayLoad);
   });
 })();

@@ -26,8 +26,7 @@ ctas.forEach((cta) => {
   });
 }); */
 
-function contactPop(element, position) {
-  let event = 'contact_click';
+function trackContactClicks(element, position) {
   let clickText = element.innerText;
   let clickUrl = element.href.includes('?')
     ? element.href.split('?')[0]
@@ -51,56 +50,34 @@ function contactPop(element, position) {
     clickText = 'whatsapp number';
   } else if (clickText.includes('LIVE Chat Now')) {
     clickText = 'live chat';
-  } else if (clickText.includes('appointment')) {
-    event = 'cta_click';
   }
   window.dataLayer.push({
-    event,
+    event: 'contact_click',
     click_text: clickText,
     click_url: clickUrl,
     position,
   });
 }
-const headerContact = document.querySelectorAll('div.jd-contact-pop a');
-headerContact.forEach((link) => {
-  link.addEventListener('click', () => {
-    contactPop(link, 'header');
+const headerContactPopElements = document.querySelectorAll(
+  'div.jd-contact-pop a',
+);
+headerContactPopElements.forEach((headerContactPopElement) => {
+  headerContactPopElement.addEventListener('click', () => {
+    trackContactClicks(headerContactPopElement, 'header');
   });
 });
-const contact = document.querySelector('#jd-contact');
-if (contact) {
-  contact.addEventListener('click', () => {
-    contactPop(contact, 'header');
+const headerContactElement = document.querySelector('#jd-contact');
+if (headerContactElement) {
+  headerContactElement.addEventListener('click', () => {
+    trackContactClicks(headerContactElement, 'header');
   });
 }
-const entityBodyContact = document.querySelectorAll(
-  'div.entity-paragraphs-item span[style] a',
-);
-entityBodyContact.forEach((link) => {
-  link.addEventListener('click', () => {
-    contactPop(link, 'body');
-  });
-});
-const courseCatalogBodyContact = document.querySelectorAll(
-  'span[style="color: #2d3841;"] a',
-);
-courseCatalogBodyContact.forEach((link) => {
-  link.addEventListener('click', () => {
-    contactPop(link, 'body');
-  });
-});
-const bodyContactClick = document.querySelectorAll('div.schedule-text a');
-bodyContactClick.forEach((link) => {
-  link.addEventListener('click', () => {
-    contactPop(link, 'body');
-  });
-});
-const footerContact = document.querySelectorAll(
+const footerContactElements = document.querySelectorAll(
   'div.footer-main a[href^="tel"]',
 );
-footerContact.forEach((link) => {
-  link.addEventListener('click', () => {
-    contactPop(link, 'footer');
+footerContactElements.forEach((footerContactElement) => {
+  footerContactElement.addEventListener('click', () => {
+    trackContactClicks(footerContactElement, 'footer');
   });
 });
 const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
@@ -111,19 +88,17 @@ bottomFloatBar?.addEventListener('click', () => {
     position: 'footer',
   });
 });
-function registerWebinar(element) {
-  const headerText = element.getAttribute('data-tracking-header-label');
-  const clickText = element.querySelector('a')?.innerText;
+function trackRegisterWebinar(element) {
   window.dataLayer.push({
     event: 'register_webinar_click',
-    header_text: headerText,
-    click_text: clickText,
+    header_text: element.getAttribute('data-tracking-header-label'),
+    click_text: element.querySelector('div.content a[href]')?.innerText,
   });
 }
-const webinars = document.querySelectorAll('div.item-inner.box');
-webinars.forEach((webinar) => {
-  webinar.addEventListener('click', () => {
-    registerWebinar(webinar);
+const webinarElements = document.querySelectorAll('div.item-inner.box');
+webinarElements.forEach((webinarElement) => {
+  webinarElement.addEventListener('click', () => {
+    trackRegisterWebinar(webinarElement);
   });
 });
 // Promotion Clicks

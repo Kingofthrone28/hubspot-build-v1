@@ -74,15 +74,10 @@ function formFallout(form, fieldName) {
 }
 function handleFormLastField(event) {
   const form = event.target.closest('form');
-  if (
-    event.target.type === 'text' ||
-    event.target.type === 'email' ||
-    event.target.type === 'tel'
-  ) {
-    [form.dataset.lastField] = event.target.id.split('-');
-  } else {
-    form.dataset.lastField = event.target.value;
-  }
+  form.dataset.lastField = event.target.id.split('-')[0];
+  const formName = form
+    .querySelector('input[name="leadsource"]')
+    .getAttribute('value');
   const submitButton = form.querySelector('input[type="submit"]');
   let isSubmitting = false;
   let isTabSwitched = false;
@@ -99,7 +94,8 @@ function handleFormLastField(event) {
       form.dataset.startTracked &&
       form.dataset.lastField &&
       !isTabSwitched &&
-      !isSubmitting
+      !isSubmitting &&
+      !formName.includes('Help Me Choose')
     ) {
       formFallout(form, form.dataset.lastField);
     }
