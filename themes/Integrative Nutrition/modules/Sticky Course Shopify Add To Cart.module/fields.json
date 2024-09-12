@@ -1,50 +1,41 @@
-[ 
-  {
-  "name": "configuration",
-  "label": "Configuration",
-  "required": true,
-  "locked": false,
-  "display": "select",
-  "inline_help_text": "",
-  "help_text": "",
-  "choices": [
-    [
-      "sample-class",
-      "Sample Class"
-    ],
-    [
-      "inline-and-header",
-      "Inline Section and Header"
-    ],
-    [
-      "inline-only",
-      "Inline Only"
-    ],
-    [
-      "header-only",
-      "Header Only"
-    ]
-  ],
-  "type": "choice",
-  "placeholder": "",
-  "default": "inline-and-header",
+[ {
+  "id" : "configuration",
+  "name" : "configuration",
+  "display_width" : null,
+  "label" : "Configuration",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : true,
+  "locked" : false,
   "visibility" : {
     "controlling_field" : "lock_configuration",
+    "controlling_field_path" : null,
     "controlling_value_regex" : "true",
-    "operator" : "NOT_EQUAL"
-  }
-},
-{
-  "name": "lock_configuration",
-  "label": "Lock Configuration",
-  "required": false,
-  "locked": true,
-  "type": "boolean",
-  "inline_help_text": "",
-  "help_text": "Invisible to editors. Prevent any changes to the configuration setting by making it invisible.",
-  "default": false 
-},
-{
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "placeholder" : "",
+  "choices" : [ [ "sample-class", "Sample Class" ], [ "inline-and-header", "Inline Section and Header" ], [ "inline-only", "Inline Only" ], [ "header-only", "Header Only" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "inline-and-header"
+}, {
+  "id" : "lock_configuration",
+  "name" : "lock_configuration",
+  "display_width" : null,
+  "label" : "Lock Configuration",
+  "help_text" : "Invisible to editors. Prevent any changes to the configuration setting by making it invisible.",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : true,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
   "id" : "972d2f87-4cab-4c56-a310-acc5a7f2ee18",
   "name" : "category_image",
   "display_width" : null,

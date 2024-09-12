@@ -1,148 +1,106 @@
-[
-  {
-    "name": "module_name",
-    "label": "Module Name",
-    "required": true,
-    "locked": false,
-    "validation_regex": "",
-    "validation_error_message": "",
-    "allow_new_line": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "placeholder": "",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": "Lorem"
-  },
-  {
-    "name": "page_heading",
-    "label": "Page Heading",
-    "required": true,
-    "locked": false,
-    "validation_regex": "",
-    "validation_error_message": "",
-    "allow_new_line": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "placeholder": "",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": "Lorem Ipsum"
-  },
-  {
-    "name": "paragraphs",
-    "label": "Paragraphs",
-    "required": true,
-    "locked": false,
-    "type": "richtext",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": "Ut vel ultricies odio, in dictum odio. Donec sed enim congue, condimentum mauris vitae, fermentum enim. Suspendisse vehicula, sapien consectetur vestibulum varius, massa enim tempus felis, at suscipit mi est ut risus. Nunc vel eros tempus, aliquam nisi et, posuere nibh. Curabitur nunc justo, pulvinar quis bibendum malesuada, blandit sed ante. Nunc eu orci eros. Sed tincidunt enim vulputate, blandit ligula ac, porttitor eros. Suspendisse potenti. Phasellus auctor nibh eu dui vestibulum bibendum.",
-    "enabled_features": [
-      "advanced_emphasis",
-      "anchor",
-      "indents",
-      "link",
-      "lists",
-      "standard_emphasis"
-    ]
-  },
-  {
-    "name": "styles",
-    "label": "Styles",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_image_desktop",
-        "label": "Background Image (Desktop)",
-        "required": false,
-        "locked": false,
-        "type": "backgroundimage",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": {
-          "src": "",
-          "background_position": "MIDDLE_CENTER",
-          "background_size": "cover"
-        }
-      },
-      {
-        "name": "background_image_position_mobile",
-        "label": "Mobile Image Alignment (Optional)",
-        "required": false,
-        "locked": false,
-        "display": "select",
-        "inline_help_text": "",
-        "help_text": "",
-        "choices": [
-          [
-            "left top",
-            "Top Left"
-          ],
-          [
-            "center top",
-            "Top Center"
-          ],
-          [
-            "right top",
-            "Top Right"
-          ],
-          [
-            "center left",
-            "Middle Left"
-          ],
-          [
-            "center center",
-            "Middle Center"
-          ],
-          [
-            "right center",
-            "Middle Right"
-          ],
-          [
-            "left bottom",
-            "Bottom Left"
-          ],
-          [
-            "center bottom",
-            "Bottom Center"
-          ],
-          [
-            "right bottom",
-            "Bottom Right"
-          ]
-        ],
-        "type": "choice",
-        "placeholder": "",
-        "default": "center center"
-      },
-      {
-        "name": "background_image_size_mobile",
-        "label": "Mobile Image Size (Optional)",
-        "required": false,
-        "locked": false,
-        "display": "select",
-        "inline_help_text": "",
-        "help_text": "",
-        "choices": [
-          [
-            "auto",
-            "Full Size"
-          ],
-          [
-            "cover",
-            "Fill Container"
-          ],
-          [
-            "contain",
-            "Show Entire Image"
-          ]
-        ],
-        "type": "choice",
-        "placeholder": "",
-        "default": "cover"
-      }
-    ]
-  }
-]
+[ {
+  "id" : "module_name",
+  "name" : "module_name",
+  "display_width" : null,
+  "label" : "Module Name",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "validation_error_message" : "",
+  "placeholder" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Lorem"
+}, {
+  "id" : "page_heading",
+  "name" : "page_heading",
+  "display_width" : null,
+  "label" : "Page Heading",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "validation_error_message" : "",
+  "placeholder" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Lorem Ipsum"
+}, {
+  "id" : "paragraphs",
+  "name" : "paragraphs",
+  "display_width" : null,
+  "label" : "Paragraphs",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : true,
+  "locked" : false,
+  "enabled_features" : [ "indents", "lists", "anchor", "link", "standard_emphasis", "advanced_emphasis" ],
+  "type" : "richtext",
+  "default" : "Ut vel ultricies odio, in dictum odio. Donec sed enim congue, condimentum mauris vitae, fermentum enim. Suspendisse vehicula, sapien consectetur vestibulum varius, massa enim tempus felis, at suscipit mi est ut risus. Nunc vel eros tempus, aliquam nisi et, posuere nibh. Curabitur nunc justo, pulvinar quis bibendum malesuada, blandit sed ante. Nunc eu orci eros. Sed tincidunt enim vulputate, blandit ligula ac, porttitor eros. Suspendisse potenti. Phasellus auctor nibh eu dui vestibulum bibendum."
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.background_image_desktop",
+    "name" : "background_image_desktop",
+    "display_width" : null,
+    "label" : "Background Image (Desktop)",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "backgroundimage",
+    "default" : {
+      "src" : "",
+      "background_position" : "MIDDLE_CENTER",
+      "background_size" : "cover"
+    }
+  }, {
+    "id" : "styles.background_image_position_mobile",
+    "name" : "background_image_position_mobile",
+    "display_width" : null,
+    "label" : "Mobile Image Alignment (Optional)",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "",
+    "choices" : [ [ "left top", "Top Left" ], [ "center top", "Top Center" ], [ "right top", "Top Right" ], [ "center left", "Middle Left" ], [ "center center", "Middle Center" ], [ "right center", "Middle Right" ], [ "left bottom", "Bottom Left" ], [ "center bottom", "Bottom Center" ], [ "right bottom", "Bottom Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center center"
+  }, {
+    "id" : "styles.background_image_size_mobile",
+    "name" : "background_image_size_mobile",
+    "display_width" : null,
+    "label" : "Mobile Image Size (Optional)",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "",
+    "choices" : [ [ "auto", "Full Size" ], [ "cover", "Fill Container" ], [ "contain", "Show Entire Image" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group"
+} ]

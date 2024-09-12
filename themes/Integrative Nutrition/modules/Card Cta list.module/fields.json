@@ -57,16 +57,9 @@
     "label" : "Rich text",
     "required" : false,
     "locked" : false,
-    "type" : "richtext",
-    "enabled_features": [
-      "advanced_emphasis",
-      "anchor",
-      "indents",
-      "link",
-      "lists",
-      "standard_emphasis"
-    ]
-  }],
+    "enabled_features" : [ "indents", "lists", "anchor", "link", "standard_emphasis", "advanced_emphasis" ],
+    "type" : "richtext"
+  } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,

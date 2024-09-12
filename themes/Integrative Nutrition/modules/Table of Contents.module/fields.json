@@ -1,73 +1,48 @@
-[
-  {
-    "id": "navigation_menu",
-    "name": "navigation_menu",
-    "display_width": null,
-    "label": "Page Navigation menu",
-    "help_text": "Navigation menu that contains the list of pages to use",
-    "required": true,
-    "locked": false,
-    "type": "menu"
-  },
-  {
-    "name": "bullet_selector",
-    "display_width": null,
-    "label": "Bullet Type",
-    "required": true,
-    "locked": false,
-    "display": "select",
-    "choices": [
-      [
-        "none",
-        "None"
-      ],
-      [
-        "decimal",
-        "Numeric"
-      ],
-      [
-        "lower-roman",
-        "Lowercase Roman Numerals"
-      ],
-      [
-        "upper-roman",
-        "Uppercase Roman Numerals"
-      ],
-      [
-        "lower-latin",
-        "Lowercase English Alphabet"
-      ],
-      [
-        "upper-latin",
-        "Uppercase English Alphabet"
-      ]
-    ],
-    "multiple": false,
-    "reordering_enabled": true,
-    "preset": null,
-    "type": "choice",
-    "default": "none"
-  },
-  {
-    "name": "is_centered",
-    "label": "Centered Menu",
-    "required": false,
-    "locked": false,
-    "type": "boolean",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": false
-  },
-  {
-    "name": "is_reversed",
-    "display_width": null,
-    "label": "Reversed List",
-    "help_text": "",
-    "inline_help_text": "",
-    "required": false,
-    "locked": false,
-    "display": "checkbox",
-    "type": "boolean",
-    "default": false
-  }
-]
+[ {
+  "id" : "navigation_menu",
+  "name" : "navigation_menu",
+  "display_width" : null,
+  "label" : "Page Navigation menu",
+  "help_text" : "Navigation menu that contains the list of pages to use",
+  "required" : true,
+  "locked" : false,
+  "type" : "menu"
+}, {
+  "id" : "bullet_selector",
+  "name" : "bullet_selector",
+  "display_width" : null,
+  "label" : "Bullet Type",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "none", "None" ], [ "decimal", "Numeric" ], [ "lower-roman", "Lowercase Roman Numerals" ], [ "upper-roman", "Uppercase Roman Numerals" ], [ "lower-latin", "Lowercase English Alphabet" ], [ "upper-latin", "Uppercase English Alphabet" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "none"
+}, {
+  "id" : "is_centered",
+  "name" : "is_centered",
+  "display_width" : null,
+  "label" : "Centered Menu",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "is_reversed",
+  "name" : "is_reversed",
+  "display_width" : null,
+  "label" : "Reversed List",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+} ]
