@@ -93,6 +93,30 @@
     ["request.search_keyword", request.search_keyword]
   ]
 %}
+{%
+  set blog_pairs = [
+    ['blog_author', blog_author],
+    ['blog', blog],
+    ['blog != null and blog == group', blog != null and blog == group],
+    ['content.comment_count', content.comment_count],
+    ['content.comment_list', content.comment_list],
+    ['content.featured_image_alt_text', content.featured_image_alt_text],
+    ['content.featured_image', content.featured_image],
+    ['content.next_post_featured_image_alt_text', content.next_post_featured_image_alt_text],
+    ['content.next_post_featured_image', content.next_post_featured_image],
+    ['content.next_post_name', content.next_post_name],
+    ['content.next_post_slug', content.next_post_slug],
+    ['content.tag_list', content.tag_list],
+    ['contents.total_page_count', contents.total_page_count],
+    ['current_page_num', current_page_num],
+    ['is_listing_view', is_listing_view],
+    ['last_page_num', last_page_num],
+    ['next_page_num', next_page_num],
+    ['simple_list_page', simple_list_page],
+    ['tag', tag],
+    ['topic', topic]
+  ]
+%}
 {% 
   set icon_classes = [
     'check-before',
@@ -107,6 +131,7 @@
   <a
     class="docs-link"
     href="https://developers.hubspot.com/beta-docs/reference/cms/hubl/variables"
+    target="_blank"
   >Hubspot variables doc</a>
  
   <div class="variable-groups-wrapper">
@@ -114,6 +139,7 @@
     {{ get_section_markup('All Templates', is_in_pairs, 'Is in...') }}
     {{ get_section_markup('All Templates', miscellanious_pairs, 'Miscellanious') }}
     {{ get_section_markup('Request', request_pairs) }}
+    {{ get_section_markup('Blog', blog_pairs) }}
 
     {# Icons #}
     <section class="variable-group icons">

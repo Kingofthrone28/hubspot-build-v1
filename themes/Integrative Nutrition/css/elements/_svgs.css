@@ -13,3 +13,11 @@
   content: '';
   mask-image: var(--icon--checkmark);
 }
+
+.svg-icon {
+  display: inline-block;
+  background-color: var(--icon--color, var(--color--slate));
+  width: var(--icon--width, var(--icon--square--size));
+  height: var(--icon--height, var(--icon--square--size));
+  mask-image: var(--icon--image);
+}
