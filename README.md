@@ -5,10 +5,10 @@ Before your code is committed, several linting and formatting steps should take 
 - For JavaScript only, run `npx eslint --fix [path to file]`.
 - For CSS only, run `npx stylelint --fix [path to file]`.
 - For either, run one of the above linters then run `npx prettier --write [path to file]`.
-- See scripts in package.json to run linting and formatting globally
+- See scripts in `package.json` to run linting and formatting globally
 
 
-In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop
+In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop`
 
 ### Development in Production
 
@@ -39,6 +39,26 @@ Please limit the available options content creators have when adding a custom mo
 }
 ```
 
+Other options include:
+
+```json
+[
+    "image",
+    "emoji",
+    "personalize",
+    "cta",
+    "embed",
+    "video",
+    "table",
+    "charmap",
+    "hr",
+    "nonbreaking_space",
+    "icon",
+    "source_code",
+    "visual_blocks",
+]
+```
+
 ## CSS Code Style
 
 ### Custom Properties (Variables) 
@@ -62,31 +82,37 @@ Variables that are specific to a file can be added in that file.
 
 To scope the variable, it can be added inside the parent selector.
 
-    .example-class {
-      --margin-right: 20px;
-    }
+```css
+.example-class {
+  --margin-right: 20px;
+}
 
-    .example-class  a {
-      margin-right: var(--margin-right);
-    }
+.example-class  a {
+  margin-right: var(--margin-right);
+}
 
-    .example-class  b {
-      margin-right: var(--margin-right);
-    } 
+.example-class  b {
+  margin-right: var(--margin-right);
+}
+```
 
 If the variable needs to apply to multiple top-level siblings in a file, it should be declared at the beginning of the file.
 
 Since this variable will still be accessible globally, it should be prefixed with a name that will be unique to this file.
 
-    --example-class--margin-right: 20px;
+```css
+.example-class {
+  --example-class--margin-right: 20px;
+}
 
-    .example-class__a {
-      margin-right: var(--example-class--margin-right);
-    }
+.example-class__a {
+  margin-right: var(--example-class--margin-right);
+}
 
-    .example-class__b {
-      margin-right: var(--example-class--margin-right);
-    }
+.example-class__b {
+  margin-right: var(--example-class--margin-right);
+}
+```
 
 ### Sequence
 
@@ -114,33 +140,35 @@ Create groups that share selector specificity. This will avoid the need to worry
 
 #### Example:
 
-    ::pseudo-element {
-      color: red;
-    } 
+```css
+::pseudo-element {
+  color: red;
+}
 
-    element {
-      color: organge;
-    }
+element {
+  color: orange;
+}
 
-    :pseudo-class {
-      color: yellow;
-    }
+:pseudo-class {
+  color: yellow;
+}
 
-    [attribute] {
-      color: green;
-    }
+[attribute] {
+  color: green;
+}
 
-    .class {
-      color: blue;
-    }
+.class {
+  color: blue;
+}
 
-    element.class {
-      color: indigo;
-    }
+element.class {
+  color: indigo;
+}
 
-    #id {
-      color: violet;
-    }
+#id {
+  color: violet;
+}
+```
 
 ### Alphabetization 
 
@@ -148,25 +176,27 @@ Within each group, sequence selectors alphabetically. This sequence doesn't requ
 
 #### Example:
 
-    .close {
-      color: red;
-    }
+```css
+.close {
+  color: red;
+}
 
-    .modal {
-      color: orange;
-    }
+.modal {
+  color: orange;
+}
 
-    .modal-body {
-      color: yellow;
-    }
+.modal-body {
+  color: yellow;
+}
 
-    .modal-title {
-      color: green;
-    }
+.modal-title {
+  color: green;
+}
 
-    .non-modal {
-      color: blue;
-    }
+.non-modal {
+  color: blue;
+}
+```
 
 ### Pseudo-Classes
 
@@ -182,7 +212,11 @@ Typically, a user will first hover over an element, then bring it to focus, then
 
 Remember to use `::` instead of `:` (deprecated) to declare a pseudo-element.
 
-    .modal::before
+```css
+.modal::before {
+    ...
+}
+```
 
 ### Media Queries
 
@@ -208,36 +242,40 @@ It can be time-consuming to investigate rules that exist in multiple different p
 
 Avoid grouping selectors by property value.
 
-    a,
-    b {
-      color: red; 
-    }
+```css
+a,
+b {
+  color: red; 
+}
 
-    a {
-      text-decoration: underline;
-    }
+a {
+  text-decoration: underline;
+}
 
-    b {
-      font-weight: bold;
-    }
+b {
+  font-weight: bold;
+}
+```
 
 While it may be the case that `a` and `b` share the same `color`, unless they share all properties, it can become complicated to track multiple instances of the same selector spread throughout the codebase.
 
 This might be better expressed as: 
 
-    :root {
-      --text--color: red;
-    }
+```css
+:root {
+  --text--color: red;
+}
 
-    a {
-      text-decoration: underline;
-      color: var(--text--color);
-    }
+a {
+  text-decoration: underline;
+  color: var(--text--color);
+}
 
-    b {
-      color: var(--text--color);
-      font-weight: bold;  
-    } 
+b {
+  color: var(--text--color);
+  font-weight: bold;  
+} 
+```
 
 ### Avoid Assigning Styles to Elements
 
