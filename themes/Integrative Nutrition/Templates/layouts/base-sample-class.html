@@ -29,16 +29,17 @@
 
     <!-- 
       __Gating Function__
-      To use, set IIN.sampleClassGate and IIN.sampleClassRedirect in
-      the Hubspot page settings -> advanced -> Head HTML
+      To use, add entry to Sample Class Gating HubDB table
+      for each page path you wish to gate
     -->
     <script>
       {% set rows = hubdb_table_rows('sample_class_gating', 'page_path=' ~ request.path ~ '&limit=1') %}
-      const gateType = '{{ rows[0].sample_class.name }}';
+      const gateType = '{{ rows[0].sample_class.name|lower }}';
       const gateRedirect = '{{ rows[0].redirect_path }}';
       if (gateType) {
-        const optIn = ("{{ contact.sample_class_opt_in }}").split(', ');
-        if (!optIn.includes(gateType)) {
+        const optInCookie = IIN.cookies.getCookie(`${gateType}_sc_opt_in`);
+        const optInProperty = ("{{ contact.sample_class_opt_in }}").split(', ');
+        if (!optInCookie && !optInProperty.includes(gateType)) {
           window.location.href = gateRedirect || '/';
         }
       }
