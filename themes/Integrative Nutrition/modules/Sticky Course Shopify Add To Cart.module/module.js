@@ -9,7 +9,7 @@
     configureStickyNav,
     createViewItemEvent,
     getProductData,
-    handleSelectorChange,
+    handleSelectorChangeFull,
     matchPDPBottomSectionToTop,
     parseMarkupData,
     processProduct,
@@ -29,7 +29,7 @@
       isInlineAndHeader,
       isSampleClass,
       productID,
-      showStickyHeader,
+      showInlineSection,
     } = moduleData;
 
     if (isInlineAndHeader || isHeaderOnly) {
@@ -38,7 +38,7 @@
       makeHeaderFixed();
     }
 
-    if (isInlineAndHeader) {
+    if (showInlineSection) {
       configureImageSlider();
     }
 
@@ -54,12 +54,9 @@
     const { productOptions, variantSelections } = processProduct(product);
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
-    const discountInfo =
-      showStickyHeader && firstVariant
-        ? await calculateDiscounts(firstVariant)
-        : undefined;
+    const discountInfo = await calculateDiscounts(firstVariant);
 
-    handleSelectorChange(
+    handleSelectorChangeFull(
       moduleData,
       product,
       variantSelections,

@@ -6,6 +6,7 @@
 
 {# Dependent variables #}
 {% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
+{% set show_inline_section = is_inline_and_header or is_inline_only %}
 {% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 {% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
 
@@ -15,13 +16,13 @@
 {% if is_header_only %}
   <div id="product-selector-trigger">
   {% if is_in_editor %}
-    <span class="editor-warning">&lt;PRODUCT SELECTION TRIGGER&gt;</span>
+    <span class="editor-warning">{STICKY COURSE SHOPIFY ADD TO CART HEADER TRIGGER}</span>
   {% endif %}
   </div>
 {% endif %}
 
 {# Inline section: from Sticky Course Shopify Add To Cart #}
-{% if is_inline_and_header %}
+{% if show_inline_section %}
 <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
     <div class="pdp-top-slide-btns">
@@ -195,11 +196,6 @@
   </div>
 {% endif %}
 
-{# Inline section: from Course Shopify Add To Cart #}
-{% if is_inline_only %}
-  <div id="{{ name }}" class="jd-add-cart-wrap"></div>
-{% endif %}
-
 {# Added to cart pop up: from Sample Class Sticky Header #}
 {% if is_sample_class %}
   <div class="jd-add-pop">
@@ -259,6 +255,7 @@
     isInlineAndHeader: is_inline_and_header,
     isInlineOnly: is_inline_only,
     isSampleClass: is_sample_class,
+    showInlineSection: show_inline_section,
     showStickyHeader: show_sticky_header,
     productID: module.product_id
   } %}
