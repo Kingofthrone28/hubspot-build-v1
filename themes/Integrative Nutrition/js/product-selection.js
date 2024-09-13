@@ -529,23 +529,17 @@ const getProductSelectionMethods = () => {
 
     const handleEnrollButtonClick = (event) => {
       event.preventDefault();
-      $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
-      $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
-    };
-
-    const handleSampleClassEnrollButtonClick = (event) => {
-      event.preventDefault();
       $('.caret').toggleClass('caret-down');
       $('.caret').toggleClass('caret-up');
+      $('.pdp-close-product-selector').toggleClass('hide');
+      $('.pdp-close-product-selector').toggleClass('show');
+      $('.pdp-sticky-inner').toggleClass('expanded');
       $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
       $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
     };
 
-    const handler = isDefault
-      ? handleEnrollButtonClick
-      : handleSampleClassEnrollButtonClick;
-
-    $('#pdp-sticky-enroll-btn').click(handler);
+    $('#pdp-sticky-enroll-btn').click(handleEnrollButtonClick);
+    $('#pdp-close-product-selector').click(handleEnrollButtonClick);
   };
 
   const configureStickyHeaderSampleClass = () => {
