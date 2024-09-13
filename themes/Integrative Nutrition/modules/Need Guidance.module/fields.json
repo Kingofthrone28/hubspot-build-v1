@@ -1,0 +1,85 @@
+[
+  {
+    "name": "text",
+    "label": "Body Text",
+    "locked": false,
+    "required": false,
+    "type": "richtext",
+    "validation_regex": "",
+    "default": "Schedule an informational session with one of our advisors who can help answer any questions you may have.",
+    "enabled_features": [
+      "advanced_emphasis",
+      "anchor",
+      "indents",
+      "link",
+      "lists",
+      "standard_emphasis"
+    ]
+  },
+  {
+    "name": "appointment_contact",
+    "label": "Schedule Appointment Link",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "E.g. https://iin.secure.force.com/AS",
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "EMAIL_ADDRESS"
+    ],
+    "type": "url",
+    "default": {
+      "content_id": null,
+      "href": "https://iin.secure.force.com/AS",
+      "type": "EXTERNAL"
+    }
+  },
+  {
+    "name": "us_phone_number",
+    "label": "United States Phone Number",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "E.g. (555) 555-1111",
+    "default": "(877) 730-5444"
+  },
+  {
+    "name": "international_phone_number",
+    "label": "International Phone Number",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "E.g. +1 (555) 555-2222",
+    "default": "+1 (513) 776-0960"
+  },
+  {
+    "name": "whatsapp_link",
+    "label": "Whatsapp Link",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "E.g. https://api.whatsapp.com/send?phone=15551234567",
+    "supported_types": [
+      "EXTERNAL"
+    ],
+    "type": "url",
+    "default": {
+      "content_id": null,
+      "href": "https://api.whatsapp.com/send?phone=19733698195",
+      "type": "EXTERNAL"
+    }
+  }
+]

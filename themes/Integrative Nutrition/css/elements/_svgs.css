@@ -1,17 +1,35 @@
 .pseudo-svg::before,
 .pseudo-svg::after {
   display: inline-block;
-  background-color: var(--accent--color);
+  background-color: var(--icon--color, var(--accent--color));
   background-repeat: no-repeat;
   width: var(--icon--square--size);
   height: var(--icon--square--size);
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 .check-before::before {
   margin-right: 20px;
   content: '';
   mask-image: var(--icon--checkmark);
+}
+
+.calendar-plus-before::before {
+  margin-right: var(--icon--gap);
+  content: '';
+  mask-image: var(--icon--calendar--plus);
+}
+
+.phone-chat-before::before {
+  margin-right: var(--icon--gap);
+  content: '';
+  mask-image: var(--icon--phone--chat);
+}
+
+.whatsapp-before::before {
+  margin-right: var(--icon--gap);
+  content: '';
+  mask-image: var(--icon--whatsapp);
 }
 
 .svg-icon {

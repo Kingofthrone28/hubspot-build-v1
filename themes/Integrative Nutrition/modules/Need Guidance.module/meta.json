@@ -1,0 +1,18 @@
+{
+  "label": "Need Guidance",
+  "css_assets": [],
+  "external_js": [],
+  "global": true,
+  "help_text": "",
+  "content_types": [
+    "SITE_PAGE",
+    "LANDING_PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}
