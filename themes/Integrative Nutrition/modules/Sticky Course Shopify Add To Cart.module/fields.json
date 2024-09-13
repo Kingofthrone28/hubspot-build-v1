@@ -311,9 +311,12 @@
   "required" : false,
   "locked" : false,
   "visibility" : {
+    "controlling_field" : null,
     "controlling_field_path" : "configuration",
     "controlling_value_regex" : "inline-only",
-    "operator" : "NOT_EQUAL"
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null
   },
   "children" : [ {
     "id" : "c1840ee2-42e8-4069-b4b5-17cd0aede83d",
@@ -340,6 +343,7 @@
     "type" : "text",
     "default" : "Just a few quick selections and you'll be ready to enroll."
   }, {
+    "id" : "sticky_nav.dropdown_left_text_singular",
     "name" : "dropdown_left_text_singular",
     "display_width" : null,
     "label" : "Dropdown Left Text (Singular Choice)",
@@ -377,6 +381,7 @@
     "type" : "text",
     "default" : "Back to Menu"
   }, {
+    "id" : "sticky_nav.right_button_text",
     "name" : "right_button_text",
     "display_width" : null,
     "label" : "Right Button Text (Sample Class)",
@@ -387,8 +392,7 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "Get the full course"
-  } 
-],
+  } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
@@ -403,19 +407,25 @@
     "left_button_text" : "Speak with an Advisor",
     "dropdown_left_text" : "Just a few quick selections and you'll be ready to enroll."
   }
-},
-{
-"name": "added_to_cart_popup",
-"label": "Added to Cart Popup",
-"required": false,
-"locked": false,
-"visibility" : {
-  "controlling_field_path" : "configuration",
-  "controlling_value_regex" : "sample-class",
-  "operator" : "EQUAL"
-},
-"children": [
-  {
+}, {
+  "id" : "added_to_cart_popup",
+  "name" : "added_to_cart_popup",
+  "display_width" : null,
+  "label" : "Added to Cart Popup",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "configuration",
+    "controlling_value_regex" : "sample-class",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "added_to_cart_popup.cart_link",
     "name" : "cart_link",
     "display_width" : null,
     "label" : "Cart Link",
@@ -434,6 +444,7 @@
       "no_follow" : false
     }
   }, {
+    "id" : "added_to_cart_popup.continue_shopping_link",
     "name" : "continue_shopping_link",
     "display_width" : null,
     "label" : "Continue Shopping Link",
@@ -451,11 +462,10 @@
       "open_in_new_tab" : false,
       "no_follow" : false
     }
-  }
-],
-  "type": "group",
-  "inline_help_text": "",
-  "help_text": "",
-  "default": {} 
-  }
-]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : { }
+} ]
