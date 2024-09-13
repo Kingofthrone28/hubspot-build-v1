@@ -1,0 +1,21 @@
+.simple-footer-container-wrapper {
+  background: var(--color--white);
+  padding: var(--spacing-12);
+  width: 100%;
+  color: var(--color--slate);
+}
+
+.simple-footer-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.simple-footer-title {
+  font-size: var(--font-size--extra-large-paragraph);
+}
+
+@media (max-width: 48em) {
+  .simple-footer-content-wrapper {
+    flex-direction: column;
+  }
+}

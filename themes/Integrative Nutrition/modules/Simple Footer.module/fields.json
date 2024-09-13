@@ -1,0 +1,55 @@
+[ {
+  "id" : "567c4dee-019b-2f14-47ee-15577f114194",
+  "name" : "iin_logo",
+  "display_width" : null,
+  "label" : "IIN Logo",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/IIN.png",
+    "alt" : "Well Being",
+    "loading" : "lazy",
+    "width" : 128,
+    "height" : 28,
+    "max_width" : 128,
+    "max_height" : 28
+  }
+}, {
+  "id" : "8d854755-1cf9-ddd6-a448-6b7f77cff342",
+  "name" : "simple_logo",
+  "display_width" : null,
+  "label" : "Simple Logo",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://www.integrativenutrition.com/hubfs/Frame%2031166.jpg",
+    "alt" : "Frame 31166",
+    "loading" : "lazy",
+    "width" : 226,
+    "height" : 47,
+    "max_width" : 226,
+    "max_height" : 47
+  }
+}, {
+  "id" : "51caf6b8-f62d-bd8a-c4a1-3aa242fdc8d6",
+  "name" : "copyright_text",
+  "display_width" : null,
+  "label" : "Copyright",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "© 2024 Integrative Nutrition, LLC"
+} ]
