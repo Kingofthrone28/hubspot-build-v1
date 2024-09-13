@@ -29,7 +29,7 @@
     "required": false,
     "locked": true,
     "type": "richtext",
-    "default": "<h3><span style=\"color: #ffffff;\">The Original Health Coaching Program</span></h3>\n<p><span style=\"color: #ffffff;\">Learn more about IIN’s rigorous curriculum that integrates 90+ of the world’s leading experts in health and wellness, blending the scientific and the spiritual to create an immersive, holistic health education.</span></p>"
+    "default": "<h3><span style=\"color: #ffffff;\">The Original Health Coaching Program</span></h3>\n<p><span style=\"color: #ffffff;\">Learn more about IIN’s rigorous curriculum that integrates 90+ of the world’s leading experts in health and wellness, blending the scientific and the spiritual to create an immersive, holistic health education experience.</span></p>"
   },
   {
     "id": "2e99f7c6-e1d4-7208-1a79-49a30f4d5abf",

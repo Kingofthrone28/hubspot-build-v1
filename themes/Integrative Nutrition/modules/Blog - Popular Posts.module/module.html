@@ -4,7 +4,7 @@
       {% set author = post.blog_author.name %}
       {% set initial_post_words = post.post_body|striptags|wordcount %}
       {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
-      {% set is_read_time_words = read_time_post_words <=1 ? 'read time: less than 1 min' : 'read time: {{ read_time_post_words }} mins'  %}
+      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
       <a href="{{ post.url }}" class="blog-popular-posts__section">
         <span class="blog-popular-posts__category">{{ post.topic_list[0].name }}</span>
         <h4 class="blog-popular-posts__heading">{{ post.name }}</h4>

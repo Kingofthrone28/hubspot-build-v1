@@ -5,7 +5,7 @@
       {% set is_large_card = layout == "two_column" and loop.index <= 2 %}
       {% set initial_post_words = content.post_body|striptags|wordcount %}
       {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
-      {% set is_read_time_words = read_time_post_words <=1 ? 'read time: less than 1 min' : 'read time: {{ read_time_post_words }} mins'  %}
+      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
       {% set card_type = is_large_card ? 'large' : 'small' %}
       <a 
         href="{{ content.url }}" 

@@ -1,13 +1,8 @@
 {
-  "label": "Blog - Latest Posts",
-  "css_assets": [],
-  "external_js": [],
   "global": false,
-  "help_text": "",
-  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "host_template_types": ["ANY"],
+  "module_id": 178324338313,
+  "label": "Blog - Latest Posts",
   "is_available_for_new_content": true
 }

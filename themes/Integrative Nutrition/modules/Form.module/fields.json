@@ -475,27 +475,33 @@
     }
   },
   {
+    "id": "b873cf25-481e-8188-fe7b-23a85e8f004a",
+    "name": "form_field",
+    "display_width": null,
+    "label": "Form",
+    "required": false,
+    "locked": false,
+    "type": "form",
     "default": {
       "response_type": "inline",
       "message": "Thanks for submitting the form."
-    },
-    "display_width": null,
-    "id": "b873cf25-481e-8188-fe7b-23a85e8f004a",
-    "label": "Form",
-    "locked": false,
-    "name": "form_field",
-    "required": false,
-    "type": "form"
+    }
   },
   {
-    "type": "choice",
     "id": "26064e75-00db-2b56-221f-1ec61394434c",
+    "name": "sample_class_gate",
+    "display_width": null,
+    "label": "Sample Class Gate",
+    "required": false,
+    "locked": false,
     "display": "select",
     "choices": [
       ["hctp", "HCTP"],
       ["placeholder", "Placeholder"]
     ],
-    "label": "Sample Class Gate",
-    "name": "sample_class_gate"
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice"
   }
 ]

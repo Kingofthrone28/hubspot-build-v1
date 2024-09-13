@@ -1,13 +1,9 @@
 {
-  "label": "Need Guidance",
-  "css_assets": [],
-  "external_js": [],
   "global": true,
-  "help_text": "",
-  "content_types": ["SITE_PAGE", "LANDING_PAGE", "BLOG_POST", "BLOG_LISTING"],
-  "js_assets": [],
-  "other_assets": [],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
   "smart_type": "NOT_SMART",
-  "tags": [],
+  "host_template_types": ["ANY"],
+  "module_id": 178398654529,
+  "label": "Need Guidance",
   "is_available_for_new_content": true
 }
