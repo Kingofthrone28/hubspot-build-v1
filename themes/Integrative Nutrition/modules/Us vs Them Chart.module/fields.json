@@ -1,337 +1,366 @@
-[ {
-  "id" : "a75ae076-61c3-b659-e5e1-dea13fb63054",
-  "name" : "first_row_image",
-  "display_width" : null,
-  "label" : "First Row Image",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : null
-  },
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "",
-    "alt" : null,
-    "loading" : "lazy"
-  }
-}, {
-  "id" : "1ef93ed0-98c0-e1dc-4ccc-728311259998",
-  "name" : "rows",
-  "display_width" : null,
-  "label" : "Rows",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : null
-  },
-  "children" : [ {
-    "id" : "415119e8-79d1-031c-3c27-44fe4fa17ae3",
-    "name" : "label_text",
-    "display_width" : null,
-    "label" : "Label Text",
-    "required" : false,
-    "locked" : false,
-    "type" : "richtext",
-    "default" : "Pioneered health coaching industry 31 years ago"
-  }, {
-    "id" : "0a9c47dc-a613-c199-0bee-43fd28bc3b54",
-    "name" : "check",
-    "display_width" : null,
-    "label" : "Check",
-    "required" : false,
-    "locked" : false,
-    "occurrence" : {
-      "min" : null,
-      "max" : null,
-      "sorting_label_field" : null,
-      "default" : null
+[
+  {
+    "id": "a75ae076-61c3-b659-e5e1-dea13fb63054",
+    "name": "first_row_image",
+    "display_width": null,
+    "label": "First Row Image",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": null
     },
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ ]
-}, {
-  "id" : "111aee1e-e2f1-67ec-fa90-3d9423459789",
-  "name" : "check_svg",
-  "display_width" : null,
-  "label" : "Check SVG",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "<svg fill=\"#163c49\" width=\"24\" height=\"24\" clip-rule=\"evenodd\" fill-rule=\"evenodd\" stroke-linejoin=\"round\" stroke-miterlimit=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m11.998 2.005c5.517 0 9.997 4.48 9.997 9.997 0 5.518-4.48 9.998-9.997 9.998-5.518 0-9.998-4.48-9.998-9.998 0-5.517 4.48-9.997 9.998-9.997zm-5.049 10.386 3.851 3.43c.142.128.321.19.499.19.202 0 .405-.081.552-.242l5.953-6.509c.131-.143.196-.323.196-.502 0-.41-.331-.747-.748-.747-.204 0-.405.082-.554.243l-5.453 5.962-3.298-2.938c-.144-.127-.321-.19-.499-.19-.415 0-.748.335-.748.746 0 .205.084.409.249.557z\" fill-rule=\"nonzero\"/></svg>"
-}, {
-  "id" : "4842833b-6aa3-a8f8-d6ab-c155a7d10a50",
-  "name" : "not_checked_svg",
-  "display_width" : null,
-  "label" : "Not Checked SVG",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "<svg fill=\"#bdbdbd\" width=\"24\" height=\"24\" clip-rule=\"evenodd\" fill-rule=\"evenodd\" stroke-linejoin=\"round\" stroke-miterlimit=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 8.933-2.721-2.722c-.146-.146-.339-.219-.531-.219-.404 0-.75.324-.75.749 0 .193.073.384.219.531l2.722 2.722-2.728 2.728c-.147.147-.22.34-.22.531 0 .427.35.75.751.75.192 0 .384-.073.53-.219l2.728-2.728 2.729 2.728c.146.146.338.219.53.219.401 0 .75-.323.75-.75 0-.191-.073-.384-.22-.531l-2.727-2.728 2.717-2.717c.146-.147.219-.338.219-.531 0-.425-.346-.75-.75-.75-.192 0-.385.073-.531.22z\" fill-rule=\"nonzero\"/></svg>"
-}, {
-  "id" : "3ed05e50-5cf7-e3ea-37c2-6f445741ef38",
-  "name" : "odd_row_bg_color",
-  "display_width" : null,
-  "label" : "Odd Row BG Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#FFFFFF",
-    "opacity" : 100
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": null,
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "1ef93ed0-98c0-e1dc-4ccc-728311259998",
+    "name": "rows",
+    "display_width": null,
+    "label": "Rows",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": null
+    },
+    "children": [
+      {
+        "id": "415119e8-79d1-031c-3c27-44fe4fa17ae3",
+        "name": "label_text",
+        "display_width": null,
+        "label": "Label Text",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "Pioneered health coaching industry 31 years ago"
+      },
+      {
+        "id": "0a9c47dc-a613-c199-0bee-43fd28bc3b54",
+        "name": "check",
+        "display_width": null,
+        "label": "Check",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": null,
+          "default": null
+        },
+        "display": "checkbox",
+        "type": "boolean",
+        "default": false
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": []
+  },
+  {
+    "id": "111aee1e-e2f1-67ec-fa90-3d9423459789",
+    "name": "check_svg",
+    "display_width": null,
+    "label": "Check SVG",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "<svg fill=\"#163c49\" width=\"24\" height=\"24\" clip-rule=\"evenodd\" fill-rule=\"evenodd\" stroke-linejoin=\"round\" stroke-miterlimit=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m11.998 2.005c5.517 0 9.997 4.48 9.997 9.997 0 5.518-4.48 9.998-9.997 9.998-5.518 0-9.998-4.48-9.998-9.998 0-5.517 4.48-9.997 9.998-9.997zm-5.049 10.386 3.851 3.43c.142.128.321.19.499.19.202 0 .405-.081.552-.242l5.953-6.509c.131-.143.196-.323.196-.502 0-.41-.331-.747-.748-.747-.204 0-.405.082-.554.243l-5.453 5.962-3.298-2.938c-.144-.127-.321-.19-.499-.19-.415 0-.748.335-.748.746 0 .205.084.409.249.557z\" fill-rule=\"nonzero\"/></svg>"
+  },
+  {
+    "id": "4842833b-6aa3-a8f8-d6ab-c155a7d10a50",
+    "name": "not_checked_svg",
+    "display_width": null,
+    "label": "Not Checked SVG",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "<svg fill=\"#bdbdbd\" width=\"24\" height=\"24\" clip-rule=\"evenodd\" fill-rule=\"evenodd\" stroke-linejoin=\"round\" stroke-miterlimit=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 8.933-2.721-2.722c-.146-.146-.339-.219-.531-.219-.404 0-.75.324-.75.749 0 .193.073.384.219.531l2.722 2.722-2.728 2.728c-.147.147-.22.34-.22.531 0 .427.35.75.751.75.192 0 .384-.073.53-.219l2.728-2.728 2.729 2.728c.146.146.338.219.53.219.401 0 .75-.323.75-.75 0-.191-.073-.384-.22-.531l-2.727-2.728 2.717-2.717c.146-.147.219-.338.219-.531 0-.425-.346-.75-.75-.75-.192 0-.385.073-.531.22z\" fill-rule=\"nonzero\"/></svg>"
+  },
+  {
+    "id": "3ed05e50-5cf7-e3ea-37c2-6f445741ef38",
+    "name": "odd_row_bg_color",
+    "display_width": null,
+    "label": "Odd Row BG Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#FFFFFF",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "5f85bbc1-dc09-a2fd-ce73-a4df2829201d",
+    "name": "even_row_bg_color",
+    "display_width": null,
+    "label": "Even Row BG Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#f8f5f1",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "9c19b5f0-f9ae-886d-f259-97e76497f4b5",
+    "name": "break_point_for_scrolling",
+    "display_width": null,
+    "label": "Break Point for Scrolling (px)",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 1024
+  },
+  {
+    "id": "633e9a1d-ebdb-f78e-6292-b97da170cbea",
+    "name": "first_col_scrollable_width",
+    "display_width": null,
+    "label": "First Col Scrollable Width",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "30vw"
+  },
+  {
+    "id": "4728f6f6-534d-4b4d-c746-6dac1e3c285d",
+    "name": "first_col_mobile_width",
+    "display_width": null,
+    "label": "First Col Mobile Width",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "140px"
+  },
+  {
+    "id": "3d53e075-facf-73b7-8cb4-bb5069747b31",
+    "name": "second_col_scrollable_width",
+    "display_width": null,
+    "label": "Second Col Scrollable Width",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "150px"
+  },
+  {
+    "id": "c312e81e-44bc-4839-593c-0fc98a45a757",
+    "name": "second_col_mobile_width",
+    "display_width": null,
+    "label": "Second Col Mobile Width",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "100px"
+  },
+  {
+    "id": "6ef7a5e4-feb1-e022-74e2-cfccbc5128b7",
+    "name": "border_color",
+    "display_width": null,
+    "label": "Border Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#eeeeee",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "a89f62ef-5a48-a773-1dd1-0dec5b43f4a8",
+    "name": "border_width",
+    "display_width": null,
+    "label": "Border Width (px)",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 1
+  },
+  {
+    "id": "e4743e76-8d85-f8fa-f6c4-2df80137b867",
+    "name": "border_corner_radius",
+    "display_width": null,
+    "label": "Border Corner Radius (px)",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 10
+  },
+  {
+    "id": "dd40d903-b2bd-2699-f582-0afc95762f27",
+    "name": "bottom_col_height",
+    "display_width": null,
+    "label": "Bottom Col Height (px)",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 50
+  },
+  {
+    "id": "cb1ba14c-4067-279e-def8-08a17de304e1",
+    "name": "image_padding",
+    "display_width": null,
+    "label": "Image Padding",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "30px"
+  },
+  {
+    "id": "21c7bf5c-bd76-40a2-f6ab-af13c015bcfe",
+    "name": "first_col_cell_padding_full",
+    "display_width": null,
+    "label": "First Col Cell Padding Full",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "12px 3% 12px 35px"
+  },
+  {
+    "id": "41d8745e-830d-68cf-4d63-68e19356c7ca",
+    "name": "first_col_cell_padding_scrollable",
+    "display_width": null,
+    "label": "First Col Cell Padding Scrollable",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "12px 15px"
+  },
+  {
+    "id": "572780ca-c4f3-8757-603e-6cfb63ca23fd",
+    "name": "scrollable_table_width",
+    "display_width": null,
+    "label": "Scrollable Table Width (px)",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 900
+  },
+  {
+    "id": "fd79911d-e97e-19fa-9c9c-90e5d29b4e9d",
+    "name": "scrollable_table_width_px_mobile",
+    "display_width": null,
+    "label": "Scrollable Table Width (px) Mobile",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 800
+  },
+  {
+    "id": "25f6dea9-0262-f02d-1018-d3dfb5cc456f",
+    "name": "mobile_break",
+    "display_width": null,
+    "label": "Mobile Break",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 500
+  },
+  {
+    "id": "a00d5d61-01e7-87d7-80b0-7dcbb6322653",
+    "name": "image_padding_mobile",
+    "display_width": null,
+    "label": "Image Padding Mobile",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "30px 10px"
+  },
+  {
+    "id": "268ee03c-36dc-2e08-a44c-fc669abda230",
+    "name": "scrollable_max_height",
+    "display_width": null,
+    "label": "Scrollable Max Height",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "70vh"
+  },
+  {
+    "id": "083a426b-475a-49ea-df69-8890dc024df6",
+    "name": "font_size_scrollable",
+    "display_width": null,
+    "label": "Font Size Scrollable",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "14px"
+  },
+  {
+    "id": "0b9ac0a0-2882-1f2a-bee3-03132fe160e8",
+    "name": "font_size_mobile",
+    "display_width": null,
+    "label": "Font Size Mobile",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "12px"
   }
-}, {
-  "id" : "5f85bbc1-dc09-a2fd-ce73-a4df2829201d",
-  "name" : "even_row_bg_color",
-  "display_width" : null,
-  "label" : "Even Row BG Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#f8f5f1",
-    "opacity" : 100
-  }
-}, {
-  "id" : "9c19b5f0-f9ae-886d-f259-97e76497f4b5",
-  "name" : "break_point_for_scrolling",
-  "display_width" : null,
-  "label" : "Break Point for Scrolling (px)",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 1024
-}, {
-  "id" : "633e9a1d-ebdb-f78e-6292-b97da170cbea",
-  "name" : "first_col_scrollable_width",
-  "display_width" : null,
-  "label" : "First Col Scrollable Width",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "30vw"
-}, {
-  "id" : "4728f6f6-534d-4b4d-c746-6dac1e3c285d",
-  "name" : "first_col_mobile_width",
-  "display_width" : null,
-  "label" : "First Col Mobile Width",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "140px"
-}, {
-  "id" : "3d53e075-facf-73b7-8cb4-bb5069747b31",
-  "name" : "second_col_scrollable_width",
-  "display_width" : null,
-  "label" : "Second Col Scrollable Width",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "150px"
-}, {
-  "id" : "c312e81e-44bc-4839-593c-0fc98a45a757",
-  "name" : "second_col_mobile_width",
-  "display_width" : null,
-  "label" : "Second Col Mobile Width",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "100px"
-}, {
-  "id" : "6ef7a5e4-feb1-e022-74e2-cfccbc5128b7",
-  "name" : "border_color",
-  "display_width" : null,
-  "label" : "Border Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#eeeeee",
-    "opacity" : 100
-  }
-}, {
-  "id" : "a89f62ef-5a48-a773-1dd1-0dec5b43f4a8",
-  "name" : "border_width",
-  "display_width" : null,
-  "label" : "Border Width (px)",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 1
-}, {
-  "id" : "e4743e76-8d85-f8fa-f6c4-2df80137b867",
-  "name" : "border_corner_radius",
-  "display_width" : null,
-  "label" : "Border Corner Radius (px)",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 10
-}, {
-  "id" : "dd40d903-b2bd-2699-f582-0afc95762f27",
-  "name" : "bottom_col_height",
-  "display_width" : null,
-  "label" : "Bottom Col Height (px)",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 50
-}, {
-  "id" : "cb1ba14c-4067-279e-def8-08a17de304e1",
-  "name" : "image_padding",
-  "display_width" : null,
-  "label" : "Image Padding",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "30px"
-}, {
-  "id" : "21c7bf5c-bd76-40a2-f6ab-af13c015bcfe",
-  "name" : "first_col_cell_padding_full",
-  "display_width" : null,
-  "label" : "First Col Cell Padding Full",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "12px 3% 12px 35px"
-}, {
-  "id" : "41d8745e-830d-68cf-4d63-68e19356c7ca",
-  "name" : "first_col_cell_padding_scrollable",
-  "display_width" : null,
-  "label" : "First Col Cell Padding Scrollable",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "12px 15px"
-}, {
-  "id" : "572780ca-c4f3-8757-603e-6cfb63ca23fd",
-  "name" : "scrollable_table_width",
-  "display_width" : null,
-  "label" : "Scrollable Table Width (px)",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 900
-}, {
-  "id" : "fd79911d-e97e-19fa-9c9c-90e5d29b4e9d",
-  "name" : "scrollable_table_width_px_mobile",
-  "display_width" : null,
-  "label" : "Scrollable Table Width (px) Mobile",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 800
-}, {
-  "id" : "25f6dea9-0262-f02d-1018-d3dfb5cc456f",
-  "name" : "mobile_break",
-  "display_width" : null,
-  "label" : "Mobile Break",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 500
-}, {
-  "id" : "a00d5d61-01e7-87d7-80b0-7dcbb6322653",
-  "name" : "image_padding_mobile",
-  "display_width" : null,
-  "label" : "Image Padding Mobile",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "30px 10px"
-}, {
-  "id" : "268ee03c-36dc-2e08-a44c-fc669abda230",
-  "name" : "scrollable_max_height",
-  "display_width" : null,
-  "label" : "Scrollable Max Height",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "70vh"
-}, {
-  "id" : "083a426b-475a-49ea-df69-8890dc024df6",
-  "name" : "font_size_scrollable",
-  "display_width" : null,
-  "label" : "Font Size Scrollable",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "14px"
-}, {
-  "id" : "0b9ac0a0-2882-1f2a-bee3-03132fe160e8",
-  "name" : "font_size_mobile",
-  "display_width" : null,
-  "label" : "Font Size Mobile",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "12px"
-} ]
+]

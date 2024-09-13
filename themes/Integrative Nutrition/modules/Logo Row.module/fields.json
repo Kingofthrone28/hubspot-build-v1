@@ -1,73 +1,83 @@
-[ {
-  "id" : "heading",
-  "name" : "heading",
-  "display_width" : null,
-  "label" : "Heading",
-  "help_text" : "",
-  "inline_help_text" : "",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "validation_error_message" : "",
-  "placeholder" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Proin finibus quam metus, non porta urna commodo id. Integer congue."
-}, {
-  "id" : "group_logos",
-  "name" : "group_logos",
-  "display_width" : null,
-  "label" : "Logos",
-  "required" : true,
-  "locked" : false,
-  "occurrence" : {
-    "min" : 1,
-    "max" : 6,
-    "sorting_label_field" : null,
-    "default" : 3
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "display_width": null,
+    "label": "Heading",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "placeholder": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Proin finibus quam metus, non porta urna commodo id. Integer congue."
   },
-  "children" : [ {
-    "id" : "group_logos.logo",
-    "name" : "logo",
-    "display_width" : null,
-    "label" : "Logo",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : false,
-    "show_loading" : true,
-    "type" : "image",
-    "default" : {
-      "src" : "https://7528315.fs1.hubspotusercontent-na1.net/hubfs/7528315/raw_assets/public/mV0_d-web-default-modules_hubspot/img/snackzo_logo.png",
-      "alt" : null,
-      "size_type" : null,
-      "width" : null,
-      "height" : null,
-      "max_width" : null,
-      "max_height" : null,
-      "loading" : "lazy"
-    }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group"
-}, {
-  "id" : "loading",
-  "name" : "loading",
-  "display_width" : null,
-  "label" : "Image Loading Strategy",
-  "help_text" : "",
-  "inline_help_text" : "",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "placeholder" : "",
-  "choices" : [ [ "disabled", "Browser Default" ], [ "lazy", "Lazy" ], [ "eager", "Eager" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "default" : "disabled"
-} ]
+  {
+    "id": "group_logos",
+    "name": "group_logos",
+    "display_width": null,
+    "label": "Logos",
+    "required": true,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "sorting_label_field": null,
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "group_logos.logo",
+        "name": "logo",
+        "display_width": null,
+        "label": "Logo",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": false,
+        "show_loading": true,
+        "type": "image",
+        "default": {
+          "src": "https://7528315.fs1.hubspotusercontent-na1.net/hubfs/7528315/raw_assets/public/mV0_d-web-default-modules_hubspot/img/snackzo_logo.png",
+          "alt": null,
+          "size_type": null,
+          "width": null,
+          "height": null,
+          "max_width": null,
+          "max_height": null,
+          "loading": "lazy"
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group"
+  },
+  {
+    "id": "loading",
+    "name": "loading",
+    "display_width": null,
+    "label": "Image Loading Strategy",
+    "help_text": "",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "placeholder": "",
+    "choices": [
+      ["disabled", "Browser Default"],
+      ["lazy", "Lazy"],
+      ["eager", "Eager"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "disabled"
+  }
+]

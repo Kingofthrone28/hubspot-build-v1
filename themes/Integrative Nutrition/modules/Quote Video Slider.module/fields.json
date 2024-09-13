@@ -1,305 +1,328 @@
-[ {
-  "id" : "bbcccb7b-a428-2f5a-e88c-c26b98099b24",
-  "name" : "cards",
-  "display_width" : null,
-  "label" : "Cards",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 6
+[
+  {
+    "id": "bbcccb7b-a428-2f5a-e88c-c26b98099b24",
+    "name": "cards",
+    "display_width": null,
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "8171ffda-39fb-926c-df00-e7a7cb647c4a",
+        "name": "video_or_quote",
+        "display_width": null,
+        "label": "Video or Quote",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["video", "Video"],
+          ["quote", "Quote"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "video"
+      },
+      {
+        "id": "dac2f78b-d288-f343-2d7a-17152eba22e3",
+        "name": "image_field",
+        "display_width": null,
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "cards.video_or_quote",
+          "controlling_value_regex": "video",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "responsive": true,
+        "resizable": false,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        }
+      },
+      {
+        "id": "79f7041a-4822-cd53-ccbd-84175762b901",
+        "name": "bg_color",
+        "display_width": null,
+        "label": "BG Color",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "cards.video_or_quote",
+          "controlling_value_regex": "quote",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "type": "color",
+        "default": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "15f450d8-11ee-b181-b680-73745785ad83",
+        "name": "quote_text",
+        "display_width": null,
+        "label": "Quote Text",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "cards.video_or_quote",
+          "controlling_value_regex": "quote",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality."
+      },
+      {
+        "id": "61055500-60ed-a900-f10c-91795e656993",
+        "name": "video_embed",
+        "display_width": null,
+        "label": "Video Embed",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "cards.video_or_quote",
+          "controlling_value_regex": "video",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>"
+      },
+      {
+        "id": "da2fedfa-4dd6-e24d-444c-87946e54d676",
+        "name": "person_name",
+        "display_width": null,
+        "label": "Person Name",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Ishani Reddy"
+      },
+      {
+        "id": "974baef5-10ff-6773-fa61-be248935d0d4",
+        "name": "person_title",
+        "display_width": null,
+        "label": "Person Title",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "IIN Health Coach, Wellness Consultant, and Former Investment Banker"
+      },
+      {
+        "id": "3eddce3c-217d-23d5-e249-f3ecee690519",
+        "name": "lightbox_video",
+        "display_width": null,
+        "label": "Lightbox Video",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": false
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      },
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      },
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      },
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      },
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      },
+      {
+        "video_or_quote": "video",
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
+          "alt": "iin_video",
+          "loading": "lazy",
+          "width": 411,
+          "height": 442,
+          "max_width": 411,
+          "max_height": 442
+        },
+        "bg_color": {
+          "color": "#F8F5F0",
+          "opacity": 100
+        },
+        "quote_text": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
+        "video_embed": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
+        "person_name": "Ishani Reddy",
+        "person_title": "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
+        "boolean_field": false
+      }
+    ]
   },
-  "children" : [ {
-    "id" : "8171ffda-39fb-926c-df00-e7a7cb647c4a",
-    "name" : "video_or_quote",
-    "display_width" : null,
-    "label" : "Video or Quote",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "video", "Video" ], [ "quote", "Quote" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "video"
-  }, {
-    "id" : "dac2f78b-d288-f343-2d7a-17152eba22e3",
-    "name" : "image_field",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "cards.video_or_quote",
-      "controlling_value_regex" : "video",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "responsive" : true,
-    "resizable" : false,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    }
-  }, {
-    "id" : "79f7041a-4822-cd53-ccbd-84175762b901",
-    "name" : "bg_color",
-    "display_width" : null,
-    "label" : "BG Color",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "cards.video_or_quote",
-      "controlling_value_regex" : "quote",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "type" : "color",
-    "default" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "15f450d8-11ee-b181-b680-73745785ad83",
-    "name" : "quote_text",
-    "display_width" : null,
-    "label" : "Quote Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "cards.video_or_quote",
-      "controlling_value_regex" : "quote",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality."
-  }, {
-    "id" : "61055500-60ed-a900-f10c-91795e656993",
-    "name" : "video_embed",
-    "display_width" : null,
-    "label" : "Video Embed",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "cards.video_or_quote",
-      "controlling_value_regex" : "video",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>"
-  }, {
-    "id" : "da2fedfa-4dd6-e24d-444c-87946e54d676",
-    "name" : "person_name",
-    "display_width" : null,
-    "label" : "Person Name",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Ishani Reddy"
-  }, {
-    "id" : "974baef5-10ff-6773-fa61-be248935d0d4",
-    "name" : "person_title",
-    "display_width" : null,
-    "label" : "Person Title",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker"
-  }, {
-    "id" : "3eddce3c-217d-23d5-e249-f3ecee690519",
-    "name" : "lightbox_video",
-    "display_width" : null,
-    "label" : "Lightbox Video",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  }, {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  }, {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  }, {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  }, {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  }, {
-    "video_or_quote" : "video",
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/iin_video.png",
-      "alt" : "iin_video",
-      "loading" : "lazy",
-      "width" : 411,
-      "height" : 442,
-      "max_width" : 411,
-      "max_height" : 442
-    },
-    "bg_color" : {
-      "color" : "#F8F5F0",
-      "opacity" : 100
-    },
-    "quote_text" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality.",
-    "video_embed" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>",
-    "person_name" : "Ishani Reddy",
-    "person_title" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker",
-    "boolean_field" : false
-  } ]
-}, {
-  "id" : "025f575c-d53a-468b-963c-8b3a63266812",
-  "name" : "min_card_height",
-  "display_width" : null,
-  "label" : "Min Card Height",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "320px"
-}, {
-  "id" : "722f91ff-506d-f226-cf7a-5070cfeb0a17",
-  "name" : "show_overflow",
-  "display_width" : null,
-  "label" : "Show Overflow",
-  "required" : false,
-  "locked" : false,
-  "display" : "checkbox",
-  "type" : "boolean",
-  "default" : true
-} ]
+  {
+    "id": "025f575c-d53a-468b-963c-8b3a63266812",
+    "name": "min_card_height",
+    "display_width": null,
+    "label": "Min Card Height",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "320px"
+  },
+  {
+    "id": "722f91ff-506d-f226-cf7a-5070cfeb0a17",
+    "name": "show_overflow",
+    "display_width": null,
+    "label": "Show Overflow",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "default": true
+  }
+]

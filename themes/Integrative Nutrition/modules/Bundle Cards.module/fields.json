@@ -1,346 +1,390 @@
-[ {
-  "id" : "c1423cdf-06b6-7633-f757-48ff3eeee763",
-  "name" : "items",
-  "display_width" : null,
-  "label" : "Items",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 3
+[
+  {
+    "id": "c1423cdf-06b6-7633-f757-48ff3eeee763",
+    "name": "items",
+    "display_width": null,
+    "label": "Items",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "6da9f8af-1aa7-6382-bd1a-6a8ce7417a51",
+        "name": "image_field",
+        "display_width": null,
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
+          "alt": "Chopra Meditation Certification",
+          "loading": "lazy",
+          "width": 678,
+          "height": 330,
+          "max_width": 678,
+          "max_height": 330
+        }
+      },
+      {
+        "id": "a5190321-92d5-2ef9-0a5b-19c0cba86d14",
+        "name": "sub_header",
+        "display_width": null,
+        "label": "Sub Header",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Category/Vertical Title"
+      },
+      {
+        "id": "7164f8e1-6447-db0c-14c0-2591f8e041f2",
+        "name": "header",
+        "display_width": null,
+        "label": "Header",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Bundle title lorem ipsum"
+      },
+      {
+        "id": "5d3e4f8b-781d-25f8-2937-fb8d1a151ded",
+        "name": "courses",
+        "display_width": null,
+        "label": "Courses",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": null,
+          "default": 3
+        },
+        "children": [
+          {
+            "id": "e806b8c8-6d75-8fe6-8659-f78a0da67d8c",
+            "name": "course_text",
+            "display_width": null,
+            "label": "Course Text",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text",
+            "default": "Course name"
+          },
+          {
+            "id": "769bd006-820d-a1d4-0376-2f71c7070733",
+            "name": "course_link",
+            "display_width": null,
+            "label": "Course Link",
+            "required": false,
+            "locked": false,
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG",
+              "CALL_TO_ACTION",
+              "PHONE_NUMBER",
+              "WHATSAPP_NUMBER",
+              "PAYMENT"
+            ],
+            "show_advanced_rel_options": false,
+            "type": "link",
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "default": [
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "d58b3451-a429-ef22-0ff3-bc277aab10c1",
+        "name": "link_text",
+        "display_width": null,
+        "label": "Link Text",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Add bundle to cart"
+      },
+      {
+        "id": "65b75957-11a2-ba19-bd70-4d1ec74b71bb",
+        "name": "clock_text",
+        "display_width": null,
+        "label": "Clock Text",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Limited Time Offer"
+      },
+      {
+        "id": "6697e2a0-1bd7-878c-90c9-794ff9f20560",
+        "name": "product_id",
+        "display_width": null,
+        "label": "Product ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "7485891150013"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
+          "alt": "Chopra Meditation Certification",
+          "loading": "lazy",
+          "width": 678,
+          "height": 330,
+          "max_width": 678,
+          "max_height": 330
+        },
+        "sub_header": "Category/Vertical Title",
+        "header": "Bundle title lorem ipsum",
+        "courses": [
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "link_text": "Add bundle to cart",
+        "clock_text": "Limited Time Offer",
+        "product_id": "7485891150013"
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
+          "alt": "Chopra Meditation Certification",
+          "loading": "lazy",
+          "width": 678,
+          "height": 330,
+          "max_width": 678,
+          "max_height": 330
+        },
+        "sub_header": "Category/Vertical Title",
+        "header": "Bundle title lorem ipsum",
+        "courses": [
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "link_text": "Add bundle to cart",
+        "clock_text": "Limited Time Offer",
+        "product_id": "7485891150013"
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
+          "alt": "Chopra Meditation Certification",
+          "loading": "lazy",
+          "width": 678,
+          "height": 330,
+          "max_width": 678,
+          "max_height": 330
+        },
+        "sub_header": "Category/Vertical Title",
+        "header": "Bundle title lorem ipsum",
+        "courses": [
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "course_text": "Course name",
+            "course_link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "link_text": "Add bundle to cart",
+        "clock_text": "Limited Time Offer",
+        "product_id": "7485891150013"
+      }
+    ]
   },
-  "children" : [ {
-    "id" : "6da9f8af-1aa7-6382-bd1a-6a8ce7417a51",
-    "name" : "image_field",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : true,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
-      "alt" : "Chopra Meditation Certification",
-      "loading" : "lazy",
-      "width" : 678,
-      "height" : 330,
-      "max_width" : 678,
-      "max_height" : 330
-    }
-  }, {
-    "id" : "a5190321-92d5-2ef9-0a5b-19c0cba86d14",
-    "name" : "sub_header",
-    "display_width" : null,
-    "label" : "Sub Header",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Category/Vertical Title"
-  }, {
-    "id" : "7164f8e1-6447-db0c-14c0-2591f8e041f2",
-    "name" : "header",
-    "display_width" : null,
-    "label" : "Header",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Bundle title lorem ipsum"
-  }, {
-    "id" : "5d3e4f8b-781d-25f8-2937-fb8d1a151ded",
-    "name" : "courses",
-    "display_width" : null,
-    "label" : "Courses",
-    "required" : false,
-    "locked" : false,
-    "occurrence" : {
-      "min" : null,
-      "max" : null,
-      "sorting_label_field" : null,
-      "default" : 3
-    },
-    "children" : [ {
-      "id" : "e806b8c8-6d75-8fe6-8659-f78a0da67d8c",
-      "name" : "course_text",
-      "display_width" : null,
-      "label" : "Course Text",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
-      "default" : "Course name"
-    }, {
-      "id" : "769bd006-820d-a1d4-0376-2f71c7070733",
-      "name" : "course_link",
-      "display_width" : null,
-      "label" : "Course Link",
-      "required" : false,
-      "locked" : false,
-      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-      "show_advanced_rel_options" : false,
-      "type" : "link",
-      "default" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ],
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "default" : [ {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ]
-  }, {
-    "id" : "d58b3451-a429-ef22-0ff3-bc277aab10c1",
-    "name" : "link_text",
-    "display_width" : null,
-    "label" : "Link Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Add bundle to cart"
-  }, {
-    "id" : "65b75957-11a2-ba19-bd70-4d1ec74b71bb",
-    "name" : "clock_text",
-    "display_width" : null,
-    "label" : "Clock Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Limited Time Offer"
-  }, {
-    "id" : "6697e2a0-1bd7-878c-90c9-794ff9f20560",
-    "name" : "product_id",
-    "display_width" : null,
-    "label" : "Product ID",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "7485891150013"
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
-      "alt" : "Chopra Meditation Certification",
-      "loading" : "lazy",
-      "width" : 678,
-      "height" : 330,
-      "max_width" : 678,
-      "max_height" : 330
-    },
-    "sub_header" : "Category/Vertical Title",
-    "header" : "Bundle title lorem ipsum",
-    "courses" : [ {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ],
-    "link_text" : "Add bundle to cart",
-    "clock_text" : "Limited Time Offer",
-    "product_id" : "7485891150013"
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
-      "alt" : "Chopra Meditation Certification",
-      "loading" : "lazy",
-      "width" : 678,
-      "height" : 330,
-      "max_width" : 678,
-      "max_height" : 330
-    },
-    "sub_header" : "Category/Vertical Title",
-    "header" : "Bundle title lorem ipsum",
-    "courses" : [ {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ],
-    "link_text" : "Add bundle to cart",
-    "clock_text" : "Limited Time Offer",
-    "product_id" : "7485891150013"
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/Chopra%20Meditation%20Certification.jpg",
-      "alt" : "Chopra Meditation Certification",
-      "loading" : "lazy",
-      "width" : 678,
-      "height" : 330,
-      "max_width" : 678,
-      "max_height" : 330
-    },
-    "sub_header" : "Category/Vertical Title",
-    "header" : "Bundle title lorem ipsum",
-    "courses" : [ {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }, {
-      "course_text" : "Course name",
-      "course_link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ],
-    "link_text" : "Add bundle to cart",
-    "clock_text" : "Limited Time Offer",
-    "product_id" : "7485891150013"
-  } ]
-}, {
-  "id" : "63eaebe6-7e1c-6de3-0489-eb18ab271e18",
-  "name" : "storefront_access_token",
-  "display_width" : null,
-  "label" : "Storefront Access Token",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "52d11f680720b243f88329952fbe0e55"
-} ]
+  {
+    "id": "63eaebe6-7e1c-6de3-0489-eb18ab271e18",
+    "name": "storefront_access_token",
+    "display_width": null,
+    "label": "Storefront Access Token",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "52d11f680720b243f88329952fbe0e55"
+  }
+]

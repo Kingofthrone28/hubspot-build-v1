@@ -1,84 +1,100 @@
-[ {
-  "id" : "8df67057-9793-2ec9-556b-561a63651425",
-  "name" : "ignore_product",
-  "display_width" : null,
-  "label" : "Ignore Product",
-  "inline_help_text" : "Select this if Bundle Course module is on the page, the price here will be set from that module based on the total price of bundled courses",
-  "required" : false,
-  "locked" : false,
-  "display" : "toggle",
-  "type" : "boolean",
-  "default" : false
-}, {
-  "id" : "ac6ac4f2-880d-88f4-dce4-56e0abb79286",
-  "name" : "product_id",
-  "display_width" : null,
-  "label" : "Product ID",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "visibility" : {
-    "controlling_field" : null,
-    "controlling_field_path" : "ignore_product",
-    "controlling_value_regex" : "false",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+[
+  {
+    "id": "8df67057-9793-2ec9-556b-561a63651425",
+    "name": "ignore_product",
+    "display_width": null,
+    "label": "Ignore Product",
+    "inline_help_text": "Select this if Bundle Course module is on the page, the price here will be set from that module based on the total price of bundled courses",
+    "required": false,
+    "locked": false,
+    "display": "toggle",
+    "type": "boolean",
+    "default": false
   },
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "7485891150013"
-}, {
-  "id" : "634b34bd-df5e-9e0f-d6ab-04c7eaf12c50",
-  "name" : "learn_more_link",
-  "display_width" : null,
-  "label" : "Learn More Link",
-  "required" : false,
-  "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "href" : "https://www.integrativenutrition.com/curriculum",
-      "type" : "EXTERNAL"
+  {
+    "id": "ac6ac4f2-880d-88f4-dce4-56e0abb79286",
+    "name": "product_id",
+    "display_width": null,
+    "label": "Product ID",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "visibility": {
+      "controlling_field": null,
+      "controlling_field_path": "ignore_product",
+      "controlling_value_regex": "false",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
     },
-    "open_in_new_tab" : false,
-    "no_follow" : false
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "7485891150013"
+  },
+  {
+    "id": "634b34bd-df5e-9e0f-d6ab-04c7eaf12c50",
+    "name": "learn_more_link",
+    "display_width": null,
+    "label": "Learn More Link",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "href": "https://www.integrativenutrition.com/curriculum",
+        "type": "EXTERNAL"
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "64163b2b-fcf0-1598-e01d-55f1f13426dc",
+    "name": "line_2_text",
+    "display_width": null,
+    "label": "Line 2 Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Payment plan options available with"
+  },
+  {
+    "id": "856b83f5-36c0-8a78-a24e-2b0587b3c5e5",
+    "name": "line_2_image",
+    "display_width": null,
+    "label": "Line 2 Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/affirm%20logo.png",
+      "alt": "affirm logo",
+      "loading": "lazy",
+      "width": 51,
+      "height": 21,
+      "max_width": 102,
+      "max_height": 42
+    }
   }
-}, {
-  "id" : "64163b2b-fcf0-1598-e01d-55f1f13426dc",
-  "name" : "line_2_text",
-  "display_width" : null,
-  "label" : "Line 2 Text",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Payment plan options available with"
-}, {
-  "id" : "856b83f5-36c0-8a78-a24e-2b0587b3c5e5",
-  "name" : "line_2_image",
-  "display_width" : null,
-  "label" : "Line 2 Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "exact",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/affirm%20logo.png",
-    "alt" : "affirm logo",
-    "loading" : "lazy",
-    "width" : 51,
-    "height" : 21,
-    "max_width" : 102,
-    "max_height" : 42
-  }
-} ]
+]

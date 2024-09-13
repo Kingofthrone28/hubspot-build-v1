@@ -1,321 +1,371 @@
-[ {
-  "id" : "4c755c0d-3d75-5289-e6e1-f0a8c1142475",
-  "name" : "slider",
-  "display_width" : null,
-  "label" : "Options",
-  "inline_help_text" : "Carnosol Options",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "60a1abf0-2c27-37b9-e571-0cae6f80379a",
-    "name" : "navigation_dots",
-    "display_width" : null,
-    "label" : "Navigation Dots",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "d01ebb08-6158-6fd2-5547-83e024748c00",
-    "name" : "navigation_arrows",
-    "display_width" : null,
-    "label" : "Navigation Arrows",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : true
-  }, {
-    "id" : "884a2e8f-48da-dc2e-6584-5dd51e96b65d",
-    "name" : "transition_fade",
-    "display_width" : null,
-    "label" : "Transition Fade",
-    "inline_help_text" : "Fade to next image, if uncheck the default is to slide",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "4fa33ea2-2c7b-350e-7692-6d082fd7e1dc",
-    "name" : "auto_scroll",
-    "display_width" : null,
-    "label" : "Auto Play",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : true
-  }, {
-    "id" : "e0f17a60-e04d-5af2-1529-46844cc04e14",
-    "name" : "scroll_speed",
-    "display_width" : null,
-    "label" : "Scroll Speed",
-    "required" : false,
-    "locked" : false,
-    "display" : "slider",
-    "min" : 1000,
-    "max" : 20000,
-    "step" : 1000,
-    "type" : "number",
-    "default" : 6000
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "navigation_dots" : false,
-    "navigation_arrows" : true,
-    "transition_fade" : false,
-    "auto_scroll" : true,
-    "scroll_speed" : 6000
-  }
-}, {
-  "id" : "af21ff63-977d-b564-d4d5-0b20c5363a08",
-  "name" : "desktop",
-  "display_width" : null,
-  "label" : "Image",
-  "inline_help_text" : "Add Multiple Images with their own settings",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : 1,
-    "max" : null,
-    "sorting_label_field" : "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
-    "default" : 3
+[
+  {
+    "id": "4c755c0d-3d75-5289-e6e1-f0a8c1142475",
+    "name": "slider",
+    "display_width": null,
+    "label": "Options",
+    "inline_help_text": "Carnosol Options",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "60a1abf0-2c27-37b9-e571-0cae6f80379a",
+        "name": "navigation_dots",
+        "display_width": null,
+        "label": "Navigation Dots",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "d01ebb08-6158-6fd2-5547-83e024748c00",
+        "name": "navigation_arrows",
+        "display_width": null,
+        "label": "Navigation Arrows",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "884a2e8f-48da-dc2e-6584-5dd51e96b65d",
+        "name": "transition_fade",
+        "display_width": null,
+        "label": "Transition Fade",
+        "inline_help_text": "Fade to next image, if uncheck the default is to slide",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "4fa33ea2-2c7b-350e-7692-6d082fd7e1dc",
+        "name": "auto_scroll",
+        "display_width": null,
+        "label": "Auto Play",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "e0f17a60-e04d-5af2-1529-46844cc04e14",
+        "name": "scroll_speed",
+        "display_width": null,
+        "label": "Scroll Speed",
+        "required": false,
+        "locked": false,
+        "display": "slider",
+        "min": 1000,
+        "max": 20000,
+        "step": 1000,
+        "type": "number",
+        "default": 6000
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "navigation_dots": false,
+      "navigation_arrows": true,
+      "transition_fade": false,
+      "auto_scroll": true,
+      "scroll_speed": 6000
+    }
   },
-  "children" : [ {
-    "id" : "5e639746-35d6-8d07-7a8e-b5f3281bd676",
-    "name" : "background_color",
-    "display_width" : null,
-    "label" : "Background Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#134F5C",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
-    "name" : "image_field",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : false,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "src" : "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
-      "alt" : "Space_BG",
-      "width" : 1500,
-      "height" : 406,
-      "max_width" : 1500,
-      "max_height" : 406
-    }
-  }, {
-    "id" : "5e61a5d5-a900-67f6-8004-3f1344d3428e",
-    "name" : "background_blend_mode",
-    "display_width" : null,
-    "label" : "Background Blend Mode",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : null,
-      "property" : null,
-      "operator" : "NOT_EMPTY",
-      "access" : null
+  {
+    "id": "af21ff63-977d-b564-d4d5-0b20c5363a08",
+    "name": "desktop",
+    "display_width": null,
+    "label": "Image",
+    "inline_help_text": "Add Multiple Images with their own settings",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": null,
+      "sorting_label_field": "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
+      "default": 3
     },
-    "display" : "select",
-    "choices" : [ [ "normal", "normal" ], [ "multiply", "multiply" ], [ "screen", "screen" ], [ "overlay", "overlay" ], [ "darken", "darken" ], [ "lighten", "lighten" ], [ "color-dodge", "color dodge" ], [ "saturation", "saturation" ], [ "color", "color" ], [ "luminosity", "luminosity" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "normal"
-  }, {
-    "id" : "15f5bb60-5025-ed62-6880-220496a7bc67",
-    "name" : "horizontal_alignment",
-    "display_width" : null,
-    "label" : "Horizontal Alignment",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : null,
-      "property" : null,
-      "operator" : "NOT_EMPTY",
-      "access" : null
-    },
-    "display" : "select",
-    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "center"
-  }, {
-    "id" : "c2631541-0300-af66-24d8-ab248b591bed",
-    "name" : "vertical_alignment",
-    "display_width" : null,
-    "label" : "Vertical Alignment",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : null,
-      "property" : null,
-      "operator" : "NOT_EMPTY",
-      "access" : null
-    },
-    "display" : "select",
-    "choices" : [ [ "center", "Center" ], [ "top", "Top" ], [ "bottom", "Bottom" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "center"
-  }, {
-    "id" : "8455224d-578d-2ab1-8ed5-0cea96dda870",
-    "name" : "overlay",
-    "display_width" : null,
-    "label" : "Overlay",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "solid", "Solid" ], [ "hg", "Horizontal Gradient" ], [ "vg", "Vertical Gradient" ], [ "tg", "Downward Diagonal Gradient" ], [ "bg", "Upward Diagonal Gradient" ], [ "rg", "Radial Gradient" ], [ "pg", "Pipe Gradient" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "pg"
-  }, {
-    "id" : "edbcf582-59b4-d8de-59f0-a70074f35458",
-    "name" : "overlay_color",
-    "display_width" : null,
-    "label" : "Overlay Color",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "8455224d-578d-2ab1-8ed5-0cea96dda870",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "none",
-      "property" : null,
-      "operator" : "NOT_EQUAL",
-      "access" : null
-    },
-    "type" : "color",
-    "default" : {
-      "color" : "#0a2134",
-      "opacity" : 95
-    }
-  }, {
-    "id" : "c0304673-79dc-8a64-cb07-81190d120308",
-    "name" : "secondary_overlay_color",
-    "display_width" : null,
-    "label" : "Secondary Overlay Color",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "8455224d-578d-2ab1-8ed5-0cea96dda870",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "g$",
-      "property" : null,
-      "operator" : "MATCHES_REGEX",
-      "access" : null
-    },
-    "type" : "color",
-    "default" : {
-      "color" : "#006975",
-      "opacity" : 70
-    }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "background_color" : {
-      "color" : "#134F5C",
-      "opacity" : 100
-    },
-    "image_field" : {
-      "src" : "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
-      "alt" : "Space_BG",
-      "width" : 1500,
-      "height" : 406,
-      "max_width" : 1500,
-      "max_height" : 406
-    },
-    "background_blend_mode" : "normal",
-    "horizontal_alignment" : "center",
-    "vertical_alignment" : "center",
-    "overlay" : "pg",
-    "overlay_color" : {
-      "color" : "#0a2134",
-      "opacity" : 95
-    },
-    "secondary_overlay_color" : {
-      "color" : "#006975",
-      "opacity" : 70
-    }
-  }, {
-    "background_color" : {
-      "color" : "#134F5C",
-      "opacity" : 100
-    },
-    "image_field" : {
-      "src" : "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
-      "alt" : "Space_BG",
-      "width" : 1500,
-      "height" : 406,
-      "max_width" : 1500,
-      "max_height" : 406
-    },
-    "background_blend_mode" : "normal",
-    "horizontal_alignment" : "center",
-    "vertical_alignment" : "center",
-    "overlay" : "pg",
-    "overlay_color" : {
-      "color" : "#0a2134",
-      "opacity" : 95
-    },
-    "secondary_overlay_color" : {
-      "color" : "#006975",
-      "opacity" : 70
-    }
-  }, {
-    "background_color" : {
-      "color" : "#134F5C",
-      "opacity" : 100
-    },
-    "image_field" : {
-      "src" : "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
-      "alt" : "Space_BG",
-      "width" : 1500,
-      "height" : 406,
-      "max_width" : 1500,
-      "max_height" : 406
-    },
-    "background_blend_mode" : "normal",
-    "horizontal_alignment" : "center",
-    "vertical_alignment" : "center",
-    "overlay" : "pg",
-    "overlay_color" : {
-      "color" : "#0a2134",
-      "opacity" : 95
-    },
-    "secondary_overlay_color" : {
-      "color" : "#006975",
-      "opacity" : 70
-    }
-  } ]
-} ]
+    "children": [
+      {
+        "id": "5e639746-35d6-8d07-7a8e-b5f3281bd676",
+        "name": "background_color",
+        "display_width": null,
+        "label": "Background Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": "#134F5C",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
+        "name": "image_field",
+        "display_width": null,
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": false,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "src": "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
+          "alt": "Space_BG",
+          "width": 1500,
+          "height": 406,
+          "max_width": 1500,
+          "max_height": 406
+        }
+      },
+      {
+        "id": "5e61a5d5-a900-67f6-8004-3f1344d3428e",
+        "name": "background_blend_mode",
+        "display_width": null,
+        "label": "Background Blend Mode",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
+          "controlling_field_path": null,
+          "controlling_value_regex": null,
+          "property": null,
+          "operator": "NOT_EMPTY",
+          "access": null
+        },
+        "display": "select",
+        "choices": [
+          ["normal", "normal"],
+          ["multiply", "multiply"],
+          ["screen", "screen"],
+          ["overlay", "overlay"],
+          ["darken", "darken"],
+          ["lighten", "lighten"],
+          ["color-dodge", "color dodge"],
+          ["saturation", "saturation"],
+          ["color", "color"],
+          ["luminosity", "luminosity"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "normal"
+      },
+      {
+        "id": "15f5bb60-5025-ed62-6880-220496a7bc67",
+        "name": "horizontal_alignment",
+        "display_width": null,
+        "label": "Horizontal Alignment",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
+          "controlling_field_path": null,
+          "controlling_value_regex": null,
+          "property": null,
+          "operator": "NOT_EMPTY",
+          "access": null
+        },
+        "display": "select",
+        "choices": [
+          ["center", "Center"],
+          ["left", "Left"],
+          ["right", "Right"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "center"
+      },
+      {
+        "id": "c2631541-0300-af66-24d8-ab248b591bed",
+        "name": "vertical_alignment",
+        "display_width": null,
+        "label": "Vertical Alignment",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "2a270e9e-f3bf-f9a5-e5db-a60bc1d53c31",
+          "controlling_field_path": null,
+          "controlling_value_regex": null,
+          "property": null,
+          "operator": "NOT_EMPTY",
+          "access": null
+        },
+        "display": "select",
+        "choices": [
+          ["center", "Center"],
+          ["top", "Top"],
+          ["bottom", "Bottom"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "center"
+      },
+      {
+        "id": "8455224d-578d-2ab1-8ed5-0cea96dda870",
+        "name": "overlay",
+        "display_width": null,
+        "label": "Overlay",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["none", "None"],
+          ["solid", "Solid"],
+          ["hg", "Horizontal Gradient"],
+          ["vg", "Vertical Gradient"],
+          ["tg", "Downward Diagonal Gradient"],
+          ["bg", "Upward Diagonal Gradient"],
+          ["rg", "Radial Gradient"],
+          ["pg", "Pipe Gradient"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "pg"
+      },
+      {
+        "id": "edbcf582-59b4-d8de-59f0-a70074f35458",
+        "name": "overlay_color",
+        "display_width": null,
+        "label": "Overlay Color",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "8455224d-578d-2ab1-8ed5-0cea96dda870",
+          "controlling_field_path": null,
+          "controlling_value_regex": "none",
+          "property": null,
+          "operator": "NOT_EQUAL",
+          "access": null
+        },
+        "type": "color",
+        "default": {
+          "color": "#0a2134",
+          "opacity": 95
+        }
+      },
+      {
+        "id": "c0304673-79dc-8a64-cb07-81190d120308",
+        "name": "secondary_overlay_color",
+        "display_width": null,
+        "label": "Secondary Overlay Color",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "8455224d-578d-2ab1-8ed5-0cea96dda870",
+          "controlling_field_path": null,
+          "controlling_value_regex": "g$",
+          "property": null,
+          "operator": "MATCHES_REGEX",
+          "access": null
+        },
+        "type": "color",
+        "default": {
+          "color": "#006975",
+          "opacity": 70
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "background_color": {
+          "color": "#134F5C",
+          "opacity": 100
+        },
+        "image_field": {
+          "src": "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
+          "alt": "Space_BG",
+          "width": 1500,
+          "height": 406,
+          "max_width": 1500,
+          "max_height": 406
+        },
+        "background_blend_mode": "normal",
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "overlay": "pg",
+        "overlay_color": {
+          "color": "#0a2134",
+          "opacity": 95
+        },
+        "secondary_overlay_color": {
+          "color": "#006975",
+          "opacity": 70
+        }
+      },
+      {
+        "background_color": {
+          "color": "#134F5C",
+          "opacity": 100
+        },
+        "image_field": {
+          "src": "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
+          "alt": "Space_BG",
+          "width": 1500,
+          "height": 406,
+          "max_width": 1500,
+          "max_height": 406
+        },
+        "background_blend_mode": "normal",
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "overlay": "pg",
+        "overlay_color": {
+          "color": "#0a2134",
+          "opacity": 95
+        },
+        "secondary_overlay_color": {
+          "color": "#006975",
+          "opacity": 70
+        }
+      },
+      {
+        "background_color": {
+          "color": "#134F5C",
+          "opacity": 100
+        },
+        "image_field": {
+          "src": "https://www.manobyte.com/hubfs/MBThemes/Space_BG.jpg",
+          "alt": "Space_BG",
+          "width": 1500,
+          "height": 406,
+          "max_width": 1500,
+          "max_height": 406
+        },
+        "background_blend_mode": "normal",
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "overlay": "pg",
+        "overlay_color": {
+          "color": "#0a2134",
+          "opacity": 95
+        },
+        "secondary_overlay_color": {
+          "color": "#006975",
+          "opacity": 70
+        }
+      }
+    ]
+  }
+]

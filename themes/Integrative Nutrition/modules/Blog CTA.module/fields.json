@@ -1,105 +1,113 @@
-[ {
-  "id" : "308f43a9-e966-f40f-1deb-cba2e19183e9",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "daa2741e-4d6c-e8df-b217-a116f6e39b29",
-    "name" : "bg_color",
-    "display_width" : null,
-    "label" : "BG Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#666666",
-      "opacity" : 100
+[
+  {
+    "id": "308f43a9-e966-f40f-1deb-cba2e19183e9",
+    "name": "style",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "daa2741e-4d6c-e8df-b217-a116f6e39b29",
+        "name": "bg_color",
+        "display_width": null,
+        "label": "BG Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": "#666666",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "bg_color": {
+        "color": "#666666",
+        "opacity": 100
+      }
     }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "bg_color" : {
-      "color" : "#666666",
-      "opacity" : 100
-    }
-  }
-}, {
-  "id" : "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
-  "name" : "show_blog_cta",
-  "display_width" : null,
-  "label" : "Show Blog CTA",
-  "required" : false,
-  "locked" : false,
-  "display" : "checkbox",
-  "type" : "boolean",
-  "default" : false
-}, {
-  "id" : "833e678f-71c0-2d32-cdb2-8b2a72581c5b",
-  "name" : "content",
-  "display_width" : null,
-  "label" : "Content",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
   },
-  "type" : "richtext",
-  "default" : "<h2 style=\"text-align: center;\"><span style=\"color: #ffffff;\">This is a CTA</span></h2>\n<p style=\"text-align: center;\"><span style=\"color: #ffffff;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>"
-}, {
-  "id" : "27aed87c-7692-e889-bf9a-1aa8be2454c8",
-  "name" : "link_field",
-  "display_width" : null,
-  "label" : "Link",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+  {
+    "id": "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
+    "name": "show_blog_cta",
+    "display_width": null,
+    "label": "Show Blog CTA",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "default": false
   },
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "type" : "EXTERNAL",
-      "href" : ""
+  {
+    "id": "833e678f-71c0-2d32-cdb2-8b2a72581c5b",
+    "name": "content",
+    "display_width": null,
+    "label": "Content",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
     },
-    "open_in_new_tab" : false,
-    "no_follow" : false
-  }
-}, {
-  "id" : "b0bbc9e3-9a6a-dbf8-9f82-3428fdf76032",
-  "name" : "link_text",
-  "display_width" : null,
-  "label" : "Link Text",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "visibility" : {
-    "controlling_field" : "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+    "type": "richtext",
+    "default": "<h2 style=\"text-align: center;\"><span style=\"color: #ffffff;\">This is a CTA</span></h2>\n<p style=\"text-align: center;\"><span style=\"color: #ffffff;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>"
   },
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Call-To-Action"
-} ]
+  {
+    "id": "27aed87c-7692-e889-bf9a-1aa8be2454c8",
+    "name": "link_field",
+    "display_width": null,
+    "label": "Link",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "b0bbc9e3-9a6a-dbf8-9f82-3428fdf76032",
+    "name": "link_text",
+    "display_width": null,
+    "label": "Link Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "visibility": {
+      "controlling_field": "666218c0-cbf6-ce1e-fb4c-1c0666d5030d",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Call-To-Action"
+  }
+]

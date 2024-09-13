@@ -1,369 +1,408 @@
-[ {
-  "id" : "b03b946a-4654-6f08-185e-000e8b2c30be",
-  "name" : "style_1",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "fec6b5a0-1f28-dd9c-b0ea-a3e4a8c39bae",
-    "name" : "background_color",
-    "display_width" : null,
-    "label" : "Card Front Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : null,
-      "opacity" : null
+[
+  {
+    "id": "b03b946a-4654-6f08-185e-000e8b2c30be",
+    "name": "style_1",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "fec6b5a0-1f28-dd9c-b0ea-a3e4a8c39bae",
+        "name": "background_color",
+        "display_width": null,
+        "label": "Card Front Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": null,
+          "opacity": null
+        }
+      },
+      {
+        "id": "8d485b9c-13a5-a819-5586-7b4c5fdfe2e1",
+        "name": "card_back_color",
+        "display_width": null,
+        "label": "Card Back Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": null,
+          "opacity": null
+        }
+      },
+      {
+        "id": "3914a696-b15d-906b-53e4-b42d4b4a2c0a",
+        "name": "drop_shadow",
+        "display_width": null,
+        "label": "Drop Shadow",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "763f75f3-c1c1-46af-94b9-1810097ee8e2",
+        "name": "column",
+        "display_width": null,
+        "label": "Column",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["2", "2"],
+          ["3", "3"],
+          ["4", "4"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "2"
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "background_color": {
+        "color": null,
+        "opacity": null
+      },
+      "card_back_color": {
+        "color": null,
+        "opacity": null
+      },
+      "drop_shadow": true,
+      "column": "2"
     }
-  }, {
-    "id" : "8d485b9c-13a5-a819-5586-7b4c5fdfe2e1",
-    "name" : "card_back_color",
-    "display_width" : null,
-    "label" : "Card Back Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : null,
-      "opacity" : null
-    }
-  }, {
-    "id" : "3914a696-b15d-906b-53e4-b42d4b4a2c0a",
-    "name" : "drop_shadow",
-    "display_width" : null,
-    "label" : "Drop Shadow",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : true
-  }, {
-    "id" : "763f75f3-c1c1-46af-94b9-1810097ee8e2",
-    "name" : "column",
-    "display_width" : null,
-    "label" : "Column",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "2", "2" ], [ "3", "3" ], [ "4", "4" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "2"
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "background_color" : {
-      "color" : null,
-      "opacity" : null
-    },
-    "card_back_color" : {
-      "color" : null,
-      "opacity" : null
-    },
-    "drop_shadow" : true,
-    "column" : "2"
-  }
-}, {
-  "id" : "52ff0703-364d-b739-295e-10a838415c0d",
-  "name" : "cards",
-  "display_width" : null,
-  "label" : "Cards",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 6
   },
-  "children" : [ {
-    "id" : "6ff5e9f3-e44f-ce07-c43f-190c0e623793",
-    "name" : "headshot",
-    "display_width" : null,
-    "label" : "Headshot",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : true,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "src" : ""
-    }
-  }, {
-    "id" : "403da34e-f19c-c495-130d-8689bd935180",
-    "name" : "team_name",
-    "display_width" : null,
-    "label" : "Name",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "KEVIN BRICE | CEO"
-  }, {
-    "id" : "7b940f7a-f606-3b91-b691-d399abc8675a",
-    "name" : "content",
-    "display_width" : null,
-    "label" : "Content",
-    "required" : false,
-    "locked" : false,
-    "type" : "richtext",
-    "default" : ""
-  }, {
-    "id" : "1ae5dc1c-d32e-f3b5-793f-50372c7f9d1f",
-    "name" : "connect_links",
-    "display_width" : null,
-    "label" : "Connect Links",
-    "required" : false,
-    "locked" : false,
-    "occurrence" : {
-      "min" : null,
-      "max" : null,
-      "sorting_label_field" : null,
-      "default" : null
+  {
+    "id": "52ff0703-364d-b739-295e-10a838415c0d",
+    "name": "cards",
+    "display_width": null,
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 6
     },
-    "children" : [ {
-      "id" : "7f132f05-eba5-f440-d5fc-55314a6819dc",
-      "name" : "icon_field",
-      "display_width" : null,
-      "label" : "Icon",
-      "required" : false,
-      "locked" : false,
-      "icon_set" : "fontawesome-5.14.0",
-      "type" : "icon",
-      "default" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
-      }
-    }, {
-      "id" : "86aed4f6-aef5-28e3-3712-46d82f9a1cb9",
-      "name" : "link_field",
-      "display_width" : null,
-      "label" : "Link",
-      "required" : false,
-      "locked" : false,
-      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
-      "show_advanced_rel_options" : false,
-      "type" : "link",
-      "default" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    } ],
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "default" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+    "children": [
+      {
+        "id": "6ff5e9f3-e44f-ce07-c43f-190c0e623793",
+        "name": "headshot",
+        "display_width": null,
+        "label": "Headshot",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "src": ""
+        }
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    }
-  }, {
-    "id" : "59a606f5-57b5-68ba-aca2-8c81a3d9c4d0",
-    "name" : "bio",
-    "display_width" : null,
-    "label" : "Bio",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "b8e250be-fc2b-834e-c34d-80427d58128a",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "none",
-      "property" : null,
-      "operator" : "NOT_EQUAL",
-      "access" : null
-    },
-    "type" : "richtext",
-    "default" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>"
-  }, {
-    "id" : "b8e250be-fc2b-834e-c34d-80427d58128a",
-    "name" : "bio_option",
-    "display_width" : null,
-    "label" : "Bio Option",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "pop_up", "Pop Up" ], [ "card_flip", "Card Flip" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "card_flip"
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+      {
+        "id": "403da34e-f19c-c495-130d-8689bd935180",
+        "name": "team_name",
+        "display_width": null,
+        "label": "Name",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "KEVIN BRICE | CEO"
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  }, {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+      {
+        "id": "7b940f7a-f606-3b91-b691-d399abc8675a",
+        "name": "content",
+        "display_width": null,
+        "label": "Content",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": ""
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
+      {
+        "id": "1ae5dc1c-d32e-f3b5-793f-50372c7f9d1f",
+        "name": "connect_links",
+        "display_width": null,
+        "label": "Connect Links",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": null,
+          "default": null
         },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  }, {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+        "children": [
+          {
+            "id": "7f132f05-eba5-f440-d5fc-55314a6819dc",
+            "name": "icon_field",
+            "display_width": null,
+            "label": "Icon",
+            "required": false,
+            "locked": false,
+            "icon_set": "fontawesome-5.14.0",
+            "type": "icon",
+            "default": {
+              "name": "Alternate Arrow Circle Right",
+              "unicode": "f35a",
+              "type": "REGULAR"
+            }
+          },
+          {
+            "id": "86aed4f6-aef5-28e3-3712-46d82f9a1cb9",
+            "name": "link_field",
+            "display_width": null,
+            "label": "Link",
+            "required": false,
+            "locked": false,
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "show_advanced_rel_options": false,
+            "type": "link",
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "default": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
+      {
+        "id": "59a606f5-57b5-68ba-aca2-8c81a3d9c4d0",
+        "name": "bio",
+        "display_width": null,
+        "label": "Bio",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "b8e250be-fc2b-834e-c34d-80427d58128a",
+          "controlling_field_path": null,
+          "controlling_value_regex": "none",
+          "property": null,
+          "operator": "NOT_EQUAL",
+          "access": null
         },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  }, {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+        "type": "richtext",
+        "default": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>"
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false
+      {
+        "id": "b8e250be-fc2b-834e-c34d-80427d58128a",
+        "name": "bio_option",
+        "display_width": null,
+        "label": "Bio Option",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["none", "None"],
+          ["pop_up", "Pop Up"],
+          ["card_flip", "Card Flip"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "card_flip"
       }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  }, {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "headshot": {
+          "src": ""
+        },
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
+      {
+        "headshot": {
+          "src": ""
         },
-        "open_in_new_tab" : false,
-        "no_follow" : false
-      }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  }, {
-    "headshot" : {
-      "src" : ""
-    },
-    "team_name" : "KEVIN BRICE | CEO",
-    "content" : "",
-    "connect_links" : {
-      "icon_field" : {
-        "name" : "Alternate Arrow Circle Right",
-        "unicode" : "f35a",
-        "type" : "REGULAR"
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
       },
-      "link_field" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
+      {
+        "headshot": {
+          "src": ""
         },
-        "open_in_new_tab" : false,
-        "no_follow" : false
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
+      },
+      {
+        "headshot": {
+          "src": ""
+        },
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
+      },
+      {
+        "headshot": {
+          "src": ""
+        },
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
+      },
+      {
+        "headshot": {
+          "src": ""
+        },
+        "team_name": "KEVIN BRICE | CEO",
+        "content": "",
+        "connect_links": {
+          "icon_field": {
+            "name": "Alternate Arrow Circle Right",
+            "unicode": "f35a",
+            "type": "REGULAR"
+          },
+          "link_field": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        },
+        "bio": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
+        "bio_option": "card_flip"
       }
-    },
-    "bio" : "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></p>",
-    "bio_option" : "card_flip"
-  } ]
-} ]
+    ]
+  }
+]

@@ -4,12 +4,7 @@
   "external_js": [],
   "global": true,
   "help_text": "",
-  "content_types": [
-    "SITE_PAGE",
-    "LANDING_PAGE",
-    "BLOG_POST",
-    "BLOG_LISTING"
-  ],
+  "content_types": ["SITE_PAGE", "LANDING_PAGE", "BLOG_POST", "BLOG_LISTING"],
   "js_assets": [],
   "other_assets": [],
   "smart_type": "NOT_SMART",

@@ -23,11 +23,7 @@
     "locked": false,
     "inline_help_text": "",
     "help_text": "E.g. https://iin.secure.force.com/AS",
-    "supported_types": [
-      "EXTERNAL",
-      "CONTENT",
-      "EMAIL_ADDRESS"
-    ],
+    "supported_types": ["EXTERNAL", "CONTENT", "EMAIL_ADDRESS"],
     "type": "url",
     "default": {
       "content_id": null,
@@ -72,9 +68,7 @@
     "locked": false,
     "inline_help_text": "",
     "help_text": "E.g. https://api.whatsapp.com/send?phone=15551234567",
-    "supported_types": [
-      "EXTERNAL"
-    ],
+    "supported_types": ["EXTERNAL"],
     "type": "url",
     "default": {
       "content_id": null,

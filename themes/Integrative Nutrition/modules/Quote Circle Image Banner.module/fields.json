@@ -1,82 +1,89 @@
-[ {
-  "id" : "56ed5abe-8e86-58b8-2e6c-8441cc04cf0e",
-  "name" : "bg_color",
-  "display_width" : null,
-  "label" : "BG Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#F8F5F0",
-    "opacity" : 100
+[
+  {
+    "id": "56ed5abe-8e86-58b8-2e6c-8441cc04cf0e",
+    "name": "bg_color",
+    "display_width": null,
+    "label": "BG Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#F8F5F0",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "94c2331e-1e42-570a-9a65-22eab75a9db1",
+    "name": "image_field",
+    "display_width": null,
+    "label": "Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/Imported_Blog_Media/can-you-combine-red-light-therapy-with-other-treatments.jpg",
+      "alt": "can-you-combine-red-light-therapy-with-other-treatments",
+      "loading": "lazy",
+      "width": 1200,
+      "height": 600,
+      "max_width": 1200,
+      "max_height": 600
+    }
+  },
+  {
+    "id": "ca763a8f-841a-1f7f-246a-6d02e36e2299",
+    "name": "quote_svg",
+    "display_width": null,
+    "label": "Quote SVG",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "<svg width=\"43\" height=\"32\" viewBox=\"0 0 43 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.73585 32.0083C7.92004 32.0083 6.25876 31.4731 4.75202 30.4026C3.28392 29.3321 2.12489 27.9175 1.27493 26.1588C0.424978 24.3619 0 22.4312 0 20.3667C0 17.4993 0.734052 14.7658 2.20216 12.166C3.70889 9.56625 5.67925 7.23411 8.11321 5.16959C10.5858 3.10508 13.2902 1.42288 16.2264 0.122996C16.3423 0.0465326 16.5162 0.00830078 16.748 0.00830078C17.0957 0.00830078 17.4434 0.237691 17.7911 0.696473C18.0615 1.07879 18.1968 1.38464 18.1968 1.61404C18.1968 1.80519 18.0615 2.01547 17.7911 2.24486C15.5889 4.19468 13.9084 6.37389 12.7493 8.78249C11.5903 11.1529 11.0108 13.5232 11.0108 15.8936C11.0108 16.4671 11.146 16.9259 11.4164 17.27C11.6869 17.5758 12.2664 17.8817 13.155 18.1875C14.3913 18.6081 15.5117 19.4874 16.5162 20.8255C17.5207 22.1254 18.0229 23.7311 18.0229 25.6427C18.0229 26.9808 17.6173 28.1278 16.8059 29.0836C15.9946 30.0394 14.9515 30.7658 13.6765 31.2628C12.4016 31.7598 11.0881 32.0083 9.73585 32.0083ZM34.5391 32.0083C32.7233 32.0083 31.062 31.4731 29.5553 30.4026C28.0872 29.3321 26.9281 27.9175 26.0782 26.1588C25.2282 24.3619 24.8032 22.4312 24.8032 20.3667C24.8032 17.4993 25.5373 14.7658 27.0054 12.166C28.5121 9.56625 30.4825 7.23411 32.9164 5.16959C35.389 3.10508 38.0934 1.42288 41.0297 0.122996C41.1456 0.0465326 41.3194 0.00830078 41.5512 0.00830078C41.8989 0.00830078 42.2466 0.237691 42.5943 0.696473C42.8648 1.07879 43 1.38464 43 1.61404C43 1.80519 42.8648 2.01547 42.5943 2.24486C40.3922 4.19468 38.7116 6.37389 37.5526 8.78249C36.3935 11.1529 35.814 13.5232 35.814 15.8936C35.814 16.4671 35.9492 16.9259 36.2197 17.27C36.4901 17.5758 37.0696 17.8817 37.9582 18.1875C39.1945 18.6081 40.3149 19.4874 41.3194 20.8255C42.3239 22.1254 42.8261 23.7311 42.8261 25.6427C42.8261 26.9808 42.4205 28.1278 41.6092 29.0836C40.7978 30.0394 39.7547 30.7658 38.4798 31.2628C37.2049 31.7598 35.8913 32.0083 34.5391 32.0083Z\" fill=\"#003D4B\"/></svg>"
+  },
+  {
+    "id": "ff1d7179-931b-2f69-d7f4-813f618b5b17",
+    "name": "body_content",
+    "display_width": null,
+    "label": "Body Content",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality."
+  },
+  {
+    "id": "c9bd8199-107c-89f9-100d-8190b841a80f",
+    "name": "person_name",
+    "display_width": null,
+    "label": "Person Name",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Ishani Reddy"
+  },
+  {
+    "id": "c2422c75-c65a-2502-028d-f961b339865a",
+    "name": "person_title",
+    "display_width": null,
+    "label": "Person Title",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "IIN Health Coach, Wellness Consultant, and Former Investment Banker "
   }
-}, {
-  "id" : "94c2331e-1e42-570a-9a65-22eab75a9db1",
-  "name" : "image_field",
-  "display_width" : null,
-  "label" : "Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/Imported_Blog_Media/can-you-combine-red-light-therapy-with-other-treatments.jpg",
-    "alt" : "can-you-combine-red-light-therapy-with-other-treatments",
-    "loading" : "lazy",
-    "width" : 1200,
-    "height" : 600,
-    "max_width" : 1200,
-    "max_height" : 600
-  }
-}, {
-  "id" : "ca763a8f-841a-1f7f-246a-6d02e36e2299",
-  "name" : "quote_svg",
-  "display_width" : null,
-  "label" : "Quote SVG",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "<svg width=\"43\" height=\"32\" viewBox=\"0 0 43 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.73585 32.0083C7.92004 32.0083 6.25876 31.4731 4.75202 30.4026C3.28392 29.3321 2.12489 27.9175 1.27493 26.1588C0.424978 24.3619 0 22.4312 0 20.3667C0 17.4993 0.734052 14.7658 2.20216 12.166C3.70889 9.56625 5.67925 7.23411 8.11321 5.16959C10.5858 3.10508 13.2902 1.42288 16.2264 0.122996C16.3423 0.0465326 16.5162 0.00830078 16.748 0.00830078C17.0957 0.00830078 17.4434 0.237691 17.7911 0.696473C18.0615 1.07879 18.1968 1.38464 18.1968 1.61404C18.1968 1.80519 18.0615 2.01547 17.7911 2.24486C15.5889 4.19468 13.9084 6.37389 12.7493 8.78249C11.5903 11.1529 11.0108 13.5232 11.0108 15.8936C11.0108 16.4671 11.146 16.9259 11.4164 17.27C11.6869 17.5758 12.2664 17.8817 13.155 18.1875C14.3913 18.6081 15.5117 19.4874 16.5162 20.8255C17.5207 22.1254 18.0229 23.7311 18.0229 25.6427C18.0229 26.9808 17.6173 28.1278 16.8059 29.0836C15.9946 30.0394 14.9515 30.7658 13.6765 31.2628C12.4016 31.7598 11.0881 32.0083 9.73585 32.0083ZM34.5391 32.0083C32.7233 32.0083 31.062 31.4731 29.5553 30.4026C28.0872 29.3321 26.9281 27.9175 26.0782 26.1588C25.2282 24.3619 24.8032 22.4312 24.8032 20.3667C24.8032 17.4993 25.5373 14.7658 27.0054 12.166C28.5121 9.56625 30.4825 7.23411 32.9164 5.16959C35.389 3.10508 38.0934 1.42288 41.0297 0.122996C41.1456 0.0465326 41.3194 0.00830078 41.5512 0.00830078C41.8989 0.00830078 42.2466 0.237691 42.5943 0.696473C42.8648 1.07879 43 1.38464 43 1.61404C43 1.80519 42.8648 2.01547 42.5943 2.24486C40.3922 4.19468 38.7116 6.37389 37.5526 8.78249C36.3935 11.1529 35.814 13.5232 35.814 15.8936C35.814 16.4671 35.9492 16.9259 36.2197 17.27C36.4901 17.5758 37.0696 17.8817 37.9582 18.1875C39.1945 18.6081 40.3149 19.4874 41.3194 20.8255C42.3239 22.1254 42.8261 23.7311 42.8261 25.6427C42.8261 26.9808 42.4205 28.1278 41.6092 29.0836C40.7978 30.0394 39.7547 30.7658 38.4798 31.2628C37.2049 31.7598 35.8913 32.0083 34.5391 32.0083Z\" fill=\"#003D4B\"/></svg>"
-}, {
-  "id" : "ff1d7179-931b-2f69-d7f4-813f618b5b17",
-  "name" : "body_content",
-  "display_width" : null,
-  "label" : "Body Content",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "There was no question in my mind that I not only had to learn more [about wellness], but had to find a way to help others find that same sense of empowerment. Investing in IIN is what helped me make that dream a reality."
-}, {
-  "id" : "c9bd8199-107c-89f9-100d-8190b841a80f",
-  "name" : "person_name",
-  "display_width" : null,
-  "label" : "Person Name",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Ishani Reddy"
-}, {
-  "id" : "c2422c75-c65a-2502-028d-f961b339865a",
-  "name" : "person_title",
-  "display_width" : null,
-  "label" : "Person Title",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "IIN Health Coach, Wellness Consultant, and Former Investment Banker "
-} ]
+]

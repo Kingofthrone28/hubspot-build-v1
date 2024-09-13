@@ -1,9 +1,9 @@
 {
-  "global" : false,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
-  "icon" : "https://www.manobyte.com/hubfs/Tabbed%20Content.svg",
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 162925967982,
-  "label" : "Tabbed Content Image",
-  "is_available_for_new_content" : true
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "icon": "https://www.manobyte.com/hubfs/Tabbed%20Content.svg",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "module_id": 162925967982,
+  "label": "Tabbed Content Image",
+  "is_available_for_new_content": true
 }

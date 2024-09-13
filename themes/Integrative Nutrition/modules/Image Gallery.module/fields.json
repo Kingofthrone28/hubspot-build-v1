@@ -1,120 +1,159 @@
-[ {
-  "id" : "d8cf8d83-6599-2083-bffa-8899c5dff5dd",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "86bbc1e5-8df3-9d67-d482-3b1befadee22",
-    "name" : "animation",
-    "display_width" : null,
-    "label" : "Animation",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
-      "name" : "animation",
-      "display_width" : null,
-      "label" : "Animation",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "fadeDown"
-    }, {
-      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
-      "name" : "apply_animation_to",
-      "display_width" : null,
-      "label" : "Apply Animation to",
-      "required" : false,
-      "locked" : false,
-      "display" : "radio",
-      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "column"
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "default" : { }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "animation" : { }
-  }
-}, {
-  "id" : "3bf6c48b-ff81-c23f-2611-a9e84f8ce54e",
-  "name" : "images",
-  "display_width" : null,
-  "label" : "Images",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 5
+[
+  {
+    "id": "d8cf8d83-6599-2083-bffa-8899c5dff5dd",
+    "name": "style",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "86bbc1e5-8df3-9d67-d482-3b1befadee22",
+        "name": "animation",
+        "display_width": null,
+        "label": "Animation",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+            "name": "animation",
+            "display_width": null,
+            "label": "Animation",
+            "required": false,
+            "locked": false,
+            "display": "select",
+            "choices": [
+              ["none", "none"],
+              ["fade", "Fade"],
+              ["fadeUp", "Fade Up"],
+              ["fadeDown", "Fade Down"],
+              ["fadeLeft", "Fade Left"],
+              ["fadeRight", "Fade Right"],
+              ["slideUp", "Slide Up"],
+              ["slideDown", "Slide Down"],
+              ["slideLeft", "Slide Left"],
+              ["slideRight", "Slide Right"],
+              ["zoomIn", "Zoom In"],
+              ["zoomInUp", "Zoom In Up"],
+              ["zoomInDown", "Zoom In Down"],
+              ["zoomInLeft", "Zoom In Left"],
+              ["zoomInRight", "Zoom In Right"],
+              ["zoomOut", "Zoom Out"],
+              ["zoomOutUp", "Zoom Out Up"],
+              ["zoomOutDown", "Zoom Out Down"],
+              ["zoomOutLeft", "Zoom Out Left"],
+              ["zoomOutRight", "Zoom Out Right"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "fadeDown"
+          },
+          {
+            "id": "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+            "name": "apply_animation_to",
+            "display_width": null,
+            "label": "Apply Animation to",
+            "required": false,
+            "locked": false,
+            "display": "radio",
+            "choices": [
+              ["this", "This Item"],
+              ["section", "Parent Section"],
+              ["column", "Parent Column"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "column"
+          }
+        ],
+        "tab": "STYLE",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "default": {}
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "animation": {}
+    }
   },
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : [ {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
-    "alt" : "Pricing-Hero",
-    "loading" : "lazy",
-    "width" : 1440,
-    "height" : 650,
-    "max_width" : 1440,
-    "max_height" : 650
-  }, {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
-    "alt" : "Pricing-Hero",
-    "loading" : "lazy",
-    "width" : 1440,
-    "height" : 650,
-    "max_width" : 1440,
-    "max_height" : 650
-  }, {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
-    "alt" : "Pricing-Hero",
-    "loading" : "lazy",
-    "width" : 1440,
-    "height" : 650,
-    "max_width" : 1440,
-    "max_height" : 650
-  }, {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
-    "alt" : "Pricing-Hero",
-    "loading" : "lazy",
-    "width" : 1440,
-    "height" : 650,
-    "max_width" : 1440,
-    "max_height" : 650
-  }, {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
-    "alt" : "Pricing-Hero",
-    "loading" : "lazy",
-    "width" : 1440,
-    "height" : 650,
-    "max_width" : 1440,
-    "max_height" : 650
-  } ]
-} ]
+  {
+    "id": "3bf6c48b-ff81-c23f-2611-a9e84f8ce54e",
+    "name": "images",
+    "display_width": null,
+    "label": "Images",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 5
+    },
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": [
+      {
+        "size_type": "auto",
+        "src": "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
+        "alt": "Pricing-Hero",
+        "loading": "lazy",
+        "width": 1440,
+        "height": 650,
+        "max_width": 1440,
+        "max_height": 650
+      },
+      {
+        "size_type": "auto",
+        "src": "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
+        "alt": "Pricing-Hero",
+        "loading": "lazy",
+        "width": 1440,
+        "height": 650,
+        "max_width": 1440,
+        "max_height": 650
+      },
+      {
+        "size_type": "auto",
+        "src": "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
+        "alt": "Pricing-Hero",
+        "loading": "lazy",
+        "width": 1440,
+        "height": 650,
+        "max_width": 1440,
+        "max_height": 650
+      },
+      {
+        "size_type": "auto",
+        "src": "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
+        "alt": "Pricing-Hero",
+        "loading": "lazy",
+        "width": 1440,
+        "height": 650,
+        "max_width": 1440,
+        "max_height": 650
+      },
+      {
+        "size_type": "auto",
+        "src": "https://www.manobyte.com/hubfs/Pricing-Hero.jpg",
+        "alt": "Pricing-Hero",
+        "loading": "lazy",
+        "width": 1440,
+        "height": 650,
+        "max_width": 1440,
+        "max_height": 650
+      }
+    ]
+  }
+]

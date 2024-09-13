@@ -26,14 +26,8 @@
         "locked": false,
         "display": "select",
         "choices": [
-          [
-            "block",
-            "Block"
-          ],
-          [
-            "inline-block",
-            "Inline Block"
-          ]
+          ["block", "Block"],
+          ["inline-block", "Inline Block"]
         ],
         "multiple": false,
         "reordering_enabled": true,
@@ -71,33 +65,16 @@
         "locked": false,
         "display": "checkbox",
         "choices": [
-          [
-            "top",
-            "Top"
-          ],
-          [
-            "bottom",
-            "Bottom"
-          ],
-          [
-            "left",
-            "Left"
-          ],
-          [
-            "right",
-            "Right"
-          ]
+          ["top", "Top"],
+          ["bottom", "Bottom"],
+          ["left", "Left"],
+          ["right", "Right"]
         ],
         "multiple": true,
         "reordering_enabled": true,
         "preset": null,
         "type": "choice",
-        "default": [
-          "top",
-          "bottom",
-          "left",
-          "right"
-        ]
+        "default": ["top", "bottom", "left", "right"]
       },
       {
         "id": "e8f08162-b728-d103-0373-8009f798a075",
@@ -129,18 +106,9 @@
             "locked": false,
             "display": "select",
             "choices": [
-              [
-                "color",
-                "Color"
-              ],
-              [
-                "gradient",
-                "Gradient"
-              ],
-              [
-                "image",
-                "Image"
-              ]
+              ["color", "Color"],
+              ["gradient", "Gradient"],
+              ["image", "Image"]
             ],
             "multiple": false,
             "reordering_enabled": true,
@@ -164,26 +132,11 @@
             },
             "display": "select",
             "choices": [
-              [
-                "to bottom",
-                "Top - Bottom"
-              ],
-              [
-                "90deg",
-                "Left - Right"
-              ],
-              [
-                "135deg",
-                "Top Left - Bottom Right"
-              ],
-              [
-                "45deg",
-                "Botton Left - Top Right"
-              ],
-              [
-                "circle",
-                "Circle"
-              ]
+              ["to bottom", "Top - Bottom"],
+              ["90deg", "Left - Right"],
+              ["135deg", "Top Left - Bottom Right"],
+              ["45deg", "Botton Left - Top Right"],
+              ["circle", "Circle"]
             ],
             "multiple": false,
             "reordering_enabled": true,
@@ -353,18 +306,9 @@
             "locked": false,
             "display": "select",
             "choices": [
-              [
-                "light",
-                "Light"
-              ],
-              [
-                "dark",
-                "Dark"
-              ],
-              [
-                "yellow",
-                "Yellow"
-              ]
+              ["light", "Light"],
+              ["dark", "Dark"],
+              ["yellow", "Yellow"]
             ],
             "multiple": false,
             "reordering_enabled": true,
@@ -413,86 +357,26 @@
             "locked": false,
             "display": "select",
             "choices": [
-              [
-                "none",
-                "none"
-              ],
-              [
-                "fade",
-                "Fade"
-              ],
-              [
-                "fadeUp",
-                "Fade Up"
-              ],
-              [
-                "fadeDown",
-                "Fade Down"
-              ],
-              [
-                "fadeLeft",
-                "Fade Left"
-              ],
-              [
-                "fadeRight",
-                "Fade Right"
-              ],
-              [
-                "slideUp",
-                "Slide Up"
-              ],
-              [
-                "slideDown",
-                "Slide Down"
-              ],
-              [
-                "slideLeft",
-                "Slide Left"
-              ],
-              [
-                "slideRight",
-                "Slide Right"
-              ],
-              [
-                "zoomIn",
-                "Zoom In"
-              ],
-              [
-                "zoomInUp",
-                "Zoom In Up"
-              ],
-              [
-                "zoomInDown",
-                "Zoom In Down"
-              ],
-              [
-                "zoomInLeft",
-                "Zoom In Left"
-              ],
-              [
-                "zoomInRight",
-                "Zoom In Right"
-              ],
-              [
-                "zoomOut",
-                "Zoom Out"
-              ],
-              [
-                "zoomOutUp",
-                "Zoom Out Up"
-              ],
-              [
-                "zoomOutDown",
-                "Zoom Out Down"
-              ],
-              [
-                "zoomOutLeft",
-                "Zoom Out Left"
-              ],
-              [
-                "zoomOutRight",
-                "Zoom Out Right"
-              ]
+              ["none", "none"],
+              ["fade", "Fade"],
+              ["fadeUp", "Fade Up"],
+              ["fadeDown", "Fade Down"],
+              ["fadeLeft", "Fade Left"],
+              ["fadeRight", "Fade Right"],
+              ["slideUp", "Slide Up"],
+              ["slideDown", "Slide Down"],
+              ["slideLeft", "Slide Left"],
+              ["slideRight", "Slide Right"],
+              ["zoomIn", "Zoom In"],
+              ["zoomInUp", "Zoom In Up"],
+              ["zoomInDown", "Zoom In Down"],
+              ["zoomInLeft", "Zoom In Left"],
+              ["zoomInRight", "Zoom In Right"],
+              ["zoomOut", "Zoom Out"],
+              ["zoomOutUp", "Zoom Out Up"],
+              ["zoomOutDown", "Zoom Out Down"],
+              ["zoomOutLeft", "Zoom Out Left"],
+              ["zoomOutRight", "Zoom Out Right"]
             ],
             "multiple": false,
             "reordering_enabled": true,
@@ -509,18 +393,9 @@
             "locked": false,
             "display": "select",
             "choices": [
-              [
-                "this",
-                "This Item"
-              ],
-              [
-                "section",
-                "Parent Section"
-              ],
-              [
-                "column",
-                "Parent Column"
-              ]
+              ["this", "This Item"],
+              ["section", "Parent Section"],
+              ["column", "Parent Column"]
             ],
             "multiple": false,
             "reordering_enabled": true,
@@ -557,12 +432,7 @@
           }
         }
       },
-      "border_placement": [
-        "top",
-        "bottom",
-        "left",
-        "right"
-      ],
+      "border_placement": ["top", "bottom", "left", "right"],
       "border_radius": 10,
       "background": {
         "gradient_direction": "to bottom",
@@ -622,14 +492,8 @@
     "id": "26064e75-00db-2b56-221f-1ec61394434c",
     "display": "select",
     "choices": [
-      [
-        "hctp",
-        "HCTP"
-      ],
-      [
-        "placeholder",
-        "Placeholder"
-      ]
+      ["hctp", "HCTP"],
+      ["placeholder", "Placeholder"]
     ],
     "label": "Sample Class Gate",
     "name": "sample_class_gate"

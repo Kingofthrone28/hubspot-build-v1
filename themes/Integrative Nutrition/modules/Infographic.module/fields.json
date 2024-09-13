@@ -1,83 +1,94 @@
-[ {
-  "id" : "header",
-  "name" : "header",
-  "display_width" : null,
-  "label" : "Header",
-  "required" : true,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Header"
-}, {
-  "id" : "image",
-  "name" : "image",
-  "display_width" : null,
-  "label" : "Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : false,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "src" : "",
-    "alt" : null,
-    "size_type" : null,
-    "width" : null,
-    "height" : null,
-    "max_width" : null,
-    "max_height" : null,
-    "loading" : "disabled"
-  }
-}, {
-  "id" : "text_sections",
-  "name" : "text_sections",
-  "display_width" : null,
-  "label" : "Text Sections",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : 1,
-    "max" : 5,
-    "sorting_label_field" : null,
-    "default" : 3
+[
+  {
+    "id": "header",
+    "name": "header",
+    "display_width": null,
+    "label": "Header",
+    "required": true,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Header"
   },
-  "children" : [ {
-    "id" : "text_sections.subheader",
-    "name" : "subheader",
-    "display_width" : null,
-    "label" : "Subheader",
-    "required" : true,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Subheader"
-  }, {
-    "id" : "text_sections.paragraph",
-    "name" : "paragraph",
-    "display_width" : null,
-    "label" : "Paragraph",
-    "required" : true,
-    "locked" : false,
-    "type" : "richtext",
-    "default" : "Paragraph"
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "subheader" : "Subheader",
-    "paragraph" : "Paragraph"
-  }, {
-    "subheader" : "Subheader",
-    "paragraph" : "Paragraph"
-  }, {
-    "subheader" : "Subheader",
-    "paragraph" : "Paragraph"
-  } ]
-} ]
+  {
+    "id": "image",
+    "name": "image",
+    "display_width": null,
+    "label": "Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": null,
+      "size_type": null,
+      "width": null,
+      "height": null,
+      "max_width": null,
+      "max_height": null,
+      "loading": "disabled"
+    }
+  },
+  {
+    "id": "text_sections",
+    "name": "text_sections",
+    "display_width": null,
+    "label": "Text Sections",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 5,
+      "sorting_label_field": null,
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "text_sections.subheader",
+        "name": "subheader",
+        "display_width": null,
+        "label": "Subheader",
+        "required": true,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Subheader"
+      },
+      {
+        "id": "text_sections.paragraph",
+        "name": "paragraph",
+        "display_width": null,
+        "label": "Paragraph",
+        "required": true,
+        "locked": false,
+        "type": "richtext",
+        "default": "Paragraph"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "subheader": "Subheader",
+        "paragraph": "Paragraph"
+      },
+      {
+        "subheader": "Subheader",
+        "paragraph": "Paragraph"
+      },
+      {
+        "subheader": "Subheader",
+        "paragraph": "Paragraph"
+      }
+    ]
+  }
+]

@@ -1,171 +1,187 @@
-[ {
-  "id" : "3e3642e3-866c-832b-9d05-fc3297b07acb",
-  "name" : "shape",
-  "display_width" : null,
-  "label" : "Shape",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "choices" : [ [ "swoop", "Hero Swoop" ], [ "bend", "Bend" ], [ "diagonal", "Diagonal" ], [ "chevron", "Chevron" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "default" : "chevron"
-}, {
-  "id" : "bc886b84-f97c-0e1b-c4ec-476847835ee7",
-  "name" : "bevel_top",
-  "display_width" : null,
-  "label" : "Bevel Top",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "3e3642e3-866c-832b-9d05-fc3297b07acb",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "bend",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+[
+  {
+    "id": "3e3642e3-866c-832b-9d05-fc3297b07acb",
+    "name": "shape",
+    "display_width": null,
+    "label": "Shape",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["swoop", "Hero Swoop"],
+      ["bend", "Bend"],
+      ["diagonal", "Diagonal"],
+      ["chevron", "Chevron"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "chevron"
   },
-  "display" : "checkbox",
-  "type" : "boolean",
-  "default" : false
-}, {
-  "id" : "f2753f2b-1dd1-acc5-7d5e-c2e326d747e5",
-  "name" : "bevel_bottom",
-  "display_width" : null,
-  "label" : "Bevel Bottom",
-  "required" : false,
-  "locked" : false,
-  "visibility" : {
-    "controlling_field" : "3e3642e3-866c-832b-9d05-fc3297b07acb",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "bend",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+  {
+    "id": "bc886b84-f97c-0e1b-c4ec-476847835ee7",
+    "name": "bevel_top",
+    "display_width": null,
+    "label": "Bevel Top",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "3e3642e3-866c-832b-9d05-fc3297b07acb",
+      "controlling_field_path": null,
+      "controlling_value_regex": "bend",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "display": "checkbox",
+    "type": "boolean",
+    "default": false
   },
-  "display" : "checkbox",
-  "type" : "boolean",
-  "default" : false
-}, {
-  "id" : "af21ff63-977d-b564-d4d5-0b20c5363a08",
-  "name" : "desktop",
-  "display_width" : null,
-  "label" : "Options",
-  "inline_help_text" : "Background options for the Section this module reside in.",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "edbcf582-59b4-d8de-59f0-a70074f35458",
-    "name" : "overlay_color",
-    "display_width" : null,
-    "label" : "Overlay Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#474747",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "c0304673-79dc-8a64-cb07-81190d120308",
-    "name" : "secondary_overlay_color",
-    "display_width" : null,
-    "label" : "Secondary Overlay Color",
-    "required" : false,
-    "locked" : false,
-    "type" : "color",
-    "default" : {
-      "color" : "#0f0f0f",
-      "opacity" : 100
-    }
-  }, {
-    "id" : "b186fde5-b96f-d698-8cf6-62a5e99bcd33",
-    "name" : "distance_from_top",
-    "display_width" : null,
-    "label" : "Distance From Top",
-    "help_text" : "Enter a distance to move the top of the section and create an overlap with the section above",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "3e3642e3-866c-832b-9d05-fc3297b07acb",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "swoop",
-      "property" : null,
-      "operator" : "NOT_EQUAL",
-      "access" : null
+  {
+    "id": "f2753f2b-1dd1-acc5-7d5e-c2e326d747e5",
+    "name": "bevel_bottom",
+    "display_width": null,
+    "label": "Bevel Bottom",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": "3e3642e3-866c-832b-9d05-fc3297b07acb",
+      "controlling_field_path": null,
+      "controlling_value_regex": "bend",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
     },
-    "display" : "text",
-    "step" : 1,
-    "type" : "number",
-    "default" : 0
-  }, {
-    "id" : "28fc9d1b-919d-039b-a6ea-5cd423dcfd85",
-    "name" : "distance_from_bottom",
-    "display_width" : null,
-    "label" : "Distance From Bottom",
-    "help_text" : "Enter a distance to move the bottom of the section and create an overlap with the section below",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "3e3642e3-866c-832b-9d05-fc3297b07acb",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "swoop",
-      "property" : null,
-      "operator" : "NOT_EQUAL",
-      "access" : null
-    },
-    "display" : "text",
-    "step" : 1,
-    "type" : "number",
-    "default" : 0
-  }, {
-    "id" : "fc1d3802-a814-f297-5ae3-851717e30073",
-    "name" : "image_field",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : true,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "size_type" : "auto",
-      "src" : "https://21329789.fs1.hubspotusercontent-na1.net/hubfs/21329789/780_1110.jpg",
-      "alt" : "780_1110",
-      "loading" : "lazy",
-      "width" : 1624,
-      "height" : 1080,
-      "max_width" : 1624,
-      "max_height" : 1080
-    }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "overlay_color" : {
-      "color" : "#474747",
-      "opacity" : 100
-    },
-    "secondary_overlay_color" : {
-      "color" : "#0f0f0f",
-      "opacity" : 100
-    },
-    "distance_from_top" : 0,
-    "distance_from_bottom" : 0,
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://21329789.fs1.hubspotusercontent-na1.net/hubfs/21329789/780_1110.jpg",
-      "alt" : "780_1110",
-      "loading" : "lazy",
-      "width" : 1624,
-      "height" : 1080,
-      "max_width" : 1624,
-      "max_height" : 1080
+    "display": "checkbox",
+    "type": "boolean",
+    "default": false
+  },
+  {
+    "id": "af21ff63-977d-b564-d4d5-0b20c5363a08",
+    "name": "desktop",
+    "display_width": null,
+    "label": "Options",
+    "inline_help_text": "Background options for the Section this module reside in.",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "edbcf582-59b4-d8de-59f0-a70074f35458",
+        "name": "overlay_color",
+        "display_width": null,
+        "label": "Overlay Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": "#474747",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "c0304673-79dc-8a64-cb07-81190d120308",
+        "name": "secondary_overlay_color",
+        "display_width": null,
+        "label": "Secondary Overlay Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": "#0f0f0f",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "b186fde5-b96f-d698-8cf6-62a5e99bcd33",
+        "name": "distance_from_top",
+        "display_width": null,
+        "label": "Distance From Top",
+        "help_text": "Enter a distance to move the top of the section and create an overlap with the section above",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "3e3642e3-866c-832b-9d05-fc3297b07acb",
+          "controlling_field_path": null,
+          "controlling_value_regex": "swoop",
+          "property": null,
+          "operator": "NOT_EQUAL",
+          "access": null
+        },
+        "display": "text",
+        "step": 1,
+        "type": "number",
+        "default": 0
+      },
+      {
+        "id": "28fc9d1b-919d-039b-a6ea-5cd423dcfd85",
+        "name": "distance_from_bottom",
+        "display_width": null,
+        "label": "Distance From Bottom",
+        "help_text": "Enter a distance to move the bottom of the section and create an overlap with the section below",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "3e3642e3-866c-832b-9d05-fc3297b07acb",
+          "controlling_field_path": null,
+          "controlling_value_regex": "swoop",
+          "property": null,
+          "operator": "NOT_EQUAL",
+          "access": null
+        },
+        "display": "text",
+        "step": 1,
+        "type": "number",
+        "default": 0
+      },
+      {
+        "id": "fc1d3802-a814-f297-5ae3-851717e30073",
+        "name": "image_field",
+        "display_width": null,
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "size_type": "auto",
+          "src": "https://21329789.fs1.hubspotusercontent-na1.net/hubfs/21329789/780_1110.jpg",
+          "alt": "780_1110",
+          "loading": "lazy",
+          "width": 1624,
+          "height": 1080,
+          "max_width": 1624,
+          "max_height": 1080
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "overlay_color": {
+        "color": "#474747",
+        "opacity": 100
+      },
+      "secondary_overlay_color": {
+        "color": "#0f0f0f",
+        "opacity": 100
+      },
+      "distance_from_top": 0,
+      "distance_from_bottom": 0,
+      "image_field": {
+        "size_type": "auto",
+        "src": "https://21329789.fs1.hubspotusercontent-na1.net/hubfs/21329789/780_1110.jpg",
+        "alt": "780_1110",
+        "loading": "lazy",
+        "width": 1624,
+        "height": 1080,
+        "max_width": 1624,
+        "max_height": 1080
+      }
     }
   }
-} ]
+]

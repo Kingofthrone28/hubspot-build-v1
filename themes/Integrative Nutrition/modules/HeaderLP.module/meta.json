@@ -1,10 +1,10 @@
 {
-  "global" : true,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
-  "smart_type" : "NOT_SMART",
-  "icon" : "fontawesome-5.14.0:Archive:SOLID",
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 78869304451,
-  "label" : "Header",
-  "is_available_for_new_content" : false
+  "global": true,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "smart_type": "NOT_SMART",
+  "icon": "fontawesome-5.14.0:Archive:SOLID",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "module_id": 78869304451,
+  "label": "Header",
+  "is_available_for_new_content": false
 }

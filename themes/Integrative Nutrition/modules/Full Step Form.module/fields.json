@@ -1,194 +1,213 @@
-[ {
-  "id" : "fc4ed77c-25f9-06f6-7cc0-b19a1f0b9134",
-  "name" : "form_field",
-  "display_width" : null,
-  "label" : "Form",
-  "required" : false,
-  "locked" : false,
-  "type" : "form",
-  "default" : {
-    "form_id" : "560a7049-23c2-4464-b831-4d277001c85e",
-    "response_type" : "inline",
-    "message" : "Thanks for submitting the form.",
-    "gotowebinar_webinar_key" : null,
-    "form_type" : "HUBSPOT"
-  }
-}, {
-  "id" : "947be333-9fd1-f2c3-950a-a4768186adfe",
-  "name" : "background_image",
-  "display_width" : null,
-  "label" : "Background Image",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 8
+[
+  {
+    "id": "fc4ed77c-25f9-06f6-7cc0-b19a1f0b9134",
+    "name": "form_field",
+    "display_width": null,
+    "label": "Form",
+    "required": false,
+    "locked": false,
+    "type": "form",
+    "default": {
+      "form_id": "560a7049-23c2-4464-b831-4d277001c85e",
+      "response_type": "inline",
+      "message": "Thanks for submitting the form.",
+      "gotowebinar_webinar_key": null,
+      "form_type": "HUBSPOT"
+    }
   },
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : [ {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  }, {
-    "size_type" : "auto",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
-    "alt" : "iStock-871315860 1-1",
-    "loading" : "lazy",
-    "width" : 1068,
-    "height" : 800,
-    "max_width" : 1068,
-    "max_height" : 800
-  } ]
-}, {
-  "id" : "ae0a9b95-1a0c-a3aa-b85f-8a681f1f4f48",
-  "name" : "starting_text",
-  "display_width" : null,
-  "label" : "Starting Text",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "default" : "<h1>Start your <span style=\"color: #d72a25;\">health&nbsp;</span>and&nbsp;<span style=\"color: #d72a25;\">wellness&nbsp;</span>journey</h1>\n<p>Tell us about yourself to get recommendations tailored to your unique goals.</p>"
-}, {
-  "id" : "2c9a83c7-1d27-4b7b-060b-e54f23ea9752",
-  "name" : "pop_message",
-  "display_width" : null,
-  "label" : "Pop Message",
-  "inline_help_text" : "Use FIRST_NAME as a placeholder for name input, pop up must be shown after name is added on the form",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "default" : "<h2 style=\"text-align: center;\">Hello, FIRST_NAME.<br>Let's help you find the right path for your next life chapter.</h2>"
-}, {
-  "id" : "dcba09cc-355a-54a2-2e22-b8d4da354922",
-  "name" : "step_to_show_pop",
-  "display_width" : null,
-  "label" : "Step to show pop",
-  "inline_help_text" : "After this step number the pop up message will show full window, use -1 to not show pop",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 3
-}, {
-  "id" : "a2c518c8-297b-4b86-5229-f2897246395e",
-  "name" : "header_image",
-  "display_width" : null,
-  "label" : "Header Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "exact",
-    "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/black_logo.svg",
-    "alt" : "black_logo",
-    "loading" : "lazy",
-    "width" : 77,
-    "height" : 30,
-    "max_width" : 77,
-    "max_height" : 30
+  {
+    "id": "947be333-9fd1-f2c3-950a-a4768186adfe",
+    "name": "background_image",
+    "display_width": null,
+    "label": "Background Image",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 8
+    },
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": [
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      },
+      {
+        "size_type": "auto",
+        "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/iStock-871315860%201-1.jpg",
+        "alt": "iStock-871315860 1-1",
+        "loading": "lazy",
+        "width": 1068,
+        "height": 800,
+        "max_width": 1068,
+        "max_height": 800
+      }
+    ]
+  },
+  {
+    "id": "ae0a9b95-1a0c-a3aa-b85f-8a681f1f4f48",
+    "name": "starting_text",
+    "display_width": null,
+    "label": "Starting Text",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<h1>Start your <span style=\"color: #d72a25;\">health&nbsp;</span>and&nbsp;<span style=\"color: #d72a25;\">wellness&nbsp;</span>journey</h1>\n<p>Tell us about yourself to get recommendations tailored to your unique goals.</p>"
+  },
+  {
+    "id": "2c9a83c7-1d27-4b7b-060b-e54f23ea9752",
+    "name": "pop_message",
+    "display_width": null,
+    "label": "Pop Message",
+    "inline_help_text": "Use FIRST_NAME as a placeholder for name input, pop up must be shown after name is added on the form",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<h2 style=\"text-align: center;\">Hello, FIRST_NAME.<br>Let's help you find the right path for your next life chapter.</h2>"
+  },
+  {
+    "id": "dcba09cc-355a-54a2-2e22-b8d4da354922",
+    "name": "step_to_show_pop",
+    "display_width": null,
+    "label": "Step to show pop",
+    "inline_help_text": "After this step number the pop up message will show full window, use -1 to not show pop",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 3
+  },
+  {
+    "id": "a2c518c8-297b-4b86-5229-f2897246395e",
+    "name": "header_image",
+    "display_width": null,
+    "label": "Header Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/black_logo.svg",
+      "alt": "black_logo",
+      "loading": "lazy",
+      "width": 77,
+      "height": 30,
+      "max_width": 77,
+      "max_height": 30
+    }
+  },
+  {
+    "id": "13943485-6e8f-2854-b88a-0847f8e64230",
+    "name": "min_height",
+    "display_width": null,
+    "label": "Min Height",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "870px"
+  },
+  {
+    "id": "7d7a4083-8c03-d673-8850-d0916811290b",
+    "name": "pop_message_duration_ms",
+    "display_width": null,
+    "label": "Pop Message Duration MS",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 4000
+  },
+  {
+    "id": "30d847a9-f7cd-028d-e417-08555b008cac",
+    "name": "redirect_url",
+    "display_width": null,
+    "label": "Redirect URL",
+    "inline_help_text": "",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "https://23273748.hs-sites.com/our-approach-to-nutrition-0-0-0"
   }
-}, {
-  "id" : "13943485-6e8f-2854-b88a-0847f8e64230",
-  "name" : "min_height",
-  "display_width" : null,
-  "label" : "Min Height",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "870px"
-}, {
-  "id" : "7d7a4083-8c03-d673-8850-d0916811290b",
-  "name" : "pop_message_duration_ms",
-  "display_width" : null,
-  "label" : "Pop Message Duration MS",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 4000
-}, {
-  "id" : "30d847a9-f7cd-028d-e417-08555b008cac",
-  "name" : "redirect_url",
-  "display_width" : null,
-  "label" : "Redirect URL",
-  "inline_help_text" : "",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "https://23273748.hs-sites.com/our-approach-to-nutrition-0-0-0"
-} ]
+]

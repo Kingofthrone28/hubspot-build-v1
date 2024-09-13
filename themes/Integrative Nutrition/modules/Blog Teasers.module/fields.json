@@ -1,23 +1,29 @@
-[ {
-  "id" : "760fea20-fe3e-34c7-a2b8-8a51c2dab3b8",
-  "name" : "layout",
-  "display_width" : null,
-  "label" : "layout",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "choices" : [ [ "single_column", "single column" ], [ "two_column", "two column" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice"
-}, {
-  "id" : "4718cc1b-88bd-8822-7487-0e2a2732c03f",
-  "name" : "tag_field",
-  "display_width" : null,
-  "label" : "Category Tag",
-  "required" : false,
-  "locked" : false,
-  "tag_value" : "SLUG",
-  "type" : "tag"
-} ]
+[
+  {
+    "id": "760fea20-fe3e-34c7-a2b8-8a51c2dab3b8",
+    "name": "layout",
+    "display_width": null,
+    "label": "layout",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["single_column", "single column"],
+      ["two_column", "two column"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice"
+  },
+  {
+    "id": "4718cc1b-88bd-8822-7487-0e2a2732c03f",
+    "name": "tag_field",
+    "display_width": null,
+    "label": "Category Tag",
+    "required": false,
+    "locked": false,
+    "tag_value": "SLUG",
+    "type": "tag"
+  }
+]

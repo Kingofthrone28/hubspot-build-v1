@@ -1,63 +1,88 @@
-[ {
-  "id" : "6c71b0c4-3fbe-ee8c-f433-a5b0097edf29",
-  "name" : "appointment_link",
-  "display_width" : null,
-  "label" : "Appointment Link",
-  "required" : false,
-  "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "href" : "https://iin.secure.force.com/AS",
-      "type" : "EXTERNAL"
-    },
-    "open_in_new_tab" : false,
-    "no_follow" : false
+[
+  {
+    "id": "6c71b0c4-3fbe-ee8c-f433-a5b0097edf29",
+    "name": "appointment_link",
+    "display_width": null,
+    "label": "Appointment Link",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "href": "https://iin.secure.force.com/AS",
+        "type": "EXTERNAL"
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "3281e474-ee88-e422-f095-e48044b12612",
+    "name": "us_number",
+    "display_width": null,
+    "label": "US Number",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "(877) 730-5444"
+  },
+  {
+    "id": "a34147de-a101-bd20-84fe-9e14df5e8aa1",
+    "name": "international_number",
+    "display_width": null,
+    "label": "International Number",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "+1 (212) 730-5433"
+  },
+  {
+    "id": "bf1dc1d9-d45f-a819-ad2c-870eedf982a9",
+    "name": "whatsapp_link",
+    "display_width": null,
+    "label": "Whatsapp",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "href": "https://api.whatsapp.com/send?phone=19733698195",
+        "type": "EXTERNAL"
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
   }
-}, {
-  "id" : "3281e474-ee88-e422-f095-e48044b12612",
-  "name" : "us_number",
-  "display_width" : null,
-  "label" : "US Number",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "(877) 730-5444"
-}, {
-  "id" : "a34147de-a101-bd20-84fe-9e14df5e8aa1",
-  "name" : "international_number",
-  "display_width" : null,
-  "label" : "International Number",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "+1 (212) 730-5433"
-}, {
-  "id" : "bf1dc1d9-d45f-a819-ad2c-870eedf982a9",
-  "name" : "whatsapp_link",
-  "display_width" : null,
-  "label" : "Whatsapp",
-  "required" : false,
-  "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "href" : "https://api.whatsapp.com/send?phone=19733698195",
-      "type" : "EXTERNAL"
-    },
-    "open_in_new_tab" : false,
-    "no_follow" : false
-  }
-} ]
+]

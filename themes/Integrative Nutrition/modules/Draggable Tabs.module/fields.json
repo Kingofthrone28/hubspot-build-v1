@@ -1,43 +1,47 @@
-[ {
-  "id" : "21d26a19-4306-d883-55ce-bcdaad2dab53",
-  "name" : "bar_color",
-  "display_width" : null,
-  "label" : "Bar Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#173753",
-    "opacity" : 100
-  }
-}, {
-  "id" : "ede7d205-6cfe-2fd6-2386-47c5349216ed",
-  "name" : "circle_color",
-  "display_width" : null,
-  "label" : "Circle Color",
-  "required" : false,
-  "locked" : false,
-  "type" : "color",
-  "default" : {
-    "color" : "#00aeef",
-    "opacity" : 100
-  }
-}, {
-  "id" : "d2152813-b583-35b3-4cb7-44eb42bc1f84",
-  "name" : "tab_label",
-  "display_width" : null,
-  "label" : "Label",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 4
+[
+  {
+    "id": "21d26a19-4306-d883-55ce-bcdaad2dab53",
+    "name": "bar_color",
+    "display_width": null,
+    "label": "Bar Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#173753",
+      "opacity": 100
+    }
   },
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : [ "Label", "Label", "Label", "Label" ]
-} ]
+  {
+    "id": "ede7d205-6cfe-2fd6-2386-47c5349216ed",
+    "name": "circle_color",
+    "display_width": null,
+    "label": "Circle Color",
+    "required": false,
+    "locked": false,
+    "type": "color",
+    "default": {
+      "color": "#00aeef",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "d2152813-b583-35b3-4cb7-44eb42bc1f84",
+    "name": "tab_label",
+    "display_width": null,
+    "label": "Label",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 4
+    },
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": ["Label", "Label", "Label", "Label"]
+  }
+]

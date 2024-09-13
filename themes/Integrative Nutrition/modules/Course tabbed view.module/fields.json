@@ -1,76 +1,81 @@
-[ {
-  "id" : "de55dcf5-2035-ee3e-5f90-88f5f835d080",
-  "name" : "hubdb_rows_most_popular",
-  "display_width" : null,
-  "label" : "HubDB rows: Most Popular",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 0
+[
+  {
+    "id": "de55dcf5-2035-ee3e-5f90-88f5f835d080",
+    "name": "hubdb_rows_most_popular",
+    "display_width": null,
+    "label": "HubDB rows: Most Popular",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 0
+    },
+    "table_name_or_id": "course_catalog",
+    "columns_to_fetch": ["tag"],
+    "type": "hubdbrow",
+    "default": {
+      "id": null
+    }
   },
-  "table_name_or_id" : "course_catalog",
-  "columns_to_fetch" : [ "tag" ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : null
-  }
-}, {
-  "id" : "9720c368-4b7e-e408-1798-f43caa6ac585",
-  "name" : "hubdb_rows_transformational_coaching",
-  "display_width" : null,
-  "label" : "HubDB row: Health & Life Coaching",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : null
+  {
+    "id": "9720c368-4b7e-e408-1798-f43caa6ac585",
+    "name": "hubdb_rows_transformational_coaching",
+    "display_width": null,
+    "label": "HubDB row: Health & Life Coaching",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": null
+    },
+    "table_name_or_id": "course_catalog",
+    "type": "hubdbrow",
+    "default": {
+      "id": null
+    }
   },
-  "table_name_or_id" : "course_catalog",
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : null
-  }
-}, {
-  "id" : "ff74e899-5298-8573-2f4f-d8df44a99584",
-  "name" : "hubdb_rows_yoga_meditation",
-  "display_width" : null,
-  "label" : "HubDB rows: Yoga & Meditation",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 0
+  {
+    "id": "ff74e899-5298-8573-2f4f-d8df44a99584",
+    "name": "hubdb_rows_yoga_meditation",
+    "display_width": null,
+    "label": "HubDB rows: Yoga & Meditation",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 0
+    },
+    "table_name_or_id": "course_catalog",
+    "columns_to_fetch": [],
+    "type": "hubdbrow",
+    "default": {
+      "id": null
+    }
   },
-  "table_name_or_id" : "course_catalog",
-  "columns_to_fetch" : [ ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : null
+  {
+    "id": "741fb457-ef0e-45f7-8046-79456714f25e",
+    "name": "hubdb_rows_nutrition_wellness",
+    "display_width": null,
+    "label": "HubDB rows: Nutrition & Wellness",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 0
+    },
+    "table_name_or_id": "course_catalog",
+    "columns_to_fetch": [],
+    "type": "hubdbrow",
+    "default": {
+      "id": null
+    }
   }
-}, {
-  "id" : "741fb457-ef0e-45f7-8046-79456714f25e",
-  "name" : "hubdb_rows_nutrition_wellness",
-  "display_width" : null,
-  "label" : "HubDB rows: Nutrition & Wellness",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 0
-  },
-  "table_name_or_id" : "course_catalog",
-  "columns_to_fetch" : [ ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : null
-  }
-} ]
+]

@@ -1,9 +1,9 @@
 {
-  "global" : false,
-  "content_types" : [ "BLOG_LISTING" ],
-  "icon" : "fontawesome-5.14.0:Alternate%20File:SOLID",
-  "host_template_types" : [ "BLOG_LISTING" ],
-  "module_id" : 78869536837,
-  "label" : "Blog Listing",
-  "is_available_for_new_content" : true
+  "global": false,
+  "content_types": ["BLOG_LISTING"],
+  "icon": "fontawesome-5.14.0:Alternate%20File:SOLID",
+  "host_template_types": ["BLOG_LISTING"],
+  "module_id": 78869536837,
+  "label": "Blog Listing",
+  "is_available_for_new_content": true
 }
