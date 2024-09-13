@@ -37,12 +37,12 @@
 
 .hs-button.dark-button {
   background: var(--color--water);
-  padding: 13px 30px !important;
+  padding: 11px 30px !important;
 } 
 
 .hs-button.dark-button:hover {
-  background: var(--color--faded--water);
-}  
+  background: var(--color--water--faded);
+} 
 
 .hs-button.light-button:hover {
   background: var(--color--legacy--red--cinnabar);
