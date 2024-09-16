@@ -1,0 +1,47 @@
+{% macro render_blog_posts(posts, layout) %}
+  <div class="row">
+    {% for content in posts %}
+      {% set author = content.blog_author.name %}
+      {% set is_large_card = layout == "two_column" and loop.index <= 2 %}
+      {% set initial_post_words = content.post_body|striptags|wordcount %}
+      {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
+      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
+      {% set card_type = is_large_card ? 'large' : 'small' %}
+      <a 
+        href="{{ content.url }}" 
+        class="blog-teasers__card blog-teasers__{{ card_type }}-card"
+      >
+        <img src="{{ content.featured_image }}" alt="{{ content.name }}">
+        <span class="blog-teasers__category">{{ content.topic_list[0].name }}</span>
+        <h4 class="blog-teasers__heading">{{ content.name }}</h4>
+        {% if author %}
+          <p class="blog-teasers__byline">By {{ author }} | {{ is_read_time_words }}</p>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro render_blog_posts_by_layout(layout, tag) %}
+  {% set posts = blog_recent_tag_posts("default", [tag], layout == "two_column" ? 5 : 3, "AND") %}
+  {{ render_blog_posts(posts, layout) }}
+{% endmacro %}
+
+{% set clean_tags = module.tag_field | replace('-', ' ') | replace(',', '') | capitalize %}
+<div class="blog-teasers">
+  <div class="blog-teasers__container">
+    <h4 class="blog-teasers__header">{{ clean_tags }}</h4>
+    <hr class="blog-teasers__line">
+    <div class="blog-teasers__posts">
+      {{ render_blog_posts_by_layout(module.layout, module.tag_field) }}
+    </div>
+    <div class="blog-teasers__view-more">
+      <a 
+        href="/blog/tag/{{ module.tag_field }}" 
+        class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
+      >
+        View more {{ clean_tags }} articles
+      </a>
+    </div>
+  </div>
+</div>

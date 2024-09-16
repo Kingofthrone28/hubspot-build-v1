@@ -1,0 +1,23 @@
+<div class="simple-footer-container-wrapper">
+  <div class="simple-footer-container responsive">
+    <div class="simple-footer-content-wrapper">
+      <div class="simple-footer-iin-logo-footer">
+        {% if module.iin_logo.src %}
+        <img src="{{ module.iin_logo.src }}" alt="{{ module.iin_logo.alt }}">
+        {% endif %}
+      </div>
+      <div class="simple-footer-wrapper">
+        {% if module.simple_logo.src %}
+        <div class="simple-footer-logo">
+          <img src="{{ module.simple_logo.src }}" alt="{{ module.simple_logo.alt }}">
+        </div>
+        {% endif %}
+        {% if module.copyright_text %}
+        <p>
+          <small>{{ module.copyright_text }}</small>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

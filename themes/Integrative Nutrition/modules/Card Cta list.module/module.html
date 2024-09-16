@@ -1,0 +1,20 @@
+<div class="card-cta-lists {{ module.bg_color == 'sage' ? 'background--sage' : 'background--chalk'}}"> 
+  {% if module.heading_text and module.heading_level %}
+    {% set cta_header = '<' ~ module.heading_level ~ ' class="card-cta-lists__header">' ~ module.heading_text ~ '</' ~ module.heading_level ~ '>' %}
+  {% endif %}
+  {{ cta_header }}
+  {% if module.card_text %}
+  <div class="card-cta-lists__text">
+    <strong>{{ module.card_text }}</strong>
+  </div>
+  {% endif %}
+  {% if module.card_lists %} 
+    <ul class="card-cta-lists__lists">
+      {% for item in module.card_lists %} 
+        {% if item.lists %}
+          <li>{{ item.lists }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

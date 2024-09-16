@@ -1,0 +1,104 @@
+[
+  {
+    "id": "4f671c17-c5e8-ce24-3f2b-3b5d781a217a",
+    "name": "bg_color",
+    "display_width": null,
+    "label": "Background Color",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["sage", "Sage"],
+      ["chalk", "Chalk"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "sage"
+  },
+  {
+    "id": "e905a79c-9048-cc59-a75e-36b53952de68",
+    "name": "heading_level",
+    "display_width": null,
+    "label": "Heading level",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["h2", "heading 2"],
+      ["h3", "heading 3"],
+      ["h4", "heading 4"],
+      ["h5", "heading 5"],
+      ["h6 ", "heading 6"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "h2"
+  },
+  {
+    "id": "13257038-306c-7b43-e5ab-53b8eeea5dec",
+    "name": "heading_text",
+    "display_width": null,
+    "label": "heading text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "id": "8497547a-0b5c-4bf7-2804-d91bd4f72653",
+    "name": "card_lists",
+    "display_width": null,
+    "label": "item list",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": "",
+      "default": null
+    },
+    "children": [
+      {
+        "id": "fbb76490-0acf-7dd0-bc89-1171f570b12a",
+        "name": "lists",
+        "display_width": null,
+        "label": "Rich text",
+        "required": false,
+        "locked": false,
+        "enabled_features": [
+          "indents",
+          "lists",
+          "anchor",
+          "link",
+          "standard_emphasis",
+          "advanced_emphasis"
+        ],
+        "type": "richtext"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": []
+  },
+  {
+    "id": "24084837-8dec-b31c-c8a9-e53b32e58bcb",
+    "name": "card_text",
+    "display_width": null,
+    "label": "Card Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "This is the default text"
+  }
+]

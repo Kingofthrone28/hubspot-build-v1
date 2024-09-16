@@ -201,7 +201,7 @@
     display: flex;
     align-items: end;
     line-height: var(--line-height--legacy--heading);
-    font-family: var(--font-family--legacy--heading);
+    font-family: var(--font-family--heading);
     font-size: var(--font-size--legacy--13);
     font-weight: 600;
   }
@@ -367,15 +367,15 @@
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .card-subtitle {
-  font-size: var(---font-size--2);
+  font-size: var(---font-size--14);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .card-title {
   display: flex;
   align-items: end;
   line-height: var(--line-height--legacy--4);
-  font-family: var(--font-family--legacy--heading);
-  font-size: var(---font-size--6);
+  font-family: var(--font-family--heading);
+  font-size: var(---font-size--24);
   font-weight: 600;
 }
 
@@ -385,12 +385,12 @@
 
 .hub-view-courses .hub-view-content .hub-views-row .hub-card-body p {
   color: var(--color--grey-2);
-  font-size: var(---font-size--2);
+  font-size: var(---font-size--14);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-teaser-price {
   display: none;
-  font-size: var(--font-size--4);
+  font-size: var(--font-size--18);
 }
 
 .hub-view-courses .hub-view-content .hub-views-row .course-teaser-footer {

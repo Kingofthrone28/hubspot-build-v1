@@ -1,0 +1,32 @@
+<!-- Begin Webinar Details module html  -->
+<h2>webinar test</h2>
+<div>dynamic_page_crm_object: {{ dynamic_page_crm_object }}</div>
+<br />
+
+{% if dynamic_page_crm_object %}
+  {% set webinar = dynamic_page_crm_object %}
+  {% set data_type = 'Dynamic' %}
+{% elif module.webinar %}
+  {% set webinar = module.webinar.properties %}
+  {% set data_type = 'Module' %}
+{% elif is_in_editor %}
+  <h3>no webinar data found!</h3>
+{% endif %}
+    
+{% if webinar %}
+  <h3>{{ data_type }} Selection</h3>
+  <div>id: {{ webinar.id|pprint }}</div>
+  <div>title: {{ webinar.title }}</div>
+  <div>full webinar: {{ webinar|pprint }}</div>
+  <h3>associations</h3>
+  
+  {# webinar to people association id #}
+  {% set association_id = 33 %}
+  {% set id = webinar.id %}
+
+  <div>id: {{ id|pprint }}</div>
+  <div>association_id: {{ association_id|pprint }}
+  <hr style="border: 1px solid black;" />
+  <div>webinar to obj: id: {{association_id}} user: {{ crm_associations(id, 'USER_DEFINED', association_id).results }}</div>
+{% endif %}
+<!-- End Webinar Details module html  -->

@@ -1,0 +1,19 @@
+[
+  {
+    "id": "36113cf1-918c-b785-67c0-8fcebf897caa",
+    "name": "webinar",
+    "display_width": null,
+    "label": "CRM object",
+    "required": false,
+    "locked": false,
+    "object_type": "p_webinars",
+    "properties_to_fetch": [
+      "hs_object_id",
+      "featured_start_date_time",
+      "title"
+    ],
+    "display_properties": ["title"],
+    "display_format": "%0",
+    "type": "crmobject"
+  }
+]

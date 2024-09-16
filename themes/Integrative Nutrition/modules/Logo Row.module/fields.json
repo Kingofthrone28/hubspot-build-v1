@@ -1,17 +1,19 @@
 [
   {
+    "id": "heading",
     "name": "heading",
+    "display_width": null,
     "label": "Heading",
+    "help_text": "",
+    "inline_help_text": "",
     "required": false,
     "locked": false,
     "validation_regex": "",
     "validation_error_message": "",
+    "placeholder": "",
     "allow_new_line": false,
     "show_emoji_picker": false,
     "type": "text",
-    "placeholder": "",
-    "inline_help_text": "",
-    "help_text": "",
     "default": "Proin finibus quam metus, non porta urna commodo id. Integer congue."
   },
   {
@@ -29,6 +31,7 @@
     },
     "children": [
       {
+        "id": "group_logos.logo",
         "name": "logo",
         "display_width": null,
         "label": "Logo",
@@ -56,29 +59,25 @@
     "type": "group"
   },
   {
+    "id": "loading",
     "name": "loading",
+    "display_width": null,
     "label": "Image Loading Strategy",
+    "help_text": "",
+    "inline_help_text": "",
     "required": false,
     "locked": false,
     "display": "select",
-    "inline_help_text": "",
-    "help_text": "",
-    "choices": [
-      [
-        "disabled",
-        "Browser Default"
-      ],
-      [
-        "lazy",
-        "Lazy"
-      ],
-      [
-        "eager",
-        "Eager"
-      ]
-    ],
-    "type": "choice",
     "placeholder": "",
+    "choices": [
+      ["disabled", "Browser Default"],
+      ["lazy", "Lazy"],
+      ["eager", "Eager"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
     "default": "disabled"
   }
 ]

@@ -1,13 +1,7 @@
 {
-  "external_js": [],
   "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "module_id": 174450384737,
   "is_available_for_new_content": false
 }

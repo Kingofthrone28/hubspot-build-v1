@@ -1,0 +1,17 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+{# 
+  For more info on macro imports, see: 
+  https://developers.hubspot.com/beta-docs/reference/cms/hubl/functions
+#}
+
+{# Get a human readable description of reading time of a string #}
+{% macro get_reading_time(string) %}
+  {% set word_count = string|striptags|wordcount %}
+  {% set average_words_per_minute_low = 200 %}
+  {% set minutes = (word_count / average_words_per_minute_low)|round(0, 'ceil') %}
+  {% set count = minutes <= 1 ? 'less than 1 min' : minutes ~ ' mins' %}
+  {{ 'Read time: ' ~ count }}
+{% endmacro %}

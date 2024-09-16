@@ -1,91 +1,110 @@
-[ {
-  "id" : "75767726-420a-7e8d-e820-7782bce48ed5",
-  "name" : "heading",
-  "display_width" : null,
-  "label" : "Heading",
-  "required" : true,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Heading"
-}, {
-  "id" : "e2a100ed-713a-8e0f-ba03-7722f0665747",
-  "name" : "description",
-  "display_width" : null,
-  "label" : "Description",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "default" : ""
-}, {
-  "id" : "085d8c86-c51c-bbe4-6a33-10aa1143618b",
-  "name" : "subsections",
-  "display_width" : null,
-  "label" : "Subsections",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : 2,
-    "sorting_label_field" : null,
-    "default" : null
+[
+  {
+    "id": "75767726-420a-7e8d-e820-7782bce48ed5",
+    "name": "heading",
+    "display_width": null,
+    "label": "Heading",
+    "required": true,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Heading"
   },
-  "children" : [ {
-    "id" : "974e5c44-7667-71c3-d3bf-22dcbbc9e3fb",
-    "name" : "heading",
-    "display_width" : null,
-    "label" : "Heading",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Subheading"
-  }, {
-    "id" : "f4f23752-d28b-a276-20dc-caf4390b4d06",
-    "name" : "description",
-    "display_width" : null,
-    "label" : "Description",
-    "required" : false,
-    "locked" : false,
-    "type" : "richtext"
-  }, {
-    "id" : "69b4a850-685d-2b3b-f484-61fb11a2f112",
-    "name" : "link_label",
-    "display_width" : null,
-    "label" : "Link Label",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
-  }, {
-    "id" : "63a85ab4-fc19-773a-aa66-8e8963cf1a29",
-    "name" : "link_field",
-    "display_width" : null,
-    "label" : "Link",
-    "required" : false,
-    "locked" : false,
-    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
-    "default" : {
-      "url" : {
-        "content_id" : null,
-        "href" : "",
-        "type" : "FILE"
+  {
+    "id": "e2a100ed-713a-8e0f-ba03-7722f0665747",
+    "name": "description",
+    "display_width": null,
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "id": "085d8c86-c51c-bbe4-6a33-10aa1143618b",
+    "name": "subsections",
+    "display_width": null,
+    "label": "Subsections",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": 2,
+      "sorting_label_field": null,
+      "default": null
+    },
+    "children": [
+      {
+        "id": "974e5c44-7667-71c3-d3bf-22dcbbc9e3fb",
+        "name": "heading",
+        "display_width": null,
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Subheading"
       },
-      "open_in_new_tab" : true,
-      "no_follow" : false
-    }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ ]
-} ]
+      {
+        "id": "f4f23752-d28b-a276-20dc-caf4390b4d06",
+        "name": "description",
+        "display_width": null,
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "richtext"
+      },
+      {
+        "id": "69b4a850-685d-2b3b-f484-61fb11a2f112",
+        "name": "link_label",
+        "display_width": null,
+        "label": "Link Label",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+      },
+      {
+        "id": "63a85ab4-fc19-773a-aa66-8e8963cf1a29",
+        "name": "link_field",
+        "display_width": null,
+        "label": "Link",
+        "required": false,
+        "locked": false,
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG",
+          "CALL_TO_ACTION",
+          "PHONE_NUMBER",
+          "WHATSAPP_NUMBER",
+          "PAYMENT"
+        ],
+        "show_advanced_rel_options": false,
+        "type": "link",
+        "default": {
+          "url": {
+            "content_id": null,
+            "href": "",
+            "type": "FILE"
+          },
+          "open_in_new_tab": true,
+          "no_follow": false
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": []
+  }
+]

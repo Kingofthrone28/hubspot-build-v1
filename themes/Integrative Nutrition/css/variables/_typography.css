@@ -2,54 +2,57 @@
   /* Style Guide Typography */
 
   /* Font Family */
+  --font-family--big-number: 'Junicode', 'Times New Roman', serif;
   --font-family--body: 'Public Sans', 'Arial', sans-serif;
-  --font-family--heading: 'Junicode', 'Times New Roman', serif;
+  --font-family--heading: 'Playfair Display', 'Georgia', 'Times New Roman',
+    'Times', serif;
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
-  --font-family--playfair: 'Playfair Display', 'Georgia', 'Times New Roman',
-    'Times', serif;
 
   /* Font Size (raw values) */
-  --font-size--1: 0.75rem; /*  ≈ 12px */
-  --font-size--2: 0.875rem; /* ≈ 14px */
-  --font-size--3: 1rem; /*     ≈ 16px */
-  --font-size--4: 1.125rem; /* ≈ 18px */
-  --font-size--5: 1.25rem; /*  ≈ 20px */
-  --font-size--6: 1.5rem; /*   ≈ 24px */
-  --font-size--7: 1.75rem; /*  ≈ 28px */
-  --font-size--8: 2rem; /*     ≈ 32px */
-  --font-size--9: 2.5rem; /*   ≈ 40px */
-  --font-size--10: 3rem; /*    ≈ 48px */
-  --font-size--11: 5rem; /*    ≈ 80px */
+  --font-size--12: 0.75rem; /*  ≈ 12px */
+  --font-size--14: 0.875rem; /* ≈ 14px */
+  --font-size--16: 1rem; /*     ≈ 16px */
+  --font-size--18: 1.125rem; /* ≈ 18px */
+  --font-size--20: 1.25rem; /*  ≈ 20px */
+  --font-size--24: 1.5rem; /*   ≈ 24px */
+  --font-size--28: 1.75rem; /*  ≈ 28px */
+  --font-size--32: 2rem; /*     ≈ 32px */
+  --font-size--40: 2.5rem; /*   ≈ 40px */
+  --font-size--48: 3rem; /*     ≈ 48px */
+  --font-size--80: 5rem; /*     ≈ 80px */
+  --font-size--96: 6rem; /*     ≈ 96px */
 
   /* Font Size (mapped to Figma text style) */
-  --font-size--h1--desktop: var(--font-size--11);
-  --font-size--h1--mobile: var(--font-size--9);
-  --font-size--h2--desktop: var(--font-size--10);
-  --font-size--h2--mobile: var(--font-size--8);
-  --font-size--h3--desktop: var(--font-size--9);
-  --font-size--h3--mobile: var(--font-size--6);
-  --font-size--h4--desktop: var(--font-size--8);
-  --font-size--h4--mobile: var(--font-size--5);
-  --font-size--h5--desktop: var(--font-size--7);
-  --font-size--h5--mobile: var(--font-size--4);
-  --font-size--h6--desktop: var(--font-size--5);
-  --font-size--h6--mobile: var(--font-size--3);
-  --font-size--extra-large-paragraph: var(--font-size--6);
-  --font-size--icon-card-title--desktop: var(--font-size--8);
-  --font-size--icon-card-title--mobile: var(--font-size--6);
-  --font-size--large-paragraph--desktop: var(--font-size--4);
-  --font-size--large-paragraph--mobile: var(--font-size--3);
-  --font-size--legal: var(--font-size--1);
-  --font-size--paragraph: var(--font-size--3);
-  --font-size--small-paragraph: var(--font-size--2);
-  --font-size--testimonial-content--desktop: var(--font-size--6);
-  --font-size--testimonial-content--mobile: var(--font-size--5);
-  --font-size--testimonial-name--desktop: var(--font-size--3);
-  --font-size--testimonial-name--mobile: var(--font-size--3);
-  --font-size--testimonial-small: var(--font-size--3);
+  --font-size--big-number: var(--font-size--96);
+  --font-size--extra-large-paragraph: var(--font-size--24);
+  --font-size--h1--desktop: var(--font-size--80);
+  --font-size--h1--mobile: var(--font-size--40);
+  --font-size--h2--desktop: var(--font-size--48);
+  --font-size--h2--mobile: var(--font-size--32);
+  --font-size--h3--desktop: var(--font-size--40);
+  --font-size--h3--mobile: var(--font-size--24);
+  --font-size--h4--desktop: var(--font-size--32);
+  --font-size--h4--mobile: var(--font-size--20);
+  --font-size--h5--desktop: var(--font-size--28);
+  --font-size--h5--mobile: var(--font-size--18);
+  --font-size--h6--desktop: var(--font-size--20);
+  --font-size--h6--mobile: var(--font-size--16);
+  --font-size--icon-card-title--desktop: var(--font-size--32);
+  --font-size--icon-card-title--mobile: var(--font-size--24);
+  --font-size--large-paragraph--desktop: var(--font-size--18);
+  --font-size--large-paragraph--mobile: var(--font-size--16);
+  --font-size--legal: var(--font-size--12);
+  --font-size--paragraph: var(--font-size--16);
+  --font-size--small-paragraph: var(--font-size--14);
+  --font-size--testimonial-content--desktop: var(--font-size--24);
+  --font-size--testimonial-content--mobile: var(--font-size--20);
+  --font-size--testimonial-name--desktop: var(--font-size--16);
+  --font-size--testimonial-name--mobile: var(--font-size--16);
+  --font-size--testimonial-small: var(--font-size--16);
 
   /* Font Style */
+  --font-style--big-number: normal;
   --font-style--body: normal;
   --font-style--heading: normal;
 
@@ -63,6 +66,7 @@
   --font-weight--bold: 700;
   --font-weight--extra-bold: 800;
   --font-weight--black: 900;
+  --font-weight--big-number: var(--font-weight--regular);
   --font-weight--body: var(--font-weight--regular);
   --font-weight--heading: var(--font-weight--regular);
 
@@ -81,9 +85,11 @@
   --line-height--166: 1.66667;
 
   /* Line Height (mapped to Figma text style) */
+  --line-height--big-number: var(--line-height--100);
+  --line-height--extra-large-paragraph: var(--line-height--116);
   --line-height--h1--desktop: var(--line-height--110);
   --line-height--h1--mobile: var(--line-height--120);
-  --line-height--h2--desktop: var(--line-height--166);
+  --line-height--h2--desktop: var(--line-height--116);
   --line-height--h2--mobile: var(--line-height--125);
   --line-height--h3--desktop: var(--line-height--120);
   --line-height--h3--mobile: var(--line-height--133);
@@ -93,14 +99,12 @@
   --line-height--h5--mobile: var(--line-height--133);
   --line-height--h6--desktop: var(--line-height--140);
   --line-height--h6--mobile: var(--line-height--150);
-  --line-height--extra-large-paragraph: var(--line-height--166);
   --line-height--icon-card-title--desktop: var(--line-height--125);
   --line-height--icon-card-title--mobile: var(--line-height--166);
   --line-height--legal: var(--line-height--166);
   --line-height--large-paragraph--desktop: var(--line-height--155);
   --line-height--large-paragraph--mobile: var(--line-height--150);
-  --line-height--paragraph--desktop: var(--line-height--150);
-  --line-height--paragraph--mobile: var(--line-height--157);
+  --line-height--paragraph: var(--line-height--150);
   --line-height--small-paragraph: var(--line-height--157);
   --line-height--testimonial-content--desktop: var(--line-height--133);
   --line-height--testimonial-content--mobile: var(--line-height--140);
@@ -114,6 +118,21 @@
    * - font-size / line-height
    * - font-family
    */
+
+  /* Figma text style: none */
+  --font--big-number: var(--font-style--big-number)
+    var(--font-weight--big-number) var(--font-size--big-number) /
+    var(--line-height--big-number) var(--font-family--big-number);
+
+  /* Figma text style: New/Extra Large Paragraph */
+  --font--extra-large-paragraph: var(--font-style--body)
+    var(--font-weight--body) var(--font-size--extra-large-paragraph) /
+    var(--line-height--extra-large-paragraph) var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--extra-large-paragraph--light: var(--font-style--body)
+    var(--font-weight--light) var(--font-size--extra-large-paragraph) /
+    var(--line-height--extra-large-paragraph) var(--font-family--body);
 
   /* Figma text style: New/H1 - Desktop */
   --font--h1--desktop: var(--font-style--heading) var(--font-weight--heading)
@@ -175,11 +194,6 @@
     var(--font-size--h6--mobile) / var(--line-height--h6--mobile)
     var(--font-family--heading);
 
-  /* Figma text style: New/Extra Large Paragraph */
-  --font--extra-large-paragraph: var(--font-style--body)
-    var(--font-weight--body) var(--font-size--extra-large-paragraph) /
-    var(--line-height--extra-large-paragraph) var(--font-family--body);
-
   /* Figma text style: New/Icon Card Title */
   --font--icon-card-title--desktop: var(--font-style--body)
     var(--font-weight--semibold) var(--font-size--icon-card-title--desktop) /
@@ -193,6 +207,11 @@
   /* Figma text style: New/Large Paragraph */
   --font--large-paragraph--desktop: var(--font-style--body)
     var(--font-weight--body) var(--font-size--large-paragraph--desktop) /
+    var(--line-height--large-paragraph--desktop) var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--large-paragraph--light: var(--font-style--body)
+    var(--font-weight--light) var(--font-size--large-paragraph--desktop) /
     var(--line-height--large-paragraph--desktop) var(--font-family--body);
 
   /* Figma text style: New/Mobile - Large Paragraph */
@@ -209,14 +228,39 @@
     var(--font-size--legal) / var(--line-height--legal) var(--font-family--body);
 
   /* Figma text style: New/Paragraph */
-  --font--paragraph--desktop: var(--font-style--body) var(--font-weight--bold)
-    var(--font-size--paragraph) / var(--line-height--paragraph--desktop)
+  --font--paragraph: var(--font-style--body) var(--font-weight--body)
+    var(--font-size--paragraph) / var(--line-height--paragraph)
+    var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--paragraph--medium: var(--font-style--body) var(--font-weight--medium)
+    var(--font-size--paragraph) / var(--line-height--paragraph)
+    var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--paragraph--semibold: var(--font-style--body)
+    var(--font-weight--semibold) var(--font-size--paragraph) /
+    var(--line-height--paragraph) var(--font-family--body);
+
+  /* Figma text style: Desktop/Paragraph */
+  --font--paragraph--bold: var(--font-style--body) var(--font-weight--bold)
+    var(--font-size--paragraph) / var(--line-height--paragraph)
     var(--font-family--body);
 
   /* Figma text style: New/Small Paragraph */
   --font--small-paragraph: var(--font-style--body) var(--font-weight--body)
     var(--font-size--small-paragraph) / var(--line-height--small-paragraph)
     var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--small-paragraph--light: var(--font-style--body)
+    var(--font-weight--light) var(--font-size--small-paragraph) /
+    var(--line-height--small-paragraph) var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--small-paragraph--medium: var(--font-style--body)
+    var(--font-weight--medium) var(--font-size--small-paragraph) /
+    var(--line-height--small-paragraph) var(--font-family--body);
 
   /* Figma text style: New/Small paragraph bold */
   --font--small-paragraph--semibold: var(--font-style--body)
@@ -256,9 +300,6 @@
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
   --font-family--legacy--blog: 'Lato', sans-serif;
   --font-family--legacy--gallery: 'Roboto', sans-serif;
-  --font-family--legacy--heading: 'Junicode', 'JuniusX-Regular', 'Cardo', serif;
-  --font-family--legacy--heading--bold: 'Junicode-Bold', 'JuniusX-Bold', 'Cardo',
-    serif;
   --font-family--legacy--timeline: 'Oxygen', sans-serif;
   --font-family--legacy--video: 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;

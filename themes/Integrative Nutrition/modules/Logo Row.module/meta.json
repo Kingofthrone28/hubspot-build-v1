@@ -1,21 +1,11 @@
 {
   "global": false,
-  "content_types": [
-    "LANDING_PAGE",
-    "SITE_PAGE",
-    "BLOG_LISTING",
-    "BLOG_POST"
-  ],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
   "master_language": "en",
-  "categories": [
-    "media"
-  ],
+  "categories": ["media"],
   "icon": "ellipsis-h",
-  "host_template_types": [
-    "PAGE",
-    "BLOG_LISTING",
-    "BLOG_POST"
-  ],
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "module_id": 175205297209,
   "label": "Logo Row",
   "is_available_for_new_content": true
 }

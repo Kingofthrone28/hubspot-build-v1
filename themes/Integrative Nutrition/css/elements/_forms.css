@@ -51,14 +51,14 @@ select {
   width: auto;
   text-align: left;
   color: var(--color--legacy--blue--gulf-blue);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 /* Help text - legends */
 
 .dnd-section form legend {
   color: var(--color--legacy--blue--gulf-blue);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 /* Inputs */
@@ -79,7 +79,7 @@ select {
   padding: 0 20px 16px;
   width: 100%;
   color: var(--color--legacy--blue--gulf-blue);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .dnd-section select,
@@ -94,7 +94,7 @@ select {
   background: var(--color--legacy--white--white-smoke-4);
   padding: 12px 20px;
   color: var(--theme--typography--body-text--color);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .dnd-section form fieldset.form-columns-1 .hs-input {
@@ -116,7 +116,7 @@ select {
   padding: 0.7rem;
   width: 100%;
   color: var(--color--legacy--blue--gulf-blue);
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .systems-page .actions {
@@ -167,7 +167,7 @@ form .inputs-list {
 .inputs-list input,
 .inputs-list span {
   vertical-align: middle;
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 .hs-input[type='checkbox'],
@@ -227,7 +227,7 @@ form .inputs-list {
 form .hs-richtext,
 form .hs-richtext p {
   margin: 0 0 1.4rem;
-  font-size: var(--font-size--2);
+  font-size: var(--font-size--14);
 }
 
 form .hs-richtext img {
@@ -244,7 +244,7 @@ form .header {
 .legal-consent-container .hs-form-booleancheckbox-display > span,
 .legal-consent-container .hs-form-booleancheckbox-display > span p {
   margin-left: 1rem !important;
-  font-size: var(--font-size--2);
+  font-size: var(--font-size--14);
 }
 
 /* Validation */

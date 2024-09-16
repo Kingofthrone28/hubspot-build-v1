@@ -72,7 +72,7 @@
 .jd-add-pop-name {
   margin-bottom: 5px;
   line-height: var(--line-height--110);
-  font-family: var(--font-family--legacy--heading);
+  font-family: var(--font-family--heading);
   font-size: var(--font-size--legacy--13);
   font-weight: bold;
 }

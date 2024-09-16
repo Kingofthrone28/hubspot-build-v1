@@ -1,8 +1,8 @@
 {
-  "global" : false,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
-  "host_template_types" : [ "PAGE" ],
-  "module_id" : 150606722173,
-  "label" : "enable needle",
-  "is_available_for_new_content" : true
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "module_id": 175794850847,
+  "label": "enable needle",
+  "is_available_for_new_content": true
 }

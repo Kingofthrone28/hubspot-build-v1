@@ -1,18 +1,14 @@
 {
-  "label": "Test Variables",
-  "css_assets": [],
-  "external_js": [],
   "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE",
-    "BLOG_POST",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE",
+    "EMAIL",
     "BLOG_LISTING",
-    "EMAIL"
+    "BLOG_POST"
   ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL"],
+  "module_id": 176536179784,
+  "label": "Test Variables",
   "is_available_for_new_content": true
 }

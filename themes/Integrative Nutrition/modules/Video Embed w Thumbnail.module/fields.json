@@ -1,46 +1,50 @@
-[ {
-  "id" : "bb7ae125-455c-2e9d-a263-45d0adf15f28",
-  "name" : "container_height",
-  "display_width" : null,
-  "label" : "Container Height",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "56.25%"
-}, {
-  "id" : "7f9f76dd-82e5-473a-7a5f-68ee1acd92d7",
-  "name" : "thumb",
-  "display_width" : null,
-  "label" : "Thumb",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/video_thumb.png",
-    "alt" : "video_thumb",
-    "loading" : "lazy",
-    "width" : 800,
-    "height" : 484,
-    "max_width" : 800,
-    "max_height" : 484
+[
+  {
+    "id": "bb7ae125-455c-2e9d-a263-45d0adf15f28",
+    "name": "container_height",
+    "display_width": null,
+    "label": "Container Height",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "56.25%"
+  },
+  {
+    "id": "7f9f76dd-82e5-473a-7a5f-68ee1acd92d7",
+    "name": "thumb",
+    "display_width": null,
+    "label": "Thumb",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "https://2660272.fs1.hubspotusercontent-na1.net/hubfs/2660272/video_thumb.png",
+      "alt": "video_thumb",
+      "loading": "lazy",
+      "width": 800,
+      "height": 484,
+      "max_width": 800,
+      "max_height": 484
+    }
+  },
+  {
+    "id": "79400dab-bdb2-4c82-62d1-d27869ad2ec6",
+    "name": "video_embed",
+    "display_width": null,
+    "label": "Video Embed",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>"
   }
-}, {
-  "id" : "79400dab-bdb2-4c82-62d1-d27869ad2ec6",
-  "name" : "video_embed",
-  "display_width" : null,
-  "label" : "Video Embed",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/915671795?h=a0b1e397a6&autoplay=1\" frameborder=\"0\"    allowfullscreen></iframe>"
-} ]
+]

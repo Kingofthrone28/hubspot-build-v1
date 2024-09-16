@@ -1,53 +1,58 @@
-[ {
-  "id" : "53a54233-fe42-7958-5c6b-6a5b110b1cb0",
-  "name" : "category_vertical",
-  "display_width" : null,
-  "label" : "Category Filter",
-  "inline_help_text" : "Use comma separation to select multiple, i.e. Chopra Certification Course,IIN Enrichment Course",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : ""
-}, {
-  "id" : "de55dcf5-2035-ee3e-5f90-88f5f835d080",
-  "name" : "hubdb_bundle_rows",
-  "display_width" : null,
-  "label" : "HubDB rows",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 0
+[
+  {
+    "id": "53a54233-fe42-7958-5c6b-6a5b110b1cb0",
+    "name": "category_vertical",
+    "display_width": null,
+    "label": "Category Filter",
+    "inline_help_text": "Use comma separation to select multiple, i.e. Chopra Certification Course,IIN Enrichment Course",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": ""
   },
-  "table_name_or_id" : "course_bundle",
-  "columns_to_fetch" : [ ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : null
+  {
+    "id": "de55dcf5-2035-ee3e-5f90-88f5f835d080",
+    "name": "hubdb_bundle_rows",
+    "display_width": null,
+    "label": "HubDB rows",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 0
+    },
+    "table_name_or_id": "course_bundle",
+    "columns_to_fetch": [],
+    "type": "hubdbrow",
+    "default": {
+      "id": null
+    }
+  },
+  {
+    "id": "f1ad0538-7c7c-9b16-2a8b-1d5ac41abf9c",
+    "name": "limit",
+    "display_width": null,
+    "label": "Limit",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 3
+  },
+  {
+    "id": "94bf9759-bea9-a930-2e8b-34095593710a",
+    "name": "filter_no_results_message",
+    "display_width": null,
+    "label": "Filter No Results Message",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<p style=\"font-size: 18px;\">There are no courses matching your filter choices.</p>\n<p style=\"font-size: 18px;\">Please try a different filter combination.</p>"
   }
-}, {
-  "id" : "f1ad0538-7c7c-9b16-2a8b-1d5ac41abf9c",
-  "name" : "limit",
-  "display_width" : null,
-  "label" : "Limit",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 3
-}, {
-  "id" : "94bf9759-bea9-a930-2e8b-34095593710a",
-  "name" : "filter_no_results_message",
-  "display_width" : null,
-  "label" : "Filter No Results Message",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "default" : "<p style=\"font-size: 18px;\">There are no courses matching your filter choices.</p>\n<p style=\"font-size: 18px;\">Please try a different filter combination.</p>"
-} ]
+]

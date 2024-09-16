@@ -1,12 +1,12 @@
 # Browsers that we support
 
 > 2% in US
-Android >= 30
+Android >= 70
 Chrome >= 66
-Edge >= 19
-Firefox >= 68
-Opera >= 44
+Edge >= 84
+Firefox >= 78
+Opera >= 81
 Safari >= 11
-Samsung >= 6.5
+Samsung >= 7.2
 not dead
 not unreleased versions

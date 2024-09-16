@@ -3,18 +3,24 @@
     calculateDiscounts,
     configureAddedToCartPopUp,
     configureDropdownHeading,
-    configureHeaderOffset,
     configureHeaderToggle,
     configureImageSlider,
     configureStickyHeaderSampleClass,
     configureStickyNav,
     createViewItemEvent,
     getProductData,
-    handleSelectorChange,
+    handleSelectorChangeFull,
     matchPDPBottomSectionToTop,
     parseMarkupData,
     processProduct,
   } = getProductSelectionMethods();
+
+  /** Fix header to the top of the page */
+  const makeHeaderFixed = () => {
+    document
+      .querySelector('.pdp-sticky-wrap')
+      .classList.add('pdp-sticky-wrap-fixed');
+  };
 
   try {
     const moduleData = parseMarkupData();
@@ -23,21 +29,21 @@
       isInlineAndHeader,
       isSampleClass,
       productID,
-      showStickyHeader,
+      showInlineSection,
     } = moduleData;
 
     if (isInlineAndHeader || isHeaderOnly) {
       configureStickyNav();
       configureHeaderToggle(isHeaderOnly);
+      makeHeaderFixed();
     }
 
-    if (isInlineAndHeader) {
+    if (showInlineSection) {
       configureImageSlider();
     }
 
     if (isSampleClass) {
       configureStickyHeaderSampleClass();
-      configureHeaderOffset();
       configureAddedToCartPopUp();
     }
 
@@ -48,12 +54,9 @@
     const { productOptions, variantSelections } = processProduct(product);
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
-    const discountInfo =
-      showStickyHeader && firstVariant
-        ? await calculateDiscounts(firstVariant)
-        : undefined;
+    const discountInfo = await calculateDiscounts(firstVariant);
 
-    handleSelectorChange(
+    handleSelectorChangeFull(
       moduleData,
       product,
       variantSelections,

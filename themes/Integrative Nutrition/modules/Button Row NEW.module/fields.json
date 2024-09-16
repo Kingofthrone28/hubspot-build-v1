@@ -1,233 +1,270 @@
-[ {
-  "id" : "921778b6-f8ff-a2c5-61a2-3f1e8eec151d",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "fdc9dfaa-a670-fdf1-b5c3-dafc409773c6",
-    "name" : "spacing_field",
-    "display_width" : null,
-    "label" : "Spacing",
-    "required" : false,
-    "locked" : false,
-    "type" : "spacing",
-    "default" : {
-      "padding" : {
-        "top" : {
-          "value" : 15,
-          "units" : "px"
-        },
-        "bottom" : {
-          "value" : 15,
-          "units" : "px"
-        },
-        "left" : {
-          "value" : 80,
-          "units" : "px"
-        },
-        "right" : {
-          "value" : 80,
-          "units" : "px"
+[
+  {
+    "id": "921778b6-f8ff-a2c5-61a2-3f1e8eec151d",
+    "name": "style",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "fdc9dfaa-a670-fdf1-b5c3-dafc409773c6",
+        "name": "spacing_field",
+        "display_width": null,
+        "label": "Spacing",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": {
+              "value": 15,
+              "units": "px"
+            },
+            "bottom": {
+              "value": 15,
+              "units": "px"
+            },
+            "left": {
+              "value": 80,
+              "units": "px"
+            },
+            "right": {
+              "value": 80,
+              "units": "px"
+            }
+          },
+          "margin": {
+            "top": {
+              "value": null,
+              "units": null
+            },
+            "bottom": {
+              "value": 5,
+              "units": "px"
+            }
+          }
         }
-      },
-      "margin" : {
-        "top" : {
-          "value" : null,
-          "units" : null
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "spacing_field": {
+        "padding": {
+          "top": {
+            "value": 15,
+            "units": "px"
+          },
+          "bottom": {
+            "value": 15,
+            "units": "px"
+          },
+          "left": {
+            "value": 80,
+            "units": "px"
+          },
+          "right": {
+            "value": 80,
+            "units": "px"
+          }
         },
-        "bottom" : {
-          "value" : 5,
-          "units" : "px"
+        "margin": {
+          "top": {
+            "value": null,
+            "units": null
+          },
+          "bottom": {
+            "value": 5,
+            "units": "px"
+          }
         }
       }
     }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "spacing_field" : {
-      "padding" : {
-        "top" : {
-          "value" : 15,
-          "units" : "px"
-        },
-        "bottom" : {
-          "value" : 15,
-          "units" : "px"
-        },
-        "left" : {
-          "value" : 80,
-          "units" : "px"
-        },
-        "right" : {
-          "value" : 80,
-          "units" : "px"
-        }
-      },
-      "margin" : {
-        "top" : {
-          "value" : null,
-          "units" : null
-        },
-        "bottom" : {
-          "value" : 5,
-          "units" : "px"
-        }
-      }
-    }
-  }
-}, {
-  "id" : "2dfa6784-9d13-6de0-fc6e-ba76aca51c58",
-  "name" : "buttons",
-  "display_width" : null,
-  "label" : "Buttons",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 3
   },
-  "children" : [ {
-    "id" : "d830e88c-b06f-edda-1db0-0a999e9cbdd5",
-    "name" : "text_field",
-    "display_width" : null,
-    "label" : "Text",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Button"
-  }, {
-    "id" : "4e253796-1adf-73b1-5af4-75dfc331ebb5",
-    "name" : "dl_label",
-    "display_width" : null,
-    "label" : "Data Tracking",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : ""
-  }, {
-    "id" : "f45d3af8-34fb-60d7-2735-89bc12fe029e",
-    "name" : "link_field",
-    "display_width" : null,
-    "label" : "Link",
-    "inline_help_text" : "",
-    "required" : false,
-    "locked" : false,
-    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
-    "default" : {
-      "url" : {
-        "content_id" : null,
-        "href" : "https://www.google.com",
-        "type" : "EXTERNAL"
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "id" : "1bab59d5-c13f-171a-d950-7a7a39d147d6",
-    "name" : "jump_link",
-    "display_width" : null,
-    "label" : "Jump Link",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
-  }, {
-    "id" : "92007980-88bd-5685-0e2b-ed00482a5e90",
-    "name" : "button_style",
-    "display_width" : null,
-    "label" : "Button Style",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "hero", "Hero" ], [ "tertiary", "Tertiary" ], [ "link", "Link" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice"
-  }, {
-    "id" : "b0851e6c-8c7d-9203-2051-609ac3d717ab",
-    "name" : "show_arrow",
-    "display_width" : null,
-    "label" : "Show Arrow",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : true
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "text_field" : "Button Text",
-    "dl_label" : "",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "href" : "https://www.google.com",
-        "type" : "EXTERNAL"
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
+  {
+    "id": "2dfa6784-9d13-6de0-fc6e-ba76aca51c58",
+    "name": "buttons",
+    "display_width": null,
+    "label": "Buttons",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 3
     },
-    "show_arrow" : true
-  }, {
-    "text_field" : "Button Text",
-    "dl_label" : "",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "href" : "https://www.google.com",
-        "type" : "EXTERNAL"
+    "children": [
+      {
+        "id": "d830e88c-b06f-edda-1db0-0a999e9cbdd5",
+        "name": "text_field",
+        "display_width": null,
+        "label": "Text",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Button"
       },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    },
-    "show_arrow" : true
-  }, {
-    "text_field" : "Button Text",
-    "dl_label" : "",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "href" : "https://www.google.com",
-        "type" : "EXTERNAL"
+      {
+        "id": "4e253796-1adf-73b1-5af4-75dfc331ebb5",
+        "name": "dl_label",
+        "display_width": null,
+        "label": "Data Tracking",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": ""
       },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    },
-    "show_arrow" : true
-  } ]
-}, {
-  "id" : "7e08394b-2afb-fa55-4d33-1c3566b9509d",
-  "name" : "alignment",
-  "display_width" : null,
-  "label" : "Alignment",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "default" : "left"
-} ]
+      {
+        "id": "f45d3af8-34fb-60d7-2735-89bc12fe029e",
+        "name": "link_field",
+        "display_width": null,
+        "label": "Link",
+        "inline_help_text": "",
+        "required": false,
+        "locked": false,
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG",
+          "CALL_TO_ACTION",
+          "PHONE_NUMBER",
+          "WHATSAPP_NUMBER",
+          "PAYMENT"
+        ],
+        "show_advanced_rel_options": false,
+        "type": "link",
+        "default": {
+          "url": {
+            "content_id": null,
+            "href": "https://www.google.com",
+            "type": "EXTERNAL"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "id": "1bab59d5-c13f-171a-d950-7a7a39d147d6",
+        "name": "jump_link",
+        "display_width": null,
+        "label": "Jump Link",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text"
+      },
+      {
+        "id": "92007980-88bd-5685-0e2b-ed00482a5e90",
+        "name": "button_style",
+        "display_width": null,
+        "label": "Button Style",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["primary", "Primary"],
+          ["secondary", "Secondary"],
+          ["hero", "Hero"],
+          ["tertiary", "Tertiary"],
+          ["link", "Link"]
+        ],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice"
+      },
+      {
+        "id": "b0851e6c-8c7d-9203-2051-609ac3d717ab",
+        "name": "show_arrow",
+        "display_width": null,
+        "label": "Show Arrow",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": true
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "text_field": "Button Text",
+        "dl_label": "",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "href": "https://www.google.com",
+            "type": "EXTERNAL"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "show_arrow": true
+      },
+      {
+        "text_field": "Button Text",
+        "dl_label": "",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "href": "https://www.google.com",
+            "type": "EXTERNAL"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "show_arrow": true
+      },
+      {
+        "text_field": "Button Text",
+        "dl_label": "",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "href": "https://www.google.com",
+            "type": "EXTERNAL"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "show_arrow": true
+      }
+    ]
+  },
+  {
+    "id": "7e08394b-2afb-fa55-4d33-1c3566b9509d",
+    "name": "alignment",
+    "display_width": null,
+    "label": "Alignment",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["left", "Left"],
+      ["center", "Center"],
+      ["right", "Right"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "left"
+  }
+]

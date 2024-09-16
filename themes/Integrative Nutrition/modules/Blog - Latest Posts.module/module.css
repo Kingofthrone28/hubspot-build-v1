@@ -1,0 +1,119 @@
+.blog-latest-posts {
+  padding: 0 var(--spacing-24);
+}
+
+.blog-latest-posts__header-row {
+  display: flex;
+  align-items: center;
+}
+
+.blog-latest-posts__heading-wrapper {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--spacing-12);
+  padding: 0 var(--spacing-12) 0 var(--spacing-6);
+}
+
+.blog-latest-posts__section-icon {
+  --icon--image: var(--icon--history);
+  --icon--square--size: 32px;
+}
+
+.blog-latest-posts__heading {
+  display: inline-block;
+}
+
+.blog-latest-posts__top-rule-wrapper {
+  padding: 0 var(--spacing-4);
+  width: 100%;
+}
+
+.blog-latest-posts__top-rule {
+  background-color: var(--color--slate);
+  width: 100%;
+}
+
+.blog-latest-posts__posts {
+  display: flex;
+  flex-direction: row;
+  padding: var(--spacing-10) 0 var(--spacing-8);
+}
+
+.blog-latest-posts__post {
+  display: flex;
+  flex-basis: 25%;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  align-items: flex-start;
+}
+
+.blog-latest-posts__post a {
+  transition: unset;
+}
+
+.blog-latest-posts__topic {
+  font: var(--font--testimonial-name--desktop);
+}
+
+.blog-latest-posts__topic,
+.blog-latest-posts__topic:hover,
+.blog-latest-posts__topic:focus {
+  color: var(--color--water);
+}
+
+.blog-latest-posts__title {
+  margin-bottom: unset;
+  font: var(--font--h6--desktop);
+}
+
+.blog-latest-posts__title,
+.blog-latest-posts__title:hover,
+.blog-latest-posts__title:focus {
+  color: var(--color--slate);
+}
+
+.blog-latest-posts__author-and-time {
+  font: var(--font--legal);
+}
+
+.blog-latest-posts__author-and-time,
+.blog-latest-posts__author-and-time:hover,
+.blog-latest-posts__author-and-time:focus {
+  color: var(--color--slate);
+}
+
+.blog-latest-posts__bottom-rule {
+  background-color: var(--color--slate);
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .blog-latest-posts {
+    padding: var(--spacing-8) var(--spacing-6) var(--spacing-12);
+  }
+
+  .blog-latest-posts__header-row {
+    flex-direction: column;
+    gap: var(--spacing-8);
+    align-items: start;
+  }
+
+  .blog-latest-posts__heading {
+    flex-shrink: 0;
+  }
+
+  .blog-latest-posts__top-rule-wrapper {
+    padding: 0;
+    width: 100%;
+  }
+
+  .blog-latest-posts__posts {
+    flex-direction: column;
+    gap: var(--spacing-8);
+    padding: var(--spacing-8) 0;
+  }
+
+  .blog-latest-posts__topic {
+    font: var(--font--testimonial-name--mobile);
+  }
+}

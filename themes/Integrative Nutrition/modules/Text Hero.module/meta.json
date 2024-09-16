@@ -1,16 +1,9 @@
 {
-  "label": "Text Hero",
-  "css_assets": [],
-  "external_js": [],
   "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
   "icon": "object-group",
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
+  "host_template_types": ["PAGE"],
+  "module_id": 175218916921,
+  "label": "Text Hero",
   "is_available_for_new_content": true
 }

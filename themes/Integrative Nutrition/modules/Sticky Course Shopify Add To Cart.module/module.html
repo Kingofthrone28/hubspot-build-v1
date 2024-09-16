@@ -6,6 +6,7 @@
 
 {# Dependent variables #}
 {% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
+{% set show_inline_section = is_inline_and_header or is_inline_only %}
 {% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 {% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
 
@@ -15,13 +16,13 @@
 {% if is_header_only %}
   <div id="product-selector-trigger">
   {% if is_in_editor %}
-    <span class="editor-warning">&lt;PRODUCT SELECTION TRIGGER&gt;</span>
+    <span class="editor-warning">{STICKY COURSE SHOPIFY ADD TO CART HEADER TRIGGER}</span>
   {% endif %}
   </div>
 {% endif %}
 
 {# Inline section: from Sticky Course Shopify Add To Cart #}
-{% if is_inline_and_header %}
+{% if show_inline_section %}
 <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
     <div class="pdp-top-slide-btns">
@@ -151,12 +152,12 @@
               {% endif %}
             </div>
             {% endif %}
-            {# Right button #}
+            {# Right button - Enroll #}
             <div class="enroll-btn-wrapper">
             {# Disabled this button until we parse product info. #}
               <button
                 id="pdp-sticky-enroll-btn"
-                class="jd-request-btn hs-button light-button pdp-sticky-btn-right caret caret-down"
+                class="jd-request-btn hs-button dark-button pdp-sticky-btn-right caret caret-down"
                 disabled
               >
                 {% if is_sample_class and module.sticky_nav.right_button_text %}
@@ -167,37 +168,33 @@
               </button>
             </div>
           </div>
+          <button type="button" id="pdp-close-product-selector" class="close-button pdp-close-product-selector hide" aria-hidden="true"></button>
         </div>
       </div>
       {# Dropdown portion #}
       <div class="pdp-sticky-enroll">
         <div class="pdp-sticky-enroll-inner">
           <div class="pdp-bottom">
-            <div>
+            <div class="pdp-bottom-heading-wrapper">
               <h3 class="pdp-sticky__dropdown-heading">
                 <span class="multi-variant">{{ module.sticky_nav.dropdown_left_text }}</span>
                 <span class="single-variant">{{ module.sticky_nav.dropdown_left_text_singular }}</span>
               </h3>
             </div>
-            <div>
-              <div>
+            <div class="pdp-bottom-content">
+              <div class="pdp-bottom-options-wrapper">
                 <div class="pdp-bottom-options"></div>
               </div>
-            </div>
-            <div>
-              <div class="pdp-bottom-price"></div>
-              <div class="pdp-bottom-3-bottom"></div>
+              <div class="pdp-bottom-price-wrapper">
+                <div class="pdp-bottom-price"></div>
+                <div class="pdp-bottom-3-bottom"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-{% endif %}
-
-{# Inline section: from Course Shopify Add To Cart #}
-{% if is_inline_only %}
-  <div id="{{ name }}" class="jd-add-cart-wrap"></div>
 {% endif %}
 
 {# Added to cart pop up: from Sample Class Sticky Header #}
@@ -259,6 +256,7 @@
     isInlineAndHeader: is_inline_and_header,
     isInlineOnly: is_inline_only,
     isSampleClass: is_sample_class,
+    showInlineSection: show_inline_section,
     showStickyHeader: show_sticky_header,
     productID: module.product_id
   } %}

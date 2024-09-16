@@ -4,9 +4,10 @@
   /* Style Guide Primary and Secondary Colors */
   --color--cherry: #d72a25;
   --color--gold: #e4ab00;
-  --color--light-water: #e6f2f3;
   --color--melon: #ed8a72;
   --color--water: #003d4b;
+  --color--water--faded: #4A747E;
+  --color--water--light: #e6f2f3;
 
   /* Style Guide Base Colors */
   --color--black: #000; /* rgb(0 0 0) */
@@ -148,6 +149,7 @@
   --color--legacy--green--highland: #818a5c; /* Olives */
   --color--legacy--green--mosque: #004f61; /* 5% lightened Water */
   --color--legacy--green--peppermint: #cde3cc;
+  --color--legacy--green--ottoman: #d3ddcd;
   --color--legacy--green--rolling-stone: #707372;
   --color--legacy--orange--peach: #ffbb95;
   --color--legacy--orange--peach--alpha-30: rgb(255 187 149 / 30%);

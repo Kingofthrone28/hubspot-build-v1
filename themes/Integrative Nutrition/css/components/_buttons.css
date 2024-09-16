@@ -35,6 +35,17 @@
   font-family: var(--font-family--body);
 }
 
+.hs-button.dark-button {
+  --accent--color: var(--color--white);
+
+  background: var(--color--water);
+  padding: 11px 30px;
+} 
+
+.hs-button.dark-button:hover {
+  background: var(--color--water--faded);
+} 
+
 .hs-button.light-button:hover {
   background: var(--color--legacy--red--cinnabar);
   text-decoration: none;

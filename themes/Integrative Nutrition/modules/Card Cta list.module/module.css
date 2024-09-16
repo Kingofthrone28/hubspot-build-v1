@@ -1,0 +1,27 @@
+.card-cta-lists {
+  border-radius: 15px;
+  padding: 50px;
+}
+
+.sage {
+  background-color: var(--color--legacy--green--ottoman);
+}
+
+.chalk {
+  background-color: var(--color--chalk);
+}
+
+.card-cta-lists__header,
+.card-cta-lists__text {
+  padding-bottom: 15px;
+}
+
+.card-cta-lists__lists li {
+  padding-bottom: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .card-cta-lists {
+    padding: 30px;
+  }
+}

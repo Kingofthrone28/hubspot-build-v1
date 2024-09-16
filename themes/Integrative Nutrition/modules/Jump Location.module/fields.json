@@ -1,15 +1,17 @@
-[ {
-  "id" : "4e6de92d-fb27-6e14-d11b-17b36ccfce31",
-  "name" : "location_id",
-  "display_width" : null,
-  "label" : "Location ID",
-  "help_text" : "Must match the Location ID from the \"Jump Button\" used to scroll here.",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "placeholder" : "jump-location-id",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "jump-location-id"
-} ]
+[
+  {
+    "id": "4e6de92d-fb27-6e14-d11b-17b36ccfce31",
+    "name": "location_id",
+    "display_width": null,
+    "label": "Location ID",
+    "help_text": "Must match the Location ID from the \"Jump Button\" used to scroll here.",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "placeholder": "jump-location-id",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "jump-location-id"
+  }
+]

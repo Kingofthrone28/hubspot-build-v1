@@ -1,36 +1,40 @@
-[ {
-  "id" : "dc7993e9-e834-c535-2037-6400d2ba7683",
-  "name" : "character_count_for_summary",
-  "display_width" : null,
-  "label" : "Character Count For Summary",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 200
-}, {
-  "id" : "a83cab39-72b3-a740-fcf8-6c21f2bf48f9",
-  "name" : "read_more_button_text",
-  "display_width" : null,
-  "label" : "Read More Button Text",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "Read More"
-}, {
-  "id" : "4510ae4c-6fab-1578-295a-84d2a61933fd",
-  "name" : "heading",
-  "display_width" : null,
-  "label" : "Heading",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "IIN Blog Posts"
-} ]
+[
+  {
+    "id": "dc7993e9-e834-c535-2037-6400d2ba7683",
+    "name": "character_count_for_summary",
+    "display_width": null,
+    "label": "Character Count For Summary",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 200
+  },
+  {
+    "id": "a83cab39-72b3-a740-fcf8-6c21f2bf48f9",
+    "name": "read_more_button_text",
+    "display_width": null,
+    "label": "Read More Button Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Read More"
+  },
+  {
+    "id": "4510ae4c-6fab-1578-295a-84d2a61933fd",
+    "name": "heading",
+    "display_width": null,
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "IIN Blog Posts"
+  }
+]

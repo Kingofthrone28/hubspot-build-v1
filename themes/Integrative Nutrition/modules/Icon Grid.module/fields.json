@@ -1,344 +1,392 @@
-[ {
-  "id" : "8a47ee2b-cc9a-f14a-be09-a39f2d228311",
-  "name" : "items",
-  "display_width" : null,
-  "label" : "Items",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : 6
+[
+  {
+    "id": "8a47ee2b-cc9a-f14a-be09-a39f2d228311",
+    "name": "items",
+    "display_width": null,
+    "label": "Items",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "c7f59b6b-0bf6-ee88-c719-78e215471f82",
+        "name": "image_field",
+        "display_width": null,
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        }
+      },
+      {
+        "id": "811fa855-2273-9ea1-85dc-9b389e13d27a",
+        "name": "header",
+        "display_width": null,
+        "label": "Header",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Learn Online"
+      },
+      {
+        "id": "711ccd99-773a-9f81-9d4e-beb5341fda7b",
+        "name": "sub_header",
+        "display_width": null,
+        "label": "Sub Header",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Access your course materials from anywhere in the world, on any device."
+      },
+      {
+        "id": "07792215-fb4d-d631-229b-960ae67dba1a",
+        "name": "image_link",
+        "display_width": null,
+        "label": "Image Link",
+        "required": false,
+        "locked": false,
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG",
+          "CALL_TO_ACTION",
+          "PHONE_NUMBER",
+          "WHATSAPP_NUMBER",
+          "PAYMENT"
+        ],
+        "show_advanced_rel_options": false,
+        "type": "link",
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": [
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "image_field": {
+          "size_type": "auto",
+          "src": "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
+          "alt": "online_logo-1",
+          "loading": "lazy",
+          "width": 185,
+          "height": 185,
+          "max_width": 185,
+          "max_height": 185
+        },
+        "header": "Learn Online",
+        "sub_header": "Access your course materials from anywhere in the world, on any device.",
+        "link_field": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
   },
-  "children" : [ {
-    "id" : "c7f59b6b-0bf6-ee88-c719-78e215471f82",
-    "name" : "image_field",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : true,
-    "show_loading" : false,
-    "type" : "image",
-    "default" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    }
-  }, {
-    "id" : "811fa855-2273-9ea1-85dc-9b389e13d27a",
-    "name" : "header",
-    "display_width" : null,
-    "label" : "Header",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Learn Online"
-  }, {
-    "id" : "711ccd99-773a-9f81-9d4e-beb5341fda7b",
-    "name" : "sub_header",
-    "display_width" : null,
-    "label" : "Sub Header",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "Access your course materials from anywhere in the world, on any device."
-  }, {
-    "id" : "07792215-fb4d-d631-229b-960ae67dba1a",
-    "name" : "image_link",
-    "display_width" : null,
-    "label" : "Image Link",
-    "required" : false,
-    "locked" : false,
-    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
-    "default" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
+  {
+    "id": "8368d035-8de0-9a32-75cb-1e3031beb75c",
+    "name": "text_align",
+    "display_width": null,
+    "label": "Text Align",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["center", "Center"],
+      ["left", "Left"],
+      ["right", "Right"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "center"
+  },
+  {
+    "id": "dc043535-dffb-96eb-00d9-c1ec41846e5e",
+    "name": "image_width",
+    "display_width": null,
+    "label": "Image Width",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "120px"
+  },
+  {
+    "id": "817e5a5a-aca9-665f-9a62-8197494c1503",
+    "name": "image_height",
+    "display_width": null,
+    "label": "Image Height",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "120px"
+  },
+  {
+    "id": "0a20d214-2ade-e349-02d7-2b94f9415299",
+    "name": "border_radius",
+    "display_width": null,
+    "label": "Border Radius",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "8px"
+  },
+  {
+    "id": "93d53d88-ceef-5b15-5ffb-c39744f7871e",
+    "name": "number_of_columns",
+    "display_width": null,
+    "label": "Number of Columns",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 3
+  },
+  {
+    "id": "8e3c2173-d4a3-3b76-0ef9-716497bb4737",
+    "name": "header_font_size",
+    "display_width": null,
+    "label": "Header Font Size",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "32px"
+  },
+  {
+    "id": "95c5f815-3c84-b69c-61b9-be8a442487bb",
+    "name": "two_column_break",
+    "display_width": null,
+    "label": "2 Column Break",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "991px"
+  },
+  {
+    "id": "4c6e5684-e995-bdfe-2a36-e98ddc9124bd",
+    "name": "one_column_break",
+    "display_width": null,
+    "label": "1 Column Break",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "767px"
+  },
+  {
+    "id": "27f868fb-1b65-fc2f-f7be-2fec0cbac6ca",
+    "name": "link_field",
+    "display_width": null,
+    "label": "Link",
+    "required": false,
+    "locked": false,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+    ],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
       },
-      "open_in_new_tab" : false,
-      "no_follow" : false
+      "open_in_new_tab": false,
+      "no_follow": false
     }
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  }, {
-    "image_field" : {
-      "size_type" : "auto",
-      "src" : "https://23273748.fs1.hubspotusercontent-na1.net/hubfs/23273748/online_logo-1.png",
-      "alt" : "online_logo-1",
-      "loading" : "lazy",
-      "width" : 185,
-      "height" : 185,
-      "max_width" : 185,
-      "max_height" : 185
-    },
-    "header" : "Learn Online",
-    "sub_header" : "Access your course materials from anywhere in the world, on any device.",
-    "link_field" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false
-    }
-  } ]
-}, {
-  "id" : "8368d035-8de0-9a32-75cb-1e3031beb75c",
-  "name" : "text_align",
-  "display_width" : null,
-  "label" : "Text Align",
-  "required" : false,
-  "locked" : false,
-  "display" : "select",
-  "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "default" : "center"
-}, {
-  "id" : "dc043535-dffb-96eb-00d9-c1ec41846e5e",
-  "name" : "image_width",
-  "display_width" : null,
-  "label" : "Image Width",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "120px"
-}, {
-  "id" : "817e5a5a-aca9-665f-9a62-8197494c1503",
-  "name" : "image_height",
-  "display_width" : null,
-  "label" : "Image Height",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "120px"
-}, {
-  "id" : "0a20d214-2ade-e349-02d7-2b94f9415299",
-  "name" : "border_radius",
-  "display_width" : null,
-  "label" : "Border Radius",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "8px"
-}, {
-  "id" : "93d53d88-ceef-5b15-5ffb-c39744f7871e",
-  "name" : "number_of_columns",
-  "display_width" : null,
-  "label" : "Number of Columns",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 3
-}, {
-  "id" : "8e3c2173-d4a3-3b76-0ef9-716497bb4737",
-  "name" : "header_font_size",
-  "display_width" : null,
-  "label" : "Header Font Size",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "32px"
-}, {
-  "id" : "95c5f815-3c84-b69c-61b9-be8a442487bb",
-  "name" : "two_column_break",
-  "display_width" : null,
-  "label" : "2 Column Break",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "991px"
-}, {
-  "id" : "4c6e5684-e995-bdfe-2a36-e98ddc9124bd",
-  "name" : "one_column_break",
-  "display_width" : null,
-  "label" : "1 Column Break",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "767px"
-}, {
-  "id" : "27f868fb-1b65-fc2f-f7be-2fec0cbac6ca",
-  "name" : "link_field",
-  "display_width" : null,
-  "label" : "Link",
-  "required" : false,
-  "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "type" : "EXTERNAL",
-      "href" : ""
-    },
-    "open_in_new_tab" : false,
-    "no_follow" : false
+  },
+  {
+    "id": "a4d8c46a-0d94-c0b4-e11c-2f6e7c71e89e",
+    "name": "item_outer_padding",
+    "display_width": null,
+    "label": "Item Outer Padding",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "0 20px 50px"
   }
-}, {
-  "id" : "a4d8c46a-0d94-c0b4-e11c-2f6e7c71e89e",
-  "name" : "item_outer_padding",
-  "display_width" : null,
-  "label" : "Item Outer Padding",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "0 20px 50px"
-} ]
+]

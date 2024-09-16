@@ -47,6 +47,7 @@
     formId: '{{ module.form_field.form_id }}',
     target: '.full-step-form',
     onFormReady: function () {
+ 
       const bgImages = [];
 
       {% for item in module.background_image %}
@@ -61,7 +62,31 @@
       let hasNextStep = true;
       let hasStarted = false;
       let isPopping = false;
-
+      
+      function trackFormFallout() {
+        const $currentStep = $('.full-step-form fieldset.full-step-active');
+        const formName = $('input[name="leadsource"]').attr('value');
+        const formFieldName = [];
+        $currentStep.find('input[id]').each(function() {
+          const inputType = $(this).attr('type');
+          const fieldName = $(this).attr('name');
+          if (inputType === 'checkbox' || inputType === 'radio') {
+            if ($(this).prop('checked')) {
+              formFieldName.push($(this).attr('value'));
+            }
+          } else {
+              formFieldName.push(fieldName);
+          }
+        });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event':'form_fallout',
+          'form_name':formName,
+          'form_field_name':formFieldName.length===1?formFieldName[0]:formFieldName
+        });
+        console.log('Form fallout triggered:',formFieldName);
+      }
+    
       function nextStep(skip) {
         if (isPopping) {
           return;
@@ -93,7 +118,7 @@
           console.log('error');
           return;
         }
-
+        
         const nextIndex = $currentStep.next().index();
 
         if (nextIndex + 1 === {{ module.step_to_show_pop }}) {
@@ -123,8 +148,10 @@
 
             isPopping = false;
           }, {{ module.pop_message_duration_ms }});
-        }
-
+        }     
+  
+        trackFormFallout();      
+  
         let bgImage = bgImages[nextIndex + 1];
 
         if (!bgImage) {
@@ -172,6 +199,7 @@
       });
 
       $('.full-step-start').click(function () {
+        
         let bgImage = bgImages[1];
 
         if (!bgImage) {
@@ -190,10 +218,22 @@
       });
     },
     onFormSubmitted: function () {
-      console.log('submitted');
+    console.log('submitted HUBSPOT CALL');
+     function clearAllCookies() {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf("=");
+          const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+      }
+      console.log("Cookies cleared");
+     }
 
-      setTimeout(function () {
+      setTimeout(function () {      
+        clearAllCookies();
         window.location.href = '{{ module.redirect_url }}';
+        console.log('submitted');
       }, 3000);
     }
   });

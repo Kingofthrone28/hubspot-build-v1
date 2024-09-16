@@ -160,19 +160,19 @@
           "size": 70,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none"
+            "text-decoration": "none"
           },
           "variant": "700"
         }
       },
       {
-        "name" : "h1_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : true
+        "name": "h1_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": true
       },
       {
         "label": "Heading two (H2)",
@@ -190,19 +190,19 @@
           "size": 38,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none"
+            "text-decoration": "none"
           },
           "variant": "700"
         }
       },
       {
-        "name" : "h2_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : true
+        "name": "h2_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": true
       },
       {
         "label": "Heading three (H3)",
@@ -220,19 +220,19 @@
           "size": 26,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none"
+            "text-decoration": "none"
           },
           "variant": "700"
         }
       },
       {
-        "name" : "h3_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : false
+        "name": "h3_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": false
       },
       {
         "label": "Heading four (H4)",
@@ -250,18 +250,18 @@
           "size": 24,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none"
+            "text-decoration": "none"
           }
         }
       },
       {
-        "name" : "h4_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : false
+        "name": "h4_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": false
       },
       {
         "label": "Heading five (H5)",
@@ -279,19 +279,19 @@
           "size": 16,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none",
-            "font-weight" : "bold"
+            "text-decoration": "none",
+            "font-weight": "bold"
           }
         }
       },
       {
-        "name" : "h5_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : false
+        "name": "h5_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": false
       },
       {
         "label": "Heading six (H6)",
@@ -309,18 +309,18 @@
           "size": 14,
           "size_unit": "px",
           "styles": {
-            "text-decoration" : "none"
+            "text-decoration": "none"
           }
         }
       },
       {
-        "name" : "h6_transform",
-        "label" : "Transform Uppercase",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "set all headers to uppercase",
-        "default" : false
+        "name": "h6_transform",
+        "label": "Transform Uppercase",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "set all headers to uppercase",
+        "default": false
       },
       {
         "label": "Link color",
@@ -638,14 +638,18 @@
         }
       },
       {
-        "name" : "border_style",
-        "label" : "Border Style",
-        "required" : false,
-        "locked" : false,
-        "display" : "select",
-        "choices" : [ [ "none", "None" ], [ "full", "Full" ], [ "underline", "Underline" ] ],
-        "type" : "choice",
-        "default" : "underline"
+        "name": "border_style",
+        "label": "Border Style",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["none", "None"],
+          ["full", "Full"],
+          ["underline", "Underline"]
+        ],
+        "type": "choice",
+        "default": "underline"
       },
       {
         "label": "Corner radius",
@@ -822,23 +826,27 @@
         "default": 0
       },
       {
-        "name" : "dropshadow",
-        "label" : "Dropshadow",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "Add dropshadow to sections",
-        "default" : true
+        "name": "dropshadow",
+        "label": "Dropshadow",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "Add dropshadow to sections",
+        "default": true
       },
       {
-        "name" : "arrow_type",
-        "label" : "Arrow Type",
-        "required" : false,
-        "locked" : false,
-        "display" : "select",
-        "choices" : [ [ "chevron", "Chevron" ], [ "caret", "Caret" ], [ "long", "Long Arrow" ] ],
-        "type" : "choice",
-        "default" : "chevron"
+        "name": "arrow_type",
+        "label": "Arrow Type",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [
+          ["chevron", "Chevron"],
+          ["caret", "Caret"],
+          ["long", "Long Arrow"]
+        ],
+        "type": "choice",
+        "default": "chevron"
       },
       {
         "label": "System Page Heros",
@@ -891,32 +899,32 @@
         }
       },
       {
-        "name" : "layout",
-        "label" : "Use Simple Layout",
-        "required" : false,
-        "locked" : false,
-        "type" : "boolean",
-        "inline_help_text" : "Choose footer stating layout",
-        "help_text" : "Toggel between simple and complex layouts",
-        "default" : false
+        "name": "layout",
+        "label": "Use Simple Layout",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "Choose footer stating layout",
+        "help_text": "Toggel between simple and complex layouts",
+        "default": false
       }
     ]
   },
   {
-    "label" : "Chat Service",
-    "name" : "chat_service",
+    "label": "Chat Service",
+    "name": "chat_service",
     "type": "group",
     "children": [
       {
-        "label" : "Enable Needle Service",
-        "name" : "enable_chat",
-        "type" : "boolean",
-        "required" : false,
-        "locked" : false,
-        "display":"checkbox",
-        "inline_help_text" : "Shows Needle when toggled on",
-        "help_text" : "Needle chat bubble is enabled when checked.",
-        "default" : false
+        "label": "Enable Needle Service",
+        "name": "enable_chat",
+        "type": "boolean",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "inline_help_text": "Shows Needle when toggled on",
+        "help_text": "Needle chat bubble is enabled when checked.",
+        "default": false
       }
     ]
   }

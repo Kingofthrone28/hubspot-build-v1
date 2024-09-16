@@ -7,7 +7,7 @@
         const SAMPLE_CLASS_FORM_ID = '123';
         const ENGLISH_SAMPLE_CLASS_URL = '123.com';
         const SPANISH_SAMPLE_CLASS_URL = 'UnoDosTres.com';
-	    addSampleClassFormSubmitListener(SAMPLE_CLASS_FORM_ID, ENGLISH_SAMPLE_CLASS_URL, SPANISH_SAMPLE_CLASS_URL)
+        addSampleClassFormSubmitListener(SAMPLE_CLASS_FORM_ID, ENGLISH_SAMPLE_CLASS_URL, SPANISH_SAMPLE_CLASS_URL);
     </script>
  * 
  * Captures onFormSubmitted event for sample class form and redirects based upon HTML lang

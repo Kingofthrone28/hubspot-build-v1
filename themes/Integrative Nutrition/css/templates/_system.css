@@ -109,7 +109,7 @@ ul.hs-search-results__listing li {
   margin-bottom: 0.35rem;
   text-decoration: underline;
   color: var(--color--legacy--violet--gun-powder);
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--20);
 }
 
 .hs-search-results__title:hover {

@@ -14,3 +14,8 @@
 .jd-add-pop-message {
   --accent--color: var(--color--slate);
 }
+
+#product-selector-trigger {
+  display: flex;
+  justify-content: center;
+}

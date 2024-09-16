@@ -10,6 +10,7 @@
     "type": "menu"
   },
   {
+    "id": "bullet_selector",
     "name": "bullet_selector",
     "display_width": null,
     "label": "Bullet Type",
@@ -17,30 +18,12 @@
     "locked": false,
     "display": "select",
     "choices": [
-      [
-        "none",
-        "None"
-      ],
-      [
-        "decimal",
-        "Numeric"
-      ],
-      [
-        "lower-roman",
-        "Lowercase Roman Numerals"
-      ],
-      [
-        "upper-roman",
-        "Uppercase Roman Numerals"
-      ],
-      [
-        "lower-latin",
-        "Lowercase English Alphabet"
-      ],
-      [
-        "upper-latin",
-        "Uppercase English Alphabet"
-      ]
+      ["none", "None"],
+      ["decimal", "Numeric"],
+      ["lower-roman", "Lowercase Roman Numerals"],
+      ["upper-roman", "Uppercase Roman Numerals"],
+      ["lower-latin", "Lowercase English Alphabet"],
+      ["upper-latin", "Uppercase English Alphabet"]
     ],
     "multiple": false,
     "reordering_enabled": true,
@@ -49,16 +32,20 @@
     "default": "none"
   },
   {
+    "id": "is_centered",
     "name": "is_centered",
+    "display_width": null,
     "label": "Centered Menu",
+    "help_text": "",
+    "inline_help_text": "",
     "required": false,
     "locked": false,
+    "display": "checkbox",
     "type": "boolean",
-    "inline_help_text": "",
-    "help_text": "",
     "default": false
   },
   {
+    "id": "is_reversed",
     "name": "is_reversed",
     "display_width": null,
     "label": "Reversed List",

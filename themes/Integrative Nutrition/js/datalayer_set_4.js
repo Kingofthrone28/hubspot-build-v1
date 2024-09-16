@@ -132,7 +132,7 @@ function onYouTubeIframeAPIReady() {
   }
 }
 
-function trackVimeoVideo(videoElement) {
+/* function trackVimeoVideo(videoElement) {
   const vimeoApi = document.createElement('script');
   vimeoApi.src = 'https://player.vimeo.com/api/player.js';
   vimeoApi.onload = function () {
@@ -173,4 +173,4 @@ function trackVimeoVideo(videoElement) {
 const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
 vimeoIframeElements.forEach((vimeoIframeElement) => {
   trackVimeoVideo(vimeoIframeElement);
-});
+}); */

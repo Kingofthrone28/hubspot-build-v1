@@ -1,9 +1,9 @@
 {
-  "global" : false,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
-  "icon" : "https://www.manobyte.com/hubfs/layer-plus-light.svg",
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 175043463939,
-  "label" : "Flex Accordion",
-  "is_available_for_new_content" : true
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "icon": "https://www.manobyte.com/hubfs/layer-plus-light.svg",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "module_id": 175043463939,
+  "label": "Flex Accordion",
+  "is_available_for_new_content": true
 }

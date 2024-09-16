@@ -1,97 +1,131 @@
-[ {
-  "id" : "e24d6514-fa2d-21d3-95f2-e34cb31ec27e",
-  "name" : "before_image",
-  "display_width" : null,
-  "label" : "Before Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : false,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "exact",
-    "src" : "https://www.manobyte.com/hubfs/Manobyte/social-suggested-images/201704_MB_BlogIMG_STOCK_X-Ways-your-Website-Could-Be-Driving-Customers-Away-6.jpg",
-    "alt" : "201704_MB_BlogIMG_STOCK_X-Ways-your-Website-Could-Be-Driving-Customers-Away-6",
-    "loading" : "lazy",
-    "width" : 1600,
-    "height" : 615
+[
+  {
+    "id": "e24d6514-fa2d-21d3-95f2-e34cb31ec27e",
+    "name": "before_image",
+    "display_width": null,
+    "label": "Before Image",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://www.manobyte.com/hubfs/Manobyte/social-suggested-images/201704_MB_BlogIMG_STOCK_X-Ways-your-Website-Could-Be-Driving-Customers-Away-6.jpg",
+      "alt": "201704_MB_BlogIMG_STOCK_X-Ways-your-Website-Could-Be-Driving-Customers-Away-6",
+      "loading": "lazy",
+      "width": 1600,
+      "height": 615
+    }
+  },
+  {
+    "id": "db4ada87-c079-c1ae-f285-f50c0fb27b8d",
+    "name": "style",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "525302d0-2f0a-2487-ff16-e25112ab3a81",
+        "name": "animation",
+        "display_width": null,
+        "label": "Animation",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+            "name": "animation",
+            "display_width": null,
+            "label": "Animation",
+            "required": false,
+            "locked": false,
+            "display": "select",
+            "choices": [
+              ["none", "none"],
+              ["fade", "Fade"],
+              ["fadeUp", "Fade Up"],
+              ["fadeDown", "Fade Down"],
+              ["fadeLeft", "Fade Left"],
+              ["fadeRight", "Fade Right"],
+              ["slideUp", "Slide Up"],
+              ["slideDown", "Slide Down"],
+              ["slideLeft", "Slide Left"],
+              ["slideRight", "Slide Right"],
+              ["zoomIn", "Zoom In"],
+              ["zoomInUp", "Zoom In Up"],
+              ["zoomInDown", "Zoom In Down"],
+              ["zoomInLeft", "Zoom In Left"],
+              ["zoomInRight", "Zoom In Right"],
+              ["zoomOut", "Zoom Out"],
+              ["zoomOutUp", "Zoom Out Up"],
+              ["zoomOutDown", "Zoom Out Down"],
+              ["zoomOutLeft", "Zoom Out Left"],
+              ["zoomOutRight", "Zoom Out Right"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "fadeDown"
+          },
+          {
+            "id": "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+            "name": "apply_animation_to",
+            "display_width": null,
+            "label": "Apply Animation to",
+            "required": false,
+            "locked": false,
+            "display": "radio",
+            "choices": [
+              ["this", "This Item"],
+              ["section", "Parent Section"],
+              ["column", "Parent Column"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "column"
+          }
+        ],
+        "tab": "STYLE",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "default": {}
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "animation": {}
+    }
+  },
+  {
+    "id": "a1557814-8d14-1866-1dd4-a449f47994b7",
+    "name": "after_image",
+    "display_width": null,
+    "label": "After Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": false,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "https://www.manobyte.com/hubfs/Manobyte/social-suggested-images/201704_MB_BlogIMG_Why-Your-Website-is-More-Important-Than-Your-Business-Card-2-9.jpg",
+      "alt": "201704_MB_BlogIMG_Why-Your-Website-is-More-Important-Than-Your-Business-Card-2-9",
+      "loading": "lazy",
+      "width": 1600,
+      "height": 615,
+      "max_width": 1600,
+      "max_height": 615
+    }
   }
-}, {
-  "id" : "db4ada87-c079-c1ae-f285-f50c0fb27b8d",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "525302d0-2f0a-2487-ff16-e25112ab3a81",
-    "name" : "animation",
-    "display_width" : null,
-    "label" : "Animation",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
-      "name" : "animation",
-      "display_width" : null,
-      "label" : "Animation",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "fadeDown"
-    }, {
-      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
-      "name" : "apply_animation_to",
-      "display_width" : null,
-      "label" : "Apply Animation to",
-      "required" : false,
-      "locked" : false,
-      "display" : "radio",
-      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "column"
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "default" : { }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "animation" : { }
-  }
-}, {
-  "id" : "a1557814-8d14-1866-1dd4-a449f47994b7",
-  "name" : "after_image",
-  "display_width" : null,
-  "label" : "After Image",
-  "required" : false,
-  "locked" : false,
-  "responsive" : true,
-  "resizable" : false,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "https://www.manobyte.com/hubfs/Manobyte/social-suggested-images/201704_MB_BlogIMG_Why-Your-Website-is-More-Important-Than-Your-Business-Card-2-9.jpg",
-    "alt" : "201704_MB_BlogIMG_Why-Your-Website-is-More-Important-Than-Your-Business-Card-2-9",
-    "loading" : "lazy",
-    "width" : 1600,
-    "height" : 615,
-    "max_width" : 1600,
-    "max_height" : 615
-  }
-} ]
+]

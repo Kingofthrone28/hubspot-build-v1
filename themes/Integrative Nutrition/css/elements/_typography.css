@@ -1,3 +1,5 @@
+/* Body */
+
 html body {
   line-height: var(--line-height--legacy--body);
   word-break: break-word;
@@ -9,46 +11,6 @@ html[lang^='zh'] body,
 html[lang^='ko'] body {
   line-break: strict;
   word-break: break-all;
-}
-
-.iin_red {
-  color: var(--color--cherry);
-}
-
-/* Paragraphs */
-
-p {
-  margin: 0 0 1.4rem;
-}
-
-strong {
-  font-weight: 700;
-}
-
-.p-xl {
-  font: var(--font--extra-large-paragraph);
-}
-
-.p-lg {
-  font: var(--font--large-paragraph--desktop);
-}
-
-.p-md {
-  font: var(--font--paragraph--desktop);
-}
-
-@media (max-width: 767px) {
-  .p-xl {
-    font: var(--font--large-paragraph--mobile);
-  }
-
-  .p-lg {
-    font: var(--font--large-paragraph--mobile);
-  }
-
-  .p-md {
-    font: var(--font--paragraph--mobile);
-  }
 }
 
 /* Anchors */
@@ -63,12 +25,6 @@ a:focus {
 }
 
 /* Headings */
-@media (max-width: 767px) {
-  .entity-paragraphs-item.paragraphs-item-headline {
-    line-height: normal !important;
-    font-size: var(--font-size--legacy--23);
-  }
-}
 
 h1,
 h2,
@@ -90,7 +46,7 @@ h2 {
 }
 
 h3 {
-  font-size: var(--font-size--5);
+  font-size: var(--font-size--20);
 }
 
 h4 {
@@ -99,24 +55,31 @@ h4 {
 }
 
 h5 {
-  font-size: var(--font-size--3);
+  font-size: var(--font-size--16);
 }
 
 h6 {
   font-size: var(--font-size--legacy--5);
 }
 
+@media (max-width: 767px) {
+  .entity-paragraphs-item.paragraphs-item-headline {
+    line-height: normal !important;
+    font-size: var(--font-size--legacy--23);
+  }
+}
+
 /* Lists */
 
-ul,
-ol {
+ol,
+ul {
   margin: 0 0 1.5rem;
 }
 
-ul ul,
+ol ol,
 ol ul,
 ul ol,
-ol ol {
+ul ul {
   margin: 0;
 }
 
@@ -141,12 +104,21 @@ blockquote {
 /* Horizontal rules */
 
 hr {
-  /*
-  background-color: var(--color--legacy--grey--very-light-grey-1);
-  */
   border: none;
   height: 1px;
   color: var(--color--legacy--grey--very-light-grey-1);
+}
+
+/* Paragraphs */
+
+p {
+  margin: 0 0 1.4rem;
+}
+
+/* Strong */
+
+strong {
+  font-weight: var(--font-weight--bold);
 }
 
 /* Subscripts and superscripts */
@@ -167,9 +139,32 @@ sub {
   bottom: -0.25em;
 }
 
-/* Focus styles */
+/* Big numbers utility class */
 
-.disable-focus-styles :focus {
-  outline: none !important;
-  box-shadow: none !important;
+.big-number {
+  font: var(--font--big-number);
+}
+
+/* Paragraph utility classes */
+
+.p-xl {
+  font: var(--font--extra-large-paragraph);
+}
+
+.p-lg {
+  font: var(--font--large-paragraph--desktop);
+}
+
+.p-md {
+  font: var(--font--paragraph);
+}
+
+@media (max-width: 767px) {
+  .p-xl {
+    font: var(--font--large-paragraph--mobile);
+  }
+
+  .p-lg {
+    font: var(--font--large-paragraph--mobile);
+  }
 }

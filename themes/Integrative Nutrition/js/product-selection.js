@@ -414,6 +414,7 @@ const getProductSelectionMethods = () => {
       ? `${replaceSpaces(key)}_${replaceSpaces(value)}`
       : `${key}_${value}`;
     const div = document.createElement('div');
+    div.classList.add('jd-shopify-option');
     const input = document.createElement('input');
     input.setAttribute('id', compositeKey);
     input.setAttribute('value', value);
@@ -514,34 +515,35 @@ const getProductSelectionMethods = () => {
 
   /**
    * Configure header behavior
+   * Append the header to body to avoid interrupting screen reader content
    * @param {boolean} isDefault configure header for default page or sample class
    */
-  const configureStickyNav = (isDefault = true) => {
-    $('.pdp-sticky-wrap').appendTo('body');
+  const configureStickyNav = (isDefault = true, usePrepend = false) => {
+    const $target = $('.pdp-sticky-wrap');
+
+    if (usePrepend) {
+      $target.prependTo('body');
+    } else {
+      $target.appendTo('body');
+    }
 
     const handleEnrollButtonClick = (event) => {
       event.preventDefault();
-      $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
-      $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
-    };
-
-    const handleSampleClassEnrollButtonClick = (event) => {
-      event.preventDefault();
       $('.caret').toggleClass('caret-down');
       $('.caret').toggleClass('caret-up');
+      $('.pdp-close-product-selector').toggleClass('hide');
+      $('.pdp-close-product-selector').toggleClass('show');
+      $('.pdp-sticky-inner').toggleClass('expanded');
       $('.pdp-sticky-wrap').toggleClass('pdp-sticky-enroll-show');
       $('.pdp-sticky-header-wrap').toggleClass('sticky-header-shadow');
     };
 
-    const handler = isDefault
-      ? handleEnrollButtonClick
-      : handleSampleClassEnrollButtonClick;
-
-    $('#pdp-sticky-enroll-btn').click(handler);
+    $('#pdp-sticky-enroll-btn').click(handleEnrollButtonClick);
+    $('#pdp-close-product-selector').click(handleEnrollButtonClick);
   };
 
   const configureStickyHeaderSampleClass = () => {
-    configureStickyNav(false);
+    configureStickyNav(false, true);
   };
 
   /**
@@ -588,28 +590,6 @@ const getProductSelectionMethods = () => {
   };
 
   /**
-   * Configure body offset to show avoid covering page with header
-   */
-  const configureHeaderOffset = () => {
-    let stickyHeader;
-
-    function getCurrentHeight() {
-      if (!stickyHeader) {
-        stickyHeader = document.querySelector('.pdp-sticky');
-      }
-
-      const height = stickyHeader.offsetHeight;
-      document.body.style.paddingTop = `${height}px`;
-    }
-
-    // Call the function on load to get the current height
-    window.addEventListener('DOMContentLoaded', getCurrentHeight);
-
-    // Call the function on resize to handle responsive changes
-    window.addEventListener('resize', getCurrentHeight);
-  };
-
-  /**
    * Configure image slider
    */
   const configureImageSlider = () => {
@@ -635,18 +615,28 @@ const getProductSelectionMethods = () => {
     });
   };
 
+  /**
+   * Create the inputs for choosing the product options like language or start date
+   * @param {string[]} optionKeys
+   * @param {*} allOptions
+   * @param {Object} selectedOptions
+   * @returns {HTMLElement}
+   */
   const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
     const fragment = document.createDocumentFragment();
+    const hasMultipleOptions = optionKeys.length > 1;
 
-    optionKeys.forEach((key) => {
-      const emptyDiv = document.createElement('div');
-      const labelDiv = createOptionLabel(key);
-      emptyDiv.appendChild(labelDiv);
-      fragment.appendChild(emptyDiv);
+    optionKeys.forEach((key, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('jd-buy-option');
+      const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
+      const labelDiv = createOptionLabel(`${prefix}${key}`);
+      optionDiv.appendChild(labelDiv);
+      fragment.appendChild(optionDiv);
 
       const optionWrap = document.createElement('div');
       optionWrap.classList.add('jd-shopify-option-wrap');
-      emptyDiv.appendChild(optionWrap);
+      optionDiv.appendChild(optionWrap);
 
       const valuesSet = allOptions[key];
       valuesSet.forEach((value) => {
@@ -658,24 +648,31 @@ const getProductSelectionMethods = () => {
     return fragment;
   };
 
+  /**
+   * Parse product data set in the session storage from the server-side hubl
+   * @returns {Object}
+   */
   const parseMarkupData = () => {
     const rawData = IIN.shopify.getAddToCartSessionData();
     return JSON.parse(rawData);
   };
 
+  /**
+   * Configure added to cart popup functionality
+   */
   const configureAddedToCartPopUp = () => {
     $('.jd-add-pop-close').click(() => {
       $('.jd-add-pop').removeClass('jd-add-pop-show');
     });
   };
 
+  /**
+   * Configure the price/discount part of the product info
+   * @param {Object} discountInfo
+   * @returns {HTMLElement}
+   */
   const getBottomRight = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -701,13 +698,13 @@ const getProductSelectionMethods = () => {
     return documentFragment;
   };
 
+  /**
+   * Get the rightmost section of the inline selector that contains price and discount
+   * @param {Object} discountInfo
+   * @returns {HTMLElement}
+   */
   const getPDPOptions = (discountInfo) => {
     const documentFragment = document.createDocumentFragment();
-
-    // top level element
-    const pdpDiv = document.createElement('div');
-    pdpDiv.classList.add('pdp-div');
-    documentFragment.appendChild(pdpDiv);
 
     // top level element
     const pdpButtonWrap = document.createElement('div');
@@ -727,6 +724,12 @@ const getProductSelectionMethods = () => {
     return documentFragment;
   };
 
+  /**
+   * Try adding to shopify cart and tracking the event in the data layer
+   * @param {Object} product The shopify product
+   * @param {Object} moduleData Parsed module
+   * @param {Object} selectedOptions Currently selected options object
+   */
   const tryAddAndTrack = async (product, moduleData, selectedOptions) => {
     try {
       const variant = await addToCart(product, moduleData, selectedOptions);
@@ -766,14 +769,14 @@ const getProductSelectionMethods = () => {
   /**
    * Updates selectedOptions and show/hide buttons when an attribute is changed.
    */
-  const handleSelectorChange = (
+  const handleSelectorChangeFull = (
     moduleData,
     product,
     selectedOptions,
     optionKeys,
     discountInfo,
   ) => {
-    const { showStickyHeader } = moduleData;
+    const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
     const availableVariants = IIN.shopify.getAvailableVariants(variants);
     const hasCohorts = availableVariants.length > 1;
@@ -793,72 +796,51 @@ const getProductSelectionMethods = () => {
     const valueSet = options[optionKeys[0]];
     const title = [...valueSet]?.[0];
     const isDefaultTitle = title === 'Default Title';
+    optionsForm.classList.add('jd-shopify-options');
 
-    if (showStickyHeader) {
-      optionsForm.classList.add('jd-shopify-options');
-
-      // Not showing options if there is only 1 default field
-      if (!isDefaultTitle) {
-        optionsForm.appendChild(
-          createOptionNodes(optionKeys, options, selectedOptions),
-        );
-      }
-
-      // Instead of converting node list to an array, we can use forEach to iterate
-      const { forEach } = Array.prototype;
-
-      // Adding options to header dropdown
-      const bottomBases = document.getElementsByClassName('pdp-bottom-options');
-      forEach.call(bottomBases, (element) => {
-        element.replaceChildren(optionsForm.cloneNode(true));
-      });
-
-      const bottomPrices = document.getElementsByClassName('pdp-bottom-price');
-      forEach.call(bottomPrices, (element) =>
-        element.replaceChildren(getBottomRight(discountInfo)),
+    // Not showing options if there is only 1 default field
+    if (!isDefaultTitle) {
+      optionsForm.appendChild(
+        createOptionNodes(optionKeys, options, selectedOptions),
       );
-    } else if (moduleData.isInlineOnly) {
-      const optionsDiv = document.createElement('div');
-      optionsDiv.classList.add('jd-shopify-options');
-
-      if (!isDefaultTitle) {
-        optionsDiv.appendChild(
-          createOptionNodes(optionKeys, options, selectedOptions),
-        );
-      }
-
-      const button = createAddToCartButton();
-      const errorMessage = createErrorBlock();
-
-      // final composition
-      const base = document.querySelector(`#${moduleData.name}`);
-      base.replaceChildren(optionsDiv, button, errorMessage);
     }
 
+    // Instead of converting node list to an array, we can use forEach to iterate
+    const { forEach } = Array.prototype;
+
+    // Adding options to header dropdown
+    const bottomBases = document.getElementsByClassName('pdp-bottom-options');
+    forEach.call(bottomBases, (element) => {
+      element.replaceChildren(optionsForm.cloneNode(true));
+    });
+
+    const bottomPrices = document.getElementsByClassName('pdp-bottom-price');
+    forEach.call(bottomPrices, (element) =>
+      element.replaceChildren(getBottomRight(discountInfo)),
+    );
+
     // Adding options to inline block
-    if (moduleData.isInlineAndHeader) {
+    if (showInlineSection) {
       const pdpOptions = document.querySelector('.pdp-options');
       const parentDuplicate = optionsForm.cloneNode(true);
       pdpOptions.replaceChildren(parentDuplicate, getPDPOptions(discountInfo));
     }
 
     // Option click checkbox
-    const radioSelector = showStickyHeader
-      ? `.jd-shopify-option-wrap input[type=radio]`
-      : `#${moduleData.name} .jd-shopify-option-wrap input[type=radio]`;
+    const radioSelector = `.jd-shopify-option-wrap input[type=radio]`;
 
     $(radioSelector).change(function (event) {
-      if (showStickyHeader) {
-        event.preventDefault();
-      }
+      event.preventDefault();
 
       const type = $(this).attr('name');
       const val = $(this).val();
+
       // This seems broken: parent, a special jquery data property, is always undefined?
       const parent = $(this).data('parent');
 
       selectedOptions[type] = val;
-      handleSelectorChange(
+
+      handleSelectorChangeFull(
         moduleData,
         product,
         selectedOptions,
@@ -866,15 +848,15 @@ const getProductSelectionMethods = () => {
         discountInfo,
       );
 
-      const prefix = showStickyHeader ? `.${parent}` : `#${moduleData.name}`;
+      const prefix = `.${parent}`;
       const checkedSelector = `${prefix} .jd-shopify-option-wrap input[name="${type}"]:checked`;
       $(checkedSelector).first().focus();
     });
 
     // This has something to do with targeting the right set of inputs
     if (showStickyHeader) {
-      $('.jd-shopify-option-wrap label').click(function (e) {
-        e.preventDefault();
+      $('.jd-shopify-option-wrap label').click(function (event) {
+        event.preventDefault();
         const checkbox = $(this).attr('for');
         $(`#${checkbox}`).first().trigger('click');
       });
@@ -890,8 +872,78 @@ const getProductSelectionMethods = () => {
     }
 
     // Add to cart button click.
-    const prefix = showStickyHeader ? '' : `#${moduleData.name} `;
-    const addToCartSelector = `${prefix}.jd-shopify-add-btn`;
+    const addToCartSelector = `.jd-shopify-add-btn`;
+    const $addToCartButtons = $(addToCartSelector);
+
+    $addToCartButtons.click(() => {
+      tryAddAndTrack(product, moduleData, selectedOptions);
+    });
+  };
+
+  /**
+   * Updates selectedOptions and show/hide buttons when an attribute is changed.
+   */
+  const handleSelectorChangeBasic = (
+    moduleData,
+    product,
+    selectedOptions,
+    optionKeys,
+  ) => {
+    const variants = Array.isArray(product?.variants) ? product.variants : [];
+    const { options, newSelection } = getOptions(
+      selectedOptions,
+      optionKeys,
+      variants,
+    );
+
+    optionKeys.forEach((optionKey) => {
+      selectedOptions[optionKey] = newSelection[optionKey];
+    });
+
+    // Configure options radio selections
+    const valueSet = options[optionKeys[0]];
+    const title = [...valueSet]?.[0];
+    const isDefaultTitle = title === 'Default Title';
+
+    const optionsDiv = document.createElement('div');
+    optionsDiv.classList.add('jd-shopify-options');
+
+    if (!isDefaultTitle) {
+      optionsDiv.appendChild(
+        createOptionNodes(optionKeys, options, selectedOptions),
+      );
+    }
+
+    const button = createAddToCartButton();
+    const errorMessage = createErrorBlock();
+
+    // final composition
+    const idSelector = `#${moduleData.name}`;
+    const base = document.querySelector(idSelector);
+    base.replaceChildren(optionsDiv, button, errorMessage);
+
+    // Option click checkbox
+    const radioSelector = `${idSelector} .jd-shopify-option-wrap input[type=radio]`;
+
+    $(radioSelector).change(function (event) {
+      const type = $(this).attr('name');
+      const val = $(this).val();
+
+      selectedOptions[type] = val;
+
+      handleSelectorChangeBasic(
+        moduleData,
+        product,
+        selectedOptions,
+        optionKeys,
+      );
+
+      const checkedSelector = `${idSelector} .jd-shopify-option-wrap input[name="${type}"]:checked`;
+      $(checkedSelector).first().focus();
+    });
+
+    // Add to cart button click.
+    const addToCartSelector = `${idSelector} .jd-shopify-add-btn`;
     const $addToCartButtons = $(addToCartSelector);
 
     $addToCartButtons.click(() => {
@@ -937,31 +989,19 @@ const getProductSelectionMethods = () => {
   };
 
   return {
-    addToCart,
     calculateDiscounts,
     configureAddedToCartPopUp,
     configureDropdownHeading,
-    configureHeaderOffset,
     configureHeaderToggle,
     configureImageSlider,
     configureStickyHeaderSampleClass,
     configureStickyNav,
-    createAddToCartButton,
-    createDiscountNodes,
-    createErrorBlock,
-    createInputPair,
-    createOptionLabel,
-    createOptionNodes,
     createViewItemEvent,
-    getBottomRight,
-    getOptions,
-    getPDPOptions,
     getProductData,
-    handleSelectorChange,
+    handleSelectorChangeBasic,
+    handleSelectorChangeFull,
     matchPDPBottomSectionToTop,
     parseMarkupData,
     processProduct,
-    trackAddToCart,
-    tryAddAndTrack,
   };
 };

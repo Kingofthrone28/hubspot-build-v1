@@ -1,21 +1,24 @@
-[ {
-  "id" : "804966ab-0336-e333-9253-47b261edebef",
-  "name" : "blog_field",
-  "display_width" : null,
-  "label" : "Blog",
-  "required" : false,
-  "locked" : false,
-  "type" : "blog",
-  "default" : 35099008523
-}, {
-  "id" : "81c93022-a762-2921-75f9-54d0db48aa27",
-  "name" : "post_count",
-  "display_width" : null,
-  "label" : "Post Count",
-  "required" : false,
-  "locked" : false,
-  "display" : "text",
-  "step" : 1,
-  "type" : "number",
-  "default" : 6
-} ]
+[
+  {
+    "id": "804966ab-0336-e333-9253-47b261edebef",
+    "name": "blog_field",
+    "display_width": null,
+    "label": "Blog",
+    "required": false,
+    "locked": false,
+    "type": "blog",
+    "default": 35099008523
+  },
+  {
+    "id": "81c93022-a762-2921-75f9-54d0db48aa27",
+    "name": "post_count",
+    "display_width": null,
+    "label": "Post Count",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "default": 6
+  }
+]

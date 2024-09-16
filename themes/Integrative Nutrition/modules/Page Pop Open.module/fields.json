@@ -1,143 +1,182 @@
-[ {
-  "id" : "2dc0d7c6-df38-8212-e070-f04bdc64a242",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [ {
-    "id" : "857f9c6a-14c4-23eb-7541-dc5e3e13034e",
-    "name" : "animation",
-    "display_width" : null,
-    "label" : "Animation",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
-      "name" : "animation",
-      "display_width" : null,
-      "label" : "Animation",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "none", "none" ], [ "fade", "Fade" ], [ "fadeUp", "Fade Up" ], [ "fadeDown", "Fade Down" ], [ "fadeLeft", "Fade Left" ], [ "fadeRight", "Fade Right" ], [ "slideUp", "Slide Up" ], [ "slideDown", "Slide Down" ], [ "slideLeft", "Slide Left" ], [ "slideRight", "Slide Right" ], [ "zoomIn", "Zoom In" ], [ "zoomInUp", "Zoom In Up" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomOut", "Zoom Out" ], [ "zoomOutUp", "Zoom Out Up" ], [ "zoomOutDown", "Zoom Out Down" ], [ "zoomOutLeft", "Zoom Out Left" ], [ "zoomOutRight", "Zoom Out Right" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "fadeDown"
-    }, {
-      "id" : "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
-      "name" : "apply_animation_to",
-      "display_width" : null,
-      "label" : "Apply Animation to",
-      "required" : false,
-      "locked" : false,
-      "display" : "radio",
-      "choices" : [ [ "this", "This Item" ], [ "section", "Parent Section" ], [ "column", "Parent Column" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "column"
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "group_occurrence_meta" : null,
-    "type" : "group",
-    "default" : {
-      "animation" : "fadeDown",
-      "apply_animation_to" : "column"
+[
+  {
+    "id": "2dc0d7c6-df38-8212-e070-f04bdc64a242",
+    "name": "style",
+    "display_width": null,
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "857f9c6a-14c4-23eb-7541-dc5e3e13034e",
+        "name": "animation",
+        "display_width": null,
+        "label": "Animation",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "4a60a9e2-cde2-b620-396a-290c7d9f4c9d",
+            "name": "animation",
+            "display_width": null,
+            "label": "Animation",
+            "required": false,
+            "locked": false,
+            "display": "select",
+            "choices": [
+              ["none", "none"],
+              ["fade", "Fade"],
+              ["fadeUp", "Fade Up"],
+              ["fadeDown", "Fade Down"],
+              ["fadeLeft", "Fade Left"],
+              ["fadeRight", "Fade Right"],
+              ["slideUp", "Slide Up"],
+              ["slideDown", "Slide Down"],
+              ["slideLeft", "Slide Left"],
+              ["slideRight", "Slide Right"],
+              ["zoomIn", "Zoom In"],
+              ["zoomInUp", "Zoom In Up"],
+              ["zoomInDown", "Zoom In Down"],
+              ["zoomInLeft", "Zoom In Left"],
+              ["zoomInRight", "Zoom In Right"],
+              ["zoomOut", "Zoom Out"],
+              ["zoomOutUp", "Zoom Out Up"],
+              ["zoomOutDown", "Zoom Out Down"],
+              ["zoomOutLeft", "Zoom Out Left"],
+              ["zoomOutRight", "Zoom Out Right"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "fadeDown"
+          },
+          {
+            "id": "8f1bd64a-4ce0-7ea9-4048-2734d3d763c2",
+            "name": "apply_animation_to",
+            "display_width": null,
+            "label": "Apply Animation to",
+            "required": false,
+            "locked": false,
+            "display": "radio",
+            "choices": [
+              ["this", "This Item"],
+              ["section", "Parent Section"],
+              ["column", "Parent Column"]
+            ],
+            "multiple": false,
+            "reordering_enabled": true,
+            "preset": null,
+            "type": "choice",
+            "default": "column"
+          }
+        ],
+        "tab": "STYLE",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "default": {
+          "animation": "fadeDown",
+          "apply_animation_to": "column"
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": {
+      "animation": {
+        "animation": "fadeDown",
+        "apply_animation_to": "column"
+      }
     }
-  } ],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : {
-    "animation" : {
-      "animation" : "fadeDown",
-      "apply_animation_to" : "column"
-    }
-  }
-}, {
-  "id" : "22ee0bcd-a32c-c77f-df28-0f63260c7e16",
-  "name" : "popup",
-  "display_width" : null,
-  "label" : "Popup",
-  "inline_help_text" : "Content displayed in the popup",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : "e65f4b36-ea73-a70a-1334-7febfb8b5adf",
-    "default" : null
   },
-  "children" : [ {
-    "id" : "e65f4b36-ea73-a70a-1334-7febfb8b5adf",
-    "name" : "pop_up_id",
-    "display_width" : null,
-    "label" : "Pop Up ID",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : "unique_id"
-  }, {
-    "id" : "1c4b144b-0fa2-32bf-34c6-8f7a0e096777",
-    "name" : "popup_content",
-    "display_width" : null,
-    "label" : "Popup Content",
-    "required" : false,
-    "locked" : false,
-    "type" : "richtext",
-    "default" : "<h3 style=\"text-align: center;\">Content Header</h3>"
-  }, {
-    "id" : "cff80b84-5198-a00c-702d-439005fd7f48",
-    "name" : "add_form",
-    "display_width" : null,
-    "label" : "Add Form",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "126415af-ab70-621d-6dfd-5426aef02e46",
-    "name" : "form_field",
-    "display_width" : null,
-    "label" : "Form",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "cff80b84-5198-a00c-702d-439005fd7f48",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
+  {
+    "id": "22ee0bcd-a32c-c77f-df28-0f63260c7e16",
+    "name": "popup",
+    "display_width": null,
+    "label": "Popup",
+    "inline_help_text": "Content displayed in the popup",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": "e65f4b36-ea73-a70a-1334-7febfb8b5adf",
+      "default": null
     },
-    "type" : "form",
-    "default" : {
-      "response_type" : "inline",
-      "message" : "Thanks for submitting the form."
-    }
-  }, {
-    "id" : "0f23ce40-9987-151f-56f8-87822cd95e21",
-    "name" : "footer",
-    "display_width" : null,
-    "label" : "Footer",
-    "required" : false,
-    "locked" : false,
-    "type" : "richtext",
-    "default" : "<span style=\"color: #999999; font-size: 13px;\">By clicking 'Send Me My Class!', I consent to Integrative Nutrition and its affiliates contacting me by email at the address provided and/or by telephone at the number provided (by live, automated, or prerecorded phone calls or text messages) about its courses. I understand that my consent is not required for enrollment and may be withdrawn.&nbsp;This page is protected by Google reCAPTCHA.</span>"
-  } ],
-  "tab" : "CONTENT",
-  "expanded" : false,
-  "group_occurrence_meta" : null,
-  "type" : "group",
-  "default" : [ ]
-} ]
+    "children": [
+      {
+        "id": "e65f4b36-ea73-a70a-1334-7febfb8b5adf",
+        "name": "pop_up_id",
+        "display_width": null,
+        "label": "Pop Up ID",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "unique_id"
+      },
+      {
+        "id": "1c4b144b-0fa2-32bf-34c6-8f7a0e096777",
+        "name": "popup_content",
+        "display_width": null,
+        "label": "Popup Content",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "<h3 style=\"text-align: center;\">Content Header</h3>"
+      },
+      {
+        "id": "cff80b84-5198-a00c-702d-439005fd7f48",
+        "name": "add_form",
+        "display_width": null,
+        "label": "Add Form",
+        "required": false,
+        "locked": false,
+        "display": "checkbox",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "126415af-ab70-621d-6dfd-5426aef02e46",
+        "name": "form_field",
+        "display_width": null,
+        "label": "Form",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": "cff80b84-5198-a00c-702d-439005fd7f48",
+          "controlling_field_path": null,
+          "controlling_value_regex": "true",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "type": "form",
+        "default": {
+          "response_type": "inline",
+          "message": "Thanks for submitting the form."
+        }
+      },
+      {
+        "id": "0f23ce40-9987-151f-56f8-87822cd95e21",
+        "name": "footer",
+        "display_width": null,
+        "label": "Footer",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "<span style=\"color: #999999; font-size: 13px;\">By clicking 'Send Me My Class!', I consent to Integrative Nutrition and its affiliates contacting me by email at the address provided and/or by telephone at the number provided (by live, automated, or prerecorded phone calls or text messages) about its courses. I understand that my consent is not required for enrollment and may be withdrawn.&nbsp;This page is protected by Google reCAPTCHA.</span>"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "default": []
+  }
+]

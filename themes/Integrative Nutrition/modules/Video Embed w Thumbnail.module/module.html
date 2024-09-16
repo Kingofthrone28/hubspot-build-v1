@@ -3,12 +3,16 @@
   <div class="video-thumb-embed-placeholder"></div>
 </div>
 
+{{ require_js(get_asset_url('../../js/datalayer.js')) }}
 <script>
-  $('#{{name}} .video-thumb-embed-thumb').click(function() {
+  $('#{{name}} .video-thumb-embed-thumb').click(() => {
     $('#{{name}} .video-thumb-embed-placeholder').replaceWith(`{{ module.video_embed }}`);
     $('#{{name}} .video-thumb-embed-thumb').hide();
+    const vimeoIframeElement = document.querySelectorAll('iframe[src*="vimeo"]')[0];
+    trackVimeoVideo(vimeoIframeElement);
   });
 </script>
+{% end_require_js %}
 
 {% require_css %}
 <style>

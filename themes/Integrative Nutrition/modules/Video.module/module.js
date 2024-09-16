@@ -1,6 +1,79 @@
 const oembedContainers = document.getElementsByClassName('oembed_container');
 const embedContainers = document.getElementsByClassName('embed_container');
 
+window.dataLayer = window.dataLayer || [];
+
+let player;
+let videoDuration = 0;
+let playbackInterval;
+let previousTrackedPercentage = -1;
+
+function trackPlayback(videoTitle) {
+  const currentTime = player.getCurrentTime();
+  const percentagePlayed = parseInt((currentTime / videoDuration) * 100);
+  if (percentagePlayed === previousTrackedPercentage) {
+    return;
+  }
+  previousTrackedPercentage = percentagePlayed;
+  switch (percentagePlayed) {
+    case 1:
+      window.dataLayer.push({
+        event: 'video_start',
+        video_title: videoTitle,
+      });
+      break;
+    case 10:
+    case 25:
+    case 50:
+    case 75:
+      window.dataLayer.push({
+        event: 'video_progress',
+        video_title: videoTitle,
+        video_percent: percentagePlayed,
+      });
+      break;
+    default:
+      break;
+  }
+}
+
+function onPlayerStateChange(event) {
+  const videoTitle = player.getVideoData().title;
+  if (event.data === YT.PlayerState.PLAYING) {
+    playbackInterval = setInterval(() => {
+      trackPlayback(videoTitle);
+    }, 1000);
+  } else if (event.data === YT.PlayerState.ENDED) {
+    window.dataLayer.push({
+      event: 'video_complete',
+      video_title: videoTitle,
+    });
+    clearInterval(playbackInterval);
+  } else {
+    clearInterval(playbackInterval);
+  }
+}
+
+function onPlayerReady() {
+  videoDuration = player.getDuration();
+}
+
+function startTrackYoutubePlayerEvents() {
+  const youtubeIframe = document.getElementsByClassName(
+    'oembed_container_iframe',
+  )[0];
+
+  youtubeIframe.src += youtubeIframe.src.includes('?')
+    ? '&enablejsapi=1'
+    : '?enablejsapi=1';
+  player = new YT.Player(youtubeIframe, {
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+    },
+  });
+}
+
 function loadOEmbed(container) {
   const embedContainer = container;
   const iframeWrapper = embedContainer.querySelector('.iframe_wrapper');
@@ -53,16 +126,27 @@ function loadOEmbed(container) {
         iframe.setAttribute('class', 'oembed_container_iframe');
         iframe.setAttribute('title', data.title);
 
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+        // const scriptTag = document.getElementsByTagName('script')[0];
+        // scriptTag.parentNode.insertBefore(tag, scriptTag);
+
         if (customThumbnail) {
           customThumbnail.onclick = function () {
             iframe.src += '&autoplay=1';
             this.setAttribute('class', 'oembed_custom-thumbnail--hide');
             iframeWrapper.appendChild(iframe);
-            this.parentNode.nextElementSibling
-              .getElementsByClassName('modal-dialog')[0]
-              .appendChild(iframe);
-            this.parentNode.nextElementSibling.classList.add('modal-open');
-            this.closest('.dnd-column').classList.add('video-open');
+            startTrackYoutubePlayerEvents();
+            try {
+              this.parentNode.nextElementSibling
+                .getElementsByClassName('modal-dialog')[0]
+                .appendChild(iframe);
+              this.parentNode.nextElementSibling.classList.add('modal-open');
+              this.closest('.dnd-column').classList.add('video-open');
+            } catch (e) {
+              /* TODO: inhirited crash on this line */
+            }
           };
         } else {
           iframeWrapper.appendChild(iframe);

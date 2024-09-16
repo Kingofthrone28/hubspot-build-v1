@@ -1,3 +1,7 @@
 .editor-warning {
   color: var(--color--legacy--red);
 }
+
+.iin_red {
+  color: var(--color--cherry);
+}

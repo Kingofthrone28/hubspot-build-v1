@@ -15,6 +15,13 @@
   visibility: hidden;
 }
 
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--line-count, 4);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Responsive Visibilty Classes */
 
 .visible-phone {

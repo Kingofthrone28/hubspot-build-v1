@@ -13,6 +13,7 @@ const hubdbNames = [
   'top_bar_schedule',
   'course_bundle',
   'taxonomy_overrides',
+  'sample_class_gating',
 ];
 
 const wait = (duration) =>

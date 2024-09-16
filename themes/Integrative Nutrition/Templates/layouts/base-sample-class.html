@@ -24,7 +24,27 @@
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
+
     {{ standard_header_includes }}
+
+    <!-- 
+      __Gating Function__
+      To use, add entry to Sample Class Gating HubDB table
+      for each page path you wish to gate
+    -->
+    <script>
+      {% set rows = hubdb_table_rows('sample_class_gating', 'page_path=' ~ request.path ~ '&limit=1') %}
+      const gateType = '{{ rows[0].sample_class.name|lower }}';
+      const gateRedirect = '{{ rows[0].redirect_path }}';
+      if (gateType) {
+        const optInCookie = IIN.cookies.getCookie(`${gateType}_sc_opt_in`);
+        const optInProperty = ("{{ contact.sample_class_opt_in }}").split(', ');
+        if (!optInCookie && !optInProperty.includes(gateType)) {
+          window.location.href = gateRedirect || '/';
+        }
+      }
+    </script>
+
   </head>
   <body>
     <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">

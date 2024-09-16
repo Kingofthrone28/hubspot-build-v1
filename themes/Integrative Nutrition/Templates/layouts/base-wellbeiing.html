@@ -1,0 +1,43 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page_meta.html_title }}</title>
+    {% if site_settings.favicon_src %}
+      <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+
+    <!-- Begin Styles -->
+    {{ require_css(get_asset_url('../../css/main.css')) }}
+    {{ require_css(get_asset_url('../../css/slick.css')) }}
+    {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
+    {{ require_css(get_asset_url('../../css/theme-overrides.css')) }}
+    {{ require_css(get_asset_url('../../css/style-guide-overrides.css')) }}
+    {{ require_css(get_asset_url('../../css/ui.css')) }}
+    <!-- Begin Scripts -->
+    <script src="{{ get_asset_url('../../js/jquery-3.5.1.js') }}"></script>
+    {{ require_js(get_asset_url('../../js/ui.js')) }}
+    {{ require_js(get_asset_url('../../js/lazyload.js')) }}
+    {{ require_js(get_asset_url('../../js/slick.js')) }}
+    {{ require_js(get_asset_url('../../js/main.js')) }}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
+      <div class="static-body responsive">
+        {% block body %}
+        {% endblock body %}
+      </div>
+      {% block footer %}
+       {% module "wellbeing_footer" 
+       path='/Integrative Nutrition/modules/Simple Footer', 
+       label="Well Being Footer" %}
+      {% endblock footer %}
+    </div>
+    {{ standard_footer_includes }}
+  </body>
+</html>

@@ -1,44 +1,48 @@
-[ {
-  "id" : "c6051bfc-dace-b2a8-5418-cdf1f45186d4",
-  "name" : "link_field",
-  "display_width" : null,
-  "label" : "Continue Shopping Link",
-  "required" : false,
-  "locked" : false,
-  "supported_types" : [ "EXTERNAL", "CONTENT" ],
-  "show_advanced_rel_options" : false,
-  "type" : "link",
-  "default" : {
-    "url" : {
-      "content_id" : null,
-      "type" : "EXTERNAL",
-      "href" : ""
-    },
-    "open_in_new_tab" : false,
-    "no_follow" : false
+[
+  {
+    "id": "c6051bfc-dace-b2a8-5418-cdf1f45186d4",
+    "name": "link_field",
+    "display_width": null,
+    "label": "Continue Shopping Link",
+    "required": false,
+    "locked": false,
+    "supported_types": ["EXTERNAL", "CONTENT"],
+    "show_advanced_rel_options": false,
+    "type": "link",
+    "default": {
+      "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "1b1d1a6f-9af8-4ebb-00cb-e73862fbc884",
+    "name": "enrollment_form",
+    "display_width": null,
+    "label": "Enrollment Form",
+    "required": false,
+    "locked": false,
+    "type": "form",
+    "default": {
+      "form_id": "620c642e-20f4-4664-a007-6e9a504332f7",
+      "response_type": "inline",
+      "message": "<p>Your Enrollment Agreement has been updated.</p>",
+      "gotowebinar_webinar_key": null,
+      "form_type": "HUBSPOT"
+    }
+  },
+  {
+    "id": "c409f5a1-e95b-bae9-5568-715e61e00f29",
+    "name": "empty_cart_message",
+    "display_width": null,
+    "label": "Empty Cart Message",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<div style=\"text-align: center; font-size: 30px;\">Your cart is empty</div>\n<div style=\"text-align: center; font-size: 20px;\">Find the right course for you</div>"
   }
-}, {
-  "id" : "1b1d1a6f-9af8-4ebb-00cb-e73862fbc884",
-  "name" : "enrollment_form",
-  "display_width" : null,
-  "label" : "Enrollment Form",
-  "required" : false,
-  "locked" : false,
-  "type" : "form",
-  "default" : {
-    "form_id" : "620c642e-20f4-4664-a007-6e9a504332f7",
-    "response_type" : "inline",
-    "message" : "<p>Your Enrollment Agreement has been updated.</p>",
-    "gotowebinar_webinar_key" : null,
-    "form_type" : "HUBSPOT"
-  }
-}, {
-  "id" : "c409f5a1-e95b-bae9-5568-715e61e00f29",
-  "name" : "empty_cart_message",
-  "display_width" : null,
-  "label" : "Empty Cart Message",
-  "required" : false,
-  "locked" : false,
-  "type" : "richtext",
-  "default" : "<div style=\"text-align: center; font-size: 30px;\">Your cart is empty</div>\n<div style=\"text-align: center; font-size: 20px;\">Find the right course for you</div>"
-} ]
+]

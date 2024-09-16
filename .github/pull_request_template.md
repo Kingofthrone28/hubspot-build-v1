@@ -8,6 +8,7 @@ Please replace XXXX with the ticket number to link to the Sales and Marketing Ji
 - [ ] Bug fix (change which fixes an issue)
 - [ ] Enhancement (change which improves upon an existing feature)
 - [ ] New feature (change which adds new functionality)
+- [ ] Cleanup (remove dead code, sync environment state, refactor, etc.)
 
 <!-- Add a description of the ticket here -->
 ## Overview
