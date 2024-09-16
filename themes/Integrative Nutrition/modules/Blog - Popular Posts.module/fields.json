@@ -42,14 +42,6 @@
     "label": "Time Frame",
     "required": false,
     "locked": false,
-    "visibility": {
-      "controlling_field": null,
-      "controlling_field_path": null,
-      "controlling_value_regex": null,
-      "property": null,
-      "operator": "NOT_EMPTY",
-      "access": null
-    },
     "display": "select",
     "choices": [
       ["popular_all_time", "Popular All Time"],
