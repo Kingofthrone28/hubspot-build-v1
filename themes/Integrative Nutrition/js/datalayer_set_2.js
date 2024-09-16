@@ -102,13 +102,13 @@ webinarElements.forEach((webinarElement) => {
   });
 });
 // Promotion Clicks
-const promo = document.querySelector('a.deal-bar-btn');
+const promo = document.querySelector('.deal-bar-btn');
 if (promo) {
   promo.addEventListener('click', () => {
     const clickText =
-      promo.previousElementSibling.previousElementSibling.innerText;
+      promo.parentElement.children[0].innerText;
     const promoCode =
-      promo.previousElementSibling.getAttribute('data-promo-code');
+      promo.parentElement.children[1].getAttribute('data-promo-code');
     window.dataLayer.push({
       event: 'promotion_click',
       click_text: clickText,
