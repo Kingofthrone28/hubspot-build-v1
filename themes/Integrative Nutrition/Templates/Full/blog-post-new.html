@@ -33,10 +33,6 @@
         <a target="_blank" href="http://pinterest.com/pin/create/link/?url={{ content.absolute_url|urlencode }}"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 52 52"><defs><style>.ecls-1{fill:#e51e27;}.ecls-2{fill:none;stroke:#e51e27;stroke-miterlimit:10;stroke-width:2px;}</style></defs><g id="art"><path class="ecls-1" d="M19.24,43.06a20,20,0,0,1,.07-6c.38-1.63,2.43-10.35,2.43-10.35a7.64,7.64,0,0,1-.61-3.08c0-2.9,1.68-5.06,3.77-5.06,1.78,0,2.63,1.34,2.63,2.93,0,1.79-1.13,4.46-1.73,6.94a3,3,0,0,0,3.09,3.77c3.7,0,6.54-3.9,6.54-9.52,0-5-3.58-8.47-8.7-8.47a9,9,0,0,0-9.41,9A8.2,8.2,0,0,0,18.86,28a.6.6,0,0,1,.14.6c-.15.65-.51,2.07-.58,2.36s-.31.46-.7.28c-2.61-1.22-4.24-5-4.24-8.07,0-6.57,4.77-12.6,13.76-12.6,7.22,0,12.84,5.14,12.84,12,0,7.18-4.53,13-10.8,13a5.51,5.51,0,0,1-4.76-2.4s-1.05,4-1.3,5a23,23,0,0,1-2.59,5.46Z"/></g><circle class="ecls-2" cx="26" cy="26" r="25"/></svg></a>
       </div>
       <div class="jd-post-content">{{ content.post_body }}</div>
-      
-      <div>
-        {% module "module_16983351272026" path="/Integrative Nutrition/modules/Image Button", label="Image Button" %}
-      </div>
     </div>
     <div class="jd-blog-post-right">
       {% if content.blog_post_author %}
@@ -71,7 +67,10 @@
         %}
       </div>
     </div>
-  </div>  
-  {% module "module_16934114492025" path="/Integrative Nutrition/modules/Blog Post Bottom Hero", label="Blog Post Bottom Hero" %}  
+  </div>
+  {% module "module_16934114492025"
+    path="/Integrative Nutrition/modules/Blog Post Bottom Hero",
+    label="Blog Post Bottom Hero"
+  %}
 </main>
 {% endblock body %}
