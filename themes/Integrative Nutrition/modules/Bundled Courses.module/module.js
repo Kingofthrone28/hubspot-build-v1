@@ -463,11 +463,6 @@
         addBundleProduct(productID);
       }
     });
-
-    bundleProducts.forEach(product => {
-
-    });
-
   };
 
   const trackViewItemEvent = (updatedCheckout, courses) => {
