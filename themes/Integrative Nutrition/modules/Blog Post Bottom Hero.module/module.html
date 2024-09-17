@@ -16,3 +16,13 @@
     </div>
   </div>
 </div>
+<script>  
+  window.addEventListener('message', (event) => {
+    if (
+      event.data.type === 'hsFormCallback' &&
+      event.data.eventName === 'onFormSubmitted'
+    ) {
+      IIN.cookies.setCookie('hctp_sc_opt_in', true, 30);
+    }
+  });
+</script>
