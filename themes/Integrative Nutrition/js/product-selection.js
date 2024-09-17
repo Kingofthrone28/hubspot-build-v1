@@ -332,6 +332,10 @@ const getProductSelectionMethods = () => {
             sku: matchedVariant.sku || 'NA',
             discount: discountAmount,
             quantity: productData?.quantity || 1,
+            vendor: productData.vendor,
+            url: window.location.href,
+            image_url: matchedVariant.image?.src || '',
+            compare_at_price: matchedVariant.compareAtPrice || ''
           },
         ],
       },
