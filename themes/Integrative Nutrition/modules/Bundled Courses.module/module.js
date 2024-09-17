@@ -508,7 +508,7 @@
           vendor: course.vendor,
           url: window.location.href,
           image_url: course.variant?.image?.src || '',
-          compare_at_price: course.variant?.compareAtPrice || ''
+          compare_at_price: course.variant?.compareAtPrice || '',
         })),
       );
       // Sending view item bundle product

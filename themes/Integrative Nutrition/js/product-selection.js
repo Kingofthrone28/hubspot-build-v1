@@ -335,7 +335,7 @@ const getProductSelectionMethods = () => {
             vendor: productData.vendor,
             url: window.location.href,
             image_url: matchedVariant.image?.src || '',
-            compare_at_price: matchedVariant.compareAtPrice || ''
+            compare_at_price: matchedVariant.compareAtPrice || '',
           },
         ],
       },
