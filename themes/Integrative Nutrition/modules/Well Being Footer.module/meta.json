@@ -2,6 +2,6 @@
   "global": false,
   "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
   "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
-  "module_id": 177698085890,
+  "module_id": 178541996676,
   "is_available_for_new_content": true
 }
