@@ -268,7 +268,7 @@
           quantity: course.quantity,
           sku: course.variant?.sku || 'NA',
           url: course.handle,
-          image_url: course.image?.src || '',
+          image_url: course.variant?.image?.src || '',
         })),
       );
       // Sending add to cart bundle product

@@ -290,7 +290,7 @@ const getProductSelectionMethods = () => {
             quantity: 1,
             sku: variant.sku || 'NA',
             url: productInfo.handle,
-            image_url: matchedVariant.image?.src || '',
+            image_url: variant.image?.src || '',
           },
         ],
       },
