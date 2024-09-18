@@ -6,9 +6,9 @@
   "module_id": 127863872116,
   "js_assets": [
     {
-      "resource_id": 161803710244,
       "autoload": true,
-      "name": "DataLayer.js"
+      "path": "../../js/datalayer.js",
+      "name": "datalayer.js"
     }
   ],
   "is_available_for_new_content": true

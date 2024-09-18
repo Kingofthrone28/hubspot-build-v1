@@ -267,6 +267,8 @@
           price: parseFloat(course.variant?.price?.amount) || '',
           quantity: course.quantity,
           sku: course.variant?.sku || 'NA',
+          url: course.handle,
+          image_url: course.variant?.image?.src || '',
         })),
       );
       // Sending add to cart bundle product
@@ -500,6 +502,10 @@
           price: parseFloat(course.variant.price.amount) || '',
           quantity: course.quantity,
           sku: course.variant?.sku || 'NA',
+          vendor: course.vendor,
+          url: course.handle,
+          image_url: course.variant?.image?.src || '',
+          compare_at_price: course.variant?.compareAtPrice || '',
         })),
       );
       // Sending view item bundle product

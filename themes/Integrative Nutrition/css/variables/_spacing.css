@@ -1,21 +1,48 @@
-/* Number in the variable name represents a multiplier for 0.25rem */
+/*
+ * Number in the variable name represents a multiplier for 0.25rem
+ *
+ * Usage:
+ * - Padding around content should use static units
+ * - Horizontal margins should use static units
+ * - Vertical margins between text elements (in a blog post, for example) should use relative units
+ * - Other vertical margins (between cards in the course catalog, for example) should probably use static units
+ */
+
 :root {
-  --spacing-1: 0.25rem; /*   ≈ 4px */
-  --spacing-2: 0.5rem; /*    ≈ 8px */
-  --spacing-3: 0.75rem; /*  ≈ 12px */
-  --spacing-4: 1rem; /*     ≈ 16px */
-  --spacing-5: 1.25rem; /*  ≈ 20px */
-  --spacing-6: 1.5rem; /*   ≈ 24px */
-  --spacing-8: 2rem; /*     ≈ 32px */
-  --spacing-10: 2.5rem; /*  ≈ 40px */
-  --spacing-12: 3rem; /*    ≈ 48px */
-  --spacing-16: 4rem; /*    ≈ 64px */
-  --spacing-20: 5rem; /*    ≈ 80px */
-  --spacing-24: 6rem; /*    ≈ 96px */
-  --spacing-32: 8rem; /*   ≈ 128px */
-  --spacing-40: 10rem; /*  ≈ 160px */
-  --spacing-48: 12rem; /*  ≈ 192px */
-  --spacing-56: 14rem; /*  ≈ 224px */
-  --spacing-64: 16rem; /*  ≈ 256px */
-  --spacing-160: 40rem; /* ≈ 640px */
+  --spacing-1: 0.25rem;
+  --spacing-1--static: 4px;
+  --spacing-2: 0.5rem;
+  --spacing-2--static: 8px;
+  --spacing-3: 0.75rem;
+  --spacing-3--static: 12px;
+  --spacing-4: 1rem;
+  --spacing-4--static: 16px;
+  --spacing-5: 1.25rem;
+  --spacing-5--static: 20px;
+  --spacing-6: 1.5rem;
+  --spacing-6--static: 24px;
+  --spacing-8: 2rem;
+  --spacing-8--static: 32px;
+  --spacing-10: 2.5rem;
+  --spacing-10--static: 40px;
+  --spacing-12: 3rem;
+  --spacing-12--static: 48px;
+  --spacing-16: 4rem;
+  --spacing-16--static: 64px;
+  --spacing-20: 5rem;
+  --spacing-20--static: 80px;
+  --spacing-24: 6rem;
+  --spacing-24--static: 96px;
+  --spacing-32: 8rem;
+  --spacing-32--static: 128px;
+  --spacing-40: 10rem;
+  --spacing-40--static: 160px;
+  --spacing-48: 12rem;
+  --spacing-48--static: 192px;
+  --spacing-56: 14rem;
+  --spacing-56--static: 224px;
+  --spacing-64: 16rem;
+  --spacing-64--static: 256px;
+  --spacing-160: 40rem;
+  --spacing-160--static: 640px;
 }
