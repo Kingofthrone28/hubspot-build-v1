@@ -2,24 +2,60 @@
   /* Style Guide */
 
   /* Style Guide Primary and Secondary Colors */
+
+  /* Figma color style: New Brand/Primary-Cherry */
   --color--cherry: #d72a25;
+
+  /* Figma color style: New Brand/Secondary-Gold */
   --color--gold: #e4ab00;
+
+  /* Figma color style: Light Lilac */
+  --color--lilac--light: #dedbe5;
+
+  /* Figma color style: New Brand/Secondary-Melon */
   --color--melon: #ed8a72;
+
+  /* Figma color style: Light Melon */
+  --color--melon--light: #fff0ec;
+
+  /* Figma color style: New Brand/Primary-Water */
   --color--water: #003d4b;
-  --color--water--faded: #4A747E;
+
+  /* Figma color style: none */
+  --color--water--faded: #4a7a7e;
+
+  /* Figma color style: New Brand/Light Water */
   --color--water--light: #e6f2f3;
 
   /* Style Guide Base Colors */
+
+  /* Figma color style: none */
   --color--black: #000; /* rgb(0 0 0) */
+
+  /* Figma color style: New Brand/Base-Chalk */
   --color--chalk: #f8f5f0;
+
+  /* Figma color style: New Brand/Base-Slate */
   --color--slate: #142023;
+
+  /* Figma color style: New Brand/Base-White */
   --color--white: #fff; /* rgb(255 255 255) */
 
   /* Style Guide Neutral Colors */
+
+  /* Figma color style: New Brand/Grey1 */
   --color--grey-1: #333;
+
+  /* Figma color style: New Brand/Grey2 */
   --color--grey-2: #4f4f4f;
+
+  /* Figma color style: New Brand/Grey3 */
   --color--grey-3: #828282;
+
+  /* Figma color style: New Brand/Grey4 */
   --color--grey-4: #bdbdbd;
+
+  /* Figma color style: New Brand/Grey5 */
   --color--grey-5: #e7e7e7;
 
   /* Style Guide Chopra Colors */
