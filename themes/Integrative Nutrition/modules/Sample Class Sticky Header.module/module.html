@@ -9,6 +9,7 @@
 {% if not is_sample_class_base_template %}
   <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
+    {% if module.image_slides|length > 1 %}
     <div class="pdp-top-slide-btns">
       {% for slide in module.image_slides %}
       <div id="pdp-top-slide-btn-{{loop.index}}" data-index="{{loop.index}}" class="pdp-top-slide-btn {% if loop.first %}pdp-top-slide-btn-active{% endif %}">
@@ -16,6 +17,7 @@
       </div>
       {% endfor %}
     </div>
+    {% endif %}
     <div class="pdp-top-slide-slides">
       <div class="pdp-top-slide-dots-wrap">
         <div class="pdp-top-slide-dots-inner">
@@ -39,7 +41,9 @@
             </script>
           {% endif %}
         </div>
-        <div>{{ slide.lower_text }}</div>
+        {% if slide.lower_text %}
+        <div class="pdp=-top-slide-lower-text">{{ slide.lower_text }}</div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

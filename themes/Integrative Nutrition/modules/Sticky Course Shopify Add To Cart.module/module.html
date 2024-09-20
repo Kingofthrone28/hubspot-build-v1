@@ -25,6 +25,7 @@
 {% if show_inline_section %}
 <div id="{{name}}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
+    {% if module.image_slides|length > 1 %}
     <div class="pdp-top-slide-btns">
       {% for slide in module.image_slides %}
       <div
@@ -36,6 +37,7 @@
       </div>
       {% endfor %}
     </div>
+    {% endif %}
     <div class="pdp-top-slide-slides">
       <div class="pdp-top-slide-dots-wrap">
         <div class="pdp-top-slide-dots-inner">
@@ -69,7 +71,9 @@
             </script>
           {% endif %}
         </div>
-        <div>{{ slide.lower_text }}</div>
+        {% if slide.lower_text %}
+        <div class="pdp-top-slide-lower-text">{{ slide.lower_text }}</div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

@@ -257,6 +257,11 @@
     var(--font-size--paragraph) / var(--line-height--paragraph)
     var(--font-family--body);
 
+  /* Figma text style: none */
+  --font--paragraph--short: var(--font-style--body) var(--font-weight--body)
+    var(--font-size--paragraph) / var(--line-height--125)
+    var(--font-family--body);
+
   /* Figma text style: New/Small Paragraph */
   --font--small-paragraph: var(--font-style--body) var(--font-weight--body)
     var(--font-size--small-paragraph) / var(--line-height--small-paragraph)
