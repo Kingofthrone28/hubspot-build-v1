@@ -105,8 +105,7 @@ webinarElements.forEach((webinarElement) => {
 const promo = document.querySelector('.deal-bar-btn');
 if (promo) {
   promo.addEventListener('click', () => {
-    const clickText =
-      promo.parentElement.children[0].innerText;
+    const clickText = promo.parentElement.children[0].innerText;
     const promoCode =
       promo.parentElement.children[1].getAttribute('data-promo-code');
     window.dataLayer.push({
