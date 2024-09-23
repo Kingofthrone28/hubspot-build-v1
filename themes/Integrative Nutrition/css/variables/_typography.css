@@ -1,11 +1,16 @@
 :root {
   /* Style Guide Typography */
 
-  /* Font Family */
-  --font-family--big-number: 'Junicode', 'Times New Roman', serif;
-  --font-family--body: 'Public Sans', 'Arial', sans-serif;
-  --font-family--heading: 'Playfair Display', 'Georgia', 'Times New Roman',
-    'Times', serif;
+  /* Font Family (raw values) */
+  --font-family--junicode: 'Junicode', 'Times New Roman', serif;
+  --font-family--playfair-display: 'Playfair Display', 'Georgia',
+    'Times New Roman', 'Times', serif;
+  --font-family--public-sans: 'Public Sans', 'Arial', sans-serif;
+
+  /* Font Family (usage) */
+  --font-family--body: var(--font-family--public-sans);
+  --font-family--heading: var(--font-family--playfair-display);
+  --font-family--heading--alt: var(--font-family--junicode);
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
 
@@ -25,6 +30,7 @@
 
   /* Font Size (mapped to Figma text style) */
   --font-size--big-number: var(--font-size--96);
+  --font-size--caption: var(--font-size--14);
   --font-size--extra-large-paragraph: var(--font-size--24);
   --font-size--h1--desktop: var(--font-size--80);
   --font-size--h1--mobile: var(--font-size--40);
@@ -52,11 +58,11 @@
   --font-size--testimonial-small: var(--font-size--16);
 
   /* Font Style */
-  --font-style--big-number: normal;
   --font-style--body: normal;
   --font-style--heading: normal;
+  --font-style--heading--alt: normal;
 
-  /* Font Weight */
+  /* Font Weight (raw values) */
   --font-weight--thin: 100;
   --font-weight--extra-light: 200;
   --font-weight--light: 300;
@@ -66,14 +72,17 @@
   --font-weight--bold: 700;
   --font-weight--extra-bold: 800;
   --font-weight--black: 900;
-  --font-weight--big-number: var(--font-weight--regular);
+
+  /* Font Weight (usage) */
   --font-weight--body: var(--font-weight--regular);
   --font-weight--heading: var(--font-weight--regular);
+  --font-weight--heading--alt: var(--font-weight--regular);
 
   /* Line Height (raw values) */
   --line-height--100: 1;
   --line-height--110: 1.1;
   --line-height--116: 1.16667;
+  --line-height--117: 1.175;
   --line-height--120: 1.2;
   --line-height--125: 1.25;
   --line-height--133: 1.33333;
@@ -83,9 +92,11 @@
   --line-height--155: 1.55556;
   --line-height--157: 1.57143;
   --line-height--166: 1.66667;
+  --line-height--171: 1.71428;
 
   /* Line Height (mapped to Figma text style) */
   --line-height--big-number: var(--line-height--100);
+  --line-height--caption: var(--line-height--171);
   --line-height--extra-large-paragraph: var(--line-height--116);
   --line-height--h1--desktop: var(--line-height--110);
   --line-height--h1--mobile: var(--line-height--120);
@@ -120,14 +131,13 @@
    */
 
   /* Figma text style: none */
-  --font--big-number: var(--font-style--big-number)
-    var(--font-weight--big-number) var(--font-size--big-number) /
-    var(--line-height--big-number) var(--font-family--big-number);
+  --font--big-number: var(--font-style--heading--alt)
+    var(--font-weight--heading--alt) var(--font-size--big-number) /
+    var(--line-height--big-number) var(--font-family--heading--alt);
 
-  /* Figma text style: New/Extra Large Paragraph */
-  --font--extra-large-paragraph: var(--font-style--body)
-    var(--font-weight--body) var(--font-size--extra-large-paragraph) /
-    var(--line-height--extra-large-paragraph) var(--font-family--body);
+  /* Figma text style: Caption */
+  --font--caption: italic var(--font-weight--light) var(--font-size--caption) /
+    var(--line-height--caption) var(--font-family--body);
 
   /* Figma text style: none */
   --font--extra-large-paragraph--light: var(--font-style--body)
@@ -245,6 +255,11 @@
   /* Figma text style: Desktop/Paragraph */
   --font--paragraph--bold: var(--font-style--body) var(--font-weight--bold)
     var(--font-size--paragraph) / var(--line-height--paragraph)
+    var(--font-family--body);
+
+  /* Figma text style: none */
+  --font--paragraph--short: var(--font-style--body) var(--font-weight--body)
+    var(--font-size--paragraph) / var(--line-height--125)
     var(--font-family--body);
 
   /* Figma text style: New/Small Paragraph */

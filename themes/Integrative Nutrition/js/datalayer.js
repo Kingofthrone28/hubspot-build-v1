@@ -192,11 +192,14 @@ subNavigationLinkElements.forEach((element) => {
   });
 });
 
-// Footer Events tracking
-function trackFooterNavigationClick(element) {
-  let clickText = element.innerText;
+// Footer and Link Click tracking
+function trackFooterNavigationAndLinkClicks(
+  element,
+  eventName,
+  isFooterNavLink = false,
+) {
+  let clickText = element.innerText.trim();
   let clickUrl = element.href ? element.href.split('?')[0] : 'NA';
-
   if (element.href.includes('facebook')) {
     clickText = 'Facebook';
   } else if (element.href.includes('instagram')) {
@@ -207,23 +210,40 @@ function trackFooterNavigationClick(element) {
     clickText = 'YouTube';
   } else if (element.href === 'https://www.integrativenutrition.com/') {
     clickText = 'logo';
-  } else if (element.href === 'tel:877-730-5444') {
+  } else if (
+    element.href === `${window.location.href}#` ||
+    element.href.startsWith('javascript')
+  ) {
+    clickUrl = 'NA';
+  } else if (
+    element.href === 'tel:877-730-5444' ||
+    element.href === 'tel:1-513-776-0961' ||
+    element.href === 'tel:8777305444'
+  ) {
     clickText = 'us number';
     clickUrl = 'us number';
-  } else if (element.href === 'tel:1-513-776-0960') {
+  } else if (
+    element.href === 'tel:1-513-776-0960' ||
+    element.href === 'tel:1-212-730-5433' ||
+    element.href === 'tel:15137760960'
+  ) {
     clickText = 'international number';
     clickUrl = 'international number';
+  } else if (element.className === 'course-card course-card-slim') {
+    clickText = element.querySelector('div.course-card-title').innerText.trim();
+  } else if (element.className === 'float-icon') {
+    clickText = element.parentElement.innerText.trim();
   }
-
   window.dataLayer.push({
-    event: 'footer_click',
+    event: eventName,
     click_text: clickText,
     click_url: clickUrl,
   });
 
   if (
-    clickUrl === 'https://iin.secure.force.com/AS' ||
-    clickUrl === 'https://info.integrativenutrition.com/contact-us'
+    isFooterNavLink &&
+    (clickUrl === 'https://iin.secure.force.com/AS' ||
+      clickUrl === 'https://info.integrativenutrition.com/contact-us')
   ) {
     window.dataLayer.push({
       event: 'cta_click',
@@ -237,7 +257,7 @@ function trackFooterNavigationClick(element) {
 const footerNavLinkElements = document.querySelectorAll('.footer-main a');
 footerNavLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
-    trackFooterNavigationClick(element);
+    trackFooterNavigationAndLinkClicks(element, 'footer_click', true);
   });
 });
 
@@ -350,6 +370,7 @@ function trackGenericCTAClick(element) {
     click_text: element.innerText,
     click_url: element.href ? element.href.split('?')[0] : 'NA',
     position,
+    cta_track_id: trackingId,
   });
 }
 
@@ -424,6 +445,30 @@ searchBoxElement?.addEventListener('keydown', (event) => {
     trackSearchResults(searchBoxElement);
     trackViewSearchResults(searchBoxElement);
   }, 5000); // grace period for search results to process.
+});
+
+const linkElements = document.querySelectorAll('a');
+linkElements.forEach((element) => {
+  element.addEventListener('click', () => {
+    trackFooterNavigationAndLinkClicks(element, 'link_click');
+  });
+});
+
+function trackRegisterWebinar(element) {
+  const headerText = element.getAttribute('data-tracking-header-label');
+  const clickText = element.querySelector('div.content a')?.innerText;
+  window.dataLayer.push({
+    event: 'register_webinar_click',
+    header_text: headerText,
+    click_text: clickText,
+  });
+}
+
+const webinarElements = document.querySelectorAll('div.item-inner.box');
+webinarElements.forEach((webinarElement) => {
+  webinarElement.addEventListener('click', () => {
+    trackRegisterWebinar(webinarElement);
+  });
 });
 
 function trackVimeoVideo(videoElement) {
