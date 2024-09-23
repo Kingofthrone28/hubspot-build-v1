@@ -1,0 +1,8 @@
+.jd-post-share-circle {
+  border: solid 1px var(--color--grey-2);
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+}
