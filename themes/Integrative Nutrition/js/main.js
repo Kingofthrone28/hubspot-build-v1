@@ -47,27 +47,37 @@ $(function() {
    }, 2000);
   });
 
-$(function() {
+
+$(() => {
+  const headerWrapClasses =
+    document.querySelector('.jd-header-wrap')?.classList;
+
+  if (!headerWrapClasses) {
+    return;
+  }
+
   let previousScrollTop = 0;
-  $(window).on('scroll', function() {
-      const currentScrollTop = $(this).scrollTop();
 
-      // Check if previousScrollTop is less than 0
-      if (previousScrollTop < 0) {
-          $('.jd-header-wrap').removeClass('ishidden');
-      }
+  const onScroll = () => {
+    const currentScrollTop = window.scrollY;
+
+    // Check if previousScrollTop is less than 0
+    if (previousScrollTop < 0) {
+      headerWrapClasses.remove('ishidden');
+    } else if (currentScrollTop > previousScrollTop) {
       // Scrolling Down
-      else if (currentScrollTop > previousScrollTop) {
-          $('.jd-header-wrap').addClass('ishidden');
-      }
+      headerWrapClasses.add('ishidden');
+    } else {
       // Scrolling Up
-      else {
-          $('.jd-header-wrap').removeClass('ishidden');
-      }
-      previousScrollTop = currentScrollTop;
-  });
-});
+      headerWrapClasses.remove('ishidden');
+    }
 
+    previousScrollTop = currentScrollTop;
+  };
+
+  window.addEventListener('scroll', IIN.helpers.throttle(onScroll));
+});
+  
 
 $(function() {
   /* Team Card */
@@ -475,7 +485,6 @@ window.addEventListener('load', function() {
   // mobile menu
   var mobileHeight = $('#main-header').outerHeight();
   $('.mobile-click').click(function() {
-    console.log('test');
     if ($('body').hasClass('open')) {
         $('body').removeClass('open');
         $('#main-header').animate({
@@ -582,15 +591,19 @@ $(window).scroll(function(){
   });
 
   // Sticky header change
-  $(document).scroll(function() {
-    var scrollAmount = $(window).scrollTop(),
-        height = $('.sticky-true').outerHeight();
-    if (scrollAmount >= height) {
-      $('.sticky-true').addClass('scroll');
-    } else {
-      $('.sticky-true').removeClass('scroll');
-    }
-  });
+  const $stickyTrue = $('.sticky-true');
+  
+  if ($stickyTrue.length) {
+    $(document).scroll(function() {
+      var scrollAmount = $(window).scrollTop(),
+          height = $stickyTrue.outerHeight();
+      if (scrollAmount >= height) {
+        $stickyTrue.addClass('scroll');
+      } else {
+        $stickyTrue.removeClass('scroll');
+      }
+    });
+  }
 
   //Tab Sections
   $('.dnd-section.vert-tabs').each(function(){
@@ -707,7 +720,6 @@ $(window).scroll(function(){
   if(checkNeedleEn || checkNeedleEnMobile){
     setTimeout(alertFunc, 10);
     function alertFunc(){
-      console.log('ALERT NEEDLE')
      checkNeedleEn.removeClass('needle-invite-english');
      checkNeedleEnMobile.removeClass('needle-invite-english');
     }

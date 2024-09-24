@@ -31,7 +31,7 @@
 
         container.classList.add('flex-accordion-container');
 
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
           const windowTop = window.scrollY;
           const containerTop =
             container.getBoundingClientRect().top + window.scrollY;
@@ -50,7 +50,9 @@
           } else {
             element.style.top = '0';
           }
-        });
+        };
+
+        window.addEventListener('scroll', handleScroll);
       });
   });
 })();

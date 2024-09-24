@@ -5,8 +5,7 @@ $(() => {
     const container = element.closest('.dnd-column');
 
     container.css('position', 'relative');
-
-    $(window).on('scroll', () => {
+    const handleScroll = () => {
       const windowTop = $(window).scrollTop();
       const containerTop = container.offset().top;
       const containerHeight = container.outerHeight();
@@ -24,6 +23,9 @@ $(() => {
       } else {
         element.css('top', '0');
       }
-    });
+    };
+
+    const delayMilliseconds = 5;
+    $(window).on('scroll', IIN.helpers.throttle(handleScroll, delayMilliseconds));
   });
 });

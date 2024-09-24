@@ -581,7 +581,7 @@ const getProductSelectionMethods = () => {
 
     const showClass = 'pdp-sticky-show';
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const { scrollY } = window;
       const { height, top } = trigger.getBoundingClientRect();
       const bottom = height + top + scrollY;
@@ -592,7 +592,9 @@ const getProductSelectionMethods = () => {
       } else if (scrollY < bottom && hasShowClass) {
         stickyWrap.classList.remove(showClass);
       }
-    });
+    }
+
+    window.addEventListener('scroll', IIN.helpers.throttle(handleScroll));
   };
 
   /**

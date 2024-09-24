@@ -333,26 +333,6 @@
       return false; //prevents event bubbling
     }
 
-    // TODO: refactor code to move SVGs into CSS
-    function headerScrollCheck() {
-      const logoPath = 'https://www.integrativenutrition.com/hubfs/rise-360-libraries/meditation-sample-lesson/lib/assets';
-      const logoSvgBlack = `${logoPath}/black_logo.svg`;
-      const logoSvgWhite = `${logoPath}/white_logo.svg`;
-      // Currently this has no targets.
-      const targets = [];
-      const $content = $(targets.join(', '));
-      const $wrapper = $content.find('.jd-header-wrap');
-      const $images = $wrapper.find('.jd-header-main a img');
-
-      if ($(document).scrollTop() > 150) {
-        $wrapper.addClass('jd-scrolled');
-        $images.attr('src', logoSvgBlack);
-      } else {
-        $wrapper.removeClass('jd-scrolled');
-        $images.attr('src', logoSvgWhite);
-      }
-    }
-
     $(document).click(function(e) {
       if (e.target.className != 'jd-nav-item-title') {
         $('.jd-nav-item').removeClass('jd-nav-show');
@@ -404,12 +384,6 @@
     $('.needle-invite-spanish').click(function(e) {
       e.preventDefault();
       needleInviteSpanish();
-    });
-
-    headerScrollCheck();
-
-    $(document).on('scroll', function() {
-      headerScrollCheck();
     });
   });
 </script>
