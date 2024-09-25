@@ -1,0 +1,13 @@
+{#
+  Get a popover that conatins a title and text body.
+  N.B. You must include popover.js in order for this to function properly.
+#}
+{% macro get_popover(target, title, body) %}
+  <div class="popover hidden" data-selector="{{target}}">
+    <div class="popover__title-row">
+      <div class="popover__title">{{ title }}</div>
+      <button class="remove-globals close-button"></button>
+    </div>
+    <div class="popover__text">{{ body }}</div>
+  </div>
+{% endmacro %}

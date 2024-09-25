@@ -299,13 +299,16 @@
   /** Extend the cookie life based on certain events */
   const extendCookie = () => {
     IIN.cookies.extendCookie(defaultCookieName, defaultDayCount);
-  }
-  
+  };
+
   const extensionEvents = ['beforeunload', 'mousedown'];
   extensionEvents.forEach((extensionEvent) => {
     window.addEventListener(extensionEvent, extendCookie);
   });
 
   const delayMilliseconds = 750;
-  window.addEventListener('scroll', IIN.helpers.debounce(extendCookie, delayMilliseconds));
+  window.addEventListener(
+    'scroll',
+    IIN.helpers.debounce(extendCookie, delayMilliseconds),
+  );
 })();

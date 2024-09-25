@@ -59,6 +59,10 @@ Other options include:
 ]
 ```
 
+### Warning
+
+Some rich text fields may contain hubl, e.g. `{{ macro() }}`, which can throw an error in certain cases (like being parsed by the `hs` cli for some reason). One can use a regex replacement to strip out the problematic portions, e.g. `some_rich_text|regex_replace("{{.+?}}", "")`.
+
 ## CSS Code Style
 
 ### Custom Properties (Variables) 

@@ -31,6 +31,9 @@
     };
 
     const delayMilliseconds = 5;
-    window.addEventListener('scroll', IIN.helpers.throttle(handleScroll, delayMilliseconds));
+    window.addEventListener(
+      'scroll',
+      IIN.helpers.throttle(handleScroll, delayMilliseconds),
+    );
   });
 })();

@@ -26,6 +26,9 @@ $(() => {
     };
 
     const delayMilliseconds = 5;
-    $(window).on('scroll', IIN.helpers.throttle(handleScroll, delayMilliseconds));
+    $(window).on(
+      'scroll',
+      IIN.helpers.throttle(handleScroll, delayMilliseconds),
+    );
   });
 });

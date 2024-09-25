@@ -1,0 +1,1 @@
+IIN.helpers.configurePopover();

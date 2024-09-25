@@ -1,0 +1,29 @@
+{# Get the base for a post byline #}
+{% macro get_byline_base(reading_time) %}
+  <span class="byline">
+  <span>By</span>
+  <span class="byline__name">{{ caller() }}</span>
+  <span>&nbsp;|&nbsp;</span>
+  <span class="byline__read-time">{{ reading_time }}</span>
+  </span>
+{% endmacro %}
+
+{# Get a post byline of author name and reading time #}
+{% macro get_byline(name, reading_time) %}
+  {% call get_byline_base(reading_time) %}
+    {{ name }}
+  {% endcall %}
+{% endmacro %}
+
+{# 
+  Get a post byline of author name and reading time.
+  Will insert anything between the call into the caller location, e.g. a tooltip
+  Requires call syntax, i.e. {% macro call get_byline() %}{% endcall %}
+#}
+{% macro get_byline_name_button(name, reading_time) %}
+  {% set addition = caller() %}
+  {% call get_byline_base(reading_time) %}
+    <button class="remove-globals link-style" type="button">{{ name }}</button>
+    {{ addition }}
+  {% endcall %}
+{% endmacro %}

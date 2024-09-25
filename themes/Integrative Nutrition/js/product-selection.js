@@ -592,7 +592,7 @@ const getProductSelectionMethods = () => {
       } else if (scrollY < bottom && hasShowClass) {
         stickyWrap.classList.remove(showClass);
       }
-    }
+    };
 
     window.addEventListener('scroll', IIN.helpers.throttle(handleScroll));
   };

@@ -1,11 +1,13 @@
-{% from '../../Templates/macros.html' import get_reading_time %}
+{% from '../../macros/get-byline.html' import get_byline %}
+{% from '../../macros/get-reading-time.html' import get_reading_time %}
+
 {% set blog_id = blog ? blog.id : 'default' %}
 {% set post_count_to_load = 4 %}
 {% set posts = blog_recent_posts(blog_id, post_count_to_load) %}
+
 {# {% set topic_url = blog_tag_url(blog_id, main_topic.slug ) %} #}
 {# {% set author_url = blog_author_url(blog_id, author.slug ) %} #}
 
-<!-- Begin Latest Blog Posts module html  -->
 <section class="blog-latest-posts">
   <div class="blog-latest-posts__header-row">
     <div class="blog-latest-posts__heading-wrapper">
@@ -19,19 +21,15 @@
   <div class="blog-latest-posts__posts">
     {% for post in posts %}
       {% set main_topic = post.topic_list[0] %}
-      {% set author = post.blog_post_author %}
+      {% set author_name = post.blog_post_author.display_name %}
       {% set post_url = post.url|escape_url %}
+      {% set reading_time = get_reading_time(post.post_body)%}
       <div class="blog-latest-posts__post">
         <a href="{{ post_url }}" class="blog-latest-posts__topic">{{ main_topic or '(None)' }}</a>
         <a href="{{ post_url }}" class="blog-latest-posts__title clamp">{{ post.name }}</a>
-        <a class="blog-latest-posts__author-and-time">
-          <span>By {{ author.display_name }}</span>
-          <span> | </span>
-          <span>{{ get_reading_time(post.post_body) }}</span>
-        </a>
+        <a href="{{ post_url }}" class="blog-latest-posts__author-and-time">{{ get_byline(author_name, reading_time) }}</a >
       </div>
     {% endfor %}
   </div>
   <hr class="blog-latest-posts__bottom-rule" />
 </section>
-<!-- End Latest Blog Posts module html  -->

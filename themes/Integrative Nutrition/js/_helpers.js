@@ -1,10 +1,10 @@
 (() => {
   /**
- * Delays the execution of a function
- * @param {Function} func
- * @param {number=300} [timeout]
- * @returns {Function} A debounced function.
- */
+   * Delays the execution of a function
+   * @param {Function} func
+   * @param {number=300} [timeout]
+   * @returns {Function} A debounced function.
+   */
   const debounce = (func, timeout = 300) => {
     let timeoutID;
 
@@ -20,11 +20,11 @@
   };
 
   /**
-  * Limits the execution of a function by a certain minimum time
-  * @param {Function} func Function to limit execution rate of
-  * @param {number=100} [timeout] Minimum time to pass before allowing execution
-  * @returns {Function} A throttled function
-  */
+   * Limits the execution of a function by a certain minimum time
+   * @param {Function} func Function to limit execution rate of
+   * @param {number=100} [timeout] Minimum time to pass before allowing execution
+   * @returns {Function} A throttled function
+   */
   const throttle = (func, delay = 100) => {
     let previousTime = 0;
 
@@ -32,20 +32,24 @@
       const now = Date.now();
 
       if (now - previousTime < delay) {
-        return;
+        return undefined;
       }
 
       previousTime = now;
       return func(...args);
-    }
+    };
   };
 
+  /** Overwritten by popover.js as needed */
+  const configurePopover = () => { };
+
   /**
- * A collection of commonly used helper methods.
- * @namespace
- */
+   * A collection of commonly used helper methods.
+   * @namespace
+   */
   IIN.helpers = {
     debounce,
+    configurePopover,
     throttle,
   };
 })();

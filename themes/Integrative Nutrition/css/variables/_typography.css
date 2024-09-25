@@ -1,20 +1,20 @@
 :root {
   /* Style Guide Typography */
 
-  /* Font Family (raw values) */
+  /* font-family (raw values) */
   --font-family--junicode: 'Junicode', 'Times New Roman', serif;
   --font-family--playfair-display: 'Playfair Display', 'Georgia',
     'Times New Roman', 'Times', serif;
   --font-family--public-sans: 'Public Sans', 'Arial', sans-serif;
 
-  /* Font Family (usage) */
+  /* font-family (usage) */
   --font-family--body: var(--font-family--public-sans);
   --font-family--heading: var(--font-family--playfair-display);
   --font-family--heading--alt: var(--font-family--junicode);
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
 
-  /* Font Size (raw values) */
+  /* font-size (raw values) */
   --font-size--12: 0.75rem; /*  ≈ 12px */
   --font-size--14: 0.875rem; /* ≈ 14px */
   --font-size--16: 1rem; /*     ≈ 16px */
@@ -28,7 +28,7 @@
   --font-size--80: 5rem; /*     ≈ 80px */
   --font-size--96: 6rem; /*     ≈ 96px */
 
-  /* Font Size (mapped to Figma text style) */
+  /* font-size (mapped to Figma text style) */
   --font-size--big-number: var(--font-size--96);
   --font-size--caption: var(--font-size--14);
   --font-size--extra-large-paragraph: var(--font-size--24);
@@ -57,12 +57,12 @@
   --font-size--testimonial-name--mobile: var(--font-size--16);
   --font-size--testimonial-small: var(--font-size--16);
 
-  /* Font Style */
+  /* font-style */
   --font-style--body: normal;
   --font-style--heading: normal;
   --font-style--heading--alt: normal;
 
-  /* Font Weight (raw values) */
+  /* font-weight (raw values) */
   --font-weight--thin: 100;
   --font-weight--extra-light: 200;
   --font-weight--light: 300;
@@ -73,12 +73,15 @@
   --font-weight--extra-bold: 800;
   --font-weight--black: 900;
 
-  /* Font Weight (usage) */
+  /* font-weight (usage) */
   --font-weight--body: var(--font-weight--regular);
   --font-weight--heading: var(--font-weight--regular);
   --font-weight--heading--alt: var(--font-weight--regular);
 
-  /* Line Height (raw values) */
+  /* letter-spacing */
+  --letter-spacing--caption: 0.08em;
+
+  /* line-height (raw values) */
   --line-height--100: 1;
   --line-height--110: 1.1;
   --line-height--116: 1.16667;
@@ -94,7 +97,7 @@
   --line-height--166: 1.66667;
   --line-height--171: 1.71428;
 
-  /* Line Height (mapped to Figma text style) */
+  /* line-height (mapped to Figma text style) */
   --line-height--big-number: var(--line-height--100);
   --line-height--caption: var(--line-height--171);
   --line-height--extra-large-paragraph: var(--line-height--116);
@@ -123,7 +126,7 @@
   --line-height--testimonial-name--mobile: var(--line-height--150);
   --line-height--testimonial-small: var(--line-height--150);
 
-  /* Font Shorthand:
+  /* font shorthand:
    * - font-style
    * - font-weight
    * - font-size / line-height
@@ -311,7 +314,7 @@
 
   /* Variables should be renamed if they get moved into the style guide. */
 
-  /* Legacy Font Family */
+  /* font-family (legacy) */
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
   --font-family--legacy--blog: 'Lato', sans-serif;
   --font-family--legacy--gallery: 'Roboto', sans-serif;
@@ -319,7 +322,7 @@
   --font-family--legacy--video: 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;
 
-  /* Legacy Font Size */
+  /* font-size (legacy) */
   --font-size--legacy--1: 10px; /*      10px    ≈ 0.625rem  */
   --font-size--legacy--2: 12px; /*      12px    ≈ 0.75rem   */
   --font-size--legacy--3: 13px; /*      13px    ≈ 0.8125rem */
@@ -350,7 +353,7 @@
   --font-size--legacy--28: 70px; /*     70px    ≈ 4.375rem  */
   --font-size--legacy--29: 120px; /*   120px    ≈ 7.5rem    */
 
-  /* Legacy Line Height */
+  /* line-height (legacy) */
   --line-height--legacy--1: 0.75;
   --line-height--legacy--2: 0.88;
   --line-height--legacy--3: 1.15;
