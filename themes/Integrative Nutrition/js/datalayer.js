@@ -529,3 +529,84 @@ const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
 vimeoIframeElements.forEach((vimeoIframeElement) => {
   trackVimeoVideo(vimeoIframeElement);
 });
+
+function trackContactClicks(element, position) {
+  let clickText = element.innerText;
+  let clickUrl = element.href.includes('?')
+    ? element.href.split('?')[0]
+    : element.href;
+  if (
+    clickText.includes('(877) 730-5444') ||
+    clickText.includes('(513) 776-0961')
+  ) {
+    clickText = 'us number';
+    clickUrl = 'us number';
+  } else if (
+    clickText.includes('+1 (513) 776-0960') ||
+    clickText.includes('+1 (212) 730-5433')
+  ) {
+    clickText = 'international number';
+    clickUrl = 'international number';
+  } else if (clickText.includes('Contact')) {
+    clickText = 'contact';
+    clickUrl = 'contact';
+  } else if (clickText.includes('Whatsapp')) {
+    clickText = 'whatsapp number';
+  } else if (clickText.includes('LIVE Chat Now')) {
+    clickText = 'live chat';
+  }
+  window.dataLayer.push({
+    event: 'contact_click',
+    click_text: clickText,
+    click_url: clickUrl,
+    position,
+  });
+}
+
+const headerContactPopElements = document.querySelectorAll(
+  'div.jd-contact-pop a',
+);
+headerContactPopElements.forEach((headerContactPopElement) => {
+  headerContactPopElement.addEventListener('click', () => {
+    trackContactClicks(headerContactPopElement, 'header');
+  });
+});
+
+const headerContactElement = document.querySelector('#jd-contact');
+if (headerContactElement) {
+  headerContactElement.addEventListener('click', () => {
+    trackContactClicks(headerContactElement, 'header');
+  });
+}
+
+const footerContactElements = document.querySelectorAll(
+  'div.footer-main a[href^="tel"]',
+);
+footerContactElements.forEach((footerContactElement) => {
+  footerContactElement.addEventListener('click', () => {
+    trackContactClicks(footerContactElement, 'footer');
+  });
+});
+
+const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
+bottomFloatBar?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'contact_click',
+    click_text: 'admission number',
+    position: 'footer',
+  });
+});
+
+const promo = document.querySelector('.deal-bar-btn');
+if (promo) {
+  promo.addEventListener('click', () => {
+    window.dataLayer.push({
+      event: 'promotion_click',
+      click_text: promo.parentElement.children[0].innerText,
+      promo_code:
+        promo.parentElement
+          ?.querySelector('[data-promo-code]')
+          ?.getAttribute('data-promo-code') || 'NA',
+    });
+  });
+}
