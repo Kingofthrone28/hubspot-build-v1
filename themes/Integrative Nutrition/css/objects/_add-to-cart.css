@@ -215,7 +215,9 @@
   padding: var(--spacing-6--static) var(--spacing-4--static);
 }
 
-.pdp-top-content h1 {
+.pdp-top-content h2 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-6);
   font: var(--font--h2--desktop);
 }
 
@@ -678,6 +680,10 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
     padding: 0 0 var(--spacing-5);
   }
 
+  .pdp-top-content h2 {
+    margin-bottom: var(--spacing-4);
+  }
+
   .pdp-top-slide-btn {
     margin-right: var(--spacing-4--static);
   }
@@ -794,7 +800,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
     padding: 0 var(--spacing-2--static) var(--spacing-3);
   }
 
-  .pdp-top-content h1 {
+  .pdp-top-content h2 {
     font: var(--font--h2--mobile);
   }
 
