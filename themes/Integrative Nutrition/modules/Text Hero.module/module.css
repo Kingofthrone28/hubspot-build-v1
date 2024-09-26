@@ -8,7 +8,7 @@
 }
 
 .text-hero__image {
-  background-color: var(--color--legacy--grey--light-grey);
+  background-color: var(--color--grey-5);
   background-repeat: no-repeat;
   width: 100%;
   height: var(--image--height);
