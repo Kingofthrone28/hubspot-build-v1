@@ -1,14 +1,14 @@
 {# Independent variables #}
-{% set is_sample_class = module.configuration == 'sample-class' %}
+{% set is_header_only = module.configuration == 'header-only' %}
 {% set is_inline_only = module.configuration == 'inline-only' %}
 {% set is_inline_and_header = module.configuration == 'inline-and-header' %}
-{% set is_header_only = module.configuration == 'header-only' %}
+{% set is_sample_class = module.configuration == 'sample-class' %}
 
 {# Dependent variables #}
-{% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
-{% set show_inline_section = is_inline_and_header or is_inline_only %}
-{% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 {% set arrow_link_direction = 'arrow-link-' ~ (is_sample_class ? 'back' : 'forward') %}
+{% set show_inline_section = is_inline_and_header or is_inline_only %}
+{% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
+{% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 
 {# Markup #}
 
@@ -106,8 +106,20 @@
       {% if codeObj.val %}
       <div class="pdp-code-wrap">
         <div class="pdp-code">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 5H5.01M5 1H10C10.512 1 11.024 1.195 11.414 1.586L18.414 8.586C18.7889 8.96106 18.9996 9.46967 18.9996 10C18.9996 10.5303 18.7889 11.0389 18.414 11.414L11.414 18.414C11.0389 18.7889 10.5303 18.9996 10 18.9996C9.46967 18.9996 8.96106 18.7889 8.586 18.414L1.586 11.414C1.4 11.2285 1.25249 11.0081 1.15192 10.7655C1.05136 10.5228 0.99973 10.2627 1 10V5C1 3.93913 1.42143 2.92172 2.17157 2.17157C2.92172 1.42143 3.93913 1 5 1Z" stroke="#142023" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 5H5.01M5 1H10C10.512 1 11.024 1.195 11.414 1.586L18.414 8.586C18.7889 8.96106 18.9996 9.46967 18.9996 10C18.9996 10.5303 18.7889 11.0389 18.414 11.414L11.414 18.414C11.0389 18.7889 10.5303 18.9996 10 18.9996C9.46967 18.9996 8.96106 18.7889 8.586 18.414L1.586 11.414C1.4 11.2285 1.25249 11.0081 1.15192 10.7655C1.05136 10.5228 0.99973 10.2627 1 10V5C1 3.93913 1.42143 2.92172 2.17157 2.17157C2.92172 1.42143 3.93913 1 5 1Z"
+              stroke="#142023"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <div>{{ codeObj.val }}</div>
         </div>
@@ -161,7 +173,7 @@
             {# Disabled this button until we parse product info. #}
               <button
                 id="pdp-sticky-enroll-btn"
-                class="jd-request-btn hs-button dark-button pdp-sticky-btn-right caret caret-down"
+                class="jd-request-btn hs-button {{ is_sample_class ? 'dark-button' : 'light-button' }} pdp-sticky-btn-right caret caret-down"
                 disabled
               >
                 {% if is_sample_class and module.sticky_nav.right_button_text %}
@@ -172,7 +184,12 @@
               </button>
             </div>
           </div>
-          <button type="button" id="pdp-close-product-selector" class="close-button pdp-close-product-selector hide" aria-hidden="true"></button>
+          <button
+            type="button"
+            id="pdp-close-product-selector"
+            class="close-button pdp-close-product-selector hide"
+            aria-hidden="true"
+          ></button>
         </div>
       </div>
       {# Dropdown portion #}
@@ -255,14 +272,14 @@
   {%- set raw_data = {
     category: module.category_text,
     courseName: module.course_name,
-    name: name,
     isHeaderOnly: is_header_only,
     isInlineAndHeader: is_inline_and_header,
     isInlineOnly: is_inline_only,
     isSampleClass: is_sample_class,
+    name: name,
+    productID: module.product_id,
     showInlineSection: show_inline_section,
-    showStickyHeader: show_sticky_header,
-    productID: module.product_id
+    showStickyHeader: show_sticky_header
   } %}
   (function () {
     const jsonData = JSON.stringify({{ raw_data|tojson }});
