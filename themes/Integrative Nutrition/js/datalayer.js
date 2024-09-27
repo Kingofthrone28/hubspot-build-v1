@@ -1,15 +1,12 @@
 window.dataLayer = window.dataLayer || [];
 
 function trackAccordionClick(element) {
-  let action = 'open';
-  if (element.classList.contains('active')) {
-    action = 'close';
-  }
   window.dataLayer.push({
     event: 'accordion_click',
     click_text: element.firstChild.innerText,
-    action,
+    action: element.classList.contains('active') ? 'close' : 'open',
   });
+
   element.classList.toggle('active');
 }
 
@@ -32,6 +29,7 @@ function trackBioClose(element) {
 function trackSocialShare(element) {
   const blogTitle = element.parentElement.previousElementSibling.innerText;
   let shareType;
+
   if (element.href.includes('facebook')) {
     shareType = 'facebook';
   } else if (element.href.includes('linkedin')) {
@@ -43,6 +41,7 @@ function trackSocialShare(element) {
   } else if (element.href.includes('mailto')) {
     shareType = 'mail';
   }
+
   window.dataLayer.push({
     event: 'social_share',
     blog_title: blogTitle,
@@ -56,6 +55,7 @@ function trackOpenChat() {
     chat_action: 'open',
   });
 }
+
 function trackCloseChat() {
   window.dataLayer.push({
     event: 'chat_click',
@@ -65,6 +65,7 @@ function trackCloseChat() {
 
 function initializeEvents() {
   const accordions = document.querySelectorAll('div.ex-label');
+
   accordions.forEach((link) => {
     link.addEventListener('click', () => {
       trackAccordionClick(link);
@@ -74,6 +75,7 @@ function initializeEvents() {
   const viewBioButtons = document.querySelectorAll(
     '.bio-label .bio-closed strong',
   );
+
   viewBioButtons.forEach((button) => {
     button.addEventListener('click', () => {
       trackBioView(button);
@@ -83,6 +85,7 @@ function initializeEvents() {
   const closeBioButtons = document.querySelectorAll(
     '.bio-label .bio-open strong',
   );
+
   closeBioButtons.forEach((button) => {
     button.addEventListener('click', () => {
       trackBioClose(button);
@@ -90,6 +93,7 @@ function initializeEvents() {
   });
 
   const socialShareLogos = document.querySelectorAll('.jd-post-share a');
+
   socialShareLogos.forEach((logo) => {
     logo.addEventListener('click', () => {
       trackSocialShare(logo);
@@ -97,26 +101,19 @@ function initializeEvents() {
   });
 
   const openChatButton = document.querySelector('div#chatbtn');
-  if (openChatButton) {
-    openChatButton.addEventListener('click', () => {
-      trackOpenChat();
-    });
-  }
+
+  openChatButton?.addEventListener('click', trackOpenChat);
 
   const inviteDiv = document.querySelector('div#inviteBody');
+
   if (inviteDiv?.children.length > 3) {
     const closeChatBtn = inviteDiv.children[3];
-    if (closeChatBtn) {
-      closeChatBtn.addEventListener('click', () => {
-        trackCloseChat();
-      });
-    }
+
+    closeChatBtn?.addEventListener('click', trackCloseChat);
   }
 }
 
-window.addEventListener('load', () => {
-  initializeEvents();
-});
+window.addEventListener('load', initializeEvents);
 
 /* -----------------START---------------------
 Header - Footer - SubNavigation Click Events
@@ -124,12 +121,14 @@ Header - Footer - SubNavigation Click Events
 
 // Header Navigation Events tracking
 const headerNavMenuElements = document.querySelectorAll('a.jd-nav-item-title');
+
 headerNavMenuElements.forEach((element) => {
   element.addEventListener('click', () => {
     window.dataLayer.push({
       event: 'header_nav_click',
       click_text: element.innerText,
-      click_url: '0', // Sending 0 in case no navigation, only opening sub menu
+      // Sending 0 in case no navigation, only opening sub menu
+      click_url: '0',
     });
   });
 });
@@ -138,20 +137,20 @@ headerNavMenuElements.forEach((element) => {
 const navLogoElement = document.querySelector(
   'div.jd-header-main.jd-mobile-hide a img',
 );
-if (navLogoElement) {
-  navLogoElement.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'header_nav_click',
-      click_text: 'logo',
-      click_url: navLogoElement.parentElement.href,
-    });
+
+navLogoElement?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'header_nav_click',
+    click_text: 'logo',
+    click_url: navLogoElement.parentElement.href,
   });
-}
+});
 
 // Navigation Top Container tracking
 const topBarNavigationElements = document.querySelectorAll(
   'div.jd-header-wrap div.jd-header-top.jd-mobile-hide ul li a',
 );
+
 topBarNavigationElements.forEach((element) => {
   element.addEventListener('click', () => {
     window.dataLayer.push({
@@ -168,18 +167,18 @@ topBarNavigationElements.forEach((element) => {
 const navCTAElement = document.querySelector(
   'div.jd-header-main.jd-mobile-hide a[data-tracking-id]',
 );
-if (navCTAElement) {
-  navCTAElement.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'header_nav_click',
-      click_text: navCTAElement.innerText,
-      click_url: navCTAElement.href,
-    });
+
+navCTAElement?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'header_nav_click',
+    click_text: navCTAElement.innerText,
+    click_url: navCTAElement.href,
   });
-}
+});
 
 // Sub Navigation Events tracking
 const subNavigationLinkElements = document.querySelectorAll('.jd-dd a');
+
 subNavigationLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
     window.dataLayer.push({
@@ -200,6 +199,7 @@ function trackFooterNavigationAndLinkClicks(
 ) {
   let clickText = element.innerText.trim();
   let clickUrl = element.href ? element.href.split('?')[0] : 'NA';
+
   if (element.href.includes('facebook')) {
     clickText = 'Facebook';
   } else if (element.href.includes('instagram')) {
@@ -234,6 +234,7 @@ function trackFooterNavigationAndLinkClicks(
   } else if (element.className === 'float-icon') {
     clickText = element.parentElement.innerText.trim();
   }
+
   window.dataLayer.push({
     event: eventName,
     click_text: clickText,
@@ -255,6 +256,7 @@ function trackFooterNavigationAndLinkClicks(
 }
 
 const footerNavLinkElements = document.querySelectorAll('.footer-main a');
+
 footerNavLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackFooterNavigationAndLinkClicks(element, 'footer_click', true);
@@ -269,6 +271,7 @@ Header - Footer - SubNavigation Click Events
 const heroBannerElements = document.querySelectorAll(
   '[data-tracking-id*="hero"]',
 );
+
 heroBannerElements.forEach((element) => {
   element.addEventListener('click', () => {
     window.dataLayer.push({
@@ -291,6 +294,7 @@ function trackTabClickEvent(element) {
 }
 
 const homePageTabElements = document.querySelectorAll('a.tab-item-link');
+
 homePageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackTabClickEvent(element);
@@ -300,6 +304,7 @@ homePageTabElements.forEach((element) => {
 const productDetailsPageTabElements = document.querySelectorAll(
   '[data-tracking-id*="tab"]',
 );
+
 productDetailsPageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackTabClickEvent(element);
@@ -307,6 +312,7 @@ productDetailsPageTabElements.forEach((element) => {
 });
 
 const bundleProductDetailPageTabElements = document.querySelectorAll('div.tab');
+
 bundleProductDetailPageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackTabClickEvent(element);
@@ -321,29 +327,28 @@ TAB Click Events
 const openHamburgerMenuElement = document.querySelector(
   '.jd-mobile-show div.jd-ham',
 );
-if (openHamburgerMenuElement) {
-  openHamburgerMenuElement.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'hamburger_click',
-      action: 'open',
-    });
+
+openHamburgerMenuElement?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'hamburger_click',
+    action: 'open',
   });
-}
+});
 
 const closeHamburgerMenuElement = document.querySelector(
   '#jd-mobile-menu div.jd-ham',
 );
-if (closeHamburgerMenuElement) {
-  closeHamburgerMenuElement.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'hamburger_click',
-      action: 'close',
-    });
+
+closeHamburgerMenuElement?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'hamburger_click',
+    action: 'close',
   });
-}
+});
 
 // Breadcrumbs Click Event tracking
 const breadCrumbsElements = document.querySelectorAll('div.jd-blog-nav a');
+
 breadCrumbsElements.forEach((element) => {
   element.addEventListener('click', () => {
     window.dataLayer.push({
@@ -358,6 +363,7 @@ breadCrumbsElements.forEach((element) => {
 function trackGenericCTAClick(element) {
   let position;
   const trackingId = element.getAttribute('data-tracking-id');
+
   if (trackingId.includes('header')) {
     position = 'header';
   } else if (trackingId.includes('body')) {
@@ -365,6 +371,7 @@ function trackGenericCTAClick(element) {
   } else if (trackingId.includes('footer')) {
     position = 'footer';
   }
+
   window.dataLayer.push({
     event: 'cta_click',
     click_text: element.innerText,
@@ -375,6 +382,7 @@ function trackGenericCTAClick(element) {
 }
 
 const allGenericCTAElements = document.querySelectorAll('[data-tracking-id]');
+
 allGenericCTAElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackGenericCTAClick(element);
@@ -403,6 +411,7 @@ function getSelectedFilters() {
 function trackFilterEvent() {
   const { selectedTopics, selectedLevels, selectedTypes } =
     getSelectedFilters();
+
   window.dataLayer.push({
     event: 'filter',
     filter_topics: selectedTopics,
@@ -417,6 +426,7 @@ saveButtonElement?.addEventListener('click', trackFilterEvent);
 
 function trackSearchResults(element) {
   const articleCount = document.querySelectorAll('.jd-listing-item').length;
+
   window.dataLayer.push({
     event: 'search_results',
     search_term: element.value,
@@ -428,7 +438,9 @@ function trackViewSearchResults(element) {
   const articles = document.querySelectorAll(
     'article.jd-listing-item div.jd-listing-content h3',
   );
+
   const titles = [...articles].map(({ innerText }) => innerText);
+
   window.dataLayer.push({
     event: 'view_search_results',
     search_term: element.value,
@@ -437,17 +449,21 @@ function trackViewSearchResults(element) {
 }
 
 const searchBoxElement = document.querySelector('#jd-blog-search-input');
+
 searchBoxElement?.addEventListener('keydown', (event) => {
   if (event.key !== 'Enter') {
     return;
   }
+
+  // Grace period for search results to process.
   setTimeout(() => {
     trackSearchResults(searchBoxElement);
     trackViewSearchResults(searchBoxElement);
-  }, 5000); // grace period for search results to process.
+  }, 5000);
 });
 
 const linkElements = document.querySelectorAll('a');
+
 linkElements.forEach((element) => {
   element.addEventListener('click', () => {
     trackFooterNavigationAndLinkClicks(element, 'link_click');
@@ -457,6 +473,7 @@ linkElements.forEach((element) => {
 function trackRegisterWebinar(element) {
   const headerText = element.getAttribute('data-tracking-header-label');
   const clickText = element.querySelector('div.content a')?.innerText;
+
   window.dataLayer.push({
     event: 'register_webinar_click',
     header_text: headerText,
@@ -465,6 +482,7 @@ function trackRegisterWebinar(element) {
 }
 
 const webinarElements = document.querySelectorAll('div.item-inner.box');
+
 webinarElements.forEach((webinarElement) => {
   webinarElement.addEventListener('click', () => {
     trackRegisterWebinar(webinarElement);
@@ -473,10 +491,12 @@ webinarElements.forEach((webinarElement) => {
 
 function trackVimeoVideo(videoElement) {
   const vimeoScriptTag = document.createElement('script');
+
   vimeoScriptTag.src = 'https://player.vimeo.com/api/player.js';
   vimeoScriptTag.onload = function () {
     const player = new Vimeo.Player(videoElement);
     let previousTrackedPercentage = -1;
+
     player
       .getVideoTitle()
       .then((videoTitle) => {
@@ -496,9 +516,11 @@ function trackVimeoVideo(videoElement) {
 
         player.on('timeupdate', (data) => {
           const percentagePlayed = parseInt((data.percent * 100).toFixed(2));
+
           if (percentagePlayed === previousTrackedPercentage) {
             return;
           }
+
           previousTrackedPercentage = percentagePlayed;
 
           switch (percentagePlayed) {
@@ -511,6 +533,7 @@ function trackVimeoVideo(videoElement) {
                 video_title: videoTitle,
                 video_percent: percentagePlayed,
               });
+
               break;
             default:
               break;
@@ -526,6 +549,7 @@ function trackVimeoVideo(videoElement) {
 }
 
 const vimeoIframeElements = document.querySelectorAll('iframe[src*="vimeo"]');
+
 vimeoIframeElements.forEach((vimeoIframeElement) => {
   trackVimeoVideo(vimeoIframeElement);
 });
@@ -535,6 +559,7 @@ function trackContactClicks(element, position) {
   let clickUrl = element.href.includes('?')
     ? element.href.split('?')[0]
     : element.href;
+
   if (
     clickText.includes('(877) 730-5444') ||
     clickText.includes('(513) 776-0961')
@@ -555,6 +580,7 @@ function trackContactClicks(element, position) {
   } else if (clickText.includes('LIVE Chat Now')) {
     clickText = 'live chat';
   }
+
   window.dataLayer.push({
     event: 'contact_click',
     click_text: clickText,
@@ -566,6 +592,7 @@ function trackContactClicks(element, position) {
 const headerContactPopElements = document.querySelectorAll(
   'div.jd-contact-pop a',
 );
+
 headerContactPopElements.forEach((headerContactPopElement) => {
   headerContactPopElement.addEventListener('click', () => {
     trackContactClicks(headerContactPopElement, 'header');
@@ -573,15 +600,15 @@ headerContactPopElements.forEach((headerContactPopElement) => {
 });
 
 const headerContactElement = document.querySelector('#jd-contact');
-if (headerContactElement) {
-  headerContactElement.addEventListener('click', () => {
-    trackContactClicks(headerContactElement, 'header');
-  });
-}
+
+headerContactElement?.addEventListener('click', () => {
+  trackContactClicks(headerContactElement, 'header');
+});
 
 const footerContactElements = document.querySelectorAll(
   'div.footer-main a[href^="tel"]',
 );
+
 footerContactElements.forEach((footerContactElement) => {
   footerContactElement.addEventListener('click', () => {
     trackContactClicks(footerContactElement, 'footer');
@@ -589,6 +616,7 @@ footerContactElements.forEach((footerContactElement) => {
 });
 
 const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
+
 bottomFloatBar?.addEventListener('click', () => {
   window.dataLayer.push({
     event: 'contact_click',
@@ -598,15 +626,14 @@ bottomFloatBar?.addEventListener('click', () => {
 });
 
 const promo = document.querySelector('.deal-bar-btn');
-if (promo) {
-  promo.addEventListener('click', () => {
-    window.dataLayer.push({
-      event: 'promotion_click',
-      click_text: promo.parentElement.children[0].innerText,
-      promo_code:
-        promo.parentElement
-          ?.querySelector('[data-promo-code]')
-          ?.getAttribute('data-promo-code') || 'NA',
-    });
+
+promo?.addEventListener('click', () => {
+  window.dataLayer.push({
+    event: 'promotion_click',
+    click_text: promo.parentElement.children[0].innerText,
+    promo_code:
+      promo.parentElement
+        ?.querySelector('[data-promo-code]')
+        ?.getAttribute('data-promo-code') || 'NA',
   });
-}
+});
