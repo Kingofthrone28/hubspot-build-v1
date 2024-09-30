@@ -260,7 +260,7 @@ const getProductSelectionMethods = () => {
   const trackAddToCart = (variant, moduleInfo, productInfo) => {
     const currencyCode = variant.price?.currencyCode || 'USD';
     const addedVariantPrice = parseFloat(variant.price?.amount || 0.0);
-    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const variantGidPath = 'gid://shopify/ProductVariant/';
 
     let couponTitle = 'NA';
     let discountAmount = 0;
@@ -284,7 +284,7 @@ const getProductSelectionMethods = () => {
             item_id: moduleInfo.productID,
             item_name: productInfo.title,
             item_type: productInfo.productType,
-            variant_id: variant.id.replace(varientGidPath, ''),
+            variant_id: variant.id.replace(variantGidPath, ''),
             price: addedVariantPrice,
             discount: discountAmount,
             quantity: 1,
@@ -304,7 +304,7 @@ const getProductSelectionMethods = () => {
   };
 
   const createViewItemEvent = (productData, matchedVariant, moduleData) => {
-    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const variantGidPath = 'gid://shopify/ProductVariant/';
     const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
 
     let couponTitle = 'NA';
@@ -329,7 +329,7 @@ const getProductSelectionMethods = () => {
             item_id: moduleData.productID,
             item_name: productData.title,
             item_type: productData.productType || 'NA',
-            variant_id: matchedVariant.id.replace(varientGidPath, ''),
+            variant_id: matchedVariant.id.replace(variantGidPath, ''),
             price: parseFloat(itemPrice),
             sku: matchedVariant.sku || 'NA',
             discount: discountAmount,
