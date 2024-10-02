@@ -121,8 +121,6 @@
         readTime <= 1
           ? 'Read time: less than 1 min'
           : `Read time: ${readTime} mins`;
-      const readTimeHTML = document.querySelector(`#read-time-${post.id}`);
-      readTimeHTML.innerText = formatReadTime;
       $(`p #read-time-${post.id}`).empty().html(`${formatReadTime}`);
     }
 
