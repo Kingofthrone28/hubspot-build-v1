@@ -142,28 +142,29 @@
     async function loadPosts(searchUrl, btn) {
       try {
         const data = await fetchPostContent(searchUrl);
+        if (data) {
+          if (data.results.length < 6) {
+            $('.blog-teasers__view-more').hide();
+          } else {
+            $('.blog-teasers__view-more').show();
+            appendViewMoreResults(data);
 
-        if (data.results.length < 6) {
-          $('.blog-teasers__view-more').hide();
-        } else {
-          $('.blog-teasers__view-more').show();
-          appendViewMoreResults(data);
+            // Collect all promises
+            const promises = viewMorePosts.map((post) => populateReadTimes(post)); // Create an array of promises
 
-          // Collect all promises
-          const promises = viewMorePosts.map((post) => populateReadTimes(post)); // Create an array of promises
+            // Await all promises
+            const updatedDataArray = await Promise.all(promises);
 
-          // Await all promises
-          const updatedDataArray = await Promise.all(promises);
+            // Process results
+            updatedDataArray.forEach((updatedData) => {
+              if (!updatedData) {
+                console.warn(`Failed to fetch data for a post.`);
+              }
+            });
 
-          // Process results
-          updatedDataArray.forEach((updatedData) => {
-            if (!updatedData) {
-              console.warn(`Failed to fetch data for a post.`);
-            }
-          });
-
-          offset += 6;
-          $(btn).removeClass('disable-btn');
+            offset += 6;
+            $(btn).removeClass('disable-btn');
+          }
         }
         return data;
       } catch (error) {
