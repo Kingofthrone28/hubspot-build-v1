@@ -39,8 +39,7 @@
     </div>
     <div class="blog-teasers__view-more">
       <button
-        id="blog-teasers-view-more-btn"
-        class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
+        class="blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link"
       >
         View more {{ clean_tags }} articles
       </button>
@@ -52,131 +51,152 @@
   (function () {
     const tag = '{{ module.tag_field }}';
     let offset = {{ offset || 0 }};
+    const limit = 6;
     let viewMorePosts = [];
 
+    function getReadTime(wordCount) {
+      const readTime = Math.ceil(wordCount / 200);
+      const formatReadTime =
+        readTime <= 1
+          ? 'Read time: less than 1 min'
+          : `Read time: ${readTime} mins`;
+      return formatReadTime;
+    }
+
     function getWordCount(text) {
-      // Trim whitespace and split by spaces or other delimiters
-      const words = text.trim().split(/\s+/);
-      return words.length > 0 ? words.length : 0; // Return 0 if no words
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      return words.length;
     }
 
     function removeTags(text) {
-      // Use a regular expression to match anything between < and >
       return text.replace(/<[^>]*>/g, '').trim();
     }
 
     function fetchPostContent(url) {
-      return new Promise((resolve, reject) => {
-        $.get(url)
-          .done((data) => resolve(data))
-          .fail(() => reject(new Error(`Failed to load data from ${url}`)));
-      });
+      return fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .catch((error) => {
+          console.error('Fetch error:', error);
+          return null;
+        });
     }
 
     function appendViewMoreResults(data) {
       let row1 = '';
       let row2 = '';
-      let imageUrl = '';
 
-      for (let i = 0; i < 6; i++) {
-        const post = data.results[i];
+      data.results.forEach((post, i) => {
         viewMorePosts.push(post);
         const readTimePlaceHolder = 'Calculating...';
         const title = removeTags(post.title);
-        if (post.featuredImageUrl) {
-          imageUrl = post.featuredImageUrl;
-        }
+        const imageUrl = post.featuredImageUrl || '';
+
         const row = `
-          <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
-            <img src="${imageUrl}" alt="${title}">
-            <span class="blog-teasers__category">${post.tags[0]}</span>
-            <h4 class="blog-teasers__heading">${title}</h4>
-            <p class="blog-teasers__byline">By ${post.authorFullName} | <span id="read-time-${post.id}">${readTimePlaceHolder}</span></p>
-          </a>
-        `;
+                  <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
+                      <img src="${imageUrl}" alt="${title}">
+                      <span class="blog-teasers__category">${post.tags[0]}</span>
+                      <h4 class="blog-teasers__heading">${title}</h4>
+                      <p class="blog-teasers__byline">By ${post.authorFullName} | <span id="read-time-${post.id}">${readTimePlaceHolder}</span></p>
+                  </a>
+              `;
 
         if (i < 3) {
           row1 += row;
         } else {
           row2 += row;
         }
-      }
+      });
 
-      // Append the constructed rows to the DOM
-      $(`<div class="row">${row1}</div>`).appendTo('.blog-teasers__posts');
-      $(`<div class="row">${row2}</div>`).appendTo('.blog-teasers__posts');
+      // Insert rows into DOM
+      document
+        .querySelector('.blog-teasers__posts')
+        .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
+      document
+        .querySelector('.blog-teasers__posts')
+        .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+
+      console.log('Rows appended successfully.');
     }
 
-    function processParagraphs(data, post) {
-      const paragraphs = $(data).find('.jd-post-content');
+    function updateReadTime(data, post) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+      const paragraphs = doc.querySelectorAll('.jd-post-content');
       let wordCount = 0;
 
-      // Loop through each found paragraph
-      paragraphs.each(function () {
-        const paragraphText = $(this).text();
+      paragraphs.forEach((paragraph) => {
+        const paragraphText = paragraph.textContent || '';
         wordCount += getWordCount(paragraphText);
       });
-      const readTime = Math.ceil(wordCount / 200);
-      const formatReadTime =
-        readTime <= 1
-          ? 'Read time: less than 1 min'
-          : `Read time: ${readTime} mins`;
-      $(`p #read-time-${post.id}`).empty().html(`${formatReadTime}`);
+
+      const readTime = getReadTime(wordCount);
+      document.querySelector(`#read-time-${post.id}`).innerHTML = readTime;
     }
 
-    async function populateReadTimes(post) {
-      try {
-        const data = await fetchPostContent(post.url);
-        if (data) {
-          processParagraphs(data, post);
-        }
-        return data;
-      } catch (error) {
-        console.error('An unexpected error occurred:', error);
-        return null; // Return null in case of an error
-      }
-    }
-
-    async function loadPosts(searchUrl, btn) {
-      try {
-        const data = await fetchPostContent(searchUrl);
-        if (data) {
-          if (data.results.length < 6) {
-            $('.blog-teasers__view-more').hide();
-          } else {
-            $('.blog-teasers__view-more').show();
-            appendViewMoreResults(data);
-
-            // Collect all promises
-            const promises = viewMorePosts.map((post) => populateReadTimes(post)); // Create an array of promises
-
-            // Await all promises
-            const updatedDataArray = await Promise.all(promises);
-
-            // Process results
-            updatedDataArray.forEach((updatedData) => {
-              if (!updatedData) {
-                console.warn(`Failed to fetch data for a post.`);
-              }
-            });
-
-            offset += 6;
-            $(btn).removeClass('disable-btn');
+    function populateReadTimes(post) {
+      return fetchPostContent(post.url)
+        .then((data) => {
+          if (data) {
+            updateReadTime(data, post);
           }
-        }
-        return data;
-      } catch (error) {
-        console.error('An unexpected error occurred:', error);
-        return null;
-      }
+          return data;
+        })
+        .catch((error) => {
+          console.error('An unexpected error occurred:', error);
+          return null;
+        });
     }
 
-    $('#blog-teasers-view-more-btn').click(function () {
-      const btn = this;
-      viewMorePosts = [];
-      $(this).addClass('disable-btn');
-      const searchUrl = `${window.location.origin}/_hcms/search?&term=${encodeURIComponent(tag)}&type=BLOG_POST&limit=${6}&offset=${offset}`;
-      loadPosts(searchUrl, btn);
-    });
+    function loadPosts(searchUrl, button) {
+      return fetch(searchUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data && data.results) {
+            if (data.results.length < limit) {
+              document
+                .querySelector('.blog-teasers__view-more')
+                .classList.add('hidden');
+            }
+            if (data.results.length > 0) {
+              appendViewMoreResults(data);
+
+              const promises = viewMorePosts.map((post) =>
+                populateReadTimes(post),
+              );
+
+              return Promise.all(promises).then(() => {
+                offset += limit;
+                button.classList.remove('disable-btn');
+                return true;
+              });
+            }
+          }
+          return null;
+        })
+        .catch((error) => {
+          console.error('An unexpected error occurred:', error);
+          return null;
+        });
+    }
+
+    document
+      .querySelector('.blog-teasers-view-more-btn')
+      .addEventListener('click', function () {
+        const btn = this;
+        viewMorePosts = [];
+        btn.classList.add('disable-btn');
+        const searchUrl = `${window.location.origin}/_hcms/search?&term=${encodeURIComponent(tag)}&type=BLOG_POST&limit=${limit}&offset=${offset}`;
+        loadPosts(searchUrl, btn);
+      });
   })();
 </script>

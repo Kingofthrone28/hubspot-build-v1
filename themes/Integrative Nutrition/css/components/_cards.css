@@ -18,7 +18,7 @@
 .blog-teasers__posts .row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 4rem;
+  margin-bottom: var(--spacing-16);
 }
 
 .blog-teasers__category {
