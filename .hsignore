@@ -1,3 +1,5 @@
+# Configure files and folders to be ignored by the Hubspot CLI
+# For more info, see: https://developers.hubspot.com/beta-docs/guides/cms/tools/local-development-cli#ignore-files
 package-lock.json
 package.json
 **/README.md
