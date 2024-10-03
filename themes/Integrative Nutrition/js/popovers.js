@@ -41,5 +41,6 @@
     closeButton.addEventListener('click', closePopover);
   };
 
-  IIN.helpers.configurePopover = configurePopover;
+  IIN.popovers = IIN.popovers ?? {};
+  IIN.popovers.configurePopover = configurePopover;
 })();
