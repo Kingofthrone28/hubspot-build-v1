@@ -46,7 +46,6 @@ $(function () {
     const hiddenField = $('input[name="adwords_initial_url_new__c"]');
     if (!hiddenField) return;
     if (hiddenField) {
-      console.log(hostDomain);
       hiddenField.val(hostDomain);
     }
   }, 2000);
@@ -752,7 +751,6 @@ window.addEventListener('load', function () {
     }
 
     var url = window.location.href.split('?')[0];
-    console.log(url + query);
 
     $('#' + content).load(
       url + query + ' #' + content + ' .stagger-grid-wrap-inner',
