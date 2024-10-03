@@ -41,15 +41,15 @@
   };
 
   /** Overwritten by popover.js as needed */
-  const configurePopover = () => { };
+  const configurePopover = () => {};
 
   /**
    * A collection of commonly used helper methods.
    * @namespace
    */
   IIN.helpers = {
-    debounce,
     configurePopover,
+    debounce,
     throttle,
   };
 })();

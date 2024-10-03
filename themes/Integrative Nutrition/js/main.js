@@ -2,6 +2,7 @@
 {% include './_marketing.js' %}
 {% include './libphonenumber.js' %}
 {% include './form-phone-validation.js' %}
+{% include './blog.js' %}
 
 $(function () {
   $('.load-parent').each(function () {
