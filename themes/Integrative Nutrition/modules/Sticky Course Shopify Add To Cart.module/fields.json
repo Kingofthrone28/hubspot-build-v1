@@ -132,6 +132,19 @@
     "default": "The Health Coach Training Program"
   },
   {
+    "id": "d9dcbd78-f79a-dd6d-37d3-aec524940419",
+    "name": "page_heading",
+    "display_width": null,
+    "label": "Is this the page heading?",
+    "help_text": "Should this section have the H1 tag for SEO purposes?",
+    "inline_help_text": "",
+    "required": true,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "default": false
+  },
+  {
     "id": "f0b65a18-c741-3174-ea26-19f046511a3a",
     "name": "sub_head",
     "display_width": null,

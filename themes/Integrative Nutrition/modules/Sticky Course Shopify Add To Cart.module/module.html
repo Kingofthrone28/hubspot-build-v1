@@ -16,85 +16,104 @@
 {% if is_header_only %}
   <div id="product-selector-trigger">
   {% if is_in_editor %}
-    <span class="editor-warning">{STICKY COURSE SHOPIFY ADD TO CART HEADER TRIGGER}</span>
+    <span class="editor-warning">
+      {STICKY COURSE SHOPIFY ADD TO CART HEADER TRIGGER}
+    </span>
   {% endif %}
   </div>
 {% endif %}
 
 {# Inline section: from Sticky Course Shopify Add To Cart #}
 {% if show_inline_section %}
-<div id="{{name}}" class="pdp-top">
+<div id="{{ name }}" class="pdp-top">
   <div class="pdp-top-slide-wrap">
     {% if module.image_slides|length > 1 %}
     <div class="pdp-top-slide-btns">
       {% for slide in module.image_slides %}
       <div
-        id="pdp-top-slide-btn-{{loop.index}}"
-        data-index="{{loop.index}}"
-        class="pdp-top-slide-btn {% if loop.first %}pdp-top-slide-btn-active{% endif %}"
+        id="pdp-top-slide-btn-{{ loop.index }}"
+        data-index="{{ loop.index }}"
+        class="pdp-top-slide-btn{% if loop.first %} pdp-top-slide-btn-active{% endif %}"
       >
         {{ slide.label_field }}
       </div>
       {% endfor %}
     </div>
     {% endif %}
+
     <div class="pdp-top-slide-slides">
       <div class="pdp-top-slide-dots-wrap">
         <div class="pdp-top-slide-dots-inner">
           <div class="pdp-top-slide-dots">
             {% for slide in module.image_slides %}
             <div 
-              data-index="{{loop.index}}"
-              id="pdp-top-slide-dot-{{loop.index}}"
-              class="pdp-top-slide-dot {% if slide.video_embed %}pdp-top-slide-dot-video{% endif %} {% if loop.first %}pdp-top-slide-dot-active{% endif %}"
+              data-index="{{ loop.index }}"
+              id="pdp-top-slide-dot-{{ loop.index }}"
+              class="pdp-top-slide-dot{% if slide.video_embed %} pdp-top-slide-dot-video{% endif %}{% if loop.first %} pdp-top-slide-dot-active{% endif %}"
             ></div>
             {% endfor %}
           </div>
         </div>
       </div>
+
       {% for slide in module.image_slides %}
       <div
         id="pdp-top-slide-slide-{{ loop.index }}"
-        class="pdp-top-slide-slide {% if loop.first %}pdp-top-slide-slide-active{% endif %}"
+        class="pdp-top-slide-slide{% if loop.first %} pdp-top-slide-slide-active{% endif %}"
       >
         <div
-          class="pdp-top-slide-img {% if slide.video_embed %}pdp-top-slide-video-img{% endif %}"
-          style="background:url({{ slide.image_field.src }})"
+          class="pdp-top-slide-img{% if slide.video_embed %} pdp-top-slide-video-img{% endif %}"
+          style="background: url({{ slide.image_field.src }})"
         >
           {% if slide.video_embed %}
             <div class="pdp-top-slide-video-placeholder"></div>
             <script>
-              $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').click(function() {
-                $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').css('background', 'none');
-                $('#{{name}} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-placeholder').replaceWith(`{{ slide.video_embed }}`);
+              $('#{{ name }} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').click(() => {
+                $('#{{ name }} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-img').css('background', 'none');
+                $('#{{ name }} #pdp-top-slide-slide-{{ loop.index }} .pdp-top-slide-video-placeholder').replaceWith(`{{ slide.video_embed }}`);
               });
             </script>
           {% endif %}
         </div>
+
         {% if slide.lower_text %}
-        <div class="pdp-top-slide-lower-text">{{ slide.lower_text }}</div>
+        <div class="pdp-top-slide-lower-text">
+          {{ slide.lower_text }}
+        </div>
         {% endif %}
       </div>
       {% endfor %}
     </div>
   </div>
+
   <div class="pdp-top-content">
     <div class="pdp-top-content-top">
       <div>
-        <img src="{{ module.category_image.src }}" />
+        <img src="{{ module.category_image.src }}" alt="" />
         <div>{{ module.category_text }}</div>
       </div>
       <div>
         {% for image in module.provider_image %}
-          <img src="{{ image.src }}" />
+          <img src="{{ image.src }}" alt="{{ image.alt }}" />
         {% endfor %}
       </div>
     </div>
-    <h2>{{ module.course_name }}</h2>
-    <div class="pdp-top-content-sub">{{ module.sub_head }}</div>
+
+    {% set section_heading_tag = 'h' ~ (module.page_heading ? 1 : 2) %}
+
+    <{{ section_heading_tag }} class="pdp-top-content-heading">
+      {{ module.course_name }}
+    </{{ section_heading_tag }}>
+
+    <div class="pdp-top-content-sub">
+      {{ module.sub_head }}
+    </div>
     <div class="jd-add-cart-wrap pdp-options"></div>
     <div class="pdp-top-bottom">
-      <div class="pdp-affirm-line">{{ module.affirm_line }}</div>
+      <div class="pdp-affirm-line">
+        {{ module.affirm_line }}
+      </div>
+
       {% set codeObj = { val: '' } %}
       {% for code in module.code_offers %}
         {% set is_after_start = unixtimestamp(local_dt) >= unixtimestamp(code.start_time) %}
@@ -103,6 +122,7 @@
           {% do codeObj.update({ val: code.text_field }) %}
         {% endif %}
       {% endfor %}
+
       {% if codeObj.val %}
       <div class="pdp-code-wrap">
         <div class="pdp-code">
@@ -140,7 +160,7 @@
           <div class="pdp-sticky-head">
             <div>
               <div>
-                <img src="{{ module.category_image.src }}" />
+                <img src="{{ module.category_image.src }}" alt="" />
               </div>
               <h3>{{ module.course_name }}</h3>
             </div>
@@ -168,9 +188,10 @@
               {% endif %}
             </div>
             {% endif %}
+
             {# Right button - Enroll #}
             <div class="enroll-btn-wrapper">
-            {# Disabled this button until we parse product info. #}
+              {# Disabled this button until we parse product info. #}
               <button
                 id="pdp-sticky-enroll-btn"
                 class="jd-request-btn hs-button {{ is_sample_class ? 'dark-button' : 'light-button' }} pdp-sticky-btn-right caret caret-down"
@@ -192,6 +213,7 @@
           ></button>
         </div>
       </div>
+
       {# Dropdown portion #}
       <div class="pdp-sticky-enroll">
         <div class="pdp-sticky-enroll-inner">
