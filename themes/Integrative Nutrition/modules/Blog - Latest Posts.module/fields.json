@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "name": "menu",
+    "label": "Tag menu",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "type": "menu",
+    "placeholder": "",
+    "default": null
+  }
+]
