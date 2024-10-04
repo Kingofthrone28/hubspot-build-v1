@@ -85,7 +85,7 @@
     "placeholders": null
   },
   "settings.acknowledgement.content.default": {
-    "message": "<p>By clicking this agreement acknowledgement via the website, I agree to the conditions of this Enrollment Agreement. I also verify that I have read and received a copy of this Enrollment Agreement, the <strong>Academic Catalog</strong>, and the website’s Terms of Service.</p>",
+    "message": "<p>By clicking this agreement acknowledgement via the website, I agree to the conditions of this Enrollment Agreement. I also verify that I have read and received a copy of this Enrollment Agreement, the <a href=\"/hubfs/Academic%20Catalog/IIN_Catalog%209.1_September%202024.pdf\">Academic Catalog</a>, and the website’s Terms of Service.</p>",
     "description": "",
     "placeholders": null
   },
@@ -110,7 +110,7 @@
     "placeholders": null
   },
   "settings.acknowledgement.content_es.default": {
-    "message": "<p>Al hacer clic en este acuerdo de reconocimiento a través del sitio web, acepto las condiciones de este Acuerdo de Inscripción. También verifico que he leído y recibido una copia de este Acuerdo de Inscripción y del <strong>Catálogo para Estudiantes</strong>.</p>",
+    "message": "<p>Al hacer clic en este acuerdo de reconocimiento a través del sitio web, acepto las condiciones de este Acuerdo de Inscripción. También verifico que he leído y recibido una copia de este Acuerdo de Inscripción y del <a href=\"/hubfs/Academic%20Catalog/IIN_Catalog%209.1_September%202024.pdf\">Catálogo para Estudiantes</a>.</p>",
     "description": "",
     "placeholders": null
   },

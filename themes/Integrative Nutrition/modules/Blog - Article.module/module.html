@@ -1,0 +1,74 @@
+{# Macros #}
+{% from '../../macros/get-byline.html' import get_byline_name_button %}
+{% from '../../macros/get-popover.html' import get_popover %}
+{% from '../../macros/get-reading-time.html' import get_reading_time %}
+
+{# Variables #}
+{% set blog_title = content.name %}
+{% set blog_topic = content.topic_list[0] %}
+{% set blog_body = content.post_body %}
+{% set author = content.blog_post_author %}
+{% set avatar_url = author.avatar|escape_url %}
+{% set author_name = author.display_name %}
+{% set reading_time = get_reading_time(blog_body) %}
+{% set popover_title = author_name %}
+{% set popover_body = author.bio %}
+{% set popover_trigger = '.blog-article .byline__name' %}
+
+{# Generate a video section that can be embedded in the blog body #}
+{% macro video_section() %}
+  {% if module.video.embed.embed_html %}
+    <div class="blog-article__video-section">
+      {% if module.video.heading %}
+        <h6 class="blog-article__video-heading">{{ module.video.heading }}</h6>
+      {% endif %}
+      {% if module.video.subheading %}
+        <p class="blog-article__video-subheading">{{ module.video.subheading }}</p>
+      {% endif %}
+      <div class="blog-article__video">{{ module.video.embed.embed_html }}</div>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{# html #}
+<div class="blog-article">
+  <section class="blog-article__heading">
+    <div class="blog-article__topic">{{ blog_topic }}</div>
+    <h3 class="blog-article__title">{{ blog_title }}</h3>
+    <div class="blog-article__byline">
+      {% if author.avatar %}
+        <div class="blog-article__avatar"></div>
+      {% endif %}
+      {% call get_byline_name_button(author_name, reading_time) %}
+        {{ get_popover(popover_trigger, popover_title, popover_body) }}
+      {% endcall %}
+    </div>
+  </section>
+  {% if module.disclaimer %}
+    <section class="blog-article__disclaimer caption-text">{{ module.disclaimer }}</section>
+  {% endif %}
+  <section class="blog-article__body rich-text-overrides">
+    {{ blog_body }}
+    {# Editor video demo #}
+    {% if is_in_editor %}
+      <div class="video-warning">
+        <p class="editor-warning">Editor warning: The following video section is placed here to check appearance only.</p>
+        <p>It will be placed inline at the video_section above. To make edits, open the "Blog - Article" content tab.</p>
+      </div>
+      {{ video_section() }}
+    {% endif %}
+  </section>
+  <section class="blog-article__published-info">
+    <p class="caption-text">Published: {{ content.publish_date|format_date('long') }}</p>
+    <p class="caption-text">Updated: {{ content.updated|format_date('long') }}</p>
+  </section>
+</div>
+
+{# css #}
+{% require_css %}
+  <style>
+    .blog-article__avatar {
+      background-image: url({{ avatar_url }});
+    }
+  </style>
+{% end_require_css %}

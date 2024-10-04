@@ -10,7 +10,7 @@
       return;
     }
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const windowTop = window.scrollY;
       const containerTop = container.getBoundingClientRect().top + windowTop;
       const containerHeight = container.offsetHeight;
@@ -28,6 +28,12 @@
       } else {
         postShareElement.style.top = '0';
       }
-    });
+    };
+
+    const delayMilliseconds = 5;
+    window.addEventListener(
+      'scroll',
+      IIN.helpers.throttle(handleScroll, delayMilliseconds),
+    );
   });
 })();

@@ -1,0 +1,99 @@
+.caption-text {
+  letter-spacing: var(--letter-spacing--caption);
+  color: var(--color--slate);
+  font: var(--font--caption);
+}
+
+.rich-text-overrides {
+  color: var(--color--slate);
+}
+
+.rich-text-overrides h1,
+.rich-text-overrides h2,
+.rich-text-overrides h3,
+.rich-text-overrides h4,
+.rich-text-overrides h5,
+.rich-text-overrides h6 {
+  margin: unset;
+  padding-bottom: var(--small-space);
+  color: inherit;
+}
+
+.rich-text-overrides h1 {
+  font: var(--font--h1--desktop);
+}
+
+.rich-text-overrides h2 {
+  font: var(--font--h2--desktop);
+}
+
+.rich-text-overrides h3 {
+  font: var(--font--h3--desktop);
+}
+
+.rich-text-overrides h4 {
+  font: var(--font--h4--desktop);
+}
+
+.rich-text-overrides h5 {
+  font: var(--font--h5--desktop);
+}
+
+.rich-text-overrides h6 {
+  font: var(--font--h6--desktop);
+}
+
+/* Styles for the inline Rich Text Field */
+.rich-text-overrides a {
+  text-decoration: underline;
+  color: var(--color--water);
+  font: var(--font--paragraph--bold);
+}
+
+.rich-text-overrides a:hover,
+.rich-text-overrides a:focus {
+  text-decoration: underline;
+  color: var(--color--blue);
+}
+
+.rich-text-overrides img {
+  border-radius: var(--border-radius);
+
+  /* By default, images are wrapped in a p */
+  padding-bottom: calc(var(--big-space) - var(--small-space));
+
+  /* Override blog inline styles */
+  width: 100% !important;
+}
+
+/* Unset global style */
+.rich-text-overrides p {
+  margin-bottom: unset;
+  padding-bottom: var(--small-space);
+}
+
+@media (max-width: 767px) {
+  .rich-text-overrides h1 {
+    font: var(--font--h1--mobile);
+  }
+
+  .rich-text-overrides h2 {
+    font: var(--font--h2--mobile);
+  }
+
+  .rich-text-overrides h3 {
+    font: var(--font--h3--mobile);
+  }
+
+  .rich-text-overrides h4 {
+    font: var(--font--h4--mobile);
+  }
+
+  .rich-text-overrides h5 {
+    font: var(--font--h5--mobile);
+  }
+
+  .rich-text-overrides h6 {
+    font: var(--font--h6--mobile);
+  }
+}

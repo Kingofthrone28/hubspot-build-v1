@@ -1,0 +1,52 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+{#
+  Get the link for a blog tag or category, using exact match.
+  Example:
+
+  {% from '../../macros/get-blog-link.html' import get_blog_link_by_label %}
+  {% set menu_to_check = menu(module.menu) %}
+  {% set result = {} %}
+  {{ get_blog_link_by_label(menu_to_check, 'Health Coaching', result) }}
+  {{ result.link }}
+#}
+{% macro get_blog_link_by_label(node, label, result) %}
+  {% if node.label == label %}
+    {% do result.put('link', node.url) %}
+ {% endif %}
+ {% if node.children and not result.link %}
+   {% for child in node.children %}
+     {{ get_blog_link_by_label(child, label, result) }}
+   {% endfor %}
+ {% endif %}
+{% endmacro %}
+
+{% macro add_node_to_dict(node, dict) %}
+  {% if node.label %}
+    {% do dict.put(node.label, node.url) %} 
+  {% endif %}
+  {% if node.children %}
+    {% for child in node.children %}
+      {{ add_node_to_dict(child, dict) }}
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
+
+{#
+  Build a map of tags to urls and load it into JS object clientside
+  Using {% require_js %} will cause this to be loaded _after_ module scripts
+#}
+{% macro load_tag_map(node) %}
+  {% set dict = {} %}
+  {{ add_node_to_dict(node, dict) }}
+  <script>
+    IIN.blog = IIN.blog ?? {};
+    IIN.blog.tagMap = {
+      {%- for key, val in dict.items() %}
+        '{{ key }}': '{{ val }}',
+      {%- endfor %}
+    };
+  </script>
+{% endmacro %}
