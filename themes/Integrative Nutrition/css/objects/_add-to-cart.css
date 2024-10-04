@@ -215,12 +215,6 @@
   padding: var(--spacing-6--static) var(--spacing-4--static);
 }
 
-.pdp-top-content h2 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-6);
-  font: var(--font--h2--desktop);
-}
-
 .pdp-top-content-sub {
   margin-bottom: 15px;
   font: var(--font--large-paragraph--desktop);
@@ -257,6 +251,13 @@
 
 .pdp-top-content-top > div:first-child img {
   margin-right: 10px;
+}
+
+.pdp-top-content-heading {
+  margin-top: 0;
+  margin-bottom: var(--spacing-6);
+  color: var(--color--slate);
+  font: var(--font--h2--desktop);
 }
 
 .pdp-top-slide-btns {
@@ -680,7 +681,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
     padding: 0 0 var(--spacing-5);
   }
 
-  .pdp-top-content h2 {
+  .pdp-top-content-heading {
     margin-bottom: var(--spacing-4);
   }
 
@@ -800,7 +801,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
     padding: 0 var(--spacing-2--static) var(--spacing-3);
   }
 
-  .pdp-top-content h2 {
+  .pdp-top-content-heading {
     font: var(--font--h2--mobile);
   }
 
