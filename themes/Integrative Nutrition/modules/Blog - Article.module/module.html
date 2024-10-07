@@ -2,6 +2,7 @@
 {% from '../../macros/get-byline.html' import get_byline_name_button %}
 {% from '../../macros/get-popover.html' import get_popover %}
 {% from '../../macros/get-reading-time.html' import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
 
 {# Variables #}
 {% set blog_title = content.name %}
@@ -14,6 +15,12 @@
 {% set popover_title = author_name %}
 {% set popover_body = author.bio %}
 {% set popover_trigger = '.blog-article .byline__name' %}
+
+{# Tag link #}
+{% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
+{% set tag_dict = {} %}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
+{% set topic_link = tag_dict[blog_topic] %}
 
 {# Generate a video section that can be embedded in the blog body #}
 {% macro video_section() %}
@@ -33,7 +40,7 @@
 {# html #}
 <div class="blog-article">
   <section class="blog-article__heading">
-    <div class="blog-article__topic">{{ blog_topic }}</div>
+    <a class="blog-article__topic" href="{{ topic_link|escape_url }}">{{ blog_topic }}</a>
     <h3 class="blog-article__title">{{ blog_title }}</h3>
     <div class="blog-article__byline">
       {% if author.avatar %}

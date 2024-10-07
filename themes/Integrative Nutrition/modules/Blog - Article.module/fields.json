@@ -15,6 +15,17 @@
     "default": null
   },
   {
+    "name": "tag_menu",
+    "label": "Tagging menu",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "type": "menu",
+    "placeholder": "",
+    "default": null
+  },
+  {
     "name": "video",
     "label": "Video Section",
     "required": false,
