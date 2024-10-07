@@ -98,7 +98,7 @@
       const row = `
         <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
           <img src="${imageUrl}" alt="${title}">
-          <span class="blog-teasers__category">${post.tags[0]}</span>
+          ${post.tags.length ?? `<span class="blog-teasers__category">${post.tags[0]}</span>`}
           <h4 class="blog-teasers__heading">${title}</h4>
           <p class="blog-teasers__byline">
             By ${post.authorFullName} |
