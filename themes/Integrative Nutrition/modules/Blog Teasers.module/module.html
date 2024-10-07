@@ -1,4 +1,4 @@
-{% set offset = module.layout == "two_column" ? 5 : 3 %}
+{% set column_offset = module.layout == "two_column" ? 5 : 3 %}
 
 {% macro render_blog_posts(posts, layout) %}
   <div class="row">
@@ -50,7 +50,7 @@
 <script>
 (async () => {
   const tag = '{{ module.tag_field }}';
-  let offset = {{ offset || 0 }};
+  let offset = parseInt('{{ column_offset }}') || 0;
   const limit = 6;
   const wordsPerMinute = 200;
   let viewMorePosts = [];
@@ -72,9 +72,11 @@
   async function fetchPostContent(url) {
     try {
       const response = await fetch(url);
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
       return await response.text();
     } catch (error) {
       console.error('Fetch error:', error);
@@ -94,16 +96,16 @@
       const imageUrl = post.featuredImageUrl || '';
 
       const row = `
-          <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
-            <img src="${imageUrl}" alt="${title}">
-            <span class="blog-teasers__category">${post.tags[0]}</span>
-            <h4 class="blog-teasers__heading">${title}</h4>
-            <p class="blog-teasers__byline">
-              By ${post.authorFullName} |
-              <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
-            </p>
-          </a>
-        `;
+        <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
+          <img src="${imageUrl}" alt="${title}">
+          <span class="blog-teasers__category">${post.tags[0]}</span>
+          <h4 class="blog-teasers__heading">${title}</h4>
+          <p class="blog-teasers__byline">
+            By ${post.authorFullName} |
+            <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
+          </p>
+        </a>
+      `;
 
       if (i < columnCount) {
         row1 += row;
@@ -118,6 +120,7 @@
         .querySelector('.blog-teasers__posts')
         .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
     }
+
     if (row2) {
       document
         .querySelector('.blog-teasers__posts')
@@ -150,40 +153,43 @@
   async function loadPosts(searchUrl, button) {
     try {
       const response = await fetch(searchUrl);
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
       const data = await response.json();
-      if (data?.results) {
-        if (data.results.length < limit) {
-          document
-            .querySelector('.blog-teasers__view-more')
-            .classList.add('hidden');
-        }
-        if (data.results.length) {
-          appendViewMoreResults(data);
 
-          const promises = viewMorePosts.map((post) => populateReadTimes(post));
-
-          await Promise.all(promises);
-          offset += limit;
-          button.classList.remove('disable-btn');
-          return true;
-        }
+      if (!data?.results?.length) {
+        return null;
       }
-      return null;
+
+      if (data.results.length < limit) {
+        document
+          .querySelector('.blog-teasers__view-more')
+          .classList.add('hidden');
+      }
+
+      appendViewMoreResults(data);
+
+      const promises = viewMorePosts.map((post) => populateReadTimes(post));
+
+      await Promise.all(promises);
+      offset += limit;
+      button.classList.remove('disable-btn');
+      return true;
     } catch (error) {
       console.error('An unexpected error occurred:', error);
       return null;
     }
   }
 
-  function handleViewMoreClick() {
-    const btn = document.querySelector('.blog-teasers-view-more-btn');
+  function handleViewMoreClick(event) {
+    const button = event.target;
     viewMorePosts = [];
-    btn.classList.add('disable-btn');
+    button.classList.add('disable-btn');
     const searchUrl = `${window.location.origin}/_hcms/search?&term=${encodeURIComponent(tag)}&type=BLOG_POST&limit=${limit}&offset=${offset}`;
-    loadPosts(searchUrl, btn);
+    loadPosts(searchUrl, button);
   }
 
   document
