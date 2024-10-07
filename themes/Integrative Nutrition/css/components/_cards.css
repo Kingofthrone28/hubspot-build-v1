@@ -18,6 +18,7 @@
 .blog-teasers__posts .row {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: var(--spacing-16);
 }
 
 .blog-teasers__category {
@@ -126,6 +127,8 @@
 }
 
 .blog-teasers__view-more {
+  display: flex;
+  justify-content: center;
   padding: 50px 0;
 }
 
