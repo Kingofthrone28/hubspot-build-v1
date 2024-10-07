@@ -160,7 +160,7 @@
 
         const data = await response.json();
 
-        if (!data?.results?.length) {
+        if (!data?.results) {
           return null;
         }
 
@@ -168,6 +168,10 @@
           document
             .querySelector('.blog-teasers__view-more')
             .classList.add('hidden');
+        }
+
+        if (!data.results.length) {
+          return null;
         }
 
         appendViewMoreResults(data);
