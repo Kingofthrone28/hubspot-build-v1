@@ -33,6 +33,7 @@
 {% include './components/_circle-of-life.css' %}
 {% include './components/_spinner.css' %}
 {% include './components/_popover.css' %}
+{% include './components/_blog-nav.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './templates/_sample-class.css' %}

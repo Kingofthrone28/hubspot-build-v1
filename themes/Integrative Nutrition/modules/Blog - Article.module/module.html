@@ -11,7 +11,7 @@
 {% set author = content.blog_post_author %}
 {% set avatar_url = author.avatar|escape_url %}
 {% set author_name = author.display_name %}
-{% set reading_time = get_reading_time(blog_body) %}
+{% set reading_time = get_reading_time(blog_body)|trim %}
 {% set popover_title = author_name %}
 {% set popover_body = author.bio %}
 {% set popover_trigger = '.blog-article .byline__name' %}
@@ -65,10 +65,16 @@
       {{ video_section() }}
     {% endif %}
   </section>
-  <section class="blog-article__published-info">
-    <p class="caption-text">Published: {{ content.publish_date|format_date('long') }}</p>
-    <p class="caption-text">Updated: {{ content.updated|format_date('long') }}</p>
-  </section>
+  {% if content.publish_date or content.updated %}
+    <section class="blog-article__published-info">
+      {% if content.publish_date %}
+         <p class="caption-text">Published: {{ content.publish_date|format_date('long') }}</p>
+      {% endif %}
+      {% if content.updated %}
+         <p class="caption-text">Updated: {{ content.updated|format_date('long') }}</p>
+      {% endif %}
+    </section>
+  {% endif %}
 </div>
 
 {# css #}

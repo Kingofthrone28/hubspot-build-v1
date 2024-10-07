@@ -201,3 +201,28 @@
   color: unset;
   font-family: unset;
 }
+
+button.no-button,
+button.no-button:hover,
+button.no-button:focus,
+button.no-button:active,
+.dnd-section button.no-button,
+.dnd-section button.no-button:hover,
+.dnd-section button.no-button:focus,
+.dnd-section button.no-button:active {
+  transition: none;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: initial;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
