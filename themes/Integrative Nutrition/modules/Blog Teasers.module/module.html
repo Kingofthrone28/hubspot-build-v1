@@ -48,19 +48,18 @@
 </div>
 
 <script>
-  (function () {
-    const tag = '{{ module.tag_field }}';
-    let offset = {{ offset || 0 }};
+  (async function () {
+      const tag = '{{ module.tag_field }}';
+      let offset = {{ offset || 0 }};
     const limit = 6;
+    const wordsPerMinute = 200;
     let viewMorePosts = [];
 
     function getReadTime(wordCount) {
-      const readTime = Math.ceil(wordCount / 200);
-      const formatReadTime =
-        readTime <= 1
-          ? 'Read time: less than 1 min'
-          : `Read time: ${readTime} mins`;
-      return formatReadTime;
+      const readTime = Math.ceil(wordCount / wordsPerMinute);
+      return readTime <= 1
+        ? 'Read time: less than 1 min'
+        : `Read time: ${readTime} mins`;
     }
 
     function getWordCount(text) {
@@ -72,23 +71,23 @@
       return text.replace(/<[^>]*>/g, '').trim();
     }
 
-    function fetchPostContent(url) {
-      return fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.text();
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error);
-          return null;
-        });
+    async function fetchPostContent(url) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return await response.text();
+      } catch (error) {
+        console.error('Fetch error:', error);
+        return null;
+      }
     }
 
     function appendViewMoreResults(data) {
       let row1 = '';
       let row2 = '';
+      const columnCount = 3;
 
       data.results.forEach((post, i) => {
         viewMorePosts.push(post);
@@ -97,34 +96,42 @@
         const imageUrl = post.featuredImageUrl || '';
 
         const row = `
-                  <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
-                      <img src="${imageUrl}" alt="${title}">
-                      <span class="blog-teasers__category">${post.tags[0]}</span>
-                      <h4 class="blog-teasers__heading">${title}</h4>
-                      <p class="blog-teasers__byline">By ${post.authorFullName} | <span id="read-time-${post.id}">${readTimePlaceHolder}</span></p>
-                  </a>
+                <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
+                  <img src="${imageUrl}" alt="${title}">
+                  <span class="blog-teasers__category">${post.tags[0]}</span>
+                  <h4 class="blog-teasers__heading">${title}</h4>
+                  <p class="blog-teasers__byline">
+                    By ${post.authorFullName} |
+                    <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
+                  </p>
+                </a>
               `;
 
-        if (i < 3) {
+        if (i < columnCount) {
           row1 += row;
-        } else {
+        }
+        if (i >= columnCount) {
           row2 += row;
         }
       });
 
       // Insert rows into DOM
-      document
-        .querySelector('.blog-teasers__posts')
-        .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
-      document
-        .querySelector('.blog-teasers__posts')
-        .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+      if (row1) {
+        document
+          .querySelector('.blog-teasers__posts')
+          .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
+      }
+      if (row2) {
+        document
+          .querySelector('.blog-teasers__posts')
+          .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+      }
     }
 
     function updateReadTime(data, post) {
       const parser = new DOMParser();
-      const doc = parser.parseFromString(data, 'text/html');
-      const paragraphs = doc.querySelectorAll('.jd-post-content');
+      const parsedDocument = parser.parseFromString(data, 'text/html');
+      const paragraphs = parsedDocument.querySelectorAll('.jd-post-content');
       let wordCount = 0;
 
       paragraphs.forEach((paragraph) => {
@@ -136,65 +143,52 @@
       document.querySelector(`#read-time-${post.id}`).innerHTML = readTime;
     }
 
-    function populateReadTimes(post) {
-      return fetchPostContent(post.url)
-        .then((data) => {
-          if (data) {
-            updateReadTime(data, post);
-          }
-          return data;
-        })
-        .catch((error) => {
-          console.error('An unexpected error occurred:', error);
-          return null;
-        });
+    async function populateReadTimes(post) {
+      const data = await fetchPostContent(post.url);
+      if (data) {
+        updateReadTime(data, post);
+      }
     }
 
-    function loadPosts(searchUrl, button) {
-      return fetch(searchUrl)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+    async function loadPosts(searchUrl, button) {
+      try {
+        const response = await fetch(searchUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        if (data && data.results) {
+          if (data.results.length < limit) {
+            document
+              .querySelector('.blog-teasers__view-more')
+              .classList.add('hidden');
           }
-          return response.json();
-        })
-        .then((data) => {
-          if (data && data.results) {
-            if (data.results.length < limit) {
-              document
-                .querySelector('.blog-teasers__view-more')
-                .classList.add('hidden');
-            }
-            if (data.results.length > 0) {
-              appendViewMoreResults(data);
+          if (data.results.length) {
+            appendViewMoreResults(data);
 
-              const promises = viewMorePosts.map((post) =>
-                populateReadTimes(post),
-              );
+            const promises = viewMorePosts.map((post) => populateReadTimes(post));
 
-              return Promise.all(promises).then(() => {
-                offset += limit;
-                button.classList.remove('disable-btn');
-                return true;
-              });
-            }
+            await Promise.all(promises);
+            offset += limit;
+            button.classList.remove('disable-btn');
+            return true;
           }
-          return null;
-        })
-        .catch((error) => {
-          console.error('An unexpected error occurred:', error);
-          return null;
-        });
+        }
+        return null;
+      } catch (error) {
+        console.error('An unexpected error occurred:', error);
+        return null;
+      }
     }
 
     document
       .querySelector('.blog-teasers-view-more-btn')
-      .addEventListener('click', function () {
-        const btn = this;
+      .addEventListener('click', async (event) => {
+        const button = event.target;
         viewMorePosts = [];
-        btn.classList.add('disable-btn');
+        button.classList.add('disable-btn');
         const searchUrl = `${window.location.origin}/_hcms/search?&term=${encodeURIComponent(tag)}&type=BLOG_POST&limit=${limit}&offset=${offset}`;
-        loadPosts(searchUrl, btn);
+        await loadPosts(searchUrl, button);
       });
   })();
 </script>
