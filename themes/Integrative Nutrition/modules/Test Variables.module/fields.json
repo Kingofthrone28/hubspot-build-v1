@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "name": "show_content_info",
+    "label": "Show Content Info",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  },
+  {
+    "name": "show_is_in_info",
+    "label": "Show Is In Info",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  },
+  {
+    "name": "show_miscellaneous_info",
+    "label": "Show Miscellaneous Info",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  },
+  {
+    "name": "show_request_info",
+    "label": "Show Request Info",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  },
+  {
+    "name": "show_blog_info",
+    "label": "Show Blog Info",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  },
+  {
+    "name": "show_icons",
+    "label": "Show Icons",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": true
+  }
+]

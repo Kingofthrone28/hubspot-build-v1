@@ -7,24 +7,25 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_meta.html_title }}</title>
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+
+    {% if site_settings.favicon_src %}
+      <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+
     <meta name="description" content="{{ page_meta.meta_description }}">
 
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../../css/slick.css')) }}
     {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
-    {# Where possible, improve page performance and speed by combining external http requests to reduce your
-      overall number of calls -- here, you can use a single call to the gFonts api to get all the fonts you need
-      https://developers.google.com/fonts/docs/getting_started
-    #}
-    {# Include theme overrides #}
     {{ require_css(get_asset_url('../../css/theme-overrides.css')) }}
     {{ require_css(get_asset_url('../../css/ui.css')) }}
+
     <script src="{{ get_asset_url('../../js/jquery-3.5.1.js') }}"></script>
     {{ require_js(get_asset_url('../../js/ui.js')) }}
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
+
     {{ standard_header_includes }}
 
     <!-- Needle Embed Code -->
@@ -42,9 +43,6 @@
       {% set global_color2 = theme.global_colors.secondary_color.color|convert_rgb|split(',') %}
       {% block header %}
       {% module "language_switcher" path="@hubspot/language_switcher" %}
-      {#
-      {% module "theme_header" path="../../modules/Header", label="Header" %}
-      #}
       {% module "theme_header" path="../../modules/header_new", label="Header" %}
       {% endblock header %}
       <div class="static-body responsive">

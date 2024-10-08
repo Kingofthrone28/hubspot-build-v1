@@ -462,7 +462,7 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
 }
 
 .jd-contact-close svg {
-  fill: lightgray;
+  fill: var(--color--grey-5);
   width: 32px;
   height: 32px;
 }

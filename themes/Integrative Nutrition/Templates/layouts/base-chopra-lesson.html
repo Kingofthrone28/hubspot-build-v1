@@ -7,10 +7,15 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_meta.html_title }}</title>
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+
+    {% if site_settings.favicon_src %}
+      <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+
     <meta name="description" content="{{ page_meta.meta_description }}">
 
     {{ require_css(get_asset_url('../../css/main.css')) }}
+
     {{ standard_header_includes }}
 
     <title>Chopra Coaching [IIN Sample Lesson]</title>

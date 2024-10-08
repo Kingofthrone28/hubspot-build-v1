@@ -138,20 +138,24 @@
   >Hubspot variables doc</a>
  
   <div class="variable-groups-wrapper">
-    {{ get_section_markup('All Templates', content_pairs, 'content') }}
-    {{ get_section_markup('All Templates', is_in_pairs, 'Is in...') }}
-    {{ get_section_markup('All Templates', miscellanious_pairs, 'Miscellanious') }}
-    {{ get_section_markup('Request', request_pairs) }}
-    {{ get_section_markup('Blog', blog_pairs) }}
+    {{ get_section_markup('All Templates', content_pairs, 'content') if module.show_content_info }}
+    {{ get_section_markup('All Templates', is_in_pairs, 'Is in...') if module.show_is_in_info }}
+    {{ get_section_markup('All Templates', miscellanious_pairs, 'Miscellanious') if module.show_miscellaneous_info }}
+    {{ get_section_markup('Request', request_pairs) if module.show_request_info }}
+    {{ get_section_markup('Blog', blog_pairs) if module.show_blog_info }}
 
-    {# Icons #}
-    <section class="variable-group icons">
-      <h2>CSS</h2>
-      <h3>Icons</h3>
-      {% for class in icon_classes %}
-        {{ get_icon_markup(class) }}
-      {% endfor %}
-    </section>
+    {% if module.show_icons %}
+      <section class="variable-group icons">
+        <h2>CSS</h2>
+        <h3>Icons</h3>
+        {% for class in icon_classes %}
+          {{ get_icon_markup(class) }}
+        {% endfor %}
+        <div>
+          <div class="svg-icon history-icon"></div>&nbsp;History
+        </div>
+      </section>
+    {% endif %}
   </div>
 </div>
 
@@ -182,7 +186,11 @@
   }
 
   .test-variables .icons {
-    --accent--color: red;
+    --icon--color: var(--color--cherry);
+  }
+
+  .history-icon {
+    --icon--image: var(--icon--history);
   }
   </style>
 {% end_require_css %}

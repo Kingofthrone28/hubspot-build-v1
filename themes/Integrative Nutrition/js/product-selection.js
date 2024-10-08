@@ -125,7 +125,8 @@ const getProductSelectionMethods = () => {
 
   const showAddedToCartPopUp = (info) => {
     const msToCloseAddPopUp = 8000;
-    const { checkout, module, selectedOptions, variant, action } = info;
+    const { action, checkout, module, selectedOptions, variant } = info;
+
     updateCartTotal(checkout);
 
     $('.jd-header-wrap').addClass('jd-scrolled').removeClass('ishidden');
@@ -159,13 +160,25 @@ const getProductSelectionMethods = () => {
       const isDefaultTitle = value === 'Default Title';
 
       if (value && !isDefaultTitle) {
-        optionsHTML += `<div><strong>${key}:</strong> ${value}</div>`;
+        optionsHTML += `<div><strong>${key}</strong> ${value}</div>`;
       }
     });
 
     $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
 
-    const amount = parseFloat(variant.price?.amount) || 0;
+    let amount = parseFloat(variant.price?.amount) || 0;
+
+    const checkoutVariant = checkout.lineItems.find(
+      (lineItem) => lineItem.variant.id === variant.id,
+    );
+
+    const discounts = checkoutVariant?.discountAllocations;
+
+    if (Array.isArray(discounts)) {
+      discounts.forEach(({ allocatedAmount }) => {
+        amount -= parseFloat(allocatedAmount?.amount) || 0;
+      });
+    }
 
     if (amount || amount === 0) {
       $('.jd-add-pop .jd-add-pop-price').text(`$${amount.toLocaleString()}`);
@@ -260,7 +273,7 @@ const getProductSelectionMethods = () => {
   const trackAddToCart = (variant, moduleInfo, productInfo) => {
     const currencyCode = variant.price?.currencyCode || 'USD';
     const addedVariantPrice = parseFloat(variant.price?.amount || 0.0);
-    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const variantGidPath = 'gid://shopify/ProductVariant/';
 
     let couponTitle = 'NA';
     let discountAmount = 0;
@@ -284,7 +297,7 @@ const getProductSelectionMethods = () => {
             item_id: moduleInfo.productID,
             item_name: productInfo.title,
             item_type: productInfo.productType,
-            variant_id: variant.id.replace(varientGidPath, ''),
+            variant_id: variant.id.replace(variantGidPath, ''),
             price: addedVariantPrice,
             discount: discountAmount,
             quantity: 1,
@@ -304,7 +317,7 @@ const getProductSelectionMethods = () => {
   };
 
   const createViewItemEvent = (productData, matchedVariant, moduleData) => {
-    const varientGidPath = 'gid://shopify/ProductVariant/';
+    const variantGidPath = 'gid://shopify/ProductVariant/';
     const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
 
     let couponTitle = 'NA';
@@ -329,7 +342,7 @@ const getProductSelectionMethods = () => {
             item_id: moduleData.productID,
             item_name: productData.title,
             item_type: productData.productType || 'NA',
-            variant_id: matchedVariant.id.replace(varientGidPath, ''),
+            variant_id: matchedVariant.id.replace(variantGidPath, ''),
             price: parseFloat(itemPrice),
             sku: matchedVariant.sku || 'NA',
             discount: discountAmount,
@@ -581,7 +594,7 @@ const getProductSelectionMethods = () => {
 
     const showClass = 'pdp-sticky-show';
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       const { scrollY } = window;
       const { height, top } = trigger.getBoundingClientRect();
       const bottom = height + top + scrollY;
@@ -592,7 +605,9 @@ const getProductSelectionMethods = () => {
       } else if (scrollY < bottom && hasShowClass) {
         stickyWrap.classList.remove(showClass);
       }
-    });
+    };
+
+    window.addEventListener('scroll', IIN.helpers.throttle(handleScroll));
   };
 
   /**
@@ -931,7 +946,7 @@ const getProductSelectionMethods = () => {
     // Option click checkbox
     const radioSelector = `${idSelector} .jd-shopify-option-wrap input[type=radio]`;
 
-    $(radioSelector).change(function (event) {
+    $(radioSelector).change(function () {
       const type = $(this).attr('name');
       const val = $(this).val();
 

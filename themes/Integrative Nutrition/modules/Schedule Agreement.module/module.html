@@ -4,8 +4,8 @@
 {% set search_url = request.query|split('&') %}
 {% if request.query is containing 'Spanish' %}
   <h1>{{ course }} Schedule Agreement Spanish</h1>
-  <div class="varient-wrapper">
-    {% for varient in search_url %}{% set type = varient|split('=') %}
+  <div class="variant-wrapper">
+    {% for variant in search_url %}{% set type = variant|split('=') %}
     {% if type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' %}
     <div>
       <strong>{{ type[0]|replace('%20',' ')|replace('%26','&') }}:</strong> {{ type[1]|replace('%20',' ')|replace('%26','&') }}
@@ -18,8 +18,8 @@
   </div>
 {% else %}
   <h1>{{ course }} Schedule Agreement</h1>
-  <div class="varient-wrapper">
-    {% for varient in search_url %}{% set type = varient|split('=') %}
+  <div class="variant-wrapper">
+    {% for variant in search_url %}{% set type = variant|split('=') %}
     {% if type[0] != 'Course' && type[0] != '__hstc' && type[0] != '__hssc' && type[0] != '__hsfp' %}
     <div>
       <strong>{{ type[0]|replace('%20',' ')|replace('%26','&') }}:</strong> {{ type[1]|replace('%20',' ')|replace('%26','&') }}

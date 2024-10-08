@@ -1,8 +1,45 @@
+{% set content_name = content.name|striptags|urlencode %}
+{% set content_url = content.absolute_url|urlencode %}
+{% set links = [
+  {
+    label: 'Email',
+    icon_name: 'email',
+    url: 'mailto:?body={{ content_url }}&subject={{ content_name }}',
+  },
+  {
+    label: 'Facebook',
+    icon_name: 'facebook',
+    url: 'http://www.facebook.com/share.php?u={{ content_url }}',
+  },
+  {
+    label: 'X',
+    icon_name: 'x-twitter',
+    url: 'https://twitter.com/intent/tweet?url={{ content_url }}',
+  },
+  {
+    label: 'LinkedIn',
+    icon_name: 'linkedin',
+    url: 'http://www.linkedin.com/shareArticle?mini=true&url={{ content_url }}',
+  },
+  {
+    label: 'Pinterest',
+    icon_name: 'pinterest',
+    url: 'http://pinterest.com/pin/create/link/?url={{ content_url }}',
+  }
+] %}
+
+{% macro render_link(link) %}
+  <a
+    class="jd-post-share-circle icon-{{ link.icon_name }}"
+    aria-label="Share on {{ link.label }}"
+    href="{{ link.url }}"
+    target="_blank"
+  ></a>
+{% endmacro %}
+
 <div class="jd-post-share">
   <div class="jd-post-share-title">Share this Article: </div>
-  <a class="jd-post-share-circle icon-email" aria-label="Share on Email" target="_blank" href="mailto:?body={{ content.absolute_url|urlencode }}&subject={{ content.name|striptags|urlencode }}"></a>
-  <a class="jd-post-share-circle icon-facebook" aria-label="Share on Facebook" target="_blank" href="http://www.facebook.com/share.php?u={{ content.absolute_url|urlencode }}"></a>
-  <a class="jd-post-share-circle icon-x-twitter" aria-label="Share on X" target="_blank" href="https://twitter.com/intent/tweet?url={{ content.absolute_url|urlencode }}"></a>
-  <a class="jd-post-share-circle icon-linkedin" aria-label="Share on LinkedIn" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url|urlencode }}"></a>
-  <a class="jd-post-share-circle icon-pinterest" aria-label="Share on Pinterest" target="_blank" href="http://pinterest.com/pin/create/link/?url={{ content.absolute_url|urlencode }}"></a>
+  {% for link in links %}
+    {{ render_link(link) }}
+  {% endfor %}
 </div>

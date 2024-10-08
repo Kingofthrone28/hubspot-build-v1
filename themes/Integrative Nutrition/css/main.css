@@ -14,6 +14,7 @@
 {% include './utilities/clearfix.css'%}
 {% include './utilities/coloring.css'%}
 {% include './utilities/visibility.css'%}
+{% include './utilities/rich-text-overrides.css'%}
 {% include './objects/_containers-dnd.css' %}
 {% include './objects/_modules.css' %}
 {% include './elements/_typography.css' %}
@@ -31,6 +32,7 @@
 {% include './components/_default-modules.css' %}
 {% include './components/_circle-of-life.css' %}
 {% include './components/_spinner.css' %}
+{% include './components/_popover.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_system.css' %}
 {% include './templates/_sample-class.css' %}

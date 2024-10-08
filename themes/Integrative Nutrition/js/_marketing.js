@@ -13,8 +13,6 @@ $(() => {
           const src = $(list[i]).attr('src');
 
           if (src) {
-            console.log($(list[i]).attr('src'), 'srcl');
-
             const params = window.location.search.substring(1);
             const delimiter = src.indexOf('?') > 0 ? '&' : '?';
 
