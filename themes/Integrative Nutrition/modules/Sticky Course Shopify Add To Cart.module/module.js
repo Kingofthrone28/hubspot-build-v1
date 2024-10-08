@@ -30,11 +30,12 @@
       isSampleClass,
       productID,
       showInlineSection,
+      useDynamicHeaderTrigger,
     } = moduleData;
 
     if (isInlineAndHeader || isHeaderOnly) {
       configureStickyNav();
-      configureHeaderToggle(isHeaderOnly);
+      configureHeaderToggle(isHeaderOnly, useDynamicHeaderTrigger);
       makeHeaderFixed();
     }
 
