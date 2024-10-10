@@ -1,35 +1,45 @@
+{% from "../../macros/get-reading-time.html" import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
+
 {% set blogPostId1 = module.blog_post_id_card_one %}
 {% set blogPostId2 = module.blog_post_id_card_two %}
 {% set blogPostId3 = module.blog_post_id_card_three %}
 {% set blogPostId4 = module.blog_post_id_card_four %}
 {% set largeCard = "large-card" %}
 {% set smallCard = "small-card" %}
+{% set tag_menu = menu(module.tag_menu) %}
+{% set tag_dict = {} %}
+{{ add_menu_to_dict(tag_menu, tag_dict)  }}
 
 {% macro render_blog_post(id, cardType) %}
   {% if id %}
     {% set content = content_by_id(id|int) %}
     {% set author = content.blog_post_author.display_name %}
-    {% set initialPostWords = content.post_body|wordcount %}
-    {% set readTimePostWords = (initialPostWords / 200)|round(0, 'ceil') %}
-    {% set isReadTimeWords = readTimePostWords <= 1 ? 'Less than 1 minute read' : 'Read time: {{ readTimePostWords }} mins'  %}
-    <a href="{{ content.url }}">
-      <div class="featured-story-grid__{{ cardType }}-content-container">
-        <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
-          {% if module.show_category_eyebrow %}
-            <span class="blog-teaser__category">{{ content.topic_list[0].name }}</span>
-          {% endif %}
-          <h2 class="featured-story-grid__heading featured-story-grid__{{ cardType }}-heading">{{ content.name }}</h2>
-          {% if author %}
-            <p class="blog-teaser__byline">By {{ author }} | {{ isReadTimeWords }}</p>
-          {% endif %}
-        </div>
-        <div class="card-image {{ cardType }}-image">
-        {% if content.featured_image %}
-          <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
+    {% set is_read_time_words = get_reading_time(content.post_body)|trim  %}
+    {% set topic = content.topic_list[0].name %}
+    {% set tag_link = tag_dict[topic] %}
+    <div class="featured-story-grid__{{ cardType }}-content-container">
+      <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
+        {% if module.show_category_eyebrow %}
+          <a href="{{ tag_link|escape_url }}" class="blog-teaser__category link water">{{ topic }}</a>
         {% endif %}
-        </div>
+        <h2 class="featured-story-grid__heading featured-story-grid__{{ cardType }}-heading">
+          <a class="link slate" href="{{ content.url|escape_url }}">
+            {{ content.name }}
+          </a>
+        </h2>
+        {% if author %}
+          <p class="blog-teaser__byline">By {{ author }} | {{ is_read_time_words }}</p>
+        {% endif %}
       </div>
-    </a>
+      <div class="card-image {{ cardType }}-image">
+      {% if content.featured_image %}
+        <a href="{{ content.url|escape_url }}" class="card-image-link">
+          <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
+        </a>
+      {% endif %}
+      </div>
+    </div>
   {% endif %}
 {% endmacro %}
 

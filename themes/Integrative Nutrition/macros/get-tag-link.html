@@ -2,11 +2,12 @@
   templateType: "none"
   isAvailableForNewContent: false
 -->
-{#
-  Get a map of tags to links
-  Example:
 
-  {% from '../../macros/get-blog-link.html' import add_menu_to_dict %}
+{#
+  Get a map of tags to links.
+  Usage example:
+
+  {% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
   {% set tag_menu = menu(module.menu) %}
   {% set tag_dict = {} %}
   {{ add_menu_to_dict(tag_menu, tag_dict)  }}
@@ -24,18 +25,36 @@
 {% endmacro %}
 
 {#
-  Build a map of tags to urls and load it into JS object clientside
-  Using {% require_js %} will cause this to be loaded _after_ module scripts
+  Load a map of tags to urls into JS object clientside.
+  Usage example:
+
+  {% set tag_menu = menu(module.tag_menu) %}
+  {% set tag_dict = {} %}
+  {{ add_menu_to_dict(tag_menu, tag_dict)  }}
+  <script>
+    {{ load_tag_map(tag_dict) }}
+  </script>
 #}
-{% macro load_tag_map(menu_node) %}
+{%- macro load_tag_map(tag_dict) %}
+  IIN.blog = IIN.blog ?? {};
+  IIN.blog.tagMap = IIN.blog.tagMap ?? {
+    {%- for key, val in tag_dict.items() %}
+      '{{ key }}': '{{ val }}',
+    {%- endfor %}
+  };
+{%- endmacro -%}
+
+{#
+  Build a map of tags to urls and load it into JS object clientside.
+  Usage example:
+
+  {% set tag_menu = menu(module.tag_menu) %}
+  <script>
+    {{ build_and_load_tag_map(tag_menu) }}
+  </script>
+#}
+{%- macro build_and_load_tag_map(menu_node) %}
   {% set dict = {} %}
   {{ add_menu_to_dict(menu_node, dict) }}
-  <script>
-    IIN.blog = IIN.blog ?? {};
-    IIN.blog.tagMap = {
-      {%- for key, val in dict.items() %}
-        '{{ key }}': '{{ val }}',
-      {%- endfor %}
-    };
-  </script>
-{% endmacro %}
+  {{ load_tag_map(dict) }}
+{%- endmacro -%}

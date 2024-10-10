@@ -23,7 +23,18 @@
     "label": "Category Tag",
     "required": false,
     "locked": false,
-    "tag_value": "SLUG",
+    "tag_value": "ALL",
     "type": "tag"
+  },
+  {
+    "name": "tag_menu",
+    "label": "Tag Menu",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "type": "menu",
+    "placeholder": "",
+    "default": null
   }
 ]

@@ -22,6 +22,7 @@
 {% include './elements/_svgs.css' %}
 {% include './elements/_forms.css' %}
 {% include './elements/_tables.css' %}
+{% include './elements/_links.css' %}
 {% include './components/_accordion.css' %}
 {% include './components/_buttons.css' %}
 {% include './components/_cards.css' %}

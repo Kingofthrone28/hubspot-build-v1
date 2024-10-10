@@ -1,25 +1,27 @@
-{% set column_offset = module.layout == "two_column" ? 5 : 3 %}
+{% from "../../macros/get-reading-time.html" import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict, load_tag_map %}
 
+{# Any changes here should be reflected in the client side javascript version below #}
 {% macro render_blog_posts(posts, layout) %}
   <div class="row">
-    {% for content in posts %}
-      {% set author = content.blog_author.name %}
+    {% for post in posts %}
+      {% set author = post.blog_author.name %}
       {% set is_large_card = layout == "two_column" and loop.index <= 2 %}
-      {% set initial_post_words = content.post_body|striptags|wordcount %}
-      {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
-      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
+      {% set is_read_time_words = get_reading_time(post.post_body)|trim  %}
       {% set card_type = is_large_card ? 'large' : 'small' %}
-      <a
-        href="{{ content.url }}"
-        class="blog-teasers__card blog-teasers__{{ card_type }}-card"
-      >
-        <img src="{{ content.featured_image }}" alt="{{ content.name }}">
-        <span class="blog-teasers__category">{{ content.topic_list[0].name }}</span>
-        <h4 class="blog-teasers__heading">{{ content.name }}</h4>
+      {% set topic = post.topic_list[0].name %}
+      <div class="blog-teasers__card blog-teasers__{{ card_type }}-card">
+        <a href="{{ post.url }}">
+          <img src="{{ post.featured_image }}" alt="{{ post.name }}">
+        </a>
+        <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link water">{{ topic }}</a>
+        <h4 class="blog-teasers__heading">
+          <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
+        </h4>
         {% if author %}
           <p class="blog-teasers__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
-      </a>
+      </div>
     {% endfor %}
   </div>
 {% endmacro %}
@@ -29,13 +31,21 @@
   {{ render_blog_posts(posts, layout) }}
 {% endmacro %}
 
-{% set clean_tags = module.tag_field | replace('-', ' ') | replace(',', '') | capitalize %}
+{% set column_offset = module.layout == "two_column" ? 5 : 3 %}
+{% set tag_slug = module.tag_field.slug %}
+{% set tag_name = module.tag_field.name %}
+{% set clean_tags = tag_slug | replace('-', ' ') | replace(',', '') | capitalize %}
+{% set tag_dict = {} %}
+{% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
+{{ add_menu_to_dict(tag_menu, tag_dict)  }}
+
+{# html #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
     <h4 class="blog-teasers__header">{{ clean_tags }}</h4>
     <hr class="blog-teasers__line">
     <div class="blog-teasers__posts">
-      {{ render_blog_posts_by_layout(module.layout, module.tag_field) }}
+      {{ render_blog_posts_by_layout(module.layout, tag_slug) }}
     </div>
     <div class="blog-teasers__view-more">
       <button
@@ -46,10 +56,11 @@
     </div>
   </div>
 </div>
-
 <script>
   (async () => {
-    const tag = '{{ module.tag_field }}';
+    {{ load_tag_map(tag_dict) }}
+    const tag = '{{ tag_slug }}';
+    const tagName = '{{ tag_name }}'
     let offset = parseInt('{{ column_offset }}') || 0;
     const limit = 6;
     const wordsPerMinute = 200;
@@ -94,17 +105,23 @@
         const readTimePlaceHolder = 'Calculating...';
         const title = removeTags(post.title);
         const imageUrl = post.featuredImageUrl || '';
+        const topic = post.tags[0];
+        const topicLink = IIN.blog.tagMap[tagName] ?? '';
 
         const row = `
-          <a href="${post.url}" class="blog-teasers__card blog-teasers__small-card">
-            <img src="${imageUrl}" alt="${title}">
-            ${post.tags.length ?? `<span class="blog-teasers__category">${post.tags[0]}</span>`}
-            <h4 class="blog-teasers__heading">${title}</h4>
+          <div class="blog-teasers__card blog-teasers__small-card">
+            <a href="${post.url}">
+              <img src="${imageUrl}" alt="${title}">
+            </a>
+            ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link water">${topic}</a>` : ``}
+            <h4 class="blog-teasers__heading">
+              <a href=${post.url} class="link slate">${title}</a>
+            </h4>
             <p class="blog-teasers__byline">
               By ${post.authorFullName} |
               <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
             </p>
-          </a>
+          </div>
         `;
 
         if (i < columnCount) {
@@ -153,7 +170,6 @@
     async function loadPosts(searchUrl, button) {
       try {
         const response = await fetch(searchUrl);
-
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -192,7 +208,13 @@
       const button = event.target;
       viewMorePosts = [];
       button.classList.add('disable-btn');
-      const searchUrl = `${window.location.origin}/_hcms/search?&term=${encodeURIComponent(tag)}&type=BLOG_POST&limit=${limit}&offset=${offset}`;
+      const searchParams = new URLSearchParams({
+        type: 'BLOG_POST',
+        term: encodeURIComponent(tagName),
+        limit,
+        offset,
+      });
+      const searchUrl = `${window.location.origin}/_hcms/search?${searchParams}`;
       loadPosts(searchUrl, button);
     }
 
