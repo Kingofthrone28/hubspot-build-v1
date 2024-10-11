@@ -178,7 +178,7 @@
   };
 
   /**
-   *
+   * Create a Shopify global product ID from a basic ID
    * @param {string} id
    * @returns {string}
    */
@@ -188,6 +188,19 @@
     }
 
     return `gid://shopify/Product/${id}`;
+  };
+
+  /**
+   * Create a Shopify global product variant ID from a basic ID
+   * @param {string} id
+   * @returns {string}
+   */
+  const buildGlobalProductVariantId = (id) => {
+    if (!isStringWithLength(id)) {
+      throw new Error('id is a required string');
+    }
+
+    return `gid://shopify/ProductVariant/${id}`;
   };
 
   /**
@@ -342,17 +355,21 @@
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
   IIN.shopify = {
+    addDiscountToCheckout,
     addLineItemsToCheckout,
     buildGlobalProductId,
+    buildGlobalProductVariantId,
     createCheckoutLineItem,
     fetchProduct,
     getAddToCartSessionData,
     getAvailableVariants,
+    getCheckoutById,
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
     getOptionsCount,
     getPromoCheckoutButton,
+    goToCart,
     isProductInCheckout,
     setAddToCartSessionData,
     updatePromoCheckoutButton,

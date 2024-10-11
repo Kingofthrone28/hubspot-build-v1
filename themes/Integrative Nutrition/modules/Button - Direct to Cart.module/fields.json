@@ -1,0 +1,62 @@
+[
+  {
+    "name": "variant_id",
+    "label": "Variant Id",
+    "required": true,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "Product Variant Id",
+    "help_text": "",
+    "default": null
+  },
+  {
+    "name": "button_label",
+    "label": "Button Label",
+    "required": true,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": "ENROLL"
+  },
+  {
+    "name": "discount_code",
+    "label": "Discount Code",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": "Bewell24"
+  },
+  {
+    "name": "dl_label",
+    "label": "Data Layer Id",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": null
+  }
+]
