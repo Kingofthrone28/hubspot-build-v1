@@ -56,8 +56,8 @@
 }
 
 .card-image-link {
-  border-radius: 10px;
   display: inline-block;
+  border-radius: 10px;
   overflow: hidden;
 }
 
