@@ -3,7 +3,7 @@
     "id": "configuration",
     "name": "configuration",
     "display_width": null,
-    "label": "Configuration",
+    "label": "Configuration Type",
     "help_text": "",
     "inline_help_text": "",
     "required": true,
@@ -29,6 +29,24 @@
     "preset": null,
     "type": "choice",
     "default": "inline-and-header"
+  },
+  {
+    "name": "use_dynamic_header_trigger",
+    "label": "Use Dynamic Trigger for Header?",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "Be sure to add the \"Sticky Course Dynamic Trigger\" module to use this feature.",
+    "help_text": "",
+    "default": false,
+    "visibility": {
+      "controlling_field": null,
+      "controlling_field_path": "configuration",
+      "controlling_value_regex": "inline-and-header",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    }
   },
   {
     "id": "lock_configuration",

@@ -2,9 +2,16 @@
   templateType: "none"
   isAvailableForNewContent: false
 -->
+
 {# 
   Get a human readable description of reading time of a string.
   We use a regex replace to strip out any hubl code
+  NB: the trim filter is required in its specific location
+  
+  Example:
+
+  {% from "../../macros/get-reading-time.html" import get_reading_time %}
+  {% set is_read_time_words = get_reading_time(content.post_body)|trim  %}
 #}
 {% macro get_reading_time(string) %}
   {% set word_count = string|regex_replace("{{.+?}}", "")|striptags|wordcount %}

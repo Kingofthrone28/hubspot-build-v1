@@ -1,0 +1,151 @@
+{#
+  Get the blog navigation menu.
+  Be sure to load blog-nav.js and call IIN.blog.configureMobileMenu() to configure the javascript functionality.
+#}
+
+{# Helpers #}
+{% set active_class = 'active-node' %}
+
+{# get the desktop menu active node class #}
+{% macro active_node_class(node) %}
+  {{ node.activeNode ? active_class : ''  }}
+{% endmacro %}
+
+{# Main macro #}
+{% macro get_blog_nav_base(tag_menu, render_menu, render_breadcrumbs) %}
+  {% set active = {} %}
+  {% set root = { "label": "Articles & Ideas", "level": 0, "url": "/blog" } %}
+  {% set categories = tag_menu.children %}
+
+  {% for category in categories %}
+    {% do active.update({ "category": category }) if category.activeBranch %}
+    {% do active.update({ "node": category }) if category.activeNode %}
+    
+    {% if category.children and not active.node and category.activeBranch %}
+      {% set current_node = category.children|selectattr('activeNode')|first %}
+      {% do active.update({ "node": current_node }) %}
+    {% endif %}
+  {% endfor %}
+
+  {% set active_category = active.category %}
+  {% set active_node = active.node %}
+
+  {% set on_blog_page = not active_category %}
+  {% set on_category_page = active_category and active_category == active_node %}
+  {% set on_tag_page = not (on_blog_page or on_category_page) %}
+  
+  {% set all_button_active = on_blog_page or on_category_page ? active_class : '' %}
+
+  {% if on_blog_page %}
+    {% set menu_nodes = categories %}
+    {% set mobile_menu_label = root.label|escape_html %}
+  {% elif on_category_page %}
+    {% set parent = root %}
+    {% set menu_nodes = active_category.children %}
+    {% set mobile_menu_label = active_category.label|escape_html %}
+  {% else %}
+    {% set parent = active_category %}
+    {% set menu_nodes = active_category.children %}
+    {% set mobile_menu_label = active_category.label|escape_html %}
+  {% endif %}
+  
+  {# Desktop menu #}
+  {% if (on_blog_page or on_category_page) and render_menu %}
+    <nav class="blog-nav blog-nav__menu--desktop">
+      <ul class="no-list">
+        <li class="blog-nav__tag-wrapper">
+          <span class="blog-nav__link {{ all_button_active }}">All</span>
+        </li>
+        {% for node in menu_nodes %}
+          <li class="blog-nav__tag-wrapper">
+            <a
+              class="blog-nav__link {{ active_node_class(node) }}"
+              href="{{ node.url|escape_url }}"
+            >{{ node.label|escape_html }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+
+  {# Mobile menu  #}
+  {% if render_menu %}
+    <nav class="blog-nav blog-nav__menu--mobile" aria-label="Main menu">
+      <ul class="no-list">
+        <li class="blog-nav__item blog-nav__category blog-nav__item--has-submenu">
+          <button type="button" class="remove-globals blog-nav__expand-button" aria-expanded="false">
+            <span class="sr-only">Show submenu for {{ mobile_menu_label }}</span>
+            <span class="blog-nav__link">{{ mobile_menu_label }}: {{ active_node.label if on_tag_page else 'All' }}</span>
+            <div class="svg-icon icon-chevron-down"></div>
+          </button>
+          {# Dropdown Menu #}
+          <ul class="blog-nav__submenu blog-nav__submenu--level-2 no-list">
+            {% if on_tag_page %}
+              <li class="blog-nav__item blog-nav__mobile_breadcrumb blog-nav__submenu-all">
+               <span class="pseudo-svg chevron-back-before blog-nav__mobile-tag">{{ mobile_menu_label }}</span>
+               <button class="remove-globals close-button"></button>
+              </li>
+            {% endif %}
+            <li class="blog-nav__item blog-nav__submenu-all">
+              {% if on_tag_page %}
+                 <a class="blog-nav__link" href="{{ parent.url|escape_url }}">All</a>
+              {% else %}
+                <span class="blog-nav__link {{ all_button_active }}">All</span>
+                <button class="remove-globals close-button"></button>
+              {% endif %}
+            </li>
+            {% for node in menu_nodes %}
+              <li class="blog-nav__item">
+                <a 
+                  class="blog-nav__link {{ active_node_class(node) }}"
+                  href="{{ node.url|escape_url }}"
+                  {{ 'aria-current="page"' if node.activeNode }}
+                >{{ node.label|escape_html }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  {% endif %}
+
+  {# Breadcrumbs html #}
+  {% if parent and render_breadcrumbs %}
+    <nav class="blog-nav blog-nav__breadcrumbs" aria-label="Breadcrumb menu">
+      <a
+        class="pseudo-svg chevron-back-before blog-nav__link"
+        href="{{ root.url|escape_url }}"
+      >Back to {{ root.label|escape_html }}</a>
+      {% if on_tag_page %}
+        <a
+          class="blog-nav__link"
+          href="{{ active_category.url|escape_url }}"
+        >/ {{ active_category.label|escape_html }}</a>
+      {% endif %}
+    </nav>
+  {% endif %} 
+{% endmacro %}
+
+{#
+  Get menu
+  Usage example:
+
+  {% from '../../macros/get-blog-navigation.html' import get_blog_nav_menu %}
+  {% set tag_menu = menu(module.menu) %}
+  {{ get_blog_nav_menu(tag_menu) }}
+#}
+{% macro get_blog_nav_menu(tag_menu) %}
+ {{ get_blog_nav_base(tag_menu, true, false) }}
+{% endmacro %}
+
+{#
+  Get breadcrumbs menu
+  Usage example:
+
+  {% from '../../macros/get-blog-navigation.html' import get_blog_nav_breadcrumbs %}
+  {% set tag_menu = menu(module.menu) %}
+  {{ get_blog_nav_breadcrumbs(tag_menu) }}
+#}
+{% macro get_blog_nav_breadcrumbs(tag_menu) %}
+ {{ get_blog_nav_base(tag_menu, false, true) }}
+{% endmacro %}

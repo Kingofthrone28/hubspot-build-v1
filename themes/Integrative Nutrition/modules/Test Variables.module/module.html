@@ -24,6 +24,14 @@
   </p>
 {% endmacro %}
 
+{# Depends on .svg-icon #}
+{% macro get_svg_icon_markup(class_name) %}
+  <div>
+    <div class="svg-icon {{ class_name }}"></div>
+    <span>{{ class_name }}</span>
+  </div>
+{% endmacro %}
+
 {# Data #}
 {%
   set content_pairs = [
@@ -124,7 +132,14 @@
     'arrow-link arrow-link-back',
     'calendar-plus-before',
     'phone-chat-before',
-    'whatsapp-before'
+    'whatsapp-before',
+    'chevron-back-before'
+  ]
+%}
+{%
+  set svg_icons = [
+    'history',
+    'price-tag'
   ]
 %}
 
@@ -151,11 +166,22 @@
         {% for class in icon_classes %}
           {{ get_icon_markup(class) }}
         {% endfor %}
-        <div>
-          <div class="svg-icon history-icon"></div>&nbsp;History
-        </div>
+        
+        {% for class in svg_icons %}
+          {{ get_svg_icon_markup(class) }}
+        {% endfor %}
       </section>
     {% endif %}
+
+    <section>
+      <h2>Links</h2>
+      <div>
+        <a class="link water">link water</a>
+      </div>
+      <div>
+        <a class="link slate">link slate</a>
+      </div>
+    </section>
   </div>
 </div>
 
@@ -187,10 +213,6 @@
 
   .test-variables .icons {
     --icon--color: var(--color--cherry);
-  }
-
-  .history-icon {
-    --icon--image: var(--icon--history);
   }
   </style>
 {% end_require_css %}

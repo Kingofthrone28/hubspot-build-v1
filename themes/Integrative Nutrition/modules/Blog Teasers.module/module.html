@@ -1,23 +1,27 @@
+{% from "../../macros/get-reading-time.html" import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict, load_tag_map %}
+
+{# Any changes here should be reflected in the client side javascript version below #}
 {% macro render_blog_posts(posts, layout) %}
   <div class="row">
-    {% for content in posts %}
-      {% set author = content.blog_author.name %}
+    {% for post in posts %}
+      {% set author = post.blog_author.name %}
       {% set is_large_card = layout == "two_column" and loop.index <= 2 %}
-      {% set initial_post_words = content.post_body|striptags|wordcount %}
-      {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
-      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
+      {% set is_read_time_words = get_reading_time(post.post_body)|trim  %}
       {% set card_type = is_large_card ? 'large' : 'small' %}
-      <a 
-        href="{{ content.url }}" 
-        class="blog-teasers__card blog-teasers__{{ card_type }}-card"
-      >
-        <img src="{{ content.featured_image }}" alt="{{ content.name }}">
-        <span class="blog-teasers__category">{{ content.topic_list[0].name }}</span>
-        <h4 class="blog-teasers__heading">{{ content.name }}</h4>
+      {% set topic = post.topic_list[0].name %}
+      <div class="blog-teasers__card blog-teasers__{{ card_type }}-card">
+        <a href="{{ post.url }}">
+          <img src="{{ post.featured_image }}" alt="{{ post.name }}">
+        </a>
+        <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link water">{{ topic }}</a>
+        <h4 class="blog-teasers__heading">
+          <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
+        </h4>
         {% if author %}
           <p class="blog-teasers__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
-      </a>
+      </div>
     {% endfor %}
   </div>
 {% endmacro %}
@@ -27,21 +31,195 @@
   {{ render_blog_posts(posts, layout) }}
 {% endmacro %}
 
-{% set clean_tags = module.tag_field | replace('-', ' ') | replace(',', '') | capitalize %}
+{% set column_offset = module.layout == "two_column" ? 5 : 3 %}
+{% set tag_slug = module.tag_field.slug %}
+{% set tag_name = module.tag_field.name %}
+{% set clean_tags = tag_slug | replace('-', ' ') | replace(',', '') | capitalize %}
+{% set tag_dict = {} %}
+{% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
+{{ add_menu_to_dict(tag_menu, tag_dict)  }}
+
+{# html #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
     <h4 class="blog-teasers__header">{{ clean_tags }}</h4>
     <hr class="blog-teasers__line">
     <div class="blog-teasers__posts">
-      {{ render_blog_posts_by_layout(module.layout, module.tag_field) }}
+      {{ render_blog_posts_by_layout(module.layout, tag_slug) }}
     </div>
     <div class="blog-teasers__view-more">
-      <a 
-        href="/blog/tag/{{ module.tag_field }}" 
-        class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
+      <button
+        class="blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link"
       >
         View more {{ clean_tags }} articles
-      </a>
+      </button>
     </div>
   </div>
 </div>
+<script>
+  (async () => {
+    {{ load_tag_map(tag_dict) }}
+    const tag = '{{ tag_slug }}';
+    const tagName = '{{ tag_name }}'
+    let offset = parseInt('{{ column_offset }}') || 0;
+    const limit = 6;
+    const wordsPerMinute = 200;
+    let viewMorePosts = [];
+
+    function getReadTime(wordCount) {
+      const readTime = Math.ceil(wordCount / wordsPerMinute);
+      return `Read time: ${readTime <= 1 ? 'less than 1 min' : `${readTime} mins`}`;
+    }
+
+    function getWordCount(text) {
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      return words.length;
+    }
+
+    function removeTags(text) {
+      return text.replace(/<[^>]*>/g, '').trim();
+    }
+
+    async function fetchPostContent(url) {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        return await response.text();
+      } catch (error) {
+        console.error('Fetch error:', error);
+        return null;
+      }
+    }
+
+    function appendViewMoreResults(data) {
+      let row1 = '';
+      let row2 = '';
+      const columnCount = 3;
+
+      data.results.forEach((post, i) => {
+        viewMorePosts.push(post);
+        const readTimePlaceHolder = 'Calculating...';
+        const title = removeTags(post.title);
+        const imageUrl = post.featuredImageUrl || '';
+        const topic = post.tags[0];
+        const topicLink = IIN.blog.tagMap[tagName] ?? '';
+
+        const row = `
+          <div class="blog-teasers__card blog-teasers__small-card">
+            <a href="${post.url}">
+              <img src="${imageUrl}" alt="${title}">
+            </a>
+            ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link water">${topic}</a>` : ``}
+            <h4 class="blog-teasers__heading">
+              <a href=${post.url} class="link slate">${title}</a>
+            </h4>
+            <p class="blog-teasers__byline">
+              By ${post.authorFullName} |
+              <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
+            </p>
+          </div>
+        `;
+
+        if (i < columnCount) {
+          row1 += row;
+        } else {
+          row2 += row;
+        }
+      });
+
+      // Insert rows into DOM
+      if (row1) {
+        document
+          .querySelector('.blog-teasers__posts')
+          .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
+      }
+
+      if (row2) {
+        document
+          .querySelector('.blog-teasers__posts')
+          .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+      }
+    }
+
+    function updateReadTime(data, post) {
+      const parser = new DOMParser();
+      const parsedDocument = parser.parseFromString(data, 'text/html');
+      const paragraphs = parsedDocument.querySelectorAll('.jd-post-content');
+      let wordCount = 0;
+
+      paragraphs.forEach((paragraph) => {
+        const paragraphText = paragraph.textContent || '';
+        wordCount += getWordCount(paragraphText);
+      });
+
+      const readTime = getReadTime(wordCount);
+      document.querySelector(`#read-time-${post.id}`).innerHTML = readTime;
+    }
+
+    async function populateReadTimes(post) {
+      const data = await fetchPostContent(post.url);
+      if (data) {
+        updateReadTime(data, post);
+      }
+    }
+
+    async function loadPosts(searchUrl, button) {
+      try {
+        const response = await fetch(searchUrl);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        if (!data?.results) {
+          return null;
+        }
+
+        if (data.results.length < limit) {
+          document
+            .querySelector('.blog-teasers__view-more')
+            .classList.add('hidden');
+        }
+
+        if (!data.results.length) {
+          return null;
+        }
+
+        appendViewMoreResults(data);
+
+        const promises = viewMorePosts.map((post) => populateReadTimes(post));
+
+        await Promise.all(promises);
+        offset += limit;
+        button.classList.remove('disable-btn');
+        return true;
+      } catch (error) {
+        console.error('An unexpected error occurred:', error);
+        return null;
+      }
+    }
+
+    function handleViewMoreClick(event) {
+      const button = event.target;
+      viewMorePosts = [];
+      button.classList.add('disable-btn');
+      const searchParams = new URLSearchParams({
+        type: 'BLOG_POST',
+        term: encodeURIComponent(tagName),
+        limit,
+        offset,
+      });
+      const searchUrl = `${window.location.origin}/_hcms/search?${searchParams}`;
+      loadPosts(searchUrl, button);
+    }
+
+    document
+      .querySelector('.blog-teasers-view-more-btn')
+      .addEventListener('click', handleViewMoreClick);
+  })();
+</script>

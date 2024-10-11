@@ -69,7 +69,7 @@
   font: var(--font--legal);
 }
 
-.pdp-code svg {
+.pdp-code .svg-icon {
   margin-right: 10px;
   min-width: 20px;
 }

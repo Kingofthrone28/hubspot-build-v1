@@ -1,12 +1,13 @@
 {% from '../../macros/get-byline.html' import get_byline %}
 {% from '../../macros/get-reading-time.html' import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
 
 {% set blog_id = blog ? blog.id : 'default' %}
 {% set post_count_to_load = 4 %}
 {% set posts = blog_recent_posts(blog_id, post_count_to_load) %}
-
-{# {% set topic_url = blog_tag_url(blog_id, main_topic.slug ) %} #}
-{# {% set author_url = blog_author_url(blog_id, author.slug ) %} #}
+{% set tag_menu = menu(module.menu) if module.menu %}
+{% set tag_dict = {} %}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
 
 <section class="blog-latest-posts">
   <div class="blog-latest-posts__header-row">
@@ -20,14 +21,15 @@
   </div>
   <div class="blog-latest-posts__posts">
     {% for post in posts %}
-      {% set main_topic = post.topic_list[0] %}
+      {% set topic = post.topic_list[0] %}
       {% set author_name = post.blog_post_author.display_name %}
       {% set post_url = post.url|escape_url %}
-      {% set reading_time = get_reading_time(post.post_body)%}
+      {% set reading_time = get_reading_time(post.post_body) %}
+      {% set topic_link = tag_dict[topic] %}
       <div class="blog-latest-posts__post">
-        <a href="{{ post_url }}" class="blog-latest-posts__topic">{{ main_topic or '(None)' }}</a>
+        <a href="{{ topic_link|escape_url }}" class="blog-latest-posts__topic">{{ topic }}</a>
         <a href="{{ post_url }}" class="blog-latest-posts__title clamp">{{ post.name }}</a>
-        <a href="{{ post_url }}" class="blog-latest-posts__author-and-time">{{ get_byline(author_name, reading_time) }}</a >
+        <div class="blog-latest-posts__author-and-time">{{ get_byline(author_name, reading_time) }}</div>
       </div>
     {% endfor %}
   </div>

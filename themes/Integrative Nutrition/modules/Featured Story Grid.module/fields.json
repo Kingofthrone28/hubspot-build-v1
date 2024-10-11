@@ -57,5 +57,24 @@
     "display": "checkbox",
     "type": "boolean",
     "default": true
+  },
+  {
+    "name": "tag_menu",
+    "label": "Tag Menu",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "type": "menu",
+    "placeholder": "",
+    "default": null,
+    "visibility": {
+      "controlling_field": "show_category_eyebrow",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    }
   }
 ]

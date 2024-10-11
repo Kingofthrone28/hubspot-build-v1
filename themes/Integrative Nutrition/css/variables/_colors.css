@@ -3,6 +3,9 @@
 
   /* Style Guide Primary and Secondary Colors */
 
+  /* Figma color style: none; for a:hover */
+  --color--blue: #00f;
+
   /* Figma color style: New Brand/Primary-Cherry */
   --color--cherry: #d72a25;
 
@@ -24,6 +27,9 @@
   /* Figma color style: none */
   --color--water--faded: #4a7a7e;
 
+  /* Figma color style: none; for a:visited */
+  --color--water--half-baked: #568d9a;
+
   /* Figma color style: New Brand/Light Water */
   --color--water--light: #e6f2f3;
 
@@ -40,9 +46,6 @@
 
   /* Figma color style: New Brand/Base-White */
   --color--white: #fff; /* rgb(255 255 255) */
-
-  /* Figma color style: none */
-  --color--blue: #00f;
 
   /* Style Guide Neutral Colors */
 

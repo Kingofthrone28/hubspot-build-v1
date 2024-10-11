@@ -3,8 +3,8 @@
   display: inline-block;
   background-color: var(--icon--color, var(--accent--color));
   background-repeat: no-repeat;
-  width: var(--icon--square--size);
-  height: var(--icon--square--size);
+  width: var(--icon--width, var(--icon--square--size));
+  height: var(--icon--height, var(--icon--square--size));
   vertical-align: middle;
 }
 
@@ -20,6 +20,15 @@
   mask-image: var(--icon--calendar--plus);
 }
 
+.chevron-back-before::before {
+  --icon--width: 8px;
+  --icon--height: 13px;
+
+  margin-right: var(--icon--gap);
+  content: '';
+  mask-image: var(--icon--chevron-left);
+}
+
 .phone-chat-before::before {
   margin-right: var(--icon--gap);
   content: '';
@@ -30,12 +39,4 @@
   margin-right: var(--icon--gap);
   content: '';
   mask-image: var(--icon--whatsapp);
-}
-
-.svg-icon {
-  display: inline-block;
-  background-color: var(--icon--color, var(--color--slate));
-  width: var(--icon--width, var(--icon--square--size));
-  height: var(--icon--height, var(--icon--square--size));
-  mask-image: var(--icon--image);
 }

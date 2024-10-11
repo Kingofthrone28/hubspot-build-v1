@@ -1,17 +1,26 @@
+{% from "../../macros/get-reading-time.html" import get_reading_time %}
+{% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
+
+{% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
+{% set tag_dict = {} %}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
+
 {% macro render_blog_posts(posts) %}
   <div class="blog-popular-posts__row">
     {% for post in posts %}
       {% set author = post.blog_author.name %}
-      {% set initial_post_words = post.post_body|striptags|wordcount %}
-      {% set read_time_post_words = (initial_post_words / 200)|round(0, 'ceil') %}
-      {% set is_read_time_words = read_time_post_words <=1 ? 'Read time: less than 1 min' : 'Read time: {{ read_time_post_words }} mins'  %}
-      <a href="{{ post.url }}" class="blog-popular-posts__section">
-        <span class="blog-popular-posts__category">{{ post.topic_list[0].name }}</span>
-        <h4 class="blog-popular-posts__heading">{{ post.name }}</h4>
+      {% set is_read_time_words = get_reading_time(content.post_body)|trim  %}
+      {% set tag_name = post.topic_list[0].name %}
+      {% set tag_link = tag_dict[tag_name] %}
+      <div class="blog-popular-posts__section">
+        <a href="{{ tag_link }}" class="blog-popular-posts__category link water">{{ tag_name }}</a>
+        <h4 class="blog-popular-posts__heading">
+          <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
+        </h4>
         {% if author %}
           <p class="blog-popular-posts__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
-      </a>
+      </div>
     {% endfor %}
   </div>
 {% endmacro %}

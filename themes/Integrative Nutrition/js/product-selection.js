@@ -569,18 +569,24 @@ const getProductSelectionMethods = () => {
    * Configure header toggle functionality
    * @param {boolean} useIdTrigger whether to use id as trigger
    */
-  const configureHeaderToggle = (useIdTrigger) => {
-    const defaultElementSelector = `.pdp-top`;
-    const headerOnlySelector = `#product-selector-trigger`;
-    const triggerSelector = useIdTrigger
-      ? headerOnlySelector
-      : defaultElementSelector;
-    const trigger = document.querySelector(triggerSelector);
+  const configureHeaderToggle = (useIdTrigger, useDynamicTrigger) => {
+    const defaultSelector = `.pdp-top`;
+    let triggerSelector;
+
+    if (useIdTrigger) {
+      triggerSelector = `#product-selector-trigger`;
+    } else if (useDynamicTrigger) {
+      triggerSelector = `#dynamic-product-selector-trigger`;
+    } else {
+      triggerSelector = defaultSelector;
+    }
+
+    const trigger =
+      document.querySelector(triggerSelector) ??
+      document.querySelector(defaultSelector);
 
     if (!trigger) {
-      throw new Error(
-        `configureHeaderToggle: Failed to find trigger element using selector: ${triggerSelector}`,
-      );
+      throw new Error(`configureHeaderToggle: Failed to find trigger element`);
     }
 
     const stickySelector = '.pdp-sticky-wrap';
