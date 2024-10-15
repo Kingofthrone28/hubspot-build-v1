@@ -1,7 +1,7 @@
 {
   "global": false,
   "content_types": ["LANDING_PAGE", "SITE_PAGE"],
-  "inline_help_text": "This depends on PDP Top Section, content is added dynamically here to avoid the need for repeated shopify calls for the same information",
+  "inline_help_text": "This depends on PDP Top Section, content is added dynamically here to avoid the need for repeated Shopify calls for the same information",
   "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
   "module_id": 170970925159,
   "is_available_for_new_content": true

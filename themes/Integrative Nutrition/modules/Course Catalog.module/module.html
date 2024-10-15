@@ -177,7 +177,7 @@
                 IINShopifyClient.product.fetch('gid://shopify/Product/{{ row.product_id }}').then(function(product) {
                   $('.cc-price-{{ row.product_id }}').text('$' + parseInt(product.variants[0].price.amount).toLocaleString());
                   
-                  // Updating the price from shopify response
+                  // Updating the price from Shopify response
                   if(rowsData){
                     rowsData.find(item=>item.product_id=={{ row.product_id }}).price = parseInt(product.variants[0].price.amount).toLocaleString();
                   }
