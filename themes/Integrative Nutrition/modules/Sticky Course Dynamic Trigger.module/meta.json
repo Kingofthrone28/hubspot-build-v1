@@ -1,14 +1,9 @@
 {
   "global": false,
-  "content_types": [
-    "LANDING_PAGE",
-    "SITE_PAGE"
-  ],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
   "inline_help_text": "This module is used as a target to trigger the header for the Sticky Course Shopify Add To Cart module.",
   "icon": "fontawesome-5.14.0:Alternate%20Expand%20Arrows:SOLID",
-  "host_template_types": [
-    "ANY"
-  ],
+  "host_template_types": ["ANY"],
   "label": "Sticky Course Dynamic Trigger",
   "is_available_for_new_content": true
 }
