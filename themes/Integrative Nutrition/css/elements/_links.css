@@ -1,0 +1,42 @@
+/* Base link styles */
+
+.link {
+  transition: none;
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--link-color--targeted);
+}
+
+.link:focus {
+  text-decoration: underline;
+  color: var(--link-color--targeted);
+}
+
+.link:active {
+  text-decoration: underline;
+  color: var(--link-color--active);
+}
+
+.link:visited {
+  color: var(--link-color--visited);
+}
+
+/* Link variants */
+
+.link.water {
+  --link-color: var(--color--water);
+  --link-color--active: var(--color--cherry);
+  --link-color--targeted: var(--color--blue);
+  --link-color--visited: var(--color--water--half-baked);
+}
+
+.link.slate {
+  --link-color: var(--color--slate);
+  --link-color--active: var(--color--cherry);
+  --link-color--targeted: var(--color--blue);
+  --link-color--visited: var(--color--water--half-baked);
+}

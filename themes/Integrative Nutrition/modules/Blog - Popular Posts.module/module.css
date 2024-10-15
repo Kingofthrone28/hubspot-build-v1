@@ -3,7 +3,6 @@
 }
 
 .blog-popular-posts__section {
-  display: block;
   border-bottom: 1px solid var(--color--grey-4);
   padding: var(--spacing-8) 0;
 }
@@ -19,7 +18,6 @@
 }
 
 .blog-popular-posts__category {
-  color: var(--color--water);
   font: var(--font--paragraph--bold);
 }
 

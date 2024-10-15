@@ -73,13 +73,8 @@
 }
 
 .blog-latest-posts__author-and-time {
-  font: var(--font--legal);
-}
-
-.blog-latest-posts__author-and-time,
-.blog-latest-posts__author-and-time:hover,
-.blog-latest-posts__author-and-time:focus {
   color: var(--color--slate);
+  font: var(--font--legal);
 }
 
 .blog-latest-posts__bottom-rule {

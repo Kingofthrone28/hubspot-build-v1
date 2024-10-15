@@ -43,7 +43,7 @@
   padding: 15px 50px 15px 20px;
 }
 
-.ex-label h5 {
+.ex-label h3 {
   margin-bottom: 0;
   line-height: var(--line-height--legacy--3);
   font-family: var(--font-family--body);
