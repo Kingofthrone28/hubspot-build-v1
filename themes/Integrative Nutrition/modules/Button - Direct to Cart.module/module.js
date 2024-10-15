@@ -16,6 +16,7 @@
     const checkoutId = checkout.id;
 
     if (!checkout.id) {
+      console.error(new Error('Failed to find checkout id'))
       return;
     }
 
