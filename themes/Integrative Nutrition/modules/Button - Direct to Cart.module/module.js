@@ -9,17 +9,16 @@
     goToCart,
   } = IIN.shopify;
 
-  const cartId = getCheckoutCookie();
-  const checkout = await getCheckoutById(cartId);
-
-  if (!checkout.id) {
-    return;
-  }
-
-  const checkoutId = checkout.id;
   const buttons = document.querySelectorAll('.direct-to-cart');
 
   const addAndGo = async (lineItem, discountCode) => {
+    const checkout = await getCheckoutById();
+    const checkoutId = checkout.id;
+
+    if (!checkout.id) {
+      return;
+    }
+
     try {
       await addLineItemsToCheckout([lineItem], checkoutId);
       await addDiscountToCheckout(checkoutId, discountCode);
