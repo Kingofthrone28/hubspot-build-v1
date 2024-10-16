@@ -609,7 +609,7 @@
       cartTrackingPayload.ecommerce.items.push({
         item_id: lineItem.variant.product.id.replace(gidPath, ''),
         item_name: lineItem.title,
-        item_type: lineItem.productType || 'NA',
+        item_type: lineItem.programLabel || 'NA',
         variant_id: lineItem.variant.id.replace(variantGidPath, ''),
         discount: totalPreDiscount - total,
         price: totalPreDiscount,
@@ -718,7 +718,7 @@
         deleteItemTrackingPayload.ecommerce.items.push({
           item_id: deletedItem.variant.product.id.replace(gidPath, ''),
           item_name: deletedItem.title,
-          item_type: deletedItem.productType || 'NA',
+          item_type: deletedItem.programLabel || 'NA',
           variant_id: deletedItem.variant.id.replace(variantGidPath, ''),
           discount: totalPreDiscount - total,
           price: total,
@@ -848,6 +848,7 @@
       );
       cartTrackingPayload.event = 'view_cart';
       triggerECommEvent(cartTrackingPayload);
+      coupons.clear();
     } catch (e) {
       console.error(e);
     }

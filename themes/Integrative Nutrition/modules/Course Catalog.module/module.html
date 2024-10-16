@@ -99,10 +99,7 @@
   {% set rows = hubdb_table_rows('course_catalog') %}
 {% endif %}
 <script>
-  // using var here so that it can be redeclared if course catalog module is used multiple times on a page
-  // let does not allow redeclaration in this way.
-  var rowsData = {{ rows|tojson }}.objects || {{ rows|tojson }}; 
-
+  var rowsData = {{ rows| tojson }}.objects || {{ rows | tojson }};
 </script>
 {% for row in rows %}
   {% set valid_row = { val: true } %}
@@ -242,6 +239,15 @@
     </div>
   {% endif %}
 {% endfor %}
+
+<script>
+  const courseCatalogDiv = document.currentScript.closest('.course-catalog');
+  // Waiting for shopify response on all items inside catalog for price
+  setTimeout(() => {
+    courseCatalogDiv?.setAttribute('data-rows', JSON.stringify(rowsData));
+    document.dispatchEvent(new CustomEvent('shopifyDataLoaded'));
+  }, 3000); 
+</script>
 </div>
 
 <div class="course-catalog-no-results" style="display: none;">
@@ -269,6 +275,9 @@
         {% endfor %}
       {% endif %}
     {% endif %}
+    <script>
+      var rowsData = {{ course_rows| tojson }}.objects || {{ course_rows | tojson }};
+    </script>
     {% for row in course_rows %}
       <div class="course-card-wrap"
         data-Topics="{% for topic in row.course_topics %}{{ topic.label }}{% if not loop.last %},{% endif %}{% endfor %}" 
