@@ -92,7 +92,7 @@
    * @param {Object[]} results - An array of search result objects.
    * @returns {string} The generated HTML markup.
    */
-   const getSearchHtml = (results = []) => {
+  const getSearchHtml = (results = []) => {
     const numberOfItems = 5;
     let html = '';
     results
