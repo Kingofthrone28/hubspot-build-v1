@@ -1,4 +1,5 @@
 :root {
   --transition--default: all 0.2s ease-in-out;
   --transition--long: all 0.3s ease-in-out;
+  --transition--extended: all 0.8s ease;
 }

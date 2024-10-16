@@ -20,6 +20,18 @@
   };
 
   /**
+   * Toggles the specified classes on the given element.
+   * @param {HTMLElement} element - The element to toggle classes on.
+   * @param {string} action - Action to be performed ('add' or 'remove').
+   * @param {string[]} classNames - An array of class names to be toggled.
+   */
+  const toggleClasses = (element, action, classNames) => {
+    classNames.forEach((className) => {
+      element.classList[action](className);
+    });
+  };
+
+  /**
    * Limits the execution of a function by a certain minimum time
    * @param {Function} func Function to limit execution rate of
    * @param {number=100} [timeout] Minimum time to pass before allowing execution
@@ -46,6 +58,7 @@
    */
   IIN.helpers = {
     debounce,
+    toggleClasses,
     throttle,
   };
 })();
