@@ -21,7 +21,7 @@
     <div class="featured-story-grid__{{ cardType }}-content-container">
       <div class="featured-story-grid__card-content featured-story-grid__{{cardType}}">
         {% if module.show_category_eyebrow %}
-          <a href="{{ tag_link|escape_url }}" class="blog-teaser__category link water">{{ topic }}</a>
+          <a href="{{ tag_link|escape_url }}" class="blog-teaser__category link">{{ topic }}</a>
         {% endif %}
         <h2 class="featured-story-grid__heading featured-story-grid__{{ cardType }}-heading">
           <a class="link slate" href="{{ content.url|escape_url }}">
