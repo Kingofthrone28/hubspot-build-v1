@@ -4,10 +4,7 @@
   "external_js": [],
   "global": false,
   "help_text": "",
-  "content_types": [
-    "BLOG_POST",
-    "SITE_PAGE"
-  ],
+  "content_types": ["BLOG_POST", "SITE_PAGE"],
   "js_assets": [
     {
       "autoload": true,

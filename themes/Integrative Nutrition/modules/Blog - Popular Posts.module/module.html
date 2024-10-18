@@ -13,7 +13,7 @@
       {% set tag_name = post.topic_list[0].name %}
       {% set tag_link = tag_dict[tag_name] %}
       <div class="blog-popular-posts__section">
-        <a href="{{ tag_link }}" class="blog-popular-posts__category link water">{{ tag_name }}</a>
+        <a href="{{ tag_link }}" class="blog-popular-posts__category link">{{ tag_name }}</a>
         <h4 class="blog-popular-posts__heading">
           <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
         </h4>

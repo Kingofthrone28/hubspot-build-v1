@@ -1,0 +1,10 @@
+{# html #}
+<button
+  class="jd-request-btn hs-button light-button jd-arrow-link direct-to-cart"
+  type="button"
+  data-variant-id="{{ module.variant_id }}"
+  {{ 'data-tracking-id="{{ module.dl_label }}"' if module.dl_label }}
+  {{ 'data-discount-code="{{ module.discount_code }}"' if module.discount_code }}
+>
+  {{ module.button_label }}
+</button>

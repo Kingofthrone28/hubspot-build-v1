@@ -1,20 +1,32 @@
 :root {
   /* Style Guide Typography */
 
-  /* font-family (raw values) */
+  /* Font family (raw values)
+    - Example:
+      --font-family--body: var(--font-family--public-sans);
+  */
   --font-family--junicode: 'Junicode', 'Times New Roman', serif;
   --font-family--playfair-display: 'Playfair Display', 'Georgia',
     'Times New Roman', 'Times', serif;
   --font-family--public-sans: 'Public Sans', 'Arial', sans-serif;
 
-  /* font-family (usage) */
+  /* Font family (usage)
+    - Example:
+      font-family: var(--font-family--body);
+  */
   --font-family--body: var(--font-family--public-sans);
   --font-family--heading: var(--font-family--playfair-display);
   --font-family--heading--alt: var(--font-family--junicode);
   --font-family--icons: 'Font Awesome 5 Pro';
   --font-family--icons--alt: 'Font Awesome 6 Sharp';
 
-  /* font-size (raw values) */
+  /* Font size (raw values)
+    - Do not use in other files.
+    - If a new font size raw value variable is needed, also create new font size
+      usage and font shorthand variables.
+    - Example:
+      --font-size--paragraph: var(--font-size--16);
+  */
   --font-size--12: 0.75rem; /*  ≈ 12px */
   --font-size--14: 0.875rem; /* ≈ 14px */
   --font-size--16: 1rem; /*     ≈ 16px */
@@ -28,7 +40,11 @@
   --font-size--80: 5rem; /*     ≈ 80px */
   --font-size--96: 6rem; /*     ≈ 96px */
 
-  /* font-size (mapped to Figma text style) */
+  /* Font size (usage)
+    - These font size variables are mapped to Figma text styles.
+    - Example:
+      font-size: var(--font-size--paragraph);
+  */
   --font-size--big-number: var(--font-size--96);
   --font-size--caption: var(--font-size--14);
   --font-size--extra-large-paragraph: var(--font-size--24);
@@ -57,12 +73,18 @@
   --font-size--testimonial-name--mobile: var(--font-size--16);
   --font-size--testimonial-small: var(--font-size--16);
 
-  /* font-style */
+  /* Font style
+    - Example:
+      font-style: var(--font-style--body);
+  */
   --font-style--body: normal;
   --font-style--heading: normal;
   --font-style--heading--alt: normal;
 
-  /* font-weight (raw values) */
+  /* Font weight (raw values)
+    - Example:
+      --font-weight--body: var(--font-weight--regular);
+  */
   --font-weight--thin: 100;
   --font-weight--extra-light: 200;
   --font-weight--light: 300;
@@ -73,15 +95,27 @@
   --font-weight--extra-bold: 800;
   --font-weight--black: 900;
 
-  /* font-weight (usage) */
+  /* Font weight (usage)
+    - Example:
+      font-weight: var(--font-weight--body);
+  */
   --font-weight--body: var(--font-weight--regular);
   --font-weight--heading: var(--font-weight--regular);
   --font-weight--heading--alt: var(--font-weight--regular);
 
-  /* letter-spacing */
+  /* Letter spacing
+    - Example:
+      letter-spacing: var(--letter-spacing--caption);
+  */
   --letter-spacing--caption: 0.08em;
 
-  /* line-height (raw values) */
+  /* Line height (raw values)
+    - Do not use in other files.
+    - If a new line height raw value variable is needed, also create new line
+      height usage and font shorthand variables.
+    - Example:
+      --line-height--paragraph: var(--line-height--150);
+  */
   --line-height--100: 1;
   --line-height--110: 1.1;
   --line-height--116: 1.16667;
@@ -97,7 +131,11 @@
   --line-height--166: 1.66667;
   --line-height--171: 1.71428;
 
-  /* line-height (mapped to Figma text style) */
+  /* Line height (usage)
+    - These line height variables are mapped to Figma text styles.
+    - Example:
+      line-height: var(--line-height--paragraph);
+  */
   --line-height--big-number: var(--line-height--100);
   --line-height--caption: var(--line-height--171);
   --line-height--extra-large-paragraph: var(--line-height--116);
@@ -126,12 +164,21 @@
   --line-height--testimonial-name--mobile: var(--line-height--150);
   --line-height--testimonial-small: var(--line-height--150);
 
-  /* font shorthand:
-   * - font-style
-   * - font-weight
-   * - font-size / line-height
-   * - font-family
-   */
+  /* Font shorthand
+    - Font shorthand variables should be mapped to Figma text styles.
+    - Since Figma text styles represent a group of properties, using font
+      shorthand variables should be preferred over using individual properties.
+    - Properties
+      - font-style
+      - font-weight
+      - font-size / line-height
+      - font-family
+    - If a set of font properties is needed that is not defined in a Figma text
+      style, create a new font shorthand variable and add the comment "Figma
+      text style: none"
+    - Example:
+      font: var(--font--paragraph);
+  */
 
   /* Figma text style: none */
   --font--big-number: var(--font-style--heading--alt)
@@ -141,6 +188,11 @@
   /* Figma text style: Caption */
   --font--caption: italic var(--font-weight--light) var(--font-size--caption) /
     var(--line-height--caption) var(--font-family--body);
+
+  /* Figma text style: New/Extra Large Paragraph */
+  --font--extra-large-paragraph: var(--font-style--body)
+    var(--font-weight--body) var(--font-size--extra-large-paragraph) /
+    var(--line-height--extra-large-paragraph) var(--font-family--body);
 
   /* Figma text style: none */
   --font--extra-large-paragraph--light: var(--font-style--body)
@@ -314,7 +366,12 @@
 
   /* Variables should be renamed if they get moved into the style guide. */
 
-  /* font-family (legacy) */
+  /* Font family (legacy)
+    - Example:
+      font-family: var(--font-family--legacy--bebas);
+
+    - Do not use for new code.
+  */
   --font-family--legacy--bebas: 'bebas-neue', sans-serif;
   --font-family--legacy--blog: 'Lato', sans-serif;
   --font-family--legacy--gallery: 'Roboto', sans-serif;
@@ -322,7 +379,11 @@
   --font-family--legacy--video: 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;
 
-  /* font-size (legacy) */
+  /* Font size (legacy raw values)
+    - Do not use for new code.
+    - Example:
+      font-size: var(--font-size--legacy--7);
+  */
   --font-size--legacy--1: 10px; /*      10px    ≈ 0.625rem  */
   --font-size--legacy--2: 12px; /*      12px    ≈ 0.75rem   */
   --font-size--legacy--3: 13px; /*      13px    ≈ 0.8125rem */
@@ -353,7 +414,11 @@
   --font-size--legacy--28: 70px; /*     70px    ≈ 4.375rem  */
   --font-size--legacy--29: 120px; /*   120px    ≈ 7.5rem    */
 
-  /* line-height (legacy) */
+  /* Line height (legacy raw values)
+    - Do not use for new code.
+    - Example:
+      line-height: var(--line-height--legacy--7);
+  */
   --line-height--legacy--1: 0.75;
   --line-height--legacy--2: 0.88;
   --line-height--legacy--3: 1.15;
@@ -365,6 +430,12 @@
   --line-height--legacy--9: 1.6;
   --line-height--legacy--10: 2;
   --line-height--legacy--11: 2.5;
+
+  /* Line height (legacy usage)
+    - Do not use for new code.
+    - Example:
+      line-height: var(--line-height--legacy--body);
+  */
   --line-height--legacy--heading: var(--line-height--legacy--4);
   --line-height--legacy--body: var(--line-height--legacy--7);
 }

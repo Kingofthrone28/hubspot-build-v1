@@ -1,6 +1,6 @@
 /**
  * SM-1155: Promo Banner: (jira) aka .deal-bar (html) aka top bar (hubdb)
- * Utilities for interacting with the shopify graphql admin api
+ * Utilities for interacting with the Shopify GraphQL admin API
  * Shopify client lib docs: https://shopify.github.io/js-buy-sdk/
  * Github source: https://github.com/Shopify/js-buy-sdk
  */
@@ -17,7 +17,7 @@
     window.sessionStorage.getItem(addToCartKey);
 
   /**
-   * Set shopify add to cart session data
+   * Set Shopify add to cart session data
    * @param {Object} data
    */
   const setAddToCartSessionData = (data) => {
@@ -30,7 +30,7 @@
   };
 
   /**
-   * Get the shopify cart cookie as a string
+   * Get the Shopify cart cookie as a string
    * NB: We use || undefined to return undefined instead of an empty string
    * in order to take advantage of default parameters.
    * @returns {string|undefined}
@@ -39,8 +39,8 @@
     IIN.cookies.getCookieString('shopifyCart') || undefined;
 
   /**
-   * Get the shopify checkout object from our cookie
-   * @returns {Promise<object|undefined>} checkout object from shopify client
+   * Get the Shopify checkout object from our cookie
+   * @returns {Promise<object|undefined>} checkout object from Shopify client
    */
   const getCheckoutById = async (checkoutId = getCheckoutCookie()) => {
     if (!isStringWithLength(checkoutId)) {
@@ -59,7 +59,7 @@
     context.querySelector('.deal-bar .deal-bar-inner button.deal-bar-btn');
 
   /**
-   * Examine line items in a checkout to find a product id
+   * Examine line items in a checkout to find a product ID
    * @param {Object} checkout
    * @param {string} id
    * @returns {boolean}
@@ -81,7 +81,7 @@
   };
 
   /**
-   * Call shopify to update the cart with a new line item
+   * Call Shopify to update the cart with a new line item
    * @param {Object[]} lineItems
    * @param {string} checkoutId cart as string
    * @returns {Promise<object|undefined>}
@@ -107,7 +107,7 @@
 
   /**
    * Create a variant line item for checkout
-   * @param {string} id shopify id, e.g. gid://shopify/ProductVariant/1234
+   * @param {string} id Shopify ID, e.g. gid://shopify/ProductVariant/1234
    * @returns {Object}
    */
   const createCheckoutLineItem = (id) => {
@@ -145,7 +145,7 @@
   };
 
   /**
-   * Attempt to read the promo product ids from promo data
+   * Attempt to read the promo product IDs from promo data
    * @param {HTMLElement} context
    * @returns {string[]|undefined}
    */
@@ -171,14 +171,14 @@
     }
 
     if (!isStringWithLength(checkoutId)) {
-      throw new Error('Checkout id is a required string');
+      throw new Error('Checkout ID is a required string');
     }
 
     return IINShopifyClient.checkout.addDiscount(checkoutId, discountCode);
   };
 
   /**
-   *
+   * Create a Shopify global product ID from a basic ID
    * @param {string} id
    * @returns {string}
    */
@@ -191,8 +191,21 @@
   };
 
   /**
-   * Get a shopify product with a global id
-   * @param {string} globalId Shopify product id
+   * Create a Shopify global product variant ID from a basic ID
+   * @param {string} id
+   * @returns {string}
+   */
+  const buildGlobalProductVariantId = (id) => {
+    if (!isStringWithLength(id)) {
+      throw new Error('id is a required string');
+    }
+
+    return `gid://shopify/ProductVariant/${id}`;
+  };
+
+  /**
+   * Get a Shopify product with a global ID
+   * @param {string} globalId Shopify product ID
    * @returns {Promise<object>}
    */
   const fetchProduct = (globalId) => {
@@ -214,7 +227,7 @@
   };
 
   /**
-   * Check if a shopify cart has a particular promotion applied
+   * Check if a Shopify cart has a particular promotion applied
    * @param {Object} checkout Shopify checkout
    * @param {string} promoCode promo code
    * @returns {boolean}
@@ -294,9 +307,9 @@
       const promoCodes = getPromoCodes(promoElement);
       const productIds = getPromoProductIds(promoElement);
 
-      // If we have the deal bar button, we expect product ids
+      // If we have the deal bar button, we expect product IDs
       if (!productIds.length) {
-        throw new Error('Failed to find product Ids');
+        throw new Error('Failed to find product IDs');
       }
 
       const globalIds = productIds.map(buildGlobalProductId);
@@ -342,17 +355,21 @@
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
   IIN.shopify = {
+    addDiscountToCheckout,
     addLineItemsToCheckout,
     buildGlobalProductId,
+    buildGlobalProductVariantId,
     createCheckoutLineItem,
     fetchProduct,
     getAddToCartSessionData,
     getAvailableVariants,
+    getCheckoutById,
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
     getOptionsCount,
     getPromoCheckoutButton,
+    goToCart,
     isProductInCheckout,
     setAddToCartSessionData,
     updatePromoCheckoutButton,

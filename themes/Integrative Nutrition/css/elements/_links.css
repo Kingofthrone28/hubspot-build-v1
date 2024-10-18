@@ -1,6 +1,11 @@
 /* Base link styles */
 
 .link {
+  --link-color: var(--color--water);
+  --link-color--targeted: var(--color--blue);
+  --link-color--active: var(--color--cherry);
+  --link-color--visited: var(--color--water--half-baked);
+
   transition: none;
   text-decoration: none;
   color: var(--link-color);
@@ -27,16 +32,10 @@
 
 /* Link variants */
 
-.link.water {
-  --link-color: var(--color--water);
-  --link-color--active: var(--color--cherry);
-  --link-color--targeted: var(--color--blue);
-  --link-color--visited: var(--color--water--half-baked);
-}
-
 .link.slate {
   --link-color: var(--color--slate);
-  --link-color--active: var(--color--cherry);
-  --link-color--targeted: var(--color--blue);
-  --link-color--visited: var(--color--water--half-baked);
+}
+
+.link.grey-3 {
+  --link-color: var(--color--grey-3);
 }

@@ -1,0 +1,36 @@
+<!-- module html  -->
+{% if module.tag_menu %}
+  {% set title = content.title %}
+  {% set topic = content.topic_list[0] %}
+  {% set tag_menu = menu(module.tag_menu) %}
+  {% set root = { 
+      "label": "Articles & Ideas",
+      "url": blog_all_posts_url("default")|replace('/all', '')
+    }
+  %}
+  {% set nodes = [root] %}
+  {% for category in tag_menu.children if nodes|length == 1 %}
+    {% if category.label == topic %}
+      {% do nodes.append({ "label": category.label, "url": category.url }) %}
+    {% elif category.children and nodes|length == 1 %}
+      {% for tag in category.children %}
+        {% if tag.label == topic %}
+          {% do nodes.append({ "label": category.label, "url": category.url }) %}
+          {% do nodes.append({ "label": tag.label, "url": tag.url }) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  <nav class="blog-breadcrumb" aria-label="Blog Breadcrumb">
+    <ul class="no-list breadcrumb-list">
+      {% for node in nodes %}
+        <li class="crumb"><a href="{{ node.url|escape_url }}" class="link grey-3">{{ node.label }}</a></li>
+      {% endfor %}
+      <li class="crumb">
+        <span class="article-title" aria-current="page">{{ title }}</span>
+      </li>
+    </ul>
+  </nav>
+{% elif is_in_editor %}
+  <h4 class="editor-warning">Blog - Breadcrumbs missing tag menu</h4>
+{% endif %}

@@ -1,0 +1,14 @@
+{
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "js_assets": [
+    {
+      "autoload": true,
+      "path": "../../js/blog-search.js",
+      "name": "blog-search.js"
+    }
+  ],
+  "module_id": 179260804270,
+  "is_available_for_new_content": true
+}
