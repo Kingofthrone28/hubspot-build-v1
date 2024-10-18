@@ -8,82 +8,85 @@
    * A reference to the container for search results listings.
    * @type {HTMLElement|null}
    */
-  const listingResultsWrapper = document.querySelector(
-    '.blog-search-term__listing-results',
-  );
-  const listingWrapper = document.querySelector('.blog-search-term__listing');
-  const menuItems = document.querySelector('.blog-search-term__menu');
+  const blockSelector = 'blog-search-term';
+  const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
+  const menuItems = document.querySelector(`.${blockSelector}__menu`);
   const searchDelay = 500;
-  const searchForm = document.getElementById('blog-search-term__form');
-  const searchInput = document.querySelector('.blog-search-term__input');
+  const searchForm = document.getElementById(`${blockSelector}__form`);
+  const searchInput = document.querySelector(`.${blockSelector}__input`);
+  const searchKeystrokeLimit = 3;
   const searchResultsButton = document.querySelector(
-    '.blog-search-term__button',
+    `.${blockSelector}__button`,
   );
   const searchResultsCancelButton = document.querySelector(
-    '.blog-search-term__cancel',
+    `.${blockSelector}__cancel`,
   );
   const searchResultsCancelBackButton = document.querySelector(
-    '.blog-search-term__cancel.previous',
+    `.${blockSelector}__cancel-previous`,
   );
   const searchResultsCount = document.querySelector(
-    '.blog-search-term__results-count',
+    `.${blockSelector}__results-count`,
   );
   const searchResultsViewMore = document.querySelector(
-    '.blog-search-term__view-more',
+    `.${blockSelector}__view-more`,
   );
   const searchResultsLoadPosts = document.querySelector(
-    '.blog-search-term__load-results',
+    `.${blockSelector}__load-results`,
   );
-
-  const searchWrapper = document.querySelector('.blog-search-term__wrapper');
-  const termContainer = document.querySelector('.blog-search-term');
-  const { toggleClasses } = IIN.helpers;
+  const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
+  const termContainer = document.querySelector(`.${blockSelector}`);
+  const { updateClasses } = IIN.helpers;
 
   /**
    * Shows or hides the search button based on input length.
    * @param {string} searchTermValue - The current value of the search input.
    */
   const toggleSearchButtonVisibility = (searchTermValue) => {
-    const searchKeystrokeLimit = 3;
-    if (searchTermValue.length >= searchKeystrokeLimit) {
-      toggleClasses(searchResultsButton, 'remove', ['hide']);
-      toggleClasses(searchResultsButton, 'add', ['active']);
-      toggleClasses(searchResultsCancelButton, 'add', ['hide']);
+    if (searchKeystrokeLimit <= searchTermValue.length) {
+      updateClasses(searchResultsButton, 'add', ['visible']);
+      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
+      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
     } else {
-      toggleClasses(searchResultsButton, 'add', ['hide']);
-      toggleClasses(searchResultsButton, 'remove', ['active']);
-      toggleClasses(searchResultsCancelButton, 'remove', ['hide']);
+      updateClasses(searchResultsButton, 'remove', ['visible']);
+      updateClasses(searchResultsCancelButton, 'add', ['visible']);
+      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
     }
   };
 
   /**
    * Animates the search bar by adding appropriate classes to show search input and hide the menu.
    */
-  const animateSearchBar = () => {
+  const animateExpandSearchBar = () => {
     const searchTermValue = searchInput.value.trim();
-    const searchKeystrokeLimit = 3;
     if (menuItems) {
-      toggleClasses(menuItems, 'add', ['hide-menu']);
-      toggleClasses(searchWrapper, 'add', ['active']);
-      toggleClasses(termContainer, 'add', ['active']);
-      toggleClasses(searchResultsCancelButton, 'remove', ['hide']);
+      updateClasses(menuItems, 'add', ['hide']);
+      updateClasses(searchWrapper, 'add', ['visible']);
+      updateClasses(termContainer, 'add', ['visible']);
+      updateClasses(searchResultsCancelButton, 'add', ['visible']);
+      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
     }
-    if (searchTermValue.length >= searchKeystrokeLimit) {
-      toggleClasses(searchResultsCancelButton, 'add', ['hide']);
+    if (searchKeystrokeLimit <= searchTermValue.length) {
+      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
+      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
     }
   };
 
   /**
    * Cancel the search bar input is clicked by removing classes and focusing out.
+   * Cancel on full search page will redirect user back to previous page
    */
   const animateCancelSearchBar = () => {
-    //    handleHistoryCancelClick();
     if (searchInput) {
       searchInput.value = '';
-      toggleClasses(searchWrapper, 'remove', ['active']);
-      toggleClasses(termContainer, 'remove', ['active']);
-      toggleClasses(menuItems, 'remove', ['hide-menu']);
-      toggleClasses(searchResultsCancelButton, 'add', ['hide']);
+      updateClasses(searchWrapper, 'remove', ['visible']);
+      updateClasses(termContainer, 'remove', ['visible']);
+      updateClasses(menuItems, 'remove', ['hide']);
+      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
+      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+
+      if (searchResultsCancelBackButton) {
+        window.history.back();
+      }
     }
   };
 
@@ -118,19 +121,19 @@
             titleDiv.innerHTML = titleHtml;
             titleText = titleDiv.textContent;
           }
-
           html += `
-            <div class="blog-search-term__item">
-              <a href="${url}" class="blog-search-term__image" style="background-image: url('${featuredImageUrl}')" aria-label="${titleText}"></a>
-              <div class="blog-search-term__content">
-                ${tags.length ? `<a href="${url}" class="blog-search-term__category">${tags[0]}</a>` : ``}
-                <h3 class="blog-search-term__title"><a href="${url}">${title}</a></h3>
-                <div class="blog-search-term__byline">${authorFullName} | 
-                  <span id="read-time-${id}">loading...</span>
+            <div class="${blockSelector}__item">
+              <a href="${url}" class="${blockSelector}__image" style="background-image: url('${featuredImageUrl}')" aria-label="${titleText}"></a>
+              <div class="${blockSelector}_content">
+                ${tags.length ? `<a href="${url}" class="${blockSelector}__category">${tags[0]}</a>` : ``}
+                <h3 class="${blockSelector}__title"><a href="${url}">${title}</a></h3>
+                <div class="${blockSelector}__byline">${authorFullName} | 
+                <span id="read-time-${id}">loading...</span>
                 </div>
-                <div class="blog-search-term__description">${description}</div>
+                <div class="${blockSelector}__description">${description}</div>
               </div>
-            </div>`;
+            </div>
+          `;
         },
       );
     return html;
@@ -143,10 +146,9 @@
     listingWrapper.innerHTML = '';
     console.log('Search results cleared');
     if (listingWrapper && searchResultsViewMore) {
-      toggleClasses(searchResultsViewMore, 'remove', ['active']);
-    } else {
-      toggleClasses(searchResultsLoadPosts, 'remove', ['active']);
+      updateClasses(searchResultsViewMore, 'remove', ['visible']);
     }
+    updateClasses(searchResultsLoadPosts, 'remove', ['visible']);
   };
 
   /**
@@ -241,8 +243,8 @@
       console.error('populateReadTimes An unexpected error occurred:', error);
     }
   };
-
-  searchResultsLoadPosts?.addEventListener('click', (event) => {
+  // todo: hook up to a function that will fetch a full result set paginated.
+  searchResultsLoadPosts?.addEventListener('click', () => {
     console.log('Load more posts button clicked');
   });
 
@@ -255,18 +257,18 @@
     if (listingWrapper) {
       listingWrapper.innerHTML = getSearchHtml(results);
       if (searchResultsViewMore) {
-        toggleClasses(searchResultsViewMore, 'add', ['active']);
+        updateClasses(searchResultsViewMore, 'add', ['visible']);
       } else {
-        toggleClasses(searchResultsLoadPosts, 'remove', ['active']);
+        updateClasses(searchResultsLoadPosts, 'add', ['visible']);
       }
     }
 
     // Populate read times for each post
     populateReadTimes(results);
 
-    // Update element with the value from results array {data.total}
-    if (searchResultsCount && total) {
-      searchResultsCount.textContent = total;
+    // Update the search results count or clear it if the search input is empty
+    if (searchResultsCount) {
+      searchResultsCount.textContent = total || '0';
     }
 
     document.addEventListener('keydown', handleEscape);
@@ -303,7 +305,7 @@
    */
   const redirectToSearchResults = (term) => {
     const newUrl = `/search-results?query=${encodeURIComponent(term)}`;
-    window.location.replace(newUrl);
+    window.location.href = newUrl;
   };
 
   /**
@@ -327,7 +329,7 @@
     if (isSearchResultsPage) {
       const searchTermUrlValue = getSearchTermFromURL();
       const searchTermResultsTitle = document.querySelector(
-        '.blog-search-term__results-term',
+        `.${blockSelector}__results-term`,
       );
       if (searchTermUrlValue && searchTermResultsTitle) {
         searchInput.value = decodeURIComponent(searchTermUrlValue);
@@ -336,7 +338,7 @@
           searchTermResultsTitle.innerHTML = `"${event.target.value}"`;
         });
 
-        animateSearchBar();
+        animateExpandSearchBar();
         searchInput.focus();
         fetchSearchResults(searchTermUrlValue);
       }
@@ -350,28 +352,76 @@
 
     // View more button redirect to search results page with term value
     searchResultsViewMore?.addEventListener('click', (event) => {
-      console.log('REDIRECT BUTTON TRIGGER');
       event.preventDefault();
       getSearchTermValue(searchInput.value.trim());
     });
   };
 
   /**
+   * Updates the search result message based on the number of results.
+   */
+  const updateSearchResultMessage = () => {
+    const searchTitleNoResults = document.querySelector(
+      `.${blockSelector}__results-title`,
+    );
+    const searchNoResultsBox = document.querySelector(
+      `.${blockSelector}__no-results-box`,
+    );
+
+    // Check if elements exist
+    if (!searchTitleNoResults || !searchNoResultsBox) {
+      console.warn(
+        'Elements for search result message or no results box not found.',
+      );
+      return;
+    }
+
+    const noResults = searchResultsCount.textContent === '0';
+    const message = noResults ? 'No Results For' : 'Search Results For';
+
+    // Update the message in the results title
+    searchTitleNoResults.innerText = message;
+
+    // Toggle visibility of the no-results box and view more based on search results
+    updateClasses(searchNoResultsBox, noResults ? 'add' : 'remove', [
+      'visible',
+    ]);
+    updateClasses(searchResultsLoadPosts, noResults ? 'remove' : 'add', [
+      'visible',
+    ]);
+  };
+
+  /**
    * Executes the teaser search functionality
    */
-  const runSearch = () => {
+  const runSearch = async () => {
     const searchTermValue = searchInput.value.trim();
-    const searchKeystrokeLimit = 3;
-    if (searchTermValue.length >= searchKeystrokeLimit) {
-      fetchSearchResults(searchTermValue, 5);
+
+    if (!searchTermValue) {
+      searchResultsCount.textContent = '0';
+      updateSearchResultMessage();
+      return;
+    }
+
+    if (searchKeystrokeLimit <= searchTermValue.length) {
+      try {
+        await fetchSearchResults(searchTermValue, 5);
+        updateSearchResultMessage();
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
     }
   };
 
   searchInput?.addEventListener('input', (event) =>
     toggleSearchButtonVisibility(event.target.value.trim()),
   );
-  searchResultsCancelButton?.addEventListener('click', animateCancelSearchBar);
-  searchInput?.addEventListener('focus', animateSearchBar);
+  [searchResultsCancelBackButton, searchResultsCancelButton].forEach(
+    (button) => {
+      button?.addEventListener('click', animateCancelSearchBar);
+    },
+  );
+  searchInput?.addEventListener('focus', animateExpandSearchBar);
   searchInput?.addEventListener(
     'input',
     IIN.helpers.debounce(runSearch, searchDelay),

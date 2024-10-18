@@ -25,7 +25,10 @@
    * @param {string} action - Action to be performed ('add' or 'remove').
    * @param {string[]} classNames - An array of class names to be toggled.
    */
-  const toggleClasses = (element, action, classNames) => {
+  const updateClasses = (element, action, classNames) => {
+    if (!element) {
+      return;
+    }
     classNames.forEach((className) => {
       element.classList[action](className);
     });
@@ -58,7 +61,7 @@
    */
   IIN.helpers = {
     debounce,
-    toggleClasses,
     throttle,
+    updateClasses,
   };
 })();

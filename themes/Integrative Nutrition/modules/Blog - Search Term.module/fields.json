@@ -25,15 +25,15 @@
   },
   {
     "id": "983b85b5-5e21-cfeb-a716-e0256f4e5625",
-    "name": "level",
+    "name": "page_level",
     "display_width": null,
     "label": "Page Level",
     "required": false,
     "locked": false,
     "display": "select",
     "choices": [
-      ["level-1", "Level1"],
-      ["level-2", "Level2"]
+      ["level-1", "Page Level 1"],
+      ["level-2", "Page Level 2"]
     ],
     "multiple": false,
     "reordering_enabled": true,
@@ -74,10 +74,28 @@
     "required": false,
     "locked": false,
     "validation_regex": "",
-    "placeholder": "Search Articles & Ideas",
     "allow_new_line": false,
     "show_emoji_picker": false,
     "type": "text",
     "default": "Search Articles & Ideas"
+  },
+  {
+    "id": "2c81c048-82ee-a953-845d-4b200362b610",
+    "name": "tag_menu",
+    "display_width": null,
+    "label": "Tag menu",
+    "required": false,
+    "locked": false,
+    "type": "menu"
+  },
+  {
+    "id": "d1e49289-2210-5c39-572f-7addb7e3ede2",
+    "name": "no_results_message",
+    "display_width": null,
+    "label": "No Results Message",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<div style=\"text-align: center;\"><span>Oops! We couldn't find any results. <br>Try refining your search or check out our popular categories!</span></div>"
   }
 ]
