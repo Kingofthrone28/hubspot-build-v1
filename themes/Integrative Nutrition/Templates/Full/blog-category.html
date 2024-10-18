@@ -1,0 +1,57 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Blog - Category
+  screenshotPath: ../../images/blog-category.jpg
+-->
+{# Templates #}
+{% extends '../layouts/base.html' %}
+
+{# Variables #}
+{# Suffix bc (blog category) added to prevent over-writing variables in children modules #}
+{% set active_bc = {} %}
+
+{# N.B. Hardcoded prod tag menu ID #}
+{% set tag_menu_id_bc = '178313021026' %}
+{% set tag_menu_bc = menu(tag_menu_id_bc) %}
+{% for category in tag_menu_bc.children %}
+  {% if category.activeBranch %}
+    {% do active_bc.put('category', category) %}
+  {%  endif %}
+{% endfor %}
+
+{# Tags #}
+{# blog_tags() only gets tags that are in use #}
+{% set tag_list = blog_tags("default") %}
+{% set category_tag_intersection = [] %}
+{% for category in active_bc.category.children if active_bc.category %}
+  {% set tag = tag_list|selectattr('label', 'equalto', category.label)|first %}
+  {% do category_tag_intersection.append(tag) if tag %}
+{% endfor %}
+
+{# html #}
+{% block body %}
+  <main class="dnd-section blog-template-wrapper">
+    {% module "blog-category-search"
+       path="../../modules/Blog - Search Term",
+       label="Blog - Search Term",
+       tag_menu="{{ tag_menu_id_bc }}",
+       blog_search_heading="{{ active_bc.category.label }}",
+       page_level="level-2"
+    %}
+    {% module "blog-category-featured-story-grid"
+      path="../../modules/Featured Story Grid",
+      label="Blog - Featured Story Grid",
+      tag_menu="{{ tag_menu_id_bc }}"
+    %}
+    {% for tag in category_tag_intersection %}
+      {% module "blog-category-teasers"
+        path="../../modules/Blog Teasers",
+        label="Blog - Teasers",
+        unique_in_loop=True,
+        tag_menu="{{ tag_menu_id_bc }}",
+        tag_field="{{ tag }}"
+      %}
+    {% endfor %}
+  </main>
+{% endblock body %}

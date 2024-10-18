@@ -8,8 +8,8 @@
     "locked": false,
     "display": "select",
     "choices": [
-      ["single_column", "single column"],
-      ["two_column", "two column"]
+      ["single_column", "Single row"],
+      ["two_column", "Double row"]
     ],
     "multiple": false,
     "reordering_enabled": true,

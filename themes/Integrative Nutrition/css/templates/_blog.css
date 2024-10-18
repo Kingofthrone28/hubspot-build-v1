@@ -1531,3 +1531,8 @@ html .hs-search-field__suggestions a:hover {
     margin-left: 0;
   }
 }
+
+.blog-template-wrapper {
+  padding: 0;
+  margin-top: 150px;
+}

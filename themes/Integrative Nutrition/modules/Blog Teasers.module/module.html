@@ -34,7 +34,6 @@
 {% set column_offset = module.layout == "two_column" ? 5 : 3 %}
 {% set tag_slug = module.tag_field.slug %}
 {% set tag_name = module.tag_field.name %}
-{% set clean_tags = tag_slug | replace('-', ' ') | replace(',', '') | capitalize %}
 {% set tag_dict = {} %}
 {% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
 {{ add_menu_to_dict(tag_menu, tag_dict)  }}
@@ -42,7 +41,7 @@
 {# html #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
-    <h4 class="blog-teasers__header">{{ clean_tags }}</h4>
+    <h4 class="blog-teasers__header">{{ tag_name }}</h4>
     <hr class="blog-teasers__line">
     <div class="blog-teasers__posts">
       {{ render_blog_posts_by_layout(module.layout, tag_slug) }}
@@ -51,7 +50,7 @@
       <button
         class="blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link"
       >
-        View more {{ clean_tags }} articles
+        View more {{ tag_name }} articles
       </button>
     </div>
   </div>
