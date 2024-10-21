@@ -2,6 +2,15 @@
   display: none !important;
 }
 
+/* blog tag page */
+.blog-tag-page-container {
+  padding: var(--spacing-16--static) var(--spacing-24--static);
+}
+
+.blog-tag-page-blog-teasers {
+  margin-top: var(--spacing-8--static);
+}
+
 /* Post */
 .jd-post-content {
   margin-bottom: 50px;
@@ -334,6 +343,10 @@ a.jd-post-name:hover {
 }
 
 @media (max-width: 767px) {
+  .blog-tag-page-container {
+    padding: var(--spacing-8--static) var(--spacing-4--static);
+  }
+
   .jd-listing-item {
     width: 100%;
   }

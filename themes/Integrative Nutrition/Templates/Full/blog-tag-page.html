@@ -1,0 +1,19 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Blog Tag Page
+  screenshotPath: /Integrative Nutrition/images/blog-tag-page-html.png
+-->
+{% extends '../layouts/base.html' %}
+{% from '../../macros/get-blog-navigation.html' import get_blog_nav_breadcrumbs %}
+{% set tag_menu_id = '178313021026' %}
+{% set tag_menu = menu(tag_menu_id) %}
+
+{% block body %}
+<main class="dnd-section blog-tag-page-container offset-header">
+  {{ get_blog_nav_breadcrumbs(tag_menu) }}
+  <div class="blog-tag-page-blog-teasers">
+    {% module "module_17291984260572" path="/Integrative Nutrition/modules/Blog Teasers", label="Blog Tag Page Blog Teasers" %}
+  </div>
+</main>
+{% endblock body %}
