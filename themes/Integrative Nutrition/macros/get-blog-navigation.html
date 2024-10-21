@@ -11,10 +11,18 @@
   {{ node.activeNode ? active_class : ''  }}
 {% endmacro %}
 
-{# Main macro #}
+{#
+  Base macro
+  Don't use directly; find specific versions below.
+#}
 {% macro get_blog_nav_base(tag_menu, render_menu, render_breadcrumbs) %}
   {% set active = {} %}
-  {% set root = { "label": "Articles & Ideas", "level": 0, "url": "/blog" } %}
+  {% set root = {
+      "label": "Articles & Ideas",
+      "level": 0,
+      "url": blog_all_posts_url("default")|replace('/all', '')
+    }
+  %}
   {% set categories = tag_menu.children %}
 
   {% for category in categories %}
@@ -113,17 +121,21 @@
   {% if parent and render_breadcrumbs %}
     <nav class="blog-nav blog-nav__breadcrumbs" aria-label="Breadcrumb menu">
       <a
-        class="pseudo-svg chevron-back-before blog-nav__link"
+        class="blog-nav__link"
         href="{{ root.url|escape_url }}"
-      >Back to {{ root.label|escape_html }}</a>
+      >{{ root.label|escape_html }}</a>
+      <a
+        class="blog-nav__link"
+        href="{{ active_category.url|escape_url }}"
+      >/ {{ active_category.label|escape_html }}</a>
       {% if on_tag_page %}
         <a
-          class="blog-nav__link"
-          href="{{ active_category.url|escape_url }}"
-        >/ {{ active_category.label|escape_html }}</a>
+        class="blog-nav__link"
+        href="{{ active_node.url|escape_url }}"
+      >/ {{ active_node.label|escape_html }}</a>
       {% endif %}
     </nav>
-  {% endif %} 
+  {% endif %}
 {% endmacro %}
 
 {#

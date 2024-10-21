@@ -50,12 +50,8 @@
   font: var(--font--legal);
 }
 
-.blog-nav__breadcrumbs .blog-nav__link:first-of-type {
+.blog-nav__breadcrumbs .blog-nav__link:not(:last-of-type) {
   color: var(--color--grey-3);
-}
-
-.blog-nav__breadcrumbs .chevron-back-before::before {
-  margin-top: -3px;
 }
 
 .blog-nav .active-node {

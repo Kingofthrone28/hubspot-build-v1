@@ -6,6 +6,7 @@
 -->
 {# Templates #}
 {% extends '../layouts/base.html' %}
+{% from '../../macros/get-blog-navigation.html' import get_blog_nav_breadcrumbs %}
 
 {# Variables #}
 {# Suffix bc (blog category) added to prevent over-writing variables in children modules #}
@@ -32,6 +33,7 @@
 {# html #}
 {% block body %}
   <main class="dnd-section blog-template-wrapper">
+    {{ get_blog_nav_breadcrumbs(tag_menu_bc) }}
     {% module "blog-category-search"
        path="../../modules/Blog - Search Term",
        label="Blog - Search Term",
