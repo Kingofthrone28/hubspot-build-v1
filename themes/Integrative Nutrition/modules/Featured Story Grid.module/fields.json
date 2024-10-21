@@ -76,5 +76,23 @@
       "operator": "EQUAL",
       "access": null
     }
+  },
+  {
+    "name": "background_color",
+    "label": "Background Color",
+    "required": true,
+    "locked": false,
+    "display": "select",
+    "inline_help_text": "",
+    "help_text": "",
+    "choices": [
+      ["--color--water--light", "Light Water"],
+      ["--color--chalk", "Chalk"],
+      ["--color--melon--light", "Light Melon"],
+      ["--color--lilac--light", "Light Lilac"]
+    ],
+    "type": "choice",
+    "placeholder": "",
+    "default": "--color--water--light"
   }
 ]

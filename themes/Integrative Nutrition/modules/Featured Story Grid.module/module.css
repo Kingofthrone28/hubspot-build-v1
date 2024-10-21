@@ -1,7 +1,6 @@
 .featured-story-grid {
   display: flex;
   border-radius: 28px;
-  background: var(--color--water--light);
   padding: 45px 50px 62px 70px;
 }
 
