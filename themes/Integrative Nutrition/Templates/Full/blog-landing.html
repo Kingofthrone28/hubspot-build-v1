@@ -6,12 +6,14 @@
 -->
 {# Templates #}
 {% extends '../layouts/base.html' %}
+{% from "../../macros/get-app-config.html" import get_app_config %}
 
 {# Variables #}
 {# Prefix bl (blog landing) added to prevent over-writing variables in children modules #}
-{# N.B. Hardcoded prod tag menu ID #}
+{% set bl_app_config = {} %}
+{{ get_app_config(bl_app_config) }}
 {% set bl_dict = {
-    "tag_menu_id": "178313021026",
+    "tag_menu_id": bl_app_config.blog_tag_menu_id,
     "tag_intersection": []
   }
 %}
