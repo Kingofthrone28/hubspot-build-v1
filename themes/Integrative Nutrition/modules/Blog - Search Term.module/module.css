@@ -136,7 +136,7 @@
 
 .blog-search-term__title a {
   color: var(--color--grey-1);
-  font: var(--font--h5--desktop);
+  font: inherit;
 }
 
 @media screen and (max-width: 767px) {
