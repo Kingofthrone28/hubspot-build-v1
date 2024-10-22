@@ -364,7 +364,7 @@ const getProductSelectionMethods = () => {
   };
 
   /**
-   * Calculate shopify discount info
+   * Calculate Shopify discount info
    * @param {Object} variant
    * @returns
    */
@@ -752,8 +752,8 @@ const getProductSelectionMethods = () => {
   };
 
   /**
-   * Try adding to shopify cart and tracking the event in the data layer
-   * @param {Object} product The shopify product
+   * Try adding to Shopify cart and tracking the event in the data layer
+   * @param {Object} product The Shopify product
    * @param {Object} moduleData Parsed module
    * @param {Object} selectedOptions Currently selected options object
    */

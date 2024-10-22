@@ -15,7 +15,7 @@ function extractItemData(course, index) {
   };
 }
 
-function startViewCatalog() {
+function startViewCatalog(rowsData) {
   if (!rowsData) {
     return;
   }
@@ -41,6 +41,20 @@ function startViewCatalog() {
   }
 }
 
-window.addEventListener('load', () => {
-  startViewCatalog();
+function isElementVisible(element) {
+  const style = window.getComputedStyle(element);
+  return style.display !== 'none' && style.visibility !== 'hidden';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('shopifyDataLoaded', () => {
+    // Select all instances of the course-catalog module on the page
+    const courseCatalogs = document.querySelectorAll('.course-catalog');
+    // Iterate over each module instance and send event
+    courseCatalogs.forEach((catalog) => {
+      if (isElementVisible(catalog)) {
+        startViewCatalog(JSON.parse(catalog.getAttribute('data-rows')));
+      }
+    });
+  });
 });

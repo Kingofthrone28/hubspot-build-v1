@@ -1,0 +1,23 @@
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-list > .crumb {
+  font: var(--font--small-paragraph);
+}
+
+.breadcrumb-list > .crumb:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 var(--spacing-1);
+  content: '/';
+}
+
+.breadcrumb-list > .crumb > .article-title {
+  display: inline-block;
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color--water);
+}

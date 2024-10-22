@@ -1,0 +1,83 @@
+[
+  {
+    "id": "71f145b4-3f26-a5cb-034a-fafda495dddb",
+    "name": "blog_search_heading",
+    "display_width": null,
+    "label": "Blog Search Heading",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "id": "ff6017db-41fb-8c46-19b1-3d7ae5bf9ba5",
+    "name": "blog_search_button_text",
+    "display_width": null,
+    "label": "Blog Search Button Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "id": "983b85b5-5e21-cfeb-a716-e0256f4e5625",
+    "name": "level",
+    "display_width": null,
+    "label": "Page Level",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["level-1", "Level1"],
+      ["level-2", "Level2"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice"
+  },
+  {
+    "id": "aabf9ce8-856d-2567-dbb7-87460cd1b0d3",
+    "name": "search_results",
+    "display_width": null,
+    "label": "Search Results",
+    "help_text": "only turn on if the search results page is selected",
+    "inline_help_text": "only turn on if the search results page is selected",
+    "required": false,
+    "locked": false,
+    "display": "toggle",
+    "type": "boolean",
+    "default": false
+  },
+  {
+    "id": "ea994ca1-314a-5bcb-d233-08b59ba32f17",
+    "name": "blog_search_cancel_button_text",
+    "display_width": null,
+    "label": "Blog Search Cancel Button Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Cancel"
+  },
+  {
+    "id": "902af9f0-2f9b-a96b-9f2c-6b73002da644",
+    "name": "search_placeholder_text",
+    "display_width": null,
+    "label": "Search Placeholder text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "placeholder": "Search Articles & Ideas",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Search Articles & Ideas"
+  }
+]

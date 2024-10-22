@@ -1,10 +1,10 @@
 {
-  "label": "Button - Direct to Cart",
+  "label": "Blog - Breadcrumb",
   "css_assets": [],
   "external_js": [],
-  "global": false,
+  "global": true,
   "help_text": "",
-  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "content_types": ["BLOG_POST"],
   "js_assets": [],
   "other_assets": [],
   "smart_type": "NOT_SMART",

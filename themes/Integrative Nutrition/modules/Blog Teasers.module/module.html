@@ -14,7 +14,7 @@
         <a href="{{ post.url }}">
           <img src="{{ post.featured_image }}" alt="{{ post.name }}">
         </a>
-        <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link water">{{ topic }}</a>
+        <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link">{{ topic }}</a>
         <h4 class="blog-teasers__heading">
           <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
         </h4>
@@ -113,7 +113,7 @@
             <a href="${post.url}">
               <img src="${imageUrl}" alt="${title}">
             </a>
-            ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link water">${topic}</a>` : ``}
+            ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link">${topic}</a>` : ``}
             <h4 class="blog-teasers__heading">
               <a href=${post.url} class="link slate">${title}</a>
             </h4>
