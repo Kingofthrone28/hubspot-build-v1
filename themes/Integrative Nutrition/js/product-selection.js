@@ -411,9 +411,16 @@ const getProductSelectionMethods = () => {
    * @param {string} text selectable product option
    * @returns {HTMLDivElement}
    */
-  const createOptionLabel = (text) => {
+  const createOptionLabel = async (text) => {
     const div = document.createElement('div');
     div.classList.add('jd-buy-option-label');
+    if (document.documentElement.lang === 'es' && Weglot?.initialized) {
+      const translation = await Weglot.translate({
+        words: [{ t: 1, w: text }],
+        languageTo: 'es',
+      });
+      text = translation[0];
+    }
     const labelText = document.createTextNode(text);
     div.appendChild(labelText);
     return div;
@@ -653,11 +660,11 @@ const getProductSelectionMethods = () => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionKeys.length > 1;
 
-    optionKeys.forEach((key, index) => {
+    optionKeys.forEach(async (key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
       const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
-      const labelDiv = createOptionLabel(`${prefix}${key}`);
+      const labelDiv = await createOptionLabel(`${prefix}${key}`);
       optionDiv.appendChild(labelDiv);
       fragment.appendChild(optionDiv);
 
