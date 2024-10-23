@@ -36,5 +36,35 @@
     "type": "menu",
     "placeholder": "",
     "default": null
+  },
+  {
+    "name": "listing_page_tag_slug_list",
+    "label": "Hidden field for tag slugs passed from listing page",
+    "required": false,
+    "locked": true,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": null
+  },
+  {
+    "name": "listing_page_category",
+    "label": "Hidden field for category passed from listing page",
+    "required": false,
+    "locked": true,
+    "validation_regex": "",
+    "validation_error_message": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "placeholder": "",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": null
   }
 ]

@@ -1,85 +1,104 @@
-[ {
-  "id" : "a10026b1-bd91-4c4b-9a86-729469ec6451",
-  "name" : "image_portrait",
-  "display_width" : null,
-  "label" : "Image Portrait",
-  "required" : false,
-  "locked" : true,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "/Integrative Nutrition/images/AdobeStock_-30.png",
-    "alt" : "Picture of a house",
-    "loading" : "lazy",
-    "width" : 768,
-    "height" : 544,
-    "max_width" : 768,
-    "max_height" : 544
+[
+  {
+    "id": "a10026b1-bd91-4c4b-9a86-729469ec6451",
+    "name": "image_portrait",
+    "display_width": null,
+    "label": "Image Portrait",
+    "required": false,
+    "locked": true,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "/Integrative Nutrition/images/AdobeStock_-30.png",
+      "alt": "Picture of a house",
+      "loading": "lazy",
+      "width": 768,
+      "height": 544,
+      "max_width": 768,
+      "max_height": 544
+    }
+  },
+  {
+    "id": "4f45d601-b522-79f5-b87c-4929dff91c5f",
+    "name": "link_landscape",
+    "display_width": null,
+    "label": "Link Landscape",
+    "required": false,
+    "locked": true,
+    "supported_types": ["EXTERNAL", "CONTENT", "BLOG"],
+    "type": "url",
+    "default": {
+      "content_id": "",
+      "href": null,
+      "type": "CONTENT"
+    }
+  },
+  {
+    "id": "5dbf8768-ffd1-83d7-f4d7-427fed749c9e",
+    "name": "image_landscape",
+    "display_width": null,
+    "label": "image_landscape",
+    "required": false,
+    "locked": true,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "/Integrative Nutrition/images/AdobeStock_-30.png",
+      "alt": "Picture of a house",
+      "loading": "lazy",
+      "width": 768,
+      "height": 544,
+      "max_width": 768,
+      "max_height": 544
+    }
+  },
+  {
+    "id": "c3f58e4d-f40d-5491-4196-025592be6453",
+    "name": "link_portrait",
+    "display_width": null,
+    "label": "Link Portrait",
+    "required": false,
+    "locked": true,
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+    ],
+    "type": "url",
+    "default": {
+      "content_id": null,
+      "href": "",
+      "type": "EXTERNAL"
+    }
+  },
+  {
+    "id": "2cd2aff5-f1a0-a52f-96fa-4892e7b6954d",
+    "name": "image_orientation",
+    "display_width": null,
+    "label": "Image Orientation",
+    "required": false,
+    "locked": true,
+    "display": "select",
+    "choices": [
+      ["landscape", "Landscape"],
+      ["portrait", "Portrait"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "landscape"
   }
-}, {
-  "id" : "4f45d601-b522-79f5-b87c-4929dff91c5f",
-  "name" : "link_landscape",
-  "display_width" : null,
-  "label" : "Link Landscape",
-  "required" : false,
-  "locked" : true,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "BLOG" ],
-  "type" : "url",
-  "default" : {
-    "content_id" : "",
-    "href" : null,
-    "type" : "CONTENT"
-  }
-}, {
-  "id" : "5dbf8768-ffd1-83d7-f4d7-427fed749c9e",
-  "name" : "image_landscape",
-  "display_width" : null,
-  "label" : "image_landscape",
-  "required" : false,
-  "locked" : true,
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "default" : {
-    "size_type" : "auto",
-    "src" : "/Integrative Nutrition/images/AdobeStock_-30.png",
-    "alt" : "Picture of a house",
-    "loading" : "lazy",
-    "width" : 768,
-    "height" : 544,
-    "max_width" : 768,
-    "max_height" : 544
-  }
-}, {
-  "id" : "c3f58e4d-f40d-5491-4196-025592be6453",
-  "name" : "link_portrait",
-  "display_width" : null,
-  "label" : "Link Portrait",
-  "required" : false,
-  "locked" : true,
-  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
-  "type" : "url",
-  "default" : {
-    "content_id" : null,
-    "href" : "",
-    "type" : "EXTERNAL"
-  }
-}, {
-  "id" : "2cd2aff5-f1a0-a52f-96fa-4892e7b6954d",
-  "name" : "image_orientation",
-  "display_width" : null,
-  "label" : "Image Orientation",
-  "required" : false,
-  "locked" : true,
-  "display" : "select",
-  "choices" : [ [ "landscape", "Landscape" ], [ "portrait", "Portrait" ] ],
-  "multiple" : false,
-  "reordering_enabled" : true,
-  "preset" : null,
-  "type" : "choice",
-  "default" : "landscape"
-} ]
+]

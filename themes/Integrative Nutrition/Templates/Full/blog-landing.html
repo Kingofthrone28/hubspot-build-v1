@@ -14,19 +14,18 @@
 {{ get_app_config(bl_app_config) }}
 {% set bl_dict = {
     "tag_menu_id": bl_app_config.blog_tag_menu_id,
-    "tag_intersection": []
+    "category_tags": {},
   }
 %}
 {% do bl_dict.put("tag_menu", menu(bl_dict.tag_menu_id)) %}
-{% do bl_dict.put("tags", blog_tags("default")) %}
+{% do bl_dict.put("active_tags", blog_tags("default")) %}
 {% for category in bl_dict.tag_menu.children if bl_dict.tag_menu.children %}
-  {% set tag = bl_dict.tags|selectattr('label', 'equalto', category.label)|first %}
-  {% do bl_dict.tag_intersection.append(tag) if tag %}
+  {% do bl_dict.category_tags.put(category.label, category.children) if category.children %}
 {% endfor %}
 
 {# html #}
 {% block body %}
-  <main class="dnd-section blog-template-wrapper">
+  <main class="offset-header">
     {% module "blog-category-search"
       path="../../modules/Blog - Search Term",
       label="Blog - Search Term",
@@ -55,14 +54,22 @@
       {% end_dnd_section %}
     {% end_dnd_area %}
     {# Teasers #}
-    {% for tag in bl_dict.tag_intersection %}
+    {% for category_label, tag_list in bl_dict.category_tags.items() %}
+      {# Slug-ify tag labels for blog_recent_tag_posts call #}
+      {%- set tag_slug_list = tag_list
+          |map("label")
+          |map("lower")
+          |map("regex_replace", " \\+ ", "-")
+          |map("regex_replace", " ", "-")
+      -%}
       {% module "blog-category-teasers"
         path="../../modules/Blog Teasers",
         label="Blog - Teasers",
         unique_in_loop=True,
         tag_menu="{{ bl_dict.tag_menu_id }}",
-        tag_field="{{ tag }}",
-        layout="two_column"
+        layout="two_column",
+        listing_page_tag_slug_list="{{ tag_slug_list }}",
+        listing_page_category="{{ category_label }}"
       %}
     {% endfor %}
   </main>

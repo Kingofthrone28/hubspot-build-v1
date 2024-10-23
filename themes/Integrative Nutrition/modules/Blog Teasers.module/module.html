@@ -1,7 +1,10 @@
 {% from "../../macros/get-reading-time.html" import get_reading_time %}
 {% from '../../macros/get-tag-link.html' import add_menu_to_dict, load_tag_map %}
 
-{# Any changes here should be reflected in the client side javascript version below #}
+{# 
+  Render post html
+  Any changes here should be reflected in the client side javascript version below  
+#}
 {% macro render_blog_posts(posts, layout) %}
   <div class="row">
     {% for post in posts %}
@@ -26,25 +29,31 @@
   </div>
 {% endmacro %}
 
-{% macro render_blog_posts_by_layout(layout, tag) %}
-  {% set posts = blog_recent_tag_posts("default", [tag], layout == "two_column" ? 5 : 3, "AND") %}
+{# Pick layout to render #}
+{% macro render_blog_posts_by_layout(layout, tag_slugs) %}
+  {% set posts = blog_recent_tag_posts("default", tag_slugs, layout == "two_column" ? 5 : 3) %}
   {{ render_blog_posts(posts, layout) }}
 {% endmacro %}
 
+{# Initialization #}
 {% set column_offset = module.layout == "two_column" ? 5 : 3 %}
-{% set tag_slug = module.tag_field.slug %}
-{% set tag_name = module.tag_field.name %}
+
+{# Set up client side tag map #}
 {% set tag_dict = {} %}
 {% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
-{{ add_menu_to_dict(tag_menu, tag_dict)  }}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
 
-{# html #}
+{# Set up name and slugs #}
+{% set tag_name = module.listing_page_category or module.tag_field.name %}
+{% set tag_slug_list = module.listing_page_tag_slug_list or [module.tag_field.slug] %}
+
+{# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
     <h4 class="blog-teasers__header">{{ tag_name }}</h4>
     <hr class="blog-teasers__line">
     <div class="blog-teasers__posts">
-      {{ render_blog_posts_by_layout(module.layout, tag_slug) }}
+      {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
     </div>
     <div class="blog-teasers__view-more">
       <button
@@ -58,7 +67,6 @@
 <script>
   (async () => {
     {{ load_tag_map(tag_dict) }}
-    const tag = '{{ tag_slug }}';
     const tagName = '{{ tag_name }}'
     let offset = parseInt('{{ column_offset }}') || 0;
     const limit = 6;

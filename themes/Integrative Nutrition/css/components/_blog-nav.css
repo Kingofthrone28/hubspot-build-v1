@@ -46,12 +46,13 @@
   font: var(--font--large-paragraph--desktop);
 }
 
-.blog-nav__breadcrumbs .blog-nav__link {
+.blog-nav__breadcrumbs .link {
   font: var(--font--legal);
 }
 
-.blog-nav__breadcrumbs .blog-nav__link:not(:last-of-type) {
-  color: var(--color--grey-3);
+.blog-nav__breadcrumbs .blog-nav__current-page {
+  color: var(--color--water);
+  font: var(--font--legal);
 }
 
 .blog-nav .active-node {
