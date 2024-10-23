@@ -672,8 +672,6 @@ const getProductSelectionMethods = () => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionKeys.length > 1;
 
-    console.log(optionKeys);
-
     optionKeys.forEach((key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
