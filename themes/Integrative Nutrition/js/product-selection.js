@@ -411,19 +411,32 @@ const getProductSelectionMethods = () => {
    * @param {string} text selectable product option
    * @returns {HTMLDivElement}
    */
-  const createOptionLabel = async (text) => {
+  const createOptionLabel = (text) => {
     const div = document.createElement('div');
     div.classList.add('jd-buy-option-label');
+    const labelText = document.createTextNode(text);
+    div.appendChild(labelText);
+    return div;
+  };
+
+  /**
+   * Localize dynamic variant option text
+   * @param {element} labelNode node to insert into
+   * @param {string} labelValue string to translate
+   * @returns
+   */
+  const localizeOptionLabel = async (label, labelValue) => {
+    let text = labelValue;
     if (document.documentElement.lang === 'es' && Weglot?.initialized) {
+      const TRANSLATION_TYPE = 1;
       const translation = await Weglot.translate({
-        words: [{ t: 1, w: text }],
+        words: [{ t: TRANSLATION_TYPE, w: text }],
         languageTo: 'es',
       });
       text = translation[0];
     }
-    const labelText = document.createTextNode(text);
-    div.appendChild(labelText);
-    return div;
+    labelTextNode = document.createTextNode(text);
+    label.appendChild(labelTextNode);
   };
 
   /**
@@ -453,8 +466,7 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
-    const labelTextNode = document.createTextNode(value);
-    label.appendChild(labelTextNode);
+    localizeOptionLabel(label, value);
     div.append(input, label);
     return div;
   };
@@ -660,11 +672,13 @@ const getProductSelectionMethods = () => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionKeys.length > 1;
 
-    optionKeys.forEach(async (key, index) => {
+    console.log(optionKeys);
+
+    optionKeys.forEach((key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
       const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
-      const labelDiv = await createOptionLabel(`${prefix}${key}`);
+      const labelDiv = createOptionLabel(`${prefix}${key}`);
       optionDiv.appendChild(labelDiv);
       fragment.appendChild(optionDiv);
 
