@@ -38,7 +38,7 @@
   justify-content: center;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .table-of-contents-container {
     padding: var(--spacing-24) var(--spacing-5);
   }

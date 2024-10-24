@@ -156,7 +156,7 @@ a.jd-cat-block:hover {
   width: 100% !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .jd-cat-block-wrap {
     flex: 1 0 33.33%;
   }
@@ -1595,7 +1595,7 @@ a.video-card {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .team-grid .team-card-outer {
     width: 50%;
   }

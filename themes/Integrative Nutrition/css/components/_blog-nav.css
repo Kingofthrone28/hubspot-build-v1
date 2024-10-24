@@ -28,7 +28,7 @@
   font: var(--font--paragraph);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .blog-nav__menu--desktop {
     display: none;
   }

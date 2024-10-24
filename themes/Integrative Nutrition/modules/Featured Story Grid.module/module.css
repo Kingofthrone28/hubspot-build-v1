@@ -80,7 +80,7 @@
   aspect-ratio: 3 / 2;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .featured-story-grid {
     flex-direction: column;
     border-radius: 14px;
