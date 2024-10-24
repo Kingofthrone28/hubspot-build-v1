@@ -19,7 +19,7 @@
 .jd-blog-post {
   display: flex;
   margin: 220px auto 100px;
-  width: 1440px;
+  width: var(--theme--spacing--max-width);
   max-width: 90%;
 }
 
@@ -155,7 +155,7 @@ h3.jd-related-header {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 1440px;
+  width: var(--theme--spacing--max-width);
   max-width: 90%;
 }
 

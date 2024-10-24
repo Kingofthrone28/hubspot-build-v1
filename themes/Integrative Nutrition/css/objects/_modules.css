@@ -344,7 +344,7 @@ a.jd-cat-block:hover {
   box-shadow: 0 4px 12px var(--color--legacy--grey--nero--alpha-20);
   background: var(--color--legacy--grey--romantic--alpha-90);
   padding: 30px 40px;
-  width: 1440px;
+  width: var(--theme--spacing--max-width);
   max-width: 95%;
   max-height: 95vh;
   overflow: auto;
