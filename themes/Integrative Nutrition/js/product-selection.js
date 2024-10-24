@@ -466,6 +466,7 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
+    //async fire and forget
     localizeOptionLabel(label, value);
     div.append(input, label);
     return div;
