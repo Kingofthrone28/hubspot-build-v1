@@ -7,6 +7,7 @@
 {# Templates #}
 {% extends '../layouts/base.html' %}
 {% from "../../macros/get-app-config.html" import get_app_config %}
+{{ require_js(get_asset_url('../../js/blog-nav.js')) }}
 
 {# Variables #}
 {# Prefix bl (blog landing) added to prevent over-writing variables in children modules #}
