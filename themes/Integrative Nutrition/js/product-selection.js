@@ -433,7 +433,7 @@ const getProductSelectionMethods = () => {
         words: [{ t: TRANSLATION_TYPE, w: text }],
         languageTo: 'es',
       });
-      text = translation[0];
+      [text] = translation;
     }
     labelTextNode = document.createTextNode(text);
     label.appendChild(labelTextNode);
@@ -466,7 +466,7 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
-    //async fire and forget
+    // async fire and forget
     localizeOptionLabel(label, value);
     div.append(input, label);
     return div;
