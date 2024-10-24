@@ -36,6 +36,11 @@
   const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
   const termContainer = document.querySelector(`.${blockSelector}`);
   const { updateClasses } = IIN.helpers;
+  let searchQueryOffset = 5;
+  const searchQueryLimit = 6;
+
+  // Utilizing `New Set` for faster operations of large data sets when checking and storing unique values.
+  const checkSearchPostIds = new Set();
 
   /**
    * Shows or hides the search button based on input length.
@@ -91,51 +96,83 @@
   };
 
   /**
-   * Generates HTML markup for the search results.
+   * Filters results to exclude duplicate post by `id` and updates the checkSearchPostIds set.
    * @param {Object[]} results - An array of search result objects.
+   * @returns {Object[]} The filtered array of new results.
+   */
+  const filterNewResults = (results) => {
+    const filterResults = results.filter(
+      (result) => !checkSearchPostIds.has(result.id),
+    );
+    filterResults.forEach((result) => checkSearchPostIds.add(result.id));
+    return filterResults;
+  };
+
+  /**
+   * Generates HTML markup for the search results.
+   * @param {Object} result - A search result object.
    * @returns {string} The generated HTML markup.
    */
+  const generateSearchResultHTML = (result) => {
+    const {
+      authorFullName = 'Unknown Author',
+      description = 'No description available',
+      featuredImageUrl = 'https://placehold.jp/200x160.jpg',
+      id = 'no Id',
+      tags = [],
+      title = '',
+      url = '',
+    } = result;
+
+    /**
+     * Title to create div node of data results.title
+     * used as a workaround to escape HTML characters
+     */
+    const titleHtml = `${title || ''}`;
+    let titleText = '';
+
+    if (titleHtml) {
+      const titleDiv = document.createElement('div');
+      titleDiv.innerHTML = titleHtml;
+      titleText = titleDiv.textContent;
+    }
+
+    const tagName = tags[0];
+    const tagUrl = IIN.blog.tagMap[tagName];
+
+    return `
+      <div class="${blockSelector}__item">
+        ${url ? `<a href="${url}" class="${blockSelector}__image" style="background-image: url('${featuredImageUrl}')" aria-label="${titleText}"></a>` : ``}
+        <div class="${blockSelector}__content">
+          ${tagUrl ? `<a href="${tagUrl}" class="${blockSelector}__category">${tagName}</a>` : ``}
+          <h3 class="${blockSelector}__title">
+            ${url ? `<a href="${url}">${title}</a>` : title}
+          </h3>
+          <div class="${blockSelector}__byline">${authorFullName} | 
+            <span id="read-time-${id}">loading...</span>
+          </div>
+          ${description ? `<div class="${blockSelector}__description">${description}</div>` : ``}
+        </div>
+      </div>
+    `;
+  };
+
+  const appendViewMoreResults = (results = []) => {
+    let row = '';
+    const newResults = filterNewResults(results);
+    newResults.forEach((result) => {
+      row += generateSearchResultHTML(result);
+    });
+    if (row) {
+      listingWrapper.insertAdjacentHTML('beforeend', row);
+    }
+  };
+
   const getSearchHtml = (results = []) => {
-    const numberOfItems = 5;
     let html = '';
-    results
-      .slice(0, numberOfItems)
-      .forEach(
-        ({
-          authorFullName,
-          description,
-          featuredImageUrl,
-          id,
-          tags,
-          title,
-          url,
-        }) => {
-          const titleHtml = `${title}`;
-          let titleText = '';
-          /**
-           * title to create div node of data results.title
-           * used as a workaround to escape HTML characters
-           */
-          if (titleHtml) {
-            const titleDiv = document.createElement('div');
-            titleDiv.innerHTML = titleHtml;
-            titleText = titleDiv.textContent;
-          }
-          html += `
-            <div class="${blockSelector}__item">
-              <a href="${url}" class="${blockSelector}__image" style="background-image: url('${featuredImageUrl}')" aria-label="${titleText}"></a>
-              <div class="${blockSelector}_content">
-                ${tags.length ? `<a href="${url}" class="${blockSelector}__category">${tags[0]}</a>` : ``}
-                <h3 class="${blockSelector}__title"><a href="${url}">${title}</a></h3>
-                <div class="${blockSelector}__byline">${authorFullName} | 
-                <span id="read-time-${id}">loading...</span>
-                </div>
-                <div class="${blockSelector}__description">${description}</div>
-              </div>
-            </div>
-          `;
-        },
-      );
+    results.forEach((result) => {
+      html += generateSearchResultHTML(result);
+    });
     return html;
   };
 
@@ -174,9 +211,8 @@
 
   /**
    * Fetches the content of a blog post from the provided URL.
-   * @async
    * @param {Object} result - The result object containing the URL.
-   * @returns {Promise<string|null>} The content of the post, or null if an error occurs.
+   * @returns {Promise<string|null>} The content of the post or null if an error occurs.
    */
   const fetchPostContent = async (result) => {
     try {
@@ -189,6 +225,29 @@
       return await response.text();
     } catch (error) {
       console.error('fetchPostContent Fetch error:', error);
+      return null;
+    }
+  };
+
+  /** Generalized function to fetch data from the API
+   * @param {Object} result - The result object containing the URL.
+   * @returns {Promise<Object|null>} The content of the post, or null if an error occurs.
+   */
+  const fetchDataFromAPI = async (searchTerm, offset = 0, limit = 6) => {
+    try {
+      const baseUrl = new URL(`${window.location.origin}/_hcms/search`);
+      baseUrl.searchParams.set('term', searchTerm);
+      baseUrl.searchParams.set('type', 'BLOG_POST');
+      baseUrl.searchParams.set('limit', limit);
+      baseUrl.searchParams.set('offset', offset);
+
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching data:', error);
       return null;
     }
   };
@@ -226,7 +285,6 @@
 
   /**
    * Fetches and populates read-time estimates for search results.
-   * @async
    * @param {Object[]} results - An array of search result objects.
    */
   const populateReadTimes = async (results) => {
@@ -243,10 +301,6 @@
       console.error('populateReadTimes An unexpected error occurred:', error);
     }
   };
-  // todo: hook up to a function that will fetch a full result set paginated.
-  searchResultsLoadPosts?.addEventListener('click', () => {
-    console.log('Load more posts button clicked');
-  });
 
   /**
    * Sets and renders search results in the listing container.
@@ -255,7 +309,9 @@
    */
   const getSearchPosts = (results, total) => {
     if (listingWrapper) {
-      listingWrapper.innerHTML = getSearchHtml(results);
+      listingWrapper.innerHTML = getSearchHtml(
+        results.slice(0, searchQueryOffset),
+      );
       if (searchResultsViewMore) {
         updateClasses(searchResultsViewMore, 'add', ['visible']);
       } else {
@@ -275,24 +331,61 @@
     searchInput?.addEventListener('input', handleExit);
   };
 
+  const handleSearchResultsLoadPosts = async () => {
+    const searchTermValue = searchInput.value.trim();
+    try {
+      const data = await fetchDataFromAPI(
+        searchTermValue,
+        searchQueryOffset,
+        searchQueryLimit,
+      );
+
+      const dataResults = data?.results;
+
+      if (dataResults) {
+        const searchResultsLimit = data.results.slice(0, searchQueryLimit);
+
+        // Ensure only a set number of results are appended
+        appendViewMoreResults(searchResultsLimit);
+
+        console.log(`Fetched ${data.results.length} posts in this batch`);
+
+        // Call populateReadTimes after appending the results
+        populateReadTimes(searchResultsLimit);
+
+        searchQueryOffset += searchQueryLimit;
+
+        // some batches of data will have results less than query limit based
+        // on the number of term tags returned in last payload request
+        // set safety check for empty results array(!dataResults) if not less than query limit
+        if (dataResults?.length < searchQueryLimit || !dataResults) {
+          updateClasses(searchResultsLoadPosts, 'remove', ['visible']);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+      // You can also add UI feedback for the user, such as displaying an error message
+    }
+  };
+
   /**
    * Fetches search results based on the search term.
-   * @async
    * @param {string} searchTermValue - The search term entered by the user.
-   * @param {number} [numberOfItems] - The number of items to return.
+   * @param {number} [numberOfItems=0] - The number of items to return.
    */
-  const fetchSearchResults = async (searchTermValue, numberOfItems = 5) => {
+  const fetchSearchResults = async (searchTermValue, numberOfItems = 0) => {
     try {
-      const baseUrl = new URL(`${window.location.origin}/_hcms/search`);
-      baseUrl.searchParams.set('term', searchTermValue);
-      baseUrl.searchParams.set('type', 'BLOG_POST');
-      baseUrl.searchParams.set('limit', numberOfItems);
-
-      const response = await fetch(baseUrl.href);
-      const data = await response.json();
+      const data = await fetchDataFromAPI(searchTermValue, numberOfItems);
+      const searchTermValueMatch = data.searchTerm;
 
       if (data?.results) {
         getSearchPosts(data.results, data.total);
+      }
+
+      searchQueryOffset += numberOfItems;
+
+      if (searchTermValueMatch !== searchTermValue) {
+        updateClasses(searchResultsViewMore, 'remove', ['visible']);
       }
     } catch (error) {
       console.error('Error fetching search results:', error);
@@ -344,7 +437,7 @@
       }
     }
 
-    // submit button redirect to search results page with term value
+    // Submit button redirect to search results page with term value
     searchForm?.addEventListener('submit', (event) => {
       event.preventDefault();
       getSearchTermValue(searchInput.value.trim());
@@ -376,8 +469,8 @@
       return;
     }
 
-    const noResults = searchResultsCount.textContent === '0';
-    const message = noResults ? 'No Results For' : 'Search Results For';
+    const noResults = searchResultsCount?.textContent === '0';
+    const message = `${noResults ? 'No' : 'Search'} Results for`;
 
     // Update the message in the results title
     searchTitleNoResults.innerText = message;
@@ -397,7 +490,7 @@
   const runSearch = async () => {
     const searchTermValue = searchInput.value.trim();
 
-    if (!searchTermValue) {
+    if (!searchTermValue && searchResultsCount) {
       searchResultsCount.textContent = '0';
       updateSearchResultMessage();
       return;
@@ -405,7 +498,7 @@
 
     if (searchKeystrokeLimit <= searchTermValue.length) {
       try {
-        await fetchSearchResults(searchTermValue, 5);
+        await fetchSearchResults(searchTermValue, searchQueryOffset);
         updateSearchResultMessage();
       } catch (error) {
         console.error('Error fetching search results:', error);
@@ -420,6 +513,10 @@
     (button) => {
       button?.addEventListener('click', animateCancelSearchBar);
     },
+  );
+  searchResultsLoadPosts?.addEventListener(
+    'click',
+    handleSearchResultsLoadPosts,
   );
   searchInput?.addEventListener('focus', animateExpandSearchBar);
   searchInput?.addEventListener(
