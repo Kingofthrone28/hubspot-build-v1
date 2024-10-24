@@ -69,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 80px;
+  margin-bottom: 56px;
 }
 
 @media screen and (max-width: 767px) {
@@ -129,7 +129,6 @@
 .blog-teasers__view-more {
   display: flex;
   justify-content: center;
-  padding: 50px 0;
 }
 
 .blog-teasers__view-more a {
