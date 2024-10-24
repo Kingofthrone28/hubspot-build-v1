@@ -141,6 +141,10 @@
   text-align: center;
 }
 
+.blog-search-term__header h1 {
+  font: var(--font--h5--desktop);
+}
+
 .blog-search-term__title {
   color: var(--color--grey-1);
   font: var(--font--h5--desktop);
@@ -341,5 +345,9 @@
 
   .blog-search-term__content {
     padding: var(--spacing-8--static) 0;
+  }
+
+  .blog-search-term__header h1 {
+    font: var(--font--h5--mobile);
   }
 }
