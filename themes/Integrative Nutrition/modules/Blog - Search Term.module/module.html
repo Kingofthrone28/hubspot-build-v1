@@ -1,10 +1,15 @@
+{# Macros #}
 {% from '../../macros/get-app-config.html' import get_app_config %}
 {% from '../../macros/get-blog-navigation.html' import get_blog_nav_menu %}
+{% from '../../macros/get-tag-link.html' import build_and_load_tag_map %}
+
+{# Variables #}
 {% set tag_menu = menu(module.tag_menu) %}
 {% set results_class = 'blog-search-term__' ~ (module.search_results ? 'cancel-previous' : 'cancel') %}
 {% set button_type = (module.search_results ? 'button' : 'submit') %}
 {% set page_level = module.page_level %}
 
+{# HTML #}
 <div class="blog-search-term {{ page_level }}">
   {% if module.blog_search_heading %}
     <div class="blog-search-term__header">
@@ -69,7 +74,5 @@
 </div>
 
 <script>
-  {% set tag_dict = {} %}
-  {{ add_menu_to_dict(tag_menu, tag_dict)  }}
-  {{ load_tag_map(tag_dict) }}
+  {{ build_and_load_tag_map(tag_menu) }}
 </script>
