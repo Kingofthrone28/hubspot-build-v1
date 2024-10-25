@@ -2,6 +2,37 @@
   display: none !important;
 }
 
+.blog-category-page-container {
+  margin: 0 auto;
+  max-width: var(--theme--spacing--max-width);
+}
+
+.blog-category-breadcrumbs-container {
+  padding: var(--spacing-12--static) var(--spacing-16--static) 0
+    var(--spacing-16--static);
+}
+
+.blog-category-search-container {
+  padding: 0 var(--spacing-24--static) 0 var(--spacing-8--static);
+}
+
+.blog-category-featured-story-grid-container {
+  padding: 0 var(--spacing-8--static);
+}
+
+.blog-category-teasers-container {
+  padding: 0 var(--spacing-24--static);
+}
+
+/* blog tag page */
+.blog-tag-page-container {
+  padding: var(--spacing-16--static) var(--spacing-24--static);
+}
+
+.blog-tag-page-blog-teasers {
+  margin-top: var(--spacing-8--static);
+}
+
 /* Post */
 .jd-post-content {
   margin-bottom: 50px;
@@ -10,7 +41,7 @@
 .jd-blog-post {
   display: flex;
   margin: 220px auto 100px;
-  width: 1440px;
+  width: var(--theme--spacing--max-width);
   max-width: 90%;
 }
 
@@ -146,7 +177,7 @@ h3.jd-related-header {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 1440px;
+  width: var(--theme--spacing--max-width);
   max-width: 90%;
 }
 
@@ -278,7 +309,24 @@ a.jd-post-name:hover {
   color: var(--color--legacy--blue--oxford-blue);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
+  .blog-category-breadcrumbs-container {
+    padding: var(--spacing-8--static) var(--spacing-48--static) 0
+      var(--spacing-10--static);
+  }
+
+  .blog-category-search-container {
+    padding: 0 var(--spacing-16--static);
+  }
+
+  .blog-category-featured-story-grid-container {
+    padding: 0 var(--spacing-6--static);
+  }
+
+  .blog-category-teasers-container {
+    padding: 0 var(--spacing-2--static);
+  }
+
   .jd-blog-post {
     display: block;
   }
@@ -334,6 +382,27 @@ a.jd-post-name:hover {
 }
 
 @media (max-width: 767px) {
+  .blog-category-breadcrumbs-container {
+    padding: var(--spacing-8--static) var(--spacing-8--static) 0
+      var(--spacing-5--static);
+  }
+
+  .blog-category-search-container {
+    padding: 0 var(--spacing-7--static);
+  }
+
+  .blog-category-featured-story-grid-container {
+    padding: 0 var(--spacing-4--static);
+  }
+
+  .blog-category-teasers-container {
+    padding: 0;
+  }
+
+  .blog-tag-page-container {
+    padding: var(--spacing-8--static) var(--spacing-4--static);
+  }
+
   .jd-listing-item {
     width: 100%;
   }

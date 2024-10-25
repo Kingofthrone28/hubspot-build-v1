@@ -420,6 +420,26 @@ const getProductSelectionMethods = () => {
   };
 
   /**
+   * Localize dynamic variant option text
+   * @param {element} labelNode node to insert into
+   * @param {string} labelValue string to translate
+   * @returns
+   */
+  const localizeOptionLabel = async (label, labelValue) => {
+    let text = labelValue;
+    if (document.documentElement.lang === 'es' && Weglot?.initialized) {
+      const TRANSLATION_TYPE = 1;
+      const translation = await Weglot.translate({
+        words: [{ t: TRANSLATION_TYPE, w: text }],
+        languageTo: 'es',
+      });
+      [text] = translation;
+    }
+    labelTextNode = document.createTextNode(text);
+    label.appendChild(labelTextNode);
+  };
+
+  /**
    * Create Input/Label pair for selecting an option
    * @param {string} key option name
    * @param {string} value option value
@@ -446,8 +466,8 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
-    const labelTextNode = document.createTextNode(value);
-    label.appendChild(labelTextNode);
+    // async fire and forget
+    localizeOptionLabel(label, value);
     div.append(input, label);
     return div;
   };

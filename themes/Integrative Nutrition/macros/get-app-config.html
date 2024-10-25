@@ -1,0 +1,13 @@
+{# 
+  Get the application config for use in templates
+  Usage:
+
+  {% from "../../macros/get-app-config.html" import get_app_config %}
+  {% set app_config = {} %}
+  {{ get_app_config(app_config) }}
+  {{ app_config.blog_tag_menu_id }}
+#}
+{% macro get_app_config(dict) %}
+  {# N.B. Hardcoded prod tag menu ID #}
+  {% do dict.put("blog_tag_menu_id", "178313021026") %}
+{% endmacro %}

@@ -1,0 +1,9 @@
+.image-link {
+  display: block;
+}
+
+.image-link__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}

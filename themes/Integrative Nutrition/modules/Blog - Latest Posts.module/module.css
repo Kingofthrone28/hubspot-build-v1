@@ -1,5 +1,5 @@
 .blog-latest-posts {
-  padding: 0 var(--spacing-24);
+  padding: var(--spacing-5) var(--spacing-24);
 }
 
 .blog-latest-posts__header-row {

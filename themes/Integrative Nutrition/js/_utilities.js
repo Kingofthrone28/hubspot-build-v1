@@ -8,7 +8,6 @@ IIN.utilities = {
    */
   configureBodyOffsetForHeader(selector) {
     let element;
-
     const setBodyPadding = () => {
       if (!element) {
         element = document.querySelector(selector);

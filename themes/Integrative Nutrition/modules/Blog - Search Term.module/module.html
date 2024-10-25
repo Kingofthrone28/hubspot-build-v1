@@ -1,45 +1,63 @@
+{# Macros #}
+{% from '../../macros/get-app-config.html' import get_app_config %}
+{% from '../../macros/get-blog-navigation.html' import get_blog_nav_menu %}
+{% from '../../macros/get-tag-link.html' import build_and_load_tag_map %}
 
-{% set level = module.level %}
-<div class="blog-search-term {{ level }}">
-  <div class="blog-search-term__header">
-    {% if module.blog_search_heading %}
+{# Variables #}
+{% set tag_menu = menu(module.tag_menu) %}
+{% set results_class = 'blog-search-term__' ~ (module.search_results ? 'cancel-previous' : 'cancel') %}
+{% set button_type = (module.search_results ? 'button' : 'submit') %}
+{% set page_level = module.page_level %}
+
+{# HTML #}
+<div class="blog-search-term {{ page_level }}">
+  {% if module.blog_search_heading %}
+    <div class="blog-search-term__header">
       <h1>{{ module.blog_search_heading }}</h1>
-    {% endif %}
-  </div>
-  <div class="blog-search-term__wrapper class">
+    </div>
+  {% endif %}
+  <div class="blog-search-term__wrapper">
     <form id="blog-search-term__form" class="blog-search-term__form">
       <input
+        type="search"
         class="blog-search-term__input"
         id="blog-search-term__input"
         placeholder="{{ module.search_placeholder_text }}"
-        type="search"
         value
       />
-      {% if module.blog_search_button_text and !module.search_results %}
-      <button class="blog-search-term__button hide">
+      <button class="blog-search-term__button">
         {{ module.blog_search_button_text }}
       </button>
-      {% endif %}
-      <button class="blog-search-term__cancel hide{{ module.search_results ? ' hide-cancel-search' : ''}}">
-        Cancel
+      <button
+        type="{{ button_type }}"
+        class="{{ results_class }}"
+      >
+        {{ module.blog_search_cancel_button_text }}
       </button>
     </form>
-  </div>
-  <div class="blog-search-term__menu blog-tag-menu">
-    <span>All Industry Leading + Coaching Total Health + Wellbeing Alumni + Experts</span>
-  </div>
+  </div>`
+</div>
+<div class="blog-search-term__menu {{ page_level }}">
+  {{ get_blog_nav_menu(tag_menu) }}
 </div>
 
 {% if module.search_results %}
 <div class="blog-search-term__results-container">
   {# Search Results term title are rendered client side #}
   <h2 class="blog-search-term__results">
-    Search Results For <span class="blog-search-term__results-term"></span>
+    <span class="blog-search-term__results-title">Search Results for</span>
+    <span class="blog-search-term__results-term"></span>
   </h2>
   {# Search Results total count are rendered client side #}
   <div class="blog-search-term__results-wrapper-count">
-     <span class="blog-search-term__results-count"></span> Results
+     <span class="blog-search-term__results-count"></span> results
   </div>
+  <div class="blog-search-term__no-results-box">
+    <div class="blog-search-term__no-results-icon"></div>
+    <div class="blog-search-term__no-results-text">
+      <p>{{ module.no_results_message }}</p>
+    </div>
+ </div>
 </div>
 {% endif %}
 
@@ -47,7 +65,14 @@
 <div class="blog-search-term__listing"></div>
 
 <div class="{{ module.search_results ? 'blog-search-term__load-results' : 'blog-search-term__view-more'}}">
-  <button type="button" class="hs-button jd-request-btn jd-request-btn-inverse arrow-link">
+  <button
+    type="{{ button_type }}"
+    class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
+  >
     View more
   </button>
 </div>
+
+<script>
+  {{ build_and_load_tag_map(tag_menu) }}
+</script>

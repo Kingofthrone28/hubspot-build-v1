@@ -42,7 +42,7 @@
   font-family: var(--font-family--body);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .infographic__header {
     margin-bottom: var(--spacing-10);
     text-align: left;
@@ -64,7 +64,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .infographic__header {
     margin-bottom: var(--spacing-8);
     padding: var(--spacing-5) 0;

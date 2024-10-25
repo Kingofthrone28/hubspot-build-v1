@@ -452,6 +452,7 @@ select.jd-cart-rec-select {
   text-align: right;
   text-decoration: line-through;
   white-space: nowrap;
+  color: var(--color--cherry);
   font-size: var(--font-size--legacy--8);
 }
 

@@ -56,4 +56,14 @@
       </div>
     {% endif %}
   </div>
+
+  {% require_css %}
+    <style>
+      {% scope_css %}
+        .featured-story-grid {
+          background-color: var({{ module.background_color }});
+        }
+      {% end_scope_css%}
+    </style>
+  {% end_require_css %}
 {% endif %}

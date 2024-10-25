@@ -1,0 +1,23 @@
+{% set image_landscape = module.image_landscape %}
+{% set image_orientation = module.image_orientation %}
+{% set image_portrait = module.image_portrait %}
+{% set link_landscape = module.link_landscape %}
+{% set link_portrait = module.link_portrait %}
+
+{% if image_orientation == "landscape" and image_landscape and link_landscape %}
+  <a class="image-link image-link__landscape" href="{{ link_landscape.href }}">
+    <img
+      src="{{ image_landscape.src }}"
+      alt="{{ image_landscape.alt }}"
+      class="image-link__image"
+    >
+  </a>
+{% elif image_orientation == "portrait" and image_portrait and link_portrait %}
+  <a class="image-link image-link__portrait" href="{{ link_portrait.href }}">
+    <img
+      src="{{ image_portrait.src }}"
+      alt="{{ image_portrait.alt }}"
+      class="image-link__image"
+    >
+  </a>
+{% endif %}

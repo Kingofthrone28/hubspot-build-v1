@@ -191,7 +191,7 @@
 
   /* Figma text style: New/Extra Large Paragraph */
   --font--extra-large-paragraph: var(--font-style--body)
-    var(--font-weight--body) var(--font-size--extra-large-paragraph) /
+    var(--font-weight--semibold) var(--font-size--extra-large-paragraph) /
     var(--line-height--extra-large-paragraph) var(--font-family--body);
 
   /* Figma text style: none */
