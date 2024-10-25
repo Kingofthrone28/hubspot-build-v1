@@ -3,8 +3,6 @@
   --menu--border-size--negative: -1px;
   --mobile-menu--width: 17rem;
   --mobile-menu--border-radius: 8px;
-
-  overflow: auto;
 }
 
 .blog-nav__link {
@@ -17,6 +15,10 @@
 
 .blog-nav__tag-wrapper:not(:last-of-type) {
   margin-right: var(--spacing-6--static);
+}
+
+.blog-nav__menu--desktop {
+  overflow: auto;
 }
 
 .blog-nav__menu--desktop .blog-nav__tag-wrapper {
@@ -110,7 +112,9 @@
   top: var(--menu--border-size--negative);
   left: var(--menu--border-size--negative);
   z-index: 99;
+  border: var(--menu--border-size) solid var(--color--water);
   border-radius: var(--mobile-menu--border-radius);
+  background-color: var(--color--white);
   padding: var(--spacing-6--static) var(--spacing-5--static);
 
   /* This is 100% + 2 x menu border size to cover the button below the dropdown menu */
@@ -136,11 +140,6 @@
   display: block;
   padding: var(--spacing-3) 0;
   width: 100%;
-}
-
-.blog-nav .blog-nav__submenu {
-  border: var(--menu--border-size) solid var(--color--water);
-  background-color: var(--color--white);
 }
 
 .blog-nav__submenu--level-2 > .blog-nav__item:first-child::before {
