@@ -35,20 +35,27 @@
 
 {# html #}
 {% block body %}
-  <main class="offset-header">
+<main class="blog-category-page-container offset-header">
+  <div class="blog-category-breadcrumbs-container">
     {{ get_blog_nav_breadcrumbs(tag_menu_bc) }}
+  </div>
+  <div class="blog-category-search-container">
     {% module "blog-category-search"
-       path="../../modules/Blog - Search Term",
-       label="Blog - Search Term",
-       tag_menu="{{ tag_menu_id_bc }}",
-       blog_search_heading="{{ active_bc.category.label }}",
-       page_level="level-2"
+      path="../../modules/Blog - Search Term",
+      label="Blog - Search Term",
+      tag_menu="{{ tag_menu_id_bc }}",
+      blog_search_heading="{{ active_bc.category.label }}",
+      page_level="level-2"
     %}
+  </div>
+  <div class="blog-category-featured-story-grid-container">
     {% module "blog-category-featured-story-grid"
       path="../../modules/Featured Story Grid",
       label="Blog - Featured Story Grid",
       tag_menu="{{ tag_menu_id_bc }}"
     %}
+  </div>
+  <div class="blog-category-teasers-container">
     {% for tag in category_tag_intersection %}
       {% module "blog-category-teasers"
         path="../../modules/Blog Teasers",
@@ -58,5 +65,6 @@
         tag_field="{{ tag }}"
       %}
     {% endfor %}
-  </main>
+  </div>
+</main>
 {% endblock body %}

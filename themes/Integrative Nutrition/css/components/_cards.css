@@ -1,5 +1,6 @@
 .blog-teasers {
-  padding-top: var(--spacing-24);
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
 }
 
 @media (max-width: 1023px) {
