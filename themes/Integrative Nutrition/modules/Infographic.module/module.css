@@ -64,7 +64,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .infographic__header {
     margin-bottom: var(--spacing-8);
     padding: var(--spacing-5) 0;

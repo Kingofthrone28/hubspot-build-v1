@@ -3023,7 +3023,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   max-width: 500px !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .page-about-us .bio-img {
     margin: auto;
     background-position: center !important;
@@ -3710,7 +3710,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .span4.dnd_area-column-45-vertical-alignment {
     justify-content: start !important;
   }
@@ -4070,7 +4070,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   width: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .page-curriculum-guide-thank-you
     .dnd-row.cell_16941918502715-row-1-padding
     > div.row-fluid
