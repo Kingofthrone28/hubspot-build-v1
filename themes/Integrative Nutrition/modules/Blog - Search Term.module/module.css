@@ -192,6 +192,10 @@
   font: var(--font--large-paragraph--desktop);
 }
 
+.blog-search-term__menu:not(.hide) {
+  max-width: 100%;
+}
+
 @media screen and (min-width: 1024px) {
   .blog-search-term__menu.level-2 {
     justify-content: left;
