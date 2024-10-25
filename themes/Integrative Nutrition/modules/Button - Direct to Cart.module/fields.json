@@ -45,6 +45,23 @@
     "default": "Bewell24"
   },
   {
+    "name": "justify",
+    "label": "Justify",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "inline_help_text": "",
+    "help_text": "",
+    "choices": [
+      ["start", "Left"],
+      ["center", "Center"],
+      ["end", "Right"]
+    ],
+    "type": "choice",
+    "placeholder": "",
+    "default": "center"
+  },
+  {
     "name": "dl_label",
     "label": "Data Layer Id",
     "required": false,
