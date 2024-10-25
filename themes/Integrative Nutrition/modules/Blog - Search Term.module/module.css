@@ -285,6 +285,12 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .blog-search-term .blog-search-term__input[type='search'] {
+    min-width: 100%;
+  }
+}
+
 .blog-search-term__content {
   padding: 0 var(--spacing-8--static) var(--spacing-8--static);
 }
