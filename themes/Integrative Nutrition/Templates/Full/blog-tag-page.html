@@ -8,31 +8,31 @@
 {% from "../../macros/get-app-config.html" import get_app_config %}
 {% from '../../macros/get-blog-navigation.html' import get_blog_nav_breadcrumbs %}
 
-{# bt (blog tag) prefix for psuedo-namespacing #}
-{% set bt_app_config = {} %}
-{% do get_app_config(bt_app_config) %}
-{% set tag_menu = menu(bt_app_config.blog_tag_menu_id) %}
-{% set bt_info = {} %}
-{% for category in tag_menu.children %}
+{# suffix bt (blog tag) for pseudo-namespacing #}
+{% set app_config_bt = {} %}
+{% do get_app_config(app_config_bt) %}
+{% set tag_menu_bt = menu(app_config_bt.blog_tag_menu_id) %}
+{% set info_bt = {} %}
+{% for category in tag_menu_bt.children %}
   {% for tag in category.children if category.children %}
     {% if tag.activeNode %}
-      {% do bt_info.put("node", tag) %}
+      {% do info_bt.put("node", tag) %}
     {%  endif %}
   {% endfor %}
 {% endfor %}
-{% do bt_info.put("blog_tags", blog_tags("default")) %}
-{% do bt_info.put("page_tag", bt_info.blog_tags|selectattr('label', 'equalto', bt_info.node.label)|first) %}
+{% do info_bt.put("blog_tags", blog_tags("default")) %}
+{% do info_bt.put("page_tag", info_bt.blog_tags|selectattr('label', 'equalto', info_bt.node.label)|first) %}
 
 {% block body %}
   <main class="dnd-section blog-tag-page-container offset-header">
-  {{ get_blog_nav_breadcrumbs(tag_menu) }}
+  {{ get_blog_nav_breadcrumbs(tag_menu_bt) }}
   <div class="blog-tag-page-blog-teasers">
     {% module "module_17291984260572"
       path="/Integrative Nutrition/modules/Blog Teasers",
       label="Blog Tag Page Blog Teasers",
-      tag_menu="{{ bt_app_config.blog_tag_menu_id }}",
+      tag_menu="{{ app_config_bt.blog_tag_menu_id }}",
       layout="two_column",
-      tag_field="{{ bt_info.page_tag }}"
+      tag_field="{{ info_bt.page_tag }}"
     %}
   </div>
 </main>
