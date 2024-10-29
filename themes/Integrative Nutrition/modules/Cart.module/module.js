@@ -154,23 +154,21 @@
 
     try {
       spinner.classList.remove('hidden');
-      let existingCheckout;
+      let checkout;
 
       if (cartCookie) {
-        existingCheckout = await IINShopifyClient.checkout.fetch(cartCookie);
+        checkout = await IINShopifyClient.checkout.fetch(cartCookie);
       }
 
-      if (!existingCheckout) {
-        const newCheckout = await IINShopifyClient.checkout.create();
-
-        await setShopifyCartCookie(newCheckout);
+      if (!checkout) {
+        checkout = await IINShopifyClient.checkout.create();
+        await setShopifyCartCookie(checkout);
       }
 
-      await loadCart();
+      await loadCart(false, checkout);
     } catch (e) {
       console.error(e);
     }
-
     spinner.classList.add('hidden');
   }
 
@@ -333,19 +331,19 @@
   /**
    * Inserts the dynamic markup for the cart.
    * @param {boolean} noProductChange
+   * @param {checkout} checkout, optional existing checkout
    * @returns {Promise<void>}
    *
    * @todo On navigation event.persisted and type "back_forward" this needs to
    *   be re-executed.
    */
-  async function loadCart(noProductChange) {
+  async function loadCart(noProductChange, checkout) {
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
-    let checkout;
 
     cartTrackingPayload.ecommerce = {};
     cartTrackingPayload.ecommerce.items = [];
 
-    if (cartCookie) {
+    if (!checkout && cartCookie) {
       try {
         checkout = await IINShopifyClient.checkout.fetch(cartCookie);
       } catch (e) {
@@ -356,7 +354,7 @@
     if (!checkout) {
       $('.jd-cart-outer').addClass('jd-cart-empty');
       $('.jd-cart-items').html('');
-      await loadProductRecommendations();
+      loadProductRecommendations();
       return;
     }
 
@@ -373,7 +371,7 @@
       }
 
       if (parsedItems) {
-        await loadProductRecommendations(parsedItems);
+        loadProductRecommendations(parsedItems);
       }
     }
 
