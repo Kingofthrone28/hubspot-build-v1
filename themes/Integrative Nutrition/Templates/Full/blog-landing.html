@@ -10,18 +10,18 @@
 {{ require_js(get_asset_url('../../js/blog-nav.js')) }}
 
 {# Variables #}
-{# Prefix bl (blog landing) added to prevent over-writing variables in children modules #}
-{% set bl_app_config = {} %}
-{{ get_app_config(bl_app_config) }}
-{% set bl_dict = {
-    "tag_menu_id": bl_app_config.blog_tag_menu_id,
+{# Suffix bl (blog listing) for pseudo-namespacing #}
+{% set app_config_bl = {} %}
+{{ get_app_config(app_config_bl) }}
+{% set info_bl = {
+    "tag_menu_id": app_config_bl.blog_tag_menu_id,
     "category_tags": {},
   }
 %}
-{% do bl_dict.put("tag_menu", menu(bl_dict.tag_menu_id)) %}
-{% do bl_dict.put("active_tags", blog_tags("default")) %}
-{% for category in bl_dict.tag_menu.children if bl_dict.tag_menu.children %}
-  {% do bl_dict.category_tags.put(category.label, category.children) if category.children %}
+{% do info_bl.put("tag_menu", menu(info_bl.tag_menu_id)) %}
+{% do info_bl.put("active_tags", blog_tags("default")) %}
+{% for category in info_bl.tag_menu.children if info_bl.tag_menu.children %}
+  {% do info_bl.category_tags.put(category.label, category.children) if category.children %}
 {% endfor %}
 
 {# html #}
@@ -30,7 +30,7 @@
     {% module "blog-category-search"
       path="../../modules/Blog - Search Term",
       label="Blog - Search Term",
-      tag_menu="{{ bl_dict.tag_menu_id }}",
+      tag_menu="{{ info_bl.tag_menu_id }}",
       blog_search_heading="Articles & Ideas",
       page_level="level-1"
     %}
@@ -38,13 +38,13 @@
     {% module "blog-category-featured-story-grid"
       path="../../modules/Featured Story Grid",
       label="Blog - Featured Story Grid",
-      tag_menu="{{ bl_dict.tag_menu_id }}"
+      tag_menu="{{ info_bl.tag_menu_id }}"
     %}
     {# Latest blog posts #}
       {% module "blog-latest-posts"
       path="../../modules/Blog - Latest Posts",
       label="Blog - Latest Posts",
-      menu="{{ bl_dict.tag_menu_id }}"
+      menu="{{ info_bl.tag_menu_id }}"
       %}
     {# DND Section #}
     {% dnd_area 'dnd_area' label="Main DND section" %}
@@ -55,7 +55,7 @@
       {% end_dnd_section %}
     {% end_dnd_area %}
     {# Teasers #}
-    {% for category_label, tag_list in bl_dict.category_tags.items() %}
+    {% for category_label, tag_list in info_bl.category_tags.items() %}
       {# Slug-ify tag labels for blog_recent_tag_posts call #}
       {%- set tag_slug_list = tag_list
           |map("label")
@@ -67,7 +67,7 @@
         path="../../modules/Blog Teasers",
         label="Blog - Teasers",
         unique_in_loop=True,
-        tag_menu="{{ bl_dict.tag_menu_id }}",
+        tag_menu="{{ info_bl.tag_menu_id }}",
         layout="two_column",
         listing_page_tag_slug_list="{{ tag_slug_list }}",
         listing_page_category="{{ category_label }}"

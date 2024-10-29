@@ -18,9 +18,9 @@
           <img src="{{ post.featured_image }}" alt="{{ post.name }}">
         </a>
         <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link">{{ topic }}</a>
-        <h4 class="blog-teasers__heading">
+        <h3 class="blog-teasers__heading">
           <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
-        </h4>
+        </h3>
         {% if author %}
           <p class="blog-teasers__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
@@ -50,7 +50,7 @@
 {# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
-    <h4 class="blog-teasers__header">{{ tag_name }}</h4>
+    <h2 class="blog-teasers__header">{{ tag_name }}</h2>
     <div class="blog-teasers__posts">
       {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
     </div>
@@ -120,9 +120,9 @@
               <img src="${imageUrl}" alt="${title}">
             </a>
             ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link">${topic}</a>` : ``}
-            <h4 class="blog-teasers__heading">
+            <h3 class="blog-teasers__heading">
               <a href=${post.url} class="link slate">${title}</a>
-            </h4>
+            </h3>
             <p class="blog-teasers__byline">
               By ${post.authorFullName} |
               <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
