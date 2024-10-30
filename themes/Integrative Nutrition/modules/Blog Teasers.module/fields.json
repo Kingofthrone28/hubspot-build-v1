@@ -1,70 +1,77 @@
-[
-  {
-    "id": "760fea20-fe3e-34c7-a2b8-8a51c2dab3b8",
-    "name": "layout",
-    "display_width": null,
-    "label": "layout",
-    "required": false,
-    "locked": false,
-    "display": "select",
-    "choices": [
-      ["single_column", "Single row"],
-      ["two_column", "Double row"]
-    ],
-    "multiple": false,
-    "reordering_enabled": true,
-    "preset": null,
-    "type": "choice"
-  },
-  {
-    "id": "4718cc1b-88bd-8822-7487-0e2a2732c03f",
-    "name": "tag_field",
-    "display_width": null,
-    "label": "Category Tag",
-    "required": false,
-    "locked": false,
-    "tag_value": "ALL",
-    "type": "tag"
-  },
-  {
-    "name": "tag_menu",
-    "label": "Tag Menu",
-    "required": false,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "type": "menu",
-    "placeholder": "",
-    "default": null
-  },
-  {
-    "name": "listing_page_tag_slug_list",
-    "label": "Hidden field for tag slugs passed from listing page",
-    "required": false,
-    "locked": true,
-    "validation_regex": "",
-    "validation_error_message": "",
-    "allow_new_line": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "placeholder": "",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": null
-  },
-  {
-    "name": "listing_page_category",
-    "label": "Hidden field for category passed from listing page",
-    "required": false,
-    "locked": true,
-    "validation_regex": "",
-    "validation_error_message": "",
-    "allow_new_line": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "placeholder": "",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": null
-  }
-]
+[ {
+  "id" : "760fea20-fe3e-34c7-a2b8-8a51c2dab3b8",
+  "name" : "layout",
+  "display_width" : null,
+  "label" : "layout",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "single_column", "Single row" ], [ "two_column", "Double row" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+}, {
+  "id" : "4718cc1b-88bd-8822-7487-0e2a2732c03f",
+  "name" : "tag_field",
+  "display_width" : null,
+  "label" : "Category Tag",
+  "required" : false,
+  "locked" : false,
+  "tag_value" : "ALL",
+  "type" : "tag"
+}, {
+  "id" : "tag_menu",
+  "name" : "tag_menu",
+  "display_width" : null,
+  "label" : "Tag Menu",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "placeholder" : "",
+  "type" : "menu"
+}, {
+  "id" : "listing_page_tag_slug_list",
+  "name" : "listing_page_tag_slug_list",
+  "display_width" : null,
+  "label" : "Hidden field for tag slugs passed from listing page",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "validation_error_message" : "",
+  "placeholder" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "listing_page_category",
+  "name" : "listing_page_category",
+  "display_width" : null,
+  "label" : "Hidden field for category passed from listing page",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : true,
+  "validation_regex" : "",
+  "validation_error_message" : "",
+  "placeholder" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "236e1a6d-aca5-bf7a-2869-7682f02f15fc",
+  "name" : "page_level",
+  "display_width" : null,
+  "label" : "Page Level",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "level-1", "Level 1" ], [ "level-2", "Level 2" ], [ "level-3", "Level 3" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+} ]
