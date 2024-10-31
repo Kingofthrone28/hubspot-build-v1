@@ -24,7 +24,7 @@
 {% do info_bt.put("page_tag", info_bt.blog_tags|selectattr('label', 'equalto', info_bt.node.label)|first) %}
 
 {% block body %}
-<main class="blog-page__container  offset-header">
+<main class="blog-page__container offset-header">
   <div class="blog-page__breadcrumbs-container">
     {{ get_blog_nav_breadcrumbs(tag_menu_bt) }}
   </div>
