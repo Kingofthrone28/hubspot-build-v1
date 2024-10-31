@@ -26,7 +26,7 @@
 
 {# html #}
 {% block body %}
-  <main class="offset-header">
+  <main class="blog-page__container offset-header">
     {% module "blog-category-search"
       path="../../modules/Blog - Search Term",
       label="Blog - Search Term",
@@ -35,11 +35,13 @@
       page_level="level-1"
     %}
     {# Featured story grid #}
-    {% module "blog-category-featured-story-grid"
-      path="../../modules/Featured Story Grid",
-      label="Blog - Featured Story Grid",
-      tag_menu="{{ info_bl.tag_menu_id }}"
-    %}
+    <div class="blog-page__featured-story-grid-container">
+      {% module "blog-category-featured-story-grid"
+        path="../../modules/Featured Story Grid",
+        label="Blog - Featured Story Grid",
+        tag_menu="{{ info_bl.tag_menu_id }}"
+      %}
+    </div>
     {# Latest blog posts #}
       {% module "blog-latest-posts"
       path="../../modules/Blog - Latest Posts",
@@ -55,24 +57,26 @@
       {% end_dnd_section %}
     {% end_dnd_area %}
     {# Teasers #}
-    {% for category_label, tag_list in info_bl.category_tags.items() %}
-      {# Slug-ify tag labels for blog_recent_tag_posts call #}
-      {%- set tag_slug_list = tag_list
-          |map("label")
-          |map("lower")
-          |map("regex_replace", " \\+ ", "-")
-          |map("regex_replace", " ", "-")
-      -%}
-      {% module "blog-category-teasers"
-        path="../../modules/Blog Teasers",
-        label="Blog - Teasers",
-        unique_in_loop=True,
-        tag_menu="{{ info_bl.tag_menu_id }}",
-        layout="two_column",
-        listing_page_tag_slug_list="{{ tag_slug_list }}",
-        listing_page_category="{{ category_label }}",
-        page_level="level-1"
-      %}
-    {% endfor %}
+    <div class="blog-page__blog-teasers-container">
+      {% for category_label, tag_list in info_bl.category_tags.items() %}
+        {# Slug-ify tag labels for blog_recent_tag_posts call #}
+        {%- set tag_slug_list = tag_list
+            |map("label")
+            |map("lower")
+            |map("regex_replace", " \\+ ", "-")
+            |map("regex_replace", " ", "-")
+        -%}
+        {% module "blog-category-teasers"
+          path="../../modules/Blog Teasers",
+          label="Blog - Teasers",
+          unique_in_loop=True,
+          tag_menu="{{ info_bl.tag_menu_id }}",
+          layout="two_column",
+          listing_page_tag_slug_list="{{ tag_slug_list }}",
+          listing_page_category="{{ category_label }}",
+          page_level="level-1"
+        %}
+      {% endfor %}
+    </div>
   </main>
 {% endblock body %}
