@@ -37,6 +37,8 @@
 
 {# Initialization #}
 {% set column_offset = module.layout == "two_column" ? 5 : 3 %}
+{% set is_L3 = module.page_level == "level-3" %}
+{% set button_class_list = "blog-teasers-view-more-btn-{{ name }} blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link" %}
 
 {# Set up client side tag map #}
 {% set tag_dict = {} %}
@@ -46,20 +48,30 @@
 {# Set up name and slugs #}
 {% set tag_name = module.listing_page_category or module.tag_field.name %}
 {% set tag_slug_list = module.listing_page_tag_slug_list or [module.tag_field.slug] %}
+{% set tag_url = tag_dict[tag_name] %}
 
 {# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
     <h2 class="blog-teasers__header">{{ tag_name }}</h2>
-    <div class="blog-teasers__posts">
+    <div class="blog-teasers__posts blog-teasers__posts-{{ name }}">
       {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
     </div>
     <div class="blog-teasers__view-more">
-      <button
-        class="blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link"
-      >
-        View more {{ tag_name }} articles
-      </button>
+      {% if is_L3 %}
+        <button
+          class="{{ button_class_list }}"
+        >
+          View more {{ tag_name }} articles
+        </button>
+      {% else %}
+        <a 
+          href="{{ tag_url }}"
+          class="{{ button_class_list }}"
+        >
+          View more {{ tag_name }} articles
+        </a>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -71,6 +83,8 @@
     const limit = 6;
     const wordsPerMinute = 200;
     let viewMorePosts = [];
+    const isL3 = {{ is_L3 }};
+    const blogTeasersPosts = document.querySelector('.blog-teasers__posts-{{ name }}');
 
     function getReadTime(wordCount) {
       const readTime = Math.ceil(wordCount / wordsPerMinute);
@@ -139,15 +153,11 @@
 
       // Insert rows into DOM
       if (row1) {
-        document
-          .querySelector('.blog-teasers__posts')
-          .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
+        blogTeasersPosts.insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
       }
 
       if (row2) {
-        document
-          .querySelector('.blog-teasers__posts')
-          .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+        blogTeasersPosts.insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
       }
     }
 
@@ -224,8 +234,10 @@
       loadPosts(searchUrl, button);
     }
 
-    document
-      .querySelector('.blog-teasers-view-more-btn')
-      .addEventListener('click', handleViewMoreClick);
+    if (isL3) {
+      document
+        .querySelector('.blog-teasers-view-more-btn-{{ name }}')
+        .addEventListener('click', handleViewMoreClick);
+    }
   })();
 </script>

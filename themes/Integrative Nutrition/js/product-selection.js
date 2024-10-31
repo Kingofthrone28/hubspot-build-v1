@@ -166,7 +166,8 @@ const getProductSelectionMethods = () => {
 
     $('.jd-add-pop .jd-add-pop-options').html(optionsHTML);
 
-    let amount = parseFloat(variant.price?.amount) || 0;
+    const originalAmount = parseFloat(variant.price?.amount) || 0;
+    let amount = originalAmount;
 
     const checkoutVariant = checkout.lineItems.find(
       (lineItem) => lineItem.variant.id === variant.id,
@@ -182,6 +183,10 @@ const getProductSelectionMethods = () => {
 
     if (amount || amount === 0) {
       $('.jd-add-pop .jd-add-pop-price').text(`$${amount.toLocaleString()}`);
+    }
+
+    if (originalAmount && amount !== originalAmount) {
+      $('.add-pop-price-original').text(`$${originalAmount.toLocaleString()}`);
     }
 
     const headerHeight = $('.jd-header-wrap').outerHeight();

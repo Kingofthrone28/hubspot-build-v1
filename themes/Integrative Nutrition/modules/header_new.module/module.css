@@ -1,3 +1,11 @@
 .jd-add-pop-message {
   --accent--color: var(--color--slate);
 }
+
+.add-pop-price-original {
+  margin-left: var(--spacing-4);
+  text-decoration: line-through; 
+  color: var(--theme--global-colors--secondary-color);
+  font: var(--font--small-paragraph);
+}
+ 
