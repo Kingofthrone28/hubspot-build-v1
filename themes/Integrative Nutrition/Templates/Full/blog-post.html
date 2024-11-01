@@ -25,19 +25,29 @@
     <article class="jd-blog-post-main">
       <div class="jd-post-content-container">
         <div class="jd-post-share-container">
-          {% module "module_16983351272026" path="/Integrative Nutrition/modules/Blog - Social Sharing.module", label="Social Sharing" %}
+          {% module "module_16983351272026"
+            path="/Integrative Nutrition/modules/Blog - Social Sharing.module",
+            label="Social Sharing"
+          %}
         </div>
         <div class="jd-post-content">
-          {% module "module_17290069590093" path="/Integrative Nutrition/modules/Blog - Article", label="Blog - Article" %}
+          {% module "module_17290069590093"
+            path="/Integrative Nutrition/modules/Blog - Article",
+            label="Blog - Article"
+          %}
         </div>
         <div class="jd-post-image-link">
-          {% module "module_172848631923629" path="/Integrative Nutrition/modules/Image Link", image_orientation="landscape", label="Image Link Main" %}
+          {% module "module_172848631923629"
+            path="/Integrative Nutrition/modules/Image Link",
+            image_orientation="landscape",
+            label="Image Link Main"
+          %}
         </div>
       </div>
     </article>
     <!-- blog post aside content -->
     <aside class="jd-blog-post-aside">
-      <h3 class="related-blog-post-header">You May Also Like:</h3>
+      <h2 class="related-blog-post-header">You May Also Like:</h2>
       <div class="related-blog-post-container">
         {% macro related_post(post) %}
           {% set author = post.blog_post_author.display_name %}
@@ -45,7 +55,7 @@
           {% set topic = post.topic_list[0].name %}
           {% set topic_url = tag_dict[topic]|escape_url %}
           {% set is_read_time_words = get_reading_time(post.post_body)|trim  %}
-          <div>
+          <div class="related-blog-post-inner-container">
             <div class="related-blog-post-content">
               {% if post.featuredImage %}
                 <a
@@ -61,9 +71,9 @@
               {% endif %}
               <div class="related-blog-post">
                 <a href="{{ topic_url }}" class="related-blog-post-category link water">{{ topic }}</a>
-                <h4 class="related-blog-post-title">
+                <h3 class="related-blog-post-title">
                   <a href="{{ post_url }}" class="link slate">{{ post.name }}</a>
-                </h4>
+                </h3>
                 {% if author %}
                   <p class="related-blog-post-byline">By {{ author }} | {{ is_read_time_words }}</p>
                 {% endif %}
@@ -78,11 +88,18 @@
         %}
       </div>
       <div class="popular-blog-post-container">
-        <h3 class="related-blog-post-header">Popular Stories:</h3>
-          {% module "module_17290094153029" path="/Integrative Nutrition/modules/Blog - Popular Posts", label="Blog - Popular Posts" %}
+        <h2 class="related-blog-post-header">Popular Stories:</h2>
+        {% module "module_17290094153029"
+          path="/Integrative Nutrition/modules/Blog - Popular Posts",
+          label="Blog - Popular Posts"
+        %}
       </div>
       <div class="image-link-container">
-        {% module "module_172848631923629" path="/Integrative Nutrition/modules/Image Link", image_orientation="portrait", label="Image Link Aside" %}
+        {% module "module_172848631923629"
+          path="/Integrative Nutrition/modules/Image Link",
+          image_orientation="portrait",
+          label="Image Link Aside"
+        %}
       </div>
     </aside>
   </div>
