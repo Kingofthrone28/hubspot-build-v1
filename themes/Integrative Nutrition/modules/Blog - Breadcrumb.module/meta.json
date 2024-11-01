@@ -2,7 +2,7 @@
   "label": "Blog - Breadcrumb",
   "css_assets": [],
   "external_js": [],
-  "global": true,
+  "global": false,
   "help_text": "",
   "content_types": ["BLOG_POST"],
   "js_assets": [],

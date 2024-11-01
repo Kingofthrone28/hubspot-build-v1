@@ -4,6 +4,7 @@
 }
 
 .breadcrumb-list > .crumb {
+  display: flex;
   font: var(--font--legal);
 }
 
