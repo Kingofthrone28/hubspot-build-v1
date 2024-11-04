@@ -8,8 +8,6 @@
 {% from "../../macros/get-reading-time.html" import get_reading_time %}
 {% from "../../macros/get-app-config.html" import get_app_config %}
 
-{% extends '../layouts/base.html' %}
-
 {# bp (blog post) prefix for pseudo-namespace #}
 {% set bp_app_config = {} %}
 {{ get_app_config(bp_app_config) }}
@@ -18,8 +16,10 @@
 {% set tag_dict = {} %}
 {{ add_menu_to_dict(tag_menu, tag_dict) }}
 
+{% extends '../layouts/base.html' %}
+
 {% block body %}
-<main class="dnd-section">
+<main class="jd-blog-post-wrapper dnd-section">
   <!-- blog post content -->
   <div class="jd-blog-post">
     <div class="blog-page__breadcrumbs-container">
@@ -113,8 +113,9 @@
     </div>
   </div>
   <!-- blog post bottom -->
-  <footer>
-    {% module "module_16934114492025" path="/Integrative Nutrition/modules/Blog Post Bottom Hero", label="Blog Post Bottom Hero" %}
-  </footer>
+  {% module "module_16934114492025"
+    path="/Integrative Nutrition/modules/Blog Post Bottom Hero",
+    label="Blog Post Bottom Hero"
+  %}
 </main>
 {% endblock body %}
