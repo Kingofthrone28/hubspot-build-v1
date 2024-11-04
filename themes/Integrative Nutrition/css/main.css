@@ -36,6 +36,7 @@
 {% include './components/_popover.css' %}
 {% include './components/_blog-nav.css' %}
 {% include './templates/_blog.css' %}
+{% include './templates/_course-catalog-section.css' %}
 {% include './templates/_system.css' %}
 {% include './templates/_sample-class.css' %}
 {% include './objects/_backgrounds.css' %}

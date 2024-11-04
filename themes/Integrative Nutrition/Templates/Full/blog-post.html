@@ -4,7 +4,7 @@
   label: Blog Post
   screenshotPath: ../../images/blog-article-page-editor-preview.jpg
 -->
-{% from '../../macros/get-tag-link.html' import add_menu_to_dict %}
+{% from "../../macros/get-tag-link.html" import add_menu_to_dict %}
 {% from "../../macros/get-reading-time.html" import get_reading_time %}
 {% from "../../macros/get-app-config.html" import get_app_config %}
 
@@ -19,7 +19,7 @@
 {% extends '../layouts/base.html' %}
 
 {% block body %}
-<main class="jd-blog-post-wrapper dnd-section">
+<main class="jd-blog-post-main dnd-section">
   <!-- blog post content -->
   <div class="jd-blog-post">
     <div class="blog-page__breadcrumbs-container">
@@ -30,7 +30,7 @@
       %}
     </div>
     <div class="jd-blog-post-container">
-      <article class="jd-blog-post-main">
+      <article class="jd-blog-post-article">
         <div class="jd-post-content-container">
           <div class="jd-post-share-container">
             {% module "module_16983351272026"
@@ -112,8 +112,29 @@
       </aside>
     </div>
   </div>
+  <div class="course-catalog-section">
+    <div class="course-catalog-section-inner">
+      <div class="course-catalog-section-content">
+        <h2 class="course-catalog-section-heading">Related Courses</h2>
+        <p class="course-catalog-section-description">
+          Amplify your learning and career mobility with these courses.
+        </p>
+        <a class="course-catalog-section-link" href="/course-catalog">
+          Explore all courses <span class="course-catalog-section-link-icon" data-hs-icon-hubl="true">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span>
+        </a>
+      </div>
+      <div class="course-catalog-section-module">
+        {% module "blog_post_course_catalog"
+          path="/Integrative Nutrition/modules/Course Catalog",
+          offset=0,
+          width=12,
+          category_filter="IIN's Flagship Program",
+        %}
+      </div>
+    </div>
+  </div>
   <!-- blog post bottom -->
-  {% module "module_16934114492025"
+  {% module "blog_post_bottom_hero"
     path="/Integrative Nutrition/modules/Blog Post Bottom Hero",
     label="Blog Post Bottom Hero"
   %}
