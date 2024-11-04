@@ -4,7 +4,13 @@
 
 .blog-popular-posts__section {
   border-bottom: 1px solid var(--color--grey-4);
-  padding: var(--spacing-8) 0;
+  padding: var(--spacing-4) 0;
+}
+
+@media screen and (max-width: 767px) {
+  .blog-popular-posts__section {
+    padding: var(--spacing-6) 0;
+  }
 }
 
 .blog-popular-posts__header {
