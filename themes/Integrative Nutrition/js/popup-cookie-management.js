@@ -66,23 +66,25 @@
           // We are assuming hidden fields were not added correctly in the iframe
           const fieldsToAdd = hubspotForm
             .getFields()
-            .filter(({ hidden }) => hidden)
-            .map(({ name }) => name);
+            .filter(({ hidden }) => hidden);
 
           if (!fieldsToAdd.length) {
             return;
           }
 
           // Create, append, and fill hidden fields
-          fieldsToAdd.forEach((field) => {
-            const cookieKey = IIN.cookies.getTrackingCookieKey(field);
-            const data = cookieObject[cookieKey] || taxonomyOverrides?.[field];
+          fieldsToAdd.forEach(({ defaultValue, name }) => {
+            const cookieKey = IIN.cookies.getTrackingCookieKey(name);
+            const data =
+              defaultValue ??
+              cookieObject[cookieKey] ??
+              taxonomyOverrides?.[name];
 
             if (!data) {
               return;
             }
 
-            const mappedKey = IIN.cookies.getTrackingFormKey(field);
+            const mappedKey = IIN.cookies.getTrackingFormKey(name);
             const input = frameDocument.createElement('input');
             input.setAttribute('type', 'hidden');
             input.setAttribute('name', mappedKey);
