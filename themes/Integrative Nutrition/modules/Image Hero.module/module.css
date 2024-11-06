@@ -26,7 +26,7 @@
   font: var(--font--large-paragraph--desktop);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .image-hero {
     padding: var(--spacing-48) var(--spacing-10) var(--spacing-20);
   }

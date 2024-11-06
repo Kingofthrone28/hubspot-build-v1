@@ -1,0 +1,142 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Blog Post
+  screenshotPath: ../../images/blog-article-page-editor-preview.jpg
+-->
+{% from "../../macros/get-tag-link.html" import add_menu_to_dict %}
+{% from "../../macros/get-reading-time.html" import get_reading_time %}
+{% from "../../macros/get-app-config.html" import get_app_config %}
+
+{# bp (blog post) prefix for pseudo-namespace #}
+{% set bp_app_config = {} %}
+{{ get_app_config(bp_app_config) }}
+{% set tag_menu_id = bp_app_config.blog_tag_menu_id %}
+{% set tag_menu = menu(tag_menu_id) %}
+{% set tag_dict = {} %}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
+
+{% extends '../layouts/base.html' %}
+
+{% block body %}
+<main class="jd-blog-post-main dnd-section">
+  <!-- blog post content -->
+  <div class="jd-blog-post">
+    <div class="blog-page__breadcrumbs-container">
+      {% module "module_blog_post_breadcrumb"
+        path="/Integrative Nutrition/modules/Blog - Breadcrumb", 
+        label="Blog - Breadcrumb",
+        tag_menu="{{ tag_menu_id }}"
+      %}
+    </div>
+    <div class="jd-blog-post-container">
+      <article class="jd-blog-post-article">
+        <div class="jd-post-content-container">
+          <div class="jd-post-share-container">
+            {% module "module_16983351272026"
+              path="/Integrative Nutrition/modules/Blog - Social Sharing.module",
+              label="Social Sharing"
+            %}
+          </div>
+          <div class="jd-post-content">
+            {% module "module_17290069590093"
+              path="/Integrative Nutrition/modules/Blog - Article",
+              label="Blog - Article"
+            %}
+          </div>
+          <div class="jd-post-image-link">
+            {% module "module_172848631923629"
+              path="/Integrative Nutrition/modules/Image Link",
+              image_orientation="landscape",
+              label="Image Link Main"
+            %}
+          </div>
+        </div>
+      </article>
+      <!-- blog post aside content -->
+      <aside class="jd-blog-post-aside">
+        <h2 class="related-blog-post-header">You May Also Like:</h2>
+        <div class="related-blog-post-container">
+          {% macro related_post(post) %}
+            {% set author = post.blog_post_author.display_name %}
+            {% set post_url = post.absolute_url|escape_url %}
+            {% set topic = post.topic_list[0].name %}
+            {% set topic_url = tag_dict[topic]|escape_url %}
+            {% set is_read_time_words = get_reading_time(post.post_body)|trim  %}
+            <div class="related-blog-post-inner-container">
+              <div class="related-blog-post-content">
+                {% if post.featuredImage %}
+                  <a
+                    href="{{ post_url }}"
+                    class="related-blog-post-image"
+                    aria-label="{{ post.name }}"
+                  >
+                    <img
+                      src="{{ post.featuredImage }}"
+                      alt="{{ post.featured_image_alt_text }}"
+                    >
+                  </a>
+                {% endif %}
+                <div class="related-blog-post">
+                  <a href="{{ topic_url }}" class="related-blog-post-category link water">{{ topic }}</a>
+                  <h3 class="related-blog-post-title">
+                    <a href="{{ post_url }}" class="link slate">{{ post.name }}</a>
+                  </h3>
+                  {% if author %}
+                    <p class="related-blog-post-byline">By {{ author }} | {{ is_read_time_words }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endmacro %}
+          {% related_blog_posts
+            limit=3,
+            no_wrapper=True,
+            post_formatter="related_post"
+          %}
+        </div>
+        <div class="popular-blog-post-container">
+          <h2 class="related-blog-post-header">Popular Stories:</h2>
+          {% module "module_17290094153029"
+            path="/Integrative Nutrition/modules/Blog - Popular Posts",
+            label="Blog - Popular Posts"
+          %}
+        </div>
+        <div class="image-link-container">
+          {% module "module_172848631923629"
+            path="/Integrative Nutrition/modules/Image Link",
+            image_orientation="portrait",
+            label="Image Link Aside"
+          %}
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="course-catalog-section">
+    <div class="course-catalog-section-inner">
+      <div class="course-catalog-section-content">
+        <h2 class="course-catalog-section-heading">Related Courses</h2>
+        <p class="course-catalog-section-description">
+          Amplify your learning and career mobility with these courses.
+        </p>
+        <a class="course-catalog-section-link" href="/course-catalog">
+          Explore all courses <span class="course-catalog-section-link-icon" data-hs-icon-hubl="true">{% icon icon_set="fontawesome-5.14.0" name="Alternate Arrow Circle Right" style="REGULAR" height="20" purpose="decorative" title="Alternate Arrow Circle Right icon" %}</span>
+        </a>
+      </div>
+      <div class="course-catalog-section-module">
+        {% module "blog_post_course_catalog"
+          path="/Integrative Nutrition/modules/Course Catalog",
+          offset=0,
+          width=12,
+          category_filter="IIN's Flagship Program,IIN Foundations Course,Chopra Certification Course",
+        %}
+      </div>
+    </div>
+  </div>
+  <!-- blog post bottom -->
+  {% module "blog_post_bottom_hero"
+    path="/Integrative Nutrition/modules/Blog Post Bottom Hero",
+    label="Blog Post Bottom Hero"
+  %}
+</main>
+{% endblock body %}

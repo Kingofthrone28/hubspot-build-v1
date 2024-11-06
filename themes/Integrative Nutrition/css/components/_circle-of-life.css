@@ -137,7 +137,7 @@
   fill-opacity: 0.5;
 }
 
-@media only screen and (min-width: 540px) and (max-width: 768px) {
+@media only screen and (min-width: 540px) and (max-width: 767px) {
   #col-canvas .slice {
     font-size: var(--font-size--legacy--4);
   }
@@ -162,7 +162,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   #col-canvas {
     display: none;
   }
@@ -381,7 +381,7 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .col-text-mobile {
     display: block;
   }

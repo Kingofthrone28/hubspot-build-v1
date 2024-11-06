@@ -57,7 +57,7 @@ html .hs-button.jd-request-btn.jd-trans-btn:hover {
   width: 250px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .dnd_area-row-0-background-image {
     display: none !important;
   }

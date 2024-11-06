@@ -366,7 +366,7 @@ html {
   transform-origin: bottom left;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .tl-nav-wrapper {
     position: absolute;
     top: 40px;

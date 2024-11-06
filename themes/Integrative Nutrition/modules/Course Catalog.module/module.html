@@ -376,8 +376,10 @@
   {% require_css %}
   <style>
     {% scope_css %}
-    @media(max-width: 1024px) and (min-width: 768px) {
-      .course-card-wrap { width: 33.33%; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .course-card-wrap {
+        width: 33.33%;
+      }
     }
     {% end_scope_css %}
   </style>

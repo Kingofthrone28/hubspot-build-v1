@@ -1,0 +1,71 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Blog - Category
+  screenshotPath: ../../images/blog-category-page-editor-preview.jpg
+-->
+{# Templates #}
+{% extends '../layouts/base.html' %}
+{% from "../../macros/get-app-config.html" import get_app_config %}
+{% from '../../macros/get-blog-navigation.html' import get_blog_nav_breadcrumbs %}
+{{ require_js(get_asset_url('../../js/blog-nav.js')) }}
+
+{# Variables #}
+{# Suffix bc (blog category) for pseudo-namespacing #}
+{% set app_config_bc = {} %}
+{{ get_app_config(app_config_bc) }}
+
+{% set info_bc = {} %}
+{% set tag_menu_id_bc = app_config_bc.blog_tag_menu_id %}
+{% set tag_menu_bc = menu(tag_menu_id_bc) %}
+{% for category in tag_menu_bc.children %}
+  {% if category.activeBranch %}
+    {% do info_bc.put('category', category) %}
+  {%  endif %}
+{% endfor %}
+
+{# Tags #}
+{# blog_tags() only gets tags that are in use #}
+{% set tag_list = blog_tags("default") %}
+{% set tag_intersection_bc = [] %}
+{% for category in info_bc.category.children if info_bc.category %}
+  {% set tag = tag_list|selectattr('label', 'equalto', category.label)|first %}
+  {% do tag_intersection_bc.append(tag) if tag %}
+{% endfor %}
+
+{# html #}
+{% block body %}
+<main class="blog-page__container offset-header">
+  <div class="blog-page__breadcrumbs-container">
+    {{ get_blog_nav_breadcrumbs(tag_menu_bc) }}
+  </div>
+  <div class="blog-category-search-container">
+    {% module "blog-category-search"
+      path="../../modules/Blog - Search Term",
+      label="Blog - Search Term",
+      tag_menu="{{ tag_menu_id_bc }}",
+      blog_search_heading="{{ info_bc.category.label }}",
+      page_level="level-2"
+    %}
+  </div>
+  <div class="blog-page__featured-story-grid-container">
+    {% module "blog-category-featured-story-grid"
+      path="../../modules/Featured Story Grid",
+      label="Blog - Featured Story Grid",
+      tag_menu="{{ tag_menu_id_bc }}"
+    %}
+  </div>
+  <div class="blog-page__blog-teasers-container">
+    {% for tag in tag_intersection_bc %}
+      {% module "blog-category-teasers"
+        path="../../modules/Blog Teasers",
+        label="Blog - Teasers",
+        unique_in_loop=True,
+        tag_menu="{{ tag_menu_id_bc }}",
+        tag_field="{{ tag }}",
+        page_level="level-2"
+      %}
+    {% endfor %}
+  </div>
+</main>
+{% endblock body %}

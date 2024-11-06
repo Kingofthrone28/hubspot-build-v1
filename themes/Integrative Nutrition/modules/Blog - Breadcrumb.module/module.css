@@ -4,7 +4,8 @@
 }
 
 .breadcrumb-list > .crumb {
-  font: var(--font--small-paragraph);
+  display: flex;
+  font: var(--font--legal);
 }
 
 .breadcrumb-list > .crumb:not(:last-child)::after {

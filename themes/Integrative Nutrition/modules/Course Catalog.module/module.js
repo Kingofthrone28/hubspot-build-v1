@@ -1,12 +1,12 @@
 function extractItemData(course, index) {
-  const discountPrice = course.price || 'NA';
-  const actualPrice = course.actual_price || 'NA';
+  const actualPrice = course?.actual_price || 'NA';
+  const discountPrice = course?.price || 'NA';
+  const productId = course?.product_id;
+
   return {
-    item_id: course.product_id.includes(',')
-      ? [course.product_id]
-      : course.product_id,
-    item_name: course.name,
-    item_type: course.course_topics[0].label,
+    item_id: productId?.includes(',') ? [productId] : productId,
+    item_name: course?.name,
+    item_type: course?.course_topics?.[0]?.label,
     variant_id: 'NA',
     price: parseFloat(discountPrice.replace(/[$,]/g, '') || 'NA'),
     actual_price: parseFloat(actualPrice.replace(/[$,]/g, '') || 'NA'),
@@ -16,13 +16,14 @@ function extractItemData(course, index) {
 }
 
 function startViewCatalog(rowsData) {
-  if (!rowsData) {
+  if (!Array.isArray(rowsData)) {
     return;
   }
+
   try {
-    const items = rowsData.map((course, index) =>
-      extractItemData(course, index),
-    );
+    const items = rowsData
+      .filter(Boolean)
+      .map((course, index) => extractItemData(course, index));
 
     if (items.length) {
       // Sending event only in case catalog elements exists
@@ -34,6 +35,7 @@ function startViewCatalog(rowsData) {
           items,
         },
       };
+
       triggerECommEvent(viewItemsList);
     }
   } catch (error) {
@@ -50,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('shopifyDataLoaded', () => {
     // Select all instances of the course-catalog module on the page
     const courseCatalogs = document.querySelectorAll('.course-catalog');
+
     // Iterate over each module instance and send event
     courseCatalogs.forEach((catalog) => {
       if (isElementVisible(catalog)) {

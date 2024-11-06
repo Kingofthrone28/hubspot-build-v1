@@ -563,7 +563,7 @@ a.show-full-desc {
   margin-bottom: 25px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .amenities-left-card {
     margin-bottom: 20px;
   }

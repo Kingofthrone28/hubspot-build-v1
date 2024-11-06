@@ -1734,7 +1734,7 @@ body.open .mb-custom-header-wrapper #mobile-menu {
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .deal-bar-btn,
   .deal-bar-btn.desktop {
     display: block;

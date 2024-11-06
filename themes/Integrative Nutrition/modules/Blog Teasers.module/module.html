@@ -1,7 +1,10 @@
 {% from "../../macros/get-reading-time.html" import get_reading_time %}
 {% from '../../macros/get-tag-link.html' import add_menu_to_dict, load_tag_map %}
 
-{# Any changes here should be reflected in the client side javascript version below #}
+{# 
+  Render post html
+  Any changes here should be reflected in the client side javascript version below  
+#}
 {% macro render_blog_posts(posts, layout) %}
   <div class="row">
     {% for post in posts %}
@@ -15,9 +18,9 @@
           <img src="{{ post.featured_image }}" alt="{{ post.name }}">
         </a>
         <a href="{{ tag_dict[topic] }}" class="blog-teasers__category link">{{ topic }}</a>
-        <h4 class="blog-teasers__heading">
+        <h3 class="blog-teasers__heading">
           <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
-        </h4>
+        </h3>
         {% if author %}
           <p class="blog-teasers__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
@@ -26,45 +29,62 @@
   </div>
 {% endmacro %}
 
-{% macro render_blog_posts_by_layout(layout, tag) %}
-  {% set posts = blog_recent_tag_posts("default", [tag], layout == "two_column" ? 5 : 3, "AND") %}
+{# Pick layout to render #}
+{% macro render_blog_posts_by_layout(layout, tag_slugs) %}
+  {% set posts = blog_recent_tag_posts("default", tag_slugs, layout == "two_column" ? 5 : 3) %}
   {{ render_blog_posts(posts, layout) }}
 {% endmacro %}
 
+{# Initialization #}
 {% set column_offset = module.layout == "two_column" ? 5 : 3 %}
-{% set tag_slug = module.tag_field.slug %}
-{% set tag_name = module.tag_field.name %}
-{% set clean_tags = tag_slug | replace('-', ' ') | replace(',', '') | capitalize %}
+{% set is_L3 = module.page_level == "level-3" %}
+{% set button_class_list = "blog-teasers-view-more-btn-{{ name }} blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link" %}
+
+{# Set up client side tag map #}
 {% set tag_dict = {} %}
 {% set tag_menu = menu(module.tag_menu) if module.tag_menu %}
-{{ add_menu_to_dict(tag_menu, tag_dict)  }}
+{{ add_menu_to_dict(tag_menu, tag_dict) }}
 
-{# html #}
+{# Set up name and slugs #}
+{% set tag_name = module.listing_page_category or module.tag_field.name %}
+{% set tag_slug_list = module.listing_page_tag_slug_list or [module.tag_field.slug] %}
+{% set tag_url = tag_dict[tag_name] %}
+
+{# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
-    <h4 class="blog-teasers__header">{{ clean_tags }}</h4>
-    <hr class="blog-teasers__line">
-    <div class="blog-teasers__posts">
-      {{ render_blog_posts_by_layout(module.layout, tag_slug) }}
+    <h2 class="blog-teasers__header">{{ tag_name }}</h2>
+    <div class="blog-teasers__posts blog-teasers__posts-{{ name }}">
+      {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
     </div>
     <div class="blog-teasers__view-more">
-      <button
-        class="blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link"
-      >
-        View more {{ clean_tags }} articles
-      </button>
+      {% if is_L3 %}
+        <button
+          class="{{ button_class_list }}"
+        >
+          View more {{ tag_name }} articles
+        </button>
+      {% else %}
+        <a 
+          href="{{ tag_url }}"
+          class="{{ button_class_list }}"
+        >
+          View more {{ tag_name }} articles
+        </a>
+      {% endif %}
     </div>
   </div>
 </div>
 <script>
   (async () => {
     {{ load_tag_map(tag_dict) }}
-    const tag = '{{ tag_slug }}';
     const tagName = '{{ tag_name }}'
     let offset = parseInt('{{ column_offset }}') || 0;
     const limit = 6;
     const wordsPerMinute = 200;
     let viewMorePosts = [];
+    const isL3 = {{ is_L3 }};
+    const blogTeasersPosts = document.querySelector('.blog-teasers__posts-{{ name }}');
 
     function getReadTime(wordCount) {
       const readTime = Math.ceil(wordCount / wordsPerMinute);
@@ -114,9 +134,9 @@
               <img src="${imageUrl}" alt="${title}">
             </a>
             ${post.tags.length ? `<a href="${topicLink}" class="blog-teasers__category link">${topic}</a>` : ``}
-            <h4 class="blog-teasers__heading">
+            <h3 class="blog-teasers__heading">
               <a href=${post.url} class="link slate">${title}</a>
-            </h4>
+            </h3>
             <p class="blog-teasers__byline">
               By ${post.authorFullName} |
               <span id="read-time-${post.id}">${readTimePlaceHolder}</span>
@@ -133,15 +153,11 @@
 
       // Insert rows into DOM
       if (row1) {
-        document
-          .querySelector('.blog-teasers__posts')
-          .insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
+        blogTeasersPosts.insertAdjacentHTML('beforeend', `<div class="row">${row1}</div>`);
       }
 
       if (row2) {
-        document
-          .querySelector('.blog-teasers__posts')
-          .insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
+        blogTeasersPosts.insertAdjacentHTML('beforeend', `<div class="row">${row2}</div>`);
       }
     }
 
@@ -218,8 +234,10 @@
       loadPosts(searchUrl, button);
     }
 
-    document
-      .querySelector('.blog-teasers-view-more-btn')
-      .addEventListener('click', handleViewMoreClick);
+    if (isL3) {
+      document
+        .querySelector('.blog-teasers-view-more-btn-{{ name }}')
+        .addEventListener('click', handleViewMoreClick);
+    }
   })();
 </script>

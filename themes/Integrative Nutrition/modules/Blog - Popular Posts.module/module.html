@@ -14,9 +14,9 @@
       {% set tag_link = tag_dict[tag_name] %}
       <div class="blog-popular-posts__section">
         <a href="{{ tag_link }}" class="blog-popular-posts__category link">{{ tag_name }}</a>
-        <h4 class="blog-popular-posts__heading">
+        <h3 class="blog-popular-posts__heading">
           <a href="{{ post.url }}" class="link slate">{{ post.name }}</a>
-        </h4>
+        </h3>
         {% if author %}
           <p class="blog-popular-posts__byline">By {{ author }} | {{ is_read_time_words }}</p>
         {% endif %}
@@ -34,7 +34,7 @@
 <div class="blog-popular-posts">
   <div class="blog-popular-posts__container">
     {% if module.section_title %}
-      <h4 class="blog-popular-posts__header">{{ module.section_title }}</h4>
+      <h2 class="blog-popular-posts__header">{{ module.section_title }}</h2>
     {% endif %}
     <div class="blog-popular-posts__posts">
       {{ render_popular_blog_posts_by_tag(module.pop_tag_field) }}
