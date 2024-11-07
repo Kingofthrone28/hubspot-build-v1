@@ -29,8 +29,9 @@ A clear and concise description of what the pull request is solving.
 <!-- Screenshots, links, etc. (Optional) -->
 ## Relevant Material
 
-[Other Ticket](https://redswirl.atlassian.net/browse/SM-XXXX)
-[Other Pull Request](https://github.com/integrativenutrition/hubspot/pull/XXX)
+[Demo](https://name.integrativenutrition.com/)
+[Some Ticket](https://redswirl.atlassian.net/browse/SM-XXXX)
+[Some Pull Request](https://github.com/integrativenutrition/hubspot/pull/XXX)
 
 <!-- Don't Forget! -->
 ## Completion Checklist

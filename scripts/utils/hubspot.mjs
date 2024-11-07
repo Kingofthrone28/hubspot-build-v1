@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export -- More functions will be added as time allows */
-/* eslint-disable import/extensions -- MJS is fine for local dev tools */
 import { wait } from './timing.mjs';
 
 /**

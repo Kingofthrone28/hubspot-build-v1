@@ -1,5 +1,3 @@
-/* eslint-disable compat/compat -- Don't need to worry about browser compatibility */
-
 /**
  * Script for updating blog tags
  *

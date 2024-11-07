@@ -22,6 +22,8 @@
     "css:lint": "stylelint 'themes/Integrative Nutrition/**/*.css'",
     "css:fix": "npm run css:lint -- --fix",
     "css:format": "prettier './themes/Integrative Nutrition/**/*.css' --write --ignore-path=.stylelintignore --ignore-path=.prettierignore",
+    "hook:install:pre-commit":"./scripts/install-pre-commit.sh",
+    "hook:delete:pre-commit": "echo Deleting...;rm \"$(pwd)/.git/hooks/pre-commit\";echo Deleted!",
     "hs-sync-forms": "node ./scripts/import-forms.mjs",
     "hs-sync-hubdb": "node ./scripts/import-hubdb.mjs",
     "hs-sync-pages": "node ./scripts/import-pages.mjs",

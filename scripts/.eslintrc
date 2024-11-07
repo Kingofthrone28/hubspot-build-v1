@@ -1,0 +1,9 @@
+{
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "import/extensions": 0,
+    "compat/compat": 0
+  }
+}

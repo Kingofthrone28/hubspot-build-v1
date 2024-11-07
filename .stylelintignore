@@ -1,7 +1,6 @@
 .*
 *-min.*
 *.min.*
-modules_to_move
 
 # Root files
 /config
