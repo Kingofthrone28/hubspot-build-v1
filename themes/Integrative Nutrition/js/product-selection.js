@@ -425,6 +425,42 @@ const getProductSelectionMethods = () => {
   };
 
   /**
+   * Localizes dynamic variant option text
+   * Fire and forget.
+   * @param {element} label element to insert translation
+   * @param {string} labelValue string to translate
+   * @returns {Promise<void>}
+   */
+  const localizeOptionLabel = async (label, labelValue) => {
+    let nodes = [label];
+    let text = labelValue;
+    // If page is Spanish and Weglot is initialized, manually translate labels
+    if (document.documentElement.lang === 'es' && Weglot?.initialized) {
+      try {
+        // Set localization key to select on after translation
+        const localizationKey = `localize-${text}`;
+        label.setAttribute('data-localize', localizationKey);
+        const TRANSLATION_TYPE = 1;
+        const translation = await Weglot.translate({
+          words: [{ t: TRANSLATION_TYPE, w: text }],
+          languageTo: 'es',
+        });
+        [text] = translation;
+        nodes = document.querySelectorAll(
+          `[data-localize="${localizationKey}"]`,
+        );
+      } catch (e) {
+        console.error(`Error translating option label: ${e}`);
+      }
+    }
+    // Specifically rerender all nodes with data-localize to accomodate PDP Bottom hack
+    nodes.forEach((node) => {
+      labelTextNode = document.createTextNode(text);
+      node.appendChild(labelTextNode);
+    });
+  };
+
+  /**
    * Create Input/Label pair for selecting an option
    * @param {string} key option name
    * @param {string} value option value
@@ -451,8 +487,8 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
-    const labelTextNode = document.createTextNode(value);
-    label.appendChild(labelTextNode);
+    // async fire and forget
+    localizeOptionLabel(label, value);
     div.append(input, label);
     return div;
   };
