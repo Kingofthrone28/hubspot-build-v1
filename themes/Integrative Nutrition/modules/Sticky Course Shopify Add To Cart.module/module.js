@@ -48,7 +48,72 @@
       configureAddedToCartPopUp();
     }
 
+    const metaFieldConfig = [
+      'metafields',
+      {
+        args: {
+          identifiers: [
+            {
+              key: '6_mo_desc',
+              namespace: 'custom',
+            },
+            {
+              key: '12_mo_desc',
+              namespace: 'custom',
+            },
+          ],
+        },
+      },
+      (metafield) => {
+        metafield.add('key');
+        metafield.add('value');
+      }
+    ];
+
+    const variantConfig = [
+      'variants',
+      {
+        args: {
+          first: 10,
+        },
+      },
+      (variant) => {
+        variant.add('availableForSale');
+        variant.add('title');
+        variant.add('priceV2', (price) => {
+          price.add('amount');
+        });
+      },
+    ];
+
+    const productConfig = [
+      'products',
+      {
+        args: {
+          first: 1,
+          query: `id:${productID}`
+        }
+      },
+      (product) => {
+        product.add('title');
+        product.add('handle');
+        product.add(...metaFieldConfig);
+        product.addConnection(...variantConfig);
+      }
+    ];
+
+    const query = IINShopifyClient.graphQLClient.query((root) =>
+      root.addConnection(...productConfig)
+    );
+
+    const result = await IINShopifyClient.graphQLClient.send(query);
+    console.log('result', result);
+    const gqlProduct = result?.model?.products?.[0]
+    console.log('gqlProduct', gqlProduct)
+
     const product = await getProductData(productID);
+    console.log('product', product)
+
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
     matchPDPBottomSectionToTop(optionsCount);
