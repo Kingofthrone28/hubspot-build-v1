@@ -83,7 +83,7 @@
   text-align: center;
 }
 
-.blog-search-term__listing {
+.blog-search-term__listing:not(:empty) {
   padding: var(--spacing-5--static);
 }
 
@@ -91,50 +91,24 @@
   padding-top: var(--spacing-12--static);
 }
 
-.blog-search-term__results-term {
-  text-transform: capitalize;
-}
-
-.blog-search-term__load-results .arrow-link::after {
+.blog-search-term__more.arrow-link::after {
   display: inline-block;
   background-color: var(--color--slate);
   content: '';
   mask-image: var(--icon--arrow--right);
 }
 
-.blog-search-term__view-more .arrow-link::after {
-  display: inline-block;
-  background-color: var(--color--slate);
-  content: '';
-  mask-image: var(--icon--arrow--right);
-}
-
-.blog-search-term__load-results .arrow-link:hover::after {
+.blog-search-term__more.arrow-link:hover::after {
   background-color: var(--color--white);
 }
 
-.blog-search-term__view-more .arrow-link:hover::after {
-  background-color: var(--color--white);
-}
-
-.blog-search-term__load-results {
+.blog-search-term__more.hs-button.jd-request-btn {
   display: none;
+  margin: var(--spacing-12) auto 0;
 }
 
-.blog-search-term__view-more {
-  display: none;
-}
-
-.blog-search-term__load-results.visible {
-  display: flex;
-  justify-content: center;
-  padding: var(--spacing-12--static) 0;
-}
-
-.blog-search-term__view-more.visible {
-  display: flex;
-  justify-content: center;
-  padding: var(--spacing-12--static) 0;
+.blog-search-term__more.hs-button.jd-request-btn.visible {
+  display: block;
 }
 
 .blog-search-term__header {
@@ -321,22 +295,20 @@
   height: 160px;
 }
 
-@media screen and (max-width: 992px) {
-  .blog-search-term__header {
-    margin-bottom: var(--spacing-10--static);
-  }
-
+@media (max-width: 1023px) {
   .blog-search-term {
     flex-direction: column;
     align-items: center;
   }
 
+  .blog-search-term__header {
+    margin-bottom: var(--spacing-4);
+  }
+
   .blog-search-term__wrapper {
     margin: 0;
   }
-}
 
-@media (max-width: 1023px) {
   .blog-search-term__content {
     padding: 0 var(--spacing-8--static) var(--spacing-8--static);
   }

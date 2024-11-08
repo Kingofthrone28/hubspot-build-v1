@@ -64,14 +64,14 @@
 {# Listing Search Results are rendered client side #}
 <div class="blog-search-term__listing"></div>
 
-<div class="{{ module.search_results ? 'blog-search-term__load-results' : 'blog-search-term__view-more'}}">
-  <button
-    type="{{ button_type }}"
-    class="hs-button jd-request-btn jd-request-btn-inverse arrow-link"
-  >
-    View more
-  </button>
-</div>
+{% set button_behavior = module.search_results ? 'load-results' : 'view-more' %}
+
+<button
+  type="button"
+  class="blog-search-term__more {{ button_behavior }} hs-button jd-request-btn jd-request-btn-inverse arrow-link"
+>
+  View more
+</button>
 
 <script>
   {{ build_and_load_tag_map(tag_menu) }}

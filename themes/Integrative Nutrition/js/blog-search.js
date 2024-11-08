@@ -9,29 +9,28 @@
    * @type {HTMLElement|null}
    */
   const blockSelector = 'blog-search-term';
+  const contentNodes = document.querySelectorAll(
+    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search)',
+  );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
   const searchDelay = 500;
   const searchForm = document.getElementById(`${blockSelector}__form`);
   const searchInput = document.querySelector(`.${blockSelector}__input`);
   const searchKeystrokeLimit = 3;
-  const searchResultsButton = document.querySelector(
-    `.${blockSelector}__button`,
-  );
-  const searchResultsCancelButton = document.querySelector(
-    `.${blockSelector}__cancel`,
-  );
-  const searchResultsCancelBackButton = document.querySelector(
+  const searchButton = document.querySelector(`.${blockSelector}__button`);
+  const cancelButton = document.querySelector(`.${blockSelector}__cancel`);
+  const cancelBackButton = document.querySelector(
     `.${blockSelector}__cancel-previous`,
   );
   const searchResultsCount = document.querySelector(
     `.${blockSelector}__results-count`,
   );
   const searchResultsViewMore = document.querySelector(
-    `.${blockSelector}__view-more`,
+    `.${blockSelector}__more.view-more`,
   );
   const searchResultsLoadPosts = document.querySelector(
-    `.${blockSelector}__load-results`,
+    `.${blockSelector}__more.load-results`,
   );
   const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
   const termContainer = document.querySelector(`.${blockSelector}`);
@@ -48,13 +47,13 @@
    */
   const toggleSearchButtonVisibility = (searchTermValue) => {
     if (searchKeystrokeLimit <= searchTermValue.length) {
-      updateClasses(searchResultsButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(searchButton, 'add', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
     } else {
-      updateClasses(searchResultsButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
+      updateClasses(searchButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'add', ['visible']);
+      updateClasses(cancelBackButton, 'add', ['visible']);
     }
   };
 
@@ -67,12 +66,12 @@
       updateClasses(menuItems, 'add', ['hide']);
       updateClasses(searchWrapper, 'add', ['visible']);
       updateClasses(termContainer, 'add', ['visible']);
-      updateClasses(searchResultsCancelButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
+      updateClasses(cancelButton, 'add', ['visible']);
+      updateClasses(cancelBackButton, 'add', ['visible']);
     }
     if (searchKeystrokeLimit <= searchTermValue.length) {
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
     }
   };
 
@@ -86,10 +85,10 @@
       updateClasses(searchWrapper, 'remove', ['visible']);
       updateClasses(termContainer, 'remove', ['visible']);
       updateClasses(menuItems, 'remove', ['hide']);
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
 
-      if (searchResultsCancelBackButton) {
+      if (cancelBackButton) {
         window.history.back();
       }
     }
@@ -157,6 +156,11 @@
     `;
   };
 
+  /**
+   * Appends view more results.
+   * @param {Object[]} [results=[]] - An array of search result objects.
+   * @returns {void}
+   */
   const appendViewMoreResults = (results = []) => {
     let row = '';
     const newResults = filterNewResults(results);
@@ -168,12 +172,35 @@
     }
   };
 
+  /**
+   * Generates search results HTML.
+   * @param {Object[]} [results=[]] - An array of search result objects.
+   * @returns {string}
+   */
   const getSearchHtml = (results = []) => {
     let html = '';
     results.forEach((result) => {
       html += generateSearchResultHTML(result);
     });
     return html;
+  };
+
+  /**
+   * Hides content when preview search results are visible.
+   */
+  const hideContent = () => {
+    contentNodes.forEach((node) => {
+      node.classList.add('hidden');
+    });
+  };
+
+  /**
+   * Shows content when preview search results are hidden.
+   */
+  const showContent = () => {
+    contentNodes.forEach((node) => {
+      node.classList.remove('hidden');
+    });
   };
 
   /**
@@ -186,11 +213,12 @@
       updateClasses(searchResultsViewMore, 'remove', ['visible']);
     }
     updateClasses(searchResultsLoadPosts, 'remove', ['visible']);
+    showContent();
   };
 
   /**
    * Handle escape key press to reset content.
-   * triggers when the search input is focused.
+   * Triggers when the search input is focused.
    * @param {KeyboardEvent} event
    */
   const handleEscape = (event) => {
@@ -229,8 +257,11 @@
     }
   };
 
-  /** Generalized function to fetch data from the API
-   * @param {Object} result - The result object containing the URL.
+  /**
+   * Generalized function to fetch data from the API
+   * @param {string} searchTerm
+   * @param {number} [offset=0]
+   * @param {number} [limit=6]
    * @returns {Promise<Object|null>} The content of the post, or null if an error occurs.
    */
   const fetchDataFromAPI = async (searchTerm, offset = 0, limit = 6) => {
@@ -312,14 +343,17 @@
       listingWrapper.innerHTML = getSearchHtml(
         results.slice(0, searchQueryOffset),
       );
+
       if (searchResultsViewMore) {
-        updateClasses(searchResultsViewMore, 'add', ['visible']);
+        updateClasses(searchResultsViewMore ?? searchResultsLoadPosts, 'add', [
+          'visible',
+        ]);
       } else {
         updateClasses(searchResultsLoadPosts, 'add', ['visible']);
       }
     }
 
-    // Populate read times for each post
+    // Populate read times for each post. This is an unawaited async function.
     populateReadTimes(results);
 
     // Update the search results count or clear it if the search input is empty
@@ -327,10 +361,15 @@
       searchResultsCount.textContent = total || '0';
     }
 
+    hideContent();
     document.addEventListener('keydown', handleEscape);
     searchInput?.addEventListener('input', handleExit);
   };
 
+  /**
+   * Handles search results loading.
+   * @returns {Promise<void>}
+   */
   const handleSearchResultsLoadPosts = async () => {
     const searchTermValue = searchInput.value.trim();
     try {
@@ -509,11 +548,9 @@
   searchInput?.addEventListener('input', (event) =>
     toggleSearchButtonVisibility(event.target.value.trim()),
   );
-  [searchResultsCancelBackButton, searchResultsCancelButton].forEach(
-    (button) => {
-      button?.addEventListener('click', animateCancelSearchBar);
-    },
-  );
+  [cancelBackButton, cancelButton].forEach((button) => {
+    button?.addEventListener('click', animateCancelSearchBar);
+  });
   searchResultsLoadPosts?.addEventListener(
     'click',
     handleSearchResultsLoadPosts,
