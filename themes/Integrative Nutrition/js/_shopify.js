@@ -354,6 +354,94 @@
    */
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
+  const getHCTPQuery = (id) => {
+    const metaFieldConfig = [
+      'metafields',
+      {
+        args: {
+          identifiers: [
+            {
+              key: '6_mo_desc',
+              namespace: 'custom',
+            },
+            {
+              key: '12_mo_desc',
+              namespace: 'custom',
+            },
+          ],
+        },
+      },
+      (metafield) => {
+        metafield.add('key');
+        metafield.add('value');
+      }
+    ];
+
+    const variantConfig = [
+      'variants',
+      {
+        args: {
+          first: 10,
+        },
+      },
+      (variant) => {
+        variant.add('availableForSale');
+        variant.add('title');
+        variant.add('selectedOptions', (option) => {
+          option.add('name')
+          option.add('value')
+        })
+        variant.add('priceV2', (price) => {
+          price.add('amount');
+          price.add('currencyCode')
+        });
+      },
+    ];
+
+    const optionsConfig = [
+      'options',
+      { args: { first: 10 } },
+      (option) => {
+        option.add('name')
+        option.add('values')
+      }
+    ];
+
+    const productConfig = [
+      'products',
+      {
+        args: {
+          first: 1,
+          query: `id:${id}`
+        }
+      },
+      (products) => {
+        products.add('title');
+        products.add('handle');
+        products.add('availableForSale');
+        products.add(...metaFieldConfig);
+        products.add(...optionsConfig)
+        products.addConnection(...variantConfig);
+      }
+    ];
+
+    return IINShopifyClient.graphQLClient.query((root) =>
+      root.addConnection(...productConfig)
+    );
+  };
+
+  const updateHCTPForV1 = (product) => {
+    product.variants?.forEach(v => {
+      v.available = v.availableForSale;
+      if (v.priceV2) {
+        v.price = {};
+        ['amount', 'currencyCode'].forEach((key) => {
+          v.price[key] = v.priceV2[key];
+        })
+      }
+    });
+  }
+
   IIN.shopify = {
     addDiscountToCheckout,
     addLineItemsToCheckout,
@@ -373,5 +461,7 @@
     isProductInCheckout,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
+    getHCTPQuery,
+    updateHCTPForV1,
   };
 })();

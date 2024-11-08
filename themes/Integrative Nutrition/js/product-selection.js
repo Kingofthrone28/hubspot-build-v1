@@ -832,7 +832,6 @@ const getProductSelectionMethods = () => {
     const variants = Array.isArray(product?.variants) ? product.variants : [];
     const availableVariants = IIN.shopify.getAvailableVariants(variants);
     const hasCohorts = availableVariants.length > 1;
-
     const { options, newSelection } = getOptions(
       selectedOptions,
       optionKeys,
