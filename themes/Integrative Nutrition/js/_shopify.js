@@ -223,7 +223,7 @@
    */
   const getFirstAvailableVariant = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.find?.(({ available }) => available);
+    return array?.find?.(({ available, availableForSale }) => available || availableForSale);
   };
 
   /**
@@ -338,7 +338,7 @@
    */
   const getAvailableVariants = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.filter?.(({ available }) => available);
+    return array?.filter?.(({ available, availableForSale }) => available || availableForSale);
   };
 
   /**
