@@ -15,6 +15,8 @@
     processProduct,
   } = getProductSelectionMethods();
 
+  const log = console.log;
+
   /** Fix header to the top of the page */
   const makeHeaderFixed = () => {
     document
@@ -80,10 +82,23 @@
       (variant) => {
         variant.add('availableForSale');
         variant.add('title');
+        variant.add('selectedOptions', (option) => {
+          option.add('name')
+          option.add('value')
+        })
         variant.add('priceV2', (price) => {
           price.add('amount');
         });
       },
+    ];
+
+    const optionsConfig = [
+      'options',
+      { args: { first: 10 } },
+      (option) => {
+        option.add('name')
+        option.add('values')
+      }
     ];
 
     const productConfig = [
@@ -94,11 +109,13 @@
           query: `id:${productID}`
         }
       },
-      (product) => {
-        product.add('title');
-        product.add('handle');
-        product.add(...metaFieldConfig);
-        product.addConnection(...variantConfig);
+      (products) => {
+        products.add('title');
+        products.add('handle');
+        products.add('availableForSale');
+        products.add(...metaFieldConfig);
+        products.add(...optionsConfig)
+        products.addConnection(...variantConfig);
       }
     ];
 
@@ -107,18 +124,24 @@
     );
 
     const result = await IINShopifyClient.graphQLClient.send(query);
-    console.log('result', result);
-    const gqlProduct = result?.model?.products?.[0]
-    console.log('gqlProduct', gqlProduct)
-
+    // console.log('result', result);
+    const gql = result?.model?.products?.[0]
     const product = await getProductData(productID);
-    console.log('product', product)
+    log('gqlProduct', gql)
+    log('product', product)
 
     const optionsCount = IIN.shopify.getOptionsCount(product);
+    // log('optionsCount', IIN.shopify.getOptionsCount(gqlProduct) == optionsCount)
+    
     configureDropdownHeading(optionsCount);
     matchPDPBottomSectionToTop(optionsCount);
     const { productOptions, variantSelections } = processProduct(product);
+    const { productOptions: gpo, variantSelections: gvs } = processProduct(gql);
+    // console.log('orig', productOptions, variantSelections)
+    // console.log('alt', gpo, gvs)
     const availableVariants = IIN.shopify.getAvailableVariants(product);
+    // console.log('availableVariants', availableVariants.map(({id}) => id))
+    // console.log('alt', IIN.shopify.getAvailableVariants(gql).map(({id}) => id))
     const firstVariant = availableVariants?.[0];
     const discountInfo = await calculateDiscounts(firstVariant);
 
