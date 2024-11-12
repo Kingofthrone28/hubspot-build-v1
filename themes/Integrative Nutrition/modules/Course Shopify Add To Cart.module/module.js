@@ -10,6 +10,7 @@
     const module = parseMarkupData();
     const product = await getProductData(module.productID);
     const { productOptions, variantSelections } = processProduct(product);
+    if (productOptions.length === 0) return;
     handleSelectorChangeBasic(
       module,
       product,
