@@ -1,0 +1,66 @@
+{% set image = module.image %}
+{% set heading = module.heading %}
+{% set subheading = module.subheading %}
+{% set description = module.description %}
+{% set button_link = module.button_link %}
+{% set button_link_text = module.button_link_text %}
+{% set show_button_link = module.show_button_link %}
+
+{% if image and heading %}
+  <div class="call-to-action">
+    <div class="call-to-action__container">
+      <img
+        class="call-to-action__image"
+        src="{{ image.src }}"
+        alt="{{ image.alt }}"
+      >
+      <div class="call-to-action__content-container">
+        <h2 class="call-to-action__heading call-to-action__text">
+          {{ heading }}
+        </h2>
+        {% if subheading %}
+          <h3 class="call-to-action__subheading call-to-action__text">
+            {{ subheading }}
+          </h3>
+        {% endif %}
+        {% if description %}
+          <div class="call-to-action__description call-to-action__text">
+            {{ description }}
+          </div>
+        {% endif %}
+        {% if show_button_link %}
+          {% if show_button_link %}
+            <a
+              class="call-to-action__button-link call-to-action__text hs-button jd-request-btn jd-request-btn-inverse arrow-link arrow-link-forward"
+              href="{{ button_link.href }}"
+            >
+              {{ button_link_text }}
+            </a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .call-to-action {
+        background-color: var({{ module.background_color }});
+      }
+
+      .call-to-action__text {
+        color: var({{ module.text_color }}) !important;
+      }
+
+      .call-to-action__button-link.hs-button.jd-request-btn.jd-request-btn-inverse {
+        border: 1px solid var({{ module.text_color }});
+      }
+
+      .arrow-link::after {
+        background: var({{ module.text_color }});
+      }
+    {% end_scope_css%}
+  </style>
+{% end_require_css %}

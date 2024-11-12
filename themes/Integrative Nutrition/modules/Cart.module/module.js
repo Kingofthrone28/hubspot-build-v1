@@ -337,8 +337,9 @@
    * @todo On navigation event.persisted and type "back_forward" this needs to
    *   be re-executed.
    */
-  async function loadCart(noProductChange, checkout) {
+  async function loadCart(noProductChange, optionalCheckout) {
     const cartCookie = IIN.cookies.getCookieString('shopifyCart');
+    let checkout = optionalCheckout;
 
     cartTrackingPayload.ecommerce = {};
     cartTrackingPayload.ecommerce.items = [];

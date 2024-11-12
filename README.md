@@ -1,3 +1,5 @@
+# README
+
 ## Development Process
 
 Before your code is committed, several linting and formatting steps should take place. please run the following for each file or directory being modified:
@@ -7,8 +9,10 @@ Before your code is committed, several linting and formatting steps should take 
 - For either, run one of the above linters then run `npx prettier --write [path to file]`.
 - See scripts in `package.json` to run linting and formatting globally
 
-
-In the future we should add this as a [pre-merge-commit hook](https://git-scm.com/docs/githooks#_pre_merge_commit) for branch `develop`
+There is also an option to add this functionality via a pre-commit hook.  
+Run `npm run hook:install:pre-commit` to install a linting and formatting hook,
+and run `npm run hook:delete:pre-commit` to remove it.
+See the [hook script](./.github/hooks/pre-commit-fix) for more information.
 
 ### Development in Production
 

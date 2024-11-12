@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+updated_files=$(git diff --cached --name-only --diff-filter=ACMR)
+
+if test -z "$updated_files"; then
+  exit 0
+fi
+
+# Escape spaces in the file name
+escaped="${updated_files// /\\ }";
+
+# Disable exit on error then filter for CSS files
+set +e
+css=$(echo "$escaped" | grep "\.css")
+set -e
+
+if test -n "$css"; then
+  echo "$css" | xargs npx stylelint --fix --quiet --allow-empty-input
+  echo "$css" | xargs npx prettier --write --ignore-unknown --log-level error
+fi
+
+
+# Filter for JS files
+set +e
+js=$(echo "$escaped" | grep -E "\.m?js$")
+set -e
+
+if test -n "$js"; then
+  echo "$js" | xargs npx eslint --fix --quiet
+  echo "$js" | xargs npx prettier --write --ignore-unknown --log-level error
+fi
+
+# Filter for JSON
+set +e
+json=$(echo "$escaped" | grep "\.json")
+set -e
+
+if test -n "$json"; then
+  echo "$json" | xargs npx prettier --write --ignore-unknown --log-level error
+fi
+
+# # Update staged files with any new changes
+# # For more info: https://git-scm.com/docs/git-update-index
+git update-index --again
+exit 0

@@ -255,7 +255,10 @@
             '',
           ),
           item_name: course.title,
-          item_type: course.productType || 'NA',
+          item_type:
+            course.customAttributes.find((item) =>
+              item.key.includes('productType'),
+            ).value || 'NA',
           variant_id: course.variant?.id?.replace(
             'gid://shopify/ProductVariant/',
             '',
@@ -332,6 +335,9 @@
         lineItemsToAdd.push({
           variantId: matchedVariant.id,
           quantity: 1,
+          customAttributes: [
+            { key: 'productType', value: bundleProduct.productType },
+          ],
         });
       });
     } catch (e) {
@@ -409,6 +415,9 @@
         lineItem = {
           variantId: variant.id,
           quantity: 1,
+          customAttributes: [
+            { key: 'productType', value: product.productType },
+          ],
         };
       }
 
@@ -490,7 +499,10 @@
             course.title.includes(item.course_name),
           ).product_id,
           item_name: course.title,
-          item_type: course.productType || 'NA',
+          item_type:
+            course.customAttributes.find((item) =>
+              item.key.includes('productType'),
+            ).value || 'NA',
           variant_id: course.variant?.id?.replace(
             'gid://shopify/ProductVariant/',
             '',
