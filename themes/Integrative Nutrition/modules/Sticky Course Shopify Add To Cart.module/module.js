@@ -52,7 +52,13 @@
 
     const query = IIN.shopify.getHCTPQuery(productID);
     const result = await IINShopifyClient.graphQLClient.send(query);
-    const gql = result?.model?.products?.[0]
+    const gql = result?.model?.products?.[0];
+    
+    if (!gql) {
+      console.error(`Failed to find product for id: ${productID}`)
+      return;
+    }
+
     IIN.shopify.updateHCTPForV1(gql)
     log('gqlProduct', gql)
 
