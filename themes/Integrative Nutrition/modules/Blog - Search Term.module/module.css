@@ -295,6 +295,35 @@
   height: 160px;
 }
 
+.blog-search-term__pill-container {
+  display: block;
+  margin: var(--spacing-4) auto;
+  max-width: 500px;
+}
+
+.blog-search-term__pill {
+  position: relative;
+  margin: var(--spacing-1) var(--spacing-1);
+  border-radius: 20px;
+  background: var(--color--water--light) !important;
+  padding: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-4) !important;
+  text-align: left !important;
+  color: var(--color--water) !important;
+  font: var(--font--testimonial-name--desktop);
+}
+
+.blog-search-term__pill-container .blog-search-term__pill:hover {
+  color: var(--color--water) !important;
+}
+
+.blog-search-term__pill-delete {
+  position: relative;
+  background-image: var(--icon--x-pill);
+  background-position: 5px;
+  background-repeat: no-repeat;
+  padding: var(--spacing-4);
+}
+
 @media (max-width: 1023px) {
   .blog-search-term {
     flex-direction: column;

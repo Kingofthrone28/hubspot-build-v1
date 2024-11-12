@@ -12,9 +12,9 @@
 {# HTML #}
 <div class="blog-search-term {{ page_level }}">
   {% if module.blog_search_heading %}
-    <div class="blog-search-term__header">
-      <h1>{{ module.blog_search_heading }}</h1>
-    </div>
+  <div class="blog-search-term__header">
+    <h1>{{ module.blog_search_heading }}</h1>
+  </div>
   {% endif %}
   <div class="blog-search-term__wrapper">
     <form id="blog-search-term__form" class="blog-search-term__form">
@@ -25,18 +25,16 @@
         placeholder="{{ module.search_placeholder_text }}"
         value
       />
-      <button class="blog-search-term__button">
+      <button type="{{ button_type }}" class="blog-search-term__button">
         {{ module.blog_search_button_text }}
       </button>
-      <button
-        type="{{ button_type }}"
-        class="{{ results_class }}"
-      >
+      <button type="{{ button_type }}" class="{{ results_class }}">
         {{ module.blog_search_cancel_button_text }}
       </button>
     </form>
   </div>
 </div>
+<div class="blog-search-term__pill-container"></div>
 <div class="blog-search-term__menu {{ page_level }}">
   {{ get_blog_nav_menu(tag_menu) }}
 </div>
@@ -50,14 +48,15 @@
   </h2>
   {# Search Results total count are rendered client side #}
   <div class="blog-search-term__results-wrapper-count">
-     <span class="blog-search-term__results-count"></span> results
+    <span class="blog-search-term__results-count"></span>
+    <span class="blog-search-term__results-count-title"></span>
   </div>
   <div class="blog-search-term__no-results-box">
     <div class="blog-search-term__no-results-icon"></div>
     <div class="blog-search-term__no-results-text">
       <p>{{ module.no_results_message }}</p>
     </div>
- </div>
+  </div>
 </div>
 {% endif %}
 
