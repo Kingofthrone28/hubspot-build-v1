@@ -446,6 +446,7 @@
   }
 
   /**
+   * Get a Shopify meta-object by type
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
    * 
    * @returns 
@@ -472,8 +473,38 @@
       )
     );
 
-    return IINShopifyClient.graphQLClient.send(metaQ);
+    const result = await IINShopifyClient.graphQLClient.send(metaQ);
+    return result?.model?.metaobjects[0];
   }
+
+  /**
+   * Get a Shopify meta-object by id
+   * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
+   * @returns 
+   */
+  const getMetaObject = async () => {
+    const hctpMetaObjectID = 'gid://shopify/Metaobject/63623201066'
+    const metaQ = IINShopifyClient.graphQLClient.query((root) =>
+      root.add('metaobject',
+        {
+          args: {
+            id: hctpMetaObjectID
+          }
+        },
+        (objects) => {
+          objects.add('id')
+          objects.add('handle')
+          objects.add('fields', (fields) => {
+            fields.add('key')
+            fields.add('value')
+          })
+        }
+      )
+    );
+
+    const result = await IINShopifyClient.graphQLClient.send(metaQ);
+    return result?.model?.metaobject
+  };
 
   IIN.shopify = {
     addDiscountToCheckout,
@@ -497,5 +528,6 @@
     getHCTPQuery,
     updateHCTPForV1,
     getMostRecentHCTPMetaObjects,
+    getMetaObject,
   };
 })();

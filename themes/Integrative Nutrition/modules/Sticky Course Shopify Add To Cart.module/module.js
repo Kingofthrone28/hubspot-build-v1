@@ -79,12 +79,9 @@
     );
 
     createViewItemEvent(gql, firstVariant, moduleData);
-
    
-    const moResult = await IIN.shopify.getMostRecentHCTPMetaObjects()
+    const moResult = await IIN.shopify.getMetaObject()
     console.log('mo result', moResult)
-    const obj = moResult?.model?.metaobjects?.[0]
-    console.log('mo', obj)
   } catch (error) {
     console.error(error);
   }
