@@ -447,6 +447,7 @@
 
   /**
    * Get a Shopify meta-object by type
+   * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
    * 
    * @returns 
@@ -479,6 +480,7 @@
 
   /**
    * Get a Shopify meta-object by id
+   * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
    * @returns 
    */
