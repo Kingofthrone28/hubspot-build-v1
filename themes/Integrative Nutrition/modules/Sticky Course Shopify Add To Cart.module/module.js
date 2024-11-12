@@ -81,7 +81,7 @@
     createViewItemEvent(gql, firstVariant, moduleData);
 
 
-
+// https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
     try {
       // const metaQ = IINShopifyClient.graphQLClient.query((root) =>
       //   root.addConnection('metaobject', {
@@ -95,10 +95,15 @@
       // })
       // );
       const metaQ = IINShopifyClient.graphQLClient.query((root) =>
-        root.addConnection('metaobjects', { args: { type: 'hctp_data', first: 1 } },
+        root.addConnection('metaobjects', 
+          { args: { type: 'hctp_data', first: 1, sortKey: 'updatedAt', reverse: true } },
           (objects) => {
             objects.add('id')
-            // objects.add('12_month_desc')
+            objects.add('handle')
+            objects.add('fields', (fields) => {
+              fields.add('key')
+              fields.add('value')
+            })
           }
         )
       );
