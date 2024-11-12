@@ -378,7 +378,6 @@
       (metafield) => {
         metafield.add('key');
         metafield.add('value');
-        // metafield.add('hctp_data');
       }
     ];
 
