@@ -368,12 +368,17 @@
               key: '12_mo_desc',
               namespace: 'custom',
             },
+            {
+              key: 'option_descriptions',
+              namespace: 'custom',
+            },
           ],
         },
       },
       (metafield) => {
         metafield.add('key');
         metafield.add('value');
+        // metafield.add('hctp_data');
       }
     ];
 

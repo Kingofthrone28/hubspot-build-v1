@@ -53,7 +53,7 @@
     const query = IIN.shopify.getHCTPQuery(productID);
     const result = await IINShopifyClient.graphQLClient.send(query);
     const gql = result?.model?.products?.[0];
-    
+
     if (!gql) {
       console.error(`Failed to find product for id: ${productID}`)
       return;
@@ -79,6 +79,38 @@
     );
 
     createViewItemEvent(gql, firstVariant, moduleData);
+
+
+
+    try {
+      // const metaQ = IINShopifyClient.graphQLClient.query((root) =>
+      //   root.addConnection('metaobject', {
+      //     args: {
+      //       id: 'gid://shopify/Metaobject/63623201066',
+      //       type: 'hctp_data'
+      //     }
+      //   },
+      // (ob) => {
+      //   ob.addConnection('fields')
+      // })
+      // );
+      const metaQ = IINShopifyClient.graphQLClient.query((root) =>
+        root.addConnection('metaobjects', { args: { type: 'hctp_data', first: 1 } },
+          (objects) => {
+            objects.add('id')
+            // objects.add('12_month_desc')
+          }
+        )
+      );
+      console.log('meta q', metaQ)
+      const moResult = await IINShopifyClient.graphQLClient.send(metaQ);
+      console.log('mo result', moResult)
+      const obj = moResult?.model?.metaobjects?.[0]
+      console.log('mo', obj)
+    } catch (error) {
+      console.error(error);
+    }
+
   } catch (error) {
     console.error(error);
   }
