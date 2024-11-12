@@ -412,26 +412,23 @@
       }
     ];
 
-    const productConfig = [
-      'products',
-      {
-        args: {
-          first: 1,
-          query: `id:${id}`
-        }
-      },
-      (products) => {
-        products.add('title');
-        products.add('handle');
-        products.add('availableForSale');
-        products.add(...metaFieldConfig);
-        products.add(...optionsConfig)
-        products.addConnection(...variantConfig);
-      }
-    ];
-
     return IINShopifyClient.graphQLClient.query((root) =>
-      root.addConnection(...productConfig)
+      root.addConnection(
+        'products',
+        {
+          args: {
+            first: 1,
+            query: `id:${id}`
+          }
+        },
+        (products) => {
+          products.add('title');
+          products.add('handle');
+          products.add('availableForSale');
+          products.add(...metaFieldConfig);
+          products.add(...optionsConfig);
+          products.addConnection(...variantConfig);
+        })
     );
   };
 
