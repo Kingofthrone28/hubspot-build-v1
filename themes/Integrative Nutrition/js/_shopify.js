@@ -391,7 +391,7 @@
           option.add('name')
           option.add('value')
         })
-        variant.add('priceV2', (price) => {
+        variant.add('price', (price) => {
           price.add('amount');
           price.add('currencyCode')
         });
@@ -431,14 +431,16 @@
   };
 
   const updateHCTPForV1 = (product) => {
-    product.variants?.forEach(v => {
-      v.available = v.availableForSale;
-      if (v.priceV2) {
-        v.price = {};
-        ['amount', 'currencyCode'].forEach((key) => {
-          v.price[key] = v.priceV2[key];
-        })
+    const copyPropAvailable = (object) => {
+      if (object.hasOwnProperty('availableForSale') && !object.hasOwnProperty('available')) {
+        object.available = object.availableForSale;
       }
+    };
+
+    copyPropAvailable(product);
+
+    product.variants?.forEach(variant => {
+      copyPropAvailable(variant)
     });
   }
 
