@@ -80,29 +80,8 @@
 
     createViewItemEvent(gql, firstVariant, moduleData);
 
-    // https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
-    const metaQ = IINShopifyClient.graphQLClient.query((root) =>
-      root.addConnection('metaobjects',
-        {
-          args: {
-            type: 'hctp_data',
-            first: 1,
-            sortKey: 'updatedAt',
-            reverse: true,
-          }
-        },
-        (objects) => {
-          objects.add('id')
-          objects.add('handle')
-          objects.add('fields', (fields) => {
-            fields.add('key')
-            fields.add('value')
-          })
-        }
-      )
-    );
-    console.log('meta q', metaQ)
-    const moResult = await IINShopifyClient.graphQLClient.send(metaQ);
+   
+    const moResult = await IIN.shopify.getMostRecentHCTPMetaObjects()
     console.log('mo result', moResult)
     const obj = moResult?.model?.metaobjects?.[0]
     console.log('mo', obj)
