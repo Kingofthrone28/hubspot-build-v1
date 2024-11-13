@@ -55,11 +55,24 @@
     };
   };
 
+  const allResolved = async (promises) => {
+    return Promise.allSettled(promises).then(promises => {
+      return promises.reduce((results, { status, value }) => {
+        if (status === 'fulfilled') {
+          results.push(value)
+        }
+
+        return results;
+      }, [])
+    })
+  };
+
   /**
    * A collection of commonly used helper methods.
    * @namespace
    */
   IIN.helpers = {
+    allResolved,
     debounce,
     throttle,
     updateClasses,
