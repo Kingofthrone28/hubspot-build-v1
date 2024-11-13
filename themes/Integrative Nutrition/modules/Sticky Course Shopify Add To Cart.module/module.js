@@ -106,21 +106,15 @@
       const { forEach } = Array.prototype;
       const moduleElement = document.getElementById(`${name}`)
       const options = moduleElement.getElementsByClassName('jd-buy-option')
-
       forEach.call(options, (option) => {
         const optionName = option.dataset.optionName;
         const optionID = optionNameIDMap.get(optionName)
         const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
-
         if (!optionDescriptions) {
           return;
         }
 
-        const container = document.createElement('div')
-        container.classList.add('description-container')
-        option.appendChild(container)
         const inputs = option.querySelectorAll('input')
-
         forEach.call(inputs, (input, index) => {
           if (!input.getAttribute('checked')) {
             return;
@@ -130,7 +124,7 @@
           const paragraph = document.createElement('p')
           const text = document.createTextNode(description)
           paragraph.appendChild(text);
-          container.appendChild(paragraph)
+          option.appendChild(paragraph)
         })
       })
     };
