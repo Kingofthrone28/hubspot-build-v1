@@ -88,19 +88,22 @@
 
     // Process metaobjects
     const metaObjects = metaObjectResults.map(value => value?.model.metaobject)
-    const optionIDPairs = product.options.map(({ id, name }) => [name, id])
-    const optionNameIDMap = new Map(optionIDPairs)
-    const optionIDToDescriptionsMap = metaObjects.reduce((map, { fields }) => {
+    const optionIDNameTuple = product.options.map(({ id, name }) => [id, name])
+    const optionIDNameMap = new Map(optionIDNameTuple)
+    const optionNameToDescriptionsMap = metaObjects.reduce((map, { fields }) => {
       const combined = Object.fromEntries(fields.map(({ key, value }) => [key, value]))
       const id = combined.option_id;
+      const name = optionIDNameMap.get(id);
 
-      if (!map.has(id)) {
-        return map.set(id, [combined])
+      if (!map.has(name)) {
+        return map.set(name, [combined])
       }
 
-      map.get(id).push(combined)
+      map.get(name).push(combined)
       return map
     }, new Map())
+
+    console.log('new map', optionNameToDescriptionsMap)
 
     const addDescriptions = () => {
       const { forEach } = Array.prototype;
@@ -108,8 +111,7 @@
       const options = moduleElement.getElementsByClassName('jd-buy-option')
       forEach.call(options, (option) => {
         const optionName = option.dataset.optionName;
-        const optionID = optionNameIDMap.get(optionName)
-        const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
+        const optionDescriptions = optionNameToDescriptionsMap.get(optionName)
         if (!optionDescriptions) {
           return;
         }
@@ -122,6 +124,7 @@
 
           const { description } = optionDescriptions[index];
           const paragraph = document.createElement('p')
+          paragraph.classList.add('option-description')
           const text = document.createTextNode(description)
           paragraph.appendChild(text);
           option.appendChild(paragraph)
