@@ -47,6 +47,10 @@
   width: fit-content;
 }
 
+.blog-call-to-action__button-link.hs-button.jd-request-btn.jd-request-btn-inverse:hover {
+  background: var(--color--water--faded);
+}
+
 @media (max-width: 1023px) {
   .call-to-action__container {
     flex-direction: column;
