@@ -104,7 +104,6 @@
         const { name, values } = optionIDNameMap.get(id);
         const respectiveValue = values[index].value;
 
-
         if (!map.has(name)) {
           const optionMap = new Map();
           optionMap.set(respectiveValue, combined)
