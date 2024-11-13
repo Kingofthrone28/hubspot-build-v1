@@ -90,27 +90,33 @@
     // Process metaobjects
     const getOptionNameToDescriptionMap = (productOptions, metaObjectsData) => {
       const metaObjects = metaObjectsData.map(value => value?.model.metaobject)
-      const optionIDNameTuple = productOptions.map(({ id, name }) => [id, name])
+      const optionIDNameTuple = productOptions.map(({ id, name, values }) => {
+        return [id, { name, values }]
+      });
+
       const optionIDNameMap = new Map(optionIDNameTuple)
-      return metaObjects.reduce((map, { fields }) => {
+      return metaObjects.reduce((map, { fields }, index) => {
         const keyValueTuple = fields.map(({ key, value }) => [key, value])
         const combined = Object.fromEntries(keyValueTuple)
 
         // The `option_id` field must match the Shopify metaobject field
         const id = combined.option_id;
-        const name = optionIDNameMap.get(id);
+        const { name, values } = optionIDNameMap.get(id);
+        const respectiveValue = values[index].value;
+
 
         if (!map.has(name)) {
-          return map.set(name, [combined])
+          const optionMap = new Map();
+          optionMap.set(respectiveValue, combined)
+          return map.set(name, optionMap)
         }
 
-        map.get(name).push(combined)
+        map.get(name).set(respectiveValue, combined)
         return map
       }, new Map())
     };
 
     const optionNameToDescriptionsMap = getOptionNameToDescriptionMap(product.options, metaObjectResults)
-
     const addDescriptions = () => {
       const { forEach } = Array.prototype;
       const moduleElement = document.getElementById(`${name}`)
@@ -123,12 +129,12 @@
         }
 
         const inputs = option.querySelectorAll('input')
-        forEach.call(inputs, (input, index) => {
+        forEach.call(inputs, (input) => {
           if (!input.getAttribute('checked')) {
             return;
           }
 
-          const { description } = optionDescriptions[index];
+          const { description } = optionDescriptions.get(input.value);
           const paragraph = document.createElement('p')
           paragraph.classList.add('option-description')
           const text = document.createTextNode(description)
