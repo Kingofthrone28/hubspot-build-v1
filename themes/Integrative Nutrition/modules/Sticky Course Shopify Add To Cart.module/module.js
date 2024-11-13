@@ -30,6 +30,7 @@
       isHeaderOnly,
       isInlineAndHeader,
       isSampleClass,
+      name,
       productID,
       showInlineSection,
       useDynamicHeaderTrigger,
@@ -62,6 +63,10 @@
     IIN.shopify.updateHCTPForV1(product)
     log('gqlProduct', product)
 
+    const optionIDPairs = product.options.map(({ id, name }) => [name, id])
+    const optionNameIDMap = new Map(optionIDPairs)
+    console.log('option id map', optionNameIDMap)
+
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
     matchPDPBottomSectionToTop(optionsCount);
@@ -69,7 +74,7 @@
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
     const discountInfo = await calculateDiscounts(firstVariant);
-
+    
     handleSelectorChangeFull(
       moduleData,
       product,
@@ -79,13 +84,65 @@
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
-    // const hctpMetaObjectID = 'gid://shopify/Metaobject/63623201066'
-    const optionsDescriptions = product.metafields?.[3].value
-    const arr = JSON.parse(optionsDescriptions)
-    const promises = arr.map(IIN.shopify.getMetaObject)
 
-    const values = await IIN.helpers.allResolved(promises)
-    console.log('values', values)
+    const optionsDescriptions = product.metafields?.[3].value;
+    const metaObjectIDs = JSON.parse(optionsDescriptions)
+    const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject)
+    const metaObjectResults = await IIN.helpers.allResolved(metaObjectPromises)
+    const metaObjects = metaObjectResults.map(value => value?.model.metaobject)
+
+    console.log('metaObjects', metaObjects)
+
+    const optionIDToDescriptionsMap = metaObjects.reduce((map, { fields }) => {
+      const combined = Object.fromEntries(fields.map(({ key, value }) => [key, value]))
+      const id = combined.option_id;
+
+      if (!map.has(id)) {
+        return map.set(id, [combined])
+      }
+
+      map.get(id).push(combined)
+      return map
+    }, new Map())
+
+    console.log('combined', optionIDToDescriptionsMap)
+
+    // match and update
+    const moduleElement = document.getElementById(`${name}`)
+    console.log('ele', moduleElement)
+    const options = moduleElement.getElementsByClassName('jd-buy-option')
+    console.log('options', options)
+    const forEach = Array.prototype.forEach;
+
+    forEach.call(options, (option) => {
+      const optionName = option.firstChild.dataset.optionName;
+      const optionID = optionNameIDMap.get(optionName)
+      const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
+      if (!optionDescriptions) {
+        return;
+      }
+
+      console.log('optionDescriptions', optionDescriptions)
+
+      const container = document.createElement('div')
+      container.classList.add('description-container')
+      option.appendChild(container)
+      const inputs = option.querySelectorAll('input')
+
+      console.log('inputs', inputs)
+      forEach.call(inputs, (input, index) => {
+        const isChecked = input.getAttribute('checked')
+        if (!isChecked) {
+          return;
+        }
+
+        const { description } = optionDescriptions[index];
+        const paragraph = document.createElement('p')
+        const text = document.createTextNode(description)
+        paragraph.appendChild(text);
+        container.appendChild(paragraph)
+      })
+    })
   } catch (error) {
     console.error(error);
   }

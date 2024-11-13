@@ -416,10 +416,11 @@ const getProductSelectionMethods = () => {
    * @param {string} text selectable product option
    * @returns {HTMLDivElement}
    */
-  const createOptionLabel = (text) => {
+  const createOptionLabel = (prefix, key) => {
     const div = document.createElement('div');
     div.classList.add('jd-buy-option-label');
-    const labelText = document.createTextNode(text);
+    div.setAttribute('data-option-name', key)
+    const labelText = document.createTextNode(`${prefix}${key}`);
     div.appendChild(labelText);
     return div;
   };
@@ -682,7 +683,7 @@ const getProductSelectionMethods = () => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
       const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
-      const labelDiv = createOptionLabel(`${prefix}${key}`);
+      const labelDiv = createOptionLabel(prefix, key);
       optionDiv.appendChild(labelDiv);
       fragment.appendChild(optionDiv);
 
