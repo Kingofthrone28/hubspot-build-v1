@@ -103,8 +103,6 @@
       return map
     }, new Map())
 
-    console.log('new map', optionNameToDescriptionsMap)
-
     const addDescriptions = () => {
       const { forEach } = Array.prototype;
       const moduleElement = document.getElementById(`${name}`)
