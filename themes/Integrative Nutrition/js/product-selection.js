@@ -828,6 +828,7 @@ const getProductSelectionMethods = () => {
     selectedOptions,
     optionKeys,
     discountInfo,
+    addDescriptions,
   ) => {
     const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
@@ -877,6 +878,8 @@ const getProductSelectionMethods = () => {
       const parentDuplicate = optionsForm.cloneNode(true);
       pdpOptions.replaceChildren(parentDuplicate, getPDPOptions(discountInfo));
     }
+    
+    addDescriptions();
 
     // Option click checkbox
     const radioSelector = `.jd-shopify-option-wrap input[type=radio]`;
@@ -898,6 +901,7 @@ const getProductSelectionMethods = () => {
         selectedOptions,
         optionKeys,
         discountInfo,
+        addDescriptions,
       );
 
       const prefix = `.${parent}`;

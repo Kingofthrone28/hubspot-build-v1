@@ -15,8 +15,6 @@
     processProduct,
   } = getProductSelectionMethods();
 
-  const log = console.log;
-
   /** Fix header to the top of the page */
   const makeHeaderFixed = () => {
     document
@@ -61,11 +59,6 @@
     }
 
     IIN.shopify.updateHCTPForV1(product)
-    log('gqlProduct', product)
-
-    const optionIDPairs = product.options.map(({ id, name }) => [name, id])
-    const optionNameIDMap = new Map(optionIDPairs)
-    console.log('option id map', optionNameIDMap)
 
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
@@ -73,26 +66,30 @@
     const { productOptions, variantSelections } = processProduct(product);
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
-    const discountInfo = await calculateDiscounts(firstVariant);
-    
-    handleSelectorChangeFull(
-      moduleData,
-      product,
-      variantSelections,
-      productOptions,
-      discountInfo,
-    );
+    const discountInfoPromise = calculateDiscounts(firstVariant);
 
-    createViewItemEvent(product, firstVariant, moduleData);
-
+    // Parse Shopify metaobjects for option descriptions
     const optionsDescriptions = product.metafields?.[3].value;
     const metaObjectIDs = JSON.parse(optionsDescriptions)
     const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject)
-    const metaObjectResults = await IIN.helpers.allResolved(metaObjectPromises)
+
+    // Parallelize network requests
+    const requests = [
+      discountInfoPromise,
+      ...metaObjectPromises,
+    ];
+
+    const results = await Promise.allSettled(requests)
+    const unwrapped = results.map(({ status, value, reason }) => {
+      return status === 'fulfilled' ? value : reason
+    });
+
+    const [discountInfo, ...metaObjectResults] = unwrapped;
+
+    // Process metaobjects
     const metaObjects = metaObjectResults.map(value => value?.model.metaobject)
-
-    console.log('metaObjects', metaObjects)
-
+    const optionIDPairs = product.options.map(({ id, name }) => [name, id])
+    const optionNameIDMap = new Map(optionIDPairs)
     const optionIDToDescriptionsMap = metaObjects.reduce((map, { fields }) => {
       const combined = Object.fromEntries(fields.map(({ key, value }) => [key, value]))
       const id = combined.option_id;
@@ -105,44 +102,49 @@
       return map
     }, new Map())
 
-    console.log('combined', optionIDToDescriptionsMap)
+    const addDescriptions = () => {
+      const { forEach } = Array.prototype;
+      const moduleElement = document.getElementById(`${name}`)
+      const options = moduleElement.getElementsByClassName('jd-buy-option')
 
-    // match and update
-    const moduleElement = document.getElementById(`${name}`)
-    console.log('ele', moduleElement)
-    const options = moduleElement.getElementsByClassName('jd-buy-option')
-    console.log('options', options)
-    const forEach = Array.prototype.forEach;
+      forEach.call(options, (option) => {
+        const optionName = option.firstChild.dataset.optionName;
+        const optionID = optionNameIDMap.get(optionName)
+        const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
 
-    forEach.call(options, (option) => {
-      const optionName = option.firstChild.dataset.optionName;
-      const optionID = optionNameIDMap.get(optionName)
-      const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
-      if (!optionDescriptions) {
-        return;
-      }
-
-      console.log('optionDescriptions', optionDescriptions)
-
-      const container = document.createElement('div')
-      container.classList.add('description-container')
-      option.appendChild(container)
-      const inputs = option.querySelectorAll('input')
-
-      console.log('inputs', inputs)
-      forEach.call(inputs, (input, index) => {
-        const isChecked = input.getAttribute('checked')
-        if (!isChecked) {
+        if (!optionDescriptions) {
           return;
         }
 
-        const { description } = optionDescriptions[index];
-        const paragraph = document.createElement('p')
-        const text = document.createTextNode(description)
-        paragraph.appendChild(text);
-        container.appendChild(paragraph)
+        const container = document.createElement('div')
+        container.classList.add('description-container')
+        option.appendChild(container)
+        const inputs = option.querySelectorAll('input')
+
+        forEach.call(inputs, (input, index) => {
+          if (!input.getAttribute('checked')) {
+            return;
+          }
+
+          const { description } = optionDescriptions[index];
+          const paragraph = document.createElement('p')
+          const text = document.createTextNode(description)
+          paragraph.appendChild(text);
+          container.appendChild(paragraph)
+        })
       })
-    })
+    };
+
+    handleSelectorChangeFull(
+      moduleData,
+      product,
+      variantSelections,
+      productOptions,
+      discountInfo,
+      addDescriptions,
+    );
+
+    createViewItemEvent(product, firstVariant, moduleData);
   } catch (error) {
     console.error(error);
   }
