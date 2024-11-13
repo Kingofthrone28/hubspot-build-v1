@@ -52,6 +52,7 @@
     const query = IIN.shopify.getHCTPQuery(productID);
     const result = await IINShopifyClient.graphQLClient.send(query);
     const product = result?.model?.products?.[0];
+    console.log('product', product)
 
     if (!product) {
       console.error(`Failed to find product for id: ${productID}`)
@@ -87,21 +88,28 @@
     const [discountInfo, ...metaObjectResults] = unwrapped;
 
     // Process metaobjects
-    const metaObjects = metaObjectResults.map(value => value?.model.metaobject)
-    const optionIDNameTuple = product.options.map(({ id, name }) => [id, name])
-    const optionIDNameMap = new Map(optionIDNameTuple)
-    const optionNameToDescriptionsMap = metaObjects.reduce((map, { fields }) => {
-      const combined = Object.fromEntries(fields.map(({ key, value }) => [key, value]))
-      const id = combined.option_id;
-      const name = optionIDNameMap.get(id);
+    const getOptionNameToDescriptionMap = (productOptions, metaObjectsData) => {
+      const metaObjects = metaObjectsData.map(value => value?.model.metaobject)
+      const optionIDNameTuple = productOptions.map(({ id, name }) => [id, name])
+      const optionIDNameMap = new Map(optionIDNameTuple)
+      return metaObjects.reduce((map, { fields }) => {
+        const keyValueTuple = fields.map(({ key, value }) => [key, value])
+        const combined = Object.fromEntries(keyValueTuple)
 
-      if (!map.has(name)) {
-        return map.set(name, [combined])
-      }
+        // The `option_id` field must match the Shopify metaobject field
+        const id = combined.option_id;
+        const name = optionIDNameMap.get(id);
 
-      map.get(name).push(combined)
-      return map
-    }, new Map())
+        if (!map.has(name)) {
+          return map.set(name, [combined])
+        }
+
+        map.get(name).push(combined)
+        return map
+      }, new Map())
+    };
+
+    const optionNameToDescriptionsMap = getOptionNameToDescriptionMap(product.options, metaObjectResults)
 
     const addDescriptions = () => {
       const { forEach } = Array.prototype;
