@@ -372,6 +372,10 @@
               key: 'option_descriptions',
               namespace: 'custom',
             },
+            {
+              key: 'option_descriptions_list',
+              namespace: 'custom',
+            },
           ],
         },
       },
@@ -484,13 +488,13 @@
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
    * @returns 
    */
-  const getMetaObject = async () => {
-    const hctpMetaObjectID = 'gid://shopify/Metaobject/63623201066'
+  const getMetaObject = async (id) => {
+
     const metaQ = IINShopifyClient.graphQLClient.query((root) =>
       root.add('metaobject',
         {
           args: {
-            id: hctpMetaObjectID
+            id
           }
         },
         (object) => {
@@ -504,8 +508,10 @@
       )
     );
 
-    const result = await IINShopifyClient.graphQLClient.send(metaQ);
-    return result?.model?.metaobject
+    return IINShopifyClient.graphQLClient.send(metaQ);
+    // const result = await IINShopifyClient.graphQLClient.send(metaQ);
+    // console.log('metaobject', result)
+    // return result?.model?.metaobject
   };
 
   IIN.shopify = {
