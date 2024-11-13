@@ -108,7 +108,7 @@
       const options = moduleElement.getElementsByClassName('jd-buy-option')
 
       forEach.call(options, (option) => {
-        const optionName = option.firstChild.dataset.optionName;
+        const optionName = option.dataset.optionName;
         const optionID = optionNameIDMap.get(optionName)
         const optionDescriptions = optionIDToDescriptionsMap.get(optionID)
 
