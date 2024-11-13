@@ -669,16 +669,16 @@ const getProductSelectionMethods = () => {
 
   /**
    * Create the inputs for choosing the product options like language or start date
-   * @param {string[]} optionKeys
+   * @param {string[]} optionNames
    * @param {*} allOptions
    * @param {Object} selectedOptions
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
+  const createOptionNodes = (optionNames, allOptions, selectedOptions) => {
     const fragment = document.createDocumentFragment();
-    const hasMultipleOptions = optionKeys.length > 1;
+    const hasMultipleOptions = optionNames.length > 1;
 
-    optionKeys.forEach((key, index) => {
+    optionNames.forEach((key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
       optionDiv.dataset.optionName = key;
