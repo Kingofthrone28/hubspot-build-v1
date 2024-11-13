@@ -52,7 +52,6 @@
     const query = IIN.shopify.getHCTPQuery(productID);
     const result = await IINShopifyClient.graphQLClient.send(query);
     const product = result?.model?.products?.[0];
-    console.log('product', product)
 
     if (!product) {
       console.error(`Failed to find product for id: ${productID}`)
