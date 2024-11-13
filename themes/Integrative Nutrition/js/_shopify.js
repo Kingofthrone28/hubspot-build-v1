@@ -489,7 +489,6 @@
    * @returns 
    */
   const getMetaObject = async (id) => {
-
     const metaQ = IINShopifyClient.graphQLClient.query((root) =>
       root.add('metaobject',
         {
@@ -509,9 +508,6 @@
     );
 
     return IINShopifyClient.graphQLClient.send(metaQ);
-    // const result = await IINShopifyClient.graphQLClient.send(metaQ);
-    // console.log('metaobject', result)
-    // return result?.model?.metaobject
   };
 
   IIN.shopify = {
