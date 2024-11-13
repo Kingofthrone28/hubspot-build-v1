@@ -64,7 +64,7 @@
   display: flex;
   margin-top: 15px;
   border-radius: 8px;
-  background: var(--color--chalk);
+  background: var(--color--water--light);
   padding: 8px 16px;
   font: var(--font--legal);
 }

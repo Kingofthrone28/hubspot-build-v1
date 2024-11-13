@@ -11,3 +11,9 @@ private.key
 
 # HubSpot config file
 hubspot.config.yml
+
+# Developer temp files
+tmp-dev/
+
+# Files used during blog tag updates
+scripts/update-blog-tags/assets/

@@ -9,30 +9,39 @@
    * @type {HTMLElement|null}
    */
   const blockSelector = 'blog-search-term';
+  const contentNodes = document.querySelectorAll(
+    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search)',
+  );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
   const searchDelay = 500;
   const searchForm = document.getElementById(`${blockSelector}__form`);
   const searchInput = document.querySelector(`.${blockSelector}__input`);
   const searchKeystrokeLimit = 3;
-  const searchResultsButton = document.querySelector(
-    `.${blockSelector}__button`,
+  const searchResultsPill = document.querySelector(
+    `.${blockSelector}__pill-container`,
   );
-  const searchResultsCancelButton = document.querySelector(
-    `.${blockSelector}__cancel`,
-  );
-  const searchResultsCancelBackButton = document.querySelector(
+  const searchButton = document.querySelector(`.${blockSelector}__button`);
+  const cancelButton = document.querySelector(`.${blockSelector}__cancel`);
+  const cancelBackButton = document.querySelector(
     `.${blockSelector}__cancel-previous`,
   );
   const searchResultsCount = document.querySelector(
     `.${blockSelector}__results-count`,
   );
+  const searchResultsCountTitle = document.querySelector(
+    `.${blockSelector}__results-count-title`,
+  );
+  const searchTermResultsTitle = document.querySelector(
+    `.${blockSelector}__results-term`,
+  );
   const searchResultsViewMore = document.querySelector(
-    `.${blockSelector}__view-more`,
+    `.${blockSelector}__more.view-more`,
   );
   const searchResultsLoadPosts = document.querySelector(
-    `.${blockSelector}__load-results`,
+    `.${blockSelector}__more.load-results`,
   );
+
   const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
   const termContainer = document.querySelector(`.${blockSelector}`);
   const { updateClasses } = IIN.helpers;
@@ -48,13 +57,13 @@
    */
   const toggleSearchButtonVisibility = (searchTermValue) => {
     if (searchKeystrokeLimit <= searchTermValue.length) {
-      updateClasses(searchResultsButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(searchButton, 'add', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
     } else {
-      updateClasses(searchResultsButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
+      updateClasses(searchButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'add', ['visible']);
+      updateClasses(cancelBackButton, 'add', ['visible']);
     }
   };
 
@@ -67,12 +76,12 @@
       updateClasses(menuItems, 'add', ['hide']);
       updateClasses(searchWrapper, 'add', ['visible']);
       updateClasses(termContainer, 'add', ['visible']);
-      updateClasses(searchResultsCancelButton, 'add', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'add', ['visible']);
+      updateClasses(cancelButton, 'add', ['visible']);
+      updateClasses(cancelBackButton, 'add', ['visible']);
     }
     if (searchKeystrokeLimit <= searchTermValue.length) {
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
     }
   };
 
@@ -83,13 +92,14 @@
   const animateCancelSearchBar = () => {
     if (searchInput) {
       searchInput.value = '';
+      searchResultsPill.innerHTML = '';
       updateClasses(searchWrapper, 'remove', ['visible']);
       updateClasses(termContainer, 'remove', ['visible']);
       updateClasses(menuItems, 'remove', ['hide']);
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
-      updateClasses(searchResultsCancelBackButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
+      updateClasses(cancelBackButton, 'remove', ['visible']);
 
-      if (searchResultsCancelBackButton) {
+      if (cancelBackButton) {
         window.history.back();
       }
     }
@@ -157,6 +167,11 @@
     `;
   };
 
+  /**
+   * Appends view more results.
+   * @param {Object[]} [results=[]] - An array of search result objects.
+   * @returns {void}
+   */
   const appendViewMoreResults = (results = []) => {
     let row = '';
     const newResults = filterNewResults(results);
@@ -168,6 +183,11 @@
     }
   };
 
+  /**
+   * Generates search results HTML.
+   * @param {Object[]} [results=[]] - An array of search result objects.
+   * @returns {string}
+   */
   const getSearchHtml = (results = []) => {
     let html = '';
     results.forEach((result) => {
@@ -176,21 +196,44 @@
     return html;
   };
 
+  const isSpaceOnly = (event) => event.data === ' ';
+  const isBackward = (event) => event.inputType === 'deleteContentBackward';
+
+  /**
+   * Hides content when preview search results are visible.
+   */
+  const hideContent = () => {
+    contentNodes.forEach((node) => {
+      node.classList.add('hidden');
+    });
+  };
+
+  /**
+   * Shows content when preview search results are hidden.
+   */
+  const showContent = () => {
+    contentNodes.forEach((node) => {
+      node.classList.remove('hidden');
+    });
+  };
+
   /**
    * Resets the body content by clearing listing wrapper and deactivating classes.
    */
   const resetBodyContent = () => {
     listingWrapper.innerHTML = '';
+    searchResultsPill.innerHTML = '';
     console.log('Search results cleared');
     if (listingWrapper && searchResultsViewMore) {
       updateClasses(searchResultsViewMore, 'remove', ['visible']);
     }
     updateClasses(searchResultsLoadPosts, 'remove', ['visible']);
+    showContent();
   };
 
   /**
    * Handle escape key press to reset content.
-   * triggers when the search input is focused.
+   * Triggers when the search input is focused.
    * @param {KeyboardEvent} event
    */
   const handleEscape = (event) => {
@@ -229,8 +272,11 @@
     }
   };
 
-  /** Generalized function to fetch data from the API
-   * @param {Object} result - The result object containing the URL.
+  /**
+   * Generalized function to fetch data from the API
+   * @param {string} searchTerm
+   * @param {number} [offset=0]
+   * @param {number} [limit=6]
    * @returns {Promise<Object|null>} The content of the post, or null if an error occurs.
    */
   const fetchDataFromAPI = async (searchTerm, offset = 0, limit = 6) => {
@@ -312,25 +358,35 @@
       listingWrapper.innerHTML = getSearchHtml(
         results.slice(0, searchQueryOffset),
       );
+
       if (searchResultsViewMore) {
-        updateClasses(searchResultsViewMore, 'add', ['visible']);
+        updateClasses(searchResultsViewMore ?? searchResultsLoadPosts, 'add', [
+          'visible',
+        ]);
       } else {
         updateClasses(searchResultsLoadPosts, 'add', ['visible']);
       }
     }
 
-    // Populate read times for each post
+    // Populate read times for each post. This is an unawaited async function.
     populateReadTimes(results);
 
     // Update the search results count or clear it if the search input is empty
     if (searchResultsCount) {
       searchResultsCount.textContent = total || '0';
+      searchResultsCountTitle.innerHTML =
+        searchResultsCount?.textContent === '1' ? 'result' : 'results';
     }
 
+    hideContent();
     document.addEventListener('keydown', handleEscape);
     searchInput?.addEventListener('input', handleExit);
   };
 
+  /**
+   * Handles search results loading.
+   * @returns {Promise<void>}
+   */
   const handleSearchResultsLoadPosts = async () => {
     const searchTermValue = searchInput.value.trim();
     try {
@@ -376,7 +432,13 @@
   const fetchSearchResults = async (searchTermValue, numberOfItems = 0) => {
     try {
       const data = await fetchDataFromAPI(searchTermValue, numberOfItems);
-      const searchTermValueMatch = data.searchTerm;
+
+      if (!data || !data.results) {
+        console.warn('No results or data is null');
+        return;
+      }
+
+      const searchTermValueMatch = data?.searchTerm;
 
       if (data?.results) {
         getSearchPosts(data.results, data.total);
@@ -393,64 +455,6 @@
   };
 
   /**
-   * Redirects the user to the search results page with the provided term.
-   * @param {string} term - The search term.
-   */
-  const redirectToSearchResults = (term) => {
-    const newUrl = `/search-results?query=${encodeURIComponent(term)}`;
-    window.location.href = newUrl;
-  };
-
-  /**
-   * Executes the search results pagevfunctionality
-   */
-  const getAllSearchResults = () => {
-    const isSearchResultsPage =
-      window.location.pathname.includes('/search-results');
-
-    const getSearchTermFromURL = () => {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('query');
-    };
-
-    const getSearchTermValue = (searchTermValue) => {
-      if (searchTermValue) {
-        redirectToSearchResults(searchTermValue);
-      }
-    };
-
-    if (isSearchResultsPage) {
-      const searchTermUrlValue = getSearchTermFromURL();
-      const searchTermResultsTitle = document.querySelector(
-        `.${blockSelector}__results-term`,
-      );
-      if (searchTermUrlValue && searchTermResultsTitle) {
-        searchInput.value = decodeURIComponent(searchTermUrlValue);
-        searchTermResultsTitle.innerHTML = `"${searchTermUrlValue}"`;
-        searchInput?.addEventListener('input', (event) => {
-          searchTermResultsTitle.innerHTML = `"${event.target.value}"`;
-        });
-
-        animateExpandSearchBar();
-        searchInput.focus();
-        fetchSearchResults(searchTermUrlValue);
-      }
-    }
-
-    // Submit button redirect to search results page with term value
-    searchForm?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      getSearchTermValue(searchInput.value.trim());
-    });
-
-    // View more button redirect to search results page with term value
-    searchResultsViewMore?.addEventListener('click', (event) => {
-      event.preventDefault();
-      getSearchTermValue(searchInput.value.trim());
-    });
-  };
-
-  /**
    * Updates the search result message based on the number of results.
    */
   const updateSearchResultMessage = () => {
@@ -460,6 +464,7 @@
     const searchNoResultsBox = document.querySelector(
       `.${blockSelector}__no-results-box`,
     );
+    const delay = 200;
 
     // Check if elements exist
     if (!searchTitleNoResults || !searchNoResultsBox) {
@@ -475,19 +480,162 @@
     // Update the message in the results title
     searchTitleNoResults.innerText = message;
 
+    console.log('MESSAGE', message);
+
     // Toggle visibility of the no-results box and view more based on search results
     updateClasses(searchNoResultsBox, noResults ? 'add' : 'remove', [
       'visible',
     ]);
-    updateClasses(searchResultsLoadPosts, noResults ? 'remove' : 'add', [
-      'visible',
-    ]);
+
+    // there's some timing issue between noResults and updateClasses utility
+    // runs to wait for availability to remove visible
+    setTimeout(() => {
+      if (searchResultsLoadPosts) {
+        updateClasses(searchResultsLoadPosts, noResults ? 'remove' : 'add', [
+          'visible',
+        ]);
+      }
+    }, delay);
+  };
+
+  // Function to update search results title based on remaining terms
+  const updateSearchTermResultsTitle = (terms) => {
+    // Join remaining terms with spaces or commas as needed
+    searchTermResultsTitle.textContent = `"${terms.join(' ')}"`;
+  };
+
+  const removeSearchPill = async (term) => {
+    const pill = document.querySelectorAll(`.${blockSelector}__pill`);
+    const terms = searchInput.value.trim().split(/\s+/);
+    const filterTerms = terms.filter((word) => word !== term);
+    searchInput.value = filterTerms.join(' ');
+
+    let pillRemoved = false;
+
+    try {
+      const pillItem = Array.from(pill).find((item) => item.innerText === term);
+      if (pillItem) {
+        pillItem.remove();
+        pillRemoved = true;
+      }
+
+      // Ensure the cancel button does not receive the .visible class
+      updateClasses(cancelButton, 'remove', ['visible']);
+      toggleSearchButtonVisibility(terms);
+
+      // Fetch and update search results based on the updated input value only if a pill was removed
+      if (pillRemoved) {
+        await fetchSearchResults(filterTerms.join(' '), searchQueryOffset);
+      }
+
+      if (
+        filterTerms[0] === '' ||
+        (!filterTerms.length && searchResultsCount)
+      ) {
+        searchResultsCount.textContent = '0';
+        searchTermResultsTitle.textContent = '""';
+        updateSearchResultMessage();
+      }
+      updateSearchTermResultsTitle(filterTerms);
+    } catch (error){
+      console.error('Error in removeSearchPill:', error);
+    }
+  };
+
+  const createSearchPill = (terms) => {
+    // Clear the container to avoid duplicate pills
+    searchResultsPill.innerHTML = '';
+
+    terms.forEach((term) => {
+      const pill = document.createElement('button');
+      const pillDelete = document.createElement('span');
+      updateClasses(pill, 'add', [`${blockSelector}__pill`]);
+      updateClasses(pillDelete, 'add', [`${blockSelector}__pill-delete`]);
+      pill.innerText = term;
+
+      pill.onclick = () => removeSearchPill(term);
+
+      pill.appendChild(pillDelete);
+      searchResultsPill.appendChild(pill);
+    });
+  };
+
+  // Call  with terms from the query parameter on page load
+  const loadPillsFromQuery = () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('query');
+    if (query) {
+      const terms = query.split(' ');
+      createSearchPill(terms);
+    }
+  };
+
+  /**
+   * Redirects the user to the search results page with the provided term.
+   * @param {string} term - The search term.
+   */
+  const redirectToSearchResults = (term) => {
+    const newUrl = `/search-results?query=${encodeURIComponent(term)}`;
+    window.location.href = newUrl;
+  };
+
+  /**
+   * Executes the search results pagevfunctionality
+   */
+  const getAllSearchResults = async () => {
+    const isSearchResultsPage =
+      window.location.pathname.includes('/search-results');
+
+    const getSearchTermFromURL = () => {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('query');
+    };
+
+    const getSearchTermValue = (searchTermValue) => {
+      if (searchTermValue) {
+        redirectToSearchResults(searchTermValue);
+      }
+    };
+
+    try {
+      const searchTermUrlValue = getSearchTermFromURL();
+      if (isSearchResultsPage && searchTermUrlValue) {
+        const terms = decodeURIComponent(searchTermUrlValue).split(/\s+/);
+        const joinTerms = terms.join(' ');
+
+        searchInput.value = joinTerms;
+        searchTermResultsTitle.innerHTML = `"${joinTerms}"`;
+        createSearchPill(terms);
+        await fetchSearchResults(joinTerms);
+        searchInput?.addEventListener('input', (event) => {
+          searchTermResultsTitle.innerHTML = `"${event.target.value}"`;
+        });
+
+        animateExpandSearchBar();
+        searchInput.focus();
+        await fetchSearchResults(searchTermUrlValue);
+      }
+
+      // Submit button redirect to search results page with term value
+      searchForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        getSearchTermValue(searchInput.value.trim());
+      });
+
+      // View more button redirect to search results page with term value
+      searchResultsViewMore?.addEventListener('click', (event) => {
+        event.preventDefault();
+        getSearchTermValue(searchInput.value.trim());
+      });
+    } catch (error) {
+      console.error('Error in getAllSearchResults:', error);
+    }
   };
 
   /**
    * Executes the teaser search functionality
    */
-  const runSearch = async () => {
+  const runSearch = IIN.helpers.debounce(async () => {
     const searchTermValue = searchInput.value.trim();
 
     if (!searchTermValue && searchResultsCount) {
@@ -500,28 +648,31 @@
       try {
         await fetchSearchResults(searchTermValue, searchQueryOffset);
         updateSearchResultMessage();
+        createSearchPill(searchInput.value.split(/\s+/));
       } catch (error) {
-        console.error('Error fetching search results:', error);
+        console.error('Error in runSearch:', error);
       }
     }
-  };
+  }, searchDelay);
 
-  searchInput?.addEventListener('input', (event) =>
-    toggleSearchButtonVisibility(event.target.value.trim()),
-  );
-  [searchResultsCancelBackButton, searchResultsCancelButton].forEach(
-    (button) => {
+  window.onload = () => {
+    searchInput?.addEventListener('input', (event) =>
+      toggleSearchButtonVisibility(event.target.value.trim()),
+    );
+    [cancelButton, cancelBackButton].forEach((button) => {
       button?.addEventListener('click', animateCancelSearchBar);
-    },
-  );
-  searchResultsLoadPosts?.addEventListener(
-    'click',
-    handleSearchResultsLoadPosts,
-  );
-  searchInput?.addEventListener('focus', animateExpandSearchBar);
-  searchInput?.addEventListener(
-    'input',
-    IIN.helpers.debounce(runSearch, searchDelay),
-  );
-  getAllSearchResults();
+    });
+    searchResultsLoadPosts?.addEventListener(
+      'click',
+      handleSearchResultsLoadPosts,
+    );
+    searchInput?.addEventListener('focus', animateExpandSearchBar);
+    searchInput?.addEventListener('input', (event) => {
+      if (!isSpaceOnly(event) && !isBackward(event)) {
+        runSearch();
+      }
+    });
+    loadPillsFromQuery();
+    getAllSearchResults();
+  };
 })();

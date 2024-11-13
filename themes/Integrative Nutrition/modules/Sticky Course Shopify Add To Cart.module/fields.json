@@ -248,6 +248,16 @@
         "step": 60,
         "type": "datetime",
         "default": 1718942400000
+      },
+      {
+        "name": "use_chalk",
+        "label": "Use Chalk for Background Color",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": false
       }
     ],
     "tab": "CONTENT",

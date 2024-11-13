@@ -114,12 +114,12 @@
         {{ module.affirm_line }}
       </div>
 
-      {% set codeObj = { val: '' } %}
+      {% set codeObj = { val: '', use_chalk: false } %}
       {% for code in module.code_offers %}
         {% set is_after_start = unixtimestamp(local_dt) >= unixtimestamp(code.start_time) %}
         {% set is_before_end = unixtimestamp(local_dt) < unixtimestamp(code.end_time) %}
         {% if is_after_start && is_before_end %}
-          {% do codeObj.update({ val: code.text_field }) %}
+          {% do codeObj.update({ val: code.text_field, use_chalk: code.use_chalk }) %}
         {% endif %}
       {% endfor %}
 
@@ -275,6 +275,12 @@
   .pdp-top-slide-img {
     padding-top: {{ module.slide_image_height }};
   }
+
+  {% if codeObj.use_chalk %}
+   .pdp-code {
+      background-color: var(--color--chalk);
+    }
+  {% endif %}
   {% end_scope_css %}
 </style>
 {% end_require_css %}

@@ -209,5 +209,13 @@
     "show_emoji_picker": false,
     "type": "text",
     "default": "https://23273748.hs-sites.com/our-approach-to-nutrition-0-0-0"
+  },
+  {
+    "type": "text",
+    "id": "36e89cfa-8274-14e6-9fb0-415faf23703b",
+    "validation_regex": "",
+    "label": "Data Tracking",
+    "name": "dl_label",
+    "default": "body_cta_get_started"
   }
 ]
