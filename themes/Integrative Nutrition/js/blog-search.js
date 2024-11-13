@@ -520,7 +520,7 @@
       }
 
       // Ensure the cancel button does not receive the .visible class
-      updateClasses(searchResultsCancelButton, 'remove', ['visible']);
+      updateClasses(cancelButton, 'remove', ['visible']);
       toggleSearchButtonVisibility(terms);
 
       // Fetch and update search results based on the updated input value only if a pill was removed
@@ -537,7 +537,7 @@
         updateSearchResultMessage();
       }
       updateSearchTermResultsTitle(filterTerms);
-    } catch {
+    } catch (error){
       console.error('Error in removeSearchPill:', error);
     }
   };
