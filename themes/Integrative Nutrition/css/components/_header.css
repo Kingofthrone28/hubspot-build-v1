@@ -1326,26 +1326,6 @@ a svg {
   margin-right: 0;
 }
 
-.button-true .mb-main-nav .hs-menu-depth-1:nth-last-child(1) a {
-  border: var(--theme--buttons--border);
-  border-radius: var(--theme--buttons--border-radius);
-  background: var(--theme--buttons--background-color);
-  {% if theme.buttons.gr_color.color %}
-    box-shadow: var(--theme--buttons--hover-color) 0 0 10px -10px inset;
-  {% endif %}
-  padding: 7px 25px;
-  color: var(--theme--buttons--text-color) !important;
-  font-family: var(--theme--global-fonts--secondary-font);
-  font-size: var(--font-size--legacy--8);
-}
-
-.button-true .mb-main-nav .hs-menu-depth-1:nth-last-child(1) a:hover {
-  {% if theme.buttons.gr_color.color %}
-    box-shadow: var(--theme--buttons--hover-color) 300px 0 10px -10px inset;
-  {% endif %}
-  color: var(--theme--buttons--text-color) !important;
-}
-
 .dnd_header img {
   display: block;
 }

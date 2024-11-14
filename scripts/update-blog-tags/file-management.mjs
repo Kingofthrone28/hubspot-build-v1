@@ -1,4 +1,3 @@
-/* eslint-disable compat/compat */
 import { readFile, writeFile } from 'node:fs/promises';
 import { isMapType } from '../utils/data.mjs';
 

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "a2578cd8-510d-89fd-e3d9-6e0eecf3ac8f",
+    "name": "image",
+    "display_width": null,
+    "label": "image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "https://47085502.fs1.hubspotusercontent-na1.net/hubfs/47085502/Imported%20sitepage%20images/group_1587_1.jpg%3Fitok=kFe1CxMu.jpg",
+      "alt": "Woman Typing On Laptop",
+      "loading": "lazy",
+      "width": 768,
+      "height": 544,
+      "max_width": 768,
+      "max_height": 544
+    }
+  },
+  {
+    "id": "8d0583bd-631c-10e3-de23-b51769d99327",
+    "name": "heading",
+    "display_width": null,
+    "label": "Heading",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Explore IIN and Chopra Courses "
+  },
+  {
+    "id": "55ba58bb-910f-b092-3098-47f7b0130002",
+    "name": "subheading",
+    "display_width": null,
+    "label": "Subheading",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "Rorem ipsum dolor sit amet, "
+  },
+  {
+    "id": "25421b90-7ab4-0a14-3fa2-041f4173baa7",
+    "name": "button_link_text",
+    "display_width": null,
+    "label": "Button Link Text",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "visibility": {
+      "controlling_field": null,
+      "controlling_field_path": "show_button_link",
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": "View All Health & Wellness Courses"
+  },
+  {
+    "id": "20d97d4b-b4c4-fb74-8d86-32391c0d5643",
+    "name": "button_link",
+    "display_width": null,
+    "label": "Button Link",
+    "required": false,
+    "locked": false,
+    "visibility": {
+      "controlling_field": null,
+      "controlling_field_path": "show_button_link",
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "supported_types": ["EXTERNAL", "CONTENT", "BLOG"],
+    "type": "url",
+    "default": {
+      "content_id": 178080033819,
+      "href": null,
+      "type": "CONTENT"
+    }
+  },
+  {
+    "id": "96ff0ca8-e17c-8a7f-141f-dce3c0320b4e",
+    "name": "show_button_link",
+    "display_width": null,
+    "label": "Show Button Link",
+    "required": false,
+    "locked": false,
+    "display": "toggle",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "9cd10cb1-20f5-ae76-ec23-8f7a567bd8ea",
+    "name": "background_color",
+    "display_width": null,
+    "label": "Background_color",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["--color--water", "Water"],
+      ["--color--water--light", "Light Water"],
+      ["--color--chalk", "Chalk"],
+      ["--color--melon--light", "Light Melon"],
+      ["--color--lilac--light", "Light Lilac"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "--color--water"
+  },
+  {
+    "id": "0472ae94-8c90-0d27-1a41-fa6e70ad3c09",
+    "name": "description",
+    "display_width": null,
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.",
+    "enabled_features": [
+      "advanced_emphasis",
+      "anchor",
+      "indents",
+      "link",
+      "lists",
+      "standard_emphasis"
+    ]
+  },
+  {
+    "id": "1e5d83eb-5a04-a047-5003-f49d28e5ece9",
+    "name": "text_color",
+    "display_width": null,
+    "label": "Text Color",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [
+      ["--color--white", "Light"],
+      ["--color--slate", "Dark"]
+    ],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "--color--white"
+  }
+]

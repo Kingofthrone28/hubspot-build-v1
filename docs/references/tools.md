@@ -11,8 +11,12 @@ A list of useful developer tools, local and web based.
 
 ### ESLint
 
+Note that we are currently on eslint v8 and the docs default to v9!
+As of now, there is a version selector in the top left.
+The link below targets v8.
+
 - [Homepage](https://eslint.org)
-- [Configuration](https://eslint.org/docs/latest/use/configure/)
+- [Configuration](https://eslint.org/docs/v8.x/use/configure/)
 - [Repository](https://github.com/eslint/eslint)
 
 ### Hubspot CLI
@@ -22,11 +26,16 @@ A list of useful developer tools, local and web based.
 
 ### Prettier
 
+"An opinionated code formatter...
+It removes all original styling and ensures that all outputted code conforms to a consistent style."
+
 - [Homepage](https://prettier.io/)
 - [Configuration](https://prettier.io/docs/en/options)
 - [Repository](https://github.com/prettier/prettier)
 
 ### Stylelint
+
+"A mighty CSS linter that helps you avoid errors and enforce conventions."
 
 - [Homepage](https://stylelint.io/)
 - [Configuration](https://stylelint.io/user-guide/configure)
@@ -59,3 +68,9 @@ A list of useful developer tools, local and web based.
 - [Standard Ipsum](https://www.lipsum.com/)
 - [Hipster Ipsum](https://hipsum.co/)
 - [Bacon Ipsum](https://baconipsum.com/)
+
+### ExplainShell
+
+Understand shell commands.
+
+[ExplainShell](https://explainshell.com)
