@@ -28,7 +28,6 @@
       isHeaderOnly,
       isInlineAndHeader,
       isSampleClass,
-      name,
       productID,
       showInlineSection,
       useDynamicHeaderTrigger,
