@@ -354,6 +354,11 @@
    */
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
+  /**
+   * Call Shopify GraphQL for product information
+   * @param {string} id Shopify (non-global) ID
+   * @returns {Promise<Object>}
+   */
   const sendProductQuery = (id) => {
     const metaFieldConfig = [
       'metafields',
@@ -361,19 +366,7 @@
         args: {
           identifiers: [
             {
-              key: '6_mo_desc',
-              namespace: 'custom',
-            },
-            {
-              key: '12_mo_desc',
-              namespace: 'custom',
-            },
-            {
-              key: 'option_descriptions',
-              namespace: 'custom',
-            },
-            {
-              key: 'option_descriptions_list',
+              key: 'options_info_list',
               namespace: 'custom',
             },
           ],
@@ -437,6 +430,14 @@
     return IINShopifyClient.graphQLClient.send(query);
   };
 
+  /**
+   * Get Options Information List
+   * This must match the index of the sendProductQuery metafields identifier list
+   * @param {Object[]} metafields All product metafields
+   * @returns {{key: string, value: Object}} The Options Information List metaobject
+   */
+  const getOptionsInfo = (metafields) => metafields?.[0];
+
   const updateHCTPForV1 = (product) => {
     const copyPropAvailable = (object) => {
       if (object.hasOwnProperty('availableForSale') && !object.hasOwnProperty('available')) {
@@ -499,5 +500,6 @@
     sendProductQuery,
     updateHCTPForV1,
     getMetaObject,
+    getOptionsInfo,
   };
 })();

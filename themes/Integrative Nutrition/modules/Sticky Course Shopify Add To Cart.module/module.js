@@ -68,8 +68,8 @@
     const discountInfoPromise = calculateDiscounts(firstVariant);
 
     // Parse Shopify metaobjects for option descriptions
-    const optionsDescriptions = product.metafields?.[3].value;
-    const metaObjectIDs = JSON.parse(optionsDescriptions)
+    const { value: metaObjectIDsString } = IIN.shopify.getOptionsInfo(product.metafields)
+    const metaObjectIDs = JSON.parse(metaObjectIDsString)
     const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject)
 
     // Parallelize network requests
