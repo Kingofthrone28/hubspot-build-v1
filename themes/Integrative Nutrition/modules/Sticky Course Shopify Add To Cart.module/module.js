@@ -88,6 +88,11 @@
 
     // Process metaobjects
     const getDescriptionsByOptionName = (productOptions, metaObjects) => {
+      if (productOptions.length !== metaObjects.length) {
+        console.error(`Mismatch in options (${productOptions.length}) and metadata (${metaObjects.length}).`)
+        return;
+      }
+      
       const optionIDNameTuple = productOptions.map(({ id, name, values }) => {
         return [id, { name, values }]
       });
@@ -114,7 +119,7 @@
     };
 
     const descriptionsByOptionName = getDescriptionsByOptionName(
-      product.options, 
+      product.options,
       metaObjectResults.map(value => value?.model.metaobject)
     );
 

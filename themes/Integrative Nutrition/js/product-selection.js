@@ -714,7 +714,7 @@ const getProductSelectionMethods = () => {
         optionWrap.appendChild(pair);
       });
 
-      if (!descriptionsByName.has(key)) {
+      if (!(descriptionsByName && !descriptionsByName.has(key))) {
         return
       }
 
