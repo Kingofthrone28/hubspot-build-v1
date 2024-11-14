@@ -24,3 +24,9 @@
   display: flex;
   justify-content: center;
 }
+
+.selected-value-description {
+  font: var(--font--legal--explainer);
+  font-style: italic;
+  color: var(--color--slate)
+}
