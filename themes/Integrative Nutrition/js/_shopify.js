@@ -434,7 +434,7 @@
    * Get Options Information List
    * This must match the index of the sendProductQuery metafields identifier list
    * @param {Object[]} metafields All product metafields
-   * @returns {{key: string, value: Object}} The Options Information List metaobject
+   * @returns {{key, value}} The Options Information List metaobject
    */
   const getOptionsInfo = (metafields) => metafields?.[0];
 
