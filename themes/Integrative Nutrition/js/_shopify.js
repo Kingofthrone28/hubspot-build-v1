@@ -446,9 +446,7 @@
 
     copyPropAvailable(product);
 
-    product.variants?.forEach(variant => {
-      copyPropAvailable(variant)
-    });
+    product.variants?.forEach(copyPropAvailable);
   }
 
   /**
