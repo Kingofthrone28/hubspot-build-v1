@@ -487,6 +487,7 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
+
     // async fire and forget
     localizeOptionLabel(label, value);
     div.append(input, label);
@@ -690,7 +691,7 @@ const getProductSelectionMethods = () => {
    * @param {Object} selectedOptions
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionNames, allOptions, selectedOptions) => {
+  const createOptionNodes = (optionNames, allOptions, selectedOptions, optionNameToDescriptionsMap) => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionNames.length > 1;
 
@@ -712,6 +713,23 @@ const getProductSelectionMethods = () => {
         const pair = createInputPair(key, value, selectedOptions, true);
         optionWrap.appendChild(pair);
       });
+
+      if (!optionNameToDescriptionsMap.has(key)) {
+        return
+      }
+
+      const descriptionMap = optionNameToDescriptionsMap.get(key);
+      const inputs = optionWrap.querySelectorAll('input')
+      const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
+      const optionValue = checked.value;
+      if (descriptionMap.has(optionValue)) {
+        const { description } = descriptionMap.get(optionValue)
+        const paragraph = document.createElement('p')
+        paragraph.classList.add('option-description')
+        const text = document.createTextNode(description)
+        paragraph.appendChild(text);
+        optionDiv.appendChild(paragraph)
+      }
     });
 
     return fragment;
@@ -844,7 +862,7 @@ const getProductSelectionMethods = () => {
     selectedOptions,
     optionKeys,
     discountInfo,
-    addDescriptions,
+    optionNameToDescriptionsMap,
   ) => {
     const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
@@ -870,7 +888,7 @@ const getProductSelectionMethods = () => {
     // Not showing options if there is only 1 default field
     if (!isDefaultTitle) {
       optionsForm.appendChild(
-        createOptionNodes(optionKeys, options, selectedOptions),
+        createOptionNodes(optionKeys, options, selectedOptions, optionNameToDescriptionsMap),
       );
     }
 
@@ -894,8 +912,6 @@ const getProductSelectionMethods = () => {
       const parentDuplicate = optionsForm.cloneNode(true);
       pdpOptions.replaceChildren(parentDuplicate, getPDPOptions(discountInfo));
     }
-    
-    addDescriptions();
 
     // Option click checkbox
     const radioSelector = `.jd-shopify-option-wrap input[type=radio]`;
@@ -917,7 +933,7 @@ const getProductSelectionMethods = () => {
         selectedOptions,
         optionKeys,
         discountInfo,
-        addDescriptions,
+        optionNameToDescriptionsMap,
       );
 
       const prefix = `.${parent}`;

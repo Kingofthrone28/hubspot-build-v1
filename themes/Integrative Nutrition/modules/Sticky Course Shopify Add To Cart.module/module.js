@@ -51,7 +51,7 @@
 
     const query = IIN.shopify.getHCTPQuery(productID);
     const result = await IINShopifyClient.graphQLClient.send(query);
-    const product = result?.model?.products?.[0];
+    const product = result.model?.products?.[0];
 
     if (!product) {
       console.error(`Failed to find product for id: ${productID}`)
@@ -84,7 +84,7 @@
       return status === 'fulfilled' ? value : reason
     });
 
-    const [discountInfo, ...metaObjectResults] = unwrapped;
+    const [discountInfo, ...optionMetaObjects] = unwrapped;
 
     // Process metaobjects
     const getOptionNameToDescriptionMap = (productOptions, metaObjectsData) => {
@@ -114,41 +114,18 @@
       }, new Map())
     };
 
-    const optionNameToDescriptionsMap = getOptionNameToDescriptionMap(product.options, metaObjectResults)
-    const addDescriptions = () => {
-      const { forEach } = Array.prototype;
-      const moduleElement = document.getElementById(`${name}`)
-      const options = moduleElement.getElementsByClassName('jd-buy-option')
-      forEach.call(options, (option) => {
-        const optionName = option.dataset.optionName;
-        const optionDescriptions = optionNameToDescriptionsMap.get(optionName)
-        if (!optionDescriptions) {
-          return;
-        }
-
-        const inputs = option.querySelectorAll('input')
-        forEach.call(inputs, (input) => {
-          if (!input.getAttribute('checked')) {
-            return;
-          }
-
-          const { description } = optionDescriptions.get(input.value);
-          const paragraph = document.createElement('p')
-          paragraph.classList.add('option-description')
-          const text = document.createTextNode(description)
-          paragraph.appendChild(text);
-          option.appendChild(paragraph)
-        })
-      })
-    };
+    const optionNameToDescriptionsMap = getOptionNameToDescriptionMap(
+      product.options, 
+      optionMetaObjects
+    );
 
     handleSelectorChangeFull(
       moduleData,
       product,
       variantSelections,
       productOptions,
-      discountInfo,
-      addDescriptions,
+      typeof discountInfo === 'string' ? {} : discountInfo,
+      optionNameToDescriptionsMap,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
