@@ -450,39 +450,6 @@
   }
 
   /**
-   * Get a Shopify meta-object by type
-   * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
-   * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
-   * 
-   * @returns 
-   */
-  const getMostRecentHCTPMetaObjects = async () => {
-    const metaQ = IINShopifyClient.graphQLClient.query((root) =>
-      root.addConnection('metaobjects',
-        {
-          args: {
-            type: 'hctp_data',
-            first: 1,
-            sortKey: 'updatedAt',
-            reverse: true,
-          }
-        },
-        (objects) => {
-          objects.add('id')
-          objects.add('handle')
-          objects.add('fields', (fields) => {
-            fields.add('key')
-            fields.add('value')
-          })
-        }
-      )
-    );
-
-    const result = await IINShopifyClient.graphQLClient.send(metaQ);
-    return result?.model?.metaobjects[0];
-  }
-
-  /**
    * Get a Shopify meta-object by id
    * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
@@ -531,7 +498,6 @@
     updatePromoCheckoutButton,
     getProductQuery,
     updateHCTPForV1,
-    getMostRecentHCTPMetaObjects,
     getMetaObject,
   };
 })();
