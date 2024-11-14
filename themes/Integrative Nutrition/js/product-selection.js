@@ -714,7 +714,7 @@ const getProductSelectionMethods = () => {
         optionWrap.appendChild(pair);
       });
 
-      if (!(descriptionsByName && !descriptionsByName.has(key))) {
+      if (!(descriptionsByName && descriptionsByName.has(key))) {
         return
       }
 
@@ -723,6 +723,7 @@ const getProductSelectionMethods = () => {
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const optionValue = checked.value;
       if (descriptions.has(optionValue)) {
+        // `description` must match shopify Metaobject field name
         const { description } = descriptions.get(optionValue)
         const paragraph = document.createElement('p')
         paragraph.classList.add('option-description')

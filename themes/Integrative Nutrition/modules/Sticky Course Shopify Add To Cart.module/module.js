@@ -86,39 +86,34 @@
 
     const [discountInfo, ...metaObjectResults] = unwrapped;
 
-    // Process metaobjects
-    const getDescriptionsByOptionName = (productOptions, metaObjects) => {
-      if (productOptions.length !== metaObjects.length) {
-        console.error(`Mismatch in options (${productOptions.length}) and metadata (${metaObjects.length}).`)
-        return;
-      }
-      
-      const optionIDNameTuple = productOptions.map(({ id, name, values }) => {
+    // Process meta-objects
+    const getValueMetaDataByOptionName = (options, valueData) => {
+      const optionTuples = options.map(({ id, name, values }) => {
         return [id, { name, values }]
       });
 
-      const optionIDNameMap = new Map(optionIDNameTuple)
-      return metaObjects.reduce((map, { fields }, index) => {
-        const keyValueTuple = fields.map(({ key, value }) => [key, value])
-        const combined = Object.fromEntries(keyValueTuple)
+      const optionInfoByID = new Map(optionTuples);
+      return valueData.reduce((map, { fields }, index) => {
+        const dataTuples = fields.map(({ key, value }) => [key, value])
+        const metaData = Object.fromEntries(dataTuples)
 
-        // The `option_id` field must match the Shopify metaobject field
-        const id = combined.option_id;
-        const { name, values } = optionIDNameMap.get(id);
-        const respectiveValue = values[index].value;
+        // `option_id` must match the Shopify metaobject field name
+        const { option_id } = metaData;
+        const { name, values } = optionInfoByID.get(option_id);
+
+        // Match metadata to option value by index
+        const { value } = values[index];
 
         if (!map.has(name)) {
-          const optionMap = new Map();
-          optionMap.set(respectiveValue, combined)
-          return map.set(name, optionMap)
+          map.set(name, new Map())
         }
 
-        map.get(name).set(respectiveValue, combined)
+        map.get(name).set(value, metaData)
         return map
       }, new Map())
     };
 
-    const descriptionsByOptionName = getDescriptionsByOptionName(
+    const metaDataByName = getValueMetaDataByOptionName(
       product.options,
       metaObjectResults.map(value => value?.model.metaobject)
     );
@@ -129,7 +124,7 @@
       variantSelections,
       productOptions,
       typeof discountInfo === 'string' ? {} : discountInfo,
-      descriptionsByOptionName,
+      metaDataByName,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
