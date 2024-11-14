@@ -719,12 +719,12 @@ const getProductSelectionMethods = () => {
         return
       }
 
-      const descriptionMap = descriptionsByName.get(key);
+      const description = descriptionsByName.get(key);
       const inputs = optionWrap.querySelectorAll('input')
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const optionValue = checked.value;
-      if (descriptionMap.has(optionValue)) {
-        const { description } = descriptionMap.get(optionValue)
+      if (description.has(optionValue)) {
+        const { description } = description.get(optionValue)
         const paragraph = document.createElement('p')
         paragraph.classList.add('option-description')
         const text = document.createTextNode(description)

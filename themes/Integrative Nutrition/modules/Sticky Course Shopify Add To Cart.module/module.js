@@ -84,11 +84,10 @@
       return status === 'fulfilled' ? value : reason
     });
 
-    const [discountInfo, ...optionMetaObjects] = unwrapped;
+    const [discountInfo, ...metaObjectResults] = unwrapped;
 
     // Process metaobjects
-    const getDescriptionsByOptionName = (productOptions, metaObjectsData) => {
-      const metaObjects = metaObjectsData.map(value => value?.model.metaobject)
+    const getDescriptionsByOptionName = (productOptions, metaObjects) => {
       const optionIDNameTuple = productOptions.map(({ id, name, values }) => {
         return [id, { name, values }]
       });
@@ -116,7 +115,7 @@
 
     const descriptionsByOptionName = getDescriptionsByOptionName(
       product.options, 
-      optionMetaObjects
+      metaObjectResults.map(value => value?.model.metaobject)
     );
 
     handleSelectorChangeFull(
