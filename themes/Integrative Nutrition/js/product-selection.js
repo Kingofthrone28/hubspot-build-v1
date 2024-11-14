@@ -699,16 +699,15 @@ const getProductSelectionMethods = () => {
     optionNames.forEach((key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
-      optionDiv.dataset.optionName = key;
       const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
       const labelDiv = createOptionLabel(`${prefix}${key}`);
       optionDiv.appendChild(labelDiv);
       fragment.appendChild(optionDiv);
 
+      // Configure option value inputs
       const optionWrap = document.createElement('div');
       optionWrap.classList.add('jd-shopify-option-wrap');
       optionDiv.appendChild(optionWrap);
-
       const valuesSet = allOptions[key];
       valuesSet.forEach((value) => {
         const pair = createInputPair(key, value, selectedOptions, true);
@@ -719,12 +718,12 @@ const getProductSelectionMethods = () => {
         return
       }
 
-      const description = descriptionsByName.get(key);
+      const descriptions = descriptionsByName.get(key);
       const inputs = optionWrap.querySelectorAll('input')
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const optionValue = checked.value;
-      if (description.has(optionValue)) {
-        const { description } = description.get(optionValue)
+      if (descriptions.has(optionValue)) {
+        const { description } = descriptions.get(optionValue)
         const paragraph = document.createElement('p')
         paragraph.classList.add('option-description')
         const text = document.createTextNode(description)
