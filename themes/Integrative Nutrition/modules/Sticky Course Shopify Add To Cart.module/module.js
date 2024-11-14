@@ -49,8 +49,7 @@
       configureAddedToCartPopUp();
     }
 
-    const query = IIN.shopify.getProductQuery(productID);
-    const result = await IINShopifyClient.graphQLClient.send(query);
+    const result = await IIN.shopify.sendProductQuery(productID);
     const product = result.model?.products?.[0];
 
     if (!product) {

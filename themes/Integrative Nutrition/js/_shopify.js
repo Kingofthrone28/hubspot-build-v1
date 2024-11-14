@@ -354,7 +354,7 @@
    */
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
-  const getProductQuery = (id) => {
+  const sendProductQuery = (id) => {
     const metaFieldConfig = [
       'metafields',
       {
@@ -415,7 +415,7 @@
       }
     ];
 
-    return IINShopifyClient.graphQLClient.query((root) =>
+    const query = IINShopifyClient.graphQLClient.query((root) =>
       root.addConnection(
         'products',
         {
@@ -433,6 +433,8 @@
           products.addConnection(...variantConfig);
         })
     );
+
+    return IINShopifyClient.graphQLClient.send(query);
   };
 
   const updateHCTPForV1 = (product) => {
@@ -496,7 +498,7 @@
     isProductInCheckout,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
-    getProductQuery,
+    sendProductQuery,
     updateHCTPForV1,
     getMetaObject,
   };
