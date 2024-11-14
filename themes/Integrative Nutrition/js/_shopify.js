@@ -465,8 +465,6 @@
           }
         },
         (object) => {
-          object.add('id')
-          object.add('handle')
           object.add('fields', (fields) => {
             fields.add('key')
             fields.add('value')
