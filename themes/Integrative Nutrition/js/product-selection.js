@@ -692,7 +692,7 @@ const getProductSelectionMethods = () => {
    * @param {Map<string, Map<string, Object>>}
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionNames, allOptions, selectedOptions, descriptionsByName) => {
+  const createOptionNodes = (optionNames, allOptions, selectedOptions, valueDataByOptionName) => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionNames.length > 1;
 
@@ -714,11 +714,11 @@ const getProductSelectionMethods = () => {
         optionWrap.appendChild(pair);
       });
 
-      if (!(descriptionsByName && descriptionsByName.has(key))) {
+      if (!(valueDataByOptionName && valueDataByOptionName.has(key))) {
         return
       }
 
-      const descriptions = descriptionsByName.get(key);
+      const descriptions = valueDataByOptionName.get(key);
       const inputs = optionWrap.querySelectorAll('input')
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const { value } = checked;
@@ -863,7 +863,7 @@ const getProductSelectionMethods = () => {
     selectedOptions,
     optionKeys,
     discountInfo,
-    optionNameToDescriptionsMap,
+    valueDataByOptionName,
   ) => {
     const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
@@ -889,7 +889,7 @@ const getProductSelectionMethods = () => {
     // Not showing options if there is only 1 default field
     if (!isDefaultTitle) {
       optionsForm.appendChild(
-        createOptionNodes(optionKeys, options, selectedOptions, optionNameToDescriptionsMap),
+        createOptionNodes(optionKeys, options, selectedOptions, valueDataByOptionName),
       );
     }
 
@@ -934,7 +934,7 @@ const getProductSelectionMethods = () => {
         selectedOptions,
         optionKeys,
         discountInfo,
-        optionNameToDescriptionsMap,
+        valueDataByOptionName,
       );
 
       const prefix = `.${parent}`;

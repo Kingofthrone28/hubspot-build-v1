@@ -87,13 +87,17 @@
     const [discountInfo, ...metaObjectResults] = unwrapped;
 
     // Process meta-objects
-    const getValueMetaDataByOptionName = (options, valueData) => {
+    const getValueDataByOptionName = (options, valueData) => {
       const optionTuples = options.map(({ id, name, values }) => {
         return [id, { name, values }]
       });
 
       const optionInfoByID = new Map(optionTuples);
-      return valueData.reduce((map, { fields }, index) => {
+      return valueData?.reduce((map, { fields }, index) => {
+        if (!fields) {
+          return map;
+        }
+
         const dataTuples = fields.map(({ key, value }) => [key, value])
         const metaData = Object.fromEntries(dataTuples)
 
@@ -113,7 +117,7 @@
       }, new Map())
     };
 
-    const metaDataByName = getValueMetaDataByOptionName(
+    const valueDataByOptionName = getValueDataByOptionName(
       product.options,
       metaObjectResults.map(value => value?.model.metaobject)
     );
@@ -124,7 +128,7 @@
       variantSelections,
       productOptions,
       typeof discountInfo === 'string' ? {} : discountInfo,
-      metaDataByName,
+      valueDataByOptionName,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
