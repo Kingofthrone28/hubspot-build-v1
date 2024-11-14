@@ -689,9 +689,10 @@ const getProductSelectionMethods = () => {
    * @param {string[]} optionNames
    * @param {*} allOptions
    * @param {Object} selectedOptions
+   * @param {Map<string, Map<string, Object>>}
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionNames, allOptions, selectedOptions, optionNameToDescriptionsMap) => {
+  const createOptionNodes = (optionNames, allOptions, selectedOptions, descriptionsByName) => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionNames.length > 1;
 
@@ -714,11 +715,11 @@ const getProductSelectionMethods = () => {
         optionWrap.appendChild(pair);
       });
 
-      if (!optionNameToDescriptionsMap.has(key)) {
+      if (!descriptionsByName.has(key)) {
         return
       }
 
-      const descriptionMap = optionNameToDescriptionsMap.get(key);
+      const descriptionMap = descriptionsByName.get(key);
       const inputs = optionWrap.querySelectorAll('input')
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const optionValue = checked.value;

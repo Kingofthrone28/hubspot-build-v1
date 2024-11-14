@@ -87,7 +87,7 @@
     const [discountInfo, ...optionMetaObjects] = unwrapped;
 
     // Process metaobjects
-    const getOptionNameToDescriptionMap = (productOptions, metaObjectsData) => {
+    const getDescriptionsByOptionName = (productOptions, metaObjectsData) => {
       const metaObjects = metaObjectsData.map(value => value?.model.metaobject)
       const optionIDNameTuple = productOptions.map(({ id, name, values }) => {
         return [id, { name, values }]
@@ -114,7 +114,7 @@
       }, new Map())
     };
 
-    const optionNameToDescriptionsMap = getOptionNameToDescriptionMap(
+    const descriptionsByOptionName = getDescriptionsByOptionName(
       product.options, 
       optionMetaObjects
     );
@@ -125,7 +125,7 @@
       variantSelections,
       productOptions,
       typeof discountInfo === 'string' ? {} : discountInfo,
-      optionNameToDescriptionsMap,
+      descriptionsByOptionName,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);
