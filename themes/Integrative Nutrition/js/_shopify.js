@@ -354,7 +354,7 @@
    */
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
-  const getHCTPQuery = (id) => {
+  const getProductQuery = (id) => {
     const metaFieldConfig = [
       'metafields',
       {
@@ -529,7 +529,7 @@
     isProductInCheckout,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
-    getHCTPQuery,
+    getProductQuery,
     updateHCTPForV1,
     getMostRecentHCTPMetaObjects,
     getMetaObject,
