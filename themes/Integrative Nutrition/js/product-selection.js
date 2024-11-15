@@ -732,11 +732,11 @@ const getProductSelectionMethods = () => {
         input.getAttribute('checked'),
       );
       const { value } = checked;
-      const descriptions = valueDataByOptionName.get(key);
+      const valueDataByValueName = valueDataByOptionName.get(key);
 
-      if (descriptions.has(value)) {
-        // `description` must match shopify Metaobject field name
-        const { description } = descriptions.get(value);
+      // `description` must match shopify Metaobject field name
+      const description = valueDataByValueName.get(value)?.description;
+      if (description) {
         const paragraph = document.createElement('p');
         paragraph.classList.add('selected-value-description');
         const text = document.createTextNode(description);
