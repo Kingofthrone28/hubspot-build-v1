@@ -374,7 +374,7 @@
         args: {
           identifiers: [
             {
-              key: 'options_info_list',
+              key: 'option_values_info',
               namespace: 'custom',
             },
           ],
