@@ -11,7 +11,7 @@
 
   /**
    * Check a variant is available for sale
-   * @param {Object} variant The shopify variant to check
+   * @param {Object} variant The Shopify variant to check
    * @returns {boolean}
    */
   const isAvailable = (variant) =>
@@ -502,7 +502,7 @@
       });
 
       // `option_id` must match the Shopify metaobject field name
-      /* eslint-disable-next-line camelcase --  cannot set camel case in shopify */
+      /* eslint-disable-next-line camelcase --  cannot set camel case in Shopify */
       const { option_id } = metaData;
       const { name, values } = optionInfoByID.get(option_id);
 
