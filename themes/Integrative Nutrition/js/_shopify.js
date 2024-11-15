@@ -9,12 +9,12 @@
   const addToCartKey = 'course_shopify_add_to_cart';
   const { isStringWithLength } = IIN.utilities;
 
-    /**
-   * Check a variant is available for sale
-   * @param {Object} variant The shopify variant to check
-   * @returns {boolean}
-   */
-    const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
+  /**
+ * Check a variant is available for sale
+ * @param {Object} variant The shopify variant to check
+ * @returns {boolean}
+ */
+  const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
 
   /**
    * Get Shopify module data from storage
@@ -482,9 +482,7 @@
    * @returns {Map<string, Map<string, Object>>|undefined}
    */
   const getValueDataByOptionName = (options, valueData) => {
-    const optionTuples = options.map(({ id, name, values }) => {
-      return [id, { name, values }]
-    });
+    const optionTuples = options.map(({ id, name, values }) => [id, { name, values }]);
 
     const optionInfoByID = new Map(optionTuples);
     return valueData?.reduce((map, { fields }, index) => {
@@ -492,10 +490,13 @@
         return map;
       }
 
-      const dataTuples = fields.map(({ key, value }) => [key, value])
-      const metaData = Object.fromEntries(dataTuples)
+      const metaData = {};
+      fields.forEach(({ key, value }) => {
+        metaData[key] = value;
+      })
 
       // `option_id` must match the Shopify metaobject field name
+      /* eslint-disable-next-line camelcase --  cannot set camel case in shopify */
       const { option_id } = metaData;
       const { name, values } = optionInfoByID.get(option_id);
 
