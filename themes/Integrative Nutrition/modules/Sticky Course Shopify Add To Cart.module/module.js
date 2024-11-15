@@ -64,9 +64,10 @@
     const requests = [discountInfoPromise];
 
     // Parse Shopify metaobjects for option descriptions
-    const optionsInfoResult = IIN.shopify.getOptionsInfo(product.metafields);
-    if (optionsInfoResult) {
-      const { value: metaObjectIDsString } = optionsInfoResult;
+    const metaObjectIDsString = IIN.shopify.getOptionsInfo(
+      product.metafields,
+    )?.value;
+    if (metaObjectIDsString) {
       const metaObjectIDs = JSON.parse(metaObjectIDsString);
       const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject);
       requests.push(...metaObjectPromises);
