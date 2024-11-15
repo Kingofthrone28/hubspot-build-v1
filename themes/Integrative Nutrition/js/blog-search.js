@@ -10,7 +10,7 @@
    */
   const blockSelector = 'blog-search-term';
   const contentNodes = document.querySelectorAll(
-    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search)',
+    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search):not(.blog-category-search-container)',
   );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
@@ -537,7 +537,7 @@
         updateSearchResultMessage();
       }
       updateSearchTermResultsTitle(filterTerms);
-    } catch (error){
+    } catch (error) {
       console.error('Error in removeSearchPill:', error);
     }
   };
