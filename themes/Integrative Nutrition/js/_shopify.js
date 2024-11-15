@@ -479,7 +479,7 @@
   };
 
   /**
-   *
+   * Combine product options with metaobjects containing information about the options.
    * @param {Object[]} options Array of product options
    * @param {Object[]} valueData Array of metaobject models
    * @returns {Map<string, Map<string, Object>>|undefined}
