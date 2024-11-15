@@ -501,10 +501,10 @@
         metaData[key] = value;
       });
 
-      // `option_id` must match the Shopify metaobject field name
+      // `parent_option_id` must match the Shopify metaobject field name
       /* eslint-disable-next-line camelcase --  cannot set camel case in Shopify */
-      const { option_id } = metaData;
-      const { name, values } = optionInfoByID.get(option_id);
+      const { parent_option_id } = metaData;
+      const { name, values } = optionInfoByID.get(parent_option_id);
 
       // Match metadata to option value by index
       const { value } = values[index];
