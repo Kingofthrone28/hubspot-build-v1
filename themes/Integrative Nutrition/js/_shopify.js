@@ -403,6 +403,10 @@
           price.add('amount');
           price.add('currencyCode')
         });
+        variant.add('image', (image) => {
+          image.add('src')
+          image.add('altText')
+        })
       },
     ];
 
@@ -471,6 +475,42 @@
     return IINShopifyClient.graphQLClient.send(metaQ);
   };
 
+  /**
+   * 
+   * @param {Object[]} options Array of product options
+   * @param {Object[]} valueData Array of metaobject models
+   * @returns {Map<string, Map<string, Object>>|undefined}
+   */
+  const getValueDataByOptionName = (options, valueData) => {
+    const optionTuples = options.map(({ id, name, values }) => {
+      return [id, { name, values }]
+    });
+
+    const optionInfoByID = new Map(optionTuples);
+    return valueData?.reduce((map, { fields }, index) => {
+      if (!fields) {
+        return map;
+      }
+
+      const dataTuples = fields.map(({ key, value }) => [key, value])
+      const metaData = Object.fromEntries(dataTuples)
+
+      // `option_id` must match the Shopify metaobject field name
+      const { option_id } = metaData;
+      const { name, values } = optionInfoByID.get(option_id);
+
+      // Match metadata to option value by index
+      const { value } = values[index];
+
+      if (!map.has(name)) {
+        map.set(name, new Map())
+      }
+
+      map.get(name).set(value, metaData)
+      return map
+    }, new Map())
+  };
+
   IIN.shopify = {
     addDiscountToCheckout,
     addLineItemsToCheckout,
@@ -488,6 +528,7 @@
     getOptionsCount,
     getOptionsInfo,
     getPromoCheckoutButton,
+    getValueDataByOptionName,
     goToCart,
     isAvailable,
     isProductInCheckout,
