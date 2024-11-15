@@ -367,7 +367,7 @@
    * @param {string} id Shopify (non-global) ID
    * @returns {Promise<Object>}
    */
-  const sendProductQuery = async (id) => {
+  const getProductFromQuery = async (id) => {
     const metaFieldConfig = [
       'metafields',
       {
@@ -445,7 +445,7 @@
 
   /**
    * Get Options Information List
-   * This must match the index of the sendProductQuery metafields identifier list
+   * This must match the index of the getProductFromQuery metafields identifier list
    * @param {Object[]} metafields All product metafields
    * @returns {Object} The Options Information List metaobject
    */
@@ -539,7 +539,7 @@
     goToCart,
     isAvailable,
     isProductInCheckout,
-    sendProductQuery,
+    getProductFromQuery,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
   };

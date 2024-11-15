@@ -47,7 +47,7 @@
       configureAddedToCartPopUp();
     }
 
-    const product = await IIN.shopify.sendProductQuery(productID);
+    const product = await IIN.shopify.getProductFromQuery(productID);
 
     if (!product) {
       console.error(`Failed to find product for id: ${productID}`);
