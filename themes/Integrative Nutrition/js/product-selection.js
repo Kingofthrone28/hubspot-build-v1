@@ -380,38 +380,41 @@ const getProductSelectionMethods = () => {
    * @returns
    */
   const calculateDiscounts = async (variant) => {
-    let displaySlashPrice;
-    let displayDiscount;
-
+    // Create checkout and add line items
     const checkout = await IINShopifyClient.checkout.create();
+
     const lineItems = [
       {
         variantId: variant.id,
         quantity: 1,
       },
     ];
+
     const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
       checkout.id,
       lineItems,
     );
-    const discounts = updatedCheckout?.discountApplications ?? [];
-    const totalAfterDiscount = parseFloat(updatedCheckout.totalPrice?.amount);
-    let total = totalAfterDiscount > -1 ? totalAfterDiscount : 0;
 
-    discounts.forEach(({ value }) => {
-      const amount = parseFloat(value?.amount) || 0;
-      total += amount;
-    });
+    const total =
+      parseFloat(updatedCheckout.lineItemsSubtotalPrice?.amount) || 0;
 
+    const totalAfterDiscount =
+      parseFloat(updatedCheckout.totalPrice?.amount) || 0;
+
+    // Format the discounted price to be displayed
     const displayPrice = `$${totalAfterDiscount.toLocaleString()}`;
 
+    let displayDiscount;
+    let displaySlashPrice;
+
+    // Check if a discount was applied and calculate the percentage off
     if (totalAfterDiscount < total) {
-      displaySlashPrice = `$${total.toLocaleString()}`;
       const percentageOff = Math.round(
         ((total - totalAfterDiscount) / total) * 100,
       );
 
       displayDiscount = `-${percentageOff}%`;
+      displaySlashPrice = `$${total.toLocaleString()}`;
     }
 
     return { displaySlashPrice, displayPrice, displayDiscount };
