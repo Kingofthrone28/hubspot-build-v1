@@ -457,7 +457,7 @@
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
    * @returns
    */
-  const getMetaObject = async (id) => {
+  const sendMetaObjectQuery = async (id) => {
     const metaQ = IINShopifyClient.graphQLClient.query((root) =>
       root.add(
         'metaobject',
@@ -531,7 +531,7 @@
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
-    getMetaObject,
+    sendMetaObjectQuery,
     getOptionsCount,
     getOptionsInfo,
     getPromoCheckoutButton,

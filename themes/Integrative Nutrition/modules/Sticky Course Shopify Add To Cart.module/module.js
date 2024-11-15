@@ -69,7 +69,9 @@
     )?.value;
     if (metaObjectIDsString) {
       const metaObjectIDs = JSON.parse(metaObjectIDsString);
-      const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject);
+      const metaObjectPromises = metaObjectIDs.map(
+        IIN.shopify.sendMetaObjectQuery,
+      );
       requests.push(...metaObjectPromises);
     }
 
