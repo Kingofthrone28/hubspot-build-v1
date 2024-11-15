@@ -73,10 +73,8 @@
     }
 
     // Parallelize network requests
-    const results = await Promise.allSettled(requests)
-    const unwrapped = results.map(({ status, value, reason }) => status === 'fulfilled' ? value : reason);
-
-    const [discountInfo, ...metaObjectResults] = unwrapped;
+    const results = await Promise.all(requests)
+    const [discountInfo, ...metaObjectResults] = results;
     const valueDataByOptionName = IIN.shopify.getValueDataByOptionName(
       product.options,
       metaObjectResults.map(value => value?.model.metaobject)
