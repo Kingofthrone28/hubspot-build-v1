@@ -359,7 +359,7 @@
    * @param {string} id Shopify (non-global) ID
    * @returns {Promise<Object>}
    */
-  const sendProductQuery = (id) => {
+  const sendProductQuery = async (id) => {
     const metaFieldConfig = [
       'metafields',
       {
@@ -426,8 +426,8 @@
           products.addConnection(...variantConfig);
         })
     );
-
-    return IINShopifyClient.graphQLClient.send(query);
+    const response = await IINShopifyClient.graphQLClient.send(query);
+    return response.model?.products?.[0];
   };
 
   /**
@@ -437,18 +437,6 @@
    * @returns {Object} The Options Information List metaobject
    */
   const getOptionsInfo = (metafields) => metafields?.[0];
-
-  const updateHCTPForV1 = (product) => {
-    const copyPropAvailable = (object) => {
-      if (object.hasOwnProperty('availableForSale') && !object.hasOwnProperty('available')) {
-        object.available = object.availableForSale;
-      }
-    };
-
-    copyPropAvailable(product);
-
-    product.variants?.forEach(copyPropAvailable);
-  }
 
   /**
    * Get a Shopify meta-object by id
@@ -489,15 +477,14 @@
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
+    getMetaObject,
     getOptionsCount,
+    getOptionsInfo,
     getPromoCheckoutButton,
     goToCart,
     isProductInCheckout,
+    sendProductQuery,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
-    sendProductQuery,
-    updateHCTPForV1,
-    getMetaObject,
-    getOptionsInfo,
   };
 })();

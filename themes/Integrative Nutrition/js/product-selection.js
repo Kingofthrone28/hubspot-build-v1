@@ -1,5 +1,12 @@
 const getProductSelectionMethods = () => {
   /**
+   * Check a variant is available for sale
+   * @param {Object} variant The shopify variant to check
+   * @returns {boolean}
+   */
+  const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
+
+  /**
    * Returns the selected variant or null if one is not found.
    * @param {string} productData
    * @param {Object|null} productData
@@ -9,7 +16,7 @@ const getProductSelectionMethods = () => {
       const variantOptions = variant?.selectedOptions || [];
 
       if (
-        !variant?.available ||
+        !isAvailable(variant) ||
         !Array.isArray(variantOptions) ||
         !variantOptions.length
       ) {
@@ -37,7 +44,7 @@ const getProductSelectionMethods = () => {
    */
   const getPossibleVariants = (variants, selection) =>
     variants.filter((variant) => {
-      if (!variant.available) {
+      if (!isAvailable(variant)) {
         return false;
       }
 
@@ -718,10 +725,15 @@ const getProductSelectionMethods = () => {
         return
       }
 
-      const descriptions = valueDataByOptionName.get(key);
       const inputs = optionWrap.querySelectorAll('input')
+      if (!inputs.length) {
+        return;
+      }
+
       const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
       const { value } = checked;
+      const descriptions = valueDataByOptionName.get(key);
+
       if (descriptions.has(value)) {
         // `description` must match shopify Metaobject field name
         const { description } = descriptions.get(value)

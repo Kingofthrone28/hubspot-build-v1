@@ -8,7 +8,6 @@
     configureStickyHeaderSampleClass,
     configureStickyNav,
     createViewItemEvent,
-    getProductData,
     handleSelectorChangeFull,
     matchPDPBottomSectionToTop,
     parseMarkupData,
@@ -48,15 +47,12 @@
       configureAddedToCartPopUp();
     }
 
-    const result = await IIN.shopify.sendProductQuery(productID);
-    const product = result.model?.products?.[0];
+    const product = await IIN.shopify.sendProductQuery(productID);
 
     if (!product) {
       console.error(`Failed to find product for id: ${productID}`)
       return;
     }
-
-    IIN.shopify.updateHCTPForV1(product)
 
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
