@@ -294,7 +294,7 @@
     var(--font-size--legal) / var(--line-height--legal) var(--font-family--body);
 
   /* Figma text style: New/Cohort selector explainer text */
-  --font--legal--explainer: var(--font-style--body) var(--font-weight--light)
+  --font--legal--explainer: italic var(--font-weight--light)
     var(--font-size--legal) / var(--line-height--legal--explainer)
     var(--font-family--body);
 
