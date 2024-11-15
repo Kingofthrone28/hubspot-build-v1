@@ -76,7 +76,7 @@
     // Parallelize network requests
     const results = await Promise.all(requests);
     const [discountInfo, ...metaObjectResults] = results;
-    const valueDataByOptionName = IIN.shopify.getValueDataByOptionName(
+    const valuesMapByOptionName = IIN.shopify.getValuesMapByOptionName(
       product.options,
       metaObjectResults.map((value) => value?.model.metaobject),
     );
@@ -87,7 +87,7 @@
       variantSelections,
       productOptions,
       typeof discountInfo === 'string' ? {} : discountInfo,
-      valueDataByOptionName,
+      valuesMapByOptionName,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);

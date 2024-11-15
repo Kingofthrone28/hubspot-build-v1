@@ -696,7 +696,7 @@ const getProductSelectionMethods = () => {
     optionNames,
     allOptions,
     selectedOptions,
-    valueDataByOptionName,
+    valuesMapByOptionName,
   ) => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionNames.length > 1;
@@ -719,7 +719,7 @@ const getProductSelectionMethods = () => {
         optionWrap.appendChild(pair);
       });
 
-      if (!(valueDataByOptionName && valueDataByOptionName.has(key))) {
+      if (!(valuesMapByOptionName && valuesMapByOptionName.has(key))) {
         return;
       }
 
@@ -732,7 +732,7 @@ const getProductSelectionMethods = () => {
         input.getAttribute('checked'),
       );
       const { value } = checked;
-      const valueDataByValueName = valueDataByOptionName.get(key);
+      const valueDataByValueName = valuesMapByOptionName.get(key);
 
       // `description` must match shopify Metaobject field name
       const description = valueDataByValueName.get(value)?.description;
@@ -875,7 +875,7 @@ const getProductSelectionMethods = () => {
     selectedOptions,
     optionKeys,
     discountInfo,
-    valueDataByOptionName,
+    valuesMapByOptionName,
   ) => {
     const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
@@ -905,7 +905,7 @@ const getProductSelectionMethods = () => {
           optionKeys,
           options,
           selectedOptions,
-          valueDataByOptionName,
+          valuesMapByOptionName,
         ),
       );
     }
@@ -951,7 +951,7 @@ const getProductSelectionMethods = () => {
         selectedOptions,
         optionKeys,
         discountInfo,
-        valueDataByOptionName,
+        valuesMapByOptionName,
       );
 
       const prefix = `.${parent}`;

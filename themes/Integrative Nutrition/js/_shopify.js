@@ -484,7 +484,7 @@
    * @param {Object[]} valueData Array of metaobject models
    * @returns {Map<string, Map<string, Object>>|undefined}
    */
-  const getValueDataByOptionName = (options, valueData) => {
+  const getValuesMapByOptionName = (options, valueData) => {
     const optionTuples = options.map(({ id, name, values }) => [
       id,
       { name, values },
@@ -535,7 +535,7 @@
     getOptionsCount,
     getOptionsInfo,
     getPromoCheckoutButton,
-    getValueDataByOptionName,
+    getValuesMapByOptionName,
     goToCart,
     isAvailable,
     isProductInCheckout,
