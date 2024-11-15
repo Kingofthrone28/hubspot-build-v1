@@ -50,7 +50,7 @@
     const product = await IIN.shopify.sendProductQuery(productID);
 
     if (!product) {
-      console.error(`Failed to find product for id: ${productID}`)
+      console.error(`Failed to find product for id: ${productID}`);
       return;
     }
 
@@ -64,20 +64,20 @@
     const requests = [discountInfoPromise];
 
     // Parse Shopify metaobjects for option descriptions
-    const optionsInfoResult = IIN.shopify.getOptionsInfo(product.metafields)
+    const optionsInfoResult = IIN.shopify.getOptionsInfo(product.metafields);
     if (optionsInfoResult) {
-      const { value: metaObjectIDsString } = optionsInfoResult
-      const metaObjectIDs = JSON.parse(metaObjectIDsString)
-      const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject)
-      requests.push(...metaObjectPromises)
+      const { value: metaObjectIDsString } = optionsInfoResult;
+      const metaObjectIDs = JSON.parse(metaObjectIDsString);
+      const metaObjectPromises = metaObjectIDs.map(IIN.shopify.getMetaObject);
+      requests.push(...metaObjectPromises);
     }
 
     // Parallelize network requests
-    const results = await Promise.all(requests)
+    const results = await Promise.all(requests);
     const [discountInfo, ...metaObjectResults] = results;
     const valueDataByOptionName = IIN.shopify.getValueDataByOptionName(
       product.options,
-      metaObjectResults.map(value => value?.model.metaobject)
+      metaObjectResults.map((value) => value?.model.metaobject),
     );
 
     handleSelectorChangeFull(

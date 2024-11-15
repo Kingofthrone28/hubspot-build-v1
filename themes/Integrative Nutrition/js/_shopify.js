@@ -10,11 +10,12 @@
   const { isStringWithLength } = IIN.utilities;
 
   /**
- * Check a variant is available for sale
- * @param {Object} variant The shopify variant to check
- * @returns {boolean}
- */
-  const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
+   * Check a variant is available for sale
+   * @param {Object} variant The shopify variant to check
+   * @returns {boolean}
+   */
+  const isAvailable = (variant) =>
+    Boolean(variant.available || variant.availableForSale);
 
   /**
    * Get Shopify module data from storage
@@ -382,7 +383,7 @@
       (metafield) => {
         metafield.add('key');
         metafield.add('value');
-      }
+      },
     ];
 
     const variantConfig = [
@@ -396,17 +397,17 @@
         variant.add('availableForSale');
         variant.add('title');
         variant.add('selectedOptions', (option) => {
-          option.add('name')
-          option.add('value')
-        })
+          option.add('name');
+          option.add('value');
+        });
         variant.add('price', (price) => {
           price.add('amount');
-          price.add('currencyCode')
+          price.add('currencyCode');
         });
         variant.add('image', (image) => {
-          image.add('src')
-          image.add('altText')
-        })
+          image.add('src');
+          image.add('altText');
+        });
       },
     ];
 
@@ -414,9 +415,9 @@
       'options',
       { args: { first: 10 } },
       (option) => {
-        option.add('name')
-        option.add('values')
-      }
+        option.add('name');
+        option.add('values');
+      },
     ];
 
     const query = IINShopifyClient.graphQLClient.query((root) =>
@@ -425,8 +426,8 @@
         {
           args: {
             first: 1,
-            query: `id:${id}`
-          }
+            query: `id:${id}`,
+          },
         },
         (products) => {
           products.add('title');
@@ -435,7 +436,8 @@
           products.add(...metaFieldConfig);
           products.add(...optionsConfig);
           products.addConnection(...variantConfig);
-        })
+        },
+      ),
     );
     const response = await IINShopifyClient.graphQLClient.send(query);
     return response.model?.products?.[0];
@@ -453,36 +455,40 @@
    * Get a Shopify meta-object by id
    * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
    * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
-   * @returns 
+   * @returns
    */
   const getMetaObject = async (id) => {
     const metaQ = IINShopifyClient.graphQLClient.query((root) =>
-      root.add('metaobject',
+      root.add(
+        'metaobject',
         {
           args: {
-            id
-          }
+            id,
+          },
         },
         (object) => {
           object.add('fields', (fields) => {
-            fields.add('key')
-            fields.add('value')
-          })
-        }
-      )
+            fields.add('key');
+            fields.add('value');
+          });
+        },
+      ),
     );
 
     return IINShopifyClient.graphQLClient.send(metaQ);
   };
 
   /**
-   * 
+   *
    * @param {Object[]} options Array of product options
    * @param {Object[]} valueData Array of metaobject models
    * @returns {Map<string, Map<string, Object>>|undefined}
    */
   const getValueDataByOptionName = (options, valueData) => {
-    const optionTuples = options.map(({ id, name, values }) => [id, { name, values }]);
+    const optionTuples = options.map(({ id, name, values }) => [
+      id,
+      { name, values },
+    ]);
 
     const optionInfoByID = new Map(optionTuples);
     return valueData?.reduce((map, { fields }, index) => {
@@ -493,7 +499,7 @@
       const metaData = {};
       fields.forEach(({ key, value }) => {
         metaData[key] = value;
-      })
+      });
 
       // `option_id` must match the Shopify metaobject field name
       /* eslint-disable-next-line camelcase --  cannot set camel case in shopify */
@@ -504,12 +510,12 @@
       const { value } = values[index];
 
       if (!map.has(name)) {
-        map.set(name, new Map())
+        map.set(name, new Map());
       }
 
-      map.get(name).set(value, metaData)
-      return map
-    }, new Map())
+      map.get(name).set(value, metaData);
+      return map;
+    }, new Map());
   };
 
   IIN.shopify = {

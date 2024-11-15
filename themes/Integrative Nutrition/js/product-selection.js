@@ -1,6 +1,4 @@
 const getProductSelectionMethods = () => {
-
-
   /**
    * Returns the selected variant or null if one is not found.
    * @param {string} productData
@@ -694,7 +692,12 @@ const getProductSelectionMethods = () => {
    * @param {Map<string, Map<string, Object>>}
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionNames, allOptions, selectedOptions, valueDataByOptionName) => {
+  const createOptionNodes = (
+    optionNames,
+    allOptions,
+    selectedOptions,
+    valueDataByOptionName,
+  ) => {
     const fragment = document.createDocumentFragment();
     const hasMultipleOptions = optionNames.length > 1;
 
@@ -717,26 +720,28 @@ const getProductSelectionMethods = () => {
       });
 
       if (!(valueDataByOptionName && valueDataByOptionName.has(key))) {
-        return
+        return;
       }
 
-      const inputs = optionWrap.querySelectorAll('input')
+      const inputs = optionWrap.querySelectorAll('input');
       if (!inputs.length) {
         return;
       }
 
-      const checked = Array.prototype.find.call(inputs, input => input.getAttribute('checked'))
+      const checked = Array.prototype.find.call(inputs, (input) =>
+        input.getAttribute('checked'),
+      );
       const { value } = checked;
       const descriptions = valueDataByOptionName.get(key);
 
       if (descriptions.has(value)) {
         // `description` must match shopify Metaobject field name
-        const { description } = descriptions.get(value)
-        const paragraph = document.createElement('p')
-        paragraph.classList.add('selected-value-description')
-        const text = document.createTextNode(description)
+        const { description } = descriptions.get(value);
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('selected-value-description');
+        const text = document.createTextNode(description);
         paragraph.appendChild(text);
-        optionDiv.appendChild(paragraph)
+        optionDiv.appendChild(paragraph);
       }
     });
 
@@ -896,7 +901,12 @@ const getProductSelectionMethods = () => {
     // Not showing options if there is only 1 default field
     if (!isDefaultTitle) {
       optionsForm.appendChild(
-        createOptionNodes(optionKeys, options, selectedOptions, valueDataByOptionName),
+        createOptionNodes(
+          optionKeys,
+          options,
+          selectedOptions,
+          valueDataByOptionName,
+        ),
       );
     }
 
