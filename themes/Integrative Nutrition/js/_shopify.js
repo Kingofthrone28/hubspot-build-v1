@@ -9,6 +9,13 @@
   const addToCartKey = 'course_shopify_add_to_cart';
   const { isStringWithLength } = IIN.utilities;
 
+    /**
+   * Check a variant is available for sale
+   * @param {Object} variant The shopify variant to check
+   * @returns {boolean}
+   */
+    const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
+
   /**
    * Get Shopify module data from storage
    * @returns {Object|undefined}
@@ -223,7 +230,7 @@
    */
   const getFirstAvailableVariant = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.find?.(({ available, availableForSale }) => available || availableForSale);
+    return array?.find?.(isAvailable);
   };
 
   /**
@@ -338,7 +345,7 @@
    */
   const getAvailableVariants = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.filter?.(({ available, availableForSale }) => available || availableForSale);
+    return array?.filter?.(isAvailable);
   };
 
   /**
@@ -482,6 +489,7 @@
     getOptionsInfo,
     getPromoCheckoutButton,
     goToCart,
+    isAvailable,
     isProductInCheckout,
     sendProductQuery,
     setAddToCartSessionData,

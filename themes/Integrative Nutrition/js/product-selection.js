@@ -1,10 +1,5 @@
 const getProductSelectionMethods = () => {
-  /**
-   * Check a variant is available for sale
-   * @param {Object} variant The shopify variant to check
-   * @returns {boolean}
-   */
-  const isAvailable = (variant) => Boolean(variant.available || variant.availableForSale);
+
 
   /**
    * Returns the selected variant or null if one is not found.
@@ -16,7 +11,7 @@ const getProductSelectionMethods = () => {
       const variantOptions = variant?.selectedOptions || [];
 
       if (
-        !isAvailable(variant) ||
+        !IIN.shopify.isAvailable(variant) ||
         !Array.isArray(variantOptions) ||
         !variantOptions.length
       ) {
@@ -44,7 +39,7 @@ const getProductSelectionMethods = () => {
    */
   const getPossibleVariants = (variants, selection) =>
     variants.filter((variant) => {
-      if (!isAvailable(variant)) {
+      if (!IIN.shopify.isAvailable(variant)) {
         return false;
       }
 
