@@ -608,7 +608,10 @@
       cartTrackingPayload.ecommerce.items.push({
         item_id: lineItem.variant.product.id.replace(gidPath, ''),
         item_name: lineItem.title,
-        item_type: lineItem.programLabel || 'NA',
+        item_type:
+          lineItem.customAttributes.find((item) =>
+            item.key.includes('productType'),
+          )?.value || 'NA',
         variant_id: lineItem.variant.id.replace(variantGidPath, ''),
         discount: totalPreDiscount - total,
         price: totalPreDiscount,
@@ -717,7 +720,10 @@
         deleteItemTrackingPayload.ecommerce.items.push({
           item_id: deletedItem.variant.product.id.replace(gidPath, ''),
           item_name: deletedItem.title,
-          item_type: deletedItem.programLabel || 'NA',
+          item_type:
+            deletedItem.customAttributes.find((item) =>
+              item.key.includes('productType'),
+            )?.value || 'NA',
           variant_id: deletedItem.variant.id.replace(variantGidPath, ''),
           discount: totalPreDiscount - total,
           price: total,

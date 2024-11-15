@@ -108,17 +108,23 @@
   /**
    * Create a variant line item for checkout
    * @param {string} id Shopify ID, e.g. gid://shopify/ProductVariant/1234
+   * @param {Object[]} [customAttributes]
+   * @param {string} [customAttributes[].key]
+   * @param {string} [customAttributes[].value]
    * @returns {Object}
    */
-  const createCheckoutLineItem = (id) => {
+  const createCheckoutLineItem = (id, customAttributes) => {
     if (!isStringWithLength(id)) {
       throw new Error('id is a required string');
     }
 
-    return {
-      variantId: id,
+    const lineItem = {
+      customAttributes: Array.isArray(customAttributes) ? customAttributes : [],
       quantity: 1,
+      variantId: id,
     };
+
+    return lineItem;
   };
 
   /**

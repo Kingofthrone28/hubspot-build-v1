@@ -251,13 +251,19 @@ const getProductSelectionMethods = () => {
 
     $errorMessages.hide();
 
-    const newLineItem = IIN.shopify.createCheckoutLineItem(selectedVariant.id);
-    const lineItemsToAdd = [newLineItem];
+    const customAttributes = [
+      { key: 'productType', value: productData.productType },
+    ];
+
+    const newLineItem = IIN.shopify.createCheckoutLineItem(
+      selectedVariant.id,
+      customAttributes,
+    );
 
     try {
       const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
         cartCookie,
-        lineItemsToAdd,
+        [newLineItem],
       );
 
       showAddedToCartPopUp({
