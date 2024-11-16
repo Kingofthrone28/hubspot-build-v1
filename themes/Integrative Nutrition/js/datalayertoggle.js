@@ -1,11 +1,5 @@
 const dataLayerUrl =
   '{{ get_asset_url("/Integrative Nutrition/js/datalayer.js") }}';
-const dataLayerUrl2 =
-  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_2.js") }}';
-const dataLayerUrl4 =
-  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_4.js") }}';
-const dataLayerUrl5 =
-  '{{ get_asset_url("/Integrative Nutrition/js/datalayer_set_5.js") }}';
 
 // Function to check if the current environment is a testing enabled
 function isTestingEnabled() {
@@ -47,9 +41,7 @@ function renderAnalyticsDatalayerJS() {
     });
 
     loadScript(dataLayerUrl);
-    loadScript(dataLayerUrl2);
-    loadScript(dataLayerUrl4);
-    loadScript(dataLayerUrl5);
+
     // DLTest - Successfully loaded datalayer JS...
   } else if (isTestingDisabled()) {
     // DLTest - Setting a cookie to disable datalayer
@@ -63,9 +55,6 @@ function renderAnalyticsDatalayerJS() {
       env_name: 'preview',
     });
     loadScript(dataLayerUrl);
-    loadScript(dataLayerUrl2);
-    loadScript(dataLayerUrl4);
-    loadScript(dataLayerUrl5);
     // DLTest - Successfully loaded datalayer JS...
   }
 }
