@@ -69,13 +69,13 @@
         const formFieldName = [];
         $currentStep.find('input[id]').each(function() {
           const inputType = $(this).attr('type');
-          const fieldName = $(this).attr('name');
+          const fieldName = $(this).attr('id');
           if (inputType === 'checkbox' || inputType === 'radio') {
             if ($(this).prop('checked')) {
               formFieldName.push($(this).attr('value'));
             }
           } else {
-              formFieldName.push(fieldName);
+              formFieldName.push(fieldName.split('-')[0]);
           }
         });
         window.dataLayer = window.dataLayer || [];
@@ -238,4 +238,3 @@
     }
   });
 </script>
-

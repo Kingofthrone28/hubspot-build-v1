@@ -10,6 +10,14 @@
   const { isStringWithLength } = IIN.utilities;
 
   /**
+   * Check a variant is available for sale
+   * @param {Object} variant The Shopify variant to check
+   * @returns {boolean}
+   */
+  const isAvailable = (variant) =>
+    Boolean(variant.available || variant.availableForSale);
+
+  /**
    * Get Shopify module data from storage
    * @returns {Object|undefined}
    */
@@ -108,17 +116,23 @@
   /**
    * Create a variant line item for checkout
    * @param {string} id Shopify ID, e.g. gid://shopify/ProductVariant/1234
+   * @param {Object[]} [customAttributes]
+   * @param {string} [customAttributes[].key]
+   * @param {string} [customAttributes[].value]
    * @returns {Object}
    */
-  const createCheckoutLineItem = (id) => {
+  const createCheckoutLineItem = (id, customAttributes) => {
     if (!isStringWithLength(id)) {
       throw new Error('id is a required string');
     }
 
-    return {
-      variantId: id,
+    const lineItem = {
+      customAttributes: Array.isArray(customAttributes) ? customAttributes : [],
       quantity: 1,
+      variantId: id,
     };
+
+    return lineItem;
   };
 
   /**
@@ -223,7 +237,7 @@
    */
   const getFirstAvailableVariant = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.find?.(({ available }) => available);
+    return array?.find?.(isAvailable);
   };
 
   /**
@@ -338,7 +352,7 @@
    */
   const getAvailableVariants = (productOrVariants) => {
     const array = productOrVariants?.variants ?? productOrVariants;
-    return array?.filter?.(({ available }) => available);
+    return array?.filter?.(isAvailable);
   };
 
   /**
@@ -354,6 +368,162 @@
    */
   const getOptionsCount = (product) => product.options?.length ?? 0;
 
+  /**
+   * Call Shopify GraphQL for product information
+   * @param {string} id Shopify (non-global) ID
+   * @returns {Promise<Object>}
+   */
+  const getProductFromQuery = async (id) => {
+    const metaFieldConfig = [
+      'metafields',
+      {
+        args: {
+          identifiers: [
+            {
+              key: 'option_values_info',
+              namespace: 'custom',
+            },
+          ],
+        },
+      },
+      (metafield) => {
+        metafield.add('key');
+        metafield.add('value');
+      },
+    ];
+
+    const variantConfig = [
+      'variants',
+      {
+        args: {
+          first: 10,
+        },
+      },
+      (variant) => {
+        variant.add('availableForSale');
+        variant.add('title');
+        variant.add('selectedOptions', (option) => {
+          option.add('name');
+          option.add('value');
+        });
+        variant.add('price', (price) => {
+          price.add('amount');
+          price.add('currencyCode');
+        });
+        variant.add('image', (image) => {
+          image.add('src');
+          image.add('altText');
+        });
+      },
+    ];
+
+    const optionsConfig = [
+      'options',
+      { args: { first: 10 } },
+      (option) => {
+        option.add('name');
+        option.add('values');
+      },
+    ];
+
+    const query = IINShopifyClient.graphQLClient.query((root) =>
+      root.addConnection(
+        'products',
+        {
+          args: {
+            first: 1,
+            query: `id:${id}`,
+          },
+        },
+        (products) => {
+          products.add('title');
+          products.add('handle');
+          products.add('availableForSale');
+          products.add(...metaFieldConfig);
+          products.add(...optionsConfig);
+          products.addConnection(...variantConfig);
+        },
+      ),
+    );
+    const response = await IINShopifyClient.graphQLClient.send(query);
+    return response.model?.products?.[0];
+  };
+
+  /**
+   * Get Options Information List
+   * This must match the index of the getProductFromQuery metafields identifier list
+   * @param {Object[]} metafields All product metafields
+   * @returns {Object} The Options Information List metaobject
+   */
+  const getOptionsInfo = (metafields) => metafields?.[0];
+
+  /**
+   * Get a Shopify meta-object by id
+   * https://shopify.dev/docs/api/storefront/2024-10/queries/metaobject
+   * https://github.com/Shopify/storefront-api-learning-kit?tab=readme-ov-file#metafields-metaobjects
+   * @returns
+   */
+  const sendMetaObjectQuery = async (id) => {
+    const metaQ = IINShopifyClient.graphQLClient.query((root) =>
+      root.add(
+        'metaobject',
+        {
+          args: {
+            id,
+          },
+        },
+        (object) => {
+          object.add('fields', (fields) => {
+            fields.add('key');
+            fields.add('value');
+          });
+        },
+      ),
+    );
+
+    return IINShopifyClient.graphQLClient.send(metaQ);
+  };
+
+  /**
+   * Combine product options with metaobjects containing information about the options.
+   * @param {Object[]} options Array of product options
+   * @param {Object[]} valueData Array of metaobject models
+   * @returns {Map<string, Map<string, Object>>|undefined}
+   */
+  const getValuesMapByOptionName = (options, valueData) => {
+    const optionTuples = options.map(({ id, name, values }) => [
+      id,
+      { name, values },
+    ]);
+
+    const optionInfoByID = new Map(optionTuples);
+    return valueData?.reduce((map, { fields }, index) => {
+      if (!fields) {
+        return map;
+      }
+
+      const metaData = {};
+      fields.forEach(({ key, value }) => {
+        metaData[key] = value;
+      });
+
+      // `parent_option_id` must match the Shopify metaobject field name
+      /* eslint-disable-next-line camelcase --  cannot set camel case in Shopify */
+      const { parent_option_id } = metaData;
+      const { name, values } = optionInfoByID.get(parent_option_id);
+
+      // Match metadata to option value by index
+      const { value } = values[index];
+
+      if (!map.has(name)) {
+        map.set(name, new Map());
+      }
+
+      map.get(name).set(value, metaData);
+      return map;
+    }, new Map());
+  };
+
   IIN.shopify = {
     addDiscountToCheckout,
     addLineItemsToCheckout,
@@ -367,10 +537,15 @@
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
+    sendMetaObjectQuery,
     getOptionsCount,
+    getOptionsInfo,
     getPromoCheckoutButton,
+    getValuesMapByOptionName,
     goToCart,
+    isAvailable,
     isProductInCheckout,
+    getProductFromQuery,
     setAddToCartSessionData,
     updatePromoCheckoutButton,
   };

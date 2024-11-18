@@ -304,8 +304,8 @@
 .blog-search-term__pill {
   position: relative;
   margin: var(--spacing-1) var(--spacing-1);
-  border-radius: 20px;
   border: 0;
+  border-radius: 20px;
   background: var(--color--water--light) !important;
   padding: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-4) !important;
   text-align: left !important;

@@ -8,7 +8,6 @@
     configureStickyHeaderSampleClass,
     configureStickyNav,
     createViewItemEvent,
-    getProductData,
     handleSelectorChangeFull,
     matchPDPBottomSectionToTop,
     parseMarkupData,
@@ -48,21 +47,49 @@
       configureAddedToCartPopUp();
     }
 
-    const product = await getProductData(productID);
+    const product = await IIN.shopify.getProductFromQuery(productID);
+
+    if (!product) {
+      console.error(`Failed to find product for id: ${productID}`);
+      return;
+    }
+
     const optionsCount = IIN.shopify.getOptionsCount(product);
     configureDropdownHeading(optionsCount);
     matchPDPBottomSectionToTop(optionsCount);
     const { productOptions, variantSelections } = processProduct(product);
     const availableVariants = IIN.shopify.getAvailableVariants(product);
     const firstVariant = availableVariants?.[0];
-    const discountInfo = await calculateDiscounts(firstVariant);
+    const discountInfoPromise = calculateDiscounts(firstVariant);
+    const requests = [discountInfoPromise];
+
+    // Parse Shopify metaobjects for option descriptions
+    const metaObjectIDsString = IIN.shopify.getOptionsInfo(
+      product.metafields,
+    )?.value;
+    if (metaObjectIDsString) {
+      const metaObjectIDs = JSON.parse(metaObjectIDsString);
+      const metaObjectPromises = metaObjectIDs.map(
+        IIN.shopify.sendMetaObjectQuery,
+      );
+      requests.push(...metaObjectPromises);
+    }
+
+    // Parallelize network requests
+    const results = await Promise.all(requests);
+    const [discountInfo, ...metaObjectResults] = results;
+    const valuesMapByOptionName = IIN.shopify.getValuesMapByOptionName(
+      product.options,
+      metaObjectResults.map((value) => value?.model.metaobject),
+    );
 
     handleSelectorChangeFull(
       moduleData,
       product,
       variantSelections,
       productOptions,
-      discountInfo,
+      typeof discountInfo === 'string' ? {} : discountInfo,
+      valuesMapByOptionName,
     );
 
     createViewItemEvent(product, firstVariant, moduleData);

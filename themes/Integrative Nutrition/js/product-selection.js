@@ -9,7 +9,7 @@ const getProductSelectionMethods = () => {
       const variantOptions = variant?.selectedOptions || [];
 
       if (
-        !variant?.available ||
+        !IIN.shopify.isAvailable(variant) ||
         !Array.isArray(variantOptions) ||
         !variantOptions.length
       ) {
@@ -37,7 +37,7 @@ const getProductSelectionMethods = () => {
    */
   const getPossibleVariants = (variants, selection) =>
     variants.filter((variant) => {
-      if (!variant.available) {
+      if (!IIN.shopify.isAvailable(variant)) {
         return false;
       }
 
@@ -251,13 +251,19 @@ const getProductSelectionMethods = () => {
 
     $errorMessages.hide();
 
-    const newLineItem = IIN.shopify.createCheckoutLineItem(selectedVariant.id);
-    const lineItemsToAdd = [newLineItem];
+    const customAttributes = [
+      { key: 'productType', value: productData.productType },
+    ];
+
+    const newLineItem = IIN.shopify.createCheckoutLineItem(
+      selectedVariant.id,
+      customAttributes,
+    );
 
     try {
       const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
         cartCookie,
-        lineItemsToAdd,
+        [newLineItem],
       );
 
       showAddedToCartPopUp({
@@ -374,38 +380,41 @@ const getProductSelectionMethods = () => {
    * @returns
    */
   const calculateDiscounts = async (variant) => {
-    let displaySlashPrice;
-    let displayDiscount;
-
+    // Create checkout and add line items
     const checkout = await IINShopifyClient.checkout.create();
+
     const lineItems = [
       {
         variantId: variant.id,
         quantity: 1,
       },
     ];
+
     const updatedCheckout = await IINShopifyClient.checkout.addLineItems(
       checkout.id,
       lineItems,
     );
-    const discounts = updatedCheckout?.discountApplications ?? [];
-    const totalAfterDiscount = parseFloat(updatedCheckout.totalPrice?.amount);
-    let total = totalAfterDiscount > -1 ? totalAfterDiscount : 0;
 
-    discounts.forEach(({ value }) => {
-      const amount = parseFloat(value?.amount) || 0;
-      total += amount;
-    });
+    const total =
+      parseFloat(updatedCheckout.lineItemsSubtotalPrice?.amount) || 0;
 
+    const totalAfterDiscount =
+      parseFloat(updatedCheckout.totalPrice?.amount) || 0;
+
+    // Format the discounted price to be displayed
     const displayPrice = `$${totalAfterDiscount.toLocaleString()}`;
 
+    let displayDiscount;
+    let displaySlashPrice;
+
+    // Check if a discount was applied and calculate the percentage off
     if (totalAfterDiscount < total) {
-      displaySlashPrice = `$${total.toLocaleString()}`;
       const percentageOff = Math.round(
         ((total - totalAfterDiscount) / total) * 100,
       );
 
       displayDiscount = `-${percentageOff}%`;
+      displaySlashPrice = `$${total.toLocaleString()}`;
     }
 
     return { displaySlashPrice, displayPrice, displayDiscount };
@@ -487,6 +496,7 @@ const getProductSelectionMethods = () => {
 
     const label = document.createElement('label');
     label.setAttribute('for', compositeKey);
+
     // async fire and forget
     localizeOptionLabel(label, value);
     div.append(input, label);
@@ -685,16 +695,22 @@ const getProductSelectionMethods = () => {
 
   /**
    * Create the inputs for choosing the product options like language or start date
-   * @param {string[]} optionKeys
+   * @param {string[]} optionNames
    * @param {*} allOptions
    * @param {Object} selectedOptions
+   * @param {Map<string, Map<string, Object>>}
    * @returns {HTMLElement}
    */
-  const createOptionNodes = (optionKeys, allOptions, selectedOptions) => {
+  const createOptionNodes = (
+    optionNames,
+    allOptions,
+    selectedOptions,
+    valuesMapByOptionName,
+  ) => {
     const fragment = document.createDocumentFragment();
-    const hasMultipleOptions = optionKeys.length > 1;
+    const hasMultipleOptions = optionNames.length > 1;
 
-    optionKeys.forEach((key, index) => {
+    optionNames.forEach((key, index) => {
       const optionDiv = document.createElement('div');
       optionDiv.classList.add('jd-buy-option');
       const prefix = hasMultipleOptions ? `${index + 1}. ` : '';
@@ -702,15 +718,40 @@ const getProductSelectionMethods = () => {
       optionDiv.appendChild(labelDiv);
       fragment.appendChild(optionDiv);
 
+      // Configure option value inputs
       const optionWrap = document.createElement('div');
       optionWrap.classList.add('jd-shopify-option-wrap');
       optionDiv.appendChild(optionWrap);
-
       const valuesSet = allOptions[key];
       valuesSet.forEach((value) => {
         const pair = createInputPair(key, value, selectedOptions, true);
         optionWrap.appendChild(pair);
       });
+
+      if (!(valuesMapByOptionName && valuesMapByOptionName.has(key))) {
+        return;
+      }
+
+      const inputs = optionWrap.querySelectorAll('input');
+      if (!inputs.length) {
+        return;
+      }
+
+      const checked = Array.prototype.find.call(inputs, (input) =>
+        input.getAttribute('checked'),
+      );
+      const { value } = checked;
+      const valueDataByValueName = valuesMapByOptionName.get(key);
+
+      // `description` must match shopify Metaobject field name
+      const description = valueDataByValueName.get(value)?.description;
+      if (description) {
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('selected-value-description');
+        const text = document.createTextNode(description);
+        paragraph.appendChild(text);
+        optionDiv.appendChild(paragraph);
+      }
     });
 
     return fragment;
@@ -843,12 +884,12 @@ const getProductSelectionMethods = () => {
     selectedOptions,
     optionKeys,
     discountInfo,
+    valuesMapByOptionName,
   ) => {
     const { showStickyHeader, showInlineSection } = moduleData;
     const variants = Array.isArray(product?.variants) ? product.variants : [];
     const availableVariants = IIN.shopify.getAvailableVariants(variants);
     const hasCohorts = availableVariants.length > 1;
-
     const { options, newSelection } = getOptions(
       selectedOptions,
       optionKeys,
@@ -869,7 +910,12 @@ const getProductSelectionMethods = () => {
     // Not showing options if there is only 1 default field
     if (!isDefaultTitle) {
       optionsForm.appendChild(
-        createOptionNodes(optionKeys, options, selectedOptions),
+        createOptionNodes(
+          optionKeys,
+          options,
+          selectedOptions,
+          valuesMapByOptionName,
+        ),
       );
     }
 
@@ -914,6 +960,7 @@ const getProductSelectionMethods = () => {
         selectedOptions,
         optionKeys,
         discountInfo,
+        valuesMapByOptionName,
       );
 
       const prefix = `.${parent}`;

@@ -537,7 +537,7 @@
         updateSearchResultMessage();
       }
       updateSearchTermResultsTitle(filterTerms);
-    } catch (error){
+    } catch (error) {
       console.error('Error in removeSearchPill:', error);
     }
   };
