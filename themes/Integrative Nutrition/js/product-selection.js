@@ -929,7 +929,7 @@ const getProductSelectionMethods = () => {
       $('.jd-shopify-option-wrap label').click(function (event) {
         event.preventDefault();
         const checkbox = $(this).attr('for');
-        $(`#${checkbox}`).first().trigger('click');
+        $(`[id="${checkbox}"`).first().trigger('click');
       });
     }
 
