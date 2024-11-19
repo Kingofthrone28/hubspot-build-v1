@@ -396,7 +396,7 @@
       'variants',
       {
         args: {
-          first: 10,
+          first: 100,
         },
       },
       (variant) => {
