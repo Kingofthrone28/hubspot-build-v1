@@ -1,75 +1,78 @@
-.bpbh-container {
+.blog-post-bottom-hero-container {
   display: flex;
   column-gap: var(--spacing-32);
   align-items: center;
   justify-content: center;
   background: var(--color--chalk);
-  padding: var(--spacing-20) 0 var(--spacing-16) 0;
+  padding: var(--spacing-20) 0 var(--spacing-16);
 }
 
-.bpbh-image {
+.blog-post-bottom-hero-image {
   width: 412px;
 }
 
-.bpbh-column {
+.blog-post-bottom-hero-column {
   max-width: 513px;
   text-align: left;
 }
 
-.bpbh-header {
+.blog-post-bottom-hero-heading {
   margin-bottom: var(--spacing-8);
   font: var(--font--h3--desktop);
 }
 
-.bpbh-subheader {
+.blog-post-bottom-hero-subheading {
   margin-bottom: var(--spacing-8);
   font: var(--font--extra-large-paragraph);
 }
 
-.bpbh-container form label {
+.blog-post-bottom-hero-subheading p {
+  font: inherit;
+}
+
+.blog-post-bottom-hero-container form label {
   margin-bottom: var(--spacing-2);
   font: var(--font--legal);
 }
 
-.bpbh-container form input[type='submit'] {
+.blog-post-bottom-hero-container form input[type='submit'] {
+  margin-top: var(--spacing-4);
   background: var(--theme--buttons--light-button--background-color);
   padding: var(--spacing-4) var(--spacing-16);
+  font: var(--font--paragraph--semibold--short);
 }
 
-.bpbh-container .hs-form-field {
-  margin-bottom: var(--spacing-8);
+.blog-post-bottom-hero-container .hs-form-field {
+  margin-bottom: var(--spacing-4);
 }
 
-.bpbh-privacy-consent {
+.blog-post-bottom-hero-privacy-consent {
   margin-top: var(--spacing-5);
   font: var(--font--legal);
 }
 
-@media (max-width: 768px) {
-  .bpbh-container {
+@media (max-width: 767px) {
+  .blog-post-bottom-hero-container {
     padding: var(--spacing-10) var(--spacing-5) var(--spacing-16)
       var(--spacing-2);
   }
 
-  .bpbh-right {
+  .blog-post-bottom-hero-right-column {
     display: none;
   }
 
-  .bpbh-container form input[type='submit'] {
+  .blog-post-bottom-hero-container form input[type='submit'] {
     padding: 10px var(--spacing-6);
+    font: var(--font--paragraph--semibold--shorter);
   }
 
-  .bpbh-header {
+  .blog-post-bottom-hero-header {
     margin-bottom: var(--spacing-6);
     font: var(--font--h2--mobile);
   }
 
-  .bpbh-subheader {
-    margin-bottom: var(--spacing-6);
+  .blog-post-bottom-hero-subheader {
+    margin: var(--spacing-2) 0 var(--spacing-6);
     font: var(--font--small-paragraph--bold);
-  }
-
-  .bpbh-container .hs-form-field {
-    margin-bottom: var(--spacing-4);
   }
 }

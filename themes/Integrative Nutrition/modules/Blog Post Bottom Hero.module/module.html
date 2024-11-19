@@ -1,10 +1,10 @@
-<div class="bpbh-container">
-  <div class="bpbh-column">
-    <div class="bpbh-form">
+<div class="blog-post-bottom-hero-container">
+  <div class="blog-post-bottom-hero-column">
+    <div class="blog-post-bottom-hero-form">
       {% if module.form_title %}
-      <h3 class="bpbh-header">{{module.form_title}}</h3>
+      <h2 class="blog-post-bottom-hero-heading">{{module.form_title}}</h2>
       {% endif %}
-      <span class="bpbh-subheader">{{ module.left_content }}</span>
+      <span class="blog-post-bottom-hero-subheading">{{ module.left_content }}</span>
       {% form
         form_to_use="{{ module.form_field.form_id }}"
         response_response_type="{{ module.form_field.response_type }}"
@@ -14,10 +14,10 @@
         gotowebinar_webinar_key="{{ module.form_field.gotowebinar_webinar_key }}"
       %}
     </div>
-    <p class="bpbh-privacy-consent">By submitting, I consent to Integrative Nutrition and its affiliates contacting me by about the products and services offered by Integrative Nutrition and its affiliates. This page is protected by Google reCAPTCHA.</p>
+    <p class="blog-post-bottom-hero-privacy-consent">By submitting, I consent to Integrative Nutrition and its affiliates contacting me by about the products and services offered by Integrative Nutrition and its affiliates. This page is protected by Google reCAPTCHA.</p>
   </div>
-  <div class="bpbh-column bpbh-right">
-    <img class="bpbh-image" src="{{module.background.src}}" />
+  <div class="blog-post-bottom-hero-column blog-post-bottom-hero-right-column">
+    <img class="blog-post-bottom-hero-image" src="{{module.background.src}}" alt="" />
   </div>
 </div>
 <script>  
