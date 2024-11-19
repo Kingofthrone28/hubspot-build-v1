@@ -189,19 +189,6 @@
     "default": "7485891150013"
   },
   {
-    "id": "650e1edf-eebe-ed82-6114-1928a4494fe7",
-    "name": "affirm_line",
-    "display_width": null,
-    "label": "Affirm Line",
-    "required": false,
-    "locked": false,
-    "validation_regex": "",
-    "allow_new_line": false,
-    "show_emoji_picker": false,
-    "type": "text",
-    "default": "Or as low as $150/month with Affirm. 0% APR financing for up to 24 months."
-  },
-  {
     "id": "18cbd383-ac3d-c6fc-c011-09dcb48eaaa5",
     "name": "code_offers",
     "display_width": null,
@@ -561,6 +548,85 @@
     "expanded": false,
     "group_occurrence_meta": null,
     "type": "group",
+    "default": {}
+  },
+  {
+    "name": "payment_details",
+    "label": "Payment Details",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "name": "line_1",
+        "label": "Payment Details - Line 1",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "Appears before logos",
+        "help_text": "First line of payment details, e.g. \"0% APR for up to 24 months with\"",
+        "default": "0% APR for up to 24 months with"
+      },
+      {
+        "name": "line_2",
+        "label": "Payment Details - Line 2",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "Second line of payment details",
+        "default": null
+      },
+      {
+        "name": "logos",
+        "display_width": null,
+        "label": "Payment Logos",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": null,
+          "default": 3
+        },
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "default": [
+          {
+            "size_type": "auto",
+            "src": "../../images/defaults/logo - affirm.png",
+            "alt": "Affirm logo",
+            "loading": "lazy"
+          },
+          {
+            "size_type": "auto",
+            "src": "../../images/defaults/logo - paypal.png",
+            "alt": "Paypal logo",
+            "loading": "lazy"
+          },
+          {
+            "size_type": "auto",
+            "src": "../../images/defaults/logo - shop pay.png",
+            "alt": "Shop Pay logo",
+            "loading": "lazy"
+          }
+        ]
+      }
+    ],
+    "type": "group",
+    "inline_help_text": "",
+    "help_text": "",
     "default": {}
   }
 ]

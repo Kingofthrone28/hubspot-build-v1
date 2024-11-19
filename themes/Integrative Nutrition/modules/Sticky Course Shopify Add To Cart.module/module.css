@@ -30,3 +30,8 @@
   color: var(--color--slate);
   font: var(--font--legal--explainer);
 }
+
+.pdp-payment-details_logo {
+  margin: 0 var(--spacing-1--static);
+  max-height: var(--spacing-3);
+}

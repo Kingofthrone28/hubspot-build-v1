@@ -23,7 +23,7 @@
   font-family: var(--theme--global-fonts--primary-font);
 }
 
-.pdp-affirm-line {
+.pdp-payment-details {
   padding-top: var(--spacing-2);
   font: var(--font--legal);
 }
