@@ -22,12 +22,17 @@
 }
 
 .blog-post-bottom-hero-subheading {
+  display: block;
   margin-bottom: var(--spacing-8);
   font: var(--font--extra-large-paragraph);
 }
 
 .blog-post-bottom-hero-subheading p {
   font: inherit;
+}
+
+.blog-post-bottom-hero-container .form-title {
+  display: none;
 }
 
 .blog-post-bottom-hero-container form label {
@@ -51,14 +56,16 @@
   font: var(--font--legal);
 }
 
+@media (max-width: 1023px) {
+  .blog-post-bottom-hero-right-column {
+    display: none;
+  }
+}
+
 @media (max-width: 767px) {
   .blog-post-bottom-hero-container {
     padding: var(--spacing-10) var(--spacing-5) var(--spacing-16)
       var(--spacing-2);
-  }
-
-  .blog-post-bottom-hero-right-column {
-    display: none;
   }
 
   .blog-post-bottom-hero-container form input[type='submit'] {
