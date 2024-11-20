@@ -494,8 +494,11 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
 .jd-ham {
   display: flex;
   align-items: center;
-  margin-right: 40px;
+  margin: 0 var(--spacing-10--static) 0 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
+  padding: 0;
 }
 
 .jd-ham svg {

@@ -608,7 +608,10 @@
       cartTrackingPayload.ecommerce.items.push({
         item_id: lineItem.variant.product.id.replace(gidPath, ''),
         item_name: lineItem.title,
-        item_type: lineItem.programLabel || 'NA',
+        item_type:
+          lineItem.customAttributes.find((item) =>
+            item.key.includes('productType'),
+          )?.value || 'NA',
         variant_id: lineItem.variant.id.replace(variantGidPath, ''),
         discount: totalPreDiscount - total,
         price: totalPreDiscount,
@@ -717,7 +720,10 @@
         deleteItemTrackingPayload.ecommerce.items.push({
           item_id: deletedItem.variant.product.id.replace(gidPath, ''),
           item_name: deletedItem.title,
-          item_type: deletedItem.programLabel || 'NA',
+          item_type:
+            deletedItem.customAttributes.find((item) =>
+              item.key.includes('productType'),
+            )?.value || 'NA',
           variant_id: deletedItem.variant.id.replace(variantGidPath, ''),
           discount: totalPreDiscount - total,
           price: total,
@@ -1054,40 +1060,21 @@
         throw new Error('No bundle products were found');
       }
 
-      const cartItems = [];
       const existingProducts = [];
       const newProducts = [];
+
+      let total = 0;
 
       bundleProducts.forEach((bundleProduct) => {
         for (const variant of bundleProduct.variants) {
           if (variant.availableForSale) {
-            cartItems.push({
-              variantId: variant.id,
-              quantity: 1,
-            });
-
+            total += parseFloat(variant.priceV2.amount);
             break;
           }
         }
       });
 
-      const bundleCart = await IINShopifyClient.checkout.create();
-      const cartID = bundleCart?.id;
-
-      await IINShopifyClient.checkout.addLineItems(cartID, cartItems);
-
-      const bundleCheckout = await IINShopifyClient.checkout.fetch(cartID);
-      const totalPrice = bundleCheckout.totalPrice?.amount || 0;
-      const totalAfterDiscount = parseFloat(totalPrice);
-      let total = totalAfterDiscount;
-
-      if (bundleCheckout.discountApplications?.length) {
-        bundleCheckout.discountApplications.forEach((discount) => {
-          total += parseFloat(discount?.value?.amount || 0);
-        });
-      }
-
-      // TODO: should the checkout be destroyed? No need to keep it around.
+      const totalAfterDiscount = matchedBundle.price || total;
 
       let cartRecPricesHTML = '<div>Bundle Total price: </div>';
 

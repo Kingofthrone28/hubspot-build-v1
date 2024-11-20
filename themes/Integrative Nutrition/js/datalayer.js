@@ -637,3 +637,332 @@ promo?.addEventListener('click', () => {
         ?.getAttribute('data-promo-code') || 'NA',
   });
 });
+
+function viewForm(element) {
+  const formName =
+    element.querySelector('input[name="leadsource"]').getAttribute('value') ||
+    '';
+  window.dataLayer.push({
+    event: 'form_view',
+    form_name: formName,
+  });
+}
+function handleIntersection(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const form = entry.target.closest('form');
+      const hiddenInput = form.querySelector('input[name="leadsource"]');
+      if (hiddenInput && form.dataset.tracked !== 'true') {
+        viewForm(form);
+        observer.unobserve(form);
+        form.dataset.tracked = 'true';
+      }
+    }
+  });
+}
+
+// eslint-disable-next-line compat/compat
+const observer = new IntersectionObserver(handleIntersection, {
+  root: null,
+  rootMargin: '50px',
+  threshold: 0.5,
+});
+
+function iframeSubmitFormListener(form) {
+  if (form.dataset.listenerAttached === 'true') return;
+  form.addEventListener(
+    'hsvalidatedsubmit',
+    () => {
+      const referUrl = window.location.href || '';
+      const formName =
+        form.querySelector('input[name="leadsource"]').getAttribute('value') ||
+        '';
+      const firstName =
+        form.querySelector('input[id^="firstname"]')?.value || '';
+      const email = form.querySelector('input[id^="email"]')?.value || '';
+      window.dataLayer.push({
+        event: 'form_submit_DL',
+        form_name: formName,
+        form_referrer_url: referUrl,
+        first_name: firstName,
+        email,
+      });
+    },
+    { once: true },
+  );
+  form.dataset.listenerAttached = 'true';
+}
+
+const debouncedCheckForms = IIN.helpers.debounce(() => {
+  const newForms = document.querySelectorAll('form');
+  newForms.forEach((form) => {
+    const hiddenInput = form.querySelector('input[name="leadsource"]');
+    if (hiddenInput && form.dataset.tracked !== 'true') {
+      observer.observe(form);
+    }
+  });
+  const iframe = document.querySelector('iframe[src*="hs-web-interactive"]');
+  try {
+    const iframeForms = iframe?.contentDocument?.querySelectorAll('form') || [];
+    iframeForms.forEach((form) => {
+      const hiddenInput = form.querySelector('input[name="leadsource"]');
+      if (hiddenInput && form.dataset.tracked !== 'true') {
+        observer.observe(form);
+        iframeSubmitFormListener(form);
+      }
+    });
+  } catch (error) {
+    console.warn('No iframes found', error);
+  }
+});
+
+const mutationObserver = new MutationObserver(debouncedCheckForms);
+mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+function initiateForm(element) {
+  const formName =
+    element.querySelector('input[name="leadsource"]').getAttribute('value') ||
+    '';
+  window.dataLayer.push({
+    event: 'form_initiate',
+    form_name: formName,
+  });
+}
+
+function falloutForm(form, fieldName) {
+  const formName =
+    form.querySelector('input[name="leadsource"]').getAttribute('value') || '';
+  window.dataLayer.push({
+    event: 'form_fallout',
+    form_name: formName,
+    form_field_name: fieldName,
+  });
+}
+
+function handleFormLastField(event) {
+  const form = event.target.closest('form');
+  const [lastField] = event.target.id.split('-');
+  form.dataset.lastField = lastField;
+  const formName = form
+    .querySelector('input[name="leadsource"]')
+    .getAttribute('value');
+  const submitButton = form.querySelector('input[type="submit"]');
+  let isSubmitting = false;
+  let isTabSwitched = false;
+  if (submitButton) {
+    submitButton.addEventListener('click', () => {
+      isSubmitting = true;
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    isTabSwitched = document.hidden;
+  });
+
+  // This delay require to ensure that the flags like isTabSwitched and isSubmitting are updated accurately before fallout check occurs.
+  setTimeout(() => {
+    if (
+      form.dataset.startTracked &&
+      form.dataset.lastField &&
+      !isTabSwitched &&
+      !isSubmitting &&
+      !formName.includes('Help Me Choose')
+    ) {
+      falloutForm(form, form.dataset.lastField);
+    }
+  }, 500);
+}
+
+function handleFormInitiate(event) {
+  const form = event.target.closest('form');
+  const hiddenInput = form.querySelector('input[name="leadsource"]');
+  if (hiddenInput && form.dataset.startTracked !== 'true') {
+    initiateForm(form);
+    event.target.removeEventListener('focus', handleFormInitiate);
+    form.dataset.startTracked = 'true';
+  }
+}
+
+function addFormInitiateListener(form) {
+  const inputs = form.querySelectorAll('input');
+  const hiddenInput = form.querySelector('input[name="leadsource"]');
+  if (hiddenInput) {
+    inputs.forEach((input) => {
+      input.addEventListener('focus', handleFormInitiate);
+      input.addEventListener('focusout', handleFormLastField);
+    });
+  }
+}
+
+const debouncedAddListeners = IIN.helpers.debounce(() => {
+  const newForms = document.querySelectorAll('form');
+  newForms.forEach((form) => {
+    if (!form.dataset.startTracked) {
+      addFormInitiateListener(form);
+    }
+  });
+  const iframe = document.querySelector('iframe[src*="hs-web-interactive"]');
+  try {
+    const iframeForms = iframe?.contentDocument?.querySelectorAll('form') || [];
+    iframeForms.forEach((form) => {
+      if (!form.dataset.startTracked) {
+        addFormInitiateListener(form);
+      }
+    });
+  } catch (error) {
+    console.warn('No iframes found', error);
+  }
+});
+
+const listenerMutationObserver = new MutationObserver(debouncedAddListeners);
+listenerMutationObserver.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+const formCache = {};
+function cacheFormData(
+  dataFormId,
+  firstName,
+  lastName,
+  email,
+  country,
+  phone,
+  city,
+  region,
+  streetAddress,
+  postalCode,
+) {
+  const selector = `form[data-form-id="${dataFormId}"]`;
+  const hsForm = document.querySelector(selector);
+  if (hsForm) {
+    const formName =
+      hsForm.querySelector('input[name="leadsource"]').getAttribute('value') ||
+      '';
+    formCache[dataFormId] = {
+      formName,
+      firstName,
+      lastName,
+      email,
+      country,
+      phone,
+      city,
+      region,
+      streetAddress,
+      postalCode,
+    };
+  } else {
+    console.error('Form not found for data-form-id:', dataFormId);
+  }
+}
+
+document.addEventListener(
+  'input',
+  (event) => {
+    if (event.target.closest('form')) {
+      const form = event.target.closest('form');
+      const dataFormId = form.getAttribute('data-form-id');
+      const firstName =
+        form.querySelector('input[id^="firstname"]')?.value || '';
+      const lastName = form.querySelector('input[id^="lastname"]')?.value || '';
+      const email = form.querySelector('input[id^="email"]')?.value || '';
+      const country =
+        form.querySelector('select[id^="phone"]')?.value ||
+        form.querySelector('select[id^="country"]')?.value;
+      const phone =
+        form.querySelector('input[id^="phone"]')?.value.replace(/\s+/g, '') ||
+        '';
+      const city = form.querySelector('input[id^="city"]')?.value || '';
+      const region =
+        form.querySelector('select[id*="state"]')?.value ||
+        form.querySelector('select[id*="province"]')?.value ||
+        '';
+      const streetAddress =
+        form.querySelector('input[id^="address"]')?.value || '';
+      const postalCode = form.querySelector('input[id^="zip"]')?.value || '';
+      cacheFormData(
+        dataFormId,
+        firstName,
+        lastName,
+        email,
+        country,
+        phone,
+        city,
+        region,
+        streetAddress,
+        postalCode,
+      );
+    }
+  },
+  true,
+);
+
+function submitForm(dataFormId, referUrl) {
+  const cachedData = formCache[dataFormId];
+  if (cachedData) {
+    window.dataLayer.push({
+      event: 'form_submit_DL',
+      form_name: cachedData.formName,
+      form_referrer_url: referUrl,
+      first_name: cachedData.firstName,
+      last_name: cachedData.lastName,
+      email: cachedData.email,
+      country: cachedData.country,
+      phone: cachedData.phone,
+      city: cachedData.city,
+      region: cachedData.region,
+      street_address: cachedData.streetAddress,
+      postal_code: cachedData.postalCode,
+    });
+    delete formCache[dataFormId];
+  } else {
+    console.error('No cached data found for form:', dataFormId);
+  }
+}
+
+window.addEventListener('message', (event) => {
+  if (
+    event.data.type === 'hsFormCallback' &&
+    event.data.eventName === 'onFormSubmitted'
+  ) {
+    const dataFormId = event.data.id;
+    const formReferrerUrl = window.location.href;
+    submitForm(dataFormId, formReferrerUrl);
+  }
+});
+
+function trackButtonInIframes() {
+  const iframeCTA = document?.querySelector(
+    'iframe[src*="hs-web-interactive"]',
+  );
+  iframeCTA?.addEventListener('load', () => {
+    try {
+      const checkButtonInterval = setInterval(() => {
+        const button = iframeCTA?.contentDocument?.querySelector(
+          '.interactive-button',
+        );
+        if (button) {
+          if (!button.hasAttribute('data-tracking-attached')) {
+            button.addEventListener('click', () => {
+              window.dataLayer.push({
+                event: 'cta_click',
+                click_text: button.innerText,
+                click_url: button.href.split('?')[0] || 'NA',
+                position: 'NA',
+                cta_track_id: 'NA',
+              });
+            });
+            button.setAttribute('data-tracking-attached', 'true');
+          }
+          clearInterval(checkButtonInterval);
+        }
+      }, 500);
+    } catch (error) {
+      console.error('Error accessing iframe content:', error);
+    }
+  });
+}
+window.addEventListener('load', trackButtonInIframes);
+
+const iframeObserver = new MutationObserver(trackButtonInIframes);
+iframeObserver.observe(document.body, { childList: true, subtree: true });
