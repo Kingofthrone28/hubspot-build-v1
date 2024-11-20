@@ -251,8 +251,9 @@ const getProductSelectionMethods = () => {
 
     $errorMessages.hide();
 
+    // TODO: is productData.productType valid?
     const customAttributes = [
-      { key: 'productType', value: productData.productType },
+      { key: 'productType', value: productData.productType || 'NA' },
     ];
 
     const newLineItem = IIN.shopify.createCheckoutLineItem(

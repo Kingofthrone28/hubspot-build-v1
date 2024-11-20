@@ -439,6 +439,7 @@
           products.add('title');
           products.add('handle');
           products.add('availableForSale');
+          products.add('productType');
           products.add(...metaFieldConfig);
           products.add(...optionsConfig);
           products.addConnection(...variantConfig);
