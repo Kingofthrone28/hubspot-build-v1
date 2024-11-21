@@ -526,7 +526,7 @@
       } else {
         resetBodyContent();
       }
- 
+
       if (!filterTerms.length && searchResultsCount) {
         searchResultsCount.textContent = '0';
         searchTermResultsTitle.textContent = '""';

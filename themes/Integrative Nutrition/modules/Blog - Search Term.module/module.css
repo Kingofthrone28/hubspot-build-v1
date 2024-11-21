@@ -248,17 +248,17 @@
   border-style: none none solid;
   background-image: var(--icon--search);
   background-position: 15px 20px;
-  font: var(--font--paragraph);
   background-repeat: no-repeat;
   padding: var(--spacing-3--static) var(--spacing-12--static);
   min-width: 370px;
+  font: var(--font--paragraph);
 }
 
 @media screen and (max-width: 767px) {
   .blog-search-term .blog-search-term__input[type='search'] {
-    min-width: 370px;
-    background-color: var(--color--white);
     border-bottom: 1px solid var(--color--grey-2);
+    background-color: var(--color--white);
+    min-width: 370px;
   }
 }
 
