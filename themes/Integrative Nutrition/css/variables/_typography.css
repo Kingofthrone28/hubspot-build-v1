@@ -367,11 +367,6 @@
     var(--font-weight--semibold) var(--font-size--paragraph) /
     var(--line-height--117) var(--font-family--body);
 
-  /* Figma text style: none */
-  --font--paragraph--semibold--shorter: var(--font-style--body)
-    var(--font-weight--semibold) var(--font-size--caption) /
-    var(--line-height--117) var(--font-family--body);
-
   /* Legacy Typography */
 
   /* Variables should be renamed if they get moved into the style guide. */

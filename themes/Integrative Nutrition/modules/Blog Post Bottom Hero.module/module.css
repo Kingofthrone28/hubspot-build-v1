@@ -71,7 +71,7 @@
 
   .blog-post-bottom-hero-container form input[type='submit'] {
     padding: 10px var(--spacing-6);
-    font: var(--font--paragraph--semibold--shorter);
+    font: var(--font--small-paragraph--bold);
   }
 
   .blog-post-bottom-hero-heading {
