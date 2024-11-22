@@ -99,7 +99,7 @@
   {% set rows = hubdb_table_rows('course_catalog') %}
 {% endif %}
 <script>
-  var rowsData = {{ rows| tojson }}.objects || {{ rows | tojson }};
+  var rowsData = [];
 </script>
 {% for row in rows %}
   {% set valid_row = { val: true } %}
@@ -120,6 +120,9 @@
   {% endif %}
 
   {% if valid_row.val %}
+    <script>
+      rowsData.push({{ row | tojson }});
+    </script>
     <div class="course-card-wrap"
       data-Topics="{% for topic in row.course_topics %}{{ topic.label }}{% if not loop.last %},{% endif %}{% endfor %}" 
       data-Levels="{% for level in row.levels %}{{ level.label }}{% if not loop.last %},{% endif %}{% endfor %}"
@@ -275,9 +278,7 @@
         {% endfor %}
       {% endif %}
     {% endif %}
-    <script>
-      var rowsData = {{ course_rows| tojson }}.objects || {{ course_rows | tojson }};
-    </script>
+
     {% for row in course_rows %}
       <div class="course-card-wrap"
         data-Topics="{% for topic in row.course_topics %}{{ topic.label }}{% if not loop.last %},{% endif %}{% endfor %}" 
