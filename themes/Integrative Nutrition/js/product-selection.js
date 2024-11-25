@@ -306,7 +306,10 @@ const getProductSelectionMethods = () => {
         coupon: couponTitle,
         items: [
           {
-            item_id: moduleInfo.productID,
+            item_id: getCustomItemId(
+              moduleData.productID,
+              variant.id.replace(variantGidPath, ''),
+            ),
             item_name: productInfo.title,
             item_type: productInfo.productType,
             variant_id: variant.id.replace(variantGidPath, ''),
@@ -351,7 +354,10 @@ const getProductSelectionMethods = () => {
         coupon: couponTitle,
         items: [
           {
-            item_id: moduleData.productID,
+            item_id: getCustomItemId(
+              moduleData.productID,
+              matchedVariant.id.replace(variantGidPath, ''),
+            ),
             item_name: productData.title,
             item_type: productData.productType || 'NA',
             variant_id: matchedVariant.id.replace(variantGidPath, ''),

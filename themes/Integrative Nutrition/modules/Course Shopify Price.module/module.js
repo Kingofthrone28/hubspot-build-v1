@@ -44,7 +44,7 @@
   };
 
   setPrice().then(([product, matchedVariant]) => {
-    const variantID = matchedVariant.id;
+    const variantID = matchedVariant.id.match(/\/(\d+)$/)[1];
     const itemPrice = matchedVariant.price.amount;
     const viewItemPayLoad = {
       event: 'view_item',
@@ -54,10 +54,10 @@
         value: parseFloat(itemPrice),
         items: [
           {
-            item_id: moduleData.productID,
+            item_id: getCustomItemId(moduleData.productID, variantID),
             item_name: product.title,
             item_type: product.productType || 'NA',
-            variant_id: variantID.match(/\/(\d+)$/)[1],
+            variant_id: variantID,
             price: parseFloat(itemPrice),
             sku: matchedVariant.sku || 'NA',
             discount:

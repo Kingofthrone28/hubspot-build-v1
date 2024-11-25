@@ -8,3 +8,6 @@ const triggerECommEvent = async (rawPayload = {}) => {
     }
   }
 };
+
+const getCustomItemId = (itemId, variantId) =>
+  `shopify_US_${itemId}_${variantId}`;

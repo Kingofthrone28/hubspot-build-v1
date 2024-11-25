@@ -606,7 +606,10 @@
       }
 
       cartTrackingPayload.ecommerce.items.push({
-        item_id: lineItem.variant.product.id.replace(gidPath, ''),
+        item_id: getCustomItemId(
+          lineItem.variant.product.id.replace(gidPath, ''),
+          lineItem.variant.id.replace(variantGidPath, ''),
+        ),
         item_name: lineItem.title,
         item_type:
           lineItem.customAttributes.find((item) =>
@@ -718,7 +721,10 @@
         deleteItemTrackingPayload.ecommerce.value = total;
         deleteItemTrackingPayload.ecommerce.coupon = deletedItemCouponTitle;
         deleteItemTrackingPayload.ecommerce.items.push({
-          item_id: deletedItem.variant.product.id.replace(gidPath, ''),
+          item_id: getCustomItemId(
+            deletedItem.variant.product.id.replace(gidPath, ''),
+            deletedItem.variant.id.replace(variantGidPath, ''),
+          ),
           item_name: deletedItem.title,
           item_type:
             deletedItem.customAttributes.find((item) =>
