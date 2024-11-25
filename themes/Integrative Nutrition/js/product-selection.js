@@ -435,8 +435,7 @@ const getProductSelectionMethods = () => {
   const createOptionLabel = (text) => {
     const div = document.createElement('div');
     div.classList.add('jd-buy-option-label');
-    const labelText = document.createTextNode(text);
-    div.appendChild(labelText);
+    localizeOptionLabel(div, text);
     return div;
   };
 
