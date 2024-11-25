@@ -428,18 +428,6 @@ const getProductSelectionMethods = () => {
   };
 
   /**
-   * Create the label for a group of options
-   * @param {string} text selectable product option
-   * @returns {HTMLDivElement}
-   */
-  const createOptionLabel = (text) => {
-    const div = document.createElement('div');
-    div.classList.add('jd-buy-option-label');
-    localizeOptionLabel(div, text);
-    return div;
-  };
-
-  /**
    * Localizes dynamic variant option text
    * Fire and forget.
    * @param {element} label element to insert translation
@@ -473,6 +461,18 @@ const getProductSelectionMethods = () => {
       labelTextNode = document.createTextNode(text);
       node.appendChild(labelTextNode);
     });
+  };
+
+  /**
+   * Create the label for a group of options
+   * @param {string} text selectable product option
+   * @returns {HTMLDivElement}
+   */
+  const createOptionLabel = (text) => {
+    const div = document.createElement('div');
+    div.classList.add('jd-buy-option-label');
+    localizeOptionLabel(div, text);
+    return div;
   };
 
   /**
