@@ -325,7 +325,7 @@ TAB Click Events
 
 // Hamburger Click Event tracking
 const openHamburgerMenuElement = document.querySelector(
-  '.jd-mobile-show div.jd-ham',
+  '.jd-mobile-show .jd-ham',
 );
 
 openHamburgerMenuElement?.addEventListener('click', () => {
@@ -336,7 +336,7 @@ openHamburgerMenuElement?.addEventListener('click', () => {
 });
 
 const closeHamburgerMenuElement = document.querySelector(
-  '#jd-mobile-menu div.jd-ham',
+  '#jd-mobile-menu .jd-ham',
 );
 
 closeHamburgerMenuElement?.addEventListener('click', () => {
