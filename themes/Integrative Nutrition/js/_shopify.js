@@ -7,7 +7,81 @@
 
 (() => {
   const addToCartKey = 'course_shopify_add_to_cart';
+  const { extractCents } = IIN.helpers;
   const { isStringWithLength } = IIN.utilities;
+
+  /**
+   * Calculate the discount applied to a line item.
+   * @param {Object} lineItem
+   * @param {number} lineItem.quantity
+   * @param {Object[]} [lineItem.discountAllocations]
+   * @returns {number}
+   */
+  const calculateItemDiscount = (lineItem) => {
+    let discountTotal = 0;
+
+    if (!lineItem) {
+      return discountTotal;
+    }
+
+    const { discountAllocations, quantity } = lineItem;
+
+    if (!Array.isArray(discountAllocations)) {
+      return discountTotal;
+    }
+
+    discountAllocations.forEach(({ allocatedAmount }) => {
+      const amount = parseFloat(allocatedAmount?.amount) || 0;
+
+      if (amount > 0 && quantity > 0) {
+        discountTotal += amount * quantity;
+      }
+    });
+
+    return discountTotal;
+  };
+
+  /**
+   * Calculate the full price of a line item.
+   * @param {Object} lineItem
+   * @param {number} lineItem.quantity
+   * @param {Object} lineItem.variant
+   * @returns {number}
+   */
+  const calculateItemFullPrice = ({ quantity, variant }) => {
+    const amount = parseFloat(variant?.price?.amount);
+
+    if (!amount) {
+      console.error('Variant price amount is undefined.');
+    }
+
+    return amount * (quantity || 1);
+  };
+
+  /**
+   * Calculate the discounted price of a line item.
+   * @param {Object} lineItem
+   * @returns {number}
+   */
+  const calculateItemDiscountedPrice = (lineItem) => {
+    const discount = calculateItemDiscount(lineItem);
+    const fullPrice = calculateItemFullPrice(lineItem);
+
+    return discount > 0 ? fullPrice - discount : fullPrice;
+  };
+
+  /**
+   * Check line items for presence of non-zero decimals for visual formatting.
+   * @param {Object[]} lineItems
+   * @returns {boolean}
+   */
+  const hasNonZeroDecimals = (lineItems) =>
+    lineItems.some((lineItem) => {
+      const finalPrice = calculateItemDiscountedPrice(lineItem);
+      const fullPrice = calculateItemFullPrice(lineItem);
+
+      return [finalPrice, fullPrice].some((value) => extractCents(value) > 0);
+    });
 
   /**
    * Check a variant is available for sale
@@ -530,6 +604,8 @@
     addLineItemsToCheckout,
     buildGlobalProductId,
     buildGlobalProductVariantId,
+    calculateItemDiscountedPrice,
+    calculateItemFullPrice,
     createCheckoutLineItem,
     fetchProduct,
     getAddToCartSessionData,
@@ -538,6 +614,7 @@
     getCheckoutCookie,
     getFirstAvailableVariant,
     getHasCohorts,
+    hasNonZeroDecimals,
     sendMetaObjectQuery,
     getOptionsCount,
     getOptionsInfo,
