@@ -642,28 +642,12 @@
     }
 
     /**
-     * Refreshes the cart if a checkout is no longer valid.
-     * @returns {Promise<Object>}
-     */
-    const refreshCheckout = async () => {
-      const currentCheckout = await IINShopifyClient.checkout.fetch(cartCookie);
-      let refreshedCheckout = currentCheckout;
-
-      if (!currentCheckout || currentCheckout.completedAt) {
-        refreshedCheckout = await initializeCheckout();
-        await loadCart();
-      }
-
-      return refreshedCheckout;
-    };
-
-    /**
      * Deletes an item from the cart and updates the total.
      * @param {string} lineID
      * @returns {Promise<void>}
      */
     const deleteFromCart = async (lineID) => {
-      const refreshedCheckout = await refreshCheckout();
+      const refreshedCheckout = await refreshCheckout(cartCookie);
 
       if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
         return null;
@@ -755,7 +739,8 @@
      * @returns {Promise<void>}
      */
     const editCart = async (lineID, target) => {
-      const refreshedCheckout = await refreshCheckout();
+
+      const refreshedCheckout = await refreshCheckout(cartCookie);
       const lineItems = refreshedCheckout?.lineItems ?? [];
 
       if (!Array.isArray(lineItems) || !lineItems.length) {
@@ -812,7 +797,7 @@
           },
         ];
 
-        const changedCheckout = await refreshCheckout();
+        const changedCheckout = await refreshCheckout(cartCookie);
 
         if (!changedCheckout || !changedCheckout.lineItems?.length) {
           return;
