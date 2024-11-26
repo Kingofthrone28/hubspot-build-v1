@@ -4,7 +4,7 @@
       {% if module.form_title %}
       <h2 class="blog-post-bottom-hero-heading">{{module.form_title}}</h2>
       {% endif %}
-      <span class="blog-post-bottom-hero-subheading">{{ module.left_content }}</span>
+      <div class="blog-post-bottom-hero-subheading">{{ module.left_content }}</div>
       {% form
         form_to_use="{{ module.form_field.form_id }}"
         response_response_type="{{ module.form_field.response_type }}"
