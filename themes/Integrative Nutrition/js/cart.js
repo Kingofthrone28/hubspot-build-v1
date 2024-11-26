@@ -237,11 +237,11 @@ const initializeCheckout = async () => {
  * @returns {Promise<Object>} An existing or new checkout.
  */
 const refreshCheckout = async (cookie) => {
-  const cookieString = cookie || IIN.cookies.getCookieString('shopifyCart');
+  const cookieString = cookie ?? IIN.cookies.getCookieString('shopifyCart');
   const currentCheckout = await IINShopifyClient.checkout.fetch(cookieString);
   let refreshedCheckout = currentCheckout;
 
-  if (!currentCheckout ?? currentCheckout.completedAt) {
+  if (!currentCheckout || currentCheckout.completedAt) {
     refreshedCheckout = await initializeCheckout();
   }
 
