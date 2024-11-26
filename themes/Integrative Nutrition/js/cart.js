@@ -241,7 +241,7 @@ const refreshCheckout = async (cookie) => {
   const currentCheckout = await IINShopifyClient.checkout.fetch(cookieString);
   let refreshedCheckout = currentCheckout;
 
-  if (!currentCheckout || currentCheckout.completedAt) {
+  if (!currentCheckout ?? currentCheckout.completedAt) {
     refreshedCheckout = await initializeCheckout();
   }
 
