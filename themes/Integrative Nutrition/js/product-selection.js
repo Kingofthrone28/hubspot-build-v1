@@ -1,4 +1,6 @@
 const getProductSelectionMethods = () => {
+  const { formatCurrency, throttle } = IIN.helpers;
+
   /**
    * Returns the selected variant or null if one is not found.
    * @param {string} productData
@@ -6,7 +8,7 @@ const getProductSelectionMethods = () => {
    */
   const getSelectedVariant = (productData, currentOptions) => {
     const selectedVariant = productData.variants.find((variant) => {
-      const variantOptions = variant?.selectedOptions || [];
+      const variantOptions = variant?.selectedOptions ?? [];
 
       if (
         !IIN.shopify.isAvailable(variant) ||
@@ -29,7 +31,7 @@ const getProductSelectionMethods = () => {
       return isMatch;
     });
 
-    return selectedVariant || null;
+    return selectedVariant ?? null;
   };
 
   /**
@@ -182,11 +184,15 @@ const getProductSelectionMethods = () => {
     }
 
     if (amount || amount === 0) {
-      $('.jd-add-pop .jd-add-pop-price').text(`$${amount.toLocaleString()}`);
+      const currency = formatCurrency(amount);
+
+      $('.jd-add-pop .jd-add-pop-price').text(currency);
     }
 
     if (originalAmount && amount !== originalAmount) {
-      $('.add-pop-price-original').text(`$${originalAmount.toLocaleString()}`);
+      const currency = formatCurrency(originalAmount);
+
+      $('.add-pop-price-original').text(currency);
     }
 
     const headerHeight = $('.jd-header-wrap').outerHeight();
@@ -284,7 +290,7 @@ const getProductSelectionMethods = () => {
   /** Data layer tracking */
   const trackAddToCart = (variant, moduleInfo, productInfo) => {
     const currencyCode = variant.price?.currencyCode || 'USD';
-    const addedVariantPrice = parseFloat(variant.price?.amount || 0.0);
+    const addedVariantPrice = parseFloat(variant.price?.amount) || 0.0;
     const variantGidPath = 'gid://shopify/ProductVariant/';
 
     let couponTitle = 'NA';
@@ -333,7 +339,7 @@ const getProductSelectionMethods = () => {
 
   const createViewItemEvent = (productData, matchedVariant, moduleData) => {
     const variantGidPath = 'gid://shopify/ProductVariant/';
-    const itemPrice = parseFloat(matchedVariant.price?.amount || 0.0);
+    const itemPrice = parseFloat(matchedVariant.price?.amount) || 0;
 
     let couponTitle = 'NA';
     let discountAmount = 0;
@@ -402,14 +408,11 @@ const getProductSelectionMethods = () => {
       lineItems,
     );
 
-    const total =
-      parseFloat(updatedCheckout.lineItemsSubtotalPrice?.amount) || 0;
-
-    const totalAfterDiscount =
-      parseFloat(updatedCheckout.totalPrice?.amount) || 0;
-
-    // Format the discounted price to be displayed
-    const displayPrice = `$${totalAfterDiscount.toLocaleString()}`;
+    const updatedSubtotal = updatedCheckout.lineItemsSubtotalPrice?.amount;
+    const updatedTotal = updatedCheckout.totalPrice?.amount;
+    const total = parseFloat(updatedSubtotal) || 0;
+    const totalAfterDiscount = parseFloat(updatedTotal) || 0;
+    const displayPrice = formatCurrency(totalAfterDiscount);
 
     let displayDiscount;
     let displaySlashPrice;
@@ -421,7 +424,7 @@ const getProductSelectionMethods = () => {
       );
 
       displayDiscount = `-${percentageOff}%`;
-      displaySlashPrice = `$${total.toLocaleString()}`;
+      displaySlashPrice = formatCurrency(total);
     }
 
     return { displaySlashPrice, displayPrice, displayDiscount };
@@ -670,7 +673,7 @@ const getProductSelectionMethods = () => {
       }
     };
 
-    window.addEventListener('scroll', IIN.helpers.throttle(handleScroll));
+    window.addEventListener('scroll', throttle(handleScroll));
   };
 
   /**
