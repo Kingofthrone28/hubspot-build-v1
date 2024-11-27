@@ -57,34 +57,31 @@
   {% endif %}
 {% endmacro %}
 
-{% macro main_nav() %}
+{% macro main_nav(main_menu) %}
   <nav class="jd-header-dds">
     <ul>
-      {% for item in module.main_items %}
-      <li class="jd-nav-item">
-        <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-        <ul class="jd-dd">
-          {% for item2 in item.links %}
-          <li>
-            {% set href = item2.link_field.url.href %}
-            {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-            {% endif %}
-            <a href="{{ href }}"
-              {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-              {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-            >
-              {{ item2.link_text }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </li>
+      {% for node in main_menu.children %}
+        <li class="jd-nav-item">
+        {# Nodes with children get a dropdown menu, while those without do not, to allow direct linking. #}
+        {% if node.children|length > 0 %}
+          <a href="#" class="jd-nav-item-title nav-dropdown-trigger">{{ node.label }}</a>
+          <ul class="jd-dd">
+            {% for child_node in node.children|selectattr('url') %}
+              <li>
+                <a href="{{ child_node.url }}">{{ child_node.label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% elif node.url %}
+          <a href="{{ node.url }}" class="jd-nav-item-title">{{ node.label }}</a>
+        {% endif %}
+        </li>
       {% endfor %}
     </ul>
   </nav>
 {% endmacro %}
 
+{% set main_menu =  menu(module.main_menu) %}
 {% set current_timestamp = unixtimestamp(local_dt) %}
 {% set iso_date_format = "yyyy-MM-dd'T'HH:mm:ss" %}
 {% set top_bar = {} %}
@@ -169,7 +166,7 @@
       {{ logo_link() }}
     </div>
     {{ info_link() }}
-    {{ main_nav() }}
+    {{ main_nav(main_menu) }}
   </div>
   <div class="jd-header-top jd-mobile-foot">
     <ul>
@@ -209,7 +206,7 @@
         <button class="deal-bar-btn desktop">{{ top_bar.claim_text }}</button>
       {% endif %}
     {% endif %}
-    {% if top_bar.claim_tel_mobile %}  
+    {% if top_bar.claim_tel_mobile %}
       {% set claim_text_mobile = top_bar.claim_text_mobile ? top_bar.claim_text_mobile : top_bar.claim_tel_mobile %}
       <a href="{{ top_bar.claim_tel_mobile }}" class="deal-bar-btn mobile" target="_blank">{{ claim_text_mobile }}</a>
     {% endif %}
@@ -238,7 +235,7 @@
     <!-- Desktop -->
     <div class="jd-header-main jd-mobile-hide">
       {{ logo_link() }}
-      {{ main_nav() }}
+      {{ main_nav(main_menu) }}
       {{ info_link() }}
     </div>
 
@@ -335,25 +332,6 @@
       Needle.inviteClick(1, "&ct=ndchat", Needle.initInline); //inline chat window
       return false; //prevents event bubbling
     }
-
-    $(document).click(function(e) {
-      if (e.target.className != 'jd-nav-item-title') {
-        $('.jd-nav-item').removeClass('jd-nav-show');
-      }
-    });
-
-    $('.jd-nav-item-title').click(function(e) {
-      e.preventDefault();
-      const $this = $(this);
-      setTimeout(function() {
-        if ($this.parent().hasClass('jd-nav-show')) {
-          $this.parent().removeClass('jd-nav-show');
-        } else {
-          $('.jd-nav-item').removeClass('jd-nav-show');
-          $this.parent().addClass('jd-nav-show');
-        }
-      }, 50);
-    });
 
     $('.jd-contact-link').click(function(e) {
       e.preventDefault();
