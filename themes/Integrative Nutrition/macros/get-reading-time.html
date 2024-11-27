@@ -14,7 +14,7 @@
   {% set is_read_time_words = get_reading_time(content.post_body)|trim  %}
 #}
 {% macro get_reading_time(string) %}
-  {% set word_count = string|regex_replace("{{.+?}}", "")|striptags|wordcount %}
+  {% set word_count = string|escape_jinjava|regex_replace("{{.+?}}", "")|striptags|wordcount %}
   {% set average_words_per_minute_low = 200 %}
   {% set minutes = (word_count / average_words_per_minute_low)|round(0, 'ceil') %}
   {% set count = minutes <= 1 ? 'less than 1 min' : minutes ~ ' mins' %}

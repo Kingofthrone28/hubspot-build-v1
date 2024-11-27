@@ -45,6 +45,13 @@
   const cartTrackingPayload = {};
   const coupons = new Set();
   const currencyCode = 'USD';
+  const { formatCurrency } = IIN.helpers;
+
+  const {
+    calculateItemFullPrice,
+    calculateItemDiscountedPrice,
+    hasNonZeroDecimals,
+  } = IIN.shopify;
 
   /**
    * Gets the value of a metafield.
@@ -280,19 +287,17 @@
 
               let totalDiscount = 0;
 
-              if (lineItem.discountAllocations.length) {
+              if (Array.isArray(lineItem.discountAllocations)) {
                 lineItem.discountAllocations.forEach((allocation) => {
-                  const discountAmount = parseFloat(
-                    allocation?.allocatedAmount?.amount || 0,
-                  );
+                  const discountAmount =
+                    parseFloat(allocation?.allocatedAmount?.amount) || 0;
 
                   totalDiscount -= discountAmount * lineItem.quantity;
                 });
               }
 
-              adjustedProduct.price = parseFloat(
-                lineItem.variant?.price?.amount || 0,
-              );
+              adjustedProduct.price =
+                parseFloat(lineItem.variant?.price?.amount) || 0;
 
               adjustedProduct.totalDiscount = totalDiscount;
 
@@ -460,6 +465,8 @@
     let itemsHTML = '';
     let itemSummaryHTML = '';
 
+    const includeZeroCents = hasNonZeroDecimals(checkout.lineItems);
+
     for (const lineItem of checkout.lineItems) {
       const options = [];
 
@@ -483,40 +490,27 @@
         `;
       });
 
-      const priceAmount = parseFloat(lineItem.variant?.price?.amount || 0);
-      const totalPreDiscount = priceAmount * lineItem.quantity;
-      let total = totalPreDiscount;
-
-      if (lineItem.discountAllocations.length) {
-        lineItem.discountAllocations.forEach((discount) => {
-          const discountAmount = parseFloat(
-            discount.allocatedAmount?.amount || 0,
-          );
-
-          if (total > 0) {
-            total -= discountAmount * lineItem.quantity;
-          }
-        });
-      }
+      const itemFullPrice = calculateItemFullPrice(lineItem);
+      const itemFinalPrice = calculateItemDiscountedPrice(lineItem);
+      const itemIsDiscounted = itemFinalPrice < itemFullPrice;
 
       let itemAmountHTML = '';
 
-      if (total === totalPreDiscount) {
-        itemAmountHTML = `
-          <div style="margin-top: 15px" class="jd-cart-item-price">
-            $${total.toLocaleString()}
-          </div>
-        `;
-      } else {
-        itemAmountHTML = `
+      if (itemIsDiscounted) {
+        itemAmountHTML += `
           <div class="jd-cart-item-price-dis">
-            $${totalPreDiscount.toLocaleString()}
-          </div>
-          <div class="jd-cart-item-price">
-            $${total.toLocaleString()}
+            ${formatCurrency(itemFullPrice, includeZeroCents)}
           </div>
         `;
       }
+
+      const newAttribute = itemIsDiscounted ? ` style="margin-top: 15px"` : '';
+
+      itemAmountHTML += `
+        <div class="jd-cart-item-price"${newAttribute}>
+          ${formatCurrency(itemFinalPrice, includeZeroCents)}
+        </div>
+      `;
 
       let programLabel = '';
 
@@ -592,7 +586,7 @@
 
       itemSummaryHTML += `
         <div style="font-size: var(--font-size--legacy--11);">
-          $${total.toLocaleString()}
+          ${formatCurrency(itemFinalPrice, includeZeroCents)}
         </div>
       `;
 
@@ -606,15 +600,18 @@
       }
 
       cartTrackingPayload.ecommerce.items.push({
-        item_id: lineItem.variant.product.id.replace(gidPath, ''),
+        item_id: getCustomItemId(
+          lineItem.variant.product.id.replace(gidPath, ''),
+          lineItem.variant.id.replace(variantGidPath, ''),
+        ),
         item_name: lineItem.title,
         item_type:
           lineItem.customAttributes.find((item) =>
             item.key.includes('productType'),
           )?.value || 'NA',
         variant_id: lineItem.variant.id.replace(variantGidPath, ''),
-        discount: totalPreDiscount - total,
-        price: totalPreDiscount,
+        discount: itemFullPrice - itemFinalPrice,
+        price: itemFullPrice,
         quantity: lineItem.quantity,
         sku: lineItem.variant.sku || 'NA',
       });
@@ -623,7 +620,7 @@
     if (itemCount > 1) {
       itemSummaryHTML += `
         <div style="font-size: var(--font-size--legacy--11); border-top: 1px solid var(--color--legacy--grey--very-light-grey-1); padding-top: 5px">
-          $${parseFloat(checkout.totalPrice.amount).toLocaleString()}
+          ${formatCurrency(checkout.totalPrice.amount, includeZeroCents)}
         </div>
       `;
     }
@@ -645,28 +642,12 @@
     }
 
     /**
-     * Refreshes the cart if a checkout is no longer valid.
-     * @returns {Promise<Object>}
-     */
-    const refreshCheckout = async () => {
-      const currentCheckout = await IINShopifyClient.checkout.fetch(cartCookie);
-      let refreshedCheckout = currentCheckout;
-
-      if (!currentCheckout || currentCheckout.completedAt) {
-        refreshedCheckout = await initializeCheckout();
-        await loadCart();
-      }
-
-      return refreshedCheckout;
-    };
-
-    /**
      * Deletes an item from the cart and updates the total.
      * @param {string} lineID
      * @returns {Promise<void>}
      */
     const deleteFromCart = async (lineID) => {
-      const refreshedCheckout = await refreshCheckout();
+      const refreshedCheckout = await refreshCheckout(cartCookie);
 
       if (!refreshedCheckout || !refreshedCheckout.lineItems?.length) {
         return null;
@@ -696,15 +677,14 @@
 
         let deletedItemCouponTitle = 'NA';
 
-        const priceAmount = parseFloat(deletedItem.variant?.price?.amount || 0);
+        const priceAmount = parseFloat(deletedItem.variant?.price?.amount) || 0;
         const totalPreDiscount = priceAmount * deletedItem.quantity;
         let total = totalPreDiscount;
 
         if (deletedItem.discountAllocations.length) {
           deletedItem.discountAllocations.forEach((discount) => {
-            const discountAmount = parseFloat(
-              discount.allocatedAmount?.amount || 0,
-            );
+            const discountAmount =
+              parseFloat(discount.allocatedAmount?.amount) || 0;
 
             if (total > 0) {
               total -= discountAmount * deletedItem.quantity;
@@ -718,7 +698,10 @@
         deleteItemTrackingPayload.ecommerce.value = total;
         deleteItemTrackingPayload.ecommerce.coupon = deletedItemCouponTitle;
         deleteItemTrackingPayload.ecommerce.items.push({
-          item_id: deletedItem.variant.product.id.replace(gidPath, ''),
+          item_id: getCustomItemId(
+            deletedItem.variant.product.id.replace(gidPath, ''),
+            deletedItem.variant.id.replace(variantGidPath, ''),
+          ),
           item_name: deletedItem.title,
           item_type:
             deletedItem.customAttributes.find((item) =>
@@ -756,8 +739,9 @@
      * @returns {Promise<void>}
      */
     const editCart = async (lineID, target) => {
-      const refreshedCheckout = await refreshCheckout();
-      const lineItems = refreshedCheckout?.lineItems || [];
+
+      const refreshedCheckout = await refreshCheckout(cartCookie);
+      const lineItems = refreshedCheckout?.lineItems ?? [];
 
       if (!Array.isArray(lineItems) || !lineItems.length) {
         return;
@@ -813,7 +797,7 @@
           },
         ];
 
-        const changedCheckout = await refreshCheckout();
+        const changedCheckout = await refreshCheckout(cartCookie);
 
         if (!changedCheckout || !changedCheckout.lineItems?.length) {
           return;
@@ -881,9 +865,9 @@
         }
 
         return 0;
-      }) || [];
+      }) ?? [];
 
-    const bundleData = moduleData?.bundles || [];
+    const bundleData = moduleData?.bundles ?? [];
     const matchedBundles = [];
     const maximumCount = 3;
     let firstMatchedID = 'NO_MATCH';
@@ -1062,7 +1046,6 @@
 
       const existingProducts = [];
       const newProducts = [];
-
       let total = 0;
 
       bundleProducts.forEach((bundleProduct) => {
@@ -1074,30 +1057,22 @@
         }
       });
 
-      const totalAfterDiscount = matchedBundle.price || total;
+      const totalAfterDiscount = matchedBundle.price ?? total;
 
       let cartRecPricesHTML = '<div>Bundle Total price: </div>';
 
       const savings =
         total === totalAfterDiscount ? 0 : total - totalAfterDiscount;
 
-      const localeOptions = {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      };
-
       if (total === totalAfterDiscount) {
         cartRecPricesHTML += `
           <div></div>
-          <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
+          <div>${formatCurrency(total)} ${currencyCode}</div>
         `;
       } else {
         cartRecPricesHTML += `
-          <div>$${total.toLocaleString(undefined, localeOptions)} USD</div>
-          <div>$${totalAfterDiscount.toLocaleString(
-            undefined,
-            localeOptions,
-          )} USD</div>
+          <div>${formatCurrency(total)} ${currencyCode}</div>
+          <div>${formatCurrency(totalAfterDiscount)} ${currencyCode}</div>
         `;
       }
 
@@ -1130,7 +1105,7 @@
         if (productIndex === 0 && savings) {
           topSavings = `
             <div class="jd-cart-rec-save-tag">
-              Save $${savings.toLocaleString()}
+              Save ${formatCurrency(savings)}
             </div>
           `;
         }
@@ -1177,10 +1152,7 @@
                 ${programLabel}
                 <div>${existingProduct.title}</div>
               </div>
-              <div>$${parseFloat(price).toLocaleString(
-                undefined,
-                localeOptions,
-              )} USD</div>
+              <div>${formatCurrency(price)} ${currencyCode}</div>
             </div>
           </div>
         `;
@@ -1217,7 +1189,7 @@
         if (productIndex === 0 && !existingProducts.length) {
           topSavings = `
             <div class="jd-cart-rec-save-tag">
-              Save $${savings.toLocaleString(undefined, localeOptions)}
+              Save ${formatCurrency(savings)}
             </div>
           `;
         }
@@ -1286,10 +1258,7 @@
                   <div>${product.title}</div>
                 </div>
                 <div>
-                  $${parseFloat(price).toLocaleString(
-                    undefined,
-                    localeOptions,
-                  )} USD
+                  ${formatCurrency(price)} ${currencyCode}
                 </div>
               </div>
               <div
@@ -1339,10 +1308,7 @@
                 </button>
                 ${
                   savings
-                    ? `<div>and save $${savings.toLocaleString(
-                        undefined,
-                        localeOptions,
-                      )}</div>`
+                    ? `<div>and save ${formatCurrency(savings)}</div>`
                     : ''
                 }
               </div>
@@ -1524,7 +1490,7 @@
       }
 
       discounts.forEach((discount) => {
-        discountTotal += parseFloat(discount?.amount || 0);
+        discountTotal += parseFloat(discount?.amount) || 0;
       });
 
       if (discountTotal) {
@@ -1720,7 +1686,7 @@
             }
           });
 
-          let fullName = firstName || '';
+          let fullName = firstName ?? '';
 
           if (lastName) {
             fullName += `${firstName ? ' ' : ''}${lastName}`;

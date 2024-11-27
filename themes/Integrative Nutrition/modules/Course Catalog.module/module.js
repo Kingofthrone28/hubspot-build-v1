@@ -4,10 +4,12 @@ function extractItemData(course, index) {
   const productId = course?.product_id;
 
   return {
-    item_id: productId?.includes(',') ? [productId] : productId,
+    item_id: productId?.includes(',')
+      ? productId.split(',').map((item) => item.trim())
+      : productId,
     item_name: course?.name,
     item_type: course?.course_topics?.[0]?.label,
-    variant_id: 'NA',
+    variant_id: course?.variant?.id || 'NA',
     price: parseFloat(discountPrice.replace(/[$,]/g, '') || 'NA'),
     actual_price: parseFloat(actualPrice.replace(/[$,]/g, '') || 'NA'),
     sku: course.sku || 'NA',

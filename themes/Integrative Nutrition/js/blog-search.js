@@ -10,7 +10,7 @@
    */
   const blockSelector = 'blog-search-term';
   const contentNodes = document.querySelectorAll(
-    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search)',
+    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search):not(.blog-category-search-container)',
   );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
@@ -510,13 +510,10 @@
     const filterTerms = terms.filter((word) => word !== term);
     searchInput.value = filterTerms.join(' ');
 
-    let pillRemoved = false;
-
     try {
       const pillItem = Array.from(pill).find((item) => item.innerText === term);
       if (pillItem) {
         pillItem.remove();
-        pillRemoved = true;
       }
 
       // Ensure the cancel button does not receive the .visible class
@@ -524,14 +521,13 @@
       toggleSearchButtonVisibility(terms);
 
       // Fetch and update search results based on the updated input value only if a pill was removed
-      if (pillRemoved) {
+      if (filterTerms.length) {
         await fetchSearchResults(filterTerms.join(' '), searchQueryOffset);
+      } else {
+        resetBodyContent();
       }
 
-      if (
-        filterTerms[0] === '' ||
-        (!filterTerms.length && searchResultsCount)
-      ) {
+      if (!filterTerms.length && searchResultsCount) {
         searchResultsCount.textContent = '0';
         searchTermResultsTitle.textContent = '""';
         updateSearchResultMessage();

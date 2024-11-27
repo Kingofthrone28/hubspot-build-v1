@@ -39,6 +39,8 @@
 {% set column_offset = module.layout == "two_column" ? 5 : 3 %}
 {% set is_L3 = module.page_level == "level-3" %}
 {% set button_class_list = "blog-teasers-view-more-btn-{{ name }} blog-teasers-view-more-btn hs-button jd-request-btn jd-request-btn-inverse arrow-link" %}
+{% set view_more_text = "View more" %}
+{% set view_more_aria_label = "View more {{ tag_name }} articles" %}
 
 {# Set up client side tag map #}
 {% set tag_dict = {} %}
@@ -60,16 +62,19 @@
     <div class="blog-teasers__view-more">
       {% if is_L3 %}
         <button
+          aria-label="{{ view_more_aria_label }}"
+          type="button"
           class="{{ button_class_list }}"
         >
-          View more {{ tag_name }} articles
+          {{ view_more_text }}
         </button>
       {% else %}
-        <a 
+        <a
+          aria-label="{{ view_more_aria_label }}"
           href="{{ tag_url }}"
           class="{{ button_class_list }}"
         >
-          View more {{ tag_name }} articles
+          {{ view_more_text }}
         </a>
       {% endif %}
     </div>

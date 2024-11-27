@@ -110,8 +110,22 @@
     </div>
     <div class="jd-add-cart-wrap pdp-options"></div>
     <div class="pdp-top-bottom">
-      <div class="pdp-affirm-line">
-        {{ module.affirm_line }}
+      <div class="pdp-payment-details">
+        {{ module.payment_details.line_1 }}
+        {% set logos = module.payment_details.logos|selectattr('src') if module.payment_details.line_1 %}
+        {% if logos|length > 0 %}
+          <span>
+            {% for logo in logos %}
+              <img class="pdp-payment-details_logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
+              {% set next_index = loop.index0 + 1 %}
+              {{ ',' if logos[next_index] }}
+              {{ ' or' if logos|length - 1 == next_index }}
+            {% endfor %}
+          </span>
+        {% endif %}
+        {% if module.payment_details.line_2 %}
+          <p>{{ module.payment_details.line_2 }}</p>
+        {% endif %}
       </div>
 
       {% set codeObj = { val: '', use_chalk: false } %}

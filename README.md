@@ -24,7 +24,7 @@ Please use
 
 in the head of any pages you are actively developing in production, so they will not be indexed by search if they are found.
 
-### Hubspot Rich Text Fields
+### Hubspot Rich Text Fields (RTF)
 
 Please limit the available options content creators have when adding a custom module by adding the follow key/value pair in the `fields.json`. For more information, see the [Hubspot documentation](https://developers.hubspot.com/docs/cms/building-blocks/module-theme-fields/rich-text-editor).
 
@@ -63,9 +63,13 @@ Other options include:
 ]
 ```
 
-### Warning
+#### Warning
 
 Some rich text fields may contain hubl, e.g. `{{ macro() }}`, which can throw an error in certain cases (like being parsed by the `hs` cli for some reason). One can use a regex replacement to strip out the problematic portions, e.g. `some_rich_text|regex_replace("{{.+?}}", "")`.
+
+### Reference Implementation
+
+See the [CMS-theme-boilerplate](https://github.com/HubSpot/cms-theme-boilerplate) for a reference example of a Hubspot theme.
 
 ## CSS Code Style
 
