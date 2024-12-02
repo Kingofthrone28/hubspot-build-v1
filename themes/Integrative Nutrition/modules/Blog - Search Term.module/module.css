@@ -180,7 +180,7 @@
 
   .blog-search-term.level-1:not(.visible) {
     position: relative;
-    padding-right: var(--search-input-width);
+    padding-right: calc(var(--search-input-width) * 1.25);
   }
   
   .blog-search-term.level-1:not(.visible) .blog-search-term__header {
