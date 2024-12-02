@@ -20,6 +20,40 @@
   };
 
   /**
+   * Extract cents from currency.
+   * @param {number} value
+   * @returns {number}
+   */
+  const extractCents = (value) => {
+    let cents = 0;
+
+    if (value) {
+      const decimals = String(value)?.split('.')[1];
+
+      if (decimals) {
+        cents = parseFloat(decimals);
+      }
+    }
+
+    return cents;
+  };
+
+  /**
+   * Format currency with option to remove decimal places for zero cents.
+   * @param {number|string>} amount
+   * @param {boolean} [includeZeroCents]
+   * @returns {string} A formatted currency amount.
+   */
+  const formatCurrency = (amount, includeZeroCents) => {
+    const currency = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount);
+
+    return includeZeroCents ? currency : currency.replace('.00', '');
+  };
+
+  /**
    * Toggles the specified classes on the given element.
    * @param {HTMLElement} element - The element to toggle classes on.
    * @param {string} action - Action to be performed ('add' or 'remove').
@@ -61,6 +95,8 @@
    */
   IIN.helpers = {
     debounce,
+    extractCents,
+    formatCurrency,
     throttle,
     updateClasses,
   };

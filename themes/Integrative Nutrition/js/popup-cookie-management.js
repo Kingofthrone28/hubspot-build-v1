@@ -37,7 +37,7 @@
       const formIntervalId = setInterval(() => {
         if (!formPollsRemaining) {
           clearInterval(formIntervalId);
-          reject(new Error('No form polls remaining'));
+          resolve('No form polls remaining');
           return;
         }
 

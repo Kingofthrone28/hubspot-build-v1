@@ -57,19 +57,13 @@
 }
 
 .rich-text-overrides img {
+  margin-bottom: var(--big-space);
   border-radius: var(--border-radius);
-
-  /* By default, images are wrapped in a p */
-  padding-bottom: calc(var(--big-space) - var(--small-space));
-
-  /* Override blog inline styles */
-  width: 100% !important;
 }
 
 /* Unset global style */
 .rich-text-overrides p {
-  margin-bottom: unset;
-  padding-bottom: var(--small-space);
+  margin-bottom: var(--small-space);
 }
 
 @media (max-width: 767px) {

@@ -57,7 +57,7 @@
   <section class="blog-article__body rich-text-overrides">
     {{ blog_body }}
     {# Editor video demo #}
-    {% if is_in_editor %}
+    {% if is_in_editor and module.embed %}
       <div class="video-warning">
         <p class="editor-warning">Editor warning: The following video section is placed here to check appearance only.</p>
         <p>It will be placed inline at the video_section above. To make edits, open the "Blog - Article" content tab.</p>

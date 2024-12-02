@@ -21,7 +21,8 @@
     "validation_regex": "",
     "allow_new_line": false,
     "show_emoji_picker": false,
-    "type": "text"
+    "type": "text",
+    "default": "Search"
   },
   {
     "id": "983b85b5-5e21-cfeb-a716-e0256f4e5625",

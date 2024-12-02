@@ -48,6 +48,10 @@ $(() => {
           value: $('input[name="lastname"]').val(),
         },
         {
+          name: 'phone',
+          value: $('input[name="phone"]').val(),
+        },
+        {
           name: 'vertical_hs',
           value: verticalValues.join(';'),
         },

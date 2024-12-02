@@ -17,7 +17,8 @@
   padding: 0 var(--spacing-8--static);
 }
 
-.blog-category-search-container {
+.blog-page__search-container {
+  margin-bottom: var(--spacing-8--static);
   padding: 0 var(--spacing-24--static) 0 var(--spacing-8--static);
 }
 
@@ -315,7 +316,8 @@ a.jd-post-name:hover {
     padding: 0 var(--spacing-2--static);
   }
 
-  .blog-category-search-container {
+  .blog-page__search-container {
+    margin-bottom: var(--spacing-16--static);
     padding: 0 var(--spacing-16--static);
   }
 
@@ -392,7 +394,8 @@ a.jd-post-name:hover {
     padding: 0;
   }
 
-  .blog-category-search-container {
+  .blog-page__search-container {
+    margin-bottom: var(--spacing-14--static);
     padding: 0 var(--spacing-7--static);
   }
 

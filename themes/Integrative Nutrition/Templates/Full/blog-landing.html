@@ -27,13 +27,15 @@
 {# html #}
 {% block body %}
   <main class="blog-page__container offset-header">
-    {% module "blog-category-search"
-      path="../../modules/Blog - Search Term",
-      label="Blog - Search Term",
-      tag_menu="{{ info_bl.tag_menu_id }}",
-      blog_search_heading="Articles & Ideas",
-      page_level="level-1"
-    %}
+    <div class="blog-page__search-container">
+      {% module "blog-category-search"
+        path="../../modules/Blog - Search Term",
+        label="Blog - Search Term",
+        tag_menu="{{ info_bl.tag_menu_id }}",
+        blog_search_heading="Articles & Ideas",
+        page_level="level-1"
+      %}
+    </div>
     {# Featured story grid #}
     <div class="blog-page__featured-story-grid-container">
       {% module "blog-category-featured-story-grid"
