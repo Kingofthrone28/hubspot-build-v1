@@ -14,6 +14,12 @@ Run `npm run hook:install:pre-commit` to install a linting and formatting hook,
 and run `npm run hook:delete:pre-commit` to remove it.
 See the [hook script](./.github/hooks/pre-commit-fix) for more information.
 
+## Application Configuration
+
+Some application configuration is done via the [`get app config` macro](./themes/Integrative%20Nutrition/macros/get-app-config.html).
+You can create and modify a local, git ignored version `get-app-config.local.html` for use in your development environment,
+and upload it to your default hubspot cli environment with `npm run hs:upload:local-config`.
+
 ### Development in Production
 
 Please use 

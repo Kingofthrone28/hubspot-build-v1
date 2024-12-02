@@ -28,6 +28,7 @@
     "hs-sync-hubdb": "node ./scripts/import-hubdb.mjs",
     "hs-sync-pages": "node ./scripts/import-pages.mjs",
     "hs-sync-properties": "node ./scripts/import-properties.mjs",
+    "hs:upload:local-config": "hs upload './themes/Integrative Nutrition/macros/get-app-config.local.html' '/Integrative Nutrition/macros/get-app-config.html'",
     "js:build": "npm run js:fix && npm run js:format && npm run js:lint",
     "js:lint": "eslint './themes/Integrative Nutrition/**/*.js'",
     "js:fix": "npm run js:lint -- --fix",
