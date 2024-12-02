@@ -62,5 +62,7 @@ function renderAnalyticsDatalayerJS() {
 // Control of code starts here.
 document.addEventListener('DOMContentLoaded', () => {
   // DLTest - inside dataLayerToggle JS...
-  renderAnalyticsDatalayerJS();
+  // Use renderAnalyticsDatalayerJS for analyticstest flow
+  // renderAnalyticsDatalayerJS();
+  loadScript(dataLayerUrl);
 });
