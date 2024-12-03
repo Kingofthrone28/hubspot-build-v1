@@ -288,7 +288,7 @@ const getProductSelectionMethods = () => {
   };
 
   /** Data layer tracking */
-  const trackAddToCart = (variant, moduleInfo, productInfo) => {
+  const trackAddToCart = (variant, moduleData, productInfo) => {
     const currencyCode = variant.price?.currencyCode || 'USD';
     const addedVariantPrice = parseFloat(variant.price?.amount) || 0.0;
     const variantGidPath = 'gid://shopify/ProductVariant/';

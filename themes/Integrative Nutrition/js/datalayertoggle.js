@@ -60,9 +60,9 @@ function renderAnalyticsDatalayerJS() {
 }
 
 // Control of code starts here.
-document.addEventListener('DOMContentLoaded', () => {
-  // DLTest - inside dataLayerToggle JS...
-  // Use renderAnalyticsDatalayerJS for analyticstest flow
-  // renderAnalyticsDatalayerJS();
-  loadScript(dataLayerUrl);
-});
+// Update Date on Dec 03 2024: - Removed as toggle is not required 
+// document.addEventListener('DOMContentLoaded', () => {
+//   // DLTest - inside dataLayerToggle JS...
+//   renderAnalyticsDatalayerJS();
+// });
+
