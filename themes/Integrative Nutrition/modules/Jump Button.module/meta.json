@@ -5,13 +5,6 @@
   "icon": "arrow-alt-circle-down",
   "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
   "module_id": 78869304450,
-  "js_assets": [
-    {
-      "autoload": true,
-      "path": "../../js/datalayer.js",
-      "name": "datalayer.js"
-    }
-  ],
   "label": "Jump Button",
   "is_available_for_new_content": true
 }
