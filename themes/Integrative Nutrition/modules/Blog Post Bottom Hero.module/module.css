@@ -71,7 +71,7 @@
 
   .blog-post-bottom-hero-container form input[type='submit'] {
     padding: 10px var(--spacing-6);
-    font: var(--font--small-paragraph--bold);
+    font: var(--font--small-paragraph--semibold);
   }
 
   .blog-post-bottom-hero-heading {
@@ -81,6 +81,6 @@
 
   .blog-post-bottom-hero-subheading {
     margin: var(--spacing-2) 0 var(--spacing-6);
-    font: var(--font--small-paragraph--bold);
+    font: var(--font--small-paragraph--semibold);
   }
 }

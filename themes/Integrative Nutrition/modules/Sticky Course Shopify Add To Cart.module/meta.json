@@ -6,11 +6,6 @@
   "js_assets": [
     {
       "autoload": true,
-      "path": "../../js/datalayer_ecomm.js",
-      "name": "datalayer_ecomm.js"
-    },
-    {
-      "autoload": true,
       "path": "../../js/product-selection.js",
       "name": "product-selection.js"
     }
