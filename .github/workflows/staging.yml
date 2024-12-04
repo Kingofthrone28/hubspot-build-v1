@@ -7,8 +7,12 @@ jobs:
     environment: staging
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare
-        uses: ./.github/actions/prepare
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
       - name: Deploy theme
         uses:  ./.github/actions/deploy
         with:
