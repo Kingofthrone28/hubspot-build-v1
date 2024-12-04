@@ -292,3 +292,4 @@ b {
 ### Avoid Assigning Styles to Elements
 
 Since nothing is more local than a tag, if a color is assigned to "p" this style will always override any color value that may have been assigned to its parent and will require the color for "p" to be explicitly overridden in every location. It is preferable to apply styles within the scope of their usage, rather than relying on deeply nested overrides. Adding styles primarily to classes instead of tags can help avoid this.
+
