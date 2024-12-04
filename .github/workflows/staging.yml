@@ -20,6 +20,7 @@ jobs:
           dest_dir: .
           portal_id: ${{ secrets.hubspot_portal_id }}
           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+          debug: true
       - name: Write Staging app config
         uses:  ./.github/actions/deploy
         with:
@@ -27,3 +28,4 @@ jobs:
           dest_dir: '/Integrative Nutrition/macros/get-app-config.html'
           portal_id: ${{ secrets.hubspot_portal_id }}
           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+          debug: true

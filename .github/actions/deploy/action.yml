@@ -14,6 +14,9 @@ inputs:
   personal_access_key:
     description: HubSpot personal access key (Should be stored in secrets)
     required: true
+  debug:
+    description: Use Hubspot cli debug flag
+    required: false
 runs:
   using: "composite"
   steps:
@@ -22,5 +25,5 @@ runs:
         HUBSPOT_PORTAL_ID: ${{ inputs.portal_id }}
         HUBSPOT_PERSONAL_ACCESS_KEY: ${{ inputs.personal_access_key }}
       run: |
-        npx --yes --package=@hubspot/cli@6.4.0 --call='hs upload ${{ inputs.src_dir }} ${{ inputs.dest_dir }} --use-env --debug'
+        npx --yes --package=@hubspot/cli@6.4.0 --call='hs upload "${{ inputs.src_dir }}" "${{ inputs.dest_dir }}" --use-env ${{ inputs.debug == true && '--debug' || null }}'
       shell: bash
