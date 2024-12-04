@@ -10,7 +10,7 @@
    */
   const blockSelector = 'blog-search-term';
   const contentNodes = document.querySelectorAll(
-    '.blog-page__container > div:not(#hs_cos_wrapper_blog-category-search):not(.blog-category-search-container)',
+    '.blog-page__container > div:not(.blog-page__search-container)',
   );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
