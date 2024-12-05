@@ -87,5 +87,15 @@
     "reordering_enabled": true,
     "preset": null,
     "type": "choice"
+  },
+  {
+  "name": "show_header",
+  "label": "Show Header",
+  "required": false,
+  "locked": false,
+  "type": "boolean",
+  "inline_help_text": "",
+  "help_text": "",
+  "default": true
   }
 ]
