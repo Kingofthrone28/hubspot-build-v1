@@ -56,17 +56,6 @@
     }
   },
   {
-    "name": "main_menu",
-    "label": "Main Menu",
-    "required": true,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "type": "menu",
-    "placeholder": "",
-    "default": "183183514427"
-  },
-  {
     "id": "d14373b3-b63a-fdc3-47f0-0e72c403d14c",
     "name": "request_info_link",
     "display_width": null,

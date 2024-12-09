@@ -119,8 +119,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 56px;
-  background: var(--color--white);
-  padding-left: var(--card--padding);
   text-align: center;
   font: var(--font--extra-large-paragraph);
 }

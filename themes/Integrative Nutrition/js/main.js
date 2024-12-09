@@ -1,8 +1,10 @@
+{% include './_forms.js' %}
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
 {% include './libphonenumber.js' %}
 {% include './form-phone-validation.js' %}
 {% include './blog.js' %}
+{% include './datalayer.js' %}
 
 $(function () {
   $('.load-parent').each(function () {

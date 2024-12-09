@@ -55,7 +55,9 @@
 {# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
-    <h2 class="blog-teasers__header">{{ tag_name }}</h2>
+    {% if module.show_header %}
+      <h2 class="blog-teasers__header">{{ tag_name }}</h2>
+    {% endif %}
     <div class="blog-teasers__posts blog-teasers__posts-{{ name }}">
       {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
     </div>

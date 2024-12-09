@@ -1,18 +1,25 @@
 on:
   push:
     branches:
-    - main
+      - main
+    paths:
+      - 'themes/**'
 jobs:
   deploy:
     environment: production
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v2.3.3
-      - name: HubSpot Deploy Action
-        uses: HubSpot/hubspot-cms-deploy-action@v1.7
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
+      - name: Deploy theme to Hubspot CMS
+        uses:  ./.github/actions/deploy
         with:
           src_dir: themes
           dest_dir: .
           portal_id: ${{ secrets.hubspot_portal_id }}
           personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+          debug: 1
