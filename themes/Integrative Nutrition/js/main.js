@@ -1,4 +1,3 @@
-{% include './_forms.js' %}
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
 {% include './libphonenumber.js' %}
