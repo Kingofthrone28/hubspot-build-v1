@@ -18,19 +18,6 @@ paste this into the Hubspot Site Header HTML in Settings -->
   href="https://es.course.integrativenutrition.com"
 />
 
-<!-- OneTrust Callback -->
-
-<script type="text/javascript">
-  function OptanonWrapper() {
-    if (OnetrustActiveGroups.includes('C0004')){
-      _hsq.push(['doNotTrack', { track: true }]);
-    } else {
-      _hsp.push(['revokeCookieConsent']);
-      _hsq.push(['doNotTrack']);
-    }
-  }
-</script>
-
 <!-- Initialize global namespace -->
 <script>
   const IIN = {};

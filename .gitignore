@@ -15,5 +15,8 @@ hubspot.config.yml
 # Developer temp files
 tmp-dev/
 
+# Developer app config for local envs
+**/*.local.*
+
 # Files used during blog tag updates
 scripts/update-blog-tags/assets/

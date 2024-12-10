@@ -1,3 +1,5 @@
+{% from "../../macros/get-app-config.html" import get_app_config %}
+
 {% macro info_link() %}
   {% set href = module.request_info_link.url.href %}
   {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -81,7 +83,9 @@
   </nav>
 {% endmacro %}
 
-{% set main_menu =  menu(module.main_menu) %}
+{% set app_config = {} %}
+{{ get_app_config(app_config) }}
+{% set main_menu =  menu(app_config.main_menu_id) %}
 {% set current_timestamp = unixtimestamp(local_dt) %}
 {% set iso_date_format = "yyyy-MM-dd'T'HH:mm:ss" %}
 {% set top_bar = {} %}

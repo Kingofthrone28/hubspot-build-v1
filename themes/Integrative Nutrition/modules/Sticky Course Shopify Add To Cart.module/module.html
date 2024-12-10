@@ -10,6 +10,27 @@
 {% set show_sticky_header = is_sample_class or is_inline_and_header or is_header_only %}
 {% set sticky_show = is_sample_class ? 'pdp-sticky-show' : '' %}
 
+{# Macros #}
+{% macro payment_details_section() %}
+  <div class="pdp-payment-details">
+    <div>
+      <span>{{ module.payment_details.line_1 }}</span>
+      {% set logos = module.payment_details.logos|selectattr('src') if module.payment_details.line_1 %}
+      {% if logos|length > 0 %}
+        {% for logo in logos %}
+          <img class="pdp-payment-details_logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
+          {% set next_index = loop.index0 + 1 %}
+          {{ ',' if logos[next_index] }}
+          {{ ' or' if logos|length - 1 == next_index }}
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if module.payment_details.line_2 %}
+      <div>{{ module.payment_details.line_2 }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
 {# Markup #}
 
 {# Invisible header trigger #}
@@ -110,24 +131,7 @@
     </div>
     <div class="jd-add-cart-wrap pdp-options"></div>
     <div class="pdp-top-bottom">
-      <div class="pdp-payment-details">
-        {{ module.payment_details.line_1 }}
-        {% set logos = module.payment_details.logos|selectattr('src') if module.payment_details.line_1 %}
-        {% if logos|length > 0 %}
-          <span>
-            {% for logo in logos %}
-              <img class="pdp-payment-details_logo" src="{{ logo.src }}" alt="{{ logo.alt }}" />
-              {% set next_index = loop.index0 + 1 %}
-              {{ ',' if logos[next_index] }}
-              {{ ' or' if logos|length - 1 == next_index }}
-            {% endfor %}
-          </span>
-        {% endif %}
-        {% if module.payment_details.line_2 %}
-          <p>{{ module.payment_details.line_2 }}</p>
-        {% endif %}
-      </div>
-
+      {{ payment_details_section() }}
       {% set codeObj = { val: '', use_chalk: false } %}
       {% for code in module.code_offers %}
         {% set is_after_start = unixtimestamp(local_dt) >= unixtimestamp(code.start_time) %}
@@ -229,8 +233,9 @@
                 <div class="pdp-bottom-options"></div>
               </div>
               <div class="pdp-bottom-price-wrapper">
-                <div class="pdp-bottom-price"></div>
-                <div class="pdp-bottom-3-bottom"></div>
+              <div class="pdp-bottom-price"></div>
+              <div class="pdp-bottom-3-bottom"></div>
+              {{ payment_details_section() }}
               </div>
             </div>
           </div>
