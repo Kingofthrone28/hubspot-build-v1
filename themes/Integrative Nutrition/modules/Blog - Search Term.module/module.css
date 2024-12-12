@@ -18,13 +18,23 @@
   justify-content: space-between;
 }
 
+.blog-search-term.level-2:not(.visible) {
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 1023px) {
+  .blog-search-term.level-2:not(.visible) {
+    align-items: center;
+  }
+}
+ 
 .blog-search-term__form {
   display: flex;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 767px) {
   .blog-search-term__form {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -117,6 +127,25 @@
 
 .blog-search-term__header.level-1 {
   text-align: center;
+}
+
+.blog-search-term__header.level-2 {
+  align-self: flex-start;
+}
+
+.blog-search-term__header.level-2 h1 {
+  display: flex;
+  column-gap: var(--spacing-4--static);
+}
+
+.blog-search-term__header.level-2 h1::before {
+  display: inline-block;
+  background-image: var(--icon--sparkle);
+  background-repeat: no-repeat;
+  width: var(--spacing-8--static);
+  height: var(--spacing-8--static);
+  vertical-align: top;
+  content: '';
 }
 
 .blog-search-term__header h1 {
@@ -228,7 +257,7 @@
   margin-left: var(--spacing-5--static);
   background: none;
   padding-top: var(--spacing-3--static);
-  color: var(--color-slate);
+  color: var(--color--slate);
 }
 
 .blog-search-term__wrapper .blog-search-term__cancel.visible {
@@ -240,7 +269,7 @@
   margin-left: var(--spacing-5--static);
   background: none;
   padding-top: var(--spacing-3--static);
-  color: var(--color-slate);
+  color: var(--color--slate);
 }
 
 .blog-search-term__wrapper .blog-search-term__cancel-previous.visible {
@@ -252,12 +281,12 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin: 0;
-  padding-top: var(--spacing-8--static);
+  padding-top: var(--spacing-4--static);
 }
 
 .blog-search-term__wrapper.visible button {
   order: 3;
-  margin-left: var(--spacing-8--static);
+  margin: 0 0 0 var(--spacing-8--static);
 }
 
 @media screen and (max-width: 767px) {
@@ -350,23 +379,9 @@
     align-items: center;
   }
 
-  .blog-search-term__header {
-    margin-bottom: var(--spacing-4);
-  }
-
-  .blog-search-term__header.level-2 h1::before {
-    display: inline-block;
-    margin-right: var(--spacing-4--static);
-    background-image: var(--icon--sparkle);
-    background-repeat: no-repeat;
-    width: var(--spacing-8--static);
-    height: var(--spacing-8--static);
-    vertical-align: top;
-    content: '';
-  }
-
   .blog-search-term__wrapper {
     margin: 0;
+    padding-top: var(--spacing-4--static);
   }
 
   .blog-search-term__content {

@@ -23,7 +23,7 @@
 }
 
 .blog-page__search-container.level-2 {
-  padding: 0 var(--spacing-16--static) 0 var(--spacing-8--static);
+  padding-right: var(--spacing-16--static);
 }
 
 /* Post */
