@@ -354,6 +354,17 @@
     margin-bottom: var(--spacing-4);
   }
 
+  .blog-search-term__header.level-2 h1::before {
+    display: inline-block;
+    margin-right: var(--spacing-4--static);
+    background-image: var(--icon--sparkle);
+    background-repeat: no-repeat;
+    width: var(--spacing-8--static);
+    height: var(--spacing-8--static);
+    vertical-align: top;
+    content: '';
+  }
+
   .blog-search-term__wrapper {
     margin: 0;
   }

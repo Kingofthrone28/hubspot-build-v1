@@ -3,7 +3,7 @@
   <div class="video-thumb-embed-placeholder"></div>
 </div>
 
-{{ require_js(get_asset_url('../../js/datalayer.js')) }}
+{% require_js %}
 <script>
   $('#{{name}} .video-thumb-embed-thumb').click(() => {
     $('#{{name}} .video-thumb-embed-placeholder').replaceWith(`{{ module.video_embed }}`);

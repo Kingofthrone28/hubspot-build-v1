@@ -228,6 +228,13 @@
     }
   };
 
+  const getItemId = (productId) =>
+    productId?.replace('gid://shopify/Product/', '');
+  const getVariantId = (productId) =>
+    productId?.replace('gid://shopify/ProductVariant/', '');
+  const getBundleItemId = (courses, course) =>
+    courses.find((item) => course.title.includes(item.course_name)).product_id;
+
   const trackAddToCartEvent = (updatedCheckout, lineItemsToAdd) => {
     try {
       const addToCartPayload = {};
@@ -250,19 +257,16 @@
 
       addToCartPayload.ecommerce.items.push(
         ...filteredList.map((course) => ({
-          item_id: course.variant.product.id.replace(
-            'gid://shopify/Product/',
-            '',
+          item_id: getCustomItemId(
+            getItemId(course.variant.product.id),
+            getVariantId(course.variant?.id),
           ),
           item_name: course.title,
           item_type:
             course.customAttributes.find((item) =>
               item.key.includes('productType'),
             ).value || 'NA',
-          variant_id: course.variant?.id?.replace(
-            'gid://shopify/ProductVariant/',
-            '',
-          ),
+          variant_id: getVariantId(course.variant?.id),
           discount:
             parseFloat(
               course.discountAllocations[0]?.allocatedAmount?.amount,
@@ -495,18 +499,16 @@
 
       viewItemPayload.ecommerce.items.push(
         ...updatedCheckout.lineItems.map((course) => ({
-          item_id: courses.find((item) =>
-            course.title.includes(item.course_name),
-          ).product_id,
+          item_id: getCustomItemId(
+            getBundleItemId(courses, course),
+            getVariantId(course.variant?.id),
+          ),
           item_name: course.title,
           item_type:
             course.customAttributes.find((item) =>
               item.key.includes('productType'),
             ).value || 'NA',
-          variant_id: course.variant?.id?.replace(
-            'gid://shopify/ProductVariant/',
-            '',
-          ),
+          variant_id: getVariantId(course.variant?.id),
           discount:
             parseFloat(
               course?.discountAllocations[0]?.allocatedAmount?.amount,

@@ -3,6 +3,7 @@
 {% include './libphonenumber.js' %}
 {% include './form-phone-validation.js' %}
 {% include './blog.js' %}
+{% include './datalayer.js' %}
 
 $(function () {
   $('.load-parent').each(function () {

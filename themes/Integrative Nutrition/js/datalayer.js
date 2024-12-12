@@ -325,7 +325,7 @@ TAB Click Events
 
 // Hamburger Click Event tracking
 const openHamburgerMenuElement = document.querySelector(
-  '.jd-mobile-show div.jd-ham',
+  '.jd-mobile-show .jd-ham',
 );
 
 openHamburgerMenuElement?.addEventListener('click', () => {
@@ -336,7 +336,7 @@ openHamburgerMenuElement?.addEventListener('click', () => {
 });
 
 const closeHamburgerMenuElement = document.querySelector(
-  '#jd-mobile-menu div.jd-ham',
+  '#jd-mobile-menu .jd-ham',
 );
 
 closeHamburgerMenuElement?.addEventListener('click', () => {
@@ -966,3 +966,13 @@ window.addEventListener('load', trackButtonInIframes);
 
 const iframeObserver = new MutationObserver(trackButtonInIframes);
 iframeObserver.observe(document.body, { childList: true, subtree: true });
+
+const triggerECommEvent = async (rawPayload = {}) => {
+  if (rawPayload && rawPayload.event) {
+    window.dataLayer.push({ ecommerce: null }); // As per GTM need-resetting
+    window.dataLayer.push(rawPayload);
+  }
+};
+
+const getCustomItemId = (itemId, variantId) =>
+  `shopify_US_${itemId}_${variantId}`;

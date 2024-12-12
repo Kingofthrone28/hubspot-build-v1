@@ -4,12 +4,5 @@
   "smart_type": "NOT_SMART",
   "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
   "module_id": 127863872116,
-  "js_assets": [
-    {
-      "autoload": true,
-      "path": "../../js/datalayer.js",
-      "name": "datalayer.js"
-    }
-  ],
   "is_available_for_new_content": true
 }

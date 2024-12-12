@@ -531,13 +531,9 @@
   align-items: flex-end;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 20px 0 12px;
+  padding: 20px 30px 12px 0;
   width: 1250px;
   max-width: 95%;
-}
-
-.pdp-sticky-inner.expanded {
-  padding-right: 30px;
 }
 
 .pdp-sticky-wrap {
@@ -668,11 +664,8 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   .pdp-sticky-inner {
     display: block;
     padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
-  .pdp-sticky-inner.expanded {
     padding-right: 0;
+    padding-bottom: 24px;
   }
 
   .pdp-top-content {
