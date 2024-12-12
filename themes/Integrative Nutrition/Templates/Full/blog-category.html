@@ -33,19 +33,21 @@
   {% do tag_intersection_bc.append(tag) if tag %}
 {% endfor %}
 
+{% set page_level = 'level-2' %}
+
 {# html #}
 {% block body %}
 <main class="blog-page__container offset-header">
   <div class="blog-page__breadcrumbs-container">
     {{ get_blog_nav_breadcrumbs(tag_menu_bc) }}
   </div>
-  <div class="blog-page__search-container">
+  <div class="blog-page__search-container {{ page_level }}">
     {% module "blog-category-search"
       path="../../modules/Blog - Search Term",
       label="Blog - Search Term",
       tag_menu="{{ tag_menu_id_bc }}",
       blog_search_heading="{{ info_bc.category.label }}",
-      page_level="level-2"
+      page_level="{{ page_level }}"
     %}
   </div>
   <div class="blog-page__featured-story-grid-container">
@@ -63,7 +65,7 @@
         unique_in_loop=True,
         tag_menu="{{ tag_menu_id_bc }}",
         tag_field="{{ tag }}",
-        page_level="level-2"
+        page_level="{{ page_level }}"
       %}
     {% endfor %}
   </div>
