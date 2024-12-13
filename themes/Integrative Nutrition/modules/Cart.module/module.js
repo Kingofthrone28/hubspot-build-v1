@@ -739,7 +739,6 @@
      * @returns {Promise<void>}
      */
     const editCart = async (lineID, target) => {
-
       const refreshedCheckout = await refreshCheckout(cartCookie);
       const lineItems = refreshedCheckout?.lineItems ?? [];
 

@@ -1,3 +1,5 @@
+{% from '../../macros/get-phone-href.html' import get_phone_href %}
+
 {% set have_phone_number = module.us_phone_number or module.international_phone_number %}
 {% if module.appointment_contact.href %}
   {% set appointment_href = module.appointment_contact.href_with_scheme or module.appointment_contact.href %}
@@ -5,14 +7,6 @@
 {% set whatsapp_link = module.whatsapp_link.href %}
 {% set show_appointment_phone_or = appointment_href and have_phone_number %}
 {% set show_phone_whatsapp_or = have_phone_number and whatsapp_link %}
-
-{% macro get_phone_href(text, global) %}
-  {% set result = 'tel:' %}
-  {% if global %}
-     {% set result = result ~ '+' %}
-  {% endif %}
-  {{ result ~ text|regex_replace("[^0-9-()]", "") }}
-{% endmacro %}
 
 <!-- Begin Need Guidance module html  -->
 <div class="need-guidance">

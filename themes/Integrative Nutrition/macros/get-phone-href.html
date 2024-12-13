@@ -1,0 +1,13 @@
+{# 
+  Convert a phone number text string into an href value
+
+  Module Usage:
+  {% from '../../macros/get-phone-href.html' import get_phone_href %}
+#}
+{% macro get_phone_href(text, global) %}
+  {% set result = 'tel:' %}
+  {% if global %}
+     {% set result = result ~ '+' %}
+  {% endif %}
+  {{ result ~ text|regex_replace("[^0-9-()]", "") }}
+{% endmacro %}
