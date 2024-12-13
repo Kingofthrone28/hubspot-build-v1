@@ -24,16 +24,18 @@
   {% do info_bl.category_tags.put(category.label, category.children) if category.children %}
 {% endfor %}
 
+{% set page_level = 'level-1' %}
+
 {# html #}
 {% block body %}
   <main class="blog-page__container offset-header">
-    <div class="blog-page__search-container">
+    <div class="blog-page__search-container {{ page_level }}">
       {% module "blog-category-search"
         path="../../modules/Blog - Search Term",
         label="Blog - Search Term",
         tag_menu="{{ info_bl.tag_menu_id }}",
         blog_search_heading="Articles & Ideas",
-        page_level="level-1"
+        page_level="{{ page_level }}"
       %}
     </div>
     {# Featured story grid #}
@@ -76,7 +78,7 @@
           layout="two_column",
           listing_page_tag_slug_list="{{ tag_slug_list }}",
           listing_page_category="{{ category_label }}",
-          page_level="level-1"
+          page_level="{{ page_level }}"
         %}
       {% endfor %}
     </div>

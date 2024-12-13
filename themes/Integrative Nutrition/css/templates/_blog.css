@@ -19,7 +19,11 @@
 
 .blog-page__search-container {
   margin-bottom: var(--spacing-8--static);
-  padding: 0 var(--spacing-24--static) 0 var(--spacing-8--static);
+  padding: 0 var(--spacing-8--static);
+}
+
+.blog-page__search-container.level-2 {
+  padding-right: var(--spacing-16--static);
 }
 
 /* Post */
