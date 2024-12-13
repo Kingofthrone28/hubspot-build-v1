@@ -35,6 +35,7 @@
 {% include './components/_spinner.css' %}
 {% include './components/_popover.css' %}
 {% include './components/_blog-nav.css' %}
+{% include './templates/_blog-page.css' %}
 {% include './templates/_blog.css' %}
 {% include './templates/_course-catalog-section.css' %}
 {% include './templates/_system.css' %}
