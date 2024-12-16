@@ -4,26 +4,29 @@
       <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
     </div>
     <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
-    <a href="tel:{{ module.us_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      US: {{ module.us_number }}
-    </a>
-    <a href="tel:{{ module.international_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      International: {{ module.international_number }}
-    </a>
-    <a href="{{module.whatsapp_link.url.href}}" class="jd-request-btn hs-button light-button jd-whatsapp-link" {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
-       >
-      Whatsapp
-    </a>
-    <a href="#" class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
-       >
-      LIVE Chat Now
-    </a>
+    <a
+      href="tel:{{ module.us_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link" 
+    >US: {{ module.us_number }}</a>
+    <a
+      href="tel:{{ module.international_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link" 
+    >International: {{ module.international_number }}</a>
+    <a
+      href="{{module.whatsapp_link.url.href}}"
+      class="jd-request-btn hs-button light-button jd-whatsapp-link"
+      {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
+    >Whatsapp</a>
+    <a
+      href="#"
+      class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
+    >LIVE Chat Now</a>
     <div style="margin-top: 35px; text-align: center;">
-      <a href="#" class="jd-arrow-link needle-invite-spanish" style="text-decoration: none; color: var(--color--white);">
-        Chatear en Español
-      </a>
+      <a
+        href="#"
+        class="jd-arrow-link needle-invite-spanish"
+        style="text-decoration: none; color: var(--color--white);"
+      >Chatear en Español</a>
     </div>
   </div>
 </div>
@@ -68,31 +71,7 @@
         Request Info
       {% endif %}
     </a>
-    <nav class="jd-header-dds">
-      <ul>
-        {% for item in module.main_items %}
-        <li class="jd-nav-item">
-          <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-          <ul class="jd-dd">
-            {% for item2 in item.links %}
-            <li>
-              {% set href = item2.link_field.url.href %}
-              {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-              {% endif %}
-              <a href="{{ href }}"
-                 {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                 {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                 >
-                {{ item2.link_text }}
-              </a>
-              {% endfor %}
-            </li>
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <div class="flex-fill"></div>
   </div>
   <div class="jd-header-top jd-mobile-foot">
     <ul>
@@ -177,31 +156,7 @@
           <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
       </a>
-      <nav class="jd-header-dds">
-        <ul>
-        {% for item in module.main_items %}
-          <li class="jd-nav-item">
-            <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-            <ul class="jd-dd">
-              {% for item2 in item.links %}
-              <li>
-                {% set href = item2.link_field.url.href %}
-                {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-                  {% set href = "mailto:" + href %}
-                {% endif %}
-                <a href="{{ href }}"
-                  {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                  {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                  >
-                  {{ item2.link_text }}
-                </a>
-              {% endfor %}
-              </li>
-            </ul>
-          </li>
-        {% endfor %}
-        </ul>
-      </nav>
+      <div class="flex-fill"></div>
       {% set href = module.request_info_link.url.href %}
       {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
         {% set href = "mailto:" + href %}

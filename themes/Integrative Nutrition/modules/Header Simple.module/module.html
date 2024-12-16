@@ -4,95 +4,34 @@
       <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
     </div>
     <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
-    <a href="tel:{{ module.us_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      US: {{ module.us_number }}
-    </a>
-    <a href="tel:{{ module.international_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      International: {{ module.international_number }}
-    </a>
-    <a href="{{module.whatsapp_link.url.href}}" class="jd-request-btn hs-button light-button jd-whatsapp-link" {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
-       >
-      Whatsapp
-    </a>
-    <a href="#" class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
-       >
-      LIVE Chat Now
-    </a>
+    <a
+      href="tel:{{ module.us_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link"
+    >US: {{ module.us_number }}</a>
+    <a
+      href="tel:{{ module.international_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link"
+    >International: {{ module.international_number }}</a>
+    <a
+      href="{{module.whatsapp_link.url.href}}"
+      class="jd-request-btn hs-button light-button jd-whatsapp-link"
+      {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
+    >Whatsapp</a>
+    <a
+      href="#"
+      class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
+    >LIVE Chat Now</a>
     <div style="margin-top: 35px; text-align: center;">
-      <a href="#" class="jd-arrow-link needle-invite-spanish" style="text-decoration: none; color: var(--color--white)">
-        Chatear en Español
-      </a>
+      <a
+        href="#"
+        class="jd-arrow-link needle-invite-spanish"
+        style="text-decoration: none; color: var(--color--white)"
+      >Chatear en Español</a>
     </div>
   </div>
 </div>
-
-{#
-<div id="jd-mobile-menu">
-  <div class="container">
-    <div class="jd-header-main">
-      <button class="jd-ham" type="button">
-        <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
-      </button>
-      {% if module.image_field.src %}
-      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"' %}
-      {% if module.image_field.size_type == 'auto' %}
-      {% set sizeAttrs = 'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}" style="max-width: 100%; height: auto;"' %}
-      {% elif module.image_field.size_type == 'auto_custom_max' %}
-      {% set sizeAttrs = 'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}" style="max-width: 100%; height: auto;"' %}
-      {% endif %}
-      {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
-      <img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
-      {% endif %}
-    </div>
-    {% set href = module.primary_cta.url.href %}
-    {% if module.primary_cta.url.type is equalto "EMAIL_ADDRESS" %}
-    {% set href = "mailto:" + href %}
-    {% endif %}
-    <a href="{{ href }}" class="jd-request-btn hs-button dark-button jd-arrow-link" 
-       {% if module.primary_cta.open_in_new_tab %}target="_blank"{% endif %}
-       {% if module.primary_cta.rel %}rel="{{ module.primary_cta.rel }}"{% endif %}
-       >
-      Log In
-    </a>
-    <nav class="jd-header-dds">
-      <ul>
-        {% for item in module.main_items %}
-        <li class="jd-nav-item">
-          <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-          <ul class="jd-dd">
-            {% for item2 in item.links %}
-            <li>
-              {% set href = item2.link_field.url.href %}
-              {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-              {% endif %}
-              <a href="{{ href }}"
-                 {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                 {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                 >
-                {{ item2.link_text }}
-              </a>
-              {% endfor %}
-            </li>
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
-  <div class="jd-header-top jd-mobile-foot">
-    <ul>
-      <li><a class="jd-language" href="#">Español</a></li>
-      <li><a id="jd-student" href="{{module.student_login_link.url.href}}" {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}>Student Login</a></li>
-    </ul>
-  </div>
-</div>
-#}
 
 <div class="jd-header-wrap">
-  
   {% if module.show_deal_bar %}
   <div class="deal-bar">
     <svg class="deal-bar-close" clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
@@ -107,9 +46,7 @@
       <a href="{{ href }}" class="deal-bar-btn"
         {% if module.claim_deals_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.claim_deals_link.rel %}rel="{{ module.claim_deals_link.rel }}"{% endif %}
-        >
-        {{ module.claim_deals_text }}
-      </a>
+      >{{ module.claim_deals_text }}</a>
     </div>
   </div>
   <script>
@@ -137,8 +74,12 @@
   <div class="container" style="padding-top: 20px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
-        <li><a id="jd-contact" class="jd-contact-link" href="#">Contact</a></li>
-        <li><a class="jd-language" href="#">Español</a></li>
+        <li>
+          <a id="jd-contact" class="jd-contact-link" href="#">Contact</a>
+        </li>
+        <li>
+          <a class="jd-language" href="#">Español</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -164,53 +105,11 @@
           <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
       </a>
-      <nav class="jd-header-dds">
-        <ul>
-        {% for item in module.main_items %}
-          <li class="jd-nav-item">
-            <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-            <ul class="jd-dd">
-              {% for item2 in item.links %}
-              <li>
-                {% set href = item2.link_field.url.href %}
-                {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-                  {% set href = "mailto:" + href %}
-                {% endif %}
-                <a href="{{ href }}"
-                  {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                  {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                  >
-                  {{ item2.link_text }}
-                </a>
-              {% endfor %}
-              </li>
-            </ul>
-          </li>
-        {% endfor %}
-        </ul>
-      </nav>
-      {% set href = module.primary_cta.url.href %}
-      {% if module.primary_cta.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
-      {% endif %}
-      {#
-      <a href="{{ href }}" class="jd-request-btn hs-button dark-button jd-arrow-link" 
-        {% if module.primary_cta.open_in_new_tab %}target="_blank"{% endif %}
-        {% if module.primary_cta.rel %}rel="{{ module.primary_cta.rel }}"{% endif %}
-        >
-        Log In
-      </a>
-      #}
     </div>
     
     <!-- Mobile -->
     <div class="jd-mobile-show">
       <div class="jd-header-main">
-        {#
-        <button class="jd-ham" type="button">
-          <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
-        </button>
-        #}
         {% set href = module.image_link.url.href %}
         {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
           'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
@@ -255,23 +154,6 @@
 {% require_js %}
 <script>
 $(function() {
-  $(document).click(function(e) {
-    if(e.target.className != 'jd-nav-item-title') {
-      $('.jd-nav-item').removeClass('jd-nav-show');
-    }
-  });
-  $('.jd-nav-item-title').click(function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    setTimeout(function() {
-      if($this.parent().hasClass('jd-nav-show')) {
-        $this.parent().removeClass('jd-nav-show');
-      } else {
-        $('.jd-nav-item').removeClass('jd-nav-show');
-        $this.parent().addClass('jd-nav-show');
-      }
-    }, 50);
-  });
   $('.jd-contact-link').click(function(e) {
     e.preventDefault();
     $('.jd-contact-pop-wrap').css('display', 'flex');
@@ -279,11 +161,6 @@ $(function() {
   $('.jd-contact-close').click(function(e) {
     $('.jd-contact-pop-wrap').hide();
   });
-  {#
-  $('.jd-ham').click(function(e) {
-    $('#jd-mobile-menu').slideToggle();
-  });
-  #}
   $('.jd-language').click(function(e) {
     e.preventDefault();
     if(Weglot) {
