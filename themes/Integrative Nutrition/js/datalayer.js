@@ -1,6 +1,13 @@
 window.dataLayer = window.dataLayer || [];
 
 /**
+ * Get the attribute selector to query for an element
+ * @param {string} id The element's data-tracking-id
+ * @returns {string}
+ */
+const getTrackingSelector = (id) => `[data-tracking-element="${id}"]`;
+
+/**
  * Add an event to the data layer
  * N.B. This does not capture all data layer events
  * @param {*} eventData Event to track
@@ -129,7 +136,9 @@ Header - Footer - SubNavigation Click Events
 ----------------------------------------------*/
 
 // Header Navigation Events tracking
-const headerNavMenuElements = document.querySelectorAll('a.jd-nav-item-title');
+const headerNavMenuElements = document.querySelectorAll(
+  getTrackingSelector('main-menu-item'),
+);
 
 headerNavMenuElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -156,8 +165,14 @@ navLogoElement?.addEventListener('click', () => {
 });
 
 // Navigation Top Container tracking
+// i.e. Español, login, and cart buttons
+const topBarNavigationTrackingSelectors = [
+  'header-link',
+  'contact-us-trigger',
+].map((id) => `.jd-header-top.jd-mobile-hide ${getTrackingSelector(id)}`);
+
 const topBarNavigationElements = document.querySelectorAll(
-  'div.jd-header-wrap div.jd-header-top.jd-mobile-hide ul li a',
+  topBarNavigationTrackingSelectors,
 );
 
 topBarNavigationElements.forEach((element) => {
@@ -173,8 +188,9 @@ topBarNavigationElements.forEach((element) => {
 });
 
 // Navigation CTA tracking
+// TODO: This doesn't seems to capture anything... for the future maybe?
 const navCTAElement = document.querySelector(
-  'div.jd-header-main.jd-mobile-hide a[data-tracking-id]',
+  '.jd-header-main.jd-mobile-hide [data-tracking-id]',
 );
 
 navCTAElement?.addEventListener('click', () => {
@@ -186,7 +202,9 @@ navCTAElement?.addEventListener('click', () => {
 });
 
 // Sub Navigation Events tracking
-const subNavigationLinkElements = document.querySelectorAll('.jd-dd a');
+const subNavigationLinkElements = document.querySelectorAll(
+  getTrackingSelector('main-menu-child'),
+);
 
 subNavigationLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -599,7 +617,7 @@ function trackContactClicks(element, position) {
 }
 
 const headerContactPopElements = document.querySelectorAll(
-  'div.jd-contact-pop a',
+  getTrackingSelector('contact-us-link'),
 );
 
 headerContactPopElements.forEach((headerContactPopElement) => {
@@ -608,7 +626,9 @@ headerContactPopElements.forEach((headerContactPopElement) => {
   });
 });
 
-const headerContactElement = document.querySelector('#jd-contact');
+const headerContactElement = document.querySelector(
+  getTrackingSelector('contact-us-trigger'),
+);
 
 headerContactElement?.addEventListener('click', () => {
   trackContactClicks(headerContactElement, 'header');

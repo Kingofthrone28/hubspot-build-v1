@@ -66,16 +66,27 @@
         <li class="jd-nav-item">
         {# Nodes with children get a dropdown menu, while those without do not, to allow direct linking. #}
         {% if node.children|length > 0 %}
-          <a href="#" class="jd-nav-item-title nav-dropdown-trigger">{{ node.label }}</a>
+          <a
+            href="#"
+            class="jd-nav-item-title nav-dropdown-trigger"
+            data-tracking-element="main-menu-item"
+          >{{ node.label }}</a>
           <ul class="jd-dd">
             {% for child_node in node.children|selectattr('url') %}
               <li>
-                <a href="{{ child_node.url }}">{{ child_node.label }}</a>
+                <a
+                  href="{{ child_node.url }}"
+                  data-tracking-element="main-menu-child"  
+                >{{ child_node.label }}</a>
               </li>
             {% endfor %}
           </ul>
         {% elif node.url %}
-          <a href="{{ node.url }}" class="jd-nav-item-title">{{ node.label }}</a>
+          <a
+            href="{{ node.url }}"
+            class="jd-nav-item-title"
+            data-tracking-element="main-menu-item"
+          >{{ node.label }}</a>
         {% endif %}
         </li>
       {% endfor %}
@@ -137,26 +148,33 @@
       <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
     </div>
     <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
-    <a href="tel:{{ module.us_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      US: {{ module.us_number }}
-    </a>
-    <a href="tel:{{ module.international_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      International: {{ module.international_number }}
-    </a>
-    <a href="{{module.whatsapp_link.url.href}}" class="jd-request-btn hs-button light-button jd-whatsapp-link" {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
-       >
-      Whatsapp
-    </a>
-    <a href="#" class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
-       >
-      LIVE Chat Now
-    </a>
+    <a
+      href="tel:{{ module.us_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link" 
+      data-tracking-element="contact-us-link"
+    >US: {{ module.us_number }}</a>
+    <a  
+      href="tel:{{ module.international_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link" 
+      data-tracking-element="contact-us-link"
+    >International: {{ module.international_number }}</a>
+    <a
+      href="{{module.whatsapp_link.url.href}}"
+      class="jd-request-btn hs-button light-button jd-whatsapp-link"
+      data-tracking-element="contact-us-link"
+      {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
+    >Whatsapp</a>
+    <a
+      href="#"
+      class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
+      data-tracking-element="contact-us-link"
+    >LIVE Chat Now</a>
     <div style="margin-top: 35px; text-align:center;">
-      <a href="#" class="jd-arrow-link needle-invite-spanish" style="color:var(--color--white);text-decoration:none">
-        Chatear en Español
-      </a>
+      <a
+        href="#" class="jd-arrow-link needle-invite-spanish"
+        style="color:var(--color--white);text-decoration:none"
+        data-tracking-element="contact-us-link"
+      >Chatear en Español</a>
     </div>
   </div>
 </div>
@@ -174,8 +192,19 @@
   </div>
   <div class="jd-header-top jd-mobile-foot">
     <ul>
-      <li><a class="jd-language" href="#">Español</a></li>
-      <li><a id="jd-student" href="{{module.student_login_link.url.href}}"{% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}>Student Login</a></li>
+      <li>
+        <a
+          class="jd-language"
+          href="#"
+        >Español</a>
+      </li>
+      <li>
+        <a
+          id="jd-student"
+          href="{{module.student_login_link.url.href}}"
+          {% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}
+        >Student Login</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -222,11 +251,35 @@
   <div class="container" style="padding-top: 5px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
-        <li><a id="jd-contact" class="jd-contact-link" href="#">Contact</a></li>
-        <li><a class="jd-language" href="#">Español</a></li>
-        <li><a id="jd-student" href="{{module.student_login_link.url.href}}"{% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}>Student Login</a></li>
+        <li>
+          <a
+            id="jd-contact"
+            class="jd-contact-link"
+            href="#"
+            data-tracking-element="contact-us-trigger"
+          >Contact</a>
+        </li>
+        <li>
+          <a
+            class="jd-language"
+            href="#"
+            data-tracking-element="header-link"
+          >Español</a>
+        </li>
+        <li>
+          <a
+            id="jd-student"
+            href="{{module.student_login_link.url.href}}"
+            data-tracking-element="header-link"
+            {% if module.student_login_link.open_in_new_tab %} target="_blank"{% endif %}
+          >Student Login</a>
+        </li>
         <li id="jd-cart">
-          <a href="{{module.cart_link.url.href}}"{% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}>
+          <a
+            href="{{module.cart_link.url.href}}"
+            {% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}
+            data-tracking-element="header-link"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="jd-cart-item-count" style="display: none">0</div>
@@ -254,12 +307,19 @@
         <div class="jd-header-top">
           <ul>
             <li>
-              <a href="#" class="jd-contact-link">
+              <a
+                href="#"
+                class="jd-contact-link"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="phone" y="288"><path d="M23.18 30.04c-3.27 0-8.51-1.15-14.27-6.91C.8 15.03 1.83 7.94 2.34 5.95c.44-1.73 1.88-3.04 4.14-3.8 1.46-.49 3.08.26 3.68 1.71l2.07 4.96c.48 1.15.19 2.49-.71 3.34l-.91.86c-.33.31-.42.78-.22 1.17.47.91 1.41 2.38 3.24 4.2 1.83 1.83 3.3 2.77 4.2 3.24.39.2.86.12 1.17-.22l.86-.91c.85-.9 2.2-1.19 3.34-.71l4.96 2.07c1.45.6 2.2 2.22 1.71 3.69-.76 2.27-2.07 3.7-3.81 4.14-.57.15-1.58.34-2.91.34l.03.01zM7.4 4c-.1 0-.19.02-.29.05-1.11.37-2.5 1.09-2.84 2.4-.91 3.55.2 9.42 6.04 15.27 5.85 5.85 11.72 6.96 15.27 6.04 1.32-.34 2.04-1.73 2.41-2.84.16-.47-.1-1-.58-1.21l-4.96-2.07a1 1 0 0 0-1.12.24l-.86.91c-.92.97-2.38 1.23-3.55.62-1.03-.53-2.69-1.59-4.7-3.6-2.01-2.01-3.07-3.67-3.6-4.7-.61-1.17-.35-2.63.62-3.55l.91-.86c.3-.29.4-.73.24-1.12L8.32 4.62c-.16-.39-.53-.63-.92-.63V4z" fill="#FFFFFF"/><path d="M24.107 2H21.14C17.908 2 15.095 4.49 15 7.716a5.898 5.898 0 0 0 5.893 6.078h3.214V17l3.623-3.626A7.76 7.76 0 0 0 30 7.897 5.899 5.899 0 0 0 24.107 2zm-5.684 7.128c-.6 0-1.077-.487-1.077-1.078 0-.592.486-1.079 1.077-1.079s1.078.487 1.078 1.079c0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.078.487 1.078 1.079 0 .591-.487 1.078-1.078 1.078zm4.072 0c-.6 0-1.078-.487-1.078-1.078 0-.592.487-1.079 1.078-1.079.591 0 1.077.487 1.077 1.079 0 .591-.486 1.078-1.077 1.078z" fill="#FFFFFF"/></svg>
               </a>
             </li>
             <li id="jd-cart">
-              <a href="{{module.cart_link.url.href}}"{% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a
+                href="{{module.cart_link.url.href}}"
+                {% if module.cart_link.open_in_new_tab %} target="_blank"{% endif %}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
               <div class="jd-cart-item-count" style="display:none">0</div>
             </li>
           </ul>
