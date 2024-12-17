@@ -1,7 +1,16 @@
 window.dataLayer = window.dataLayer || [];
 
+/**
+ * Add an event to the data layer
+ * N.B. This does not capture all data layer events
+ * @param {*} eventData Event to track
+ */
+const addDataLayerEvent = (eventData) => {
+  window.dataLayer.push(eventData);
+};
+
 function trackAccordionClick(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.firstChild.innerText,
     action: element.classList.contains('active') ? 'close' : 'open',
@@ -11,7 +20,7 @@ function trackAccordionClick(element) {
 }
 
 function trackBioView(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.innerText,
     action: 'open',
@@ -19,7 +28,7 @@ function trackBioView(element) {
 }
 
 function trackBioClose(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.innerText,
     action: 'close',
@@ -42,7 +51,7 @@ function trackSocialShare(element) {
     shareType = 'mail';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'social_share',
     blog_title: blogTitle,
     share_type: shareType,
@@ -50,14 +59,14 @@ function trackSocialShare(element) {
 }
 
 function trackOpenChat() {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'chat_click',
     chat_action: 'open',
   });
 }
 
 function trackCloseChat() {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'chat_click',
     chat_action: 'close',
   });
@@ -124,7 +133,7 @@ const headerNavMenuElements = document.querySelectorAll('a.jd-nav-item-title');
 
 headerNavMenuElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'header_nav_click',
       click_text: element.innerText,
       // Sending 0 in case no navigation, only opening sub menu
@@ -139,7 +148,7 @@ const navLogoElement = document.querySelector(
 );
 
 navLogoElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'header_nav_click',
     click_text: 'logo',
     click_url: navLogoElement.parentElement.href,
@@ -153,7 +162,7 @@ const topBarNavigationElements = document.querySelectorAll(
 
 topBarNavigationElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'header_nav_click',
       click_text:
         element.parentElement.id === 'jd-cart' ? 'cart' : element.innerText,
@@ -169,7 +178,7 @@ const navCTAElement = document.querySelector(
 );
 
 navCTAElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'header_nav_click',
     click_text: navCTAElement.innerText,
     click_url: navCTAElement.href,
@@ -181,7 +190,7 @@ const subNavigationLinkElements = document.querySelectorAll('.jd-dd a');
 
 subNavigationLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'sub_nav_click',
       header_title:
         element.parentElement.parentElement.previousElementSibling.innerText,
@@ -235,7 +244,7 @@ function trackFooterNavigationAndLinkClicks(
     clickText = element.parentElement.innerText.trim();
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: eventName,
     click_text: clickText,
     click_url: clickUrl,
@@ -246,7 +255,7 @@ function trackFooterNavigationAndLinkClicks(
     (clickUrl === 'https://iin.secure.force.com/AS' ||
       clickUrl === 'https://info.integrativenutrition.com/contact-us')
   ) {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'cta_click',
       click_text: clickText,
       click_url: clickUrl,
@@ -274,7 +283,7 @@ const heroBannerElements = document.querySelectorAll(
 
 heroBannerElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'hero_banner_click',
       click_text: element.innerText,
       click_url: element.href ? element.href.split('?')[0] : 'NA',
@@ -287,7 +296,7 @@ TAB Click Events
 ----------------------------------------------*/
 
 function trackTabClickEvent(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'tab_click',
     click_text: element.innerText,
   });
@@ -329,7 +338,7 @@ const openHamburgerMenuElement = document.querySelector(
 );
 
 openHamburgerMenuElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'hamburger_click',
     action: 'open',
   });
@@ -340,7 +349,7 @@ const closeHamburgerMenuElement = document.querySelector(
 );
 
 closeHamburgerMenuElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'hamburger_click',
     action: 'close',
   });
@@ -351,7 +360,7 @@ const breadCrumbsElements = document.querySelectorAll('div.jd-blog-nav a');
 
 breadCrumbsElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'breadcrumb_click',
       click_text: element.innerText === '' ? 'Home' : element.innerText,
       click_url: element.href,
@@ -372,7 +381,7 @@ function trackGenericCTAClick(element) {
     position = 'footer';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'cta_click',
     click_text: element.innerText,
     click_url: element.href ? element.href.split('?')[0] : 'NA',
@@ -412,7 +421,7 @@ function trackFilterEvent() {
   const { selectedTopics, selectedLevels, selectedTypes } =
     getSelectedFilters();
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'filter',
     filter_topics: selectedTopics,
     filter_levels: selectedLevels,
@@ -427,7 +436,7 @@ saveButtonElement?.addEventListener('click', trackFilterEvent);
 function trackSearchResults(element) {
   const articleCount = document.querySelectorAll('.jd-listing-item').length;
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'search_results',
     search_term: element.value,
     search_result_count: articleCount,
@@ -441,7 +450,7 @@ function trackViewSearchResults(element) {
 
   const titles = [...articles].map(({ innerText }) => innerText);
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'view_search_results',
     search_term: element.value,
     result_title: titles,
@@ -474,7 +483,7 @@ function trackRegisterWebinar(element) {
   const headerText = element.getAttribute('data-tracking-header-label');
   const clickText = element.querySelector('div.content a')?.innerText;
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'register_webinar_click',
     header_text: headerText,
     click_text: clickText,
@@ -501,14 +510,14 @@ function trackVimeoVideo(videoElement) {
       .getVideoTitle()
       .then((videoTitle) => {
         player.on('play', () => {
-          window.dataLayer.push({
+          addDataLayerEvent({
             event: 'video_start',
             video_title: videoTitle,
           });
         });
 
         player.on('ended', () => {
-          window.dataLayer.push({
+          addDataLayerEvent({
             event: 'video_complete',
             video_title: videoTitle,
           });
@@ -528,7 +537,7 @@ function trackVimeoVideo(videoElement) {
             case 25:
             case 50:
             case 75:
-              window.dataLayer.push({
+              addDataLayerEvent({
                 event: 'video_progress',
                 video_title: videoTitle,
                 video_percent: percentagePlayed,
@@ -581,7 +590,7 @@ function trackContactClicks(element, position) {
     clickText = 'live chat';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'contact_click',
     click_text: clickText,
     click_url: clickUrl,
@@ -618,7 +627,7 @@ footerContactElements.forEach((footerContactElement) => {
 const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
 
 bottomFloatBar?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'contact_click',
     click_text: 'admission number',
     position: 'footer',
@@ -628,7 +637,7 @@ bottomFloatBar?.addEventListener('click', () => {
 const promo = document.querySelector('.deal-bar-btn');
 
 promo?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'promotion_click',
     click_text: promo.parentElement.children[0].innerText,
     promo_code:
@@ -642,7 +651,7 @@ function viewForm(element) {
   const formName =
     element.querySelector('input[name="leadsource"]').getAttribute('value') ||
     '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_view',
     form_name: formName,
   });
@@ -680,7 +689,7 @@ function iframeSubmitFormListener(form) {
       const firstName =
         form.querySelector('input[id^="firstname"]')?.value || '';
       const email = form.querySelector('input[id^="email"]')?.value || '';
-      window.dataLayer.push({
+      addDataLayerEvent({
         event: 'form_submit_DL',
         form_name: formName,
         form_referrer_url: referUrl,
@@ -723,7 +732,7 @@ function initiateForm(element) {
   const formName =
     element.querySelector('input[name="leadsource"]').getAttribute('value') ||
     '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_initiate',
     form_name: formName,
   });
@@ -732,7 +741,7 @@ function initiateForm(element) {
 function falloutForm(form, fieldName) {
   const formName =
     form.querySelector('input[name="leadsource"]').getAttribute('value') || '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_fallout',
     form_name: formName,
     form_field_name: fieldName,
@@ -900,7 +909,7 @@ document.addEventListener(
 function submitForm(dataFormId, referUrl) {
   const cachedData = formCache[dataFormId];
   if (cachedData) {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'form_submit_DL',
       form_name: cachedData.formName,
       form_referrer_url: referUrl,
@@ -944,7 +953,7 @@ function trackButtonInIframes() {
         if (button) {
           if (!button.hasAttribute('data-tracking-attached')) {
             button.addEventListener('click', () => {
-              window.dataLayer.push({
+              addDataLayerEvent({
                 event: 'cta_click',
                 click_text: button.innerText,
                 click_url: button.href.split('?')[0] || 'NA',
@@ -969,8 +978,8 @@ iframeObserver.observe(document.body, { childList: true, subtree: true });
 
 const triggerECommEvent = async (rawPayload = {}) => {
   if (rawPayload && rawPayload.event) {
-    window.dataLayer.push({ ecommerce: null }); // As per GTM need-resetting
-    window.dataLayer.push(rawPayload);
+    addDataLayerEvent({ ecommerce: null }); // As per GTM need-resetting
+    addDataLayerEvent(rawPayload);
   }
 };
 
