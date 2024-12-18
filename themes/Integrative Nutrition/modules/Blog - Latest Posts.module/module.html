@@ -9,11 +9,11 @@
 {% set tag_dict = {} %}
 {{ add_menu_to_dict(tag_menu, tag_dict) }}
 
-<section class="blog-latest-posts">
+<div class="blog-latest-posts">
   <div class="blog-latest-posts__header-row">
     <div class="blog-latest-posts__heading-wrapper">
       <div class="svg-icon blog-latest-posts__section-icon"></div>
-      <h3 class="blog-latest-posts__heading">Latest</h3>
+      <h2 class="blog-latest-posts__heading">Latest</h2>
     </div>
     <div class="blog-latest-posts__top-rule-wrapper">
       <hr class="blog-latest-posts__top-rule" />
@@ -33,4 +33,4 @@
       </div>
     {% endfor %}
   </div>
-</section>
+</div>

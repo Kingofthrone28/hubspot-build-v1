@@ -1,16 +1,22 @@
 .blog-teasers {
-  padding: var(--spacing-12--static) 0;
+  padding: var(--spacing-8--static) 0 var(--spacing-16--static);
 }
 
 @media (max-width: 1023px) {
   .blog-teasers {
-    margin-bottom: 0;
-    padding: var(--spacing-8--static) 0;
+    padding: var(--spacing-8--static) var(--spacing-10--static)
+      var(--spacing-16--static);
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-teasers {
+    padding: var(--spacing-10--static) var(--spacing-6--static);
   }
 }
 
 .blog-teasers__card {
-  --aspect-ratio: 1 / 1;
+  --aspect-ratio: 1;
   --card--padding: 20px;
   --card--padding--bottom: 50px;
 }
@@ -37,7 +43,7 @@
 }
 
 .blog-teasers__small-card img {
-  --aspect-ratio: 3 / 2;
+  --aspect-ratio: 1.45;
 }
 
 .blog-teasers__large-card {
@@ -54,7 +60,7 @@
 }
 
 .blog-teasers__large-card img {
-  --aspect-ratio: 1.2 / 1;
+  --aspect-ratio: 1.2;
 }
 
 @media screen and (max-width: 1023px) {
@@ -77,13 +83,13 @@
 
 @media screen and (max-width: 1023px) {
   .blog-teasers__card img {
-    --aspect-ratio: 1.75 / 1;
+    --aspect-ratio: 2.36;
   }
 }
 
 @media screen and (max-width: 767px) {
   .blog-teasers__card img {
-    --aspect-ratio: 1.28 / 1;
+    --aspect-ratio: 1.28;
   }
 }
 
@@ -117,15 +123,24 @@
 
 .blog-teasers__header {
   display: flex;
+  column-gap: var(--spacing-4--static);
   align-items: center;
-  margin-bottom: 56px;
+  margin-bottom: var(--spacing-14--static);
   text-align: center;
   font: var(--font--extra-large-paragraph);
 }
 
+.blog-teasers__header-icon {
+  display: inline-block;
+  background-image: var(--icon--sparkle);
+  background-repeat: no-repeat;
+  width: var(--spacing-8--static);
+  height: var(--spacing-8--static);
+  vertical-align: top;
+}
+
 @media screen and (max-width: 1023px) {
   .blog-teasers__header {
-    display: block;
     margin-bottom: var(--spacing-6--static);
     border-bottom: 1px solid var(--color--grey-4);
     background: none;
@@ -192,12 +207,6 @@
 .blog-teasers__view-more {
   display: flex;
   justify-content: center;
-}
-
-@media screen and (max-width: 1023px) {
-  .blog-teasers__view-more {
-    padding: 20px 0;
-  }
 }
 
 .blog-teasers__view-more a {

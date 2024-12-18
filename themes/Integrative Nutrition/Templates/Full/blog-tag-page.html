@@ -23,19 +23,22 @@
 {% do info_bt.put("blog_tags", blog_tags("default")) %}
 {% do info_bt.put("page_tag", info_bt.blog_tags|selectattr('label', 'equalto', info_bt.node.label)|first) %}
 
+{% set blog_page_level = "level-3" %}
+
 {% block body %}
-<main class="blog-page__container offset-header">
-  <div class="blog-page__breadcrumbs-container">
+<main class="blog-page__main offset-header {{ blog_page_level }}">
+  <div class="blog-page__section blog-page__breadcrumbs-container {{ blog_page_level }}">
     {{ get_blog_nav_breadcrumbs(tag_menu_bt) }}
   </div>
-  <div class="blog-page__blog-teasers-container">
+  <div class="blog-page__section blog-page__blog-teasers-container">
     {% module "module_17291984260572"
       path="/Integrative Nutrition/modules/Blog Teasers",
       label="Blog Tag Page Blog Teasers",
-      tag_menu="{{ app_config_bt.blog_tag_menu_id }}",
+      is_page_heading="true"
       layout="two_column",
+      page_level="{{ blog_page_level }}",
       tag_field="{{ info_bt.page_tag }}",
-      page_level="level-3"
+      tag_menu="{{ app_config_bt.blog_tag_menu_id }}"
     %}
   </div>
 </main>
