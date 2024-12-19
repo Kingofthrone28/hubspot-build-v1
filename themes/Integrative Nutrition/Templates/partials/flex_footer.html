@@ -1,23 +1,20 @@
 <!--
-    templateType: global_partial
-    isAvailableForNewContent: false
+  templateType: global_partial
+  isAvailableForNewContent: false
   label: Page Footer
 -->
-
 <div class="footer-container-wrapper">
   <div class="footer-container responsive">
     {% if !theme.footer.layout %}
-    {% dnd_area 'dnd_footer' class='dnd_footer', label='Header section' %}
-    {% include_dnd_partial path='../Sections/footer_main.html' context={} %}
-    {% include_dnd_partial path='../Sections/footer_bottom.html' context={} %}
-    {% end_dnd_area %}
+      {% dnd_area 'dnd_footer' class='dnd_footer', label='Header section' %}
+        {% include_dnd_partial path='../Sections/footer_main.html' context={} %}
+        {% include_dnd_partial path='../Sections/footer_bottom.html' context={} %}
+      {% end_dnd_area %}
     {% else %}
-    {% dnd_area 'dnd_footer2' class='dnd_footer', label='Header section' %}
-    {% include_dnd_partial path='../Sections/footer_main2.html' context={} %}
-    {% include_dnd_partial path='../Sections/footer_bottom.html' context={} %}
-    {% end_dnd_area %}
+      {% dnd_area 'dnd_footer2' class='dnd_footer', label='Header section' %}
+        {% include_dnd_partial path='../Sections/footer_main2.html' context={} %}
+        {% include_dnd_partial path='../Sections/footer_bottom.html' context={} %}
+      {% end_dnd_area %}
     {% endif %}
   </div>
-</div><!--end footer wrapper -->
-
-<!-- End partial -->
+</div>
