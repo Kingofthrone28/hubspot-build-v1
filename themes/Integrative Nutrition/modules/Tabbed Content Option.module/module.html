@@ -2,7 +2,7 @@
   <div class="tabs">
     {% for tab in module.tabs %}
     <div class="tab-wrap">
-      <div class="tab {% if loop.first %}tab-selected{% endif %}" data-id="tab-{{name}}-{{loop.index}}" data-parent="{{name}}">
+      <div class="tab {% if loop.first %}tab-selected{% endif %}" data-id="tab-{{name}}-{{loop.index}}" data-parent="{{name}}" data-tracking-element="tabbed-content-tab">
         {{tab.name_field}}
       </div>
     </div>

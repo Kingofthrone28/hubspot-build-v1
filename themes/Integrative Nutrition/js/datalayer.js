@@ -1,20 +1,13 @@
 window.dataLayer = window.dataLayer || [];
 
 /**
- * Get the attribute selector to query for an element
- * @param {string} id The element's data-tracking-id
- * @returns {string}
- */
-const getTrackingSelector = (id) => `[data-tracking-element="${id}"]`;
-
-/**
  * Add an event to the data layer
  * N.B. This does not capture all data layer events
  * @param {*} eventData Event to track
  */
-const addDataLayerEvent = (eventData) => {
+function addDataLayerEvent(eventData) {
   window.dataLayer.push(eventData);
-};
+}
 
 function trackAccordionClick(element) {
   addDataLayerEvent({
@@ -80,7 +73,9 @@ function trackCloseChat() {
 }
 
 function initializeEvents() {
-  const accordions = document.querySelectorAll('div.ex-label');
+  const accordions = document.querySelectorAll(
+    `[data-tracking-element="accordion"]`,
+  );
 
   accordions.forEach((link) => {
     link.addEventListener('click', () => {
@@ -89,7 +84,7 @@ function initializeEvents() {
   });
 
   const viewBioButtons = document.querySelectorAll(
-    '.bio-label .bio-closed strong',
+    `[data-tracking-element="team-bio"] .bio-closed strong`,
   );
 
   viewBioButtons.forEach((button) => {
@@ -99,7 +94,7 @@ function initializeEvents() {
   });
 
   const closeBioButtons = document.querySelectorAll(
-    '.bio-label .bio-open strong',
+    `[data-tracking-element="team-bio"] .bio-open strong`,
   );
 
   closeBioButtons.forEach((button) => {
@@ -108,7 +103,9 @@ function initializeEvents() {
     });
   });
 
-  const socialShareLogos = document.querySelectorAll('.jd-post-share a');
+  const socialShareLogos = document.querySelectorAll(
+    `[data-tracking-element="post-share"] a`,
+  );
 
   socialShareLogos.forEach((logo) => {
     logo.addEventListener('click', () => {
@@ -116,12 +113,11 @@ function initializeEvents() {
     });
   });
 
-  const openChatButton = document.querySelector('div#chatbtn');
-
+  // Needle chat added via external script
+  const openChatButton = document.querySelector('#chatbtn');
   openChatButton?.addEventListener('click', trackOpenChat);
 
-  const inviteDiv = document.querySelector('div#inviteBody');
-
+  const inviteDiv = document.querySelector('#inviteBody');
   if (inviteDiv?.children.length > 3) {
     const closeChatBtn = inviteDiv.children[3];
 
@@ -137,7 +133,7 @@ Header - Footer - SubNavigation Click Events
 
 // Header Navigation Events tracking
 const headerNavMenuElements = document.querySelectorAll(
-  getTrackingSelector('main-menu-item'),
+  `[data-tracking-element="main-menu-item"]`,
 );
 
 headerNavMenuElements.forEach((element) => {
@@ -152,24 +148,26 @@ headerNavMenuElements.forEach((element) => {
 });
 
 // Navigation Logo tracking
-const navLogoElement = document.querySelector(
-  'div.jd-header-main.jd-mobile-hide a img',
+const navLogoElements = document.querySelectorAll(
+  `[data-tracking-element="header-logo"]`,
 );
 
-navLogoElement?.addEventListener('click', () => {
-  addDataLayerEvent({
-    event: 'header_nav_click',
-    click_text: 'logo',
-    click_url: navLogoElement.parentElement.href,
+navLogoElements.forEach((element) => {
+  element.addEventListener('click', (event) => {
+    addDataLayerEvent({
+      event: 'header_nav_click',
+      click_text: 'logo',
+      click_url: event.currentTarget.href,
+    });
   });
 });
 
 // Navigation Top Container tracking
 // i.e. Español, login, and cart buttons
 const topBarNavigationTrackingSelectors = [
-  'header-link',
-  'contact-us-trigger',
-].map((id) => `.jd-header-top.jd-mobile-hide ${getTrackingSelector(id)}`);
+  `.jd-header-top.jd-mobile-hide [data-tracking-element="header-link"]`,
+  `.jd-header-top.jd-mobile-hide [data-tracking-element="contact-us-trigger"]`,
+];
 
 const topBarNavigationElements = document.querySelectorAll(
   topBarNavigationTrackingSelectors,
@@ -203,7 +201,7 @@ navCTAElement?.addEventListener('click', () => {
 
 // Sub Navigation Events tracking
 const subNavigationLinkElements = document.querySelectorAll(
-  getTrackingSelector('main-menu-child'),
+  `[data-tracking-element="main-menu-child"]`,
 );
 
 subNavigationLinkElements.forEach((element) => {
@@ -282,6 +280,7 @@ function trackFooterNavigationAndLinkClicks(
   }
 }
 
+// DND section, cannot add or target data attributes
 const footerNavLinkElements = document.querySelectorAll('.footer-main a');
 
 footerNavLinkElements.forEach((element) => {
@@ -320,7 +319,9 @@ function trackTabClickEvent(element) {
   });
 }
 
-const homePageTabElements = document.querySelectorAll('a.tab-item-link');
+const homePageTabElements = document.querySelectorAll(
+  `[data-tracking-element="course-tab"]`,
+);
 
 homePageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -338,7 +339,9 @@ productDetailsPageTabElements.forEach((element) => {
   });
 });
 
-const bundleProductDetailPageTabElements = document.querySelectorAll('div.tab');
+const bundleProductDetailPageTabElements = document.querySelectorAll(
+  `[data-tracking-element="tabbed-content-tab"]`,
+);
 
 bundleProductDetailPageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -352,7 +355,7 @@ TAB Click Events
 
 // Hamburger Click Event tracking
 const openHamburgerMenuElement = document.querySelector(
-  '.jd-mobile-show .jd-ham',
+  `[data-tracking-element="mobile-menu-open"]`,
 );
 
 openHamburgerMenuElement?.addEventListener('click', () => {
@@ -363,7 +366,7 @@ openHamburgerMenuElement?.addEventListener('click', () => {
 });
 
 const closeHamburgerMenuElement = document.querySelector(
-  '#jd-mobile-menu .jd-ham',
+  `[data-tracking-element="mobile-menu-close"]`,
 );
 
 closeHamburgerMenuElement?.addEventListener('click', () => {
@@ -374,7 +377,9 @@ closeHamburgerMenuElement?.addEventListener('click', () => {
 });
 
 // Breadcrumbs Click Event tracking
-const breadCrumbsElements = document.querySelectorAll('div.jd-blog-nav a');
+const breadCrumbsElements = document.querySelectorAll(
+  `[data-tracking-element="blog-menu"] a`,
+);
 
 breadCrumbsElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -416,20 +421,23 @@ allGenericCTAElements.forEach((element) => {
   });
 });
 
-const getFilterSelector = (name) =>
-  `#course-pop-${name} input[name="${name}"]:checked`;
-
 function getSelectedFilters() {
   const selectedTopics = [
-    ...document.querySelectorAll(getFilterSelector('Topics')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-topics"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   const selectedLevels = [
-    ...document.querySelectorAll(getFilterSelector('Levels')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-levels"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   const selectedTypes = [
-    ...document.querySelectorAll(getFilterSelector('Type')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-type"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   return { selectedTopics, selectedLevels, selectedTypes };
@@ -447,12 +455,16 @@ function trackFilterEvent() {
   });
 }
 
-const saveButtonElement = document.getElementById('course-filter-save');
+const saveButtonElement = document.querySelector(
+  `[data-tracking-element="filter-save"]`,
+);
 
 saveButtonElement?.addEventListener('click', trackFilterEvent);
 
 function trackSearchResults(element) {
-  const articleCount = document.querySelectorAll('.jd-listing-item').length;
+  const articleCount = document.querySelectorAll(
+    '.blog-search-term__item',
+  ).length;
 
   addDataLayerEvent({
     event: 'search_results',
@@ -462,9 +474,7 @@ function trackSearchResults(element) {
 }
 
 function trackViewSearchResults(element) {
-  const articles = document.querySelectorAll(
-    'article.jd-listing-item div.jd-listing-content h3',
-  );
+  const articles = document.querySelectorAll('.blog-search-term__title');
 
   const titles = [...articles].map(({ innerText }) => innerText);
 
@@ -475,7 +485,9 @@ function trackViewSearchResults(element) {
   });
 }
 
-const searchBoxElement = document.querySelector('#jd-blog-search-input');
+const searchBoxElement = document.querySelector(
+  `[data-tracking-element="blog-search-input"]`,
+);
 
 searchBoxElement?.addEventListener('keydown', (event) => {
   if (event.key !== 'Enter') {
@@ -617,7 +629,7 @@ function trackContactClicks(element, position) {
 }
 
 const headerContactPopElements = document.querySelectorAll(
-  getTrackingSelector('contact-us-link'),
+  `[data-tracking-element="contact-us-link"]`,
 );
 
 headerContactPopElements.forEach((headerContactPopElement) => {
@@ -627,13 +639,14 @@ headerContactPopElements.forEach((headerContactPopElement) => {
 });
 
 const headerContactElement = document.querySelector(
-  getTrackingSelector('contact-us-trigger'),
+  `[data-tracking-element="contact-us-trigger"]`,
 );
 
 headerContactElement?.addEventListener('click', () => {
   trackContactClicks(headerContactElement, 'header');
 });
 
+// DND section, cannot add or target data attributes
 const footerContactElements = document.querySelectorAll(
   'div.footer-main a[href^="tel"]',
 );
@@ -644,7 +657,9 @@ footerContactElements.forEach((footerContactElement) => {
   });
 });
 
-const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
+const bottomFloatBar = document.querySelector(
+  `[data-tracking-element="bottom-float-bar"] a`,
+);
 
 bottomFloatBar?.addEventListener('click', () => {
   addDataLayerEvent({

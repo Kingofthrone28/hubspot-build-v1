@@ -518,7 +518,8 @@
     return match ? match[0] : null;
   };
 
-  const getSearchTerms = (string) => string
+  const getSearchTerms = (string) =>
+    string
       .split(multipleSpaces)
       .map((term) => term.replace(specialCharacters, ''))
       .filter(Boolean);

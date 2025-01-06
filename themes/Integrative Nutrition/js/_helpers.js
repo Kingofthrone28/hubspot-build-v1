@@ -90,6 +90,20 @@
   };
 
   /**
+   * A general way to get the type of something
+   * @param {any} unknown The element to type
+   * @returns {string} String in the format of [object Type]
+   */
+  const getType = (unknown) => Object.prototype.toString.call(unknown);
+
+  /**
+   * Check if something is a DOM NodeList
+   * @param {any} unknown Object to test
+   * @returns {boolean} Whether the unknown is a NodeList
+   */
+  const isNodeList = (unknown) => getType(unknown) === '[object NodeList]';
+
+  /**
    * A collection of commonly used helper methods.
    * @namespace
    */
@@ -97,6 +111,8 @@
     debounce,
     extractCents,
     formatCurrency,
+    getType,
+    isNodeList,
     throttle,
     updateClasses,
   };
