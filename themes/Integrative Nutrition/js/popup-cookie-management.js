@@ -17,23 +17,10 @@
    * @returns {Promise<Error|undefined>}
    */
   const modifyFrameForm = (frame) => {
-    const { trackingCookie } = IIN.cookies;
-    const cookieObject = IIN.cookies.getCookieObject(trackingCookie);
-
-    if (!cookieObject || !Object.keys(cookieObject).length) {
-      return Promise.reject(
-        new Error(`No cookie data in cookie: ${trackingCookie}`),
-      );
-    }
-
-    const taxonomyOverrides = sessionStorage.taxonomy_overrides
-      ? JSON.parse(sessionStorage.taxonomy_overrides)
-      : null;
-
     const intervalDelay = 100;
     let formPollsRemaining = 20;
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const formIntervalId = setInterval(() => {
         if (!formPollsRemaining) {
           clearInterval(formIntervalId);
@@ -42,7 +29,6 @@
         }
 
         formPollsRemaining -= 1;
-
         const frameDocument = frame.contentDocument;
 
         if (!frameDocument) {
@@ -50,12 +36,17 @@
         }
 
         const forms = frameDocument.getElementsByTagName('form');
-
         if (!forms.length) {
           return;
         }
 
         clearInterval(formIntervalId);
+
+        const { trackingCookie } = IIN.cookies;
+        const cookieObject = IIN.cookies.getCookieObject(trackingCookie);
+        const taxonomyOverrides = sessionStorage.taxonomy_overrides
+          ? JSON.parse(sessionStorage.taxonomy_overrides)
+          : null;
 
         Array.from(forms).forEach((form) => {
           const formId = form.getAttribute('data-instance-id');
@@ -76,9 +67,9 @@
           fieldsToAdd.forEach(({ defaultValue, name }) => {
             const cookieKey = IIN.cookies.getTrackingCookieKey(name);
             const data =
-              defaultValue ??
               cookieObject[cookieKey] ??
-              taxonomyOverrides?.[name];
+              taxonomyOverrides?.[name] ??
+              defaultValue;
 
             if (!data) {
               return;

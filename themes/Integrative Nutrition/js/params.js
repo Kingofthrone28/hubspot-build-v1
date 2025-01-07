@@ -68,7 +68,7 @@
   const queryString = search.startsWith('?') ? search.slice(1) : search;
   const urlParams = IIN.utilities.makeObjectFromKeyValueString(queryString);
   const paramSource = urlParams?.source;
-  const excludedParams = ['hs_preview', 'hsLang'];
+  const excludedParams = ['hs_preview', 'hsLang', 'hsDebug'];
   const TARGET_URL = 'https://store.integrativenutrition.com';
 
   /**
