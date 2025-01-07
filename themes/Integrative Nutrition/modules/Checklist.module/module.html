@@ -1,0 +1,105 @@
+{% set icon_type = module.icon_type %}
+{% set icon_content = '' %}
+
+{% if icon_type == 'svg' %}
+  {% set icon_content = '{{ module.svg }}' %}
+{% elif icon_type == 'image' %}
+  {% set icon_content = '<img src="{{ module.image_field.src }}" alt="{{ module.image_field.alt }}">' %}
+{% endif %}
+
+<div class="checklist align-section {{ module.style.alignment }}">
+  <div
+    id="icon_{{ parent_custom_widget_name }}" 
+    class="custom-icon position-{{ module.style.icon.icon_position }}{% if module.style.full_height %} full{% endif %}"
+    {% if module.style.colors.background_color.opacity > 0 or module.style.colors.drop_shadow.opacity > 0 %}
+      style="
+        padding: 20px;
+        background: rgba({{ module.style.colors.background_color.color|convert_rgb }}, {{ module.style.colors.background_color.opacity / 100 }});
+        box-shadow: 0 0 10px rgba({{ module.style.colors.drop_shadow.color|convert_rgb }}, {{ module.style.colors.drop_shadow.opacity / 100 }});"
+    {% endif %}
+  >
+    <ul class='checklist__list'>
+      {% for item in module.list %}
+        {% set item_href = item.url_field.href %}
+        {% set item_text = item.text %}
+      
+        {% if item_text %}
+          <li class="checklist__list-item">
+            <span class='checklist__icon'>
+              {% if icon_type == 'font' %}
+                {% icon
+                  name="{{ module.icon_field.name }}" 
+                  style="{{ module.icon_field.type }}" 
+                  unicode="{{ module.icon_field.unicode }}" 
+                %}
+              {% else %}
+                {{ icon_content }}
+              {% endif %}
+            </span>
+
+            {% if item_href %}
+              <a class="checklist__link" href="{{ item_href }}">
+                {{ item_text }}
+              </a>
+            {% else %}
+              {{ item_text }}
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<style>
+  #icon_{{ parent_custom_widget_name }} .checklist__icon { 
+    background: rgba({{ module.style.colors.color_field.color|convert_rgb }}, {{ module.style.colors.color_field.opacity / 100 }});
+    padding: {% if module.style.colors.color_field.opacity == 0 %}0{% else %}6px{% endif %};
+    color: {{ module.style.colors.icon_color.color }};
+  }
+
+  #icon_{{ parent_custom_widget_name }} path { 
+    fill: {{ module.style.colors.icon_color.color }};
+  }
+
+  {% if module.hover_style.add_hover_styles %}
+    #icon_{{ parent_custom_widget_name }}:hover {
+      {% if module.hover_style.slide %}
+        top: -10px;
+      {% endif %}
+      {% if module.hover_style.expand %}
+        transform: scale(1.03);
+      {% endif %}
+      box-shadow: 0 0 10px rgba({{ module.hover_style.colors.drop_shadow.color|convert_rgb }}, {{ module.hover_style.colors.drop_shadow.opacity / 100 }}) !important;
+      background: rgba({{ module.hover_style.colors.background_color.color|convert_rgb }}, {{ module.hover_style.colors.background_color.opacity / 100 }}) !important;
+      color: rgba({{ module.hover_style.colors.color_field.color|convert_rgb }}, {{ module.hover_style.colors.color_field.opacity / 100 }});
+    }
+
+    #icon_{{ parent_custom_widget_name }}:hover h1,
+    #icon_{{ parent_custom_widget_name }}:hover h2,
+    #icon_{{ parent_custom_widget_name }}:hover h3,
+    #icon_{{ parent_custom_widget_name }}:hover h4 {
+      color: rgba({{ module.hover_style.colors.color_field.color|convert_rgb }}, {{ module.hover_style.colors.color_field.opacity / 100 }});
+    }
+
+    #icon_{{ parent_custom_widget_name }}:hover path {
+      fill: rgba({{ module.hover_style.colors.color_field.color|convert_rgb }}, {{ module.hover_style.colors.color_field.opacity / 100 }});
+    }
+  {% endif %}
+
+  {% if module.border_right_of_text %}
+    #icon_{{ parent_custom_widget_name }} .checklist__list { 
+      border-right: 2px solid var(--color--chalk);
+      padding-right: 10px;
+    }
+
+    @media (max-width: 767px) {
+      #icon_{{ parent_custom_widget_name }} .checklist__list { 
+        border-right: 0;
+        border-bottom: 2px solid var(--color--chalk);
+        padding-right: 0;
+        padding-bottom: 10px;
+      }
+    }
+  {% endif %}
+</style>
