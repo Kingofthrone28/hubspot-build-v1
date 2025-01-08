@@ -14,5 +14,6 @@
       },
       "mediaQuery": "@media (max-width: 1000px)"
     }
-  ]
+  ],
+  "hidden_modules": ["@hubspot/button", "@hubspot/form"]
 }
