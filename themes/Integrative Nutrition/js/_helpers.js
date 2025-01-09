@@ -103,11 +103,24 @@
    */
   const isNodeList = (unknown) => getType(unknown) === '[object NodeList]';
 
+  // Cache nav items for closeMenu to avoid excessive DOM searches
+  const navigationItems = document.getElementsByClassName('jd-nav-item');
+
+  /**
+   * Close navigation menus like the main menu and get in touch/contact nav menu
+   */
+  const closeMenus = () => {
+    Array.prototype.forEach.call(navigationItems, (item) =>
+      item.classList.remove('jd-nav-show'),
+    );
+  };
+
   /**
    * A collection of commonly used helper methods.
    * @namespace
    */
   IIN.helpers = {
+    closeMenus,
     debounce,
     extractCents,
     formatCurrency,

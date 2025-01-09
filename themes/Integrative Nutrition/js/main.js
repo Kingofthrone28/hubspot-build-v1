@@ -52,6 +52,7 @@ $(function () {
   }, 2000);
 });
 
+// Configure header hide/show on scroll
 $(() => {
   const headerWrapClasses =
     document.querySelector('.jd-header-wrap')?.classList;
@@ -67,10 +68,12 @@ $(() => {
 
     // Check if previousScrollTop is less than 0
     if (previousScrollTop < 0) {
+      // Safari allows a bounce at the top of the page that can be negative
       headerWrapClasses.remove('ishidden');
     } else if (currentScrollTop > previousScrollTop) {
       // Scrolling Down
       headerWrapClasses.add('ishidden');
+      IIN.helpers.closeMenus();
     } else {
       // Scrolling Up
       headerWrapClasses.remove('ishidden');

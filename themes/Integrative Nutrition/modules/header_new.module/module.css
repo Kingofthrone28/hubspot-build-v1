@@ -8,3 +8,97 @@
   color: var(--theme--global-colors--secondary-color);
   font: var(--font--small-paragraph);
 }
+
+/* 
+  Contact Nav
+*/
+.contact-nav {
+  --background-color: var(--color--white);
+  --text-color: var(--color--water);
+  --small-gap: var(--spacing-2--static);
+  --large-gap: var(--spacing-4--static);
+  --dropdown-width: 22rem;
+
+  margin: var(--spacing-6--static) 0;
+  min-width: var(--dropdown-width);
+}
+
+.contact-nav .pseudo-svg {
+  --icon--color: var(--color--cherry);
+}
+
+.contact-nav ul.jd-dd {
+  --offset-to-bottom: 48px;
+  --menu-gap: var(--spacing-2--static);
+
+  top: calc(var(--offset-to-bottom) + var(--menu-gap));
+  z-index: 1099;
+  padding: var(--spacing-6--static);
+  min-width: var(--dropdown-width);
+}
+
+.contact-nav .jd-nav-show ul.jd-dd li:not(:last-of-type) {
+  margin-bottom: var(--large-gap);
+  border-bottom: 1px solid var(--color--water);
+  padding-bottom: var(--large-gap);
+}
+
+.contact-nav .jd-dd a:hover {
+  background: var(--background-color);
+}
+
+.contact-nav .jd-dd a:active,
+.contact-nav .jd-dd a:focus {
+  background: var(---background-color);
+  color: var(--text-color);
+}
+
+.contact-nav .jd-nav-show ul.jd-dd a {
+  display: flex;
+  padding: 0;
+}
+
+.contact-nav .nav-item-heading {
+  margin-bottom: var(--small-gap);
+  color: var(--text-color);
+  font: var(--font--testimonial-name--desktop);
+}
+
+.contact-nav .nav-item-description {
+  color: var(--text-color);
+  font: var(--font--small-paragraph);
+}
+
+.contact-nav .call-info:not(:last-child) {
+  margin-bottom: var(--small-gap);
+}
+
+.contact-nav .contact-number {
+  font: var(--font--small-paragraph--semibold);
+}
+
+.contact-nav .nav-dropdown-trigger::after {
+  background-image: var(--icon--med--chevron-encircled--down--cherry-on-clear);
+}
+
+.contact-nav .jd-nav-show > .nav-dropdown-trigger::after {
+  background-image: var(--icon--med--chevron-encircled--up--clear-on-cherry);
+}
+
+.contact-nav .nav-dropdown-trigger {
+  width: 276px;
+}
+
+@media (max-width: 1023px) {
+  .contact-nav ul.jd-dd {
+    min-width: 100%;
+  }
+
+  .contact-nav .nav-dropdown-trigger {
+    width: 100%;
+  }
+
+  .contact-nav .nav-dropdown-trigger::after {
+    --chevron-size: 20px;
+  }
+}

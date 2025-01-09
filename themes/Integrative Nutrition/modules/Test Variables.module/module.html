@@ -186,6 +186,21 @@
       </div>
     </section>
   </div>
+  
+  <section>
+    <h2>Site Settings</h2>
+    <details>
+      <summary>Show siteSettings - a child of DomainSettings</summary>
+      <pre>{{ site_settings.siteSettings|pprint }}</pre>
+    </details>
+  </section>
+  <section>
+    <h2>Theme Settings</h2>
+    <details>
+      <summary>Show theme settings</summary>
+      <pre>{{ theme|pprint }}</pre>
+    </details>
+  </section>
 </div>
 
 {# Hubl email templates don't allow separate stylesheets, but inline is ok #}
@@ -216,6 +231,10 @@
 
   .test-variables .icons {
     --icon--color: var(--color--cherry);
+  }
+
+  pre {
+    border-left: 1px solid black;
   }
   </style>
 {% end_require_css %}

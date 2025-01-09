@@ -162,7 +162,7 @@ navLogoElements.forEach((element) => {
   });
 });
 
-// Navigation Top Container tracking
+// Navigation Top Container tracking (desktop)
 // i.e. Español, login, and cart buttons
 const topBarNavigationTrackingSelectors = [
   `.jd-header-top.jd-mobile-hide [data-tracking-element="header-link"]`,
@@ -185,8 +185,27 @@ topBarNavigationElements.forEach((element) => {
   });
 });
 
+// Mobile main menu dropdown footer links
+// i.e. espanol, whatsapp, login
+const mobileMainMenuDropdownFooterSelector = getTrackingSelector(
+  'main-menu-mobile-link',
+);
+const mobileMainMenuDropdownFooterLinks = document.querySelectorAll(
+  mobileMainMenuDropdownFooterSelector,
+);
+mobileMainMenuDropdownFooterLinks.forEach((element) => {
+  element.addEventListener('click', () => {
+    addDataLayerEvent({
+      event: 'header_nav_click',
+      click_text: element.innerText,
+      click_url: element.href,
+    });
+  });
+});
+
 // Navigation CTA tracking
-// TODO: This doesn't seems to capture anything... for the future maybe?
+// TODO: This doesn't seems to capture anything...
+// For the future maybe, but doesn't use querySelectorAll...
 const navCTAElement = document.querySelector(
   '.jd-header-main.jd-mobile-hide [data-tracking-id]',
 );
@@ -595,7 +614,7 @@ vimeoIframeElements.forEach((vimeoIframeElement) => {
 
 function trackContactClicks(element, position) {
   let clickText = element.innerText;
-  let clickUrl = element.href.includes('?')
+  let clickUrl = element.href?.includes('?')
     ? element.href.split('?')[0]
     : element.href;
 
@@ -643,7 +662,11 @@ const headerContactElement = document.querySelector(
 );
 
 headerContactElement?.addEventListener('click', () => {
-  trackContactClicks(headerContactElement, 'header');
+  addDataLayerEvent({
+    event: 'contact_click',
+    click_text: headerContactElement.innerText,
+    position: 'header',
+  });
 });
 
 // DND section, cannot add or target data attributes
