@@ -1,7 +1,10 @@
 .pseudo-svg::before,
 .pseudo-svg::after {
   display: inline-block;
-  background-color: var(--icon--color, var(--accent--color));
+  background-color: var(
+    --icon--color,
+    var(--accent--color, var(--color--slate))
+  );
   background-repeat: no-repeat;
   width: var(--icon--width, var(--icon--square--size));
   height: var(--icon--height, var(--icon--square--size));

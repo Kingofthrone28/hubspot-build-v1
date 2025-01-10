@@ -10,7 +10,7 @@
    */
   const blockSelector = 'blog-search-term';
   const contentNodes = document.querySelectorAll(
-    '.blog-page__container > div:not(.blog-page__search-container)',
+    '.blog-page__main > div:not(.blog-page__search-container)',
   );
   const listingWrapper = document.querySelector(`.${blockSelector}__listing`);
   const menuItems = document.querySelector(`.${blockSelector}__menu`);
@@ -41,6 +41,9 @@
   const searchResultsLoadPosts = document.querySelector(
     `.${blockSelector}__more.load-results`,
   );
+
+  const specialCharacters = /(.*?)\W*\s*$/;
+  const multipleSpaces = /\s+/;
 
   const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
   const termContainer = document.querySelector(`.${blockSelector}`);
@@ -312,7 +315,7 @@
 
     paragraphs.forEach((paragraph) => {
       const paragraphText = paragraph.textContent;
-      wordCount += paragraphText.split(/\s+/).length;
+      wordCount += paragraphText.split(multipleSpaces).length;
     });
 
     const wordsPerMinute = 200;
@@ -504,10 +507,35 @@
     searchTermResultsTitle.textContent = `"${terms.join(' ')}"`;
   };
 
+  /**
+   * Matches Regex for exact word on a user input type to target word.
+   * @param {string} input - The search term entered by the user.
+   * @param {string} [targetWord] - the word to target in DOM element.
+   */
+  const getExactTerm = (word, targetInput) => {
+    const regex = new RegExp(`\\b${targetInput}\\b`, 'i');
+    const match = word.match(regex);
+    return match ? match[0] : null;
+  };
+
+  const getSearchTerms = (string) =>
+    string
+      .split(multipleSpaces)
+      .map((term) => term.replace(specialCharacters, ''))
+      .filter(Boolean);
+
   const removeSearchPill = async (term) => {
     const pill = document.querySelectorAll(`.${blockSelector}__pill`);
-    const terms = searchInput.value.trim().split(/\s+/);
-    const filterTerms = terms.filter((word) => word !== term);
+
+    // if the input contained "foo bar baz ", and the term "bar" was removed,
+    // filterTerms would update the input value ["foo", "baz"] etc..
+    const terms = searchInput.value.split(multipleSpaces);
+    const filterTerms = terms.filter(
+      (word) => getExactTerm(word, term) !== term,
+    );
+
+    // assigning the joined string to the input value to remove pill and updated input simultanaeously,
+    // the input field is updated to reflect the filtered out term.
     searchInput.value = filterTerms.join(' ');
 
     try {
@@ -520,13 +548,16 @@
       updateClasses(cancelButton, 'remove', ['visible']);
       toggleSearchButtonVisibility(terms);
 
-      // Fetch and update search results based on the updated input value only if a pill was removed
+      // Fetch and update search results based on the filtered terms updated value,
+      // if Filtered terms are empty or undefined resetBodyContent() restores body visiblility
       if (filterTerms.length) {
         await fetchSearchResults(filterTerms.join(' '), searchQueryOffset);
       } else {
         resetBodyContent();
       }
 
+      // If Filtered Terms are empty or undefined on the Search Results page,
+      // reset the total count, search title and render search results message
       if (!filterTerms.length && searchResultsCount) {
         searchResultsCount.textContent = '0';
         searchTermResultsTitle.textContent = '""';
@@ -542,7 +573,11 @@
     // Clear the container to avoid duplicate pills
     searchResultsPill.innerHTML = '';
 
-    terms.forEach((term) => {
+    // Any invalid or empty terms are filtered out during flattening process
+    // cleans up generating search pills filtering redundancy eg: ['foo...', ' .', 'bar' ] (returns foo bar)
+    const validTerms = terms.flatMap(getSearchTerms);
+
+    validTerms.forEach((term) => {
       const pill = document.createElement('button');
       const pillDelete = document.createElement('span');
       updateClasses(pill, 'add', [`${blockSelector}__pill`]);
@@ -550,7 +585,6 @@
       pill.innerText = term;
 
       pill.onclick = () => removeSearchPill(term);
-
       pill.appendChild(pillDelete);
       searchResultsPill.appendChild(pill);
     });
@@ -561,7 +595,7 @@
     const params = new URLSearchParams(window.location.search);
     const query = params.get('query');
     if (query) {
-      const terms = query.split(' ');
+      const terms = query.split(multipleSpaces);
       createSearchPill(terms);
     }
   };
@@ -596,7 +630,7 @@
     try {
       const searchTermUrlValue = getSearchTermFromURL();
       if (isSearchResultsPage && searchTermUrlValue) {
-        const terms = decodeURIComponent(searchTermUrlValue).split(/\s+/);
+        const terms = searchTermUrlValue.split(multipleSpaces);
         const joinTerms = terms.join(' ');
 
         searchInput.value = joinTerms;
@@ -644,12 +678,31 @@
       try {
         await fetchSearchResults(searchTermValue, searchQueryOffset);
         updateSearchResultMessage();
-        createSearchPill(searchInput.value.split(/\s+/));
+        createSearchPill(searchTermValue.split(multipleSpaces));
       } catch (error) {
         console.error('Error in runSearch:', error);
       }
     }
   }, searchDelay);
+
+  // Function to handle input processing
+  const handleSearchInput = (event) => {
+    if (isSpaceOnly(event) || isBackward(event)) {
+      return;
+    }
+
+    const searchTermValue = searchInput.value.trim();
+
+    // Get the current term length after space split to handle terms greater than searchKeystrokeLimit
+    const terms = getSearchTerms(searchTermValue);
+    const currentTerm = terms[terms.length - 1];
+
+    toggleSearchButtonVisibility(searchTermValue);
+
+    if (currentTerm.length >= searchKeystrokeLimit) {
+      runSearch();
+    }
+  };
 
   window.onload = () => {
     searchInput?.addEventListener('input', (event) =>
@@ -663,11 +716,7 @@
       handleSearchResultsLoadPosts,
     );
     searchInput?.addEventListener('focus', animateExpandSearchBar);
-    searchInput?.addEventListener('input', (event) => {
-      if (!isSpaceOnly(event) && !isBackward(event)) {
-        runSearch();
-      }
-    });
+    searchInput?.addEventListener('input', handleSearchInput);
     loadPillsFromQuery();
     getAllSearchResults();
   };

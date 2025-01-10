@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 IFS=$'\n\t'
-prettier_config="--write --ignore-unknown --log-level error --ignore-path='.prettierignore' --ignore-path='.stylelintignore'"
 updated_files=$(git diff --cached --name-only --diff-filter=ACMR)
 
 if test -z "$updated_files"; then
@@ -18,7 +17,7 @@ set -e
 
 if test -n "$css"; then
   echo "$css" | xargs npx stylelint --fix --quiet --allow-empty-input
-  echo "$css" | xargs npx prettier "$prettier_config"
+  echo "$css" | xargs npx prettier --write --ignore-unknown --log-level='error' --ignore-path='.stylelintignore' --ignore-path='.prettierignore'
 fi
 
 
@@ -29,7 +28,7 @@ set -e
 
 if test -n "$js"; then
   echo "$js" | xargs npx eslint --fix --quiet
-  echo "$js" | xargs npx prettier "$prettier_config"
+  echo "$js" | xargs npx prettier --write --ignore-unknown --log-level='error' --ignore-path='.prettierignore'
 fi
 
 # Filter for JSON
@@ -38,7 +37,7 @@ json=$(echo "$escaped" | grep "\.json")
 set -e
 
 if test -n "$json"; then
-  echo "$json" | xargs npx prettier "$prettier_config"
+  echo "$json" | xargs npx prettier --write --ignore-unknown --log-level='error' --ignore-path='.prettierignore'
 fi
 
 # # Update staged files with any new changes

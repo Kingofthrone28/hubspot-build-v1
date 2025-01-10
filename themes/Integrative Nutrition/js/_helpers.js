@@ -90,13 +90,42 @@
   };
 
   /**
+   * A general way to get the type of something
+   * @param {any} unknown The element to type
+   * @returns {string} String in the format of [object Type]
+   */
+  const getType = (unknown) => Object.prototype.toString.call(unknown);
+
+  /**
+   * Check if something is a DOM NodeList
+   * @param {any} unknown Object to test
+   * @returns {boolean} Whether the unknown is a NodeList
+   */
+  const isNodeList = (unknown) => getType(unknown) === '[object NodeList]';
+
+  // Cache nav items for closeMenu to avoid excessive DOM searches
+  const navigationItems = document.getElementsByClassName('jd-nav-item');
+
+  /**
+   * Close navigation menus like the main menu and get in touch/contact nav menu
+   */
+  const closeMenus = () => {
+    Array.prototype.forEach.call(navigationItems, (item) =>
+      item.classList.remove('jd-nav-show'),
+    );
+  };
+
+  /**
    * A collection of commonly used helper methods.
    * @namespace
    */
   IIN.helpers = {
+    closeMenus,
     debounce,
     extractCents,
     formatCurrency,
+    getType,
+    isNodeList,
     throttle,
     updateClasses,
   };

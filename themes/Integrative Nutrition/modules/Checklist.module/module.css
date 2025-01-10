@@ -1,0 +1,28 @@
+.checklist__icon {
+  display: inline-block;
+  align-self: flex-start;
+  border-radius: 50%;
+  width: 25px;
+  vertical-align: bottom;
+}
+
+.checklist__icon svg {
+  display: block;
+}
+
+.checklist__list {
+  margin-top: var(--spacing-5);
+  color: var(--color--slate);
+}
+
+.checklist__list-item {
+  margin: var(--spacing-3) 0;
+}
+
+.checklist__list-item::before {
+  content: none !important;
+}
+
+.checklist__link {
+  display: inline-block;
+}

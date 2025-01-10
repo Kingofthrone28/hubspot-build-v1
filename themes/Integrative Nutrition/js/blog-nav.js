@@ -26,8 +26,8 @@
   function openMenu(event) {
     event.stopPropagation();
     this.classList.add(openItemClass);
-    this.querySelector('a').setAttribute('aria-expanded', 'true');
-    this.querySelector('button').setAttribute('aria-expanded', 'true');
+    this.querySelector('a')?.setAttribute('aria-expanded', 'true');
+    this.querySelector('button')?.setAttribute('aria-expanded', 'true');
     globalCloseTrigger.addEventListener('click', closeMenu);
   }
 

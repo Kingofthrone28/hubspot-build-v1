@@ -52,11 +52,20 @@
 {% set tag_slug_list = module.listing_page_tag_slug_list or [module.tag_field.slug] %}
 {% set tag_url = tag_dict[tag_name] %}
 
+{% macro header_label() %}
+  {% if module.show_header_icon %}
+    <span class="blog-teasers__header-icon"></span>
+  {% endif %}
+    <span class="blog-teasers__header-label">{{ tag_name }}</span>
+{% endmacro %}
+
 {# HTML #}
 <div class="blog-teasers">
   <div class="blog-teasers__container">
-    {% if module.show_header %}
-      <h2 class="blog-teasers__header">{{ tag_name }}</h2>
+    {% if module.show_header and module.is_page_heading %}
+      <h1 class="blog-teasers__header">{{ header_label() }}</h1>
+    {% elif module.show_header %}
+      <h2 class="blog-teasers__header">{{ header_label() }}</h2>
     {% endif %}
     <div class="blog-teasers__posts blog-teasers__posts-{{ name }}">
       {{ render_blog_posts_by_layout(module.layout, tag_slug_list) }}
