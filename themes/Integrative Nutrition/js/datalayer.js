@@ -187,11 +187,8 @@ topBarNavigationElements.forEach((element) => {
 
 // Mobile main menu dropdown footer links
 // i.e. espanol, whatsapp, login
-const mobileMainMenuDropdownFooterSelector = getTrackingSelector(
-  'main-menu-mobile-link',
-);
 const mobileMainMenuDropdownFooterLinks = document.querySelectorAll(
-  mobileMainMenuDropdownFooterSelector,
+  `[data-tracking-element="main-menu-mobile-link"]`,
 );
 mobileMainMenuDropdownFooterLinks.forEach((element) => {
   element.addEventListener('click', () => {
