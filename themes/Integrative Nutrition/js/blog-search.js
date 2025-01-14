@@ -42,7 +42,7 @@
     `.${blockSelector}__more.load-results`,
   );
 
-  const specialCharacters = /(.*?)\W*\s*$/;
+  const specialCharacters = /[\W]/g;
   const multipleSpaces = /\s+/;
 
   const searchWrapper = document.querySelector(`.${blockSelector}__wrapper`);
@@ -199,7 +199,8 @@
     return html;
   };
 
-  const isSpaceOnly = (event) => event.data === ' ';
+  const isSpaceOnly = (event) =>
+    event.inputType === 'insertText' && event.data === ' ';
   const isBackward = (event) => event.inputType === 'deleteContentBackward';
 
   /**
@@ -225,7 +226,6 @@
    */
   const resetBodyContent = () => {
     listingWrapper.innerHTML = '';
-    searchResultsPill.innerHTML = '';
     console.log('Search results cleared');
     if (listingWrapper && searchResultsViewMore) {
       updateClasses(searchResultsViewMore, 'remove', ['visible']);
@@ -503,8 +503,10 @@
 
   // Function to update search results title based on remaining terms
   const updateSearchTermResultsTitle = (terms) => {
-    // Join remaining terms with spaces or commas as needed
-    searchTermResultsTitle.textContent = `"${terms.join(' ')}"`;
+    if (searchTermResultsTitle) {
+      // Join remaining terms with spaces or commas as needed
+      searchTermResultsTitle.textContent = `"${terms.join(' ')}"`;
+    }
   };
 
   /**
@@ -518,8 +520,7 @@
     return match ? match[0] : null;
   };
 
-  const getSearchTerms = (string) =>
-    string
+  const getSearchTerms = (string) => string
       .split(multipleSpaces)
       .map((term) => term.replace(specialCharacters, ''))
       .filter(Boolean);
@@ -590,7 +591,7 @@
     });
   };
 
-  // Call  with terms from the query parameter on page load
+  // Call with terms from the query parameter on page load
   const loadPillsFromQuery = () => {
     const params = new URLSearchParams(window.location.search);
     const query = params.get('query');
@@ -618,7 +619,8 @@
 
     const getSearchTermFromURL = () => {
       const params = new URLSearchParams(window.location.search);
-      return params.get('query');
+      const query = params.get('query');
+      return query;
     };
 
     const getSearchTermValue = (searchTermValue) => {
