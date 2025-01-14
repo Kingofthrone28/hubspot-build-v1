@@ -7,6 +7,7 @@ const sourceArg = process.argv[2];
 const destinationArg = process.argv[3];
 
 const hubdbNames = [
+  'contact_information',
   'course_catalog',
   'shopify_bundle_product_recommendations',
   'course_catalog_chopra',

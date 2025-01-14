@@ -60,9 +60,8 @@ function renderAnalyticsDatalayerJS() {
 }
 
 // Control of code starts here.
-// Update Date on Dec 03 2024: - Removed as toggle is not required 
+// Update Date on Dec 03 2024: - Removed as toggle is not required
 // document.addEventListener('DOMContentLoaded', () => {
 //   // DLTest - inside dataLayerToggle JS...
 //   renderAnalyticsDatalayerJS();
 // });
-

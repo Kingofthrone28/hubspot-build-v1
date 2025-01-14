@@ -1,7 +1,16 @@
 window.dataLayer = window.dataLayer || [];
 
+/**
+ * Add an event to the data layer
+ * N.B. This does not capture all data layer events
+ * @param {*} eventData Event to track
+ */
+function addDataLayerEvent(eventData) {
+  window.dataLayer.push(eventData);
+}
+
 function trackAccordionClick(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.firstChild.innerText,
     action: element.classList.contains('active') ? 'close' : 'open',
@@ -11,7 +20,7 @@ function trackAccordionClick(element) {
 }
 
 function trackBioView(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.innerText,
     action: 'open',
@@ -19,7 +28,7 @@ function trackBioView(element) {
 }
 
 function trackBioClose(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'accordion_click',
     click_text: element.innerText,
     action: 'close',
@@ -42,7 +51,7 @@ function trackSocialShare(element) {
     shareType = 'mail';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'social_share',
     blog_title: blogTitle,
     share_type: shareType,
@@ -50,21 +59,23 @@ function trackSocialShare(element) {
 }
 
 function trackOpenChat() {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'chat_click',
     chat_action: 'open',
   });
 }
 
 function trackCloseChat() {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'chat_click',
     chat_action: 'close',
   });
 }
 
 function initializeEvents() {
-  const accordions = document.querySelectorAll('div.ex-label');
+  const accordions = document.querySelectorAll(
+    `[data-tracking-element="accordion"]`,
+  );
 
   accordions.forEach((link) => {
     link.addEventListener('click', () => {
@@ -73,7 +84,7 @@ function initializeEvents() {
   });
 
   const viewBioButtons = document.querySelectorAll(
-    '.bio-label .bio-closed strong',
+    `[data-tracking-element="team-bio"] .bio-closed strong`,
   );
 
   viewBioButtons.forEach((button) => {
@@ -83,7 +94,7 @@ function initializeEvents() {
   });
 
   const closeBioButtons = document.querySelectorAll(
-    '.bio-label .bio-open strong',
+    `[data-tracking-element="team-bio"] .bio-open strong`,
   );
 
   closeBioButtons.forEach((button) => {
@@ -92,7 +103,9 @@ function initializeEvents() {
     });
   });
 
-  const socialShareLogos = document.querySelectorAll('.jd-post-share a');
+  const socialShareLogos = document.querySelectorAll(
+    `[data-tracking-element="post-share"] a`,
+  );
 
   socialShareLogos.forEach((logo) => {
     logo.addEventListener('click', () => {
@@ -100,12 +113,11 @@ function initializeEvents() {
     });
   });
 
-  const openChatButton = document.querySelector('div#chatbtn');
-
+  // Needle chat added via external script
+  const openChatButton = document.querySelector('#chatbtn');
   openChatButton?.addEventListener('click', trackOpenChat);
 
-  const inviteDiv = document.querySelector('div#inviteBody');
-
+  const inviteDiv = document.querySelector('#inviteBody');
   if (inviteDiv?.children.length > 3) {
     const closeChatBtn = inviteDiv.children[3];
 
@@ -120,11 +132,13 @@ Header - Footer - SubNavigation Click Events
 ----------------------------------------------*/
 
 // Header Navigation Events tracking
-const headerNavMenuElements = document.querySelectorAll('a.jd-nav-item-title');
+const headerNavMenuElements = document.querySelectorAll(
+  `[data-tracking-element="main-menu-item"]`,
+);
 
 headerNavMenuElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'header_nav_click',
       click_text: element.innerText,
       // Sending 0 in case no navigation, only opening sub menu
@@ -134,26 +148,34 @@ headerNavMenuElements.forEach((element) => {
 });
 
 // Navigation Logo tracking
-const navLogoElement = document.querySelector(
-  'div.jd-header-main.jd-mobile-hide a img',
+const navLogoElements = document.querySelectorAll(
+  `[data-tracking-element="header-logo"]`,
 );
 
-navLogoElement?.addEventListener('click', () => {
-  window.dataLayer.push({
-    event: 'header_nav_click',
-    click_text: 'logo',
-    click_url: navLogoElement.parentElement.href,
+navLogoElements.forEach((element) => {
+  element.addEventListener('click', (event) => {
+    addDataLayerEvent({
+      event: 'header_nav_click',
+      click_text: 'logo',
+      click_url: event.currentTarget.href,
+    });
   });
 });
 
-// Navigation Top Container tracking
+// Navigation Top Container tracking (desktop)
+// i.e. Español, login, and cart buttons
+const topBarNavigationTrackingSelectors = [
+  `.jd-header-top.jd-mobile-hide [data-tracking-element="header-link"]`,
+  `.jd-header-top.jd-mobile-hide [data-tracking-element="contact-us-trigger"]`,
+];
+
 const topBarNavigationElements = document.querySelectorAll(
-  'div.jd-header-wrap div.jd-header-top.jd-mobile-hide ul li a',
+  topBarNavigationTrackingSelectors,
 );
 
 topBarNavigationElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'header_nav_click',
       click_text:
         element.parentElement.id === 'jd-cart' ? 'cart' : element.innerText,
@@ -163,13 +185,30 @@ topBarNavigationElements.forEach((element) => {
   });
 });
 
+// Mobile main menu dropdown footer links
+// i.e. espanol, whatsapp, login
+const mobileMainMenuDropdownFooterLinks = document.querySelectorAll(
+  `[data-tracking-element="main-menu-mobile-link"]`,
+);
+mobileMainMenuDropdownFooterLinks.forEach((element) => {
+  element.addEventListener('click', () => {
+    addDataLayerEvent({
+      event: 'header_nav_click',
+      click_text: element.innerText,
+      click_url: element.href,
+    });
+  });
+});
+
 // Navigation CTA tracking
+// TODO: This doesn't seems to capture anything...
+// For the future maybe, but doesn't use querySelectorAll...
 const navCTAElement = document.querySelector(
-  'div.jd-header-main.jd-mobile-hide a[data-tracking-id]',
+  '.jd-header-main.jd-mobile-hide [data-tracking-id]',
 );
 
 navCTAElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'header_nav_click',
     click_text: navCTAElement.innerText,
     click_url: navCTAElement.href,
@@ -177,11 +216,13 @@ navCTAElement?.addEventListener('click', () => {
 });
 
 // Sub Navigation Events tracking
-const subNavigationLinkElements = document.querySelectorAll('.jd-dd a');
+const subNavigationLinkElements = document.querySelectorAll(
+  `[data-tracking-element="main-menu-child"]`,
+);
 
 subNavigationLinkElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'sub_nav_click',
       header_title:
         element.parentElement.parentElement.previousElementSibling.innerText,
@@ -235,7 +276,7 @@ function trackFooterNavigationAndLinkClicks(
     clickText = element.parentElement.innerText.trim();
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: eventName,
     click_text: clickText,
     click_url: clickUrl,
@@ -246,7 +287,7 @@ function trackFooterNavigationAndLinkClicks(
     (clickUrl === 'https://iin.secure.force.com/AS' ||
       clickUrl === 'https://info.integrativenutrition.com/contact-us')
   ) {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'cta_click',
       click_text: clickText,
       click_url: clickUrl,
@@ -255,6 +296,7 @@ function trackFooterNavigationAndLinkClicks(
   }
 }
 
+// DND section, cannot add or target data attributes
 const footerNavLinkElements = document.querySelectorAll('.footer-main a');
 
 footerNavLinkElements.forEach((element) => {
@@ -274,7 +316,7 @@ const heroBannerElements = document.querySelectorAll(
 
 heroBannerElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'hero_banner_click',
       click_text: element.innerText,
       click_url: element.href ? element.href.split('?')[0] : 'NA',
@@ -287,13 +329,15 @@ TAB Click Events
 ----------------------------------------------*/
 
 function trackTabClickEvent(element) {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'tab_click',
     click_text: element.innerText,
   });
 }
 
-const homePageTabElements = document.querySelectorAll('a.tab-item-link');
+const homePageTabElements = document.querySelectorAll(
+  `[data-tracking-element="course-tab"]`,
+);
 
 homePageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -311,7 +355,9 @@ productDetailsPageTabElements.forEach((element) => {
   });
 });
 
-const bundleProductDetailPageTabElements = document.querySelectorAll('div.tab');
+const bundleProductDetailPageTabElements = document.querySelectorAll(
+  `[data-tracking-element="tabbed-content-tab"]`,
+);
 
 bundleProductDetailPageTabElements.forEach((element) => {
   element.addEventListener('click', () => {
@@ -325,33 +371,35 @@ TAB Click Events
 
 // Hamburger Click Event tracking
 const openHamburgerMenuElement = document.querySelector(
-  '.jd-mobile-show .jd-ham',
+  `[data-tracking-element="mobile-menu-open"]`,
 );
 
 openHamburgerMenuElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'hamburger_click',
     action: 'open',
   });
 });
 
 const closeHamburgerMenuElement = document.querySelector(
-  '#jd-mobile-menu .jd-ham',
+  `[data-tracking-element="mobile-menu-close"]`,
 );
 
 closeHamburgerMenuElement?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'hamburger_click',
     action: 'close',
   });
 });
 
 // Breadcrumbs Click Event tracking
-const breadCrumbsElements = document.querySelectorAll('div.jd-blog-nav a');
+const breadCrumbsElements = document.querySelectorAll(
+  `[data-tracking-element="blog-menu"] a`,
+);
 
 breadCrumbsElements.forEach((element) => {
   element.addEventListener('click', () => {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'breadcrumb_click',
       click_text: element.innerText === '' ? 'Home' : element.innerText,
       click_url: element.href,
@@ -372,7 +420,7 @@ function trackGenericCTAClick(element) {
     position = 'footer';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'cta_click',
     click_text: element.innerText,
     click_url: element.href ? element.href.split('?')[0] : 'NA',
@@ -389,20 +437,23 @@ allGenericCTAElements.forEach((element) => {
   });
 });
 
-const getFilterSelector = (name) =>
-  `#course-pop-${name} input[name="${name}"]:checked`;
-
 function getSelectedFilters() {
   const selectedTopics = [
-    ...document.querySelectorAll(getFilterSelector('Topics')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-topics"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   const selectedLevels = [
-    ...document.querySelectorAll(getFilterSelector('Levels')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-levels"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   const selectedTypes = [
-    ...document.querySelectorAll(getFilterSelector('Type')),
+    ...document.querySelectorAll(
+      `[data-tracking-element="filter-by-type"] input:checked`,
+    ),
   ].map(({ value }) => value);
 
   return { selectedTopics, selectedLevels, selectedTypes };
@@ -412,7 +463,7 @@ function trackFilterEvent() {
   const { selectedTopics, selectedLevels, selectedTypes } =
     getSelectedFilters();
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'filter',
     filter_topics: selectedTopics,
     filter_levels: selectedLevels,
@@ -420,14 +471,18 @@ function trackFilterEvent() {
   });
 }
 
-const saveButtonElement = document.getElementById('course-filter-save');
+const saveButtonElement = document.querySelector(
+  `[data-tracking-element="filter-save"]`,
+);
 
 saveButtonElement?.addEventListener('click', trackFilterEvent);
 
 function trackSearchResults(element) {
-  const articleCount = document.querySelectorAll('.jd-listing-item').length;
+  const articleCount = document.querySelectorAll(
+    '.blog-search-term__item',
+  ).length;
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'search_results',
     search_term: element.value,
     search_result_count: articleCount,
@@ -435,20 +490,20 @@ function trackSearchResults(element) {
 }
 
 function trackViewSearchResults(element) {
-  const articles = document.querySelectorAll(
-    'article.jd-listing-item div.jd-listing-content h3',
-  );
+  const articles = document.querySelectorAll('.blog-search-term__title');
 
   const titles = [...articles].map(({ innerText }) => innerText);
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'view_search_results',
     search_term: element.value,
     result_title: titles,
   });
 }
 
-const searchBoxElement = document.querySelector('#jd-blog-search-input');
+const searchBoxElement = document.querySelector(
+  `[data-tracking-element="blog-search-input"]`,
+);
 
 searchBoxElement?.addEventListener('keydown', (event) => {
   if (event.key !== 'Enter') {
@@ -474,7 +529,7 @@ function trackRegisterWebinar(element) {
   const headerText = element.getAttribute('data-tracking-header-label');
   const clickText = element.querySelector('div.content a')?.innerText;
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'register_webinar_click',
     header_text: headerText,
     click_text: clickText,
@@ -501,14 +556,14 @@ function trackVimeoVideo(videoElement) {
       .getVideoTitle()
       .then((videoTitle) => {
         player.on('play', () => {
-          window.dataLayer.push({
+          addDataLayerEvent({
             event: 'video_start',
             video_title: videoTitle,
           });
         });
 
         player.on('ended', () => {
-          window.dataLayer.push({
+          addDataLayerEvent({
             event: 'video_complete',
             video_title: videoTitle,
           });
@@ -528,7 +583,7 @@ function trackVimeoVideo(videoElement) {
             case 25:
             case 50:
             case 75:
-              window.dataLayer.push({
+              addDataLayerEvent({
                 event: 'video_progress',
                 video_title: videoTitle,
                 video_percent: percentagePlayed,
@@ -556,7 +611,7 @@ vimeoIframeElements.forEach((vimeoIframeElement) => {
 
 function trackContactClicks(element, position) {
   let clickText = element.innerText;
-  let clickUrl = element.href.includes('?')
+  let clickUrl = element.href?.includes('?')
     ? element.href.split('?')[0]
     : element.href;
 
@@ -581,7 +636,7 @@ function trackContactClicks(element, position) {
     clickText = 'live chat';
   }
 
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'contact_click',
     click_text: clickText,
     click_url: clickUrl,
@@ -590,7 +645,7 @@ function trackContactClicks(element, position) {
 }
 
 const headerContactPopElements = document.querySelectorAll(
-  'div.jd-contact-pop a',
+  `[data-tracking-element="contact-us-link"]`,
 );
 
 headerContactPopElements.forEach((headerContactPopElement) => {
@@ -599,12 +654,19 @@ headerContactPopElements.forEach((headerContactPopElement) => {
   });
 });
 
-const headerContactElement = document.querySelector('#jd-contact');
+const headerContactElement = document.querySelector(
+  `[data-tracking-element="contact-us-trigger"]`,
+);
 
 headerContactElement?.addEventListener('click', () => {
-  trackContactClicks(headerContactElement, 'header');
+  addDataLayerEvent({
+    event: 'contact_click',
+    click_text: headerContactElement.innerText,
+    position: 'header',
+  });
 });
 
+// DND section, cannot add or target data attributes
 const footerContactElements = document.querySelectorAll(
   'div.footer-main a[href^="tel"]',
 );
@@ -615,10 +677,12 @@ footerContactElements.forEach((footerContactElement) => {
   });
 });
 
-const bottomFloatBar = document.querySelector('div.bottom-float-bar a');
+const bottomFloatBar = document.querySelector(
+  `[data-tracking-element="bottom-float-bar"] a`,
+);
 
 bottomFloatBar?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'contact_click',
     click_text: 'admission number',
     position: 'footer',
@@ -628,7 +692,7 @@ bottomFloatBar?.addEventListener('click', () => {
 const promo = document.querySelector('.deal-bar-btn');
 
 promo?.addEventListener('click', () => {
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'promotion_click',
     click_text: promo.parentElement.children[0].innerText,
     promo_code:
@@ -642,7 +706,7 @@ function viewForm(element) {
   const formName =
     element.querySelector('input[name="leadsource"]').getAttribute('value') ||
     '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_view',
     form_name: formName,
   });
@@ -680,7 +744,7 @@ function iframeSubmitFormListener(form) {
       const firstName =
         form.querySelector('input[id^="firstname"]')?.value || '';
       const email = form.querySelector('input[id^="email"]')?.value || '';
-      window.dataLayer.push({
+      addDataLayerEvent({
         event: 'form_submit_DL',
         form_name: formName,
         form_referrer_url: referUrl,
@@ -723,7 +787,7 @@ function initiateForm(element) {
   const formName =
     element.querySelector('input[name="leadsource"]').getAttribute('value') ||
     '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_initiate',
     form_name: formName,
   });
@@ -732,7 +796,7 @@ function initiateForm(element) {
 function falloutForm(form, fieldName) {
   const formName =
     form.querySelector('input[name="leadsource"]').getAttribute('value') || '';
-  window.dataLayer.push({
+  addDataLayerEvent({
     event: 'form_fallout',
     form_name: formName,
     form_field_name: fieldName,
@@ -900,7 +964,7 @@ document.addEventListener(
 function submitForm(dataFormId, referUrl) {
   const cachedData = formCache[dataFormId];
   if (cachedData) {
-    window.dataLayer.push({
+    addDataLayerEvent({
       event: 'form_submit_DL',
       form_name: cachedData.formName,
       form_referrer_url: referUrl,
@@ -944,7 +1008,7 @@ function trackButtonInIframes() {
         if (button) {
           if (!button.hasAttribute('data-tracking-attached')) {
             button.addEventListener('click', () => {
-              window.dataLayer.push({
+              addDataLayerEvent({
                 event: 'cta_click',
                 click_text: button.innerText,
                 click_url: button.href.split('?')[0] || 'NA',
@@ -969,8 +1033,8 @@ iframeObserver.observe(document.body, { childList: true, subtree: true });
 
 const triggerECommEvent = async (rawPayload = {}) => {
   if (rawPayload && rawPayload.event) {
-    window.dataLayer.push({ ecommerce: null }); // As per GTM need-resetting
-    window.dataLayer.push(rawPayload);
+    addDataLayerEvent({ ecommerce: null }); // As per GTM need-resetting
+    addDataLayerEvent(rawPayload);
   }
 };
 

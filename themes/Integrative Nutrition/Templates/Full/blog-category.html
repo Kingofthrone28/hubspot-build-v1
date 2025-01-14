@@ -33,39 +33,41 @@
   {% do tag_intersection_bc.append(tag) if tag %}
 {% endfor %}
 
+{% set blog_page_level = 'level-2' %}
+
 {# html #}
 {% block body %}
-<main class="blog-page__container offset-header">
-  <div class="blog-page__breadcrumbs-container">
+<main class="blog-page__main offset-header {{ blog_page_level }}">
+  <div class="blog-page__section blog-page__breadcrumbs-container {{ blog_page_level }}">
     {{ get_blog_nav_breadcrumbs(tag_menu_bc) }}
   </div>
-  <div class="blog-page__search-container">
+  <section class="blog-page__section blog-page__search-container {{ blog_page_level }}">
     {% module "blog-category-search"
       path="../../modules/Blog - Search Term",
       label="Blog - Search Term",
       tag_menu="{{ tag_menu_id_bc }}",
       blog_search_heading="{{ info_bc.category.label }}",
-      page_level="level-2"
+      page_level="{{ blog_page_level }}"
     %}
-  </div>
-  <div class="blog-page__featured-story-grid-container">
+  </section>
+  <section class="blog-page__section blog-page__featured-story-grid-container">
     {% module "blog-category-featured-story-grid"
       path="../../modules/Featured Story Grid",
       label="Blog - Featured Story Grid",
       tag_menu="{{ tag_menu_id_bc }}"
     %}
-  </div>
-  <div class="blog-page__blog-teasers-container">
+  </section>
+  <section class="blog-page__section blog-page__blog-teasers-container">
     {% for tag in tag_intersection_bc %}
       {% module "blog-category-teasers"
         path="../../modules/Blog Teasers",
         label="Blog - Teasers",
         unique_in_loop=True,
-        tag_menu="{{ tag_menu_id_bc }}",
+        page_level="{{ blog_page_level }}",
         tag_field="{{ tag }}",
-        page_level="level-2"
+        tag_menu="{{ tag_menu_id_bc }}"
       %}
     {% endfor %}
-  </div>
+  </section>
 </main>
 {% endblock body %}

@@ -3,3 +3,7 @@
 package-lock.json
 package.json
 **/README.md
+
+# Situationally useful ignores
+# themes/Integrative Nutrition/images
+# themes/Integrative Nutrition/macros/get-app-config.html

@@ -4,26 +4,34 @@
       <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
     </div>
     <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
-    <a href="tel:{{ module.us_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      US: {{ module.us_number }}
-    </a>
-    <a href="tel:{{ module.international_number|regex_replace("[^0-9]", "") }}" class="jd-request-btn hs-button light-button jd-phone-link" 
-       >
-      International: {{ module.international_number }}
-    </a>
-    <a href="{{module.whatsapp_link.url.href}}" class="jd-request-btn hs-button light-button jd-whatsapp-link" {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
-       >
-      Whatsapp
-    </a>
-    <a href="#" class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
-       >
-      LIVE Chat Now
-    </a>
+    <a
+      href="tel:{{ module.us_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link"
+      data-tracking-element="contact-us-link"
+    >US: {{ module.us_number }}</a>
+    <a
+      href="tel:{{ module.international_number|regex_replace('[^0-9]', '') }}"
+      class="jd-request-btn hs-button light-button jd-phone-link"
+      data-tracking-element="contact-us-link"
+    >International: {{ module.international_number }}</a>
+    <a
+      href="{{module.whatsapp_link.url.href}}"
+      class="jd-request-btn hs-button light-button jd-whatsapp-link"
+      data-tracking-element="contact-us-link"
+      {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
+    >Whatsapp</a>
+    <a
+      href="#"
+      class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
+      data-tracking-element="contact-us-link"
+    >LIVE Chat Now</a>
     <div style="margin-top: 35px; text-align: center;">
-      <a href="#" class="jd-arrow-link needle-invite-spanish" style="text-decoration: none; color: var(--color--white);">
-        Chatear en Español
-      </a>
+      <a
+        href="#"
+        class="jd-arrow-link needle-invite-spanish"
+        style="text-decoration: none; color: var(--color--white);"
+        data-tracking-element="contact-us-link"
+      >Chatear en Español</a>
     </div>
   </div>
 </div>
@@ -39,7 +47,9 @@
         'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
-      <a href="{{ href }}"
+      <a
+        href="{{ href }}"
+        data-tracking-element="header-logo"
         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
         >
@@ -68,31 +78,7 @@
         Request Info
       {% endif %}
     </a>
-    <nav class="jd-header-dds">
-      <ul>
-        {% for item in module.main_items %}
-        <li class="jd-nav-item">
-          <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-          <ul class="jd-dd">
-            {% for item2 in item.links %}
-            <li>
-              {% set href = item2.link_field.url.href %}
-              {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-              {% set href = "mailto:" + href %}
-              {% endif %}
-              <a href="{{ href }}"
-                 {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                 {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                 >
-                {{ item2.link_text }}
-              </a>
-              {% endfor %}
-            </li>
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <div class="flex-fill"></div>
   </div>
   <div class="jd-header-top jd-mobile-foot">
     <ul>
@@ -102,8 +88,7 @@
   </div>
 </div>
 
-<div class="jd-header-wrap">
-  
+<div class="jd-header-wrap"> 
   {% if module.show_deal_bar %}
   <div class="deal-bar">
     <svg class="deal-bar-close" clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
@@ -148,10 +133,36 @@
   <div class="container" style="padding-top: 20px">
     <div class="jd-header-top jd-mobile-hide">
       <ul>
-        <li><a id="jd-contact" class="jd-contact-link" href="#">Contact</a></li>
-        <li><a class="jd-language" href="#">Español</a></li>
-        <li><a id="jd-student" href="{{module.student_login_link.url.href}}" {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}>Student Login</a></li>
-        <li id="jd-cart"><a href="{{module.cart_link.url.href}}" {% if module.cart_link.open_in_new_tab %}target="_blank"{% endif %}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+        <li>
+          <a
+            id="jd-contact"
+            class="jd-contact-link"
+            href="#"
+            data-tracking-element="contact-us-trigger"
+          >Contact</a>
+        </li>
+        <li>
+          <a
+            class="jd-language"
+            href="#"
+            data-tracking-element="header-link"
+          >Español</a>
+        </li>
+        <li>
+          <a
+            id="jd-student"
+            href="{{module.student_login_link.url.href}}"
+            data-tracking-element="header-link"
+            {% if module.student_login_link.open_in_new_tab %}target="_blank"{% endif %}
+          >Student Login</a>
+        </li>
+        <li id="jd-cart">
+          <a
+            href="{{module.cart_link.url.href}}"
+            data-tracking-element="header-link"
+            {% if module.cart_link.open_in_new_tab %}target="_blank"{% endif %}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" id="cart" y="96"><path d="M26.105 9H5.895a1 1 0 0 0-.994.89l-1.778 16A1 1 0 0 0 4.117 27h23.766a1 1 0 0 0 .994-1.11l-1.778-16a1 1 0 0 0-.994-.89zM11 9a5 5 0 0 1 10 0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       </ul>
     </div>
   </div>
@@ -163,7 +174,9 @@
         'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
-      <a href="{{ href }}"
+      <a
+        href="{{ href }}"
+        data-tracking-element="header-logo"
         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
         >
@@ -177,31 +190,7 @@
           <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
       </a>
-      <nav class="jd-header-dds">
-        <ul>
-        {% for item in module.main_items %}
-          <li class="jd-nav-item">
-            <a href="#" class="jd-nav-item-title">{{ item.title }}</a>
-            <ul class="jd-dd">
-              {% for item2 in item.links %}
-              <li>
-                {% set href = item2.link_field.url.href %}
-                {% if item2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
-                  {% set href = "mailto:" + href %}
-                {% endif %}
-                <a href="{{ href }}"
-                  {% if item2.link_field.open_in_new_tab %}target="_blank"{% endif %}
-                  {% if item2.link_field.rel %}rel="{{ item2.link_field.rel }}"{% endif %}
-                  >
-                  {{ item2.link_text }}
-                </a>
-              {% endfor %}
-              </li>
-            </ul>
-          </li>
-        {% endfor %}
-        </ul>
-      </nav>
+      <div class="flex-fill"></div>
       {% set href = module.request_info_link.url.href %}
       {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
         {% set href = "mailto:" + href %}
@@ -231,7 +220,9 @@
           'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
           'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
         %}
-        <a href="{{ href }}"
+        <a 
+          href="{{ href }}"
+          data-tracking-element="header-logo"
           {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
           {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
           >
@@ -245,7 +236,7 @@
             <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %} 
         </a>
-        <div style="flex:1"></div>
+        <div class="flex-fill"></div>
         <div class="jd-header-top">
           <ul>
             <li>
@@ -262,7 +253,7 @@
 </div>
 
 {% if module.show_admissions_bar %}
-<div class="bottom-float-bar">
+<div class="bottom-float-bar" data-tracking-element="bottom-float-bar">
   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3.77977 6.80095C4.29842 7.86129 5.15792 8.71689 6.2206 9.2307C6.29835 9.26754 6.38436 9.2835 6.47015 9.27701C6.55595 9.27052 6.63857 9.2418 6.7099 9.19368L8.27462 8.15028C8.34383 8.10414 8.42345 8.07598 8.50628 8.06838C8.58911 8.06077 8.67253 8.07394 8.74898 8.10671L11.6763 9.36127C11.7757 9.40351 11.8588 9.47692 11.9128 9.57045C11.9669 9.66398 11.9892 9.77255 11.9762 9.87981C11.8837 10.6038 11.5304 11.2693 10.9826 11.7516C10.4347 12.2339 9.72989 12.5 9 12.5C6.74566 12.5 4.58365 11.6045 2.98959 10.0104C1.39553 8.41635 0.5 6.25434 0.5 4C0.500038 3.27011 0.766121 2.56526 1.24843 2.01742C1.73073 1.46959 2.39618 1.11634 3.12019 1.02381C3.22745 1.01083 3.33602 1.03306 3.42955 1.08715C3.52307 1.14124 3.59649 1.22426 3.63873 1.3237L4.89439 4.25357C4.92687 4.32935 4.9401 4.41199 4.93291 4.49413C4.92572 4.57626 4.89833 4.65535 4.85318 4.72434L3.81341 6.31307C3.76608 6.38454 3.7381 6.46706 3.73221 6.55257C3.72631 6.63809 3.7427 6.72367 3.77977 6.80095V6.80095Z" stroke="#EAE2D3" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
   Talk with Admissions, Call <a href="tel:{{module.admissions_number|regex_replace("[^0-9]", "")}}">{{ module.admissions_number }}</a>
 </div>

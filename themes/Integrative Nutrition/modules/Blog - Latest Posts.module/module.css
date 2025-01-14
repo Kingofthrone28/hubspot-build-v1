@@ -1,7 +1,3 @@
-.blog-latest-posts {
-  padding: var(--spacing-16--static) var(--spacing-8--static);
-}
-
 .blog-latest-posts__header-row {
   display: flex;
   align-items: center;
@@ -24,6 +20,7 @@
 
 .blog-latest-posts__heading {
   display: inline-block;
+  margin: 0;
   font: var(--font--extra-large-paragraph);
 }
 

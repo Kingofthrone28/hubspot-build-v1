@@ -36,7 +36,13 @@
           <div class="course-pop-filter-label">Type</div>
         </div>
         <div>
-          <div id="course-pop-Topics" class="course-pop-filter-choice-section" style="display:block">
+          {# Topic filters, e.g. Coaching, Nutrition, Yoga #}
+          <div
+            id="course-pop-Topics"
+            class="course-pop-filter-choice-section"
+            style="display:block"
+            data-tracking-element="filter-by-topics"
+          >
             <div class="course-pop-filter-selected">Topics</div>
             <div class="course-pop-filter-choices">
               {% set topicInfo = hubdb_table_column('course_catalog', 'course_topics') %}
@@ -48,7 +54,12 @@
               {% endfor %}
             </div>
           </div>
-          <div id="course-pop-Levels" class="course-pop-filter-choice-section">
+          {# Level filters, e.g. Foundation, Enrichment, Certifications #}
+          <div
+            id="course-pop-Levels"
+            class="course-pop-filter-choice-section"
+            data-tracking-element="filter-by-levels"
+          >
             <div class="course-pop-filter-selected">Levels</div>
             <div class="course-pop-filter-choices">
               {% set topicInfo = hubdb_table_column('course_catalog', 'levels') %}
@@ -60,7 +71,12 @@
               {% endfor %}
             </div>
           </div>
-          <div id="course-pop-Type" class="course-pop-filter-choice-section">
+          {# Type filters, e.g. Individual, Bundle #}
+          <div
+            id="course-pop-Type"
+            class="course-pop-filter-choice-section"
+            data-tracking-element="filter-by-type"
+          >
             <div class="course-pop-filter-selected">Type</div>
             <div class="course-pop-filter-choices">
               {% set topicInfo = hubdb_table_column('course_catalog', 'type') %}
@@ -75,7 +91,10 @@
         </div>
       </div>
       <div class="course-filter-pop-bottom">
-        <button id="course-filter-save">
+        <button
+          id="course-filter-save"
+          data-tracking-element="filter-save"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2803 6.22041C21.5732 6.51331 21.5732 6.98819 21.2803 7.28107L10.7803 17.7806C10.4874 18.0735 10.0126 18.0735 9.71969 17.7806L4.46969 12.5311C4.17679 12.2382 4.17677 11.7633 4.46965 11.4704C4.76253 11.1775 5.2374 11.1775 5.53031 11.4704L10.25 16.1896L20.2197 6.22039C20.5126 5.9275 20.9875 5.92751 21.2803 6.22041Z" fill="#2D3841"/>
           </svg>
