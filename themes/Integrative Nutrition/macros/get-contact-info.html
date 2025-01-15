@@ -1,0 +1,67 @@
+{# Imports #}
+{% from '../../macros/get-phone-href.html' import get_phone_href %}
+
+{% macro get_contact_info(table_data, map) %}
+  {% for row in table_data %}
+    {% do map.put("enroll", row) if row.field.name == "enroll" %}
+    {% do map.put("login", row) if row.field.name == "login" %}
+    {% do map.put("phone_header", row) if row.field.name == "phone_header" %}
+    {% do map.put("us_phone", row) if row.field.name == "us_phone" %}
+    {% do map.put("international_phone", row) if row.field.name == "international_phone" %}
+    {% do map.put("whatsapp", row) if row.field.name == "whatsapp" %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro get_contact_info_list_items(map) %}
+  {# Convenience variables #}
+  {%- set enroll = map.enroll -%}
+  {%- set login = map.login -%}
+  {%- set phone_header = map.phone_header -%}
+  {%- set us_phone = map.us_phone -%}
+  {%- set international_phone = map.international_phone -%}
+
+  {# Markup start #}
+  {%- if enroll %}
+    <li>
+      <a 
+        class="nav-item-heading link pseudo-svg arrow-link arrow-link-forward"
+        href="{{ enroll.link|escape_url }}"
+        data-tracking-element="contact-us-link"
+      >{{ enroll.label|escape_html }}</a>
+      <div class="nav-item-description">{{ enroll.description|escape_html }}</div>
+    </li>
+  {%- endif %}
+  {%- if login %}
+    <li>
+      <a 
+        class="nav-item-heading link pseudo-svg arrow-link arrow-link-forward"
+        href="{{ login.link|escape_url }}"
+        data-tracking-element="contact-us-link"
+      >{{ login.label|escape_html }}</a>
+      <div class="nav-item-description">{{ login.description|escape_html }}</div>
+    </li>
+  {%- endif %}
+  {%- if us_phone or international_phone %}
+    <li>
+      {%- if phone_header %}
+        <div class="nav-item-heading">{{ phone_header.label|escape_html }}</div>
+      {%- endif %}
+      {%- if us_phone %}
+        <div class="call-info nav-item-description">{{ us_phone.description|escape_html }}</div>
+        <a 
+          class="call-info link contact-number"
+          href="{{ get_phone_href(us_phone.link) }}"
+          data-tracking-element="contact-us-link"
+        >{{ us_phone.label|escape_html }}</a>
+      {%- endif %}
+      {%- if international_phone %}
+        <div class="call-info nav-item-description">{{ international_phone.description|escape_html }}</div>
+        <a
+          class="call-info link contact-number"
+          href="{{ get_phone_href(international_phone.link, true) }}"
+          data-tracking-element="contact-us-link"
+        >{{ international_phone.label|escape_html }}</a>
+      {%- endif %}
+    </li>
+  {%- endif %}
+{%- endmacro %}
