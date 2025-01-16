@@ -477,46 +477,6 @@ const saveButtonElement = document.querySelector(
 
 saveButtonElement?.addEventListener('click', trackFilterEvent);
 
-function trackSearchResults(element) {
-  const articleCount = document.querySelectorAll(
-    '.blog-search-term__item',
-  ).length;
-
-  addDataLayerEvent({
-    event: 'search_results',
-    search_term: element.value,
-    search_result_count: articleCount,
-  });
-}
-
-function trackViewSearchResults(element) {
-  const articles = document.querySelectorAll('.blog-search-term__title');
-
-  const titles = [...articles].map(({ innerText }) => innerText);
-
-  addDataLayerEvent({
-    event: 'view_search_results',
-    search_term: element.value,
-    result_title: titles,
-  });
-}
-
-const searchBoxElement = document.querySelector(
-  `[data-tracking-element="blog-search-input"]`,
-);
-
-searchBoxElement?.addEventListener('keydown', (event) => {
-  if (event.key !== 'Enter') {
-    return;
-  }
-
-  // Grace period for search results to process.
-  setTimeout(() => {
-    trackSearchResults(searchBoxElement);
-    trackViewSearchResults(searchBoxElement);
-  }, 5000);
-});
-
 const linkElements = document.querySelectorAll('a');
 
 linkElements.forEach((element) => {

@@ -109,6 +109,33 @@
   };
 
   /**
+   * Tracks search results.
+   * @param {string} searchTerm - The search term entered by the user.
+   * @param {number} resultCount - The number of search results.
+   */
+  const trackSearchResults = (searchTerm, resultCount) => {
+    addDataLayerEvent({
+      event: 'search_results',
+      search_term: searchTerm,
+      search_result_count: resultCount,
+    });
+  };
+
+  /**
+   * Tracks viewed search results.
+   * @param {string} searchTerm - The search term entered by the user.
+   * @param {Object[]} results - The array of search result objects.
+   */
+  const trackViewSearchResults = (searchTerm, results) => {
+    const titles = results.map(({ title }) => title);
+    addDataLayerEvent({
+      event: 'view_search_results',
+      search_term: searchTerm,
+      result_title: titles,
+    });
+  };
+
+  /**
    * Filters results to exclude duplicate post by `id` and updates the checkSearchPostIds set.
    * @param {Object[]} results - An array of search result objects.
    * @returns {Object[]} The filtered array of new results.
@@ -445,6 +472,8 @@
 
       if (data?.results) {
         getSearchPosts(data.results, data.total);
+        trackSearchResults(searchTermValue, data.results.length);
+        trackViewSearchResults(searchTermValue, data.results);
       }
 
       searchQueryOffset += numberOfItems;
@@ -520,7 +549,8 @@
     return match ? match[0] : null;
   };
 
-  const getSearchTerms = (string) => string
+  const getSearchTerms = (string) =>
+    string
       .split(multipleSpaces)
       .map((term) => term.replace(specialCharacters, ''))
       .filter(Boolean);
@@ -645,7 +675,6 @@
 
         animateExpandSearchBar();
         searchInput.focus();
-        await fetchSearchResults(searchTermUrlValue);
       }
 
       // Submit button redirect to search results page with term value
