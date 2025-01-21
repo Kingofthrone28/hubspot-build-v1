@@ -24,7 +24,8 @@
       "CONTENT",
       "FILE",
       "BLOG",
-      "CALL_TO_ACTION"
+      "CALL_TO_ACTION",
+      "EMAIL_ADDRESS"
     ],
     "show_advanced_rel_options": false,
     "type": "link",
