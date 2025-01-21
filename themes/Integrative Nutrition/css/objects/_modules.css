@@ -4158,7 +4158,8 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
     padding: 15px;
   }
 
-  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input {
+  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input[type='checkbox'],
+  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input[type='radio'], {
     width: 30px !important;
   }
 }
