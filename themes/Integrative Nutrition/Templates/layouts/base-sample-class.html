@@ -28,6 +28,8 @@
     {{ require_js(get_asset_url('../../js/main.js')) }}
 
     {{ standard_header_includes }}
+    
+    {% include "../partials/site-header.html" %}
 
     <script src="https://cdn.weglot.com/weglot.min.js"></script>
     {{ require_js(get_asset_url('../../js/translation.js')) }}
