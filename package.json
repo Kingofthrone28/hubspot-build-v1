@@ -14,7 +14,7 @@
     "stylelint": "^16.6.1",
     "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-standard": "^36.0.0",
-    "stylelint-no-unsupported-browser-features": "^8.0.1"
+    "stylelint-no-unsupported-browser-features": "^8.0.2"
   },
   "scripts": {
     "build": "npm run css:build && npm run js:build && npm run json:format",
@@ -28,7 +28,7 @@
     "hs-sync-hubdb": "node ./scripts/import-hubdb.mjs",
     "hs-sync-pages": "node ./scripts/import-pages.mjs",
     "hs-sync-properties": "node ./scripts/import-properties.mjs",
-    "hs:upload:local-config": "hs upload './themes/Integrative Nutrition/macros/get-app-config.local.html' '/Integrative Nutrition/macros/get-app-config.html'",
+    "hs:upload:local": "./scripts/hs/upload-local-config",
     "hs:watch": "hs watch themes /",
     "js:build": "npm run js:fix && npm run js:format && npm run js:lint",
     "js:lint": "eslint './themes/Integrative Nutrition/**/*.js'",

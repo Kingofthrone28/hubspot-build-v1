@@ -35,6 +35,7 @@
 }
 
 .footer-container a:hover,
+.footer-container a:visited,
 .footer-container a:focus {
   color: var(--color--white);
 }
@@ -53,15 +54,7 @@
 }
 
 @media (max-width: 1000px) {
-  .footer-container {
-    text-align: center;
-  }
-
   .footer-container img {
     margin: 0 auto;
-  }
-
-  .footer-container .social-links {
-    text-align: center;
   }
 }
