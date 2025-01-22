@@ -226,24 +226,3 @@ button.no-button:active,
   font-weight: inherit;
   font-style: inherit;
 }
-
-.pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--pill-accent-color);
-  border-radius: var(--spacing-6--static);
-  box-shadow: var(--shadow--button);
-  background-color: var(--pill-fill-color);
-  padding: var(--spacing-3) var(--spacing-6);
-  width: var(--spacing-64);
-  height: var(--spacing-12);
-  text-decoration: none;
-  color: var(--pill-accent-color);
-  font: var(--font--testimonial-name--desktop);
-}
-
-.pill-light-water {
-  --pill-accent-color: var(--color--water);
-  --pill-fill-color: var(--color--water--light);
-}

@@ -15,12 +15,33 @@
 .contact-nav {
   --background-color: var(--color--white);
   --text-color: var(--color--water);
-  --small-gap: var(--spacing-2--static);
-  --large-gap: var(--spacing-4--static);
+  --small-gap: var(--spacing-2);
+  --large-gap: var(--spacing-4);
   --dropdown-width: 22rem;
 
   margin: var(--spacing-6--static) 0;
   min-width: var(--dropdown-width);
+}
+
+.contact-nav .pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--pill-accent-color);
+  border-radius: var(--spacing-6--static);
+  box-shadow: var(--shadow--button);
+  background-color: var(--pill-fill-color);
+  padding: var(--spacing-3) var(--spacing-6);
+  width: var(--spacing-64);
+  height: var(--spacing-12);
+  text-decoration: none;
+  color: var(--pill-accent-color);
+  font: var(--font--testimonial-name--desktop);
+}
+
+.contact-nav .pill-water {
+  --pill-accent-color: var(--color--white);
+  --pill-fill-color: var(--color--water);
 }
 
 .contact-nav .pseudo-svg {
@@ -61,7 +82,7 @@
 .contact-nav .nav-item-heading {
   margin-bottom: var(--small-gap);
   color: var(--text-color);
-  font: var(--font--testimonial-name--desktop);
+  font: var(--font--extra-large-paragraph);
 }
 
 .contact-nav .nav-item-description {
@@ -69,20 +90,20 @@
   font: var(--font--small-paragraph);
 }
 
-.contact-nav .call-info:not(:last-child) {
-  margin-bottom: var(--small-gap);
-}
-
-.contact-nav .contact-number {
+.contact-nav .link {
   font: var(--font--small-paragraph--semibold);
 }
 
+.contact-nav .link:not(:last-child) {
+  margin-bottom: var(--small-gap);
+}
+
 .contact-nav .nav-dropdown-trigger::after {
-  background-image: var(--icon--med--chevron-encircled--down--cherry-on-clear);
+  background-image: var(--icon--med--chevron-encircled--down--white-on-clear);
 }
 
 .contact-nav .jd-nav-show > .nav-dropdown-trigger::after {
-  background-image: var(--icon--med--chevron-encircled--up--clear-on-cherry);
+  background-image: var(--icon--med--chevron-encircled--up--clear-on-white);
 }
 
 .contact-nav .nav-dropdown-trigger {

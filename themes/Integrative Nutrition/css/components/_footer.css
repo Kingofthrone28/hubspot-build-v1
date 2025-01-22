@@ -53,33 +53,6 @@
   margin-left: 0;
 }
 
-.footer-container .contact-info-container .link {
-  text-decoration: underline;
-}
-
-.footer-container .contact-info-container .nav-item-heading {
-  --icon--color: var(--color--white);
-
-  margin-bottom: var(--spacing-2);
-  font: var(--font--testimonial-name--desktop);
-}
-
-.footer-container .contact-info-container .nav-item-description {
-  font: var(--font--small-paragraph);
-}
-
-.footer-container .contact-info-container li:not(:last-of-type) {
-  margin-bottom: var(--spacing-4);
-}
-
-.footer-container .contact-info-container .contact-number {
-  font: var(--font--small-paragraph--semibold);
-}
-
-.footer-container .contact-info-container .contact-number:first-of-type {
-  margin-bottom: var(--spacing-2);
-}
-
 @media (max-width: 1000px) {
   .footer-container img {
     margin: 0 auto;

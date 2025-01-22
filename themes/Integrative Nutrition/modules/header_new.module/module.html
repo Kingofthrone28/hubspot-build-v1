@@ -7,31 +7,14 @@
 {% set contact_info_table = hubdb_table_rows("contact_information") %}
 {% do get_contact_info(contact_info_table, contact_info) %}
 
-{% macro info_link() %}
-  {% set href = module.request_info_link.url.href %}
-  {% if module.request_info_link.url.type is equalto "EMAIL_ADDRESS" %}
-    {% set href = "mailto:" + href %}
-  {% endif %}
-  <a href="{{ href }}" class="jd-request-btn hs-button light-button" data-tracking-id="{{ module.dl_label }}"
-    {% if module.request_info_link.open_in_new_tab %}target="_blank"{% endif %}
-    {% if module.request_info_link.rel %}rel="{{ module.request_info_link.rel }}"{% endif %}
-  >
-    {% if module.update_request_text %}
-      {{ module.request_info_text }}
-    {% else %}
-      Request Info
-    {% endif %}
-  </a>
-{% endmacro %}
-
 {# Local Macros #}
-{% macro get_in_touch_button(map) %}
+{% macro contact_us_menu(map) %}
   {% set button_text = module.contact_button_text %}
   {% set tracking_id = module.dl_label %}
   <div class="contact-nav">
     <div class="jd-nav-item">
       <button
-        class="pill pill-light-water nav-dropdown-trigger"
+        class="pill pill-water nav-dropdown-trigger"
         type="button"
         data-tracking-element="contact-us-trigger"
         data-tracking-id="{{ tracking_id }}"
@@ -172,44 +155,6 @@
 {% endif %}
 
 {# Mobile main menu dropdown #}
-<div class="jd-contact-pop-wrap">
-  <div class="jd-contact-pop">
-    <div class="jd-contact-close">
-      <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
-    </div>
-    <div class="jd-contact-pop-header">{{ module.contact_pop_header }}</div>
-    <a
-      href="tel:{{ module.us_number|regex_replace('[^0-9]', '') }}"
-      class="jd-request-btn hs-button light-button jd-phone-link" 
-      data-tracking-element="contact-us-link"
-    >US: {{ module.us_number }}</a>
-    <a  
-      href="tel:{{ module.international_number|regex_replace('[^0-9]', '') }}"
-      class="jd-request-btn hs-button light-button jd-phone-link" 
-      data-tracking-element="contact-us-link"
-    >International: {{ module.international_number }}</a>
-    <a
-      href="{{module.whatsapp_link.url.href}}"
-      class="jd-request-btn hs-button light-button jd-whatsapp-link"
-      data-tracking-element="contact-us-link"
-      {% if module.whatsapp_link.open_in_new_tab %}target="_blank"{% endif %}
-    >Whatsapp</a>
-    <a
-      href="#"
-      class="jd-request-btn hs-button light-button jd-chat-link needle-invite-english"
-      data-tracking-element="contact-us-link"
-    >LIVE Chat Now</a>
-    <div style="margin-top: 35px; text-align:center;">
-      <a
-        href="#" class="jd-arrow-link needle-invite-spanish"
-        style="color:var(--color--white);text-decoration:none"
-        data-tracking-element="contact-us-link"
-      >Chatear en Español</a>
-    </div>
-  </div>
-</div>
-
-{# Mobile Menu dropdown #}
 <div id="jd-mobile-menu">
   <div class="container">
     <div class="jd-header-main">
@@ -233,8 +178,7 @@
       </button>
       {{ logo_link() }}
     </div>
-    {# {{ get_in_touch_button(contact_info) }} #}
-    {{ info_link() }}
+    {{ contact_us_menu(contact_info) }}
     {{ main_nav(main_menu) }}
   </div>
   {# Mobile main menu dropdown footer #}
@@ -247,13 +191,13 @@
           data-tracking-element="main-menu-mobile-link"
         >Español</a>
       </li>
-      {# <li>
+      <li>
         <a
           class="pseudo-svg whatsapp-before"
           href="{{ contact_info.whatsapp.link }}"
           data-tracking-element="main-menu-mobile-link"
         >Whatsapp</a>
-      </li> #}
+      </li>
       <li>
         <a
           id="jd-student"
@@ -311,14 +255,6 @@
       <ul>
         <li>
           <a
-            id="jd-contact"
-            class="jd-contact-link"
-            href="#"
-            data-tracking-element="contact-us-trigger"
-          >Contact</a>
-        </li>
-        <li>
-          <a
             class="jd-language"
             href="#"
             data-tracking-element="header-link"
@@ -351,8 +287,7 @@
     <div class="jd-header-main jd-mobile-hide">
       {{ logo_link() }}
       {{ main_nav(main_menu) }}
-      {{ info_link() }}
-      {# {{ get_in_touch_button(contact_info) }} #}
+      {{ contact_us_menu(contact_info) }}
     </div>
 
     <!-- Mobile Page Header -->
@@ -458,15 +393,6 @@
       return false; //prevents event bubbling
     }
 
-    $('.jd-contact-link').click(function(e) {
-      e.preventDefault();
-      $('.jd-contact-pop-wrap').css('display', 'flex');
-    });
-
-    $('.jd-contact-close').click(function(e) {
-      $('.jd-contact-pop-wrap').hide();
-    });
-
     $('.jd-ham').click(function(e) {
       $('#jd-mobile-menu').slideToggle();
     });
@@ -482,11 +408,13 @@
       }
     });
   
+    // Not scoped to header, works for footer
     $('.needle-invite-english').click(function(e) {
       e.preventDefault();
       needleInviteEnglish();
     });
 
+    // Not scoped to header, works for footer
     $('.needle-invite-spanish').click(function(e) {
       e.preventDefault();
       needleInviteSpanish();
