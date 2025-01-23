@@ -1,0 +1,38 @@
+.contact-info-container .link {
+  display: block;
+  text-decoration: underline;
+  color: var(--color--white);
+}
+
+.contact-info-container .link:not(:last-of-type) {
+  margin-bottom: var(--spacing-2--static);
+}
+
+.contact-info-container .link:hover,
+.contact-info-container .link:visited,
+.contact-info-container .link:focus {
+  color: var(--color--white);
+}
+
+.contact-info-container .nav-item-heading {
+  --icon--color: var(--color--white);
+
+  margin-bottom: var(--spacing-4);
+  font: var(--font--testimonial-name--desktop);
+}
+
+.contact-info-container .nav-item-description {
+  font: var(--font--small-paragraph);
+}
+
+.contact-info-container li:not(:last-of-type) {
+  margin-bottom: var(--spacing-4);
+}
+
+.contact-info-container .contact-number {
+  font: var(--font--small-paragraph--semibold);
+}
+
+.contact-info-container .contact-number:first-of-type {
+  margin-bottom: var(--spacing-2);
+}

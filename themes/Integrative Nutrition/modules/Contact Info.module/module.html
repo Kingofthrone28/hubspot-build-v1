@@ -1,0 +1,11 @@
+{% from '../../macros/get-contact-info.html' import get_contact_info, get_contact_info_list_items %}
+{% set contact_info = {} %}
+{% set contact_info_table = hubdb_table_rows("contact_information")  %}
+{% do get_contact_info(contact_info_table, contact_info) %}
+
+<!-- contact info html  -->
+<div class="contact-info-container">
+  <ul class="no-list">
+    {{ get_contact_info_list_items(contact_info) }}
+  </ul>
+</div>

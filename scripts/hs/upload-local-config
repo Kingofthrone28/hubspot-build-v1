@@ -1,0 +1,23 @@
+#!/bin/bash
+# Use unofficial strict mode; for more info, see the following:
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
+# Usage: npm run hs:upload:local account_name
+if [ -n "${1: }" ]; then
+  filename="get-app-config.${1}.local.html"
+  account="$1"
+else
+  filename="get-app-config.local.html"
+  account=
+fi
+
+source="./themes/Integrative Nutrition/macros/$filename"
+target="/Integrative Nutrition/macros/get-app-config.html"
+
+if [ -n "$account" ]; then
+  hs upload -a "$account" "$source" "$target"
+else
+  hs upload "$source" "$target"
+fi

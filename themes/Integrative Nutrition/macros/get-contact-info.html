@@ -1,0 +1,112 @@
+{# Imports #}
+{% from '../../macros/get-phone-href.html' import get_phone_href %}
+
+{% macro get_contact_info(table_data, map) %}
+  {% for row in table_data %}
+    {# Phone #}
+    {% do map.put("phone_header", row) if row.field.name == "phone_header" %}
+    {% do map.put("us_phone", row) if row.field.name == "us_phone" %}
+    {% do map.put("international_phone", row) if row.field.name == "international_phone" %}
+
+    {# Chat #}
+    {% do map.put("chat_header", row) if row.field.name == "chat_header" %}
+    {% do map.put("whatsapp", row) if row.field.name == "whatsapp" %}
+    {% do map.put("live_chat", row) if row.field.name == "live_chat" %}
+    {% do map.put("spanish_chat", row) if row.field.name == "spanish_chat" %}
+
+    {# Support #}
+    {% do map.put("support_header", row) if row.field.name == "support_header" %}
+    {% do map.put("enroll", row) if row.field.name == "enroll" %}
+    {% do map.put("support", row) if row.field.name == "support" %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro get_contact_info_list_items(map) %}
+  {# Convenience variables #}
+  {%- set phone_header = map.phone_header -%}
+  {%- set us_phone = map.us_phone -%}
+  {%- set international_phone = map.international_phone -%}
+  {%- set chat_header = map.chat_header -%}
+  {%- set whatsapp = map.whatsapp -%}
+  {%- set live_chat = map.live_chat -%}
+  {%- set spanish_chat = map.spanish_chat -%}
+  {%- set support_header = map.support_header -%}
+  {%- set enroll = map.enroll -%}
+  {%- set support = map.support -%}
+
+  {# Phone #}
+  {%- if us_phone or international_phone %}
+    <li>
+      {%- if phone_header %}
+        <div class="nav-item-heading">{{ phone_header.label|escape_html }}</div>
+      {%- endif %}
+      {%- if us_phone %}
+        <a 
+          class="link"
+          href="{{ get_phone_href(us_phone.link) }}"
+          data-tracking-element="contact-us-link"
+        >{{ us_phone.label|escape_html }}</a>
+      {%- endif %}
+      {%- if international_phone %}
+        <a
+          class="link"
+          href="{{ get_phone_href(international_phone.link, true) }}"
+          data-tracking-element="contact-us-link"
+        >{{ international_phone.label|escape_html }}</a>
+      {%- endif %}
+    </li>
+  {%- endif %}
+
+  {# Chat #}
+  {% if whatsapp or live_chat or spanish_chat %}
+    <li>
+      {%- if chat_header %}
+        <div class="nav-item-heading">{{ chat_header.label|escape_html }}</div>
+      {%- endif %}
+      {%- if whatsapp %}
+        <a 
+          class="link"
+          href="{{ whatsapp.link|escape_url }}"
+          data-tracking-element="contact-us-link"
+        >{{ whatsapp.label|escape_html }}</a>
+      {%- endif %}
+      {%- if live_chat %}
+        <a 
+          class="link needle-invite-english"
+          href="{{ live_chat.link|escape_url }}"
+          data-tracking-element="contact-us-link"
+        >{{ live_chat.label|escape_html }}</a>
+      {%- endif %}
+      {%- if spanish_chat %}
+        <a 
+          class="link needle-invite-spanish"
+          href="{{ spanish_chat.link|escape_url }}"
+          data-tracking-element="contact-us-link"
+        >{{ spanish_chat.label|escape_html }}</a>
+      {%- endif %}
+    </li>
+  {% endif %}
+
+  {# Support #}
+  {% if enroll or support %}
+    <li>
+      {%- if support_header %}
+        <div class="nav-item-heading">{{ support_header.label|escape_html }}</div>
+      {%- endif %}
+      {%- if support %}
+        <a
+          class="link"
+          href="{{ support.link|escape_url }}"
+          data-tracking-element="contact-us-link"
+        >{{ support.label|escape_html }}</a>
+      {%- endif %}
+      {%- if enroll %}
+        <a 
+          class="link"
+          href="{{ enroll.link|escape_url }}"
+          data-tracking-element="contact-us-link"
+        >{{ enroll.label|escape_html }}</a>
+      {%- endif %}
+    </li>
+  {% endif %}
+{%- endmacro %}

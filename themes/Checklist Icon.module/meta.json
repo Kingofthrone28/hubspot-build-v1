@@ -5,5 +5,5 @@
   "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
   "module_id": 126985832773,
   "label": "Checklist Icon",
-  "is_available_for_new_content": true
+  "is_available_for_new_content": false
 }
