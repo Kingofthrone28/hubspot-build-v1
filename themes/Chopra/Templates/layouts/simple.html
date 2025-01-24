@@ -25,8 +25,9 @@
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
     {{ require_js(get_asset_url("../../child.js")) }}
-{{ standard_header_includes }}
-{{ require_css(get_public_template_url("../../child.css")) }}
+    {{ standard_header_includes }}
+    {% include "../partials/site-header.html" %}
+    {{ require_css(get_public_template_url("../../child.css")) }}
     <!-- Needle Embed Code -->
     <!-- Weglot Init -->
     <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
