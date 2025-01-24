@@ -157,6 +157,7 @@
   {% endfor %}
   {% set sorted = quiz_courses|sort(True, False, "count") %}
   {% set rows = sorted|map("course") %}
+  {% set rows = rows[:module.limit] if module.limit %}
 {% endif %}
 
 <script>
