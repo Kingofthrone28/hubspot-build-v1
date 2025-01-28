@@ -11,6 +11,10 @@
   color: var(--link-color);
 }
 
+.link:visited {
+  color: var(--link-color--visited);
+}
+
 .link:hover {
   text-decoration: underline;
   color: var(--link-color--targeted);
@@ -24,10 +28,6 @@
 .link:active {
   text-decoration: underline;
   color: var(--link-color--active);
-}
-
-.link:visited {
-  color: var(--link-color--visited);
 }
 
 /* Link variants */
