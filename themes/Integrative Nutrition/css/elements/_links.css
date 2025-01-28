@@ -1,6 +1,7 @@
 /* Base link styles */
 
-.link {
+.link,
+.links {
   --link-color: var(--color--water);
   --link-color--targeted: var(--color--blue);
   --link-color--active: var(--color--cherry);
@@ -11,31 +12,37 @@
   color: var(--link-color);
 }
 
-.link:visited {
+.link:visited,
+.links a:visited {
   color: var(--link-color--visited);
 }
 
-.link:hover {
+.link:hover,
+.links a:hover {
   text-decoration: underline;
   color: var(--link-color--targeted);
 }
 
-.link:focus {
+.link:focus,
+.links a:focus {
   text-decoration: underline;
   color: var(--link-color--targeted);
 }
 
-.link:active {
+.link:active,
+.links a:active {
   text-decoration: underline;
   color: var(--link-color--active);
 }
 
 /* Link variants */
 
-.link.slate {
+.link.slate,
+.links.slate a {
   --link-color: var(--color--slate);
 }
 
-.link.grey-3 {
+.link.grey-3,
+.links.grey-3 a {
   --link-color: var(--color--grey-3);
 }

@@ -6,7 +6,7 @@
   width: 25%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .team-card-outer.column-3 {
     width: 50%;
   }
