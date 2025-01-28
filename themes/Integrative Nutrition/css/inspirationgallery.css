@@ -349,7 +349,7 @@ a.show-full-desc {
   position: relative;
   border: 1px solid var(--color--legacy--grey--silver-2);
   border-radius: 3px;
-  max-width: 1000px;
+  max-width: 1023px;
   animation: slideup 0.5s ease forwards;
 }
 

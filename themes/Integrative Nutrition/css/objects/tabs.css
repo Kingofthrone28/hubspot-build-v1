@@ -357,7 +357,7 @@
   opacity: 1;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .dnd-section.vert-tabs
     > .row-fluid
     > .dnd-column
