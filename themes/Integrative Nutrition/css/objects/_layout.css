@@ -366,7 +366,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   html .dnd-section[class*='max-width-section-centering'] > .row-fluid {
     max-width: 90% !important;
   }

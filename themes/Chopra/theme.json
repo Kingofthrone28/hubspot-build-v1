@@ -7,7 +7,7 @@
   "extends" : "Integrative Nutrition",
   "responsive_breakpoints" : [ {
     "deprecated" : false,
-    "mediaQuery" : "@media (max-width: 1000px)",
+    "mediaQuery" : "@media (max-width: 1023px)",
     "messages" : { },
     "name" : "mobile",
     "previewWidth" : {

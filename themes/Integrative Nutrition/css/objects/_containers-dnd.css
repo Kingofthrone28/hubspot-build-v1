@@ -423,7 +423,7 @@ html .dnd-section[class*='max-width-section-centering'] > .row-fluid {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .dnd-row > .row-fluid {
     flex-wrap: wrap;
   }

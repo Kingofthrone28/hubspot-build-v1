@@ -587,7 +587,7 @@ html .pdp-sticky-enroll-show .hs-button.jd-request-btn.pdp-sticky-btn-right {
   background: var(--color--grey-4);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .pdp-close-product-selector {
     top: 17px;
     transform: none;
