@@ -43,22 +43,18 @@
         <svg clip-rule="evenodd" width="24" height="24" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/></svg>
       </button>
       {% set href = module.image_link.url.href %}
-      {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
+      {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
         'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
       <a
         href="{{ href }}"
+        class="header-logo"
         data-tracking-element="header-logo"
         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-        >
-          {% if module.image_field.src %}
-           {% set sizeAttrs = sizeAttrsTypes %}
-          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-           {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-
+      >
+        {% if module.image_field.src %}
           {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
           <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
@@ -170,22 +166,18 @@
     <!-- Desktop -->
     <div class="jd-header-main jd-mobile-hide">
       {% set href = module.image_link.url.href %}
-      {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
+      {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
         'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
         'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
       %}
       <a
         href="{{ href }}"
+        class="header-logo"
         data-tracking-element="header-logo"
         {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-        >
-          {% if module.image_field.src %}
-           {% set sizeAttrs = sizeAttrsTypes %}
-          {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-           {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-
+      >
+        {% if module.image_field.src %}
           {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
           <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %} 
@@ -216,22 +208,18 @@
           </button>
         {% endif %}
         {% set href = module.image_link.url.href %}
-        {% set sizeAttrsTypes = module.image_field.size_type == 'auto_custom_max' ? 
+        {% set sizeAttrs = module.image_field.size_type == 'auto_custom_max' ? 
           'width="{{ module.image_field.max_width }}" height="{{ module.image_field.max_height }}"' :
           'width="{{ module.image_field.width }}" height="{{ module.image_field.height }}"'  
         %}
         <a 
           href="{{ href }}"
+          class="header-logo"
           data-tracking-element="header-logo"
           {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
           {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
-          >
-            {% if module.image_field.src %}
-             {% set sizeAttrs = sizeAttrsTypes %}
-            {% if module.image_field.size_type == 'auto' or module.image_field.size_type == 'auto_custom_max' %}
-             {% set sizeAttrs = sizeAttrsTypes ~ 'style="max-width: 100%; height: auto;"' %}
-            {% endif %}
-
+        >
+          {% if module.image_field.src %}
             {% set loadingAttr = module.image_field.loading != 'disabled' ? 'loading="{{ module.image_field.loading }}"' : '' %}
             <img src="{{ module.image_field.src }}"  alt="{{ module.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %} 

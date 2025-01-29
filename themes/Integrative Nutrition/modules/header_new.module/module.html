@@ -41,9 +41,6 @@
       {% if height %}
         height="{{ height }}"
       {% endif %}
-      {% if size_type == 'auto' or size_type == 'auto_custom_max' %}
-        style="max-width: 100%; height: auto"
-      {% endif %}
       {% if image.loading != 'disabled' %}
         loading="{{ image.loading }}"
       {% endif %}
@@ -59,6 +56,7 @@
     {% endif %}
     <a
       href="{{ href }}"
+      class="header-logo"
       data-tracking-element="header-logo"
       {% if module.image_link.open_in_new_tab %}target="_blank"{% endif %}
       {% if module.image_link.rel %}rel="{{ module.image_link.rel }}"{% endif %}
@@ -66,7 +64,9 @@
       {{ logo_image() }}
     </a>
   {% else %}
-    {{ logo_image() }}
+    <span class="header-logo">
+      {{ logo_image() }}
+    </span>
   {% endif %}
 {% endmacro %}
 

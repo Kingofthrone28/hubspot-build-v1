@@ -157,7 +157,7 @@
   padding-top: var(--spacing-6--static);
 }
 
-.jd-header-main > a {
+.jd-header-main .header-logo {
   padding-top: var(--spacing-2--static);
   padding-bottom: var(--spacing-2--static);
 }
@@ -583,6 +583,12 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
     padding-bottom: var(--spacing-4--static);
   }
 
+  .jd-header-main .header-logo {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 24px;
+  }
+
   .jd-header-main .flex-fill {
     display: none;
   }
@@ -594,7 +600,8 @@ html .jd-request-btn.jd-trans-btn.jd-arrow-link:hover::after {
   }
 
   .jd-header-main img {
-    width: 64px;
+    width: auto;
+    height: 100%;
   }
 
   .jd-header-dds {
