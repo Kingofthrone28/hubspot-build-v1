@@ -7,37 +7,43 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_meta.html_title }}</title>
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+
+    {% if site_settings.favicon_src %}
+      <link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />
+    {% endif %}
+
     <meta name="description" content="{{ page_meta.meta_description }}">
+
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../../css/slick.css')) }}
     {{ require_css(get_public_template_url("../../fontAwesome/css/all.css")) }}
-    {# Where possible, improve page performance and speed by combining external http requests to reduce your
-      overall number of calls -- here, you can use a single call to the gFonts api to get all the fonts you need
-      https://developers.google.com/fonts/docs/getting_started
-    #}
-    {# Include theme overrides #}
     {{ require_css(get_asset_url('../../css/theme-overrides.css')) }}
     {{ require_css(get_asset_url('../../css/ui.css')) }}
+
     <script src="{{ get_asset_url('../../js/jquery-3.5.1.js') }}"></script>
     {{ require_js(get_asset_url('../../js/ui.js')) }}
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
     {{ require_js(get_asset_url("../../child.js")) }}
+
     {{ standard_header_includes }}
+
     {% include "../partials/site-header.html" %}
+
     {{ require_css(get_public_template_url("../../child.css")) }}
-    <!-- Needle Embed Code -->
+
     <!-- Weglot Init -->
     <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
     <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
-    <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
     <script>
       Weglot.initialize({
         api_key: 'wg_9a4056032062028e8fdd8b0aa75aae418'
       });
     </script>
+
+    <!-- Needle Embed Code -->
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
   </head>
   <body style="background-color: #F8F5F0">
