@@ -1,6 +1,7 @@
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
 {% include './libphonenumber.js' %}
+{% include './app-config.js' %}
 {% include './form-phone-validation.js' %}
 {% include './blog.js' %}
 {% include './datalayer.js' %}

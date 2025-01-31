@@ -26,11 +26,11 @@ $(() => {
     }
 
     // Your HubSpot portal ID and form GUID
-    const portalId = '23273748';
+    const portalID = IIN.config.portalID;
     const formId = '560a7049-23c2-4464-b831-4d277001c85e';
 
     // Endpoint URL for the HubSpot Forms API
-    const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+    const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalID}/${formId}`;
 
     // Form data you want to submit
     const formData = {
