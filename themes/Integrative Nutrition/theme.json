@@ -12,7 +12,7 @@
         "value": 520,
         "units": "px"
       },
-      "mediaQuery": "@media (max-width: 1000px)"
+      "mediaQuery": "@media (max-width: 1023px)"
     }
   ],
   "hidden_modules": ["@hubspot/button", "@hubspot/form"]

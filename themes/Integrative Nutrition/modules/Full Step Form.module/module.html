@@ -41,13 +41,15 @@
   $('.deal-bar').hide();
   $('.static-body').addClass('remove-top-padding');
 
+  // Ideally this using IIN.config.portalID instead of hub_id,
+  // but due to script load order that is difficult.
+  // This inline tag loads before the app-config in main.js
   hbspt.forms.create({
     region: 'na1',
-    portalId: '23273748',
+    portalId: '{{ hub_id }}',
     formId: '{{ module.form_field.form_id }}',
     target: '.full-step-form',
     onFormReady: function () {
- 
       const bgImages = [];
 
       {% for item in module.background_image %}

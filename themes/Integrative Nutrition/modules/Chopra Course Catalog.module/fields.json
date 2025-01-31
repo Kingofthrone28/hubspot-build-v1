@@ -37,6 +37,7 @@
     "name": "limit",
     "display_width": null,
     "label": "Limit",
+    "inline_help_text": "Only for category filter",
     "required": false,
     "locked": false,
     "display": "text",

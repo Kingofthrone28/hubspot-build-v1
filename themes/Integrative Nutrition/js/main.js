@@ -1,6 +1,7 @@
 {% include './_plugins.js' %}
 {% include './_marketing.js' %}
 {% include './libphonenumber.js' %}
+{% include './app-config.js' %}
 {% include './form-phone-validation.js' %}
 {% include './blog.js' %}
 {% include './datalayer.js' %}
@@ -143,12 +144,7 @@ $(function () {
     $(this).removeClass('show-option-pop');
   });
 
-  /* Show no results message on course catalog page */
-  var result_div = document.querySelector('.course-catalog');
-
-  if (result_div && !result_div.textContent.trim()) {
-    $('.course-catalog-no-results').show();
-  }
+  {% include './course-catalog.js' %}
 
   /* Style request info course topic dropdwon */
   setTimeout(function () {

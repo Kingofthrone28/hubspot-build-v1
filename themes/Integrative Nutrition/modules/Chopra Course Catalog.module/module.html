@@ -99,7 +99,11 @@
 </div>
 {% endif %}
 
-<div class="course-catalog" style="display:none">
+<div
+  class="course-catalog" 
+  data-module-name="{{ name }}"
+  style="display:none"
+>
 {% if module.hubdb_rows|length > 0 %}
   {% set rows = [] %}
   {% for row in module.hubdb_rows %}
@@ -152,11 +156,6 @@
           {% endif %}
           <div>{{row.category.label}}</div>
         </div>
-        {#
-        {% if row.new_tag %}
-        <div><div class="course-card-new">New</div></div>
-        {% endif %}
-        #}
       </div>
       <div class="course-card-title">
         <div>{{row.name}}</div>
@@ -215,7 +214,11 @@
 {% endfor %}
 </div>
 
-<div class="course-catalog-no-results" style="display:none">
+<div
+  class="course-catalog-no-results"
+  data-module-name="{{ name }}"
+  style="display:none"
+>
   {{ module.filter_no_results_message }}
 </div>
 

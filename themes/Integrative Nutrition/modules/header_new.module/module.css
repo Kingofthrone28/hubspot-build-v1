@@ -15,12 +15,32 @@
 .contact-nav {
   --background-color: var(--color--white);
   --text-color: var(--color--water);
-  --small-gap: var(--spacing-2--static);
-  --large-gap: var(--spacing-4--static);
+  --small-gap: var(--spacing-2);
+  --large-gap: var(--spacing-4);
   --dropdown-width: 22rem;
 
-  margin: var(--spacing-6--static) 0;
   min-width: var(--dropdown-width);
+}
+
+.contact-nav .pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--pill-accent-color);
+  border-radius: var(--spacing-6--static);
+  box-shadow: var(--shadow--button);
+  background-color: var(--pill-fill-color);
+  padding: var(--spacing-3) var(--spacing-6);
+  width: var(--spacing-64);
+  height: var(--spacing-12);
+  text-decoration: none;
+  color: var(--pill-accent-color);
+  font: var(--font--testimonial-name--desktop);
+}
+
+.contact-nav .pill-water {
+  --pill-accent-color: var(--color--white);
+  --pill-fill-color: var(--color--water);
 }
 
 .contact-nav .pseudo-svg {
@@ -43,14 +63,32 @@
   padding-bottom: var(--large-gap);
 }
 
-.contact-nav .jd-dd a:hover {
-  background: var(--background-color);
+.contact-nav .link {
+  color: var(--link-color);
+  font: var(--font--small-paragraph--semibold);
 }
 
-.contact-nav .jd-dd a:active,
-.contact-nav .jd-dd a:focus {
-  background: var(---background-color);
-  color: var(--text-color);
+.contact-nav .link:visited {
+  color: var(--link-color);
+}
+
+.contact-nav .link:focus {
+  background: var(--background-color);
+  color: var(--link-color--targeted);
+}
+
+.contact-nav .link:hover {
+  background: var(--background-color);
+  color: var(--link-color--targeted);
+}
+
+.contact-nav .link:active {
+  background: var(--background-color);
+  color: var(--link-color--active);
+}
+
+.contact-nav .link:not(:last-child) {
+  margin-bottom: var(--small-gap);
 }
 
 .contact-nav .jd-nav-show ul.jd-dd a {
@@ -61,7 +99,7 @@
 .contact-nav .nav-item-heading {
   margin-bottom: var(--small-gap);
   color: var(--text-color);
-  font: var(--font--testimonial-name--desktop);
+  font: var(--font--extra-large-paragraph);
 }
 
 .contact-nav .nav-item-description {
@@ -69,20 +107,12 @@
   font: var(--font--small-paragraph);
 }
 
-.contact-nav .call-info:not(:last-child) {
-  margin-bottom: var(--small-gap);
-}
-
-.contact-nav .contact-number {
-  font: var(--font--small-paragraph--semibold);
-}
-
 .contact-nav .nav-dropdown-trigger::after {
-  background-image: var(--icon--med--chevron-encircled--down--cherry-on-clear);
+  background-image: var(--icon--med--chevron-encircled--down--white-on-clear);
 }
 
 .contact-nav .jd-nav-show > .nav-dropdown-trigger::after {
-  background-image: var(--icon--med--chevron-encircled--up--clear-on-cherry);
+  background-image: var(--icon--med--chevron-encircled--up--clear-on-white);
 }
 
 .contact-nav .nav-dropdown-trigger {
@@ -90,15 +120,21 @@
 }
 
 @media (max-width: 1023px) {
-  .contact-nav ul.jd-dd {
+  .contact-nav {
+    margin: var(--spacing-6--static) 0 var(--spacing-5--static);
     min-width: 100%;
+  }
+
+  .contact-nav ul.jd-dd {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .contact-nav .jd-nav-item {
+    margin-top: 0;
   }
 
   .contact-nav .nav-dropdown-trigger {
     width: 100%;
-  }
-
-  .contact-nav .nav-dropdown-trigger::after {
-    --chevron-size: 20px;
   }
 }

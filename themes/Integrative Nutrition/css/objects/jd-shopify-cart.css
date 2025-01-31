@@ -438,7 +438,7 @@ select.jd-cart-rec-select {
 
 .jd-add-pop-content-main .jd-cart-rec-item-program {
   letter-spacing: 0.1rem;
-  color: var(--color--grey-3);
+  color: var(--color--grey-2);
 }
 
 .jd-cart-item-price {
@@ -545,7 +545,7 @@ html
   color: var(--theme--global-colors--secondary-color);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .course-shopify-price {
     text-align: left !important;
   }

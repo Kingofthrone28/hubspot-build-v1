@@ -1045,7 +1045,7 @@ html .edit-icon i {
   width: 66.66%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .roadmap {
     display: block;
   }
@@ -4158,7 +4158,8 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
     padding: 15px;
   }
 
-  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input {
+  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input[type='checkbox'],
+  .help-me-choose-section .form-columns-2 .hs-form-field .hs-input[type='radio'], {
     width: 30px !important;
   }
 }
@@ -4194,7 +4195,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   height: 48px;
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1024px) {
   .page-our-approach-to-nutrition .widget-type-custom_widget .custom-text {
     position: absolute;
     left: 0;
@@ -4207,7 +4208,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   z-index: 2;
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1024px) {
   .bg-circle-img {
     position: absolute;
     top: 50%;
@@ -4224,7 +4225,7 @@ html .mfp-auto-cursor .mfp-content .mfp-close {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
   .bg-circle-img {
     position: absolute;
     top: 0;
