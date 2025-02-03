@@ -16,19 +16,33 @@
 
     {{ require_css(get_asset_url('../../css/main.css')) }}
 
+    {{ require_js(get_asset_url("../../child.js")) }}
+
     {{ standard_header_includes }}
 
     {% include "../partials/site-header.html" %}
+
+    {{ require_css(get_public_template_url("../../child.css")) }}
 
     <link type="text/css" rel="stylesheet" href="https://www.integrativenutrition.com/hubfs/rise-360-libraries/coaching-sample-lesson/lib/icomoon.css">
     <script type="text/javascript" src="https://www.integrativenutrition.com/hubfs/rise-360-libraries/coaching-sample-lesson/lib/player-0.0.11.min.js"></script>
     <script type="text/javascript" src="https://www.integrativenutrition.com/hubfs/rise-360-libraries/coaching-sample-lesson/lib/lzwcompress.js"></script>
 
+    <!-- Weglot Init -->
+    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+      Weglot.initialize({
+        api_key: 'wg_9a4056032062028e8fdd8b0aa75aae418'
+      });
+    </script>
+
     <!-- Resize Hack -->
     <script>
       window.resizeTo(screen.width, screen.height);
     </script>
-    
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->

@@ -27,21 +27,32 @@
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
+    {{ require_js(get_asset_url("../../child.js")) }}
 
     {{ standard_header_includes }}
+
     {% include "../partials/site-header.html" %}
-    {% include "../partials/weglot.html" %}
-    
-    <!-- Needle Embed Code -->
+
+    <!-- Needle Embed Code -->    
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
 
+    <!-- Weglot Init -->
+    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
     {% if not is_hubspot_user %}
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+      Weglot.initialize({
+        api_key: 'wg_9a4056032062028e8fdd8b0aa75aae418'
+      });
+    </script>
+    
     <link type="text/css" rel="stylesheet" href="https://www.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/icomoon.css">
     <script type="text/javascript" src="https://www.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/player-0.0.11.min.js"></script>
     <script type="text/javascript" src="https://www.integrativenutrition.com/hubfs/rise-360-libraries/yoga-sample-lesson/lib/lzwcompress.js"></script>
     
     <!-- Resize Hack -->
-    <script type="text/javascript">
+    <script>
       window.resizeTo(screen.width, screen.height);
     </script>
     
@@ -104,6 +115,7 @@
         window.__loadRemoteEntry = __loadRemoteEntry
       })()
     </script>
+
     {% endif %}
   </head>
   <body>

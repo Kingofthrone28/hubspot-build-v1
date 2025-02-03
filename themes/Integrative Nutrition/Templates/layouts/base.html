@@ -28,14 +28,11 @@
 
     {{ standard_header_includes }}
 
+    {% include "../partials/site-header.html" %}
+    {% include "../partials/weglot.html" %}
+
     <!-- Needle Embed Code -->
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
-
-    <!-- Weglot Init -->
-    <link rel="alternate" hreflang="en" href="https://www.integrativenutrition.com">
-    <link rel="alternate" hreflang="es" href="https://es.integrativenutrition.com">
-    <script src="https://cdn.weglot.com/weglot.min.js"></script>
-    {{ require_js(get_asset_url('../../js/translation.js')) }}
   </head>
   <body class="page-{{ content.slug }}">
     <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">

@@ -28,9 +28,9 @@
     {{ require_js(get_asset_url('../../js/main.js')) }}
 
     {{ standard_header_includes }}
-
-    <script src="https://cdn.weglot.com/weglot.min.js"></script>
-    {{ require_js(get_asset_url('../../js/translation.js')) }}
+    
+    {% include "../partials/site-header.html" %}
+    {% include "../partials/weglot.html" %}
 
     <!-- 
       __Gating Function__

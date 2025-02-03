@@ -25,21 +25,29 @@
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
+    {{ require_js(get_asset_url("../../child.js")) }}
 
     {{ standard_header_includes }}
 
     {% include "../partials/site-header.html" %}
-    {% include "../partials/weglot.html" %}
 
-    <!-- Needle Embed Code -->
-    <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
+    {{ require_css(get_public_template_url("../../child.css")) }}
   </head>
-  <body class="page-{{ content.slug }}">
-    <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
+  <body>
+    <div class="body-wrapper {{ builtin_body_classes }}">
+      {% set global_color = theme.global_colors.primary_color.color|convert_rgb|split(',') %}
+      {% set global_color2 = theme.global_colors.secondary_color.color|convert_rgb|split(',') %}
+      {% block header %}
+      {% module "language_switcher" path="@hubspot/language_switcher" %}
+      {% module "theme_header" path="../../modules/Header", label="Header" %}
+      {% endblock header %}
       <div class="static-body responsive">
         {% block body %}
         {% endblock body %}
       </div>
+      {% block footer %}
+        {% global_partial path='../partials/flex_footer.html' %}
+      {% endblock footer %}
     </div>
     {{ standard_footer_includes }}
   </body>

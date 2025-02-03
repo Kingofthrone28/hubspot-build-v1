@@ -25,21 +25,45 @@
     {{ require_js(get_asset_url('../../js/lazyload.js')) }}
     {{ require_js(get_asset_url('../../js/slick.js')) }}
     {{ require_js(get_asset_url('../../js/main.js')) }}
+    {{ require_js(get_asset_url("../../child.js")) }}
 
     {{ standard_header_includes }}
 
     {% include "../partials/site-header.html" %}
-    {% include "../partials/weglot.html" %}
+
+    {{ require_css(get_public_template_url("../../child.css")) }}
+
+    <!-- Weglot Init -->
+    <link rel="alternate" hreflang="en" href="https://info.integrativenutrition.com">
+    <link rel="alternate" hreflang="es" href="https://es.info.integrativenutrition.com">
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+      Weglot.initialize({
+        api_key: 'wg_9a4056032062028e8fdd8b0aa75aae418'
+      });
+    </script>
 
     <!-- Needle Embed Code -->
     <script async defer src="//integrativenutrition.needle.com/needle_service.js?ver=1"></script>
   </head>
-  <body class="page-{{ content.slug }}">
-    <div class="body-wrapper {{ builtin_body_classes }}" data-hubspot-country="{{ request.geoip_country|upper }}">
+  <body style="background-color: #F8F5F0">
+    <div class="body-wrapper {{ builtin_body_classes }}">
+      {% set global_color = theme.global_colors.primary_color.color|convert_rgb|split(',') %}
+      {% set global_color2 = theme.global_colors.secondary_color.color|convert_rgb|split(',') %}
+      {% block header %}
+      {% module "language_switcher" path="@hubspot/language_switcher" %}
+      {% module "theme_header" path="../../modules/Header Simple", label="Header" %}
+      {% endblock header %}
       <div class="static-body responsive">
         {% block body %}
         {% endblock body %}
       </div>
+      {% global_partial path='../partials/pop_ups.html' %}
+      {#
+      {% block footer %}
+        {% global_partial path='../partials/flex_footer.html' %}
+      {% endblock footer %}
+      #}
     </div>
     {{ standard_footer_includes }}
   </body>
