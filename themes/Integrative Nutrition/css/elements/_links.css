@@ -3,7 +3,7 @@
 .link,
 .links {
   --link-color: var(--color--water);
-  --link-color--targeted: var(--color--blue);
+  --link-color--targeted: var(--color--water--medium);
   --link-color--active: var(--color--cherry);
   --link-color--visited: var(--color--water--half-baked);
 

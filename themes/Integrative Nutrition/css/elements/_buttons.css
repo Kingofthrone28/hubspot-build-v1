@@ -183,7 +183,7 @@
 }
 
 .dnd-section button.link-style:hover {
-  color: var(--color--blue) !important;
+  color: var(--color--water--medium) !important;
 }
 
 .dnd-section .remove-globals,

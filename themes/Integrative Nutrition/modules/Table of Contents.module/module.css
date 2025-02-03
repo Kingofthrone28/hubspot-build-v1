@@ -22,15 +22,15 @@
 }
 
 .table-of-contents a:hover {
-  color: var(--color--legacy--blue);
+  color: var(--color--water--medium);
 }
 
 .table-of-contents a:focus {
-  color: var(--color--legacy--blue);
+  color: var(--color--water--medium);
 }
 
 .table-of-contents a:active {
-  color: var(--color--legacy--blue);
+  color: var(--color--water--medium);
 }
 
 .table-of-contents-centered {
