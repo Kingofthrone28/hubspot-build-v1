@@ -7,8 +7,10 @@
     {
       "autoload": true,
       "path": "../../js/product-selection.js",
-      "name": "product-selection.js"
+      "name": "product-selection.js",
+      "type": "module"
     }
   ],
-  "is_available_for_new_content": true
+  "is_available_for_new_content": true,
+  "js_render_options": { "type": "module" }
 }

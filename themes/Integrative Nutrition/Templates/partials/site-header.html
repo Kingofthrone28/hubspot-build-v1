@@ -32,4 +32,9 @@
 <script src="{{ get_asset_url('/Integrative Nutrition/js/params.js') }}"></script>
 <script src="{{ get_asset_url('/Integrative Nutrition/js/cart.js') }}"></script>
 <script src="{{ get_asset_url('/Integrative Nutrition/js/popup-cookie-management.js') }}"></script>
-<script src="{{ get_asset_url('/Integrative Nutrition/js/_shopify.js') }}"></script>
+{% require_js %}
+  <script type="module">
+    import { load as loadShopify } from "{{ get_asset_url('/Integrative Nutrition/js/_shopify.js') }}";
+    loadShopify();
+  </script> 
+{% end_require_js %}

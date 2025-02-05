@@ -2,6 +2,7 @@
   "name": "hubspot",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "browserslist": "~4.23.1",
     "eslint": "~8.31.0",
@@ -10,6 +11,7 @@
     "eslint-config-prettier": "~8.5.0",
     "eslint-plugin-compat": "~5.0.0",
     "eslint-plugin-html": "~7.1.0",
+    "jest": "~29.7.0",
     "prettier": "~3.3.2",
     "stylelint": "~16.6.1",
     "stylelint-config-concentric-order": "~5.2.0",
@@ -35,7 +37,9 @@
     "js:fix": "npm run js:lint -- --fix",
     "js:format": "prettier './themes/Integrative Nutrition/**/*.js' --write",
     "json:format": "prettier './themes/Integrative Nutrition/**/*.json' --write",
-    "sync": "hs fetch --account=iin-production / --overwrite && npm run json:format"
+    "sync": "hs fetch --account=iin-production / --overwrite && npm run json:format",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:view:coverage": "open ./tests/coverage/lcov-report/index.html"
   },
   "dependencies": {
     "@hubspot/api-client": "^11.2.0",

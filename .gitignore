@@ -20,3 +20,6 @@ tmp-dev/
 
 # Files used during blog tag updates
 scripts/update-blog-tags/assets/
+
+# Generated coverage reports
+tests/coverage

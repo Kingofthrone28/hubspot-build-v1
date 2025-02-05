@@ -4,6 +4,9 @@ package-lock.json
 package.json
 **/README.md
 
+# Tests
+**/*.test.mjs
+
 # Situationally useful ignores
 # themes/Integrative Nutrition/images
 # themes/Integrative Nutrition/macros/get-app-config.html

@@ -1,26 +1,26 @@
+const {
+  calculateDiscounts,
+  configureAddedToCartPopUp,
+  configureDropdownHeading,
+  configureHeaderToggle,
+  configureImageSlider,
+  configureStickyHeaderSampleClass,
+  configureStickyNav,
+  createViewItemEvent,
+  handleSelectorChangeFull,
+  matchPDPBottomSectionToTop,
+  parseMarkupData,
+  processProduct,
+} = getProductSelectionMethods();
+
+/** Fix header to the top of the page */
+const makeHeaderFixed = () => {
+  document
+    .querySelector('.pdp-sticky-wrap')
+    .classList.add('pdp-sticky-wrap-fixed');
+};
+
 (async function () {
-  const {
-    calculateDiscounts,
-    configureAddedToCartPopUp,
-    configureDropdownHeading,
-    configureHeaderToggle,
-    configureImageSlider,
-    configureStickyHeaderSampleClass,
-    configureStickyNav,
-    createViewItemEvent,
-    handleSelectorChangeFull,
-    matchPDPBottomSectionToTop,
-    parseMarkupData,
-    processProduct,
-  } = getProductSelectionMethods();
-
-  /** Fix header to the top of the page */
-  const makeHeaderFixed = () => {
-    document
-      .querySelector('.pdp-sticky-wrap')
-      .classList.add('pdp-sticky-wrap-fixed');
-  };
-
   try {
     const moduleData = parseMarkupData();
     const {
@@ -67,6 +67,7 @@
     const metaObjectIDsString = IIN.shopify.getOptionsInfo(
       product.metafields,
     )?.value;
+
     if (metaObjectIDsString) {
       const metaObjectIDs = JSON.parse(metaObjectIDsString);
       const metaObjectPromises = metaObjectIDs.map(
