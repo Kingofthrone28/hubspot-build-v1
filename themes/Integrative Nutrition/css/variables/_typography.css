@@ -49,7 +49,7 @@
   --font-size--big-number: var(--font-size--96);
   --font-size--caption: var(--font-size--14);
   --font-size--extra-large-paragraph: var(--font-size--24);
-  --font-size--feature-hero--desktop: var(--font-fize--115);
+  --font-size--feature-hero--desktop: var(--font-size--115);
   --font-size--feature-hero--mobile: var(--font-size--80);
   --font-size--h1--desktop: var(--font-size--80);
   --font-size--h1--mobile: var(--font-size--40);
@@ -144,8 +144,7 @@
   --line-height--big-number: var(--line-height--100);
   --line-height--caption: var(--line-height--171);
   --line-height--extra-large-paragraph: var(--line-height--116);
-  --line-height--feature-hero--desktop: var(--line-height--130);
-  --line-height--feature-hero--mobile: var(--line-height--125);
+  --line-height--feature-hero: var(--line-height--100);
   --line-height--h1--desktop: var(--line-height--110);
   --line-height--h1--mobile: var(--line-height--120);
   --line-height--h2--desktop: var(--line-height--116);
@@ -213,32 +212,32 @@
   /* Figma text style: New/Feature Hero - Regular */
   --font--feature-hero--regular--desktop: var(--font-style--heading)
     var(--font-weight--regular) var(--font-size--feature-hero--desktop) /
-    var(--line-height--feature-hero--desktop) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/Feature Hero - Semi Bold */
   --font--feature-hero--semibold--desktop: var(--font-style--heading)
     var(--font-weight--semibold) var(--font-size--feature-hero--desktop) /
-    var(--line-height-feature-hero--desktop) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/Feature Hero - Black Italic */
   --font--feature-hero--black-italic--desktop: var(--font-style--emphasis)
     var(--font-weight--black) var(--font-size--feature-hero--desktop) /
-    var(--line-height--feature-hero--desktop) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/Mobile-Feature Hero - Regular */
   --font--feature-hero--regular--mobile: var(--font-style--heading)
     var(--font-weight--regular) var(--font-size--feature-hero--mobile) /
-    var(--line-height--feature-hero--mobile) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/Mobile-Feature Hero - Semi Bold */
   --font--feature-hero--semibold--mobile: var(--font-style--heading)
     var(--font-weight--semibold) var(--font-size--feature-hero--mobile) /
-    var(--line-height-feature-hero--mobile) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/Mobile-Feature Hero - Black Italic */
   --font--feature-hero--black-italic--mobile: var(--font-style--emphasis)
     var(--font-weight--black) var(--font-size--feature-hero--mobile) /
-    var(--line-height--feature-hero--mobile) var(--font-family--heading);
+    var(--line-height--feature-hero) var(--font-family--heading);
 
   /* Figma text style: New/H1 - Desktop */
   --font--h1--desktop: var(--font-style--heading) var(--font-weight--heading)
